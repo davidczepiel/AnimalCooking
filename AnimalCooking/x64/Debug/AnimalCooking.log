@@ -1,1 +1,7 @@
-﻿
+﻿  AnimalCooking.cpp
+  Component.cpp
+  Entity.cpp
+  Manager.cpp
+  Transform.cpp
+  Generating Code...
+  AnimalCooking.vcxproj -> U:\hlocal\AnimalCooking\x64\Debug\AnimalCooking.exe

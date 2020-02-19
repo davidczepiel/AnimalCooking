@@ -153,20 +153,58 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="checkML.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ecs.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FontsManager.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="jute.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="SDLAudioManager.h" />
+    <ClInclude Include="SDLFontsManager.h" />
+    <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLTexturesManager.h" />
+    <ClInclude Include="SDL_macros.h" />
+    <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnimalCooking.cpp" />
-    <ClCompile Include="checkML.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="jute.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="RandomNumberGenerator.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="SDLAudioManager.cpp" />
+    <ClCompile Include="SDLFontsManager.cpp" />
+    <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLTexturesManager.cpp" />
+    <ClCompile Include="sdl_macros.cpp" />
+    <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
