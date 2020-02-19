@@ -46,9 +46,6 @@
     <Filter Include="Archivos de encabezado\Components\Renderer">
       <UniqueIdentifier>{b1d62ed4-0777-4c93-ba4f-1ce238657cc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\Components\Pools">
-      <UniqueIdentifier>{abf0af98-bf23-4128-8bfc-f5940bc2743d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de origen\Component\AI">
       <UniqueIdentifier>{78b0fff6-7ec1-4d41-9817-5f9e4d01201c}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,9 @@
     </Filter>
     <Filter Include="Archivos de encabezado\Components\Player">
       <UniqueIdentifier>{9be01341-68f0-44fa-9611-1a063d291d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Components\Pools">
+      <UniqueIdentifier>{abf0af98-bf23-4128-8bfc-f5940bc2743d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +180,54 @@
     <ClInclude Include="Transform.h">
       <Filter>Archivos de encabezado\Components\Movement</Filter>
     </ClInclude>
+    <ClInclude Include="AIIngredient.h">
+      <Filter>Archivos de encabezado\Components\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>Archivos de encabezado\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GameControl.h">
+      <Filter>Archivos de encabezado\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoader.h">
+      <Filter>Archivos de encabezado\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.h">
+      <Filter>Archivos de encabezado\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Archivos de encabezado\Components\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSave.h">
+      <Filter>Archivos de encabezado\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GPadController.h">
+      <Filter>Archivos de encabezado\Components\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyBoardController.h">
+      <Filter>Archivos de encabezado\Components\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="IngredientsPool.h">
+      <Filter>Archivos de encabezado\Components\Pools</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLRenderer.h">
+      <Filter>Archivos de encabezado\Components\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLRendererFrame.h">
+      <Filter>Archivos de encabezado\Components\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticRenderer.h">
+      <Filter>Archivos de encabezado\Components\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Archivos de encabezado\Components\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreViewer.h">
+      <Filter>Archivos de encabezado\Components\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Archivos de encabezado\Components\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -250,6 +298,54 @@
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Archivos de origen\Component\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="AIIngredient.cpp">
+      <Filter>Archivos de origen\Component\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>Archivos de origen\Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GameControl.cpp">
+      <Filter>Archivos de origen\Component\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoader.cpp">
+      <Filter>Archivos de origen\Component\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>Archivos de origen\Component\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSave.cpp">
+      <Filter>Archivos de origen\Component\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Archivos de origen\Component\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GPadController.cpp">
+      <Filter>Archivos de origen\Component\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyBoardController.cpp">
+      <Filter>Archivos de origen\Component\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="IngredientsPool.cpp">
+      <Filter>Archivos de origen\Component\Pools</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Archivos de origen\Component\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreViewer.cpp">
+      <Filter>Archivos de origen\Component\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Archivos de origen\Component\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLRenderer.cpp">
+      <Filter>Archivos de origen\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLRendererFrame.cpp">
+      <Filter>Archivos de origen\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticRenderer.cpp">
+      <Filter>Archivos de origen\Component\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

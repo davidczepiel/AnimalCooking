@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
@@ -162,20 +164,34 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameControl.h" />
+    <ClInclude Include="GameLoader.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameSave.h" />
+    <ClInclude Include="GPadController.h" />
+    <ClInclude Include="IngredientsPool.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="jute.h" />
+    <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="ScoreViewer.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLRenderer.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
     <ClInclude Include="SDLTexturesManager.h" />
     <ClInclude Include="SDL_macros.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="StaticRenderer.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
@@ -183,25 +199,41 @@
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="GameLoader.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameSave.cpp" />
+    <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="jute.cpp" />
+    <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
+    <ClCompile Include="ScoreViewer.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLRenderer.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="sdl_macros.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="StaticRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Transform.cpp" />
