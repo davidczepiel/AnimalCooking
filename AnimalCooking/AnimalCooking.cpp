@@ -13,7 +13,7 @@ using namespace std;
 
 AnimalCooking::AnimalCooking() :
 		game_(nullptr), //
-		entityManager_(nullptr), //
+		fsm_(nullptr), //
 		exit_(false) {
 	initGame();
 }
@@ -25,12 +25,12 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-
-	entityManager_ = new EntityManager(game_);
+	fsm_ = new FSM();
+	
 }
 
 void AnimalCooking::closeGame() {
-	delete entityManager_;
+	delete fsm_;
 }
 
 void AnimalCooking::start() {

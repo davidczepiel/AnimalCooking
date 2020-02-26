@@ -164,6 +164,7 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="FSM.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="StaticRenderer.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
@@ -207,6 +209,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
@@ -233,6 +236,7 @@
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="StaticRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />

@@ -94,6 +94,12 @@
     <Filter Include="Archivos de encabezado\Components\Pools">
       <UniqueIdentifier>{abf0af98-bf23-4128-8bfc-f5940bc2743d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\FSM">
+      <UniqueIdentifier>{253504ca-0923-48e9-a1c3-566dc8e414db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\FSM">
+      <UniqueIdentifier>{cde9ed57-69f0-4b7e-bdf9-ea61cbd1b2fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -228,6 +234,12 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Archivos de encabezado\Components\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Archivos de encabezado\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM.h">
+      <Filter>Archivos de encabezado\FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -346,6 +358,12 @@
     </ClCompile>
     <ClCompile Include="StaticRenderer.cpp">
       <Filter>Archivos de origen\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Archivos de origen\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FSM.cpp">
+      <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

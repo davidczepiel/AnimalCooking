@@ -4,6 +4,7 @@
 
 #include "Manager.h"
 #include "SDLGame.h"
+#include "FSM.h"
 
 class AnimalCooking {
 
@@ -23,7 +24,8 @@ private:
 	void render();
 
 	SDLGame* game_;
-	EntityManager* entityManager_;
+	
+	FSM* fsm_;
 	bool exit_;
 
 	const static int _WINDOW_WIDTH_ = 640;
