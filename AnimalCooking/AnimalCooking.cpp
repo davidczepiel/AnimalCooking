@@ -74,12 +74,7 @@ void AnimalCooking::handleInput() {
 				SDL_SetWindowFullscreen(game_->getWindow(),
 						SDL_WINDOW_FULLSCREEN);
 			}
-		}
-		if (ih->isKeyDown(SDLK_p))
-			fsm_->PushState(new MenuState());
-		else if (ih->isKeyDown(SDLK_m))
-			fsm_->PushState(new LoadState());
-		else if(ih->isKeyDown(SDLK_o)) fsm_->PopState();
+		}		
 	}
 
 }

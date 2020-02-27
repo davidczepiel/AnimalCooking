@@ -3,6 +3,6 @@
 class MenuState: public State
 {
 public:
-	MenuState() :State() { cout << "menu"; }
+	MenuState() :State() { }
 };
 
