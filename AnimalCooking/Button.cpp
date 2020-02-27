@@ -8,6 +8,7 @@ Button::Button()
 	text_ = nullptr;
 	app_ = nullptr;
 	callback_ = nullptr;
+	inUse_ = false;
 }
 
 void Button::configureButton(Vector2D pos, Vector2D size, Texture* background, Texture* text, AnimalCooking* app, CallBackOnClick* callback)

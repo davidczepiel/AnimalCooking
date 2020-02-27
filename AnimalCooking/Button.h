@@ -13,8 +13,11 @@ private:
 	
 	AnimalCooking* app_;
 	CallBackOnClick* callback_;
+	bool inUse_;
+
 public:
 	Button();
 	void configureButton(Vector2D pos, Vector2D size, Texture* background, Texture* text, AnimalCooking* app, CallBackOnClick* callback);
+	bool inUse() { return inUse_; }
 };
 
