@@ -243,6 +243,9 @@
     <ClInclude Include="LoadState.h">
       <Filter>Archivos de encabezado\FSM</Filter>
     </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Archivos de encabezado\FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -369,6 +372,9 @@
       <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>
     <ClCompile Include="LoadState.cpp">
+      <Filter>Archivos de origen\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
       <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>
   </ItemGroup>

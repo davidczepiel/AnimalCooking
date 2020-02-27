@@ -6,7 +6,8 @@
 
 #include "Transform.h"
 #include "SDLGame.h"
-
+#include "MenuState.h"
+#include "LoadState.h"
 #include "SDL_macros.h"
 
 using namespace std;
@@ -26,6 +27,7 @@ void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 	fsm_ = new FSM(game_);
+	fsm_->PushState(new MenuState());
 	
 }
 
@@ -73,6 +75,11 @@ void AnimalCooking::handleInput() {
 						SDL_WINDOW_FULLSCREEN);
 			}
 		}
+		if (ih->isKeyDown(SDLK_p))
+			fsm_->PushState(new MenuState());
+		else if (ih->isKeyDown(SDLK_m))
+			fsm_->PushState(new LoadState());
+		else if(ih->isKeyDown(SDLK_o)) fsm_->PopState();
 	}
 
 }

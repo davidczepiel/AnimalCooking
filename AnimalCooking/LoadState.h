@@ -3,5 +3,7 @@
 class LoadState :
 	public State
 {
+public:
+	LoadState() :State() { cout << "load"; }
 };
 

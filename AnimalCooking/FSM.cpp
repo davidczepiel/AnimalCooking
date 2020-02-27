@@ -5,7 +5,7 @@ void FSM::PushState(State* s) {
 
 void FSM::PopState()
 {
-	statesStack.pop();
+	if(!statesStack.empty())statesStack.pop();
 }
 State* FSM::CurrentState() {
 	return statesStack.top();
