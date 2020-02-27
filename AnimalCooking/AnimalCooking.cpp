@@ -25,7 +25,7 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-	fsm_ = new FSM();
+	fsm_ = new FSM(game_);
 	
 }
 
@@ -78,14 +78,14 @@ void AnimalCooking::handleInput() {
 }
 
 void AnimalCooking::update() {
-	entityManager_->update();
+	fsm_->CurrentState()->Update();
 }
 
 void AnimalCooking::render() {
 	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(game_->getRenderer());
 
-	entityManager_->draw();
+	fsm_->CurrentState()->Draw();
 
 	SDL_RenderPresent(game_->getRenderer());
 }
