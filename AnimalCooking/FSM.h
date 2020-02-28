@@ -1,5 +1,6 @@
 #pragma once
 #include<stack>
+#include "checkML.h"
 #include"State.h"
 using namespace std;
 class FSM
