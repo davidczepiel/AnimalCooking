@@ -9,7 +9,7 @@ enum CmpId : CmpIdType {
 	Transform = 0,
 
 	GPadController, //Controls
-	KeyBoardController, 
+	KeyBoardController,
 
 	AIIngredient, //AI
 
@@ -23,13 +23,18 @@ enum CmpId : CmpIdType {
 	IngredientsPool, //Pools
 
 	SDLRenderer, //Renderer
-	SDLRendererFrame, 
+	SDLRendererFrame,
 	StaticRenderer,
 
 	GameManager, //Utils
 	ScoreManager,
 	ScoreViewer,
 	SoundManager,
+
+	ButtonBehaviour, //Buttons
+	ButtonRenderer,
+	ButtonsViewer,
+	ButtonDirector,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

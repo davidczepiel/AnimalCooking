@@ -240,10 +240,16 @@
     <ClInclude Include="FSM.h">
       <Filter>Archivos de encabezado\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
+    <ClInclude Include="ButtonBehaviour.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonPool.h">
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonDirector.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonsViewer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -371,10 +377,16 @@
     <ClCompile Include="FSM.cpp">
       <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
+    <ClCompile Include="ButtonBehaviour.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonPool.cpp">
+    <ClCompile Include="ButtonRenderer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonDirector.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonsViewer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

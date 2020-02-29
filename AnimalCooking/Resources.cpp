@@ -3,17 +3,17 @@
 
 vector<Resources::FontInfo> Resources::fonts_ {
 //
-
+	{ ARIAL24, "resources/arial.ttf", 24 }
 };
 
 vector<Resources::ImageInfo> Resources::images_ {
 //
-
+	{ Button, "resources/button.png" }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
 //
-
+	{ HelloWorld, "Hello World", { COLOR(0xaaffffff) }, ARIAL24 }
 };
 
 vector<Resources::MusicInfo> Resources::musics_ {
