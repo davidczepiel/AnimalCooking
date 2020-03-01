@@ -1,7 +1,7 @@
 #include "LoadState.h"
 
-LoadState::LoadState(/*Resources::Nivel nivel*/) : State()
-{
+//LoadState::LoadState(/*Resources::Nivel nivel*/) : State()
+//{
 	/*Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
 
@@ -10,7 +10,7 @@ LoadState::LoadState(/*Resources::Nivel nivel*/) : State()
 	buttonGo_ = stage->addEntity();
 
 	resetResources(nivel);*/
-}
+//}
 //
 //void LoadState::resetResources(Resources::Nivel nivel)
 //{
