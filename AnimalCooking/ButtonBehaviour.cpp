@@ -22,6 +22,6 @@ void ButtonBehaviour::update()
 	SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 
 	if (SDL_PointInRect( &mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
-		//callback_(game_); Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+		callback_(); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
 	}
 }

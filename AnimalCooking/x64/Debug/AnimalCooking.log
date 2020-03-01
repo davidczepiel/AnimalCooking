@@ -1,33 +1,3 @@
-﻿  AIIngredient.cpp
-  Attack.cpp
-  ButtonBehaviour.cpp
-  ButtonDirector.cpp
-  ButtonRenderer.cpp
-  ButtonsViewer.cpp
-  Component.cpp
-  Entity.cpp
-  FSM.cpp
-  GameControl.cpp
-  GameLoader.cpp
-  GameLogic.cpp
-  GameManager.cpp
-  GameSave.cpp
-  GPadController.cpp
-  IngredientsPool.cpp
-  KeyBoardController.cpp
-  main.cpp
-  Manager.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(438,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   AnimalCooking.cpp
-C:\Users\nicof\Desktop\Nico\DesarrolloVideojuegos\2º\P2\AnimalCooking\AnimalCooking\AnimalCooking.cpp(81,2): error C2065:  'entityManager_': identificador no declarado
-  Generando código...
-  Compilando...
-  ScoreManager.cpp
-  ScoreViewer.cpp
-  SDLRenderer.cpp
-  SDLRendererFrame.cpp
-  SoundManager.cpp
-  State.cpp
-  StaticRenderer.cpp
-  Transform.cpp
-  Generando código...
-C:\Users\nicof\Desktop\Nico\DesarrolloVideojuegos\2º\P2\AnimalCooking\AnimalCooking\AnimalCooking.cpp(88,2): error C2065:  'entityManager_': identificador no declarado
+  AnimalCooking.vcxproj -> C:\Users\nicof\Desktop\Nico\DesarrolloVideojuegos\2º\P2\AnimalCooking\\AnimalCooking\AnimalCooking.exe

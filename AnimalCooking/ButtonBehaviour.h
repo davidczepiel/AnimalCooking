@@ -4,7 +4,7 @@
 #include "Transform.h"
 class ButtonBehaviour : public Component
 {
-	using CallBackOnClick = void(AnimalCooking* animalcooking);
+	using CallBackOnClick = void(/*AnimalCooking* animalcooking*/);
 private:
 	CallBackOnClick* callback_;
 	Transform* ownerTransform_;
