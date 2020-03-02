@@ -240,6 +240,17 @@
     <ClInclude Include="FSM.h">
       <Filter>Archivos de encabezado\FSM</Filter>
     </ClInclude>
+    <ClInclude Include="ButtonBehaviour.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonDirector.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonsViewer.h">
+      <Filter>Archivos de encabezado</Filter>
     <ClInclude Include="LoadState.h">
       <Filter>Archivos de encabezado\FSM</Filter>
     </ClInclude>
@@ -371,6 +382,17 @@
     <ClCompile Include="FSM.cpp">
       <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonBehaviour.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRenderer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonDirector.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonsViewer.cpp">
+      <Filter>Archivos de origen</Filter>
     <ClCompile Include="LoadState.cpp">
       <Filter>Archivos de origen\FSM</Filter>
     </ClCompile>

@@ -75,6 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(ProjectName)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -156,6 +157,10 @@
     <ClInclude Include="AIIngredient.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonDirector.h" />
+    <ClInclude Include="ButtonRenderer.h" />
+    <ClInclude Include="ButtonsViewer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
@@ -206,6 +211,10 @@
     <ClCompile Include="AIIngredient.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonDirector.cpp" />
+    <ClCompile Include="ButtonRenderer.cpp" />
+    <ClCompile Include="ButtonsViewer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Entity.cpp" />

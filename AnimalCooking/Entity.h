@@ -10,6 +10,7 @@ class EntityManager;
 
 class Entity {
 public:
+	Entity();
 	Entity(SDLGame *game, EntityManager* mngr);
 	virtual ~Entity();
 

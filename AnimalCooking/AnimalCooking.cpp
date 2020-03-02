@@ -9,6 +9,10 @@
 #include "MenuState.h"
 #include "LoadState.h"
 #include "SDL_macros.h"
+#include "ButtonDirector.h"
+#include "ButtonsViewer.h"
+#include "ButtonBehaviour.h"
+#include "ButtonRenderer.h"
 
 using namespace std;
 
@@ -26,9 +30,6 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-	fsm_ = new FSM(game_);
-	fsm_->PushState(new MenuState());
-	
 }
 
 void AnimalCooking::closeGame() {
@@ -80,14 +81,18 @@ void AnimalCooking::handleInput() {
 }
 
 void AnimalCooking::update() {
+
 	fsm_->CurrentState()->Update();
+
 }
 
 void AnimalCooking::render() {
 	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(game_->getRenderer());
 
+
 	fsm_->CurrentState()->Draw();
+
 
 	SDL_RenderPresent(game_->getRenderer());
 }
