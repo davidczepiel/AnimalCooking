@@ -9,6 +9,7 @@ public:
 	EntityManager(SDLGame* game);
 	virtual ~EntityManager();
 
+	
 	void update();
 	void draw();
 	Entity* addEntity();

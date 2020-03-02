@@ -6,8 +6,8 @@
 
 #include "Transform.h"
 #include "SDLGame.h"
-
-
+#include "MenuState.h"
+#include "LoadState.h"
 #include "SDL_macros.h"
 #include "ButtonDirector.h"
 #include "ButtonsViewer.h"
@@ -30,7 +30,6 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-	fsm_ = new FSM();
 }
 
 void AnimalCooking::closeGame() {
@@ -76,20 +75,24 @@ void AnimalCooking::handleInput() {
 				SDL_SetWindowFullscreen(game_->getWindow(),
 						SDL_WINDOW_FULLSCREEN);
 			}
-		}
+		}		
 	}
 
 }
 
 void AnimalCooking::update() {
-	//entityManager_->update();
+
+	fsm_->CurrentState()->Update();
+
 }
 
 void AnimalCooking::render() {
 	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(game_->getRenderer());
 
-	//entityManager_->draw();
+
+	fsm_->CurrentState()->Draw();
+
 
 	SDL_RenderPresent(game_->getRenderer());
 }
