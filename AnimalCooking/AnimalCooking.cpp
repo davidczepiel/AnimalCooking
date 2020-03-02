@@ -19,7 +19,6 @@ using namespace std;
 AnimalCooking::AnimalCooking() :
 		game_(nullptr), //
 		fsm_(nullptr), //
-		em(nullptr),
 		exit_(false) {
 	initGame();
 }
@@ -32,18 +31,6 @@ void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 	fsm_ = new FSM();
-	em = new EntityManager(game_);
-	
-	Entity* buttonManager = em->addEntity();
-	buttonManager->addComponent<ButtonDirector>();
-	buttonManager->addComponent<ButtonsViewer>();
-	
-	Entity* helloWorldButton = new Entity();
-	helloWorldButton->addComponent<Transform>(Vector2D(50,50), Vector2D(), 200, 100, 0);
-	helloWorldButton->addComponent<ButtonBehaviour>(sayHello);
-	GETCMP2(buttonManager, ButtonDirector)->addButton(helloWorldButton);
-	helloWorldButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
-
 }
 
 void AnimalCooking::closeGame() {
@@ -95,14 +82,14 @@ void AnimalCooking::handleInput() {
 }
 
 void AnimalCooking::update() {
-	em->update();
+	//entityManager_->update();
 }
 
 void AnimalCooking::render() {
 	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(game_->getRenderer());
 
-	em->draw();
+	//entityManager_->draw();
 
 	SDL_RenderPresent(game_->getRenderer());
 }
