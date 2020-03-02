@@ -19,7 +19,8 @@ public:
 		SpaceShips,
 		Airplanes,
 		Star,
-
+		Boton1,
+		Boton2,
 		// text
 		HelloWorld,
 		PressAnyKey,
