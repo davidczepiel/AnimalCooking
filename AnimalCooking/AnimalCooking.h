@@ -16,6 +16,8 @@ public:
 	void start();
 	void stop();
 
+	inline FSM* getFSM() { return fsm_; }
+
 private:
 	void initGame();
 	void closeGame();
