@@ -1,416 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components">
-      <UniqueIdentifier>{e0e6b706-849b-49c3-9e7d-5db3b65d4e65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Helpers">
-      <UniqueIdentifier>{6a0d5474-27b0-4a5c-8450-708bfced151e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\VisualStudio">
-      <UniqueIdentifier>{22ab88a1-c4fa-4314-825c-fca48d8f2b01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Objects">
-      <UniqueIdentifier>{d7ecb7de-949d-4a6c-a7f7-cb4fcbd2592d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component">
-      <UniqueIdentifier>{0dad74ab-60bd-434f-8af0-4241c301f1f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Helpers">
-      <UniqueIdentifier>{913a4c99-cf11-419b-8a32-1f3393af48a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Objects">
-      <UniqueIdentifier>{2111b6fe-6f8c-4b83-9a19-07db23070610}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\ResourcesManagers">
-      <UniqueIdentifier>{b6336ca0-7afc-4a9f-9552-bd09d579469c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\ResourcesManagers">
-      <UniqueIdentifier>{8889d868-e66e-4f4a-bfcb-f64c6b115f27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Utils">
-      <UniqueIdentifier>{213e2d60-a048-46e6-a658-21f793358af5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Renderer">
-      <UniqueIdentifier>{b1d62ed4-0777-4c93-ba4f-1ce238657cc4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\AI">
-      <UniqueIdentifier>{78b0fff6-7ec1-4d41-9817-5f9e4d01201c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Cook">
-      <UniqueIdentifier>{c8d716e9-d284-4d15-bb33-8b2bb7f8c309}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Game">
-      <UniqueIdentifier>{e3985c25-3abf-41e2-8a4d-21cf57dfd2c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Renderer">
-      <UniqueIdentifier>{d0067268-42e0-4353-b797-7890ca64aaa8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Utils">
-      <UniqueIdentifier>{ebaf9f3a-a648-4f53-958b-4923c2ce2f9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Pools">
-      <UniqueIdentifier>{aced69cc-f9a2-47e8-b617-465a1165f429}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Controls">
-      <UniqueIdentifier>{9728116d-f529-45a5-8c9c-84ef43c73b98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Movement">
-      <UniqueIdentifier>{ffd1c2b8-3721-4370-8529-1b4dca26974e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Component\Player">
-      <UniqueIdentifier>{335287c1-72f2-40a8-b3dc-4d2a77a9ca75}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Game">
-      <UniqueIdentifier>{bc3c2fbd-c8b8-4f8b-8747-546d3cd6badf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Controls">
-      <UniqueIdentifier>{828a0048-5aaa-49ff-bf14-00c03d0a9ba0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\AI">
-      <UniqueIdentifier>{4e803692-d919-4a93-92d6-f3efd7358ac0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Cook">
-      <UniqueIdentifier>{d777dde9-9e52-476a-9107-1dd27a4ecd07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Movement">
-      <UniqueIdentifier>{e63ec312-e0a6-4858-83ac-60c902c24cd0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Player">
-      <UniqueIdentifier>{9be01341-68f0-44fa-9611-1a063d291d80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Components\Pools">
-      <UniqueIdentifier>{abf0af98-bf23-4128-8bfc-f5940bc2743d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\FSM">
-      <UniqueIdentifier>{253504ca-0923-48e9-a1c3-566dc8e414db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\FSM">
-      <UniqueIdentifier>{cde9ed57-69f0-4b7e-bdf9-ea61cbd1b2fd}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonDirector.cpp" />
+    <ClCompile Include="ButtonRenderer.cpp" />
+    <ClCompile Include="ButtonsViewer.cpp" />
+    <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="GameLoader.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameSave.cpp" />
+    <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="IngredientsPool.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="jute.cpp" />
+    <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="LoadState.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="RandomNumberGenerator.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
+    <ClCompile Include="ScoreViewer.cpp" />
+    <ClCompile Include="SDLAudioManager.cpp" />
+    <ClCompile Include="SDLFontsManager.cpp" />
+    <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLRenderer.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
+    <ClCompile Include="SDLTexturesManager.cpp" />
+    <ClCompile Include="sdl_macros.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StaticRenderer.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="CreditsState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h">
-      <Filter>Archivos de encabezado\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ecs.h">
-      <Filter>Archivos de encabezado\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="FontsManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLFontsManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLAudioManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="TexturesManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLTexturesManager.h">
-      <Filter>Archivos de encabezado\ResourcesManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="Collisions.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="checkML.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="jute.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomNumberGenerator.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="SDL_macros.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="SRandBasedGenerator.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Archivos de encabezado\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>Archivos de encabezado\VisualStudio</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Archivos de encabezado\VisualStudio</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectPool.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimalCooking.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLGame.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Archivos de encabezado\VisualStudio</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Archivos de encabezado\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Archivos de encabezado\Components\Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="AIIngredient.h">
-      <Filter>Archivos de encabezado\Components\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>Archivos de encabezado\Components\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="GameControl.h">
-      <Filter>Archivos de encabezado\Components\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoader.h">
-      <Filter>Archivos de encabezado\Components\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLogic.h">
-      <Filter>Archivos de encabezado\Components\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Archivos de encabezado\Components\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSave.h">
-      <Filter>Archivos de encabezado\Components\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GPadController.h">
-      <Filter>Archivos de encabezado\Components\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyBoardController.h">
-      <Filter>Archivos de encabezado\Components\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="IngredientsPool.h">
-      <Filter>Archivos de encabezado\Components\Pools</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLRenderer.h">
-      <Filter>Archivos de encabezado\Components\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLRendererFrame.h">
-      <Filter>Archivos de encabezado\Components\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticRenderer.h">
-      <Filter>Archivos de encabezado\Components\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreManager.h">
-      <Filter>Archivos de encabezado\Components\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreViewer.h">
-      <Filter>Archivos de encabezado\Components\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.h">
-      <Filter>Archivos de encabezado\Components\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Archivos de encabezado\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="FSM.h">
-      <Filter>Archivos de encabezado\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonBehaviour.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonRenderer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonDirector.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonsViewer.h">
-      <Filter>Archivos de encabezado</Filter>
-    <ClInclude Include="LoadState.h">
-      <Filter>Archivos de encabezado\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuState.h">
-      <Filter>Archivos de encabezado\FSM</Filter>
-    </ClInclude>
+    <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="Attack.h" />
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonDirector.h" />
+    <ClInclude Include="ButtonRenderer.h" />
+    <ClInclude Include="ButtonsViewer.h" />
+    <ClInclude Include="checkML.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ecs.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontsManager.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="FSM.h" />
+    <ClInclude Include="GameControl.h" />
+    <ClInclude Include="GameLoader.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameSave.h" />
+    <ClInclude Include="GPadController.h" />
+    <ClInclude Include="IngredientsPool.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="jute.h" />
+    <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="LoadState.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="RandomNumberGenerator.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="ScoreViewer.h" />
+    <ClInclude Include="SDLAudioManager.h" />
+    <ClInclude Include="SDLFontsManager.h" />
+    <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLRenderer.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
+    <ClInclude Include="SDLTexturesManager.h" />
+    <ClInclude Include="SDL_macros.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StaticRenderer.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="CreditsState.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Archivos de origen\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="FontsManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="Resources.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLAudioManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLFontsManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLTexturesManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="TexturesManager.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Archivos de origen\ResourcesManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="Collisions.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="jute.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumberGenerator.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="SRandBasedGenerator.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="sdl_macros.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Archivos de origen\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimalCooking.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLGame.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Archivos de origen\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Archivos de origen\Component\Movement</Filter>
-    </ClCompile>
-    <ClCompile Include="AIIngredient.cpp">
-      <Filter>Archivos de origen\Component\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>Archivos de origen\Component\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="GameControl.cpp">
-      <Filter>Archivos de origen\Component\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoader.cpp">
-      <Filter>Archivos de origen\Component\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
-      <Filter>Archivos de origen\Component\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSave.cpp">
-      <Filter>Archivos de origen\Component\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Archivos de origen\Component\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="GPadController.cpp">
-      <Filter>Archivos de origen\Component\Controls</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyBoardController.cpp">
-      <Filter>Archivos de origen\Component\Controls</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientsPool.cpp">
-      <Filter>Archivos de origen\Component\Pools</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreManager.cpp">
-      <Filter>Archivos de origen\Component\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreViewer.cpp">
-      <Filter>Archivos de origen\Component\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Archivos de origen\Component\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLRenderer.cpp">
-      <Filter>Archivos de origen\Component\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLRendererFrame.cpp">
-      <Filter>Archivos de origen\Component\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticRenderer.cpp">
-      <Filter>Archivos de origen\Component\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Archivos de origen\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="FSM.cpp">
-      <Filter>Archivos de origen\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonBehaviour.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonRenderer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonDirector.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonsViewer.cpp">
-      <Filter>Archivos de origen</Filter>
-    <ClCompile Include="LoadState.cpp">
-      <Filter>Archivos de origen\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuState.cpp">
-      <Filter>Archivos de origen\FSM</Filter>
-    </ClCompile>
+    <ResourceCompile Include="AnimalCooking.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="AnimalCooking.rc">
-      <Filter>Archivos de recursos</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>Archivos de recursos</Filter>
-    </Image>
-    <Image Include="AnimalCooking.ico">
-      <Filter>Archivos de recursos</Filter>
-    </Image>
+    <Image Include="AnimalCooking.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
 </Project>
