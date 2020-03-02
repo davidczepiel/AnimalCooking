@@ -31,5 +31,8 @@ public:
 	virtual void haltMusic() = 0;
 	virtual void pauseMusic() = 0;
 	virtual void resumeMusic() = 0;
+
+	virtual Mix_Chunk* getSound(std::size_t tag) = 0;
+	virtual Mix_Music* getMusic(std::size_t tag) = 0;
 };
 

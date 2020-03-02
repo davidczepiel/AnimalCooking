@@ -78,24 +78,24 @@ void SDLGame::initResources() {
 	audio_->init();
 
 	for (auto &image : Resources::images_) {
-		textures_->loadFromImg(image.id, renderer_, image.fileName);
+		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
 	for (auto &font : Resources::fonts_) {
-		fonts_->loadFont(font.id, font.fileName, font.size);
+		if (font.level == Resources::Level::Basic) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
 
 	for (auto &txtmsg : Resources::messages_) {
-		textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg,
+		if (txtmsg.level == Resources::Level::Basic) textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg,
 				fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
 
 	for (auto &sound : Resources::sounds_) {
-		audio_->loadSound(sound.id, sound.fileName);
+		if (sound.level == Resources::Level::Basic) audio_->loadSound(sound.id, sound.fileName);
 	}
 
 	for (auto &music : Resources::musics_) {
-		audio_->loadMusic(music.id, music.fileName);
+		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
 }
@@ -107,3 +107,33 @@ void SDLGame::closeResources() {
 	delete audio_;
 }
 
+void SDLGame::load(Resources::Level level)
+{
+
+	//todo: eliminar las texturas asociadas a otro nivel
+
+	for (auto& image : Resources::images_) {
+		if (textures_->getTexture(image.id) == nullptr && (image.level == level || image.level == Resources::Level::AllLevels))
+			textures_->loadFromImg(image.id, renderer_, image.fileName);
+	}
+
+	for (auto& font : Resources::fonts_) {
+		if (fonts_->getFont(font.id) == nullptr && (font.level == level || font.level == Resources::Level::AllLevels))
+			fonts_->loadFont(font.id, font.fileName, font.size);
+	}
+
+	for (auto& txtmsg : Resources::messages_) {
+		if (textures_->getTexture(txtmsg.id) == nullptr && (txtmsg.level == level || txtmsg.level == Resources::Level::AllLevels))
+			textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg, fonts_->getFont(txtmsg.fontId), txtmsg.color);
+	}
+
+	for (auto& sound : Resources::sounds_) {
+		if (audio_->getSound(sound.id) == nullptr && (sound.level == level || sound.level == Resources::Level::AllLevels))
+			audio_->loadSound(sound.id, sound.fileName);
+	}
+
+	for (auto& music : Resources::musics_) {
+		if (audio_->getMusic(music.id) == nullptr && (music.level == level || music.level == Resources::Level::AllLevels))
+			audio_->loadMusic(music.id, music.fileName);
+	}
+}

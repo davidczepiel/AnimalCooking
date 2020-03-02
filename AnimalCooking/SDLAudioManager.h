@@ -34,6 +34,14 @@ public:
 	void pauseMusic() override;
 	void resumeMusic() override;
 
+	Mix_Chunk* getSound(std::size_t tag) override {
+		return chunks_[tag];
+	}
+
+	Mix_Music* getMusic(std::size_t tag) override {
+		return music_[tag];
+	}
+
 private:
 	bool initialized_;
 	int channels_;
