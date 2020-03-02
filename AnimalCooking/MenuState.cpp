@@ -2,14 +2,16 @@
 
 MenuState::MenuState() : State() {
 	cout << "Menu State" << endl;
-	playMenuButton = stage->addEntity();
-	optionsMenu = stage->addEntity();
+	game_ = SDLGame::instance();
 
-	playMenuButton->addComponent<Transform>()->setPos(Vector2D(10, 10));	//cambiar valores
-	playMenuButton->addComponent<ButtonRenderer>();
-	playMenuButton->addComponent<ButtonBehaviour>();
+	playMenuButton_ = stage->addEntity();
+	optionsMenu_ = stage->addEntity();
 
-	optionsMenu->addComponent<Transform>()->setPos(Vector2D(10, 40));		//cambiar valores
-	optionsMenu->addComponent<ButtonRenderer>();
-	optionsMenu->addComponent<ButtonBehaviour>();
+	playMenuButton_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth/2, game_->getWindowHeight / 4));
+	playMenuButton_->addComponent<ButtonRenderer>();
+	playMenuButton_->addComponent<ButtonBehaviour>();
+
+	optionsMenu_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth / 2, game_->getWindowHeight / 2));
+	optionsMenu_->addComponent<ButtonRenderer>();
+	optionsMenu_->addComponent<ButtonBehaviour>();
 }

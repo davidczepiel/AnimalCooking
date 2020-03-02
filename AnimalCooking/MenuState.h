@@ -3,11 +3,14 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "Transform.h"
+#include "SDLGame.h"
 
 class MenuState: public State
 {
-	Entity* playMenuButton = nullptr;
-	Entity* optionsMenu = nullptr;
+	SDLGame* game_;
+
+	Entity* playMenuButton_ = nullptr;
+	Entity* optionsMenu_ = nullptr;
 
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
