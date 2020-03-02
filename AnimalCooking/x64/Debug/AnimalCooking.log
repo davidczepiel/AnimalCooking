@@ -1,3 +1,62 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(438,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿c:\software\programacion\MSVStudio2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  AIIngredient.cpp
+  Attack.cpp
+  AudioManager.cpp
+  ButtonBehaviour.cpp
+U:\hlocal\AnimalCooking\AnimalCooking\ButtonBehaviour.cpp(21,43): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+U:\hlocal\AnimalCooking\AnimalCooking\ButtonBehaviour.cpp(21,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+U:\hlocal\AnimalCooking\AnimalCooking\ButtonBehaviour.cpp(21,60): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+U:\hlocal\AnimalCooking\AnimalCooking\ButtonBehaviour.cpp(21,60): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  ButtonDirector.cpp
+  ButtonRenderer.cpp
+  ButtonsViewer.cpp
+  Collisions.cpp
+  Component.cpp
+  Entity.cpp
+  Font.cpp
+  FontsManager.cpp
+  FSM.cpp
+  GameControl.cpp
+  GameLoader.cpp
+  GameLogic.cpp
+  GameManager.cpp
+  GameSave.cpp
+  GPadController.cpp
+  IngredientsPool.cpp
+  Generating Code...
+  Compiling...
+  InputHandler.cpp
+  jute.cpp
+  KeyBoardController.cpp
+  LoadState.cpp
+  main.cpp
+  Manager.cpp
   AnimalCooking.cpp
-  AnimalCooking.vcxproj -> C:\Users\nicof\Desktop\Nico\DesarrolloVideojuegos\2º\P2\AnimalCooking\\AnimalCooking\AnimalCooking.exe
+  MenuState.cpp
+  RandomNumberGenerator.cpp
+  Resources.cpp
+  ScoreManager.cpp
+  ScoreViewer.cpp
+  SDLAudioManager.cpp
+  SDLFontsManager.cpp
+U:\hlocal\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(38,19): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+U:\hlocal\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(47,26): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+U:\hlocal\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(50,13): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+  SDLGame.cpp
+  SDLRenderer.cpp
+  SDLRendererFrame.cpp
+  SDLTexturesManager.cpp
+  sdl_macros.cpp
+  SoundManager.cpp
+  Generating Code...
+  Compiling...
+  SRandBasedGenerator.cpp
+U:\hlocal\AnimalCooking\AnimalCooking\SRandBasedGenerator.cpp(11,8): warning C4244: 'initializing': conversion from 'time_t' to 'unsigned int', possible loss of data
+  State.cpp
+  StaticRenderer.cpp
+  Texture.cpp
+  TexturesManager.cpp
+  Transform.cpp
+  Vector2D.cpp
+  Generating Code...
+  AnimalCooking.vcxproj -> U:\hlocal\AnimalCooking\\AnimalCooking\AnimalCooking.exe
