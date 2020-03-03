@@ -107,33 +107,60 @@ void SDLGame::closeResources() {
 	delete audio_;
 }
 
+//Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a todos los niveles los carga
+//Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
 void SDLGame::load(Resources::Level level)
 {
-
-	//todo: eliminar las texturas asociadas a otro nivel
+	// TODO: mover la barra de progreso 
 
 	for (auto& image : Resources::images_) {
-		if (textures_->getTexture(image.id) == nullptr && (image.level == level || image.level == Resources::Level::AllLevels))
-			textures_->loadFromImg(image.id, renderer_, image.fileName);
+		//Si la imagen no pertenece al nivel y esta cargada en memoria, se elimina
+		if (image.id != Resources::Level::Basic && image.id != Resources::Level::AllLevels && image.id != level && 
+			textures_->getTexture(image.id) != nullptr) {
+			textures_->destroyTexture(image.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (textures_->getTexture(image.id) == nullptr) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
 	for (auto& font : Resources::fonts_) {
-		if (fonts_->getFont(font.id) == nullptr && (font.level == level || font.level == Resources::Level::AllLevels))
-			fonts_->loadFont(font.id, font.fileName, font.size);
+		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
+		if (font.id != Resources::Level::Basic && font.id != Resources::Level::AllLevels && font.id != level &&
+			fonts_->getFont(font.id) != nullptr) {
+			fonts_->destroyFont(font.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (fonts_->getFont(font.id) == nullptr) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
 
 	for (auto& txtmsg : Resources::messages_) {
-		if (textures_->getTexture(txtmsg.id) == nullptr && (txtmsg.level == level || txtmsg.level == Resources::Level::AllLevels))
+		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
+		if (txtmsg.id != Resources::Level::Basic && txtmsg.id != Resources::Level::AllLevels && txtmsg.id != level &&
+			textures_->getTexture(txtmsg.id) != nullptr) {
+			textures_->destroyTexture(txtmsg.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (fonts_->getFont(txtmsg.id) == nullptr) 
 			textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg, fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
 
 	for (auto& sound : Resources::sounds_) {
-		if (audio_->getSound(sound.id) == nullptr && (sound.level == level || sound.level == Resources::Level::AllLevels))
-			audio_->loadSound(sound.id, sound.fileName);
+		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
+		if (sound.id != Resources::Level::Basic && sound.id != Resources::Level::AllLevels && sound.id != level &&
+			audio_->getSound(sound.id) != nullptr) {
+			audio_->destroySound(sound.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (audio_->getSound(sound.id) == nullptr) audio_->loadSound(sound.id, sound.fileName);
 	}
 
 	for (auto& music : Resources::musics_) {
-		if (audio_->getMusic(music.id) == nullptr && (music.level == level || music.level == Resources::Level::AllLevels))
-			audio_->loadMusic(music.id, music.fileName);
+		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
+		if (music.id != Resources::Level::Basic && music.id != Resources::Level::AllLevels && music.id != level &&
+			audio_->getMusic(music.id) != nullptr) {
+			audio_->destroyMusic(music.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (audio_->getMusic(music.id) == nullptr) audio_->loadMusic(music.id, music.fileName);
 	}
 }

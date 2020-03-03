@@ -1,6 +1,6 @@
 #include "ScreenLoader.h"
 
-ScreenLoader::ScreenLoader(Resources::Nivel nivel)
+ScreenLoader::ScreenLoader(Resources::Level nivel)
 {
 		Entity* menu_ = stage->addEntity();
 		Entity* mensajes_ = stage->addEntity();
@@ -12,7 +12,7 @@ ScreenLoader::ScreenLoader(Resources::Nivel nivel)
 		resetResources(nivel);
 }
 		
-void ScreenLoader::resetResources(Resources::Nivel nivel)
+void ScreenLoader::resetResources(Resources::Level nivel)
 {
 	SDLGame::instance()->load(nivel, GETCMP2(barraCarga_, BarraViewer));
 	GETCMP2(buttonGo_, Active)->setActive();

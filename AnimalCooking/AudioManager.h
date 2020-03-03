@@ -34,5 +34,8 @@ public:
 
 	virtual Mix_Chunk* getSound(std::size_t tag) = 0;
 	virtual Mix_Music* getMusic(std::size_t tag) = 0;
+
+	virtual void destroySound(std::size_t tag) = 0;
+	virtual void destroyMusic(std::size_t tag) = 0;
 };
 

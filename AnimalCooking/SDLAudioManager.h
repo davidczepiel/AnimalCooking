@@ -42,6 +42,9 @@ public:
 		return music_[tag];
 	}
 
+	void destroySound(std::size_t tag);
+	void destroyMusic(std::size_t tag);
+
 private:
 	bool initialized_;
 	int channels_;
