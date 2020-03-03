@@ -8,9 +8,11 @@ class EndState :
 	public State
 {
 private:
+	//Cuando se cambie el callback por std::function se quita el static (y quizá el sdlGame)
+	static void goToMapState(SDLGame* g);
+	static void goToLoadState(SDLGame* g);
 public:
 	EndState();
-	
 
 };
 
