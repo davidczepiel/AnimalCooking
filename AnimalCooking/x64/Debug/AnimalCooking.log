@@ -1,3 +1,71 @@
-﻿c:\software\programacion\MSVStudio2019\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(445,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  AudioManager.cpp
+  ButtonDirector.cpp
+  ButtonRenderer.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\ButtonRenderer.cpp(27,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  ButtonsViewer.cpp
+  Collisions.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\Collisions.cpp(101,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  Component.cpp
   EndState.cpp
-  AnimalCooking.vcxproj -> U:\hlocal\AnimalCooking\\AnimalCooking\AnimalCooking.exe
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\EndState.cpp(12,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  Entity.cpp
+  Font.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\Font.cpp(41,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  FontsManager.cpp
+  FSM.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\FSM.cpp(29,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  GameControl.cpp
+  GameLoader.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\GameLoader.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  GameLogic.cpp
+  GameManager.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\GameManager.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  GameSave.cpp
+  GPadController.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\GPadController.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  IngredientsPool.cpp
+  InputHandler.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\InputHandler.cpp(49,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  jute.cpp
+  Generando código...
+  Compilando...
+  KeyBoardController.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\KeyBoardController.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  LoadState.cpp
+  main.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\main.cpp(25,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  Manager.cpp
+  AnimalCooking.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\AnimalCooking.cpp(101,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  MenuState.cpp
+  RandomNumberGenerator.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\RandomNumberGenerator.cpp(9,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  Resources.cpp
+  ScoreManager.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\ScoreManager.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  ScoreViewer.cpp
+  SDLAudioManager.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLAudioManager.cpp(143,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  SDLFontsManager.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(38,19): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(47,26): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLFontsManager.cpp(50,13): warning C4267: 'argumento': conversión de 'size_t' a 'const int'; posible pérdida de datos
+  SDLGame.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLGame.cpp(110,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  SDLRenderer.cpp
+  SDLRendererFrame.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\SDLRendererFrame.cpp(6,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  SDLTexturesManager.cpp
+  sdl_macros.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\sdl_macros.cpp(20,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  SoundManager.cpp
+  State.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\State.cpp(12,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  StaticRenderer.cpp
+  Generando código...
+  Compilando...
+  Transform.cpp
+C:\Users\madar\Desktop\Uni\2º V\Proyecto 弐\AnimalCooking\AnimalCooking\Transform.cpp(25,1): fatal error C1069: no se puede leer la línea de comandos del compilador
+  Vector2D.cpp
+  Generando código...
