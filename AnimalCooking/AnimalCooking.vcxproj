@@ -158,13 +158,12 @@
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="ButtonBehaviour.h" />
-    <ClInclude Include="ButtonDirector.h" />
     <ClInclude Include="ButtonRenderer.h" />
-    <ClInclude Include="ButtonsViewer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ecs.h" />
+    <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
@@ -180,6 +179,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="LoadState.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MenuState.h" />
@@ -191,6 +191,7 @@
     <ClInclude Include="Resources.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ScoreViewer.h" />
+    <ClInclude Include="ScreenLoader.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
@@ -213,11 +214,10 @@
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
-    <ClCompile Include="ButtonDirector.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
-    <ClCompile Include="ButtonsViewer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
@@ -232,6 +232,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="LoadState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -242,6 +243,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScoreViewer.cpp" />
+    <ClCompile Include="ScreenLoader.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />

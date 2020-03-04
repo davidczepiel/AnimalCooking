@@ -69,6 +69,12 @@ bool SDLTexturesManager::loadFromText(std::size_t tag,
 
 }
 
+void SDLTexturesManager::destroyTexture(std::size_t tag)
+{
+	assert(textures_[tag] == nullptr);
+	delete textures_[tag];
+}
+
 void SDLTexturesManager::storeTexture(std::size_t tag, Texture *texture) {
 	Texture *curr = textures_[tag];
 	if (curr != nullptr)

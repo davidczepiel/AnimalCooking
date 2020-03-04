@@ -16,6 +16,7 @@ public:
 
 	Font* getFont(std::size_t tag) override;
 	bool loadFont(std::size_t tag, const string& fileName, int size) override;
+	void destroyFont(std::size_t tag);
 private:
 	map<int, Font*> fonts_;
 	bool initialized_;

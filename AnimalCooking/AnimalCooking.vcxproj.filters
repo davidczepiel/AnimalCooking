@@ -5,9 +5,7 @@
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
-    <ClCompile Include="ButtonDirector.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
-    <ClCompile Include="ButtonsViewer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -49,15 +47,16 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="ScreenLoader.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
+    <ClCompile Include="EndState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIIngredient.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="ButtonBehaviour.h" />
-    <ClInclude Include="ButtonDirector.h" />
     <ClInclude Include="ButtonRenderer.h" />
-    <ClInclude Include="ButtonsViewer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
@@ -104,6 +103,9 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="ScreenLoader.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
+    <ClInclude Include="EndState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

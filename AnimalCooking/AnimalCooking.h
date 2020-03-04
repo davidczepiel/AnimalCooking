@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-
+#include "EndState.h"
 #include "Manager.h"
 #include "SDLGame.h"
 #include "FSM.h"

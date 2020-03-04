@@ -7,6 +7,7 @@ using namespace std;
 /*
  *
  */
+
 class AudioManager {
 public:
 	AudioManager();
@@ -31,5 +32,8 @@ public:
 	virtual void haltMusic() = 0;
 	virtual void pauseMusic() = 0;
 	virtual void resumeMusic() = 0;
+
+	virtual void destroySound(std::size_t tag) = 0;
+	virtual void destroyMusic(std::size_t tag) = 0;
 };
 
