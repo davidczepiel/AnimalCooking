@@ -180,6 +180,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="LoadState.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MenuState.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="LoadState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />

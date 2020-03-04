@@ -36,6 +36,8 @@ enum CmpId : CmpIdType {
 	ButtonsViewer,
 	ButtonDirector,
 
+	LoadingBarViewer, //Bar
+
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of components

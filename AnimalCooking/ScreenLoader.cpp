@@ -2,6 +2,8 @@
 #include "SDLGame.h"
 #include "SDLAudioManager.h"
 #include "ButtonBehaviour.h"
+#include "ButtonRenderer.h"
+#include "LoadingBarViewer.h"
 
 ScreenLoader::ScreenLoader(Resources::Level nivel)
 {
@@ -9,14 +11,29 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 		Entity* mensajes_ = stage->addEntity();
 
 		barraCarga_ = stage->addEntity();
+		SDLGame* game_ = SDLGame::instance();
+		int width = SDLGame::instance()->getWindowWidth() / 5;
+		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
+											Vector2D(), //Dir
+											width, //Width
+											50, //Height
+											0); //Rot
+		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::LoadingBarContorno),
+											game_->getTextureMngr()->getTexture(Resources::LoadingBarFiller));
 
 		buttonGo_ = stage->addEntity();
-
+		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
+									Vector2D(), //Dir
+									50, //Width
+									50, //Height
+									0); //Rot
+		//buttonGo_->addComponent<ButtonBehaviour>()->setActive(false);
+		//buttonGo_->addComponent<ButtonRenderer>(Textura1, texto);
 
 		resetResources(nivel);
 }
 
-//Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a todos los niveles, los carga
+//Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
 //Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
 //Va actualizando la barra de progreso y renderizandolo
 void ScreenLoader::resetResources(Resources::Level level)
@@ -117,6 +134,6 @@ void ScreenLoader::loadMessagges(Resources::Level level, SDL_Renderer* renderer_
 
 void ScreenLoader::updateLength(double extra)
 {
-	//GETCMP2(barraCarga_, Length)->plusLength(extra);
-	Draw();
+	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
+	draw();
 }
