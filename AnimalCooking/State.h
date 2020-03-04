@@ -2,19 +2,22 @@
 
 #include "checkML.h"
 #include"Entity.h"
+
 using namespace std;
+
+class AnimalCooking;
 
 class State
 {
 protected:
-	
 	EntityManager* stage = nullptr;
+	AnimalCooking* app_ = nullptr;
 
 public:
-	State();
-	virtual ~State() {}
-	void Update();
-	void Draw();
+	State(AnimalCooking* app);
+	virtual ~State() { delete stage; }
+	void update();
+	void draw();
 	
 };
 
