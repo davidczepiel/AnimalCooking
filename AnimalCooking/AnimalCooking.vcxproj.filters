@@ -50,6 +50,7 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="ScreenLoader.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIIngredient.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="ScreenLoader.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

@@ -20,6 +20,9 @@ public:
 		Airplanes,
 		Star,
 
+		LoadingBarContorno,
+		LoadingBarFiller,
+
 		// images all
 
 
