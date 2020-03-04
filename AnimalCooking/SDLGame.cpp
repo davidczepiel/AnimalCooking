@@ -79,24 +79,24 @@ void SDLGame::initResources() {
 	audio_->init();
 
 	for (auto &image : Resources::images_) {
-		textures_->loadFromImg(image.id, renderer_, image.fileName);
+		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
 	for (auto &font : Resources::fonts_) {
-		fonts_->loadFont(font.id, font.fileName, font.size);
+		if (font.level == Resources::Level::Basic) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
 
 	for (auto &txtmsg : Resources::messages_) {
-		textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg,
+		if (txtmsg.level == Resources::Level::Basic) textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg,
 				fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
 
 	for (auto &sound : Resources::sounds_) {
-		audio_->loadSound(sound.id, sound.fileName);
+		if (sound.level == Resources::Level::Basic) audio_->loadSound(sound.id, sound.fileName);
 	}
 
 	for (auto &music : Resources::musics_) {
-		audio_->loadMusic(music.id, music.fileName);
+		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
 }
@@ -108,4 +108,3 @@ void SDLGame::closeResources() {
 	delete audio_;
 	delete fsm_;
 }
-

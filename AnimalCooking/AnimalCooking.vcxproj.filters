@@ -53,6 +53,8 @@
 
     <ClCompile Include="PlayState.cpp" />
 
+    <ClCompile Include="ScreenLoader.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIIngredient.h" />
@@ -110,6 +112,9 @@
 
     <ClInclude Include="CreditsState.h" />
     <ClInclude Include="PlayState.h" />
+
+    <ClInclude Include="ScreenLoader.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
 
   </ItemGroup>
   <ItemGroup>

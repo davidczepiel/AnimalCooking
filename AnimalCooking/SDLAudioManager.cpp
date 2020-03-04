@@ -140,3 +140,15 @@ void SDLAudioManager::resumeMusic() {
 	Mix_ResumeMusic();
 }
 
+void SDLAudioManager::destroySound(std::size_t tag)
+{
+	assert(chunks_[tag] == nullptr);
+	Mix_FreeChunk(chunks_[tag]);
+}
+
+void SDLAudioManager::destroyMusic(std::size_t tag)
+{
+	assert(music_[tag] == nullptr);
+	Mix_FreeMusic(music_[tag]);
+}
+

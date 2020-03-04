@@ -23,4 +23,5 @@ public:
 	virtual bool loadFromText(std::size_t tag, SDL_Renderer *renderer,
 			const string &texto, const Font *font, const SDL_Color &color = { 0,
 					0, 0, 255 }) = 0;
+	virtual void destroyTexture(std::size_t tag) = 0;
 };

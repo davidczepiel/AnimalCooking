@@ -22,6 +22,7 @@ public:
 			const string &fileName) override;
 	bool loadFromText(std::size_t, SDL_Renderer *renderer, const string &text,
 			const Font *font, const SDL_Color &color) override;
+	void destroyTexture(std::size_t tag);
 private:
 	void storeTexture(std::size_t tag, Texture *texture);
 
