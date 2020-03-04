@@ -71,7 +71,7 @@ bool SDLTexturesManager::loadFromText(std::size_t tag,
 
 void SDLTexturesManager::destroyTexture(std::size_t tag)
 {
-	assert(textures_[tag] == nullptr);
+	assert(textures_[tag] != nullptr);
 	delete textures_[tag];
 }
 

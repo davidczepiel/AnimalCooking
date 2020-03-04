@@ -36,5 +36,5 @@ void LoadingBarViewer::draw()
 void LoadingBarViewer::plusLength(double extra)
 {
 	percentage_ += extra;
-	assert(percentage_ > 1);
+	assert(percentage_ <= 1);
 }
