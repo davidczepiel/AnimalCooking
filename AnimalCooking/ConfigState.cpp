@@ -9,7 +9,7 @@ ConfigState::ConfigState() :  State()
 
 	backButton_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth() / 2, game_->getWindowHeight() / 2));
 	backButton_->addComponent<ButtonBehaviour>(backButtonCallback);
-	backButton_->addComponent<ButtonRenderer>();
+	backButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Airplanes), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
 }
 
 void ConfigState::backButtonCallback(SDLGame* game)
