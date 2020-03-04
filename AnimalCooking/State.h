@@ -15,8 +15,9 @@ protected:
 public:
 	State();
 	virtual ~State() { delete stage; }
-	void update();
-	void draw();
+	virtual void update();
+	virtual void draw();
+	virtual void handleEvent() {};
 	
 };
 
