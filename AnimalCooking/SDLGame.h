@@ -12,8 +12,9 @@
 #include <assert.h>
 
 #include "InputHandler.h"
-using namespace std;
 
+using namespace std;
+class FSM;
 class SDLGame {
 public:
 	virtual ~SDLGame();
@@ -77,6 +78,9 @@ public:
 		}
 
 	}
+
+	inline FSM* getFSM() { return fsm_; }
+
 	inline Uint32 getTime() {
 		return SDL_GetTicks();
 	}
@@ -95,6 +99,7 @@ protected:
 	TexturesManager *textures_;
 	AudioManager *audio_;
 	RandomNumberGenerator *random_;
+	FSM* fsm_;
 
 	SDL_Window *window_; // the window
 	SDL_Renderer *renderer_;  // the renderer

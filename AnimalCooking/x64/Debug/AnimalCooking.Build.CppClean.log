@@ -33,9 +33,9 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\scoremanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\resources.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\menustate.obj
-u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\manager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\main.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\loadstate.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\jute.obj
@@ -48,6 +48,9 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\staticrenderer.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\state.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\soundmanager.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\loadstate.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\playstate.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
 u:\hlocal\animalcooking\animalcooking\animalcooking.ilk
 u:\hlocal\animalcooking\animalcooking\animalcooking.exe
 u:\hlocal\animalcooking\animalcooking\animalcooking.pdb
