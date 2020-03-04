@@ -1,8 +1,7 @@
 #include "State.h"
 #include "AnimalCooking.h"
 
-State::State(AnimalCooking* app) {
-	app_ = app;
+State::State() {
 	stage = new EntityManager(SDLGame::instance());
 }
 

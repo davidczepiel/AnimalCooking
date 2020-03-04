@@ -8,7 +8,6 @@ class FSM
 {
 private:
 	stack<State*> statesStack;
-
 public:
 	FSM() {}
 	virtual ~FSM();
