@@ -27,6 +27,7 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+	game_->getFSM()->pushState(new MenuState());
 }
 
 void AnimalCooking::closeGame() {
@@ -56,8 +57,9 @@ void AnimalCooking::stop() {
 void AnimalCooking::handleInput() {
 
 	InputHandler *ih = InputHandler::instance();
-
 	ih->update();
+
+	game_->getFSM()->currentState()->handleEvent();
 
 	if (ih->keyDownEvent()) {
 		if (ih->isKeyDown(SDLK_ESCAPE)) {
