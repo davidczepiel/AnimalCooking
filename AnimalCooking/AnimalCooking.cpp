@@ -41,8 +41,7 @@ void AnimalCooking::closeGame() {
 
 void AnimalCooking::start() {
 	exit_ = false;
-	fsm_ = new FSM(game_);
-	fsm_->PushState(new EndState());
+	
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
 
