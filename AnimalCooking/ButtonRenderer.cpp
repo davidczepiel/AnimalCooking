@@ -8,19 +8,23 @@ ButtonRenderer::ButtonRenderer(Texture* background, Texture* text): Component(ec
 	text_ = text;
 
 	ownerTransform_ = nullptr;
+	buttonBehaviour_ = nullptr;
 }
 
 void ButtonRenderer::init()
 {
 	ownerTransform_ = GETCMP1_(Transform);
+	buttonBehaviour_ = GETCMP1_(ButtonBehaviour);
 }
 
 void ButtonRenderer::draw()
 {
-	Vector2D pos = ownerTransform_->getPos();
+	if (buttonBehaviour_->isActive()) {
+		Vector2D pos = ownerTransform_->getPos();
 
-	SDL_Rect dest = RECT( pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
-	background_->render(dest);
+		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+		background_->render(dest);
 
-	text_->render(dest);
+		text_->render(dest);
+	}
 }

@@ -6,6 +6,7 @@ class ButtonBehaviour : public Component
 {
 	using CallBackOnClick = void();
 private:
+	bool active_;
 	CallBackOnClick* callback_;
 	Transform* ownerTransform_;
 
@@ -13,5 +14,8 @@ public:
 	ButtonBehaviour(CallBackOnClick* callback);
 	void init() override;
 	void update() override; //Aqui se hace la comprobacion con el tramsform de si se le hace click y se llama al callback
+	
+	inline bool isActive() { return active_;}
+	inline void setActive(bool active) { active_ = active; }
 };
 
