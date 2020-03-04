@@ -1,6 +1,7 @@
 #include "ScreenLoader.h"
 #include "SDLGame.h"
 #include "SDLAudioManager.h"
+#include "ButtonBehaviour.h"
 
 ScreenLoader::ScreenLoader(Resources::Level nivel)
 {
@@ -11,9 +12,10 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 
 		buttonGo_ = stage->addEntity();
 
+
 		resetResources(nivel);
 }
-		
+
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a todos los niveles, los carga
 //Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
 //Va actualizando la barra de progreso y renderizandolo
@@ -26,7 +28,8 @@ void ScreenLoader::resetResources(Resources::Level level)
 	loadMessagges(level, renderer_);
 	loadSounds(level);
 	loadMusics(level);
-	//GETCMP2(buttonGo_, Active)->setActive();
+	
+	//GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
