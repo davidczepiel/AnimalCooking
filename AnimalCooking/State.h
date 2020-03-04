@@ -11,10 +11,9 @@ class State
 {
 protected:
 	EntityManager* stage = nullptr;
-	AnimalCooking* app_ = nullptr;
 
 public:
-	State(AnimalCooking* app);
+	State();
 	virtual ~State() { delete stage; }
 	void update();
 	void draw();

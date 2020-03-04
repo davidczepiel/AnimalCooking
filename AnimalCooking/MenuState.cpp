@@ -1,5 +1,17 @@
 #include "MenuState.h"
 
+static void playMenuCallback(SDLGame* game) {
+	//Abrir estado juego
+}
+
+static void optionsMenuCallback(SDLGame* game) {
+	//Abrir estado opciones
+}
+
+static void creditsMenuCallback(SDLGame* game) {
+	//Abrir estado opciones
+}
+
 MenuState::MenuState() : State() {
 	cout << "Menu State" << endl;
 	game_ = SDLGame::instance();
@@ -16,14 +28,4 @@ MenuState::MenuState() : State() {
 	optionsMenu_->addComponent<ButtonBehaviour>(playMenuCallback);
 }
 
-void MenuState::playMenuCallback(SDLGame* game) {
-	//Abrir playState
-}
-
-void MenuState::optionsMenuCallback(SDLGame* game) {
-	//Abrir menu opciones
-}
-void MenuState::creditsMenuCallback(SDLGame* game) {
-	//Abrir menu opciones
-}
 

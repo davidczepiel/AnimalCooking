@@ -4,6 +4,7 @@
 #include "ButtonRenderer.h"
 #include "Transform.h"
 #include "SDLGame.h"
+#include "AnimalCooking.h"
 
 class MenuState: public State
 {
@@ -15,9 +16,9 @@ class MenuState: public State
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
 
-	static void playMenuCallback(SDLGame* game);		
-	static void optionsMenuCallback(SDLGame* game);	
-	static void creditsMenuCallback(SDLGame* game);	
+	//static void playMenuCallback(SDLGame* game);		
+	//static void optionsMenuCallback(SDLGame* game);	
+	//static void creditsMenuCallback(SDLGame* game);	
 public:
 	MenuState();
 	~MenuState() {};
