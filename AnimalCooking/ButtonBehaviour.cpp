@@ -5,6 +5,7 @@ ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback) : Component(ecs::But
 {
 	callback_ = callback;
 	ownerTransform_ = nullptr;
+	active_ = true;
 }
 
 void ButtonBehaviour::init()
@@ -14,14 +15,16 @@ void ButtonBehaviour::init()
 
 void ButtonBehaviour::update()
 {
-	InputHandler* ih = InputHandler::instance();
-	Vector2D buttonPos = ownerTransform_->getPos();
-	Vector2D mousePos = ih->getMousePos();
-	
-	SDL_Point mousePosition = { mousePos.getX(), mousePos.getY() };
-	SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+	if (active_) {
+		InputHandler* ih = InputHandler::instance();
+		Vector2D buttonPos = ownerTransform_->getPos();
+		Vector2D mousePos = ih->getMousePos();
 
-	if (SDL_PointInRect( &mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
-		callback_(); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+		SDL_Point mousePosition = { mousePos.getX(), mousePos.getY() };
+		SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+
+		if (SDL_PointInRect(&mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
+			callback_(); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+		}
 	}
 }
