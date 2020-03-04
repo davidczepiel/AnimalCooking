@@ -10,15 +10,15 @@ FSM::~FSM()
 	}
 }
 
-void FSM::PushState(State* s) {
+void FSM::pushState(State* s) {
 	statesStack.push(s);
 }
 
-State* FSM::CurrentState() {
+State* FSM::currentState() {
 	return statesStack.top();
 }
 
-void FSM::PopState()
+void FSM::popState()
 {
 	if (!statesStack.empty()) 
 	{ 

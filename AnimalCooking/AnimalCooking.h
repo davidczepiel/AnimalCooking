@@ -16,6 +16,7 @@ public:
 	void start();
 	void stop();
 
+
 private:
 	void initGame();
 	void closeGame();
@@ -24,8 +25,7 @@ private:
 	void render();
 
 	SDLGame* game_;
-	
-	FSM* fsm_;
+
 	bool exit_;
 
 	const static int _WINDOW_WIDTH_ = 640;

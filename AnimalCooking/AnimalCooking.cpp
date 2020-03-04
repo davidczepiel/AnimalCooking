@@ -18,7 +18,6 @@ using namespace std;
 
 AnimalCooking::AnimalCooking() :
 		game_(nullptr), //
-		fsm_(nullptr), //
 		exit_(false) {
 	initGame();
 }
@@ -33,7 +32,7 @@ void AnimalCooking::initGame() {
 }
 
 void AnimalCooking::closeGame() {
-	delete fsm_;
+
 }
 
 void AnimalCooking::start() {
@@ -82,7 +81,7 @@ void AnimalCooking::handleInput() {
 
 void AnimalCooking::update() {
 
-	fsm_->CurrentState()->Update();
+	game_->getFSM()->currentState()->update();
 
 }
 
@@ -91,7 +90,7 @@ void AnimalCooking::render() {
 	SDL_RenderClear(game_->getRenderer());
 
 
-	fsm_->CurrentState()->Draw();
+	game_->getFSM()->currentState()->draw();
 
 
 	SDL_RenderPresent(game_->getRenderer());
