@@ -7,6 +7,7 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\gamemanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\gamelogic.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\gameloader.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\gamecontrol.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\fsm.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\fontsmanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\font.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\entity.obj
@@ -14,6 +15,9 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\component.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\collisions.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\buttonsviewer.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\buttonrenderer.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\buttondirector.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\buttonbehaviour.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\soundmanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\audiomanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\attack.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\aiingredient.obj
@@ -28,6 +32,9 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\scoreviewer.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\scoremanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\resources.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\main.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\loadstate.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\manager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\jute.obj
@@ -37,11 +44,11 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\transform.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\texturesmanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\texture.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\staticrenderer.obj
+u:\hlocal\animalcooking\animalcooking\x64\debug\menustate.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\soundmanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\state.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\playstate.obj
-u:\hlocal\animalcooking\animalcooking\x64\debug\menustate.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\main.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\loadstate.obj
