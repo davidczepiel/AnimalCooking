@@ -81,8 +81,6 @@ public:
 		return SDL_GetTicks();
 	}
 
-	void load(Resources::Level level);
-
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
