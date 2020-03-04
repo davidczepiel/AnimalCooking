@@ -7,8 +7,7 @@
 #include <iostream>
 
 #include "SRandBasedGenerator.h"
-
-
+#include "FSM.h"
 unique_ptr<SDLGame> SDLGame::instance_;
 
 
@@ -65,6 +64,8 @@ void SDLGame::closeSDL() {
 
 void SDLGame::initResources() {
 
+	fsm_ = new FSM();
+
 	random_ = new SRandBasedGenerator();
 	random_->init();
 
@@ -105,5 +106,6 @@ void SDLGame::closeResources() {
 	delete textures_;
 	delete random_;
 	delete audio_;
+	delete fsm_;
 }
 
