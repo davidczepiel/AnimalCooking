@@ -8,7 +8,7 @@ vector<Resources::FontInfo> Resources::fonts_ {
 
 vector<Resources::ImageInfo> Resources::images_ {
 //
-	{Boton, "Dust2rESULTADO.png"}
+	
 	
 };
 

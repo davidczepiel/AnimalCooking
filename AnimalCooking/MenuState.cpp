@@ -18,6 +18,7 @@ MenuState::MenuState() : State() {
 
 	playMenuButton_ = stage->addEntity();
 	optionsMenu_ = stage->addEntity();
+	creditsMenu_ = stage->addEntity();
 
 	playMenuButton_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth()/2, game_->getWindowHeight() / 4));
 	playMenuButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Airplanes), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
