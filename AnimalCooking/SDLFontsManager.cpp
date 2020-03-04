@@ -57,6 +57,6 @@ bool SDLFontsManager::loadFont(std::size_t tag, const string& fileName, int size
 
 void SDLFontsManager::destroyFont(std::size_t tag)
 {
-	assert(fonts_[tag] == nullptr);
+	assert(fonts_[tag] != nullptr);
 	delete fonts_[tag];
 }
