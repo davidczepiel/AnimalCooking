@@ -19,7 +19,6 @@ public:
 		SpaceShips,
 		Airplanes,
 		Star,
-
 		LoadingBarContorno,
 		LoadingBarFiller,
 
@@ -28,9 +27,8 @@ public:
 
 
 		// images level specific
-
-
-
+		Boton1,
+		Boton2,
 		// text
 		HelloWorld,
 		PressAnyKey,
