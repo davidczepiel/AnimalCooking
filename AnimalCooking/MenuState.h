@@ -12,9 +12,11 @@ class MenuState: public State
 
 	Entity* playMenuButton_ = nullptr;
 	Entity* optionsMenu_ = nullptr;
+	Entity* creditsMenu_ = nullptr;
 
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
+	Transform* creditsMenuTr_ = nullptr;
 
 	//static void playMenuCallback(SDLGame* game);		
 	//static void optionsMenuCallback(SDLGame* game);	

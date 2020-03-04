@@ -23,9 +23,13 @@ MenuState::MenuState() : State() {
 	playMenuButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Airplanes), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
 	playMenuButton_->addComponent<ButtonBehaviour>(playMenuCallback);
 
-	optionsMenu_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth() / 2, game_->getWindowHeight() / 2));
+	optionsMenu_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth() / 2, game_->getWindowHeight() / 3));
 	optionsMenu_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Airplanes), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
 	optionsMenu_->addComponent<ButtonBehaviour>(playMenuCallback);
+
+	creditsMenu_->addComponent<Transform>()->setPos(Vector2D(game_->getWindowWidth() / 2, game_->getWindowHeight() / 2));
+	creditsMenu_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Airplanes), game_->getTextureMngr()->getTexture(Resources::HelloWorld));
+	creditsMenu_->addComponent<ButtonBehaviour>(creditsMenuCallback);
 }
 
 
