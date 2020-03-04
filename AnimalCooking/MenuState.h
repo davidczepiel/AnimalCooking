@@ -15,10 +15,11 @@ class MenuState: public State
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
 
-	static void playMenuCallback();		//Hacer callback cuando se incluya *game en State
-	static void optionsMenuCallback();	//Hacer callback cuando se incluya *game en State
+	static void playMenuCallback(SDLGame* game);		
+	static void optionsMenuCallback(SDLGame* game);	
+	static void creditsMenuCallback(SDLGame* game);	
 public:
 	MenuState();
-	~MenuState();
+	~MenuState() {};
 };
 
