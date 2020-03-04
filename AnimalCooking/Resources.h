@@ -10,7 +10,7 @@ class Resources {
 public:
 
 	enum TextureId : std::size_t {
-		// images
+		// images basic
 		Blank,
 		TennisBall,
 		KeyBoardIcon,
@@ -20,10 +20,32 @@ public:
 		Airplanes,
 		Star,
 
+		// images all
+
+
+
+		// images level specific
+
+
+
 		// text
 		HelloWorld,
 		PressAnyKey,
-		GameOver,
+		GameOver
+	};
+
+	enum Level : std::size_t {
+		Basic,
+		AllLevels,
+		Nivel1,
+		Nivel2,
+		Nivel3,
+		Nivel4,
+		Nivel5,
+		Nivel6,
+		Nivel7,
+		Nivel8 
+		//etc...
 	};
 
 	enum AudioId : std::size_t {
@@ -42,17 +64,20 @@ public:
 	};
 
 	struct FontInfo {
+		Level level;
 		FontId id;
 		string fileName;
 		int size;
 	};
 
 	struct ImageInfo {
+		Level level;
 		TextureId id;
 		string fileName;
 	};
 
 	struct TextMsgInfo {
+		Level level;
 		TextureId id;
 		string msg;
 		SDL_Color color;
@@ -60,14 +85,15 @@ public:
 	};
 
 	struct MusicInfo {
+		Level level;
 		AudioId id;
 		string fileName;
 	};
 
 	struct SoundInfo {
+		Level level;
 		AudioId id;
 		string fileName;
-
 	};
 
 	static vector<FontInfo> fonts_; // initialized in .cpp

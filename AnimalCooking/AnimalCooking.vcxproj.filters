@@ -49,6 +49,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="ScreenLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIIngredient.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="ScreenLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
