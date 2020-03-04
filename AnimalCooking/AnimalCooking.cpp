@@ -9,8 +9,6 @@
 #include "MenuState.h"
 #include "LoadState.h"
 #include "SDL_macros.h"
-#include "ButtonDirector.h"
-#include "ButtonsViewer.h"
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 
