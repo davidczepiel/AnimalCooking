@@ -15,6 +15,7 @@ class CreditsState :
 
 public:
 	CreditsState();
+	static void GoBackMenu(SDLGame* g);
 
 };
 

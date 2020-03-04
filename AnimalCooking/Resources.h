@@ -19,7 +19,9 @@ public:
 		SpaceShips,
 		Airplanes,
 		Star,
+		
 		Boton,
+		
 
 		// text
 		HelloWorld,

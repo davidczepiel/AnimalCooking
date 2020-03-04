@@ -8,7 +8,8 @@ vector<Resources::FontInfo> Resources::fonts_ {
 
 vector<Resources::ImageInfo> Resources::images_ {
 //
-	//{Boton, "Dust2rESULTADO.png"}
+	{Boton, "Dust2rESULTADO.png"}
+	
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {
