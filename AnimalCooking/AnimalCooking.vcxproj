@@ -162,6 +162,7 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="CreditsState.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
@@ -217,7 +218,11 @@
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
+
+    <ClCompile Include="CreditsState.cpp" />
+
     <ClCompile Include="EndState.cpp" />
+
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />

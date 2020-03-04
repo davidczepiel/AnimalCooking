@@ -6,10 +6,14 @@ vector<Resources::FontInfo> Resources::fonts_{
 
 };
 
+	
+	
+
 vector<Resources::ImageInfo> Resources::images_{
 	//
-	{Resources::Boton1,"nicocomoseguardanimagenes.jpg"},
-	{Resources::Boton2,"images.jpg"}
+	/*{Resources::Boton1,"nicocomoseguardanimagenes.jpg"},
+	{Resources::Boton2,"images.jpg"}*/
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

@@ -5,6 +5,7 @@
 #include "InputHandler.h"
 
 #include "Transform.h"
+#include "CreditsState.h"
 #include "SDLGame.h"
 #include "MenuState.h"
 #include "LoadState.h"
@@ -18,6 +19,7 @@ AnimalCooking::AnimalCooking() :
 		game_(nullptr), //
 		exit_(false) {
 	initGame();
+	
 }
 
 AnimalCooking::~AnimalCooking() {
@@ -27,7 +29,10 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+
+
 	game_->getFSM()->pushState(new MenuState());
+
 }
 
 void AnimalCooking::closeGame() {
@@ -36,8 +41,7 @@ void AnimalCooking::closeGame() {
 
 void AnimalCooking::start() {
 	exit_ = false;
-	fsm_ = new FSM(game_);
-	fsm_->PushState(new EndState());
+	
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
 

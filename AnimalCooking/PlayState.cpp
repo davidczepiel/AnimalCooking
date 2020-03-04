@@ -7,7 +7,7 @@ void PlayState::handleEvent()
 	ih->update();
 	if (ih->keyDownEvent()) {
 		if (ih->isKeyDown(SDLK_p)) {
-			game_->getFSM()->pushState(new PauseState());
+			//game_->getFSM()->pushState(new PauseState());
 		}
 	}
 }

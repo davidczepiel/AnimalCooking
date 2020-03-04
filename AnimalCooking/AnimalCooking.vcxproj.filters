@@ -46,7 +46,11 @@
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+
+    <ClCompile Include="CreditsState.cpp" />
+
     <ClCompile Include="PlayState.cpp" />
+
     <ClCompile Include="ScreenLoader.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="EndState.cpp" />
@@ -102,10 +106,17 @@
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
+
+    <ClInclude Include="CreditsState.h" />
     <ClInclude Include="PlayState.h" />
+
     <ClInclude Include="ScreenLoader.h" />
     <ClInclude Include="LoadingBarViewer.h" />
+
+
+
     <ClInclude Include="EndState.h" />
+
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

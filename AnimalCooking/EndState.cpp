@@ -11,11 +11,11 @@ EndState::EndState() :State() {
 	returnToLevelButton->addComponent<ButtonBehaviour>(goToLoadState);
 	returnToLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton2), nullptr);
 }
-void EndState::goToLoadState(SDLGame*g) {
+void EndState::goToLoadState() {
 	cout << "vamos p'a la partida";
 	/*Nosequé->fsm()->cambiaestado()*/
 }
-void EndState::goToMapState(SDLGame* g) {
+void EndState::goToMapState() {
 	cout << "vamos p'al mapa";
 	/*Nosequé->fsm()->cambiaestado()*/
 }
