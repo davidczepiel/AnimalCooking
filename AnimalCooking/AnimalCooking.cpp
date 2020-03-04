@@ -10,8 +10,6 @@
 #include "MenuState.h"
 #include "LoadState.h"
 #include "SDL_macros.h"
-#include "ButtonDirector.h"
-#include "ButtonsViewer.h"
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 
@@ -43,7 +41,8 @@ void AnimalCooking::closeGame() {
 
 void AnimalCooking::start() {
 	exit_ = false;
-
+	fsm_ = new FSM(game_);
+	fsm_->PushState(new EndState());
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
 

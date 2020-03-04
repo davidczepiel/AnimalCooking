@@ -17,10 +17,9 @@ class MenuState: public State
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
 	Transform* creditsMenuTr_ = nullptr;
-
-	//static void playMenuCallback(SDLGame* game);		
-	//static void optionsMenuCallback(SDLGame* game);	
-	//static void creditsMenuCallback(SDLGame* game);	
+	static void playMenuCallback();		
+	static void optionsMenuCallback();	
+	static void creditsMenuCallback();	
 public:
 	MenuState();
 	~MenuState() {};

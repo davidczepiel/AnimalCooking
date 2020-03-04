@@ -4,7 +4,7 @@
 #include "Transform.h"
 class ButtonBehaviour : public Component
 {
-	using CallBackOnClick = void(SDLGame* game);
+	using CallBackOnClick = void();
 private:
 	CallBackOnClick* callback_;
 	Transform* ownerTransform_;

@@ -21,6 +21,6 @@ void ButtonRenderer::draw()
 
 	SDL_Rect dest = RECT( pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 	background_->render(dest);
-
+	if(text_!=nullptr)
 	text_->render(dest);
 }
