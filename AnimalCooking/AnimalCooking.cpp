@@ -7,11 +7,11 @@
 #include "Transform.h"
 #include "CreditsState.h"
 #include "SDLGame.h"
-#include "MenuState.h"
-#include "LoadState.h"
+#include "PlayState.h"
 #include "SDL_macros.h"
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
+
 
 using namespace std;
 
@@ -29,9 +29,7 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-
-
-	game_->getFSM()->pushState(new MenuState());
+	game_->getFSM()->pushState(new PlayState());
 
 }
 

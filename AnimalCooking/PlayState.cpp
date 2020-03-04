@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "FSM.h"
 
-void PlayState::handleEvent()
+/*void PlayState::handleEvent()
 {
 	InputHandler* ih = InputHandler::instance();
 	ih->update();
@@ -10,4 +10,4 @@ void PlayState::handleEvent()
 			//game_->getFSM()->pushState(new PauseState());
 		}
 	}
-}
+}*/

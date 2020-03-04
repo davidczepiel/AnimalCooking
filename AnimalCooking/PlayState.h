@@ -5,10 +5,12 @@
 class PlayState : public State
 {
 public:
-	PlayState() : State() { game_ = SDLGame::instance(); }
-	~PlayState() {}
-	virtual void handleEvent();
+	PlayState() : State() {}
+	void update() override { cout << "Me gustan las patatas" << endl; };
+	void draw() override {};
+
+	//virtual void handleEvent();
 private:
-	SDLGame* game_ = nullptr;
+
 };
 
