@@ -19,21 +19,23 @@ public:
 	//
 	//     [](A *o) { return o->inUse(); }
 	//
-	ObjectPool(std::function<bool(T*)> f) {
+	ObjectPool(int size, std::function<bool(T*)> f) {
 		inUseF_ = f;
+		size_ = size;
+		objs_ = new T[size_];
 		for (auto &b : objs_) {
 			objsPtrs_.push_back(&b);
 		}
 	}
 
 	virtual ~ObjectPool() {
+		delete[] objs_;
 	}
 
 	T* getObj() {
-		for (auto &o : objs_) {
-			if (!inUseF_(&o))
-				return &o;
-		}
+		for (int i = 0; i < size_; i++)
+			if (!inUseF_(&objs_[i]))
+				return &objs_[i];
 		return nullptr;
 	}
 
@@ -42,8 +44,9 @@ public:
 	}
 
 private:
+	int size_;
 	std::function<bool(T*)> inUseF_;
-	std::array<T, SIZE> objs_;
+	T* objs_;
 	std::vector<T*> objsPtrs_;
 };
 
