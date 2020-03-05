@@ -11,28 +11,36 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
-		Blank,
-		TennisBall,
-		KeyBoardIcon,
-		MouseIcon,
-		AIIcon,
-		SpaceShips,
-		Airplanes,
-		Star,
-		LoadingBarContorno,
-		LoadingBarFiller,
+		Button,
+
 
 		// images all
+		Repisa,
+		Plato,
+		Suelo,
+		Hierba,
+		Cooker,
+		Cuchillo,
+		CuchilloSucio,
+		Fregadero,
+		Ingrediente,
+		ComidaMuerta,
+		ComidaCocinada,
+		Pedido,
+		Papelera,
+		Cerdo,
+		Pollo,
+		IngredienteMalo,
 
 
 
 		// images level specific
-		Boton1,
-		Boton2,
+		Pan,
+		Arroz,
+		Aceite
+
 		// text
-		HelloWorld,
-		PressAnyKey,
-		GameOver
+	
 	};
 
 	enum Level : std::size_t {
