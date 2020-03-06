@@ -10,7 +10,7 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 		Entity* menu_ = stage->addEntity();
 		Entity* mensajes_ = stage->addEntity();
 
-		barraCarga_ = stage->addEntity();
+		Entity* barraCarga_ = stage->addEntity();
 		SDLGame* game_ = SDLGame::instance();
 		int width = SDLGame::instance()->getWindowWidth() / 5;
 		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos

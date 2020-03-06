@@ -11,10 +11,10 @@
 class CreditsState :
 	public State
 {
-
+private:
+	static void GoBackMenu();
 public:
 	CreditsState();
-	static void GoBackMenu();
 
 };
 

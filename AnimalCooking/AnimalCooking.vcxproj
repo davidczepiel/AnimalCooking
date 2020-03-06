@@ -167,6 +167,8 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
@@ -210,6 +212,8 @@
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="MapState.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="OrderManager.h" />
@@ -223,6 +227,7 @@
     <ClInclude Include="Resources.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="ScoreViewer.h" />
+    <ClInclude Include="ScreenLoader.h" />
     <ClInclude Include="SDLAudioManager.h" />
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
@@ -262,6 +267,8 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Converter.cpp" />
@@ -298,6 +305,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PlayerController.cpp" />
@@ -308,6 +317,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScoreViewer.cpp" />
+    <ClCompile Include="ScreenLoader.cpp" />
     <ClCompile Include="SDLAudioManager.cpp" />
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />

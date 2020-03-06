@@ -19,7 +19,7 @@ void ButtonRenderer::init()
 
 void ButtonRenderer::draw()
 {
-	if (buttonBehaviour_->isActive()) {
+	//if (buttonBehaviour_->isActive()) {
 		Vector2D pos = ownerTransform_->getPos();
 
 		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
@@ -27,4 +27,4 @@ void ButtonRenderer::draw()
 		if (text_ != nullptr)
 			text_->render(dest);
 	}
-}
+
