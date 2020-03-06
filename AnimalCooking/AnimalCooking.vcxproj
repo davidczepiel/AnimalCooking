@@ -218,6 +218,7 @@
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderViewer.h" />
+    <ClInclude Include="PauseState.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
     <ClInclude Include="PlayerViewer.h" />
@@ -309,6 +310,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />

@@ -18,8 +18,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 											width, //Width
 											50, //Height
 											0); //Rot
-		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::LoadingBarContorno),
-											game_->getTextureMngr()->getTexture(Resources::LoadingBarFiller));
+		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
+											game_->getTextureMngr()->getTexture(Resources::Button));
 
 		buttonGo_ = stage->addEntity();
 		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
