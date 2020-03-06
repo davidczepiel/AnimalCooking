@@ -7,7 +7,7 @@
 // We can instead pass it to the constructor so we can decide the size
 // the pool dynamically, but then objs_ cannot be a static array
 //
-template<typename T, int SIZE>
+template<typename T>
 class ObjectPool {
 public:
 	// f is a lambda expression used to check if an object is in use,
