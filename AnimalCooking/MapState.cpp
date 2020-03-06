@@ -6,14 +6,13 @@
 
  void MapState::screenLoaderCallback() {
 	//SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1));
-	cout << "screenLoader" << endl;
 }
 void MapState::backButtonCallback() {
-	cout << "volvemos al menu" << endl;
 	SDLGame::instance()->getFSM()->popState();
 }
 MapState::MapState(): State() {
 	game_ = SDLGame::instance();
+	cout << "Map State" << endl;
 
 	Entity* screenLoaderButton_ = stage->addEntity();
 	Entity* backButton_ = stage->addEntity();

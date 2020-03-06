@@ -176,6 +176,7 @@
     <ClInclude Include="Cooker.h" />
     <ClInclude Include="CookerPool.h" />
     <ClInclude Include="CookerViewer.h" />
+    <ClInclude Include="CreditsState.h" />
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
@@ -275,6 +276,7 @@
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
+    <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />

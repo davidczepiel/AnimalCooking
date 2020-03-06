@@ -6,6 +6,7 @@
 #include "SDLGame.h"
 #include "AnimalCooking.h"
 #include "MapState.h"
+#include "CreditsState.h"
 
 class MenuState: public State
 {

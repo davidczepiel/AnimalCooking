@@ -2,17 +2,14 @@
 
  void MenuState::playMenuCallback() {
 	 SDLGame::instance()->getFSM()->pushState(new MapState());
-	 cout << "MapMenu" << endl;
 }
 
 void MenuState::optionsMenuCallback() {
 	//game->getFSM()->pushState(/*OptionsState*/);
-	cout << "options" << endl;
 }
 
 void MenuState::creditsMenuCallback() {
-	//game->getFSM()->pushState(/*CreditsState*/);
-	cout << "credits" << endl;
+	SDLGame::instance()->getFSM()->pushState(new CreditsState());
 }
 
 MenuState::MenuState() : State() {
