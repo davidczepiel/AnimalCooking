@@ -39,6 +39,7 @@ protected:
 	inline void setSize(double w, double h) { size_.set(w, h); }
 	inline void setPos(Vector2D pos) { pos_.set(pos); }
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
+	inline void setTexture(Texture* tex) { texture_ = tex; }
 
 	inline double getWidth() { return size_.getX(); }
 	inline double getHeight() { return size_.getY(); }
