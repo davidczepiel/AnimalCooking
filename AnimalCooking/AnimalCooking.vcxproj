@@ -247,6 +247,7 @@
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
+    <ClInclude Include="Utensil.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +328,7 @@
     <ClCompile Include="TImerViewer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="Utensil.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
