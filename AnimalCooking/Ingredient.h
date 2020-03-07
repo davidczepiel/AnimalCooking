@@ -6,7 +6,7 @@
 
 class Ingredient
 {
-private:
+protected:
 	bool inUse_;
 	Vector2D size_, pos_, vel_;
 	Texture* texture_;
@@ -19,9 +19,9 @@ public:
 	virtual void update();
 	virtual void render() const;
 	virtual void onHit() {};
-	virtual void onCollisionX();
-	virtual void onCollisionY();
-	virtual void escape(Vector2D pos);
+	virtual void onCollisionX(); //Llamado por game manager
+	virtual void onCollisionY(); //Llamado por game manager
+	virtual void escape(Vector2D pos); //Llamado por game manager si el jugador esta en la zona de caza
 
 	void setTransform(double w, double h, Vector2D pos, Vector2D vel) {
 		size_.set(w, h);
@@ -51,34 +51,34 @@ public:
 class Tomato : public Ingredient 
 {
 public:
-	Tomato() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	Tomato() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Tomato() {}
 };
 
 class Carrot : public Ingredient
 {
 public:
-	Carrot() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	Carrot() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Carrot() {}
 };
 
 class Lettuce : public Ingredient
 {
 public:
-	Lettuce() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	Lettuce() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Lettuce() {}
 };
 
 class Mushroom : public Ingredient
 {
 public:
-	Mushroom() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	Mushroom() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Mushroom() {}
 };
 
 class Sausage : public Ingredient
 {
 public:
-	Sausage() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	Sausage() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Sausage() {}
 };

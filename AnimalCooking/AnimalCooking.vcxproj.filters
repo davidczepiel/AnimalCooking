@@ -238,6 +238,9 @@
     <ClCompile Include="Ingredient.cpp">
       <Filter>Source Files\Ingredients</Filter>
     </ClCompile>
+    <ClCompile Include="IngredientViewer.cpp">
+      <Filter>Source Files\Ingredients</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
