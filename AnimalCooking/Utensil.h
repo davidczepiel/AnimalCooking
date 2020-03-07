@@ -5,7 +5,7 @@
 #include "Transform.h"
 
 
-class Utensil :public Entity {
+class Utensil{
 
 protected:
 	//Estado
@@ -30,7 +30,7 @@ protected:
 	bool dirty_;
 	bool ableToClean_;
 
-	bool inUse;
+	bool isInUse;
 
 	Vector2D pos_, vel_, size_;
 	Transform* player_;
@@ -61,6 +61,42 @@ public:
 	inline void setPos(Vector2D pos) { pos_.set(pos); }
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	void changeDirtySpeed(int speedModifier);
-	void setInUse(bool x) { inUse = x; }
+	bool inUse() { return inUse; }
+	void setInUse(bool x) { isInUse = x; }
 
+};
+
+/////////////////////////////////////////////Utensilios//////////////////////////////
+
+class Knife : public Utensil
+{
+public:
+	Knife(Vector2D pos, Transform* p):Utensil(pos,p){texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);}
+	~Knife() {}
+	virtual void attack() { onHit(Vector2D(1,1)); }
+};
+
+class Mace : public Utensil
+{
+public:
+	Mace(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	~Mace() {}
+	virtual void attack() { onHit(Vector2D(1, 1)); }
+};
+
+
+class Grater : public Utensil
+{
+public:
+	Grater(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	~Grater() {}
+	virtual void attack() { onHit(Vector2D(1, 1)); }
+};
+
+class Net : public Utensil
+{
+public:
+	Net(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	~Net() {}
+	virtual void attack() { onHit(Vector2D(1, 1)); }
 };
