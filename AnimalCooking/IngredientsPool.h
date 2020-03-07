@@ -9,10 +9,13 @@ public:
 	IngredientsPool();
 	~IngredientsPool() {}
 
-	void init() override;
+	void init() override {};
 	void update() override{};
 	void draw() override{};
-	void addIngredient();
+
+	template<typename I>
+	void addIngredient(double w, double h, Vector2D pos, Vector2D vel);
+
 	inline std::vector<Ingredient*> getPool() { return pool_.getPool(); }
 private:
 	ObjectPool<Ingredient> pool_;

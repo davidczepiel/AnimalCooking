@@ -13,6 +13,9 @@ private:
 	double escapeRadius_, maxVel_; //Si escapeRad o maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 
 public:
+	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
+	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
+
 	virtual void update();
 	virtual void render() const;
 	virtual void onHit() {};
@@ -40,9 +43,6 @@ public:
 	inline Vector2D getPos() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
 
-	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
-	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
-
 	inline bool inUse() { return inUse_; } //para pool
 };
 
@@ -53,4 +53,32 @@ class Tomato : public Ingredient
 public:
 	Tomato() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
 	~Tomato() {}
+};
+
+class Carrot : public Ingredient
+{
+public:
+	Carrot() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	~Carrot() {}
+};
+
+class Lettuce : public Ingredient
+{
+public:
+	Lettuce() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	~Lettuce() {}
+};
+
+class Mushroom : public Ingredient
+{
+public:
+	Mushroom() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	~Mushroom() {}
+};
+
+class Sausage : public Ingredient
+{
+public:
+	Sausage() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
+	~Sausage() {}
 };

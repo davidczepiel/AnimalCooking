@@ -39,8 +39,19 @@ public:
 		return nullptr;
 	}
 
-	const std::vector<T*>& getPool() {
+	std::vector<T*>& getPool() {
 		return objsPtrs_;
+	}
+
+	//Usar este método cuando se quiera obtener un objeto de una clase que hereda del tipo de pool
+	template<typename I>
+	T* getObj() {
+		for (int i = 0; i < size_; ++i) {
+			if (dynamic_cast<I*>(objsPtrs_[i]) != nullptr && !inUseF_(objsPtrs_[i])) {
+				return objsPtrs_[i];
+			}
+		}
+		return nullptr;
 	}
 
 private:
