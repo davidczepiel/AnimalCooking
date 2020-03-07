@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma once
-
 #include "Vector2D.h"
 #include "Texture.h"
 
@@ -24,7 +22,7 @@ protected:
 	virtual void onCollisionY();
 	virtual void escape(Vector2D pos);
 
-	bool inUse() { return inUse_; } //para pool
+	inline bool inUse() { return inUse_; } //para pool
 
 	void setTransform(double w, double h, Vector2D pos, Vector2D vel) {
 		size_.set(w, h);
