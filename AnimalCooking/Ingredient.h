@@ -2,6 +2,7 @@
 
 #include "Vector2D.h"
 #include "Texture.h"
+#include "SDLGame.h"
 
 class Ingredient
 {
@@ -50,6 +51,6 @@ public:
 class Tomato : public Ingredient 
 {
 public:
-	Tomato() : Ingredient() {}
+	Tomato() : Ingredient() { setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente)); }
 	~Tomato() {}
 };

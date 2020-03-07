@@ -9,6 +9,9 @@ public:
 	IngredientsPool();
 	~IngredientsPool() {}
 
+	void init() override;
+	void update() override{};
+	void draw() override{};
 	void addIngredient();
 	inline std::vector<Ingredient*> getPool() { return pool_.getPool(); }
 private:
