@@ -256,6 +256,9 @@
     <ClCompile Include="CreditsState.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="EndState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -559,6 +562,9 @@
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
     <ClInclude Include="CreditsState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="EndState.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,13 +8,13 @@ class PlayState : public State
 {
 public:
 	PlayState() : State() {
-		//Entity* morir = stage->addEntity();
-		//morir->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth()/2,0),Vector2D(),300,100,0);
-		//morir->addComponent<ButtonBehaviour>(goToEndState);
+		Entity* morir = stage->addEntity();
+		morir->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth()/2,0),Vector2D(),300,100,0);
+		morir->addComponent<ButtonBehaviour>(goToEndState);
 		//morir->addComponent<ButtonRenderer>(Resources::Button,nullptr);
-		//Entity* pausar = stage->addEntity();
-		//pausar->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, 150), Vector2D(), 300, 100, 0);
-		//pausar->addComponent<ButtonBehaviour>(goToPauseState);
+		Entity* pausar = stage->addEntity();
+		pausar->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, 150), Vector2D(), 300, 100, 0);
+		pausar->addComponent<ButtonBehaviour>(goToPauseState);
 		//pausar->addComponent<ButtonRenderer>(Resources::Button, nullptr);
 	}
 	void update() override { State::update(); cout << "Me gustan las patatas" << endl; };
@@ -22,7 +22,7 @@ public:
 
 	//virtual void handleEvent();
 private:
-	//static void goToEndState();
-	//static void goToPauseState();
+	static void goToEndState();
+	static void goToPauseState();
 };
 

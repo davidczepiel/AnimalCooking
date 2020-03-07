@@ -11,9 +11,9 @@
 		}
 	}
 }*/
-//void PlayState::goToEndState() {
-//	SDLGame::instance()->getFSM()->pushState(new EndState());
-//}
-//void PlayState::goToPauseState() {
-//	SDLGame::instance()->getFSM()->pushState(new PauseState());
-//}
+void PlayState::goToEndState() {
+	SDLGame::instance()->getFSM()->pushState(new EndState());
+}
+void PlayState::goToPauseState() {
+	SDLGame::instance()->getFSM()->pushState(new PauseState());
+}
