@@ -4,13 +4,18 @@
 #include "SDL_macros.h"
 #include "Food.h"
 
+FoodMotion::FoodMotion(): Component(ecs::FoodMotion)
+{
+	foodPool_ = nullptr;
+}
+
 void FoodMotion::update()
 {
-	std::vector<Food*> fp = foodPool_->getPool();
-	for (Food* f : fp) {
-		if (f->getInUse()) {
-			f->update();
-		}
+	std::vector<Food*>* fp = foodPool_->getPool();
+	Food* aux;
+	for (int i = 0; i < fp->size(); ++i) {
+		aux = fp->at(i);
+		aux->update();
 	}
 }
 

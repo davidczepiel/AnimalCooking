@@ -7,6 +7,7 @@ class FoodViewer : public Component
 private:
 	FoodPool* foodPool_;
 public:
+	FoodViewer();
 	void draw() override;
 	void init() override;
 };

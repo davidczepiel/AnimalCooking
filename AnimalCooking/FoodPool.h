@@ -1,10 +1,24 @@
 #pragma once
+#include "Component.h"
 #include "ObjectPool.h"
 class Food;
 
-class FoodPool : public ObjectPool<Food>
+enum FoodType {
+	SlicedTomato,
+	SmashedTomato,
+	SlicedLettuce,
+	WrongFood,
+	RawMeat,
+	CookedMeat
+};
+
+class FoodPool : public Component
 {
+public:
+	FoodPool();
+	vector<Food*>* getPool();
+	void AddFood(Food* food);
 private:
-	ObjectPool<Food> pool;
+	vector<Food*> foods_;
 };
 
