@@ -23,6 +23,8 @@ enum CmpId : CmpIdType {
 	FoodViewer,//Food
 	FoodMotion,
 
+	InOutFood, //Dishes
+
 	IngredientsPool,//Pools
 	FoodPool,
 
