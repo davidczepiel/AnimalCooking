@@ -11,18 +11,37 @@ FSM::~FSM()
 }
 
 void FSM::pushState(State* s) {
-	statesStack.push(s);
+	events.push({ true, s });
 }
 
 State* FSM::currentState() {
 	return statesStack.top();
 }
 
+void FSM::changeState(State* s)
+{
+	popState();
+	pushState(s);
+}
+
+void FSM::refresh()
+{
+	while (!events.empty()) {
+		if (events.front().push) {
+			statesStack.push(events.front().s);
+		}
+		else {
+			delete statesStack.top();
+			statesStack.pop();
+		}
+		events.pop();
+	}
+}
+
 void FSM::popState()
 {
 	if (!statesStack.empty()) 
 	{ 
-		delete statesStack.top();
-		statesStack.pop(); 
+		events.push({ false, nullptr });
 	}
 }

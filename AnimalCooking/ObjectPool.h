@@ -23,8 +23,8 @@ public:
 		inUseF_ = f;
 		size_ = size;
 		objs_ = new T[size_];
-		for (auto &b : objs_) {
-			objsPtrs_.push_back(&b);
+		for (int i = 0; i < size_; ++i) {
+			objsPtrs_.push_back(&objs_[i]);
 		}
 	}
 
@@ -39,7 +39,7 @@ public:
 		return nullptr;
 	}
 
-	const std::vector<T*>& getPool() {
+	std::vector<T*>& getPool() {
 		return objsPtrs_;
 	}
 

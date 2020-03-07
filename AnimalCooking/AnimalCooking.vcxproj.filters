@@ -235,7 +235,37 @@
     <ClCompile Include="InOutFood.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
+
     <ClCompile Include="Utensil.cpp" />
+
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="MapState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenLoader.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditsState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="EndState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigState.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -520,7 +550,37 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files\GameManager</Filter>
     </ClInclude>
+
     <ClInclude Include="Utensil.h" />
+
+    <ClInclude Include="MenuState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="MapState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenLoader.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="EndState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigState.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
