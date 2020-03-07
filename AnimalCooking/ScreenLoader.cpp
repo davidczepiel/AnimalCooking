@@ -10,7 +10,7 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 		Entity* menu_ = stage->addEntity();
 		Entity* mensajes_ = stage->addEntity();
 
-		Entity* barraCarga_ = stage->addEntity();
+		barraCarga_ = stage->addEntity();
 		SDLGame* game_ = SDLGame::instance();
 		int width = SDLGame::instance()->getWindowWidth() / 5;
 		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
@@ -27,8 +27,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 									50, //Width
 									50, //Height
 									0); //Rot
-		//buttonGo_->addComponent<ButtonBehaviour>()->setActive(false);
-		//buttonGo_->addComponent<ButtonRenderer>(Textura1, texto);
+		buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
+		buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
 		resetResources(nivel);
 }
@@ -46,7 +46,7 @@ void ScreenLoader::resetResources(Resources::Level level)
 	loadSounds(level);
 	loadMusics(level);
 	
-	//GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
+	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
@@ -137,6 +137,7 @@ void ScreenLoader::updateLength(double extra)
 	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
 	draw();
 }
+
 void ScreenLoader::goToPlayState() {
-	SDLGame::instance()->getFSM()->pushState(new PlayState());
+	SDLGame::instance()->getFSM()->changeState(new PlayState());
 }
