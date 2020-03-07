@@ -30,6 +30,8 @@ protected:
 	bool dirty_;
 	bool ableToClean_;
 
+	bool inUse;
+
 	Vector2D pos_, vel_, size_;
 	Transform* player_;
 	//Mis 2 texturas
@@ -59,5 +61,6 @@ public:
 	inline void setPos(Vector2D pos) { pos_.set(pos); }
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	void changeDirtySpeed(int speedModifier);
+	void setInUse(bool x) { inUse = x; }
 
 };
