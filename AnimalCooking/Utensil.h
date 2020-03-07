@@ -5,7 +5,7 @@
 #include "Transform.h"
 
 
-class Utensil {
+class Utensil :public Entity {
 
 protected:
 	//Estado
