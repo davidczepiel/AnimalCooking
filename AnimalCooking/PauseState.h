@@ -2,6 +2,7 @@
 #include "State.h"
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
+#include "ConfigState.h"
 #include "Transform.h"
 
 class PauseState : public State	

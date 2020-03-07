@@ -5,7 +5,7 @@
 }
 
 void MenuState::optionsMenuCallback() {
-	//game->getFSM()->pushState(/*OptionsState*/);
+	SDLGame::instance() ->getFSM()->pushState(new ConfigState());
 }
 
 void MenuState::creditsMenuCallback() {

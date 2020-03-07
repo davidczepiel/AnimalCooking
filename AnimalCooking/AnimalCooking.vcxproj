@@ -172,6 +172,7 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ConfigState.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Cooker.h" />
     <ClInclude Include="CookerPool.h" />
@@ -274,6 +275,7 @@
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ConfigState.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookerViewer.cpp" />

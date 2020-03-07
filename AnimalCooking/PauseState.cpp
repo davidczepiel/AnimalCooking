@@ -34,19 +34,22 @@ PauseState::~PauseState()
 void PauseState::menuCallback()
 {
 	cout << "Menu";
-	//SDLGame::instance()->getFSM()->popState();
-	//SDLGame::instance()->getFSM()->popState();
+	FSM* fsm= SDLGame::instance()->getFSM();
+	for (int i = 0; i < 3; i++)
+	{
+		fsm->popState();
+	}
 }
 
 void PauseState::configCallback()
 {
 	cout << "Config";
-	//SDLGame::instance()->getFSM()->pushState(new ConfigState());
+	SDLGame::instance()->getFSM()->pushState(new ConfigState());
 }
 
 void PauseState::resumeCallback()
 {
 	cout << "Resume";
-	//SDLGame::instance()->getFSM()->popState();
+	SDLGame::instance()->getFSM()->popState();
 }
 

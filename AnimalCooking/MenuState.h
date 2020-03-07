@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "SDLGame.h"
 #include "AnimalCooking.h"
+#include "ConfigState.h"
 #include "MapState.h"
 #include "CreditsState.h"
 
