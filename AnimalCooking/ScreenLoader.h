@@ -1,5 +1,7 @@
 #pragma once
 #include "State.h"
+#include "FSM.h"
+#include "PlayState.h"
 class ScreenLoader : public State
 {
 public:	
@@ -14,5 +16,6 @@ private:
 	void updateLength(double extra);
 	Entity* barraCarga_;
 	Entity* buttonGo_;
+	static void goToPlayState();
 };
 

@@ -3,6 +3,7 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "SDLGame.h"
+#include "FSM.h"
 
 
 class ConfigState :
@@ -10,13 +11,13 @@ class ConfigState :
 {
 	SDLGame* game_;
 
+	static void backButtonCallback( );
 	Entity* backButton_;
 
 public:
 	
 	ConfigState();
 
-	static void backButtonCallback(SDLGame* game);
 
 };
 

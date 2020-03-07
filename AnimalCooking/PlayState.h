@@ -1,16 +1,17 @@
 #pragma once
 
 #include "State.h"
-
+#include "EndState.h"
+#include "PauseState.h"
+#include "Manager.h"
 class PlayState : public State
 {
 public:
 	PlayState() : State() {}
-	void update() override { cout << "Me gustan las patatas" << endl; };
-	void draw() override {};
 
 	//virtual void handleEvent();
 private:
-
+	static void goToEndState();
+	static void goToPauseState();
 };
 
