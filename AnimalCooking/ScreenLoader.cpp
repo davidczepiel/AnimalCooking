@@ -137,3 +137,6 @@ void ScreenLoader::updateLength(double extra)
 	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
 	draw();
 }
+void ScreenLoader::goToPlayState() {
+	SDLGame::instance()->getFSM()->pushState(new PlayState());
+}

@@ -1,16 +1,28 @@
 #pragma once
 
 #include "State.h"
-
+#include "EndState.h"
+#include "PauseState.h"
+#include "Manager.h"
 class PlayState : public State
 {
 public:
-	PlayState() : State() {}
-	void update() override { cout << "Me gustan las patatas" << endl; };
+	PlayState() : State() {
+		//Entity* morir = stage->addEntity();
+		//morir->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth()/2,0),Vector2D(),300,100,0);
+		//morir->addComponent<ButtonBehaviour>(goToEndState);
+		//morir->addComponent<ButtonRenderer>(Resources::Button,nullptr);
+		//Entity* pausar = stage->addEntity();
+		//pausar->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, 150), Vector2D(), 300, 100, 0);
+		//pausar->addComponent<ButtonBehaviour>(goToPauseState);
+		//pausar->addComponent<ButtonRenderer>(Resources::Button, nullptr);
+	}
+	void update() override { State::update(); cout << "Me gustan las patatas" << endl; };
 	void draw() override {};
 
 	//virtual void handleEvent();
 private:
-
+	//static void goToEndState();
+	//static void goToPauseState();
 };
 

@@ -5,7 +5,7 @@
 #include "ButtonBehaviour.h"
 
  void MapState::screenLoaderCallback() {
-	//SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1));
+	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1));
 }
 void MapState::backButtonCallback() {
 	SDLGame::instance()->getFSM()->popState();
