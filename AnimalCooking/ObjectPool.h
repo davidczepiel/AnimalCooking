@@ -7,7 +7,7 @@
 // We can instead pass it to the constructor so we can decide the size
 // the pool dynamically, but then objs_ cannot be a static array
 //
-template<typename T, int SIZE>
+template<typename T>
 class ObjectPool {
 public:
 	// f is a lambda expression used to check if an object is in use,
@@ -23,8 +23,8 @@ public:
 		inUseF_ = f;
 		size_ = size;
 		objs_ = new T[size_];
-		for (auto &b : objs_) {
-			objsPtrs_.push_back(&b);
+		for (int i = 0; i < size_; ++i) {
+			objsPtrs_.push_back(&objs_[i]);
 		}
 	}
 

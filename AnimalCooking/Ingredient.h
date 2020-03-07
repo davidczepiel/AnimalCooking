@@ -11,18 +11,13 @@ private:
 	Texture* texture_;
 	double escapeRadius_, maxVel_; //Si escapeRad o maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 
-	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
-
-protected:
-	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
+public:
 	virtual void update();
 	virtual void render() const;
-	virtual void onHit() = 0; //Abstracto porque aun no necesita el switch
+	virtual void onHit() {};
 	virtual void onCollisionX();
 	virtual void onCollisionY();
 	virtual void escape(Vector2D pos);
-
-	inline bool inUse() { return inUse_; } //para pool
 
 	void setTransform(double w, double h, Vector2D pos, Vector2D vel) {
 		size_.set(w, h);
@@ -43,4 +38,18 @@ protected:
 	inline double getHeight() { return size_.getY(); }
 	inline Vector2D getPos() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
+
+	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
+	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
+
+	inline bool inUse() { return inUse_; } //para pool
+};
+
+//<----------------------------------------------------------Clases Ingredientes-------------------------------------------------------------------------->
+
+class Tomato : public Ingredient 
+{
+public:
+	Tomato() : Ingredient() {}
+	~Tomato() {}
 };
