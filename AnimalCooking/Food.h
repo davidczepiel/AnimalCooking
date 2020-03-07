@@ -17,7 +17,7 @@ public:
 	void setSpeed(Vector2D newDir) { dir_ = newDir; }
 	inline Vector2D getSpeed() { return dir_; }
 
-	virtual void update() = 0;
+	virtual void update();
 	//Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
 	virtual void draw() = 0;
 };

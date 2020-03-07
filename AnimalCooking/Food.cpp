@@ -15,3 +15,8 @@ void Food::Destroy()
 {
 	foodPool_->getPool()->erase(iterator_);
 }
+
+void Food::update()
+{
+	position_ = position_ + dir_;
+}
