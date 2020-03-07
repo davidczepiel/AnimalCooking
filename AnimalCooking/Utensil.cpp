@@ -1,11 +1,12 @@
 #include "Utensil.h"
 #include "SDLGame.h"
 #include "SDL_macros.h"
+#include <math.h> 
 
 
 
 
-Utensil::Utensil(Entity* p, Texture* c, Texture* d) {
+Utensil::Utensil(Vector2D pos, Transform* p) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	getDirtSpeed_ = 10;
@@ -15,9 +16,7 @@ Utensil::Utensil(Entity* p, Texture* c, Texture* d) {
 	attackRate_ = 1000;
 	lastAttack_ = SDL_GetTicks();
 	player_ = p;
-	texture_ = c;
-	secondTexture_ = d;
-	myState= State::shelf;
+	myState = State::shelf;
 	dirty_ = false;
 	ableToClean_ = false;
 	interactionTrigger_.x = 100;
@@ -25,53 +24,90 @@ Utensil::Utensil(Entity* p, Texture* c, Texture* d) {
 	interactionTrigger_.w = 100;
 	interactionTrigger_.h = 100;
 	cleanUpSpeed_ = 25;
+	pos_ = pos;
+	vel_ = Vector2D(0, 0);
+	frameAttack = 0;
+	attacking_ = false;
+	lastFrameTick = 0;
+
 }
 
 
 void Utensil::update() {
 
 	if (myState != State::playerHand) {
-
-		if (myState == State::floor)  //Si me encuentro en el suelo puedo empezar a ensuciarme
+		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
 			myDirt_ += getDirtSpeed_;
-
+			if (myDirt_ >= maxDirt_)
+				dirty_ = true;
+		}
 		// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
-		//	Transform* tr =GETCMP2_(player,Transform);   // Este transform no es definitivo, es para salir del paso rápido
-		//if(Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), pos_, size_.getX(),size_.getY()) && SDLGame::instance()->getInputHandler()->isKeyDown(SDL_Scancode(0))){
-		//Posiblemente hacer que salga un brilli brilli
-		//}
-		
+		if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
+			cout << "Hacer un brilli brilli o lo que sea" <<endl;
+		}
+	}
+	else
+	{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
+		if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
+			frameAttack++;
+			if (frameAttack >= 5)
+				frameAttack = 0;
+		}
 	}
 }
 
+//Soy llamado por el método attack de cada utensilio y le devuelvo un puntero al ongrediente que haya dado o a nullptr
+Entity* Utensil::onHit(Vector2D dir) {
+	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
+		lastAttack_ = SDL_GetTicks();
+		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
+		lastFrameTick = SDL_GetTicks();
+		//Preparo la posición de donde realizo el ataque
+		Vector2D velNormalizada = vel_.normalize();
+		Vector2D posDelAtaque;
+		posDelAtaque.setX(pos_.getX()+(velNormalizada.getX()*range_));
+		posDelAtaque.setY(pos_.getY()+(velNormalizada.getY()*range_)); 
+		// En posDelAtaque se encontrará la hitbox del ataque
+		// A esto se le acompara con el ancho de la hitbox y el alto para llamar llamar al gamectrl y que compruebe colisiones
+			cout << "attack"; //Crear la hitbox en la zona que corresponda
+		}
+		//LLamo al gamectrl o el gamelogic pasándoles la hitbox de mi ataque,
+		return nullptr; //gameCtrl->AtaqueIngredientes();   //O algo asi
+	}
+}
 void Utensil::render()const {
-		SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
-		texture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	if (!dirty_ && !attacking_)
+		texture_->render(rect); //EN caso de que solo esté en la mano del jugador	
+	else if ((!dirty_ && attacking_)) {
+		texture_->render(rect); //EN caso de estar atacando habría que hacer un renderFrame
+	}
+	else
+		secondTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
+
 }
 
 
 void Utensil::drop(bool suelo) {
 	//Hay que volver a situar el trigger en la nueva zona
-interactionTrigger_.x = pos_.getX()- (interactionTrigger_.w/2);
-interactionTrigger_.y = pos_.getY()- (interactionTrigger_.h/2);
+	interactionTrigger_.x = pos_.getX() - (interactionTrigger_.w / 2);
+	interactionTrigger_.y = pos_.getY() - (interactionTrigger_.h / 2);
 
 	if (suelo)
 		myState = State::floor;
 	else
-		myState= State::shelf;
+		myState = State::shelf;
 }
 
 
-void Utensil::pickMe(){
-		myState = State::playerHand;
+void Utensil::pickMe() {
+	//Me cambio de estado y paso a no tener suciedad
+	myState = State::playerHand;
+	myDirt_ = 0;
 }
 
-void Utensil::attack(Vector2D dir){
-		if (SDL_GetTicks() > lastAttack_ + attackRate_) {
-			lastAttack_ = SDL_GetTicks();
-			cout << "ataque";
-		}
-}
+
+
 
 void Utensil::inTheWasher(bool x) {
 	ableToClean_ = x;
@@ -82,10 +118,13 @@ void Utensil::changeDirtySpeed(int speedModifier) {
 }
 
 void Utensil::cleanUp() {
-	//Transform* tr = GETCMP2(player, Transform);
-	if (dirty_ && ableToClean_ /*&& Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), pos_, size_.getX(), size_.getY())*/ && SDLGame::instance()->getInputHandler()->isKeyDown(SDL_Scancode(0))) {
+	//Me debería llamar el fregadero para decime que me limpie
+	if (dirty_ && ableToClean_) {
 		myDirt_ -= cleanUpSpeed_;
-		if (myDirt_ <= 0)dirty_ = false;
+		if (myDirt_ <= 0) {
+			myDirt_ = 0;
+			dirty_ = false;
+		}
 	}
 
 
