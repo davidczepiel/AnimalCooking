@@ -257,7 +257,9 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="Utensil.h" />
+    <ClInclude Include="UtensilsMotion.h" />
     <ClInclude Include="UtensilsPool.h" />
+    <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -348,7 +350,9 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />
+    <ClCompile Include="UtensilsMotion.cpp" />
     <ClCompile Include="UtensilsPool.cpp" />
+    <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>

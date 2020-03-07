@@ -264,6 +264,8 @@
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="UtensilsPool.cpp" />
+    <ClCompile Include="UtensilsViewer.cpp" />
+    <ClCompile Include="UtensilsMotion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -577,6 +579,8 @@
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
     <ClInclude Include="UtensilsPool.h" />
+    <ClInclude Include="UtensilsViewer.h" />
+    <ClInclude Include="UtensilsMotion.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

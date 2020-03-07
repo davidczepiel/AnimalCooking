@@ -53,6 +53,10 @@ public:
 	virtual void update();
 	virtual void attack() = 0;
 
+	Vector2D getPos() { return pos_; }
+	Vector2D getVel() { return vel_; }
+	Vector2D getSize() { return size_; }
+
 	void drop(bool suelo);
 	void pickMe();
 	void inTheWasher(bool x);
