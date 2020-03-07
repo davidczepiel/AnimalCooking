@@ -14,7 +14,7 @@ EndState::EndState() :State() {
 	returnToMenuButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
 		SDLGame::instance()->getWindowHeight() / 2 +150), Vector2D(), 300, 100, 0);
 	returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState);
-	returnToMenuButton->addComponent<ButtonRenderer>(Resources::Button, nullptr);
+	returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
 }
 void EndState::goToLoadState() {
@@ -23,7 +23,7 @@ void EndState::goToLoadState() {
 }
 void EndState::goToMapState() {
 	FSM* fsm = SDLGame::instance()->getFSM();
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		fsm->popState();
 	}

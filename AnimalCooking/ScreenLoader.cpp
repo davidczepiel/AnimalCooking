@@ -55,7 +55,7 @@ void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
 
 	for (auto& image : Resources::images_) {
 		//Si la imagen no pertenece al nivel y esta cargada en memoria, se elimina
-		if (image.id != Resources::Level::Basic && image.id != Resources::Level::AllLevels && image.id != level &&
+		if (image.level != Resources::Level::Basic && image.level != Resources::Level::AllLevels && image.level != level &&
 			textures_->getTexture(image.id) != nullptr) {
 			textures_->destroyTexture(image.id);
 		}
@@ -72,7 +72,7 @@ void ScreenLoader::loadFonts(Resources::Level level)
 
 	for (auto& font : Resources::fonts_) {
 		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
-		if (font.id != Resources::Level::Basic && font.id != Resources::Level::AllLevels && font.id != level &&
+		if (font.level != Resources::Level::Basic && font.level != Resources::Level::AllLevels && font.level != level &&
 			fonts_->getFont(font.id) != nullptr) {
 			fonts_->destroyFont(font.id);
 		}
@@ -88,7 +88,7 @@ void ScreenLoader::loadSounds(Resources::Level level)
 
 	for (auto& sound : Resources::sounds_) {
 		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
-		if (sound.id != Resources::Level::Basic && sound.id != Resources::Level::AllLevels && sound.id != level &&
+		if (sound.level != Resources::Level::Basic && sound.level != Resources::Level::AllLevels && sound.level != level &&
 			audio_->getSound(sound.id) != nullptr) {
 			audio_->destroySound(sound.id);
 		}
@@ -104,7 +104,7 @@ void ScreenLoader::loadMusics(Resources::Level level)
 
 	for (auto& music : Resources::musics_) {
 		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
-		if (music.id != Resources::Level::Basic && music.id != Resources::Level::AllLevels && music.id != level &&
+		if (music.level != Resources::Level::Basic && music.level != Resources::Level::AllLevels && music.level != level &&
 			audio_->getMusic(music.id) != nullptr) {
 			audio_->destroyMusic(music.id);
 		}
@@ -121,7 +121,7 @@ void ScreenLoader::loadMessagges(Resources::Level level, SDL_Renderer* renderer_
 
 	for (auto& txtmsg : Resources::messages_) {
 		//Si la fuente no pertenece al nivel y esta cargada en memoria, se elimina
-		if (txtmsg.id != Resources::Level::Basic && txtmsg.id != Resources::Level::AllLevels && txtmsg.id != level &&
+		if (txtmsg.level != Resources::Level::Basic && txtmsg.level != Resources::Level::AllLevels && txtmsg.level != level &&
 			textures_->getTexture(txtmsg.id) != nullptr) {
 			textures_->destroyTexture(txtmsg.id);
 		}
