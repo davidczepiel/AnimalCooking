@@ -22,12 +22,10 @@ class InOutFood : public Component
 	void previousFood();
 	
 	list<Food*> getList();
-	inline void setEmpty(bool b);
 	inline bool isEmpty();
 	
  private:
 	 list<Food*>::iterator currentFood;
-	 bool empty = true;
 	 list<Food*> foods_;
 };
 

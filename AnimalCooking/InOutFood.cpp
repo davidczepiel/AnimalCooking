@@ -1,6 +1,6 @@
 #include "InOutFood.h"
 
-InOutFood::InOutFood() :Component(ecs::InOutFood),currentFood(foods_.end())
+InOutFood::InOutFood() :Component(ecs::InOutFood)
 {
 
 }
@@ -10,43 +10,43 @@ list<Food*> InOutFood::getList()
 	return foods_;
 }
 
-void InOutFood::setEmpty(bool b)
-{
-	empty = b;
-}
+
 
 bool InOutFood::isEmpty()
 {
-	return empty;
+	return foods_.empty();
 }
-
+// si la lista estaba vacía pone el iterador al principio
 void InOutFood::addFood(Food* f)
 {
 	if (f != nullptr) {
 		foods_.push_back(f);
-		if(foods_.size()==1)
+		if (foods_.size() == 1)
 		{
-		empty = false;
-		currentFood = foods_.begin();
+			currentFood = foods_.begin();
 		}
 	}
-	
+
 }
 
 Food* InOutFood::takeFood()
-{
-	if (currentFood!=foods_.begin() && currentFood!=foods_.end()) {
+{//si la lista no se ha vaciado pone el iterador al principio para evitar errores
+	if (!foods_.empty()) {
+		Food* aux = *currentFood;
 		foods_.remove(*currentFood);
-		if (foods_.empty())
-			empty = true;
+		if (!foods_.empty())
+			currentFood = foods_.begin();
+		return aux;
 	}
-	return *currentFood;
+	else return nullptr;
 }
+//Comprobamos que no está la lista vacía y no se ha llegado al último elemento
 void InOutFood::nextFood() {
-	if (currentFood != foods_.end())
+	if (!foods_.empty() && currentFood != (--foods_.end()))
 		currentFood++;
 }
+//Comprobamos que no está la lista vacía y no estamos en el primer elemento
 void InOutFood::previousFood() {
-	if (currentFood != foods_.begin())
+	if (!foods_.empty() && currentFood != foods_.begin())
 		currentFood--;
 }

@@ -40,12 +40,12 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\font.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\entity.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoreviewer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoremanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\resources.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\provisional2.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\provisional1.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playstate.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playerviewer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playermotion.obj
@@ -78,8 +78,8 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrendererframe.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrenderer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlgame.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\provisional2.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\provisional1.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.exe
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.ilk
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.pdb
