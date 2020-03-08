@@ -10,7 +10,7 @@ enum class CookerStates { empty, full, cooking, cooked };
 class Food;
 class Cooker {
 public:
-	virtual ~Cooker() {}
+	virtual ~Cooker();
 	virtual void update();
 	virtual void draw();
 	virtual void startCooking(Food* food);
@@ -31,6 +31,7 @@ public:
 	Texture* getFullTexture() { return nullptr; };
 	Texture* getCookingTexture() { return nullptr; };
 	Texture* getCookedTexture() { return nullptr; };
+	Timer* getCookerTimer() { return timer_; };
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);

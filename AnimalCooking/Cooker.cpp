@@ -11,6 +11,12 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text) :
 	setSize(size);
 	setRot(rot);
 	setTexture(text);
+	timer_ = new Timer();
+}
+
+Cooker::~Cooker() {
+	delete timer_;
+	timer_ = nullptr;
 }
 
 void Cooker::stopCooking()

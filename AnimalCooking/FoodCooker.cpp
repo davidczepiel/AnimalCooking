@@ -12,13 +12,22 @@ void FoodCooker::init() {
 }
 
 void FoodCooker::startCooked(Cooker *c) {
-	c->setCookerState(CookerStates::cooking);
+	if(c->getCookerState() == CookerStates::full)
+		c->setCookerState(CookerStates::cooking);
 }
 
 void FoodCooker::update() {
 	for (Cooker* c : pool_) {
-		if (c->getCookerState == CookerStates::cooking) {
+		if (c->getCookerState() == CookerStates::cooking){
 
+			if (!c->getCookerTimer()->isTimerEnd()) {
+				c->getCookerTimer()->update();
+			}
+			else {
+				c->setCookerState(CookerStates::cooked);
+				c->getCookerTimer()->timerReset();
+				//c->setTexture();
+			}
 		}
 	}
 }
