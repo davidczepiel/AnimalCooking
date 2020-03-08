@@ -5,7 +5,7 @@
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text) : 
 		imCooking(nullptr), imBurning(nullptr), 
 		startTime(), cookingTime(), burningTime(), 
-		isBurned(false)
+		isBurned(false), state_(CookerStates::empty)
 {
 	setPos(pos);
 	setSize(size);

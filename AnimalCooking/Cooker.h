@@ -1,8 +1,10 @@
 #pragma once
-#include "Food.h"
+//#include "Food.h"
 #include "Vector2D.h"
 #include <SDL_stdinc.h>
 #include "Texture.h"
+
+enum class CookerStates { empty, full, burning, cooking, cooked, burned };
 
 class Food;
 class Cooker {
@@ -16,12 +18,14 @@ public:
 	void setSize(Vector2D& size) { size_.set(size); }
 	void setRot(double rot) { rot_ = rot; }
 	void setTexture(Texture* text) { texture_ = text; }
+	void setCookerState(CookerStates s) { state_ = s; };
 
 	Food* getCooking();
 	inline const Vector2D& getPos() const { return pos_; }
 	inline int getWidth() const { return size_.getX(); }
 	inline int getHeight() const { return size_.getY(); }
 	inline Vector2D& getSize() { return size_; }
+	CookerStates getCookerState() { return state_; };
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);
@@ -39,6 +43,8 @@ protected:
 	Uint32 cookingTime;
 	Uint32 burningTime;
 	bool isBurned;
+
+	CookerStates state_;
 };
 
 class Sarten : public Cooker {

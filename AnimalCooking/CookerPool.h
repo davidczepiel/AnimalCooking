@@ -24,5 +24,5 @@ public:
 	}
 
 private:
-	vector<Cooker*> pool_;
+	vector<Cooker*> pool_;	
 };

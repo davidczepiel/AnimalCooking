@@ -21,9 +21,11 @@ enum CmpId : CmpIdType {
 	Attack, //Player
 
 	IngredientsPool, //Pools
-	CookerPool,
 
-	CookerViewer,	//Viewers
+	CookerPool,		//Cookers
+	CookerViewer,	
+	FoodCooker,
+	InsertExpel,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
