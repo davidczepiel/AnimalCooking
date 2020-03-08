@@ -1,7 +1,13 @@
 #pragma once
-#include "Component.h"
-class PlayerViewer : public Component {
-public:
+#include "PlayerViewer.h"
 
-private:
-};
+void PlayerViewer::init()
+{
+	tr_ = GETCMP1_(Transform);
+}
+
+void PlayerViewer::draw()
+{
+	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),64,64};
+	texture_->render(dest);
+}

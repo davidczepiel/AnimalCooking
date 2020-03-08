@@ -21,14 +21,13 @@ void PlayerController::init()
 void PlayerController::update()
 {
 	joystickUpdate();
-	keyUpdate();
 }
 
 void PlayerController::joystickUpdate()
 {
 	GPadController* gpad = GPadController::instance();
 	gpad->update();
-	if (gpad->joysticksInitialised() && id_> 0) {
+	if (gpad->joysticksInitialised()) {
 		//Axis------------------------
 		if (gpad->xvalue(id_, 1) > 0 ||
 			gpad->xvalue(id_, 1) < 0)
@@ -59,17 +58,26 @@ void PlayerController::joystickUpdate()
 			//
 		}
 	}
+	else {
+		keyUpdate();
+	}
 }
 
 void PlayerController::keyUpdate()
 {
 	KeyBoardController* keyboard = KeyBoardController::instance();
-	keyboard->update();
-	if (id_ == -1) {
-		if (keyboard->isKeyDown(keys.up)) tr_->setVelY(1);
-		if (keyboard->isKeyDown(keys.down)) tr_->setVelY(-1);
+
+	if (keyboard->keyDownEvent()) {
+		if (keyboard->isKeyDown(keys.up))  tr_->setVelY(-1);
+		else if (keyboard->isKeyDown(keys.down)) tr_->setVelY(1);
+		else tr_->setVelY(0);
+
 		if (keyboard->isKeyDown(keys.right)) tr_->setVelX(1);
-		if (keyboard->isKeyDown(keys.left)) tr_->setVelX(-1);
+		else if (keyboard->isKeyDown(keys.left)) tr_->setVelX(-1);
+		else tr_->setVelX(0);
 	}
-	
+	else {
+		tr_->setVelX(0);
+		tr_->setVelY(0);
+	}
 }

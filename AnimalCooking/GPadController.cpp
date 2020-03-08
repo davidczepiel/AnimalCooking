@@ -107,11 +107,7 @@ void GPadController::update()
 				//the current position of the axis (range: -32768 to 32767
 				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
 
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setX(aux);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
+                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
                 {
                     m_joystickValues[whichOne].first->setX(aux);
                 }
@@ -126,11 +122,7 @@ void GPadController::update()
 				//the current position of the axis (range: -32768 to 32767
 				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
 
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setY(aux);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
+                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
                 {
                     m_joystickValues[whichOne].first->setY(aux);
                 }
@@ -145,11 +137,7 @@ void GPadController::update()
 				//the current position of the axis (range: -32768 to 32767
 				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
 
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setX(aux);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
+                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
                 {
                     m_joystickValues[whichOne].second->setX(aux);
                 }
@@ -164,11 +152,7 @@ void GPadController::update()
 				//the current position of the axis (range: -32768 to 32767
 				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
 
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setY(aux);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
+                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
                 {
                     m_joystickValues[whichOne].second->setY(aux);
                 }

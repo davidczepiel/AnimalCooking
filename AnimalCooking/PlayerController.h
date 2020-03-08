@@ -9,7 +9,7 @@
 
 class PlayerController : public Component {
 public:
-	PlayerController(int id = -1) :Component(ecs::PlayerController), id_(id) {}
+	PlayerController(int id = 0) :Component(ecs::PlayerController), id_(id) {}
 	void init() override;
 	void update() override;
 private:
@@ -23,8 +23,9 @@ private:
 		SDL_Keycode button2;
 		SDL_Keycode button3;*/
 	};
-	int id_;	//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
 	Keys keys;
+	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
+
 	Transform* tr_ = nullptr;
 	//Attack* attack_ = nullptr; <<--Cuando se implemente
 
