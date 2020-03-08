@@ -1,16 +1,14 @@
 #include "IngredientViewer.h"
 #include "IngredientsPool.h"
 #include "Entity.h"
+#include "Ingredient.h"
 
 void IngredientViewer::init() {
-	pool_ = GETCMP1_(IngredientsPool)->getPool();
+	pool_ = GETCMP1_(IngredientsPool);
 }
 
 void IngredientViewer::draw() {
-	for (Ingredient* b : pool_) {
-
-		if (b->inUse()) {
-			b->render();
-		}
+	for (Ingredient* b : pool_->getPool()) {
+		b->render();
 	}
 }

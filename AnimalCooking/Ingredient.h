@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 #include "Texture.h"
 #include "SDLGame.h"
+#include "IngredientsPool.h"
 
 class Ingredient
 {
@@ -11,6 +12,8 @@ protected:
 	Vector2D size_, pos_, vel_;
 	Texture* texture_;
 	double escapeRadius_, maxVel_; //Si escapeRad o maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
+	IngredientsPool* ingredientPool_;
+	std::vector<Ingredient*>::iterator it_;
 
 public:
 	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
@@ -28,9 +31,8 @@ public:
 		pos_.set(pos);
 		vel_.set(vel);
 	}
-	void setEscapeRad(double rad) { escapeRadius_ = rad; }
-	void setMaxVel(double maxVel) { maxVel_ = maxVel; }
-	inline void setInUse(bool inUse) { inUse_ = inUse; }
+	inline void setEscapeRad(double rad) { escapeRadius_ = rad; }
+	inline void setMaxVel(double maxVel) { maxVel_ = maxVel; }
 
 	//No se si van a hacer falta todos pero por si acaso, si no se borran
 	inline void setSize(double w, double h) { size_.set(w, h); }
@@ -43,7 +45,8 @@ public:
 	inline Vector2D getPos() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
 
-	inline bool inUse() { return inUse_; } //para pool
+	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
+	void destroy() { ingredientPool_->deleteIngredient(it_); }
 };
 
 //<----------------------------------------------------------Clases Ingredientes-------------------------------------------------------------------------->

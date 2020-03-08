@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Component.h"
-#include "Ingredient.h"
+#include "IngredientsPool.h"
 
 class IngredientMotion : public Component
 {
 private:
-	vector<Ingredient*> pool_;
+	IngredientsPool* pool_;
 
 public:
-	IngredientMotion() : Component(ecs::IngredientMotion) { }
+	IngredientMotion() : Component(ecs::IngredientMotion), pool_(nullptr) { }
 	virtual ~IngredientMotion() { }
 	void init() override;
-	void draw() override;
+	void update() override;
 };

@@ -1,16 +1,14 @@
 #include "IngredientMotion.h"
 #include "IngredientsPool.h"
 #include "Entity.h"
+#include "Ingredient.h"
 
 void IngredientMotion::init() {
-	pool_ = GETCMP1_(IngredientsPool)->getPool();
+	pool_ = GETCMP1_(IngredientsPool);
 }
 
-void IngredientMotion::draw() {
-	for (Ingredient* b : pool_) {
-		cout << "b";
-		if (b->inUse()) {
-			b->update();
-		}
+void IngredientMotion::update() {
+	for (Ingredient* b : pool_->getPool()) {
+		b->update();
 	}
 }
