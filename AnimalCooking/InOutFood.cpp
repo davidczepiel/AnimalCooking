@@ -1,13 +1,13 @@
 #include "InOutFood.h"
 
-InOutFood::InOutFood() :Component(ecs::InOutFood)
+InOutFood::InOutFood() :Component(ecs::InOutFood),currentFood(foods_.end())
 {
 
 }
 
-vector<Food*>* InOutFood:: getPool()
+list<Food*> InOutFood::getList()
 {
-	return &foods_;
+	return foods_;
 }
 
 void InOutFood::setEmpty(bool b)
@@ -21,11 +21,32 @@ bool InOutFood::isEmpty()
 }
 
 void InOutFood::addFood(Food* f)
-{		
-	if(f!=nullptr) foods_.push_back(f);  
+{
+	if (f != nullptr) {
+		foods_.push_back(f);
+		if(foods_.size()==1)
+		{
+		empty = false;
+		currentFood = foods_.begin();
+		}
+	}
+	
 }
 
-void InOutFood::takeFood(Food* f)
+Food* InOutFood::takeFood()
 {
-	//foods_.erase();
+	if (currentFood!=foods_.begin() && currentFood!=foods_.end()) {
+		foods_.remove(*currentFood);
+		if (foods_.empty())
+			empty = true;
+	}
+	return *currentFood;
+}
+void InOutFood::nextFood() {
+	if (currentFood != foods_.end())
+		currentFood++;
+}
+void InOutFood::previousFood() {
+	if (currentFood != foods_.begin())
+		currentFood--;
 }

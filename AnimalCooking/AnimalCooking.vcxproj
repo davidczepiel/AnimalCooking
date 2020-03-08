@@ -217,6 +217,8 @@
     <ClInclude Include="PlayerMotion.h" />
     <ClInclude Include="PlayerViewer.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="provisional1.h" />
+    <ClInclude Include="Provisional2.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
@@ -303,6 +305,8 @@
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="provisional1.cpp" />
+    <ClCompile Include="Provisional2.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />

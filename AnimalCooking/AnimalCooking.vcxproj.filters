@@ -235,6 +235,8 @@
     <ClCompile Include="Food.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
+    <ClCompile Include="provisional1.cpp" />
+    <ClCompile Include="Provisional2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -516,6 +518,8 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files\GameManager</Filter>
     </ClInclude>
+    <ClInclude Include="provisional1.h" />
+    <ClInclude Include="Provisional2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

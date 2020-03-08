@@ -3,7 +3,6 @@
 class Food 
 {
 private:
-	Food();
 
 	Vector2D position_;
 	Vector2D dir_;
@@ -11,6 +10,7 @@ private:
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 public:
+	Food();
 	void setFoodPool(FoodPool* foodPool);
 	void Destroy();
 
@@ -18,6 +18,6 @@ public:
 	inline Vector2D getSpeed() { return dir_; }
 
 	virtual void update();
-	//Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
+	//Cada clase que herede de food tendrï¿½ su render donde la textura dependerï¿½ del tipo
 	virtual void draw() = 0;
 };
