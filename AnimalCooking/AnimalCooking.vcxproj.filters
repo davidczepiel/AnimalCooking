@@ -262,6 +262,9 @@
     <ClCompile Include="ConfigState.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="Cooker.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -423,9 +426,6 @@
     <ClInclude Include="Adversity.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Cooker.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Ingredient.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
@@ -572,6 +572,9 @@
     </ClInclude>
     <ClInclude Include="ConfigState.h">
       <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Cooker.h">
+      <Filter>Header Files\Cookers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

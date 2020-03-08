@@ -277,6 +277,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigState.cpp" />
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="Cooker.cpp" />
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
