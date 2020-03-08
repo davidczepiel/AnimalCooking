@@ -4,7 +4,7 @@
 #include <SDL_stdinc.h>
 #include "Texture.h"
 
-enum class CookerStates { empty, full, burning, cooking, cooked, burned };
+enum class CookerStates { empty, full, cooking, cooked };
 
 class Food;
 class Cooker {
@@ -26,6 +26,10 @@ public:
 	inline int getHeight() const { return size_.getY(); }
 	inline Vector2D& getSize() { return size_; }
 	CookerStates getCookerState() { return state_; };
+	Texture* getEmptyTexture() { return nullptr; };
+	Texture* getFullTexture() { return nullptr; };
+	Texture* getCookingTexture() { return nullptr; };
+	Texture* getCookedTexture() { return nullptr; };
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);
