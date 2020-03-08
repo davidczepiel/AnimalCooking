@@ -8,19 +8,21 @@ public:
 	CookerPool(size_t sizeIni = 5);
 	~CookerPool();
 	void update() override;
-	void draw() override;
+
+	vector <Cooker*> getPool() { return pool_; };
+	//void draw() override;
 
 	template<typename C, typename ...Targs>
 	C* addCooker(Targs&& ...mArgs) {
-		assert(cookers.size() < cookers.capacity());
+		assert(pool_.size() < pool_.capacity());
 		C* c(new C(std::forward<Targs>(mArgs)...));
-		cookers.emplace_back(c);
+		pool_.emplace_back(c);
 	}
 	Cooker* addCooker(Cooker* c) {
-		assert(cookers.size() < cookers.capacity());
-		cookers.emplace_back(c);
+		assert(pool_.size() < pool_.capacity());
+		pool_.emplace_back(c);
 	}
 
 private:
-	vector<Cooker*> cookers;
+	vector<Cooker*> pool_;
 };

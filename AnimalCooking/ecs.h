@@ -23,6 +23,8 @@ enum CmpId : CmpIdType {
 	IngredientsPool, //Pools
 	CookerPool,
 
+	CookerViewer,	//Viewers
+
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
 	StaticRenderer,

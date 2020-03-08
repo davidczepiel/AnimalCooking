@@ -2,26 +2,26 @@
 
 CookerPool::CookerPool(size_t sizeIni): Component(ecs::CookerPool)
 {
-	cookers.reserve(sizeIni);
+	pool_.reserve(sizeIni);
 }
 
 CookerPool::~CookerPool()
 {
-	for (Cooker* en : cookers) {
+	for (Cooker* en : pool_) {
 		delete en;
 	}
 }
 
 void CookerPool::update()
 {
-	for (Cooker* en : cookers) {
+	for (Cooker* en : pool_) {
 		en->update();
 	}
 }
 
-void CookerPool::draw()
-{
-	for (Cooker* en : cookers) {
-		en->draw();
-	}
-}
+//void CookerPool::draw()
+//{
+//	for (Cooker* en : cookers) {
+//		en->draw();
+//	}
+//}
