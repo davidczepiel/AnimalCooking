@@ -1,8 +1,11 @@
 #include "GPadController.h"
 #include <SDL.h>
 
+unique_ptr<GPadController> GPadController::instance_;
+
 GPadController::GPadController()
 {
+    initialiseJoysticks();
 }
 
 //Inicialilamos el GamePad. Para ello encontramos el numero de 
@@ -57,7 +60,7 @@ void GPadController::clean()
 }
 //-joy = ID del joystick que queremos usar
 //-stick = 1(para stick izquierdo) 2(para stick dcho)
-int GPadController::xvalue(int joy, int stick)
+double GPadController::xvalue(int joy, int stick)
 {
     if (m_joystickValues.size() > 0)
     {
@@ -75,7 +78,7 @@ int GPadController::xvalue(int joy, int stick)
 
 //-joy = ID del joystick que queremos usar
 //-stick = 1(para stick izquierdo) 2(para stick dcho)
-int GPadController::yvalue(int joy, int stick)
+double GPadController::yvalue(int joy, int stick)
 {
     if (m_joystickValues.size() > 0)
     {
@@ -101,13 +104,16 @@ void GPadController::update()
             // stick izquierdo movimiento izq o dcho
             if (event.jaxis.axis == 0)
             {
+				//the current position of the axis (range: -32768 to 32767
+				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
+
                 if (event.jaxis.value > m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].first->setX(1);
+                    m_joystickValues[whichOne].first->setX(aux);
                 }
                 else if (event.jaxis.value < -m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].first->setX(-1);
+                    m_joystickValues[whichOne].first->setX(aux);
                 }
                 else
                 {
@@ -117,13 +123,16 @@ void GPadController::update()
             //  stick izquierdo movimiento arriba o abajo
             if (event.jaxis.axis == 1)
             {
+				//the current position of the axis (range: -32768 to 32767
+				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
+
                 if (event.jaxis.value > m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].first->setY(1);
+                    m_joystickValues[whichOne].first->setY(aux);
                 }
                 else if (event.jaxis.value < -m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].first->setY(-1);
+                    m_joystickValues[whichOne].first->setY(aux);
                 }
                 else
                 {
@@ -133,13 +142,16 @@ void GPadController::update()
             // stick dcho movimiento izq o dcho
             if (event.jaxis.axis == 3)
             {
+				//the current position of the axis (range: -32768 to 32767
+				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
+
                 if (event.jaxis.value > m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].second->setX(1);
+                    m_joystickValues[whichOne].second->setX(aux);
                 }
                 else if (event.jaxis.value < -m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].second->setX(-1);
+                    m_joystickValues[whichOne].second->setX(aux);
                 }
                 else
                 {
@@ -149,13 +161,16 @@ void GPadController::update()
             // stick dcho movimiento arriba o abajo
             if (event.jaxis.axis == 4)
             {
+				//the current position of the axis (range: -32768 to 32767
+				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
+
                 if (event.jaxis.value > m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].second->setY(1);
+                    m_joystickValues[whichOne].second->setY(aux);
                 }
                 else if (event.jaxis.value < -m_joystickDeadZone)
                 {
-                    m_joystickValues[whichOne].second->setY(-1);
+                    m_joystickValues[whichOne].second->setY(aux);
                 }
                 else
                 {
