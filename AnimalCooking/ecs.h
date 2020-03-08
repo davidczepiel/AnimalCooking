@@ -24,6 +24,7 @@ enum CmpId : CmpIdType {
 	FoodMotion,
 
 	InOutFood, //Dishes
+	DishPool,
 
 	IngredientsPool,//Pools
 	FoodPool,
