@@ -265,6 +265,9 @@
     <ClCompile Include="Cooker.cpp">
       <Filter>Source Files\Cookers</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">

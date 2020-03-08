@@ -341,6 +341,7 @@
     <ClCompile Include="StaticRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerEnd.cpp" />
     <ClCompile Include="TimerPool.cpp" />
     <ClCompile Include="TImerViewer.cpp" />

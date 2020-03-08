@@ -12,8 +12,10 @@ void FoodCooker::init() {
 }
 
 void FoodCooker::startCooked(Cooker *c) {
-	if(c->getCookerState() == CookerStates::full)
+	if (c->getCookerState() == CookerStates::full) {
 		c->setCookerState(CookerStates::cooking);
+		c->getCookerTimer()->timerStart();
+	}		
 }
 
 void FoodCooker::update() {
