@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 #include <SDL_stdinc.h>
 #include "Texture.h"
+#include "Timer.h"
 
 enum class CookerStates { empty, full, cooking, cooked };
 
@@ -49,6 +50,8 @@ protected:
 	bool isBurned;
 
 	CookerStates state_;
+
+	Timer* timer_;
 };
 
 class Sarten : public Cooker {

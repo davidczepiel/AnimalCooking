@@ -1,7 +1,6 @@
 #pragma once
 #include "Component.h"
 #include "CookerPool.h"
-#include "Cooker.h"
 
 class CookerViewer : public Component {
 public:
