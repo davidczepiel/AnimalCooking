@@ -7,16 +7,8 @@
 
 class Ingredient
 {
-protected:
-	bool inUse_;
-	Vector2D size_, pos_, vel_;
-	Texture* texture_;
-	double escapeRadius_, maxVel_; //Si escapeRad o maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
-	IngredientsPool* ingredientPool_;
-	std::vector<Ingredient*>::iterator it_;
-
 public:
-	Ingredient() : inUse_(false), size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2) {} //2 de prueba
+	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2), ingredientPool_(nullptr), type_(type) { cout << type << endl; } //2 de prueba
 	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
 
 	virtual void update();
@@ -44,9 +36,17 @@ public:
 	inline double getHeight() { return size_.getY(); }
 	inline Vector2D getPos() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
+	inline Resources::IngredientType getType() { return type_; }
 
 	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
-	void destroy() { ingredientPool_->deleteIngredient(it_); }
+	virtual int destroy(int utensilio) = 0;	//utensilio es un enum y debe devoñver otro enum (pendiente de hacer)
+protected:
+	Vector2D size_, pos_, vel_;
+	Texture* texture_;
+	double escapeRadius_, maxVel_; //Si escapeRad o maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
+	IngredientsPool* ingredientPool_;
+	std::vector<Ingredient*>::iterator it_;
+	Resources::IngredientType type_;
 };
 
 //<----------------------------------------------------------Clases Ingredientes-------------------------------------------------------------------------->
@@ -54,34 +54,114 @@ public:
 class Tomato : public Ingredient 
 {
 public:
-	Tomato() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Tomato() : Ingredient(Resources::tomato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Tomato() {}
+
+	int destroy(int utensilio) {		//Cambiar cada int por su enum
+		ingredientPool_->deleteIngredient(it_);
+
+		switch (utensilio) {
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		case 2:
+			return 2;
+			break;
+		}
+	}
 };
 
 class Carrot : public Ingredient
 {
 public:
-	Carrot() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Carrot() : Ingredient(Resources::carrot) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Carrot() {}
+
+	int destroy(int utensilio) {
+		ingredientPool_->deleteIngredient(it_);
+
+		switch (utensilio) {
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		case 2:
+			return 2;
+			break;
+		}
+	}
 };
 
 class Lettuce : public Ingredient
 {
 public:
-	Lettuce() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Lettuce() : Ingredient(Resources::lettuce) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Lettuce() {}
+
+	int destroy(int utensilio) {
+		ingredientPool_->deleteIngredient(it_);
+
+		switch (utensilio) {
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		case 2:
+			return 2;
+			break;
+		}
+	}
 };
 
 class Mushroom : public Ingredient
 {
 public:
-	Mushroom() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Mushroom() : Ingredient(Resources::mushroom) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Mushroom() {}
+
+	int destroy(int utensilio) {
+		ingredientPool_->deleteIngredient(it_);
+
+		switch (utensilio) {
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		case 2:
+			return 2;
+			break;
+		}
+	}
 };
 
 class Sausage : public Ingredient
 {
 public:
-	Sausage() : Ingredient() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Sausage() : Ingredient(Resources::sausage) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
 	~Sausage() {}
+
+	int destroy(int utensilio) {
+		ingredientPool_->deleteIngredient(it_);
+
+		switch (utensilio) {
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		case 2:
+			return 2;
+			break;
+		}
+	}
 };

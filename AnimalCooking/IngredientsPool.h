@@ -16,6 +16,8 @@ public:
 	void deleteIngredient(vector<Ingredient*>::iterator it) { ingredients_.erase(it); }
 	void clearIngredients();
 
+	inline const std::vector<Ingredient*>& getIngredients() { return ingredients_; }
+
 private:
 	std::vector<Ingredient*> ingredients_;
 };
