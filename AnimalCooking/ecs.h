@@ -19,6 +19,9 @@ enum CmpId : CmpIdType {
 	GameSave,
 
 	Attack, //Player
+	PlayerController,
+	PlayerViewer,
+	PlayerMotion,
 
 	IngredientsPool, //Pools
 
