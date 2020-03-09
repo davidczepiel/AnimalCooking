@@ -22,6 +22,7 @@ public:
 		t = new Tomato();
 		t->setTransform(50, 50, Vector2D(400, 100), Vector2D(-1, 1));
 		e->getComponent<IngredientsPool>(ecs::IngredientsPool)->addIngredient(t);
+		t->destroy(0);
 	}
 	void update() override {
 		stage->update();

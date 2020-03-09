@@ -8,7 +8,7 @@
 class Ingredient
 {
 public:
-	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2), ingredientPool_(nullptr), type_(type) { cout << type << endl; } //2 de prueba
+	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2), ingredientPool_(nullptr), type_(type) { } //2 de prueba
 	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
 
 	virtual void update();
@@ -39,7 +39,7 @@ public:
 	inline Resources::IngredientType getType() { return type_; }
 
 	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
-	virtual int destroy(int utensilio) = 0;	//utensilio es un enum y debe devoñver otro enum (pendiente de hacer)
+	virtual int destroy(int utensilio) = 0;	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
 protected:
 	Vector2D size_, pos_, vel_;
 	Texture* texture_;
