@@ -30,7 +30,6 @@ void InputHandler::update(SDL_Event& event) {
 		onMouseButtonChange(event, false);
 		break;
 	}
-
 }
 
 void InputHandler::clearState() {
