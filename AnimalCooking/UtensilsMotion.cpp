@@ -8,7 +8,7 @@ void UtensilsMotion::update() {
 	for (Utensil* b : pool_) {
 		cout << "b";
 		if (b->inUse()) {
-			b->setPos(b->getPos()+ b->getVel());
+			b->update();
 		}
 	}
 }

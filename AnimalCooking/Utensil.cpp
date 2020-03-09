@@ -35,23 +35,28 @@ Utensil::Utensil(Vector2D pos, Transform* p) {
 
 void Utensil::update() {
 
-	if (myState != State::playerHand) {
-		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
-			myDirt_ += getDirtSpeed_;
-			if (myDirt_ >= maxDirt_)
-				dirty_ = true;
+	if (isInUse) {
+		pos_.setX(pos_.getX()+vel_.getX());
+		pos_.setY(pos_.getY() + vel_.getY());
+
+		if (myState != State::playerHand) {
+			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+				myDirt_ += getDirtSpeed_;
+				if (myDirt_ >= maxDirt_)
+					dirty_ = true;
+			}
+			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
+			if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
+				cout << "Hacer un brilli brilli o lo que sea" << endl;
+			}
 		}
-		// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
-		if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
-			cout << "Hacer un brilli brilli o lo que sea" <<endl;
-		}
-	}
-	else
-	{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
-		if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
-			frameAttack++;
-			if (frameAttack >= 5)
-				frameAttack = 0;
+		else
+		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
+			if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
+				frameAttack++;
+				if (frameAttack >= 5)
+					frameAttack = 0;
+			}
 		}
 	}
 }
@@ -60,20 +65,22 @@ void Utensil::update() {
 Entity* Utensil::onHit(Vector2D dir) {
 	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
 		lastAttack_ = SDL_GetTicks();
+		Entity* ingrediente = nullptr;
 		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
-		lastFrameTick = SDL_GetTicks();
-		//Preparo la posición de donde realizo el ataque
-		Vector2D velNormalizada = vel_.normalize();
-		Vector2D posDelAtaque;
-		posDelAtaque.setX(pos_.getX()+(velNormalizada.getX()*range_));
-		posDelAtaque.setY(pos_.getY()+(velNormalizada.getY()*range_)); 
-		// En posDelAtaque se encontrará la hitbox del ataque
-		// A esto se le acompara con el ancho de la hitbox y el alto para llamar llamar al gamectrl y que compruebe colisiones
-			cout << "attack"; //Crear la hitbox en la zona que corresponda
+			lastFrameTick = SDL_GetTicks();
+			//Preparo la posición de donde realizo el ataque
+			Vector2D velNormalizada = vel_.normalize();
+			SDL_Rect ataque;
+			ataque.x = pos_.getX() + (velNormalizada.getX() * range_);
+			ataque.y = pos_.getY() + (velNormalizada.getY() * range_);
+			ataque.w = attackHitBoxWidth_;
+			ataque.h = attackHitBoxHeight_;			
+			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
 		}
-		//LLamo al gamectrl o el gamelogic pasándoles la hitbox de mi ataque,
-		return nullptr; //gameCtrl->AtaqueIngredientes();   //O algo asi
+		return ingrediente; 
 	}
+	else
+		return nullptr;
 }
 void Utensil::render()const {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
@@ -128,4 +135,42 @@ void Utensil::cleanUp() {
 	}
 
 
+}
+
+
+
+///////////////////////////////////////
+
+Knife::Knife(Vector2D pos, Transform* p) :Utensil(pos, p) {
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	myType = Resources::UtensilType::Knife;
+	range_ = 100;
+	attackHitBoxWidth_ = 100;
+	attackHitBoxHeight_ = 50;
+}
+
+Mace::Mace(Vector2D pos, Transform* p ) :Utensil(pos, p){
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	myType = Resources::UtensilType::Mace;
+	range_ = 100;
+	attackHitBoxWidth_ = 100;
+	attackHitBoxHeight_ = 50;
+}
+
+
+Grater::Grater(Vector2D pos, Transform* p) :Utensil(pos, p) {
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	myType = Resources::UtensilType::Grater;
+	range_ = 100;
+	attackHitBoxWidth_ = 100;
+	attackHitBoxHeight_ = 50;
+}
+
+
+Net::Net(Vector2D pos, Transform* p) :Utensil(pos, p) {
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	myType = Resources::UtensilType::Net;
+	range_ = 100;
+	attackHitBoxWidth_ = 100;
+	attackHitBoxHeight_ = 50;
 }

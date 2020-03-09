@@ -8,6 +8,10 @@ using namespace std;
 
 class Resources {
 public:
+	//El tipo de cada uno de los utensilios
+	enum UtensilType {
+		Knife, Mace, Grater, Net
+	};
 
 	enum TextureId : std::size_t {
 		// images basic

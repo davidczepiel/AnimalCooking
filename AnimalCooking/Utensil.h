@@ -5,6 +5,7 @@
 #include "Transform.h"
 
 
+
 class Utensil{
 
 protected:
@@ -13,6 +14,7 @@ protected:
 	{
 		floor, playerHand, shelf, sink
 	};
+	Resources::UtensilType myType;
 	State myState;
 	//Suciedad
 	int myDirt_;
@@ -57,6 +59,7 @@ public:
 	Vector2D getVel() { return vel_; }
 	Vector2D getSize() { return size_; }
 
+	int getDirt() { return myDirt_; }
 	void drop(bool suelo);
 	void pickMe();
 	void inTheWasher(bool x);
@@ -75,32 +78,32 @@ public:
 class Knife : public Utensil
 {
 public:
-	Knife(Vector2D pos, Transform* p):Utensil(pos,p){texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);}
+	Knife(Vector2D pos, Transform* p);
 	~Knife() {}
-	virtual void attack() { onHit(Vector2D(1,1)); }
+	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 class Mace : public Utensil
 {
 public:
-	Mace(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	Mace(Vector2D pos, Transform* p);
 	~Mace() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }
+	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 
 class Grater : public Utensil
 {
 public:
-	Grater(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	Grater(Vector2D pos, Transform* p);
 	~Grater() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }
+	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 class Net : public Utensil
 {
 public:
-	Net(Vector2D pos, Transform* p) :Utensil(pos, p) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo); }
+	Net(Vector2D pos, Transform* p);
 	~Net() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }
+	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
