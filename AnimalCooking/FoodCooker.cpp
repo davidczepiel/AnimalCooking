@@ -12,8 +12,9 @@ void FoodCooker::init() {
 }
 
 void FoodCooker::startCooked(Cooker *c) {
-	if (c->getCookerState() == CookerStates::full) {
+	if (c->getCookerState() == CookerStates::ready) {
 		c->setCookerState(CookerStates::cooking);
+		c->getCookerTimer()->setTime(c->getCookingTime());
 		c->getCookerTimer()->timerStart();
 	}		
 }
@@ -28,8 +29,14 @@ void FoodCooker::update() {
 			else {
 				c->setCookerState(CookerStates::cooked);
 				c->getCookerTimer()->timerReset();
+				c->getCookerTimer()->setTime(c->getCookingTime() / 2); //Tiempo de quemado a definir, de momento tQuemado = tCocinar/2
 				//c->setTexture();
 			}
+		}
+		else if (c->getCookerState() == CookerStates::cooked && c->getCookerTimer()->isTimerEnd()) {
+			c->setCookerState(CookerStates::burned);
+			c->getCookerTimer()->timerReset();
+			//c->setTexture();
 		}
 	}
 }

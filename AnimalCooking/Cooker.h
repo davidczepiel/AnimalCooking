@@ -1,19 +1,15 @@
 #pragma once
-//#include "Food.h"
 #include "Vector2D.h"
 #include <SDL_stdinc.h>
 #include "Texture.h"
 #include "Timer.h"
 
-enum class CookerStates { empty, full, cooking, cooked };
-
+enum class CookerStates { empty, ready, cooking, cooked, burned };
 class Food;
 class Cooker {
 public:
 	virtual ~Cooker();
-	virtual void update();
 	virtual void draw();
-	virtual void startCooking(Food* food);
 
 	void setPos(Vector2D& pos) { pos_.set(pos); }
 	void setSize(Vector2D& size) { size_.set(size); }
@@ -21,7 +17,6 @@ public:
 	void setTexture(Texture* text) { texture_ = text; }
 	void setCookerState(CookerStates s) { state_ = s; };
 
-	Food* getCooking();
 	inline const Vector2D& getPos() const { return pos_; }
 	inline int getWidth() const { return size_.getX(); }
 	inline int getHeight() const { return size_.getY(); }
@@ -32,10 +27,11 @@ public:
 	Texture* getCookingTexture() { return nullptr; };
 	Texture* getCookedTexture() { return nullptr; };
 	Timer* getCookerTimer() { return timer_; };
+	Uint32 getCookingTime() { return cookingTime_; }
+	vector<Food*>& getFoods() { return foods_; }
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);
-	void stopCooking();
 
 	Vector2D pos_;
 	Vector2D size_;
@@ -43,16 +39,12 @@ protected:
 
 	Texture* texture_;
 
-	Food* imCooking;
-	Food* imBurning;
-	Uint32 startTime;
-	Uint32 cookingTime;
-	Uint32 burningTime;
-	bool isBurned;
-
 	CookerStates state_;
 
 	Timer* timer_;
+	Uint32 cookingTime_;
+
+	vector<Food*> foods_;
 };
 
 class Sarten : public Cooker {

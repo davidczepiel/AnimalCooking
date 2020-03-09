@@ -7,20 +7,20 @@ class CookerPool: public Component {
 public:
 	CookerPool(size_t sizeIni = 5);
 	~CookerPool();
-	void update() override;
 
-	vector <Cooker*> getPool() { return pool_; };
-	//void draw() override;
+	vector <Cooker*>& getPool() { return pool_; };
 
 	template<typename C, typename ...Targs>
 	C* addCooker(Targs&& ...mArgs) {
 		assert(pool_.size() < pool_.capacity());
 		C* c(new C(std::forward<Targs>(mArgs)...));
 		pool_.emplace_back(c);
+		return c;
 	}
 	Cooker* addCooker(Cooker* c) {
 		assert(pool_.size() < pool_.capacity());
 		pool_.emplace_back(c);
+		return c;
 	}
 
 private:

@@ -11,17 +11,3 @@ CookerPool::~CookerPool()
 		delete en;
 	}
 }
-
-void CookerPool::update()
-{
-	for (Cooker* en : pool_) {
-		en->update();
-	}
-}
-
-//void CookerPool::draw()
-//{
-//	for (Cooker* en : cookers) {
-//		en->draw();
-//	}
-//}
