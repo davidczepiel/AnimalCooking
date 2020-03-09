@@ -35,6 +35,7 @@ void AnimalCooking::initGame() {
 	game_->getFSM()->refresh();
 
 
+
 }
 
 void AnimalCooking::closeGame() {
@@ -46,7 +47,6 @@ void AnimalCooking::start() {
 	
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
-
 
 		handleInput();
 		update();
@@ -74,10 +74,9 @@ void AnimalCooking::handleInput() {
 }
 
 void AnimalCooking::update() {
-	game_->getFSM()->currentState()->update();
-	game_->getFSM()->refresh();
 
-	
+	game_->getFSM()->currentState()->update();
+
 }
 
 void AnimalCooking::render() {

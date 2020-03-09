@@ -47,7 +47,7 @@ void SDLGame::initSDL() {
 	SDL_RenderPresent(renderer_);
 
 	// hide cursor by default
-	//SDL_ShowCursor(0);
+	SDL_ShowCursor(0);
 
 }
 
