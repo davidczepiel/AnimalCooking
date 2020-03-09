@@ -26,7 +26,7 @@ void PlayerController::update()
 void PlayerController::joystickUpdate()
 {
 	GPadController* gpad = GPadController::instance();
-	gpad->update();
+
 	if (gpad->joysticksInitialised()) {
 		//Axis------------------------
 		if (gpad->xvalue(id_, 1) > 0 ||

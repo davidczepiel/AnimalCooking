@@ -43,7 +43,7 @@ private:
 
 	//--------------Variables-------------------------
 	//Jostick
-	const int m_joystickDeadZone = 10000;
+	const int m_joystickDeadZone = 100;
 	vector<SDL_Joystick*> m_joysticks;
 	vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;	//contiene los controladores con axis multiples(uno para cada stick)
 	bool m_bJoysticksInitialised;
