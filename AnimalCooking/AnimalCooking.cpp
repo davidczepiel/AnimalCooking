@@ -30,9 +30,11 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-	game_->getFSM()->pushState(new PlayState());
-	//game_->getFSM()->pushState(new MenuState());
+
+	//game_->getFSM()->pushState(new PlayState());
+	game_->getFSM()->pushState(new MenuState());
 	game_->getFSM()->refresh();
+
 
 
 
@@ -47,6 +49,7 @@ void AnimalCooking::start() {
 	
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
+
 
 		handleInput();
 		update();
@@ -74,9 +77,10 @@ void AnimalCooking::handleInput() {
 }
 
 void AnimalCooking::update() {
-
 	game_->getFSM()->currentState()->update();
+	game_->getFSM()->refresh();
 
+	
 }
 
 void AnimalCooking::render() {

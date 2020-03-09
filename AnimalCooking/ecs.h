@@ -29,9 +29,6 @@ enum CmpId : CmpIdType {
 	SDLRendererFrame,
 	StaticRenderer,
 
-	IngredientMotion, //Ingredients
-	IngredientViewer,
-
 	GameManager, //Utils
 	ScoreManager,
 	ScoreViewer,

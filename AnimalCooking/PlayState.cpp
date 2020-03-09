@@ -17,5 +17,7 @@ void PlayState::goToEndState() {
 }
 void PlayState::goToPauseState() {
 	SDLGame::instance()->getFSM()->pushState(new PauseState());
+
 }
+
 

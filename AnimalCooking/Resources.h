@@ -72,14 +72,6 @@ public:
 		ARIAL16, ARIAL24,
 	};
 
-	enum IngredientType { 
-		tomato, 
-		carrot, 
-		sausage, 
-		mushroom,
-		lettuce 
-	};
-
 	struct FontInfo {
 		Level level;
 		FontId id;
