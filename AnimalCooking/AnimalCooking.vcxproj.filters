@@ -229,14 +229,17 @@
     <ClCompile Include="DishViewer.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
-    <ClCompile Include="InOutFood.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
     <ClCompile Include="Food.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
     <ClCompile Include="provisional1.cpp" />
     <ClCompile Include="Provisional2.cpp" />
+    <ClCompile Include="DishStack.cpp">
+      <Filter>Source Files\Dishes</Filter>
+    </ClCompile>
+    <ClCompile Include="Dish.cpp">
+      <Filter>Source Files\Dishes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -506,9 +509,6 @@
     <ClInclude Include="DishMotion.h">
       <Filter>Header Files\Dishes</Filter>
     </ClInclude>
-    <ClInclude Include="InOutFood.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
     <ClInclude Include="DishFinisher.h">
       <Filter>Header Files\Dishes</Filter>
     </ClInclude>
@@ -520,6 +520,12 @@
     </ClInclude>
     <ClInclude Include="provisional1.h" />
     <ClInclude Include="Provisional2.h" />
+    <ClInclude Include="DishStack.h">
+      <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
+    <ClInclude Include="Dish.h">
+      <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

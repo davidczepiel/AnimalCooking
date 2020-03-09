@@ -1,13 +1,12 @@
 #pragma once
-#include "Component.h"
 #include "Food.h"
 #include <list>
 using namespace std;
-class InOutFood : public Component
+class Dish
 {
  public:
-	InOutFood();
-	~InOutFood() { }
+	Dish();
+	~Dish() { }
 	//Añade un ingrediente al plato	
 	void addFood(Food* f);
 	
