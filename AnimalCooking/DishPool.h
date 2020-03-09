@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
-#include <vector>
+#include <list>
+#include"Dish.h"
+using namespace std;
 
 class DishPool : public Component
 {
@@ -8,6 +10,10 @@ public:
 	DishPool();
 	~DishPool() { }
 
-private:
+	void addDish(Dish* d);
+	void removeDish(Dish* d);
+	int getNumDishes() { return dishes_.size(); }
 
+private:
+	list<Dish*> dishes_;
 };

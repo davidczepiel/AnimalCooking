@@ -7,12 +7,17 @@
 #include "Entity.h"
 #include "SDLGame.h"
 #include "Manager.h"
+#include "DishPool.h":
+#include "DishStack.h"
 class PlayState : public State
 {
 public:
 	PlayState() : State() {
-		Entity* inout = stage->addEntity();
-
+		Entity* dishes = stage->addEntity();
+		 dp=dishes->addComponent<DishPool>();
+	  ds = dishes->addComponent<DishStack>(5);
+		
+		
 	}
 	void update() override
 	{
@@ -29,13 +34,25 @@ public:
 			f->addFood(new Provisional2());
 		else if (ih->isKeyDown(SDLK_d))
 			f->takeFood();
-	}*/
+	 */
+
+		/*if (ih->isKeyDown(SDLK_UP))
+		{
+			ds->getDish();
+		}
+		else if (ih->isKeyDown(SDLK_DOWN)) {
+			ds->removeDish();
+		}*/
+
+
     }
 	
 	void draw() override {};
 
 	//virtual void handleEvent();
 private:
+	DishPool* dp = nullptr;
+	DishStack* ds = nullptr;
 	
 };
 
