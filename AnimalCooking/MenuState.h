@@ -5,13 +5,9 @@
 #include "Transform.h"
 #include "SDLGame.h"
 #include "AnimalCooking.h"
-#include "ConfigState.h"
-#include "MapState.h"
-#include "CreditsState.h"
 
 class MenuState: public State
 {
-private:
 	SDLGame* game_;
 
 	Entity* playMenuButton_ = nullptr;
@@ -26,6 +22,6 @@ private:
 	static void creditsMenuCallback();	
 public:
 	MenuState();
-	~MenuState() {}
+	~MenuState() {};
 };
 
