@@ -1,10 +1,10 @@
 #include "Food.h"
 #include "SDL_macros.h"
 
-Food::Food(Vector2D position)
+Food::Food(Vector2D position, Resources::FoodType type)
 {
 	position_ = position;
-
+	type_ = type;
 	foodPool_ = nullptr;
 	dir_ = Vector2D();
 }
@@ -12,7 +12,8 @@ Food::Food(Vector2D position)
 void Food::setFoodPool(FoodPool* foodPool)
 {
 	foodPool_ = foodPool;
-	iterator_ = --foodPool->getPool()->end();
+	std::vector<Food*>::iterator it = --foodPool->getPool()->end();
+	iterator_ = it;
 }
 
 void Food::Destroy()
