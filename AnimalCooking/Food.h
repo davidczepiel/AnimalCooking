@@ -2,8 +2,8 @@
 #include "FoodPool.h"
 class Food 
 {
-private:
-	Food();
+protected:
+	Food(Vector2D position);
 
 	Vector2D position_;
 	Vector2D dir_;
@@ -17,7 +17,6 @@ public:
 	void setSpeed(Vector2D newDir) { dir_ = newDir; }
 	inline Vector2D getSpeed() { return dir_; }
 
-	virtual void update();
-	//Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
-	virtual void draw() = 0;
+	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
+	virtual void draw() = 0; //Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
 };

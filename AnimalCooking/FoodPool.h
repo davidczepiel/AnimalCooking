@@ -3,15 +3,6 @@
 #include "ObjectPool.h"
 class Food;
 
-enum FoodType {
-	SlicedTomato,
-	SmashedTomato,
-	SlicedLettuce,
-	WrongFood,
-	RawMeat,
-	CookedMeat
-};
-
 class FoodPool : public Component
 {
 public:

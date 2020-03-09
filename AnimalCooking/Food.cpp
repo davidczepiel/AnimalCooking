@@ -1,8 +1,12 @@
 #include "Food.h"
+#include "SDL_macros.h"
 
-Food::Food()
+Food::Food(Vector2D position)
 {
+	position_ = position;
+
 	foodPool_ = nullptr;
+	dir_ = Vector2D();
 }
 
 void Food::setFoodPool(FoodPool* foodPool)
