@@ -65,7 +65,7 @@ void PlayerController::joystickUpdate()
 
 void PlayerController::keyUpdate()
 {
-	KeyBoardController* keyboard = KeyBoardController::instance();
+	InputHandler* keyboard = InputHandler::instance();
 
 	if (keyboard->keyDownEvent()) {
 		if (keyboard->isKeyDown(keys.up))  tr_->setVelY(-1);

@@ -11,6 +11,7 @@
 		}
 	}
 }*/
+
 void PlayState::goToEndState() {
 	SDLGame::instance()->getFSM()->pushState(new EndState());
 }

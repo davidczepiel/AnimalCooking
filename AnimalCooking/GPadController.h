@@ -2,7 +2,7 @@
 #include <vector>
 #include <SDL_joystick.h>
 #include "Vector2D.h"
-
+#include <SDL.h>
 using namespace std;
 
 class GPadController {
@@ -18,7 +18,7 @@ public:
 		}
 		return instance_.get();
 	}
-	void update();
+	void update(SDL_Event& event);
 
 	inline bool joysticksInitialised() const{
 		return m_bJoysticksInitialised;
@@ -43,7 +43,7 @@ private:
 
 	//--------------Variables-------------------------
 	//Jostick
-	const int m_joystickDeadZone = 100;
+	const int m_joystickDeadZone = 10000;
 	vector<SDL_Joystick*> m_joysticks;
 	vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;	//contiene los controladores con axis multiples(uno para cada stick)
 	bool m_bJoysticksInitialised;

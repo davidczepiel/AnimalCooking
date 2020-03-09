@@ -93,157 +93,61 @@ double GPadController::yvalue(int joy, int stick)
     }
     return 0;
 }
-void GPadController::update()
+void GPadController::update(SDL_Event &event)
 {
-    SDL_Event event;
-    /*while (SDL_PollEvent(&event))
+ 
+    if (event.type == SDL_JOYAXISMOTION)
     {
-        if (event.type == SDL_JOYAXISMOTION)
+        int whichOne = event.jaxis.which;
+        // left stick move left or right
+        if (event.jaxis.axis == 0)
         {
-            int whichOne = event.jaxis.which;
-            // stick izquierdo movimiento izq o dcho
-            if (event.jaxis.axis == 0)
+            if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
             {
-				//the current position of the axis (range: -32768 to 32767
-				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
-                cout << aux << endl;
-
-                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setX(aux);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].first->setX(0);
-                }
+                m_joystickValues[whichOne].first->setX(event.jaxis.value/ 32678.0);
             }
-            //  stick izquierdo movimiento arriba o abajo
-            if (event.jaxis.axis == 1)
+            else
             {
-				//the current position of the axis (range: -32768 to 32767
-				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
-
-                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setY(aux);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].first->setY(0);
-                }
-            }
-            // stick dcho movimiento izq o dcho
-            if (event.jaxis.axis == 3)
-            {
-				//the current position of the axis (range: -32768 to 32767
-				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
-
-                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setX(aux);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].second->setX(0);
-                }
-            }
-            // stick dcho movimiento arriba o abajo
-            if (event.jaxis.axis == 4)
-            {
-				//the current position of the axis (range: -32768 to 32767
-				double aux = event.jaxis.value / 32767;	//<<-{-1,1}
-
-                if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setY(aux);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].second->setY(0);
-                }
+                m_joystickValues[whichOne].first->setX(0);
             }
         }
-        if (event.type == SDL_JOYBUTTONDOWN)
+        // left stick move up or down
+        if (event.jaxis.axis == 1)
         {
-            int whichOne = event.jaxis.which;
-            m_buttonStates[whichOne][event.jbutton.button] = true;
+            if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
+            {
+                m_joystickValues[whichOne].first->setY(event.jaxis.value / 32678.0);
+            }
+            else
+            {
+                m_joystickValues[whichOne].first->setY(0);
+            }
         }
-        if (event.type == SDL_JOYBUTTONUP)
+        // right stick move left or right
+        if (event.jaxis.axis == 3)
         {
-            int whichOne = event.jaxis.which;
-            m_buttonStates[whichOne][event.jbutton.button] = false;
+            if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
+            {
+                m_joystickValues[whichOne].second->setX(event.jaxis.value / 32678.0);
+            }
+            else
+            {
+                m_joystickValues[whichOne].second->setX(0);
+            }
         }
-    }*/
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_JOYAXISMOTION)
+        // right stick move up or down
+        if (event.jaxis.axis == 4)
         {
-            int whichOne = event.jaxis.which;
-            // left stick move left or right
-            if (event.jaxis.axis == 0)
+            if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
             {
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setX(1);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setX(-1);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].first->setX(0);
-                }
+                m_joystickValues[whichOne].second->setY(event.jaxis.value / 32678.0);
             }
-            // left stick move up or down
-            if (event.jaxis.axis == 1)
+            else
             {
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setY(1);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].first->setY(-1);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].first->setY(0);
-                }
-            }
-            // right stick move left or right
-            if (event.jaxis.axis == 3)
-            {
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setX(1);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setX(-1);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].second->setX(0);
-                }
-            }
-            // right stick move up or down
-            if (event.jaxis.axis == 4)
-            {
-                if (event.jaxis.value > m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setY(1);
-                }
-                else if (event.jaxis.value < -m_joystickDeadZone)
-                {
-                    m_joystickValues[whichOne].second->setY(-1);
-                }
-                else
-                {
-                    m_joystickValues[whichOne].second->setY(0);
-                }
+                m_joystickValues[whichOne].second->setY(0);
             }
         }
     }
+    
 }
 
