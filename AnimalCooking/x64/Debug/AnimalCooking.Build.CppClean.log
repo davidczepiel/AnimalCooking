@@ -39,7 +39,6 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\fontsmanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\font.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\entity.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\dishviewer.obj
-u:\hlocal\animalcooking\animalcooking\x64\debug\dishstack.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\scoremanager.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\resources.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
@@ -81,8 +80,9 @@ u:\hlocal\animalcooking\animalcooking\x64\debug\scoreviewer.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\vector2d.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\playstate.obj
 u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.obj
-u:\hlocal\animalcooking\animalcooking\animalcooking.exe
+u:\hlocal\animalcooking\animalcooking\x64\debug\dishstack.obj
 u:\hlocal\animalcooking\animalcooking\animalcooking.ilk
+u:\hlocal\animalcooking\animalcooking\animalcooking.exe
 u:\hlocal\animalcooking\animalcooking\animalcooking.pdb
 u:\hlocal\animalcooking\animalcooking\x64\debug\animalcooking.res
 u:\hlocal\animalcooking\\animalcooking\animalcooking.pdb

@@ -6,7 +6,7 @@ class DishStack : public Component
 public:
 
 	DishStack(int maxDishes_);
-	~DishStack() { }
+	 ~DishStack() { }
 
 	void init() override;
 	Dish* getDish();

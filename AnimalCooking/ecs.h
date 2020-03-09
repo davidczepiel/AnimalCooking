@@ -25,6 +25,7 @@ enum CmpId : CmpIdType {
 	 
 	DishPool,//Dishes
 	DishStack,
+	DishViewer,
 
 	IngredientsPool,//Pools
 	FoodPool,

@@ -19,12 +19,14 @@ class Dish
 	
 	//Mueve el selector de comida atrás
 	void previousFood();
-	
+	void render();
+
 	list<Food*> getList();
 	inline bool isEmpty();
 	
  private:
 	 list<Food*>::iterator currentFood;
 	 list<Food*> foods_;
+
 };
 

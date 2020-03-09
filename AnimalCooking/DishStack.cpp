@@ -16,9 +16,7 @@ Dish* DishStack::getDish()
 	if (dishPool->getNumDishes() < maxDishes)
 	{
 		Dish* d = new Dish();
-		dishPool->addDish(d);
-		cout << "Creado nuevo plato"<<dishPool->getNumDishes()<<endl;
-		
+		dishPool->addDish(d);		
 		return d;
 	}
 	else return nullptr;
@@ -27,5 +25,4 @@ Dish* DishStack::getDish()
 void DishStack::removeDish(Dish* d)
 {
 	if(d!=nullptr && dishPool->getNumDishes()>0)dishPool->removeDish(d);
-	cout << "Plato a la mierda" << dishPool->getNumDishes() << endl;
 }
