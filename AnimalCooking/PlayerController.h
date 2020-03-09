@@ -9,7 +9,7 @@
 
 class PlayerController : public Component {
 public:
-	PlayerController(int id = 0) :Component(ecs::PlayerController), id_(id) {}
+	PlayerController(int id = 0) :Component(ecs::PlayerController), id_(id) {} 
 	void init() override;
 	void update() override;
 private:

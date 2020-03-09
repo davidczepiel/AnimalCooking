@@ -68,7 +68,7 @@ void PlayerController::keyUpdate()
 	InputHandler* keyboard = InputHandler::instance();
 
 	if (keyboard->keyDownEvent()) {
-		if (keyboard->isKeyDown(keys.up))  tr_->setVelY(-1);
+		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); }
 		else if (keyboard->isKeyDown(keys.down)) tr_->setVelY(1);
 		else tr_->setVelY(0);
 

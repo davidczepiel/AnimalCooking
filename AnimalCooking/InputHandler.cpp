@@ -12,7 +12,6 @@ InputHandler::~InputHandler() {
 
 void InputHandler::update(SDL_Event& event) {
 
-	clearState();
 	switch (event.type) {
 	case SDL_KEYDOWN:
 		onKeyDown(event);
