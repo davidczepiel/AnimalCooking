@@ -177,6 +177,7 @@
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
+    <ClInclude Include="DishStack.h" />
     <ClInclude Include="DishViewer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="Entity.h" />
@@ -202,7 +203,7 @@
     <ClInclude Include="IngredientSpawn.h" />
     <ClInclude Include="IngredientsPool.h" />
     <ClInclude Include="IngredientViewer.h" />
-    <ClInclude Include="InOutFood.h" />
+    <ClInclude Include="Dish.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InsertExpel.h" />
     <ClInclude Include="jute.h" />
@@ -217,6 +218,8 @@
     <ClInclude Include="PlayerMotion.h" />
     <ClInclude Include="PlayerViewer.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="provisional1.h" />
+    <ClInclude Include="Provisional2.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
@@ -269,6 +272,7 @@
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
+    <ClCompile Include="DishStack.cpp" />
     <ClCompile Include="DishViewer.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -288,7 +292,7 @@
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
-    <ClCompile Include="InOutFood.cpp" />
+    <ClCompile Include="Dish.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
     <ClCompile Include="jute.cpp" />
@@ -303,6 +307,8 @@
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="provisional1.cpp" />
+    <ClCompile Include="Provisional2.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
