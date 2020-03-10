@@ -21,12 +21,23 @@ class Dish
 	void previousFood();
 	void render();
 
-	list<Food*> getList();
-	inline bool isEmpty();
+
+	//Getters y setters
+	inline list<Food*> getFoodList() { return foods_; }
+	inline bool isEmpty() { return foods_.empty(); }
+	inline Vector2D getPos() { return pos; }
+	inline Vector2D getVel() { return vel; }
+	inline int getHeight() { return height; }
+	inline int getWidth() { return width; }
+	inline void setPos(Vector2D value) { pos = value; }
+	inline void setVel(Vector2D value) { vel = value; }
 	
  private:
 	 list<Food*>::iterator currentFood;
 	 list<Food*> foods_;
-
+	 Vector2D pos;
+	 Vector2D vel;
+	 int height;
+	 int width;
 };
 

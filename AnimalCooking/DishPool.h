@@ -14,6 +14,7 @@ public:
 	void addDish(Dish* d);
 	void removeDish(Dish* d);
 	int getNumDishes() { return dishes_.size(); }
+	inline list<Dish*> getDishes() { return dishes_; }
 
 private:
 	list<Dish*> dishes_;

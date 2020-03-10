@@ -5,17 +5,9 @@ Dish::Dish()
 
 }
 
-list<Food*> Dish::getList()
-{
-	return foods_;
-}
 
 
 
-bool Dish::isEmpty()
-{
-	return foods_.empty();
-}
 // si la lista estaba vacía pone el iterador al principio
 void Dish::addFood(Food* f)
 {
@@ -49,4 +41,11 @@ void Dish::nextFood() {
 void Dish::previousFood() {
 	if (!foods_.empty() && currentFood != foods_.begin())
 		currentFood--;
+}
+void Dish::render() {
+	int i = height;
+	for (auto i = foods_.begin(); i != foods_.end(); i++)
+	{
+		(*i)->draw();
+	}
 }
