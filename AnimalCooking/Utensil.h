@@ -68,7 +68,7 @@ public:
 	inline void setPos(Vector2D pos) { pos_.set(pos); }
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	void changeDirtySpeed(int speedModifier);
-	bool inUse() { return inUse; }
+	bool inUse() { return isInUse; }
 	void setInUse(bool x) { isInUse = x; }
 
 };
