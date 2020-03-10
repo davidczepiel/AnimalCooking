@@ -9,6 +9,7 @@ public:
 	FoodPool();
 	vector<Food*>* getPool();
 	void AddFood(Food* food);
+	void RemoveFood(std::vector<Food*>::iterator it);
 private:
 	vector<Food*> foods_;
 };
