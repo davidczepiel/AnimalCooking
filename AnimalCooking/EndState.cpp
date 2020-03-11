@@ -4,32 +4,18 @@ EndState::EndState() :State() {
 	returnToMapButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
 		SDLGame::instance()->getWindowHeight() / 2 - 125), Vector2D(), 300, 100, 0);
 	returnToMapButton->addComponent<ButtonBehaviour>(goToMapState);
-	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton1), nullptr);
 	Entity* returnToLevelButton = stage->addEntity();
 	returnToLevelButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 -150,
 		SDLGame::instance()->getWindowHeight() / 2 ), Vector2D(), 300, 100, 0);
 	returnToLevelButton->addComponent<ButtonBehaviour>(goToLoadState);
-	returnToLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	Entity* returnToMenuButton = stage->addEntity();
-	returnToMenuButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
-		SDLGame::instance()->getWindowHeight() / 2 +150), Vector2D(), 300, 100, 0);
-	returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState);
-	returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
-
+	returnToLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton2), nullptr);
 }
 void EndState::goToLoadState() {
-	goToMapState();
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Nivel1));
+	cout << "vamos p'a la partida";
+	/*Nosequé->fsm()->cambiaestado()*/
 }
 void EndState::goToMapState() {
-	FSM* fsm = SDLGame::instance()->getFSM();
-	for (int i = 0; i < 2; i++)
-	{
-		fsm->popState();
-	}
-
-}
-void EndState::goToMenuState() {
-	goToMapState();
-	SDLGame::instance()->getFSM()->popState();
+	cout << "vamos p'al mapa";
+	/*Nosequé->fsm()->cambiaestado()*/
 }

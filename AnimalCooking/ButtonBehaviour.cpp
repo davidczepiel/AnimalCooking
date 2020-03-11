@@ -1,6 +1,5 @@
 #include "SDL_macros.h"
 #include "ButtonBehaviour.h"
-#include "Entity.h"
 
 ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback) : Component(ecs::ButtonBehaviour)
 {

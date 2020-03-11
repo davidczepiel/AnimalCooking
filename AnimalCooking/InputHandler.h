@@ -26,8 +26,7 @@ public:
 	}
 
 	// update the state
-	void update(SDL_Event& event);
-	void clearState();
+	void update();
 
 	// keyboard
 	inline bool keyDownEvent() {
@@ -81,6 +80,7 @@ public:
 
 private:
 	InputHandler();
+	void clearState();
 
 	inline void onKeyDown(SDL_Event &event) {
 		isKeyDownEvent_ = true;

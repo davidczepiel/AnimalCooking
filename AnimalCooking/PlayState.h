@@ -1,32 +1,19 @@
 #pragma once
 
 #include "State.h"
-#include "EndState.h"
-#include "PauseState.h"
-#include "Manager.h"
-#include "PlayerController.h"
-#include "PlayerMotion.h"
-#include "PlayerViewer.h"
-#include "Entity.h"
+#include "Food.h"
+#include "FoodMotion.h"
+#include "FoodViewer.h"
 
 class PlayState : public State
 {
 public:
-	PlayState() : State() {
-		
-		Entity* player = stage->addEntity();
-		player->addComponent<Transform>();
-		player->addComponent<PlayerMotion>();
-		player->addComponent<PlayerController>();
-		player->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
-		
-	}
+	PlayState() : State() {}
+	void update() override { cout << "Me gustan las patatas" << endl; };
+	void draw() override {};
 
-
-	
+	//virtual void handleEvent();
 private:
 
-	static void goToEndState();
-	static void goToPauseState();
 };
 
