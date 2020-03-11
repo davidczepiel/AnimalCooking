@@ -10,7 +10,6 @@ enum CmpId : CmpIdType {
 
 	GPadController, //Controls
 	KeyBoardController,
-	IngredientMotion,
 
 	AIIngredient, //AI
 
@@ -20,20 +19,20 @@ enum CmpId : CmpIdType {
 	GameSave,
 
 	Attack, //Player
-	PlayerController,
-	PlayerViewer,
-	PlayerMotion,
 
 	IngredientsPool, //Pools
 	UtensilsPool,
 	UtensilsViewer,
 	UtensilsMotion,
+	FoodViewer,//Food
+	FoodMotion,
 
+	IngredientsPool,//Pools
+	FoodPool,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
 	StaticRenderer,
-	IngredientViewer,
 
 	GameManager, //Utils
 	ScoreManager,

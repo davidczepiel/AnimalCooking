@@ -160,9 +160,6 @@
     <ClCompile Include="FoodPool.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
-    <ClCompile Include="FoodTextures.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
     <ClCompile Include="FoodViewer.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
@@ -262,6 +259,8 @@
     </ClCompile>
     <ClCompile Include="ConfigState.cpp">
       <Filter>Source Files\FSM</Filter>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Food</Filter>
     </ClCompile>
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
@@ -470,9 +469,6 @@
       <Filter>Header Files\Food</Filter>
     </ClInclude>
     <ClInclude Include="FoodMotion.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodTextures.h">
       <Filter>Header Files\Food</Filter>
     </ClInclude>
     <ClInclude Include="CookerPool.h">

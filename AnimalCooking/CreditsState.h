@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-#include "FSM.h"
+
 #include "ButtonBehaviour.h"
 #include "TexturesManager.h"
 #include "SDLTexturesManager.h"
@@ -11,10 +11,10 @@
 class CreditsState :
 	public State
 {
-private:
-	static void GoBackMenu();
+
 public:
 	CreditsState();
+	static void GoBackMenu();
 
 };
 
