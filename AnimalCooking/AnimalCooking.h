@@ -4,7 +4,6 @@
 #include "EndState.h"
 #include "Manager.h"
 #include "SDLGame.h"
-#include "MenuState.h"
 #include "FSM.h"
 
 class AnimalCooking {
