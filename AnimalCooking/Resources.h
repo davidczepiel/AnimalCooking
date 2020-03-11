@@ -8,6 +8,10 @@ using namespace std;
 
 class Resources {
 public:
+	//El tipo de cada uno de los utensilios
+	enum UtensilType {
+		Knife, Mace, Grater, Net
+	};
 
 	enum TextureId : std::size_t {
 		// images basic
@@ -55,6 +59,14 @@ public:
 		Nivel7,
 		Nivel8 
 		//etc...
+	};
+
+	enum IngredientType {
+		tomato,
+		carrot,
+		lettuce,
+		mushroom,
+		sausage
 	};
 
 	enum AudioId : std::size_t {
@@ -111,7 +123,4 @@ public:
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp
 
-	enum FoodType {
-		SlicedTomato,
-	};
 };
