@@ -123,4 +123,7 @@ public:
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp
 
+	enum FoodType {
+		SlicedTomato,
+	};
 };

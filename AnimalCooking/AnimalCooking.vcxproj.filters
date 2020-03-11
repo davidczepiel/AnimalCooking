@@ -241,12 +241,6 @@
     <ClCompile Include="MapState.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenLoader.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
@@ -273,6 +267,15 @@
     </ClCompile>
     <ClCompile Include="UtensilsViewer.cpp">
       <Filter>Source Files\Utensils</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonBehaviour.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRenderer.cpp">
+      <Filter>Source Files\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -564,12 +567,6 @@
     <ClInclude Include="MapState.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonBehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenLoader.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
@@ -596,6 +593,12 @@
     </ClInclude>
     <ClInclude Include="UtensilsViewer.h">
       <Filter>Header Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonBehaviour.h">
+      <Filter>Header Files\FSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
