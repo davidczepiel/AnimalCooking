@@ -31,7 +31,7 @@ public:
 	Resources::FoodType getType() { return type_; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
-	virtual void draw() = 0; //Cada clase que herede de food tendrï¿½ su render donde la textura dependerï¿½ del tipo
+	virtual void draw() = 0; //Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
 };
 
 class SlicedTomato : public Food

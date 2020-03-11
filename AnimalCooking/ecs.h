@@ -22,10 +22,6 @@ enum CmpId : CmpIdType {
 
 	FoodViewer,//Food
 	FoodMotion,
-	 
-	DishPool,//Dishes
-	DishStack,
-	DishViewer,
 
 	IngredientsPool,//Pools
 	FoodPool,
