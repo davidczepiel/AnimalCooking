@@ -1,8 +1,23 @@
 #pragma once
+
 #include "Component.h"
+#include "Utensil.h"
+#include "UtensilsPool.h"
+#include "IngredientsPool.h"
+#include "GameControl.h"
+
 class GameLogic : public Component
 {
 public:
-	GameLogic();
-};
+    GameLogic();
+    ~GameLogic() {}
 
+    void init() override {}
+    void update() override {}
+    void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
+
+private:
+    IngredientsPool* ingPool;
+    FoodPool* foodPool;
+    UtensilsPool* utensilPool;
+};

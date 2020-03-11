@@ -36,8 +36,6 @@ Utensil::Utensil(Vector2D pos, Transform* p) {
 void Utensil::update() {
 
 	if (isInUse) {
-		pos_.setX(pos_.getX()+vel_.getX());
-		pos_.setY(pos_.getY() + vel_.getY());
 
 		if (myState != State::playerHand) {
 			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
@@ -45,13 +43,16 @@ void Utensil::update() {
 				if (myDirt_ >= maxDirt_)
 					dirty_ = true;
 			}
-			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
-			if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
+			//esto sería mejor que lo compruebe gamelogic por su cuenta y más tarde Transport me avisará de si me puede llevar o no, no que yo lo calcule todo el rato
+			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig  
+			/*if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
 				cout << "Hacer un brilli brilli o lo que sea" << endl;
-			}
+			}*/
 		}
 		else
 		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
+			pos_.setX(pos_.getX() + vel_.getX());
+			pos_.setY(pos_.getY() + vel_.getY());
 			if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
 				frameAttack++;
 				if (frameAttack >= 5)
@@ -62,10 +63,9 @@ void Utensil::update() {
 }
 
 //Soy llamado por el método attack de cada utensilio y le devuelvo un puntero al ongrediente que haya dado o a nullptr
-Entity* Utensil::onHit(Vector2D dir) {
+void Utensil::onHit(Vector2D dir) {
 	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
 		lastAttack_ = SDL_GetTicks();
-		Entity* ingrediente = nullptr;
 		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
 			lastFrameTick = SDL_GetTicks();
 			//Preparo la posición de donde realizo el ataque
@@ -74,13 +74,10 @@ Entity* Utensil::onHit(Vector2D dir) {
 			ataque.x = pos_.getX() + (velNormalizada.getX() * range_);
 			ataque.y = pos_.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
-			ataque.h = attackHitBoxHeight_;			
+			ataque.h = attackHitBoxHeight_;
 			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
 		}
-		return ingrediente; 
 	}
-	else
-		return nullptr;
 }
 void Utensil::render()const {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
@@ -149,7 +146,7 @@ Knife::Knife(Vector2D pos, Transform* p) :Utensil(pos, p) {
 	attackHitBoxHeight_ = 50;
 }
 
-Mace::Mace(Vector2D pos, Transform* p ) :Utensil(pos, p){
+Mace::Mace(Vector2D pos, Transform* p) :Utensil(pos, p) {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;
