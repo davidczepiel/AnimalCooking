@@ -57,6 +57,14 @@ public:
 		//etc...
 	};
 
+	enum IngredientType {
+		tomato,
+		carrot,
+		lettuce,
+		mushroom,
+		sausage
+	};
+
 	enum AudioId : std::size_t {
 		// music
 		Beat,
