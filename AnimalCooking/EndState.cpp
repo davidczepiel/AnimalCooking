@@ -4,18 +4,32 @@ EndState::EndState() :State() {
 	returnToMapButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
 		SDLGame::instance()->getWindowHeight() / 2 - 125), Vector2D(), 300, 100, 0);
 	returnToMapButton->addComponent<ButtonBehaviour>(goToMapState);
-	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton1), nullptr);
+	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
 	Entity* returnToLevelButton = stage->addEntity();
 	returnToLevelButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 -150,
 		SDLGame::instance()->getWindowHeight() / 2 ), Vector2D(), 300, 100, 0);
 	returnToLevelButton->addComponent<ButtonBehaviour>(goToLoadState);
-	returnToLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton2), nullptr);
+	returnToLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	Entity* returnToMenuButton = stage->addEntity();
+	returnToMenuButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
+		SDLGame::instance()->getWindowHeight() / 2 +150), Vector2D(), 300, 100, 0);
+	returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState);
+	returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
+
 }
 void EndState::goToLoadState() {
-	cout << "vamos p'a la partida";
-	/*Nosequé->fsm()->cambiaestado()*/
+	goToMapState();
+	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Nivel1));
 }
 void EndState::goToMapState() {
-	cout << "vamos p'al mapa";
-	/*Nosequé->fsm()->cambiaestado()*/
+	FSM* fsm = SDLGame::instance()->getFSM();
+	for (int i = 0; i < 2; i++)
+	{
+		fsm->popState();
+	}
+
+}
+void EndState::goToMenuState() {
+	goToMapState();
+	SDLGame::instance()->getFSM()->popState();
 }

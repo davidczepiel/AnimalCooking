@@ -10,30 +10,24 @@ InputHandler::InputHandler() {
 InputHandler::~InputHandler() {
 }
 
-void InputHandler::update() {
+void InputHandler::update(SDL_Event& event) {
 
-	SDL_Event event;
-
-	clearState();
-
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_KEYDOWN:
-			onKeyDown(event);
-			break;
-		case SDL_KEYUP:
-			onKeyUp(event);
-			break;
-		case SDL_MOUSEMOTION:
-			onMouseMotion(event);
-			break;
-		case SDL_MOUSEBUTTONDOWN:
-			onMouseButtonChange(event, true);
-			break;
-		case SDL_MOUSEBUTTONUP:
-			onMouseButtonChange(event, false);
-			break;
-		}
+	switch (event.type) {
+	case SDL_KEYDOWN:
+		onKeyDown(event);
+		break;
+	case SDL_KEYUP:
+		onKeyUp(event);
+		break;
+	case SDL_MOUSEMOTION:
+		onMouseMotion(event);
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		onMouseButtonChange(event, true);
+		break;
+	case SDL_MOUSEBUTTONUP:
+		onMouseButtonChange(event, false);
+		break;
 	}
 }
 
