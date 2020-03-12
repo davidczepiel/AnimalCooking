@@ -13,7 +13,9 @@ using Par = pair<par, int>;
 
 struct CompareMap {
 	bool operator()(const par& par1, const par& par2) const {
-		return par1.first < par2.first || par1.second < par2.second;
+		if (par1.first < par2.first) return true;
+		else if (par1.first == par2.first) return par1.second < par2.second;
+		else return false;
 	}
 };
 
