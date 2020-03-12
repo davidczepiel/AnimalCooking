@@ -11,6 +11,9 @@ FoodDictionary::FoodDictionary() {
 	fill(1, "sarten");
 }
 
+FoodDictionary::~FoodDictionary() {
+}
+
 void FoodDictionary::fill(int c, std::string cadena)
 {
 	jute::jValue ar = jSon_[cadena];
@@ -24,5 +27,17 @@ void FoodDictionary::fill(int c, std::string cadena)
 	}
 }
 
-FoodDictionary::~FoodDictionary() {
+int FoodDictionary::getResult(const int& c, const list<int>& list)
+{
+	set<int> set;
+	for (auto elem : list) {
+		if (!set.insert(elem).second) return -1; //Devuelvo fallo si hay dos elementos repetidos
+	}
+	return getResult(c, set);
+}
+
+int FoodDictionary::getResult(const int& c, const set<int>& set)
+{
+	auto it = dictionary_.find(par(c, set));
+	return it != dictionary_.end() ? it->second : -1; //Devuelve el result si lo encuentra, y si no devuelve fallo
 }

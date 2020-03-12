@@ -1,7 +1,8 @@
 #pragma once
 #include <map>
 #include <set>
-#include <iostream>
+#include <list>
+
 #include "FoodEnum.h"
 #include "jute.h"
 
@@ -9,7 +10,6 @@ using namespace std;
 
 using par = pair<int, set<int>>;
 using Par = pair<par, int>;
-
 
 struct CompareMap {
 	bool operator()(const par& par1, const par& par2) const {
@@ -33,7 +33,13 @@ public:
 		}
 		return instance_.get();
 	}
-	
+
+	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
+	int getResult(const int& c, const list<int>& list);
+
+	//Devuelve un int identificador, o -1 si no existe dicha combinacion
+	int getResult(const int& c, const set<int>& set);
+
 private:
 	FoodDictionary();
 	void fill(int c, std::string cadena);
@@ -42,26 +48,3 @@ private:
 
 	jute::jValue jSon_;
 };
-
-
-
-
-
-//int main() {
-//	/*set<int> set1, set2;
-//
-//	set1.insert(B().n);
-//	set1.insert(C().n);
-//
-//	set2.insert(C().n);
-//	set2.insert(D().n);
-//
-//	map<par, A*, CompareMap> m;
-//
-//	m.insert(Par(par(0, set1), new B()));
-//	m.insert(Par(par(0, set2), new C()));
-//
-//	cout << m.find(par(0, set2))->second << endl;*/
-//
-//	return 0;
-//}
