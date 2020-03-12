@@ -10,8 +10,6 @@ using namespace std;
 using par = pair<int, set<int>>;
 using Par = pair<par, int>;
 
-const std::string jsonFileName;
-
 
 struct CompareMap {
 	bool operator()(const par& par1, const par& par2) const {
@@ -36,6 +34,7 @@ public:
 	
 private:
 	FoodDictionary();
+	void fill(int c, std::string cadena);
 	static unique_ptr<FoodDictionary> instance_;
 	map<par, int, CompareMap> dictionary_;
 
