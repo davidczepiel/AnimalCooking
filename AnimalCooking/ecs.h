@@ -31,8 +31,11 @@ enum CmpId : CmpIdType {
 
 	IngredientsPool, //Pools
 	UtensilsPool,
-	UtensilsViewer,
+
+
+	UtensilsViewer, //Utensils
 	UtensilsMotion,
+	UtensilWasher,
 
 
 	SDLRenderer, //Renderer
