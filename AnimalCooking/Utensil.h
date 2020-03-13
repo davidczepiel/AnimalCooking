@@ -45,9 +45,9 @@ protected:
 	//Rect que se usará para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	SDL_Rect interactionTrigger_;
 
-	Entity* onHit(Vector2D dir);
+	void onHit(Vector2D dir);
 public:
-	Utensil(Vector2D pos,Transform* p);
+	Utensil(Vector2D pos, Transport* p1, Transport* p2);
 	virtual ~Utensil() {}
 
 	virtual void render() const;
@@ -70,32 +70,32 @@ public:
 class Knife : public Utensil
 {
 public:
-	Knife(Vector2D pos, Transform* p);
+	Knife(Vector2D pos, Transport* p1, Transport* p2);
 	~Knife() {}
-	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 class Mace : public Utensil
 {
 public:
-	Mace(Vector2D pos, Transform* p);
+	Mace(Vector2D pos, Transport* p1, Transport* p2);
 	~Mace() {}
-	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 
 class Grater : public Utensil
 {
 public:
-	Grater(Vector2D pos, Transform* p);
+	Grater(Vector2D pos, Transport* p1, Transport* p2);
 	~Grater() {}
-	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };
 
 class Net : public Utensil
 {
 public:
-	Net(Vector2D pos, Transform* p);
+	Net(Vector2D pos, Transport* p1, Transport* p2);
 	~Net() {}
-	virtual void attack() { Entity* e = onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
 };

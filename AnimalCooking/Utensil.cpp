@@ -3,10 +3,7 @@
 #include "SDL_macros.h"
 #include <math.h> 
 
-
-
-
-Utensil::Utensil(Vector2D pos, Transform* p) {
+Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	getDirtSpeed_ = 10;
@@ -15,7 +12,6 @@ Utensil::Utensil(Vector2D pos, Transform* p) {
 	attackHitBoxHeight_ = 50;
 	attackRate_ = 1000;
 	lastAttack_ = SDL_GetTicks();
-	player_ = p;
 	myState = State::shelf;
 	dirty_ = false;
 	ableToClean_ = false;
@@ -44,10 +40,6 @@ void Utensil::update() {
 				if (myDirt_ >= maxDirt_)
 					dirty_ = true;
 			}
-			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
-			if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), position_, interactionTrigger_.w, interactionTrigger_.h)) {
-				cout << "Hacer un brilli brilli o lo que sea" << endl;
-			}
 		}
 		else
 		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
@@ -60,26 +52,21 @@ void Utensil::update() {
 	}
 }
 
-//Soy llamado por el método attack de cada utensilio y le devuelvo un puntero al ongrediente que haya dado o a nullptr
-Entity* Utensil::onHit(Vector2D dir) {
-	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
-		lastAttack_ = SDL_GetTicks();
-		Entity* ingrediente = nullptr;
+void Utensil::onHit(Vector2D dir) {
+	/*if (SDLGetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
+		lastAttack_ = SDLGetTicks();
 		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
-			lastFrameTick = SDL_GetTicks();
+			lastFrameTick = SDLGetTicks();
 			//Preparo la posición de donde realizo el ataque
-			Vector2D velNormalizada = speed_.normalize();
-			SDL_Rect ataque;
-			ataque.x = position_.getX() + (velNormalizada.getX() * range_);
-			ataque.y = position_.getY() + (velNormalizada.getY() * range_);
+			Vector2D velNormalizada = vel_.normalize();
+			SDLRect ataque;
+			ataque.x = pos.getX() + (velNormalizada.getX() * range_);
+			ataque.y = pos.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
-			ataque.h = attackHitBoxHeight_;			
+			ataque.h = attackHitBoxHeight_;
 			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
 		}
-		return ingrediente; 
-	}
-	else
-		return nullptr;
+	}*/
 }
 void Utensil::render()const {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
@@ -140,7 +127,7 @@ void Utensil::cleanUp() {
 
 ///////////////////////////////////////
 
-Knife::Knife(Vector2D pos, Transform* p) :Utensil(pos, p) {
+Knife::Knife(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Knife;
 	range_ = 100;
@@ -148,7 +135,7 @@ Knife::Knife(Vector2D pos, Transform* p) :Utensil(pos, p) {
 	attackHitBoxHeight_ = 50;
 }
 
-Mace::Mace(Vector2D pos, Transform* p ) :Utensil(pos, p){
+Mace::Mace(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2){
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;
@@ -157,7 +144,7 @@ Mace::Mace(Vector2D pos, Transform* p ) :Utensil(pos, p){
 }
 
 
-Grater::Grater(Vector2D pos, Transform* p) :Utensil(pos, p) {
+Grater::Grater(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Grater;
 	range_ = 100;
@@ -166,7 +153,7 @@ Grater::Grater(Vector2D pos, Transform* p) :Utensil(pos, p) {
 }
 
 
-Net::Net(Vector2D pos, Transform* p) :Utensil(pos, p) {
+Net::Net(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Net;
 	range_ = 100;
