@@ -305,6 +305,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />

@@ -277,6 +277,7 @@
     <ClCompile Include="ButtonRenderer.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="Ingredient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
