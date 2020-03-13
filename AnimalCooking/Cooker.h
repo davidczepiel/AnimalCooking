@@ -5,6 +5,7 @@
 #include "Timer.h"
 
 enum class CookerStates { empty, ready, cooking, cooked, burned };
+enum class CookerTypes{ type1,type2,typ3};
 class Food;
 class Cooker {
 public:
@@ -21,7 +22,7 @@ public:
 	inline int getWidth() const { return size_.getX(); }
 	inline int getHeight() const { return size_.getY(); }
 	inline Vector2D& getSize() { return size_; }
-	CookerStates getCookerState() { return state_; };
+	inline CookerStates getCookerState() { return state_; };
 	Texture* getEmptyTexture() { return nullptr; };
 	Texture* getFullTexture() { return nullptr; };
 	Texture* getCookingTexture() { return nullptr; };
@@ -29,6 +30,8 @@ public:
 	Timer* getCookerTimer() { return timer_; };
 	Uint32 getCookingTime() { return cookingTime_; }
 	vector<Food*>& getFoods() { return foods_; }
+
+	inline int getCookerType() { return (int) cookerType_; };
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);
@@ -45,6 +48,7 @@ protected:
 	Uint32 cookingTime_;
 
 	vector<Food*> foods_;
+	static CookerTypes cookerType_;
 };
 
 class Sarten : public Cooker {

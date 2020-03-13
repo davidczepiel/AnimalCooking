@@ -26,4 +26,5 @@ void Cooker::draw()
 Sarten::Sarten(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 10 * 1000;
+	cookerType_ = CookerTypes::type2;
 }

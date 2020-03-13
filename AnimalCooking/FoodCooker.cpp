@@ -1,4 +1,5 @@
 #include "FoodCooker.h"
+#include "FoodDictionary.h"
 
 FoodCooker::FoodCooker() :
 	Component(ecs::FoodCooker){
@@ -27,6 +28,7 @@ void FoodCooker::update() {
 				c->getCookerTimer()->update();
 			}
 			else {
+				//Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
 				c->setCookerState(CookerStates::cooked);
 				c->getCookerTimer()->timerReset();
 				c->getCookerTimer()->setTime(c->getCookingTime() / 2); //Tiempo de quemado a definir, de momento tQuemado = tCocinar/2
