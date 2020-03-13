@@ -12,6 +12,7 @@ SelectorPopUp::~SelectorPopUp()
 void SelectorPopUp::update()
 {
 	for (auto it : pool_) {
-		if(Collisions::collidesWithRotation(tr1_->getPos())
+		/*if(Collisions::collidesWithRotation(tr1_->getPos(),tr1_->getW(),tr1_->getH(),tr1_->getRot(),it->getPos(),it->getSize().getX(),it->getSize().getY(),it->getRot() && //Si colisiona player1
+		  )*/
 	}
 }
