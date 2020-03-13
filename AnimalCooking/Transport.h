@@ -1,11 +1,21 @@
 #pragma once
-#include"Component.h"
-class Pickable;
+#include "Component.h"
+#include "Transform.h"
+#include "Pickable.h"
 
 class Transport : public Component {
 public:
-	void Take(Pickable* obj);
-	void Drop();
+	Transport();
+
+	void pick(Pickable* obj);
+	void drop();
+
+	void init() override;
+	void update() override;
+
 private:
 	Pickable* objInHands_;
+	Transform* playerTransform_;
+
+	void swap(Pickable* obj);
 };

@@ -8,8 +8,6 @@ class Food : public Pickable
 protected:
 	Food(Vector2D position, Resources::FoodType type);
 
-	Vector2D size_;
-
 	Resources::FoodType type_;
 
 	FoodPool* foodPool_;
@@ -17,9 +15,6 @@ protected:
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void Destroy();
-
-	void setSize(Vector2D newSize) { size_ = newSize; }
-	inline Vector2D getSize() { return size_; }
 
 	Resources::FoodType getType() { return type_; }
 

@@ -34,7 +34,6 @@ protected:
 
 	bool isInUse;
 
-	Vector2D size_;
 	Transform* player_;
 	//Mis 2 texturas
 	Texture* texture_;
@@ -55,14 +54,11 @@ public:
 	virtual void update();
 	virtual void attack() = 0;
 
-	Vector2D getSize() { return size_; }
-
 	int getDirt() { return myDirt_; }
 	void drop(bool suelo);
 	void pickMe();
 	void inTheWasher(bool x);
 	void cleanUp();
-	inline void setSize(double w, double h) { size_.set(w, h); }
 	void changeDirtySpeed(int speedModifier);
 	bool inUse() { return isInUse; }
 	void setInUse(bool x) { isInUse = x; }

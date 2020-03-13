@@ -29,7 +29,7 @@ Utensil::Utensil(Vector2D pos, Transform* p) {
 	frameAttack = 0;
 	attacking_ = false;
 	lastFrameTick = 0;
-
+	size_ = Vector2D(0, 0);
 }
 
 
