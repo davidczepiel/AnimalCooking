@@ -66,7 +66,14 @@ public:
 		carrot,
 		lettuce,
 		mushroom,
-		sausage
+		sausage,
+		chicken,
+		meat,
+		potato,
+		onion,
+		clam,
+		cheese,
+		fish
 	};
 
 	enum AudioId : std::size_t {
@@ -141,6 +148,7 @@ public:
 		CaughtFish,
 		SlicedChicken,
 		CaughtClam,
+		Empty
 
 	};
 };
