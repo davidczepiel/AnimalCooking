@@ -1,7 +1,8 @@
 #pragma once
 #include "Vector2D.h"
+#include "Interactive.h"
 
-class Pickable
+class Pickable : public Interactive
 {
 public:
 
