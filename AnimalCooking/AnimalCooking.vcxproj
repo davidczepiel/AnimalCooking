@@ -211,6 +211,7 @@
     <ClInclude Include="InOutFood.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InsertExpel.h" />
+    <ClInclude Include="Interactive.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="LoadingBarViewer.h" />
@@ -313,6 +314,7 @@
     <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
+    <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
@@ -342,6 +344,7 @@
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="SelectorPopUp.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
