@@ -1,6 +1,7 @@
 #include "Utensil.h"
 #include "SDLGame.h"
 #include "SDL_macros.h"
+#include "GameLogic.h"
 #include <math.h> 
 
 Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) {
@@ -39,9 +40,12 @@ void Utensil::update() {
 
 		if (myState != State::playerHand) {
 			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+				if(myDirt_<maxDirt_)
 				myDirt_ += getDirtSpeed_;
-				if (myDirt_ >= maxDirt_)
+				else {
 					dirty_ = true;
+					myDirt_ = maxDirt_;
+				}
 			}
 
 		}
@@ -72,7 +76,7 @@ void Utensil::onHit(Vector2D dir) {
 			ataque.y = position_.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
 			ataque.h = attackHitBoxHeight_;
-			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
+			gameLogic->hitIngredient(ataque, myType);
 		}
 	}
 }

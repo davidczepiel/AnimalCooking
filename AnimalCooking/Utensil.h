@@ -5,7 +5,7 @@
 #include "Transform.h"
 #include "Pickable.h"
 
-
+class GameLogic;
 class Utensil : public Pickable{
 
 protected:
@@ -42,6 +42,7 @@ protected:
 	bool attacking_;
 	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	SDL_Rect interactionTrigger_;
+	GameLogic* gameLogic;
 
 	void onHit(Vector2D dir);
 public:
@@ -60,6 +61,7 @@ public:
 	void changeDirtySpeed(int speedModifier);
 	bool inUse() { return isInUse; }
 	void setInUse(bool x) { isInUse = x; }
+	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 
 };
 

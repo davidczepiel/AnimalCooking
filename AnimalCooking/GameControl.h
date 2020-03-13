@@ -3,12 +3,14 @@
 #include "Component.h"
 #include "IngredientsPool.h"
 #include "Food.h"
+#include "UtensilsPool.h"
+#include "GameLogic.h"
 #include "FoodPool.h"
 
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u);
     ~GameControl() {}
 
     void init() override {}
@@ -19,6 +21,7 @@ private:
     Ingredient* newIngType();
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
+    UtensilsPool* utensilsPool;
     Transport* tP1;
     Transport* tP2;
 };
