@@ -125,5 +125,22 @@ public:
 
 	enum FoodType {
 		SlicedTomato,
+		MashedTomato,
+		SlicedLettuce,
+		SlicedOnion,
+		SlicedMeat,
+		MashedMeat,
+		SlicedCheese,
+		GratedCheese,
+		SlicedPotato,
+		SlicedSausage,
+		SlicedCarrot,
+		CaughtSausage,
+		SlicedMushroom,
+		MashedMushroom,
+		CaughtFish,
+		SlicedChicken,
+		CaughtClam,
+
 	};
 };
