@@ -4,6 +4,7 @@
 #include <list>
 
 #include "FoodEnum.h"
+#include "Food.h"
 #include "jute.h"
 
 using namespace std;
@@ -35,14 +36,15 @@ public:
 	}
 
 	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
-	int getResult(const int& c, const list<int>& list);
+	Food* getResult(const int& c, const list<int>& list);
 
 	//Devuelve un int identificador, o -1 si no existe dicha combinacion
-	int getResult(const int& c, const set<int>& set);
+	Food* getResult(const int& c, const set<int>& set);
 
 private:
 	FoodDictionary();
-	void fill(int c, std::string cadena);
+	void fill();
+	Food* bind(const int& c) const;
 	static unique_ptr<FoodDictionary> instance_;
 	map<par, int, CompareMap> dictionary_;
 
