@@ -16,6 +16,7 @@ public:
     void newIngredient();
     void newFood(Resources::FoodType type, Vector2D pos);
 private:
+    Ingredient* newIngType();
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
 };

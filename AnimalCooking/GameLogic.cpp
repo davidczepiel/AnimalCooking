@@ -11,8 +11,8 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 
         if (Collisions::collides(Vector2D(rect.x, rect.y), rect.w, rect.h, ing->getPos(), ing->getWidth(), ing->getHeight())) {
             Vector2D ingPos = ing->getPos();
-            /*Resources::FoodType*/int result = ing->destroy(type);
-            GETCMP1_(GameControl)->newFood(Resources::FoodType::SlicedTomato, ingPos);
+            Resources::FoodType result = ing->destroy(type);
+            GETCMP1_(GameControl)->newFood(result, ingPos);
             GETCMP1_(GameControl)->newIngredient();
         }
     }
