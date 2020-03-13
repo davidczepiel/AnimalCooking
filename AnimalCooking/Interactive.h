@@ -16,7 +16,7 @@ protected:
 
 	Interactive(Transport* p1, Transport* p2) : player1_(p1), player2_(p2), position_(), size_(), rotation_() {};
 
-	void interactive() {};
+	virtual void interactive() {};
 
 	Transport* player1_;
 	Transport* player2_;

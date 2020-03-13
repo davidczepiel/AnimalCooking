@@ -8,7 +8,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl();
+    GameControl(Transport* p1, Transport* p2);
     ~GameControl() {}
 
     void init() override {}
@@ -19,4 +19,6 @@ private:
     Ingredient* newIngType();
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
+    Transport* tP1;
+    Transport* tP2;
 };

@@ -33,22 +33,21 @@ protected:
 	bool ableToClean_;
 
 	bool isInUse;
-
-	Transform* player_;
 	//Mis 2 texturas
 	Texture* texture_;
 	Texture* secondTexture_;
-	//Control animaci�n ataque
+	//Control animacion ataque
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
-	//Rect que se usar� para calcular las colisiones entre la hitbox de un ataque y los ingredientes
+	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	SDL_Rect interactionTrigger_;
 
 	void onHit(Vector2D dir);
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
 	virtual ~Utensil() {}
+	void interactive() override { pickMe(); };
 
 	virtual void render() const;
 	virtual void update();
@@ -57,7 +56,6 @@ public:
 	int getDirt() { return myDirt_; }
 	void drop(bool suelo);
 	void pickMe();
-	void inTheWasher(bool x);
 	void cleanUp();
 	void changeDirtySpeed(int speedModifier);
 	bool inUse() { return isInUse; }

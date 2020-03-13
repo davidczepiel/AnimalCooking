@@ -1,7 +1,9 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
-GameControl::GameControl() : Component(ecs::GameControl)
+GameControl::GameControl(Transport* p1, Transport* p2) : Component(ecs::GameControl)
 {
+	tP1 = p1;
+	tP2 = p2;
 }
 
 
@@ -63,67 +65,67 @@ void GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar
 
 		///////////KNIFE
 	case(Resources::FoodType::SlicedTomato):
-		f = new SlicedTomato(pos);
+		f = new SlicedTomato(pos,tP1,tP2);
 		break;
 	case(Resources::FoodType::SlicedCheese):
-		f = new SlicedCheese(pos);
+		f = new SlicedCheese(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedCarrot):
-		f = new SlicedCarrot(pos);
+		f = new SlicedCarrot(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedMeat):
-		f = new SlicedMeat(pos);
+		f = new SlicedMeat(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedLettuce):
-		f = new SlicedLettuce(pos);
+		f = new SlicedLettuce(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedSausage):
-		f = new SlicedSausage(pos);
+		f = new SlicedSausage(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedMushroom):
-		f = new SlicedMushroom(pos);
+		f = new SlicedMushroom(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedPotato):
-		f = new SlicedPotato(pos);
+		f = new SlicedPotato(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedOnion):
-		f = new SlicedOnion(pos);
+		f = new SlicedOnion(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::SlicedChicken):
-		f = new SlicedTomato(pos);
+		f = new SlicedTomato(pos, tP1, tP2);
 		break;
 
 		//////////////MACE
 	case(Resources::FoodType::MashedTomato):
-		f = new SlicedTomato(pos); ///Esto está puesto para que no queje de que no se inicializa
+		f = new SlicedTomato(pos, tP1, tP2); ///Esto está puesto para que no queje de que no se inicializa
 		//f = new MashedTomato(pos);
 		break;
 	case(Resources::FoodType::MashedMeat):
-		f = new MashedMeat(pos);
+		f = new MashedMeat(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::MashedMushroom):
-		f = new MashedMushroom(pos);
+		f = new MashedMushroom(pos, tP1, tP2);
 		break;
 	
 		///////////////GRATER
 	case(Resources::FoodType::GratedCheese):
-		f = new GratedCheese(pos);
+		f = new GratedCheese(pos, tP1, tP2);
 		break;
 
 		///////////////NET
 	case(Resources::FoodType::CaughtClam):
-		f = new CaughtClam(pos);
+		f = new CaughtClam(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::CaughtFish):
-		f = new CaughtFish(pos);
+		f = new CaughtFish(pos, tP1, tP2);
 		break;
 	case(Resources::FoodType::CaughtSausage):
-		f = new CaughtSausage(pos);
+		f = new CaughtSausage(pos, tP1, tP2);
 		break;
 	
 		//////////////EMPTY
 	default:
-		f = new SlicedTomato(pos); // Para que no queje
+		f = new SlicedTomato(pos, tP1, tP2); // Para que no queje
 		cout << "Creado empty"<<endl;
 		break;
 	}
