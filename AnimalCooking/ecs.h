@@ -23,6 +23,8 @@ enum CmpId : CmpIdType {
 	PlayerController,
 	PlayerViewer,
 	PlayerMotion,
+	Transport,
+	Selector,
 
 	FoodMotion,		//Food
 	FoodViewer,
@@ -44,6 +46,7 @@ enum CmpId : CmpIdType {
 	ScoreManager,
 	ScoreViewer,
 	SoundManager,
+	SelectorPopUp,
 
 	ButtonBehaviour, //Buttons
 	ButtonRenderer,
