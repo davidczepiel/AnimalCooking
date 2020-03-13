@@ -28,7 +28,7 @@ protected:
 	int attackHitBoxHeight_;
 	int attackRate_;
 	int lastAttack_;
-	//Confirmación de que se puede limpiar y que está sucio
+	//Confirmaciï¿½n de que se puede limpiar y que estï¿½ sucio
 	bool dirty_;
 	bool ableToClean_;
 
@@ -39,11 +39,11 @@ protected:
 	//Mis 2 texturas
 	Texture* texture_;
 	Texture* secondTexture_;
-	//Control animación ataque
+	//Control animaciï¿½n ataque
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
-	//Rect que se usará para calcular las colisiones entre la hitbox de un ataque y los ingredientes
+	//Rect que se usarï¿½ para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	SDL_Rect interactionTrigger_;
 
 	Entity* onHit(Vector2D dir);

@@ -7,6 +7,7 @@ using CmpIdType = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
+	
 
 	GPadController, //Controls
 	KeyBoardController,

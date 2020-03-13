@@ -260,6 +260,7 @@
     <ClInclude Include="UtensilsMotion.h" />
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
+    <ClInclude Include="UtensilWasher.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +356,7 @@
     <ClCompile Include="UtensilsMotion.cpp" />
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
+    <ClCompile Include="UtensilWasher.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>

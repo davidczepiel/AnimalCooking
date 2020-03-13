@@ -36,48 +36,46 @@ Utensil::Utensil(Vector2D pos, Transform* p) {
 void Utensil::update() {
 
 	if (isInUse) {
-		pos_.setX(pos_.getX()+vel_.getX());
+		pos_.setX(pos_.getX() + vel_.getX());
 		pos_.setY(pos_.getY() + vel_.getY());
 
 		if (myState != State::playerHand) {
-			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+			if (myState == State::floor && myDirt_<maxDirt_) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
 				myDirt_ += getDirtSpeed_;
 				if (myDirt_ >= maxDirt_)
 					dirty_ = true;
 			}
-			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si está cerca para interactuar conmig
-			if (Collisions::collides(player_->getPos(), player_->getW(), player_->getH(), pos_, interactionTrigger_.w, interactionTrigger_.h)) {
-				cout << "Hacer un brilli brilli o lo que sea" << endl;
-			}
+			// Hay que comprobar todo el rato SI NO ESTOY EN LA MANO DEL JUGADOR, comprobar si estï¿½ cerca para interactuar conmig
 		}
-		else
-		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
-			if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
-				frameAttack++;
-				if (frameAttack >= 5)
-					frameAttack = 0;
-			}
+	}
+	else
+	{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animaciï¿½n que estoy mostrando
+		if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
+			frameAttack++;
+			if (frameAttack >= 5)
+				frameAttack = 0;
 		}
 	}
 }
 
-//Soy llamado por el método attack de cada utensilio y le devuelvo un puntero al ongrediente que haya dado o a nullptr
+
+//Soy llamado por el mï¿½todo attack de cada utensilio y le devuelvo un puntero al ongrediente que haya dado o a nullptr
 Entity* Utensil::onHit(Vector2D dir) {
 	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
 		lastAttack_ = SDL_GetTicks();
 		Entity* ingrediente = nullptr;
-		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
+		if (!dirty_) {  //Solo si estoy limpio mi ataque deberï¿½a hacer algo significativo
 			lastFrameTick = SDL_GetTicks();
-			//Preparo la posición de donde realizo el ataque
+			//Preparo la posiciï¿½n de donde realizo el ataque
 			Vector2D velNormalizada = vel_.normalize();
 			SDL_Rect ataque;
 			ataque.x = pos_.getX() + (velNormalizada.getX() * range_);
 			ataque.y = pos_.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
-			ataque.h = attackHitBoxHeight_;			
+			ataque.h = attackHitBoxHeight_;
 			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
 		}
-		return ingrediente; 
+		return ingrediente;
 	}
 	else
 		return nullptr;
@@ -85,9 +83,9 @@ Entity* Utensil::onHit(Vector2D dir) {
 void Utensil::render()const {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	if (!dirty_ && !attacking_)
-		texture_->render(rect); //EN caso de que solo esté en la mano del jugador	
+		texture_->render(rect); //EN caso de que solo estï¿½ en la mano del jugador	
 	else if ((!dirty_ && attacking_)) {
-		texture_->render(rect); //EN caso de estar atacando habría que hacer un renderFrame
+		texture_->render(rect); //EN caso de estar atacando habrï¿½a que hacer un renderFrame
 	}
 	else
 		secondTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
@@ -125,7 +123,7 @@ void Utensil::changeDirtySpeed(int speedModifier) {
 }
 
 void Utensil::cleanUp() {
-	//Me debería llamar el fregadero para decime que me limpie
+	//Me deberï¿½a llamar el fregadero para decime que me limpie
 	if (dirty_ && ableToClean_) {
 		myDirt_ -= cleanUpSpeed_;
 		if (myDirt_ <= 0) {
@@ -147,9 +145,10 @@ Knife::Knife(Vector2D pos, Transform* p) :Utensil(pos, p) {
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
+
 }
 
-Mace::Mace(Vector2D pos, Transform* p ) :Utensil(pos, p){
+Mace::Mace(Vector2D pos, Transform* p) :Utensil(pos, p) {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;

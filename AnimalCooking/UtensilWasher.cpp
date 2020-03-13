@@ -1,35 +1,38 @@
 #include "UtensilWasher.h"
-UtensilWasher::UtensilWasher(SDL_Keycode button1, SDL_Keycode button2, SDL_Keycode button3, SDL_Keycode button4) :
+UtensilWasher::UtensilWasher(SDL_Keycode button) :
 
-	Component(ecs::UtensilWasher), toBeWashedUtensil(nullptr) {
-	keys.push_back(button1);
-	keys.push_back(button2);
-	keys.push_back(button3);
-	keys.push_back(button4);
-	keys.push_back(SDL_CONTROLLER_BUTTON_A);
-	keys.push_back(SDL_CONTROLLER_BUTTON_B);
-	keys.push_back(SDL_CONTROLLER_BUTTON_X);
-	keys.push_back(SDL_CONTROLLER_BUTTON_Y);
+	Component(ecs::UtensilWasher), toBeWashedUtensil(nullptr), button(button) {
+
 	lastClean = 0;
-	rateOfFire = 0;
+	cadence = 100;
 
 
 }
 void UtensilWasher::update() {
-	//si hay que limpiar generamos un número en el intervalo [0,4] que representará el botón a pulsar.
-	//como en el vector están primero las teclas y luego los botones correspondientes del mando,
-	//cada tecla está separada 4 posiciones de su botón correspondiente, así que para limpiar el 
-	//utensilio basta con comprobar que se está pulsando la tecla o el botón
-	if (toBeWashedUtensil != nullptr) {
-		int rndm = SDLGame::instance()->getRandGen()->nextInt(0, 5);
+	//si hay que limpiar generamos un nï¿½mero en el intervalo [0,4] que representarï¿½ el botï¿½n a pulsar.
+	//como en el vector estï¿½n primero las teclas y luego los botones correspondientes del mando,
+	//cada tecla estï¿½ separada 4 posiciones de su botï¿½n correspondiente, asï¿½ que para limpiar el 
+	//utensilio basta con comprobar que se estï¿½ pulsando la tecla o el botï¿½n
+
+	if (toBeWashedUtensil != nullptr && SDL_GetTicks() - lastClean > cadence) {
+		lastClean = SDL_GetTicks();
 		InputHandler* ih = SDLGame::instance()->getInputHandler();
 		GPadController* gpad = GPadController::instance();
-		//aquí habría que preguntar al playerController su ID, pero de momento no se me ocurre cómo
-		if (ih->isKeyUp(keys.at(rndm) || gpad->getButtonState(0, keys.at((int8_t)rndm + 4))))
+		//aquï¿½ habrï¿½a que preguntar al playerController su ID, pero de momento no se me ocurre cï¿½mo
+		if (ih->isKeyDown(button) || gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A))
 		{
 			toBeWashedUtensil->cleanUp();
 			if (toBeWashedUtensil->getDirt() <= 0)
 				toBeWashedUtensil = nullptr;
 		}
+	}
+}
+void UtensilWasher::draw() {
+	if (toBeWashedUtensil != nullptr) {
+		int progress = 50 * (1- toBeWashedUtensil->getDirt() / 100);
+		cout << toBeWashedUtensil<<endl;
+		cout << toBeWashedUtensil->getDirt()<<endl;
+
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo)->render(RECT(100, 100, progress, 50));
 	}
 }
