@@ -7,7 +7,7 @@ Food::Food(Vector2D position, Resources::FoodType type)
 	size_ = Vector2D(50, 50);
 	type_ = type;
 	foodPool_ = nullptr;
-	dir_ = Vector2D();
+	speed_ = Vector2D();
 }
 
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
@@ -23,5 +23,5 @@ void Food::Destroy()
 
 void Food::update()
 {
-	position_ = position_ + dir_;
+	Pickable::update();
 }

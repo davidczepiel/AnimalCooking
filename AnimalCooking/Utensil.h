@@ -3,10 +3,10 @@
 #include "Entity.h"
 #include "Collisions.h"
 #include "Transform.h"
+#include "Pickable.h"
 
 
-
-class Utensil{
+class Utensil : public Pickable{
 
 protected:
 	//Estado
@@ -34,7 +34,7 @@ protected:
 
 	bool isInUse;
 
-	Vector2D pos_, vel_, size_;
+	Vector2D size_;
 	Transform* player_;
 	//Mis 2 texturas
 	Texture* texture_;
@@ -55,8 +55,6 @@ public:
 	virtual void update();
 	virtual void attack() = 0;
 
-	Vector2D getPos() { return pos_; }
-	Vector2D getVel() { return vel_; }
 	Vector2D getSize() { return size_; }
 
 	int getDirt() { return myDirt_; }
@@ -65,8 +63,6 @@ public:
 	void inTheWasher(bool x);
 	void cleanUp();
 	inline void setSize(double w, double h) { size_.set(w, h); }
-	inline void setPos(Vector2D pos) { pos_.set(pos); }
-	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	void changeDirtySpeed(int speedModifier);
 	bool inUse() { return isInUse; }
 	void setInUse(bool x) { isInUse = x; }

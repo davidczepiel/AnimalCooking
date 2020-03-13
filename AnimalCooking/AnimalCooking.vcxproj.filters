@@ -278,6 +278,7 @@
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="Pickable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -600,6 +601,9 @@
     </ClInclude>
     <ClInclude Include="ButtonBehaviour.h">
       <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickable.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

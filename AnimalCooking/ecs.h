@@ -23,6 +23,7 @@ enum CmpId : CmpIdType {
 	PlayerController,
 	PlayerViewer,
 	PlayerMotion,
+	Transport,
 
 	FoodMotion,		//Food
 	FoodViewer,

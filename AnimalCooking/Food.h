@@ -1,14 +1,13 @@
 #pragma once
 #include "FoodPool.h"
 #include "SDL_macros.h"
+#include "Pickable.h"
 
-class Food
+class Food : public Pickable 
 {
 protected:
 	Food(Vector2D position, Resources::FoodType type);
 
-	Vector2D position_;
-	Vector2D dir_;
 	Vector2D size_;
 
 	Resources::FoodType type_;
@@ -19,14 +18,8 @@ public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void Destroy();
 
-	void setSize(Vector2D newSize) { dir_ = newSize; }
+	void setSize(Vector2D newSize) { size_ = newSize; }
 	inline Vector2D getSize() { return size_; }
-
-	void setSpeed(Vector2D newDir) { dir_ = newDir; }
-	inline Vector2D getSpeed() { return dir_; }
-
-	void setPosition(Vector2D newPos) { position_ = newPos; }
-	inline Vector2D getPosition() { return position_; }
 
 	Resources::FoodType getType() { return type_; }
 
