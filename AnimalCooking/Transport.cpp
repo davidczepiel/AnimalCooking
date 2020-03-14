@@ -5,6 +5,7 @@ Transport::Transport() : Component(ecs::Transport)
 {
 	objInHands_ = nullptr;
 	playerTransform_ = nullptr;
+	emptyDish_ = false;
 }
 
 void Transport::pick(Pickable* obj)
