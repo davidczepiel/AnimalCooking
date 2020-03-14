@@ -281,6 +281,11 @@
     <ClCompile Include="UtensilWasher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pickable.cpp" />
+    <ClCompile Include="SelectorPopUp.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -607,6 +612,10 @@
     <ClInclude Include="UtensilWasher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Pickable.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
