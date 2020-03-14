@@ -289,6 +289,9 @@
     <ClCompile Include="InteractionRect.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Shelf.cpp" />
+    <ClCompile Include="ShelfViewer.cpp" />
+    <ClCompile Include="SinkViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -622,6 +625,9 @@
     <ClInclude Include="InteractionRect.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Shelf.h" />
+    <ClInclude Include="ShelfViewer.h" />
+    <ClInclude Include="SinkViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

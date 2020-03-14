@@ -244,6 +244,9 @@
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SelectorPopUp.h" />
+    <ClInclude Include="Shelf.h" />
+    <ClInclude Include="ShelfViewer.h" />
+    <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -348,6 +351,9 @@
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SelectorPopUp.cpp" />
+    <ClCompile Include="Shelf.cpp" />
+    <ClCompile Include="ShelfViewer.cpp" />
+    <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />

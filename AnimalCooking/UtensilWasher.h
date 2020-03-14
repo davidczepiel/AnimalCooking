@@ -4,23 +4,25 @@
 #include "GPadController.h"
 #include "Utensil.h"
 #include "SDL_macros.h"
+#include "Entity.h"
+#include "Transport.h"
 using namespace std;
 
-class UtensilWasher :public Component
+class UtensilWasher :public Component, public Interactive
 {
 public:
-	UtensilWasher(SDL_Keycode button);
-	void update()override;
-	void draw()override;
-	void setToBeWashedUtensil(Utensil* value) {
-		toBeWashedUtensil = value;
-	}
+	UtensilWasher(SDL_Keycode button, Transport* p1, Transport* p2);
+	void update() override ;
+	void draw() override ;
+	void init() override;
 	virtual ~UtensilWasher() {}
+	virtual void interactive(int player);
 private:
 	int lastClean;
 	int cadence;
 	SDL_Keycode button;
-	Utensil* toBeWashedUtensil;
+	Texture* text;
+
 
 };
 
