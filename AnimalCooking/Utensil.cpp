@@ -113,7 +113,13 @@ void Utensil::pickMe() {
 	myDirt_ = 0;
 }
 
-
+void Utensil::interactive(int player) {
+	pickMe(); 
+	if (player == 0)
+		player1_->pick(this);
+	else
+		player2_->pick(this);
+}
 
 
 

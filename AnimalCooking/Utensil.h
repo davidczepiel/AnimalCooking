@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Collisions.h"
 #include "Transform.h"
+#include "Transport.h"
 #include "Pickable.h"
 
 class GameLogic;
@@ -48,7 +49,7 @@ protected:
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
 	virtual ~Utensil() {}
-	void interactive() override { pickMe(); };
+	void interactive(int player) override;
 
 	virtual void render() const;
 	virtual void update();
