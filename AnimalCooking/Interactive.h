@@ -11,12 +11,14 @@ public:
 
 	void setRot(double newRot) { rotation_ = newRot; }
 	double getRot() { return rotation_; }
-	~Interactive() { delete player1_;  delete player1_; }
+
+	~Interactive() {}
+
+	virtual void interactive(int player) {};
+
 protected:
 
 	Interactive(Transport* p1, Transport* p2) : player1_(p1), player2_(p2), position_(), size_(), rotation_() {};
-
-	virtual void interactive() {};
 
 	Transport* player1_;
 	Transport* player2_;
