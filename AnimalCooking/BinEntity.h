@@ -11,6 +11,6 @@ public:
 	}
 	~BinEntity() {}
 
-	void interactive() override;
+	void interactive(int player) override;
 };
 
