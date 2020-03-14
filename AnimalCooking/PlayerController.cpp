@@ -4,6 +4,9 @@
 void PlayerController::init()
 {
 	tr_ = GETCMP1_(Transform);
+	ir_ = GETCMP1_(InteractionRect);
+	selector_ = GETCMP1_(Selector);
+
 	if (id_ == 0) {
 		keys.up = SDLK_w;
 		keys.down = SDLK_s;
@@ -28,11 +31,12 @@ void PlayerController::joystickUpdate()
 	GPadController* gpad = GPadController::instance();
 
 	if (gpad->joysticksInitialised()) {
+		double x = 0, y = 0;	//interactive
 		//Axis------------------------
-		if (gpad->xvalue(id_, 1) > 0 ||
-			gpad->xvalue(id_, 1) < 0)
+		if (gpad->xvalue(id_, 1) > 0 ||	gpad->xvalue(id_, 1) < 0)
 		{
 			tr_->setVelX(gpad->xvalue(id_,1));
+			x = gpad->xvalue(id_, 1);
 		}
 		else {
 			tr_->setVelX(0);
@@ -40,10 +44,12 @@ void PlayerController::joystickUpdate()
 		if (gpad->yvalue(id_, 1) > 0 || gpad->yvalue(id_, 1) < 0)
 		{
 			tr_->setVelY(gpad->yvalue(id_,1));
+			y = gpad->xvalue(id_, 1);
 		}
 		else {
 			tr_->setVelY(0);
 		}
+		ir_->setPos(x, y);
 		//Botones-------------------------------
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_A)) {
 			//
@@ -52,7 +58,7 @@ void PlayerController::joystickUpdate()
 			//
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X)) {
-			//
+			selector_->getSelect()->interactive(id_);
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_Y)) {
 			//
@@ -68,13 +74,18 @@ void PlayerController::keyUpdate()
 	InputHandler* keyboard = InputHandler::instance();
 
 	if (keyboard->keyDownEvent()) {
-		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); }
-		else if (keyboard->isKeyDown(keys.down)) tr_->setVelY(1);
+		//--------------------Movimiento
+		int x = 0, y = 0;	
+		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); x = -1; }
+		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); x = 1; }
 		else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) tr_->setVelX(1);
-		else if (keyboard->isKeyDown(keys.left)) tr_->setVelX(-1);
+		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  y = 1;	}
+		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); y = -1; }
 		else tr_->setVelX(0);
+
+		ir_->setPos(x, y);
+		//--------------------Botones
 	}
 	else {
 		tr_->setVelX(0);
