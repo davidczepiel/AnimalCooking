@@ -57,7 +57,7 @@ void PlayerController::joystickUpdate()
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_B)) {
 			//
 		}
-		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X)) {
+		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 			selector_->getSelect()->interactive(id_);
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_Y)) {
