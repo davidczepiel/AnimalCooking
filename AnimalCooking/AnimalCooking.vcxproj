@@ -211,6 +211,7 @@
     <ClInclude Include="InOutFood.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InsertExpel.h" />
+    <ClInclude Include="InteractionRect.h" />
     <ClInclude Include="Interactive.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
@@ -315,6 +316,7 @@
     <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
+    <ClCompile Include="InteractionRect.cpp" />
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />

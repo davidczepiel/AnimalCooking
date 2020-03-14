@@ -12,6 +12,9 @@ public:
 	enum UtensilType {
 		Knife, Mace, Grater, Net
 	};
+	enum Player {
+		Player1, Player2
+	};
 
 	enum TextureId : std::size_t {
 		// images basic
