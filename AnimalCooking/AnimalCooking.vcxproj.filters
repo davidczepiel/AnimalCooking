@@ -286,6 +286,8 @@
     <ClCompile Include="InteractionRect.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="BinEntity.cpp" />
+    <ClCompile Include="BinViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -616,6 +618,8 @@
     <ClInclude Include="InteractionRect.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
+    <ClInclude Include="BinEntity.h" />
+    <ClInclude Include="BinViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
