@@ -283,7 +283,9 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Interactive.cpp" />
-    <ClCompile Include="InteractionRect.cpp" />
+    <ClCompile Include="InteractionRect.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -611,7 +613,9 @@
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Interactive.h" />
-    <ClInclude Include="InteractionRect.h" />
+    <ClInclude Include="InteractionRect.h">
+      <Filter>Source Files\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
