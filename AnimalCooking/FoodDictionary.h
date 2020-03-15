@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <set>
-#include <list>
+#include <vector>
 
 #include "FoodEnum.h"
 #include "Food.h"
@@ -34,9 +34,6 @@ public:
 		}
 		return instance_.get();
 	}
-
-	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
-	Food* getResult(const int& c, const list<int>& list);
 
 	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
 	Food* getResult(const int& c, const vector<int>& vector);

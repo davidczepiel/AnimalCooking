@@ -5,10 +5,10 @@
 
 class CookerPool: public Component {
 public:
-	CookerPool(size_t sizeIni = 5);
+	CookerPool(size_t sizeIni = 4);
 	~CookerPool();
 
-	vector <Cooker*>& getPool() { return pool_; };
+	vector<Cooker*>& getPool() { return pool_; };
 
 	template<typename C, typename ...Targs>
 	C* addCooker(Targs&& ...mArgs) {
