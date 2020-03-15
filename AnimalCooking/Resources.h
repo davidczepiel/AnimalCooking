@@ -149,6 +149,5 @@ public:
 		SlicedChicken,
 		CaughtClam,
 		Empty
-
 	};
 };

@@ -34,31 +34,58 @@ Food* FoodDictionary::bind(const int& c) const
 	switch (c)
 	{
 	case -1:
-		return new Poop();
+		//return new Poop();
 		break;
-	case foodEnum::Carrot:
-		return new Carrot();
+	case Resources::FoodType::MashedTomato:
+		//return new Carrot();
 		break;
-	case foodEnum::Onion:
-		return new Onion();
+	case Resources::FoodType::SlicedLettuce:
+		//return new SlicedLettuce();
 		break;
-	case foodEnum::Potatoes:
-		return new Potatoes();
+	case Resources::FoodType::SlicedOnion:
+		//return new SlicedOnion();
 		break;
-	case foodEnum::Rice:
-		return new Rice();
+	case Resources::FoodType::SlicedMeat:
+		//return new SlicedMeat();
 		break;
-	case foodEnum::Steak:
-		return new Steak();
+	case Resources::FoodType::MashedMeat:
+		//return new MashedMeat();
 		break;
-	case foodEnum::Tomato:
-		return new Tomato();
+	case Resources::FoodType::SlicedCheese:
+		//return new SlicedCheese();
 		break;
-	case foodEnum::SteakAsaoYpunto:
-		return new SteakAsaoYpunto();
+	case Resources::FoodType::GratedCheese:
+		//return new GratedCheese();
 		break;
+	case Resources::FoodType::SlicedPotato:
+		//return new SlicedPotato();
+		break;
+	case Resources::FoodType::SlicedSausage:
+		//return new SlicedSausage();
+		break;
+	case Resources::FoodType::SlicedCarrot:
+		//return new SlicedCarrot();
+		break;
+	case Resources::FoodType::CaughtSausage:
+		//return new CaughtSausage();
+		break;
+	case Resources::FoodType::SlicedMushroom:
+		//return new SlicedMushroom();
+		break;
+	case Resources::FoodType::MashedMushroom:
+		//return new MashedMushroom();
+		break;
+	case Resources::FoodType::CaughtFish:
+		//return new CaughtFish();
+		break;
+	case Resources::FoodType::SlicedChicken:
+		//return new SlicedChicken();
+		break;
+	case Resources::FoodType::CaughtClam:
+		//return new CaughtClam();
+		break;	
 	default:
-		return new Poop();
+		//return new Poop();
 		break;
 	}
 }
@@ -76,7 +103,7 @@ Food* FoodDictionary::getResult(const int& c, vector<Food*>& vector)
 {
 	set<int> set;
 	for (auto elem : vector) {
-		if (!set.insert(elem.getType()).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
+		if (!set.insert(elem->getType()).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
 	}
 	return getResult(c, set);
 }

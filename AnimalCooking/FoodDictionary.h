@@ -3,7 +3,6 @@
 #include <set>
 #include <vector>
 
-#include "FoodEnum.h"
 #include "Food.h"
 #include "jute.h"
 
