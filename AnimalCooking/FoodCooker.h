@@ -9,7 +9,7 @@ public:
 	void init() override;
 	void update() override;
 	void startCooked(Cooker *c);
-	
+	void clearFoods(Cooker *c);
 private:
 	vector <Cooker*> pool_;
 };

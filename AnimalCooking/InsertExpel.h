@@ -16,7 +16,7 @@ public:
 	void insertFood(Cooker* c);
 
 	//void extractFood(Cooker *c, int foodSelectorPosition);
-	void extractAllFood(Cooker *c);
+	void extractFood(Cooker *c);
 
 private:
 	FoodCooker* foodCooker_;

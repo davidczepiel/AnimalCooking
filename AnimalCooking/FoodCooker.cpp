@@ -20,24 +20,39 @@ void FoodCooker::startCooked(Cooker *c) {
 	}		
 }
 
+void FoodCooker::clearFoods(Cooker* c) {
+	auto it = c->getFoods().begin();
+	while (it != c->getFoods().end()) {
+		delete *it;
+		++it;
+	}
+	c->getFoods().clear();
+}
+
 void FoodCooker::update() {
 	for (Cooker* c : pool_) {
-		if (c->getCookerState() == CookerStates::cooking){
+		if (c->getCookerState() == CookerStates::cooking || c->getCookerState() == CookerStates::cooked) {
 			if (!c->getCookerTimer()->isTimerEnd()) {
 				c->getCookerTimer()->update();
 			}
-			else {
-				//Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
+			else if (c->getCookerState() == CookerStates::cooking) {
+				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());				
+				clearFoods(c);
+				c->getFoods().push_back(newFood);
+
 				c->setCookerState(CookerStates::cooked);
 				c->getCookerTimer()->timerReset();
 				c->getCookerTimer()->setTime(c->getCookingTime() / 2); //Tiempo de quemado a definir, de momento tQuemado = tCocinar/2
-				//c->setTexture();
+				c->getCookerTimer()->timerStart();
 			}
-		}
-		else if (c->getCookerState() == CookerStates::cooked && c->getCookerTimer()->isTimerEnd()) {
-			c->setCookerState(CookerStates::burned);
-			c->getCookerTimer()->timerReset();
-			//c->setTexture();
+			else {
+				Food* burnedFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
+				clearFoods(c);
+				c->getFoods().push_back(burnedFood);
+				
+				c->setCookerState(CookerStates::burned);
+				c->getCookerTimer()->timerReset();
+			}
 		}
 	}
 }
