@@ -35,3 +35,11 @@ void Transport::update()
 {
 	if (objInHands_ != nullptr) { objInHands_->setSpeed(playerTransform_->getVel()); }
 }
+
+bool Transport::hasEmptyDish()
+{
+	if (dynamic_cast<Dish*>(objInHands_) != nullptr) {
+		return static_cast<Dish*>(objInHands_)->isEmpty();
+	}
+	else return false;
+}

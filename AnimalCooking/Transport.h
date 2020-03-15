@@ -14,12 +14,11 @@ public:
 	void update() override;
 
 	Pickable* getObjectInHands() { return objInHands_; }
+	bool hasEmptyDish();
 
 private:
 	Pickable* objInHands_;
 	Transform* playerTransform_;
-	
-	bool emptyDish_;
 
 	void swap(Pickable* obj);
 };
