@@ -241,12 +241,6 @@
     <ClCompile Include="MapState.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenLoader.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
@@ -271,6 +265,33 @@
     <ClCompile Include="FoodDictionary.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Utensil.cpp">
+      <Filter>Source Files\Utensils</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilsMotion.cpp">
+      <Filter>Source Files\Utensils</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilsPool.cpp">
+      <Filter>Source Files\Utensils</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilsViewer.cpp">
+      <Filter>Source Files\Utensils</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonBehaviour.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRenderer.cpp">
+      <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="Pickable.cpp" />
+    <ClCompile Include="SelectorPopUp.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -558,12 +579,6 @@
     <ClInclude Include="MapState.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonBehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenLoader.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
@@ -588,6 +603,28 @@
     <ClInclude Include="FoodEnum.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Utensil.h">
+      <Filter>Header Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsMotion.h">
+      <Filter>Header Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsPool.h">
+      <Filter>Header Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsViewer.h">
+      <Filter>Header Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonBehaviour.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickable.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
@@ -693,6 +730,12 @@
     </Filter>
     <Filter Include="Header Files\GameManager">
       <UniqueIdentifier>{0ed99d65-1715-4774-a8b9-8f20770807fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utensils">
+      <UniqueIdentifier>{66cfff7b-6a9a-48a6-a9b3-7fef1126212c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utensils">
+      <UniqueIdentifier>{6ef58959-d3dd-436f-8426-560465eb9d6c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

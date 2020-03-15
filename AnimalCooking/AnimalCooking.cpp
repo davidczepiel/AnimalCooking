@@ -11,6 +11,7 @@
 #include "SDL_macros.h"
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
+#include "GPadController.h"
 
 
 using namespace std;
@@ -29,9 +30,12 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+
 	//game_->getFSM()->pushState(new PlayState());
 	game_->getFSM()->pushState(new MenuState());
 	game_->getFSM()->refresh();
+
+
 
 
 }
@@ -63,27 +67,14 @@ void AnimalCooking::stop() {
 
 void AnimalCooking::handleInput() {
 
-	InputHandler *ih = InputHandler::instance();
-	ih->update();
 
-	game_->getFSM()->currentState()->handleEvent();
-
-	if (ih->keyDownEvent()) {
-		if (ih->isKeyDown(SDLK_ESCAPE)) {
-			exit_ = true;
-		}
-
-		if (ih->isKeyDown(SDLK_f)) {
-			int flags = SDL_GetWindowFlags(game_->getWindow());
-			if (flags & SDL_WINDOW_FULLSCREEN) {
-				SDL_SetWindowFullscreen(game_->getWindow(), 0);
-			} else {
-				SDL_SetWindowFullscreen(game_->getWindow(),
-						SDL_WINDOW_FULLSCREEN);
-			}
-		}		
+	SDL_Event event;
+	InputHandler::instance()->clearState();
+	while (SDL_PollEvent(&event))
+	{
+		//GPadController::instance()->update(event);
+		InputHandler::instance()->update(event);
 	}
-
 }
 
 void AnimalCooking::update() {

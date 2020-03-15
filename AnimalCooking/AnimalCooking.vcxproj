@@ -213,6 +213,7 @@
     <ClInclude Include="InOutFood.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InsertExpel.h" />
+    <ClInclude Include="Interactive.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="LoadingBarViewer.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
+    <ClInclude Include="Pickable.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
     <ClInclude Include="PlayerViewer.h" />
@@ -258,6 +260,10 @@
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
+    <ClInclude Include="Utensil.h" />
+    <ClInclude Include="UtensilsMotion.h" />
+    <ClInclude Include="UtensilsPool.h" />
+    <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +297,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
@@ -304,12 +311,14 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
+    <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
@@ -321,6 +330,7 @@
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
@@ -338,6 +348,7 @@
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="SelectorPopUp.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
@@ -350,6 +361,10 @@
     <ClCompile Include="TImerViewer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="Utensil.cpp" />
+    <ClCompile Include="UtensilsMotion.cpp" />
+    <ClCompile Include="UtensilsPool.cpp" />
+    <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
