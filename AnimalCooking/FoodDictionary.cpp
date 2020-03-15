@@ -63,7 +63,7 @@ Food* FoodDictionary::bind(const int& c) const
 	}
 }
 
-Food* FoodDictionary::getResult(const int& c, const vector<int>& vector)
+Food* FoodDictionary::getResult(const int& c, vector<int>& vector)
 {
 	set<int> set;
 	for (auto elem : vector) {
@@ -71,6 +71,16 @@ Food* FoodDictionary::getResult(const int& c, const vector<int>& vector)
 	}
 	return getResult(c, set);
 }
+
+Food* FoodDictionary::getResult(const int& c, vector<Food*>& vector)
+{
+	set<int> set;
+	for (auto elem : vector) {
+		if (!set.insert(elem.getType()).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
+	}
+	return getResult(c, set);
+}
+
 
 Food* FoodDictionary::getResult(const int& c, const set<int>& set)
 {
