@@ -2,8 +2,8 @@
 #include "SDLGame.h"
 #include "SDL_macros.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text) : 
-		state_(CookerStates::empty), cookingTime_()
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text) :
+	state_(CookerStates::empty), cookingTime_()
 {
 	setPos(pos);
 	setSize(size);
@@ -16,6 +16,7 @@ Cooker::~Cooker() {
 	delete timer_;
 	timer_ = nullptr;
 }
+
 void Cooker::draw()
 {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
@@ -26,5 +27,11 @@ void Cooker::draw()
 Sarten::Sarten(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 10 * 1000;
-	cookerType_ = CookerTypes::type2;
+	cookerType_ = CookerTypes::sarten;
+}
+
+Horno::Horno(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
+{
+	cookingTime_ = 15 * 1000;
+	cookerType_ = CookerTypes::horno;
 }

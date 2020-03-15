@@ -72,6 +72,15 @@ Food* FoodDictionary::getResult(const int& c, const list<int>& list)
 	return getResult(c, set);
 }
 
+Food* FoodDictionary::getResult(const int& c, const vector<int>& vector)
+{
+	set<int> set;
+	for (auto elem : vector) {
+		if (!set.insert(elem).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
+	}
+	return getResult(c, set);
+}
+
 Food* FoodDictionary::getResult(const int& c, const set<int>& set)
 {
 	auto it = dictionary_.find(par(c, set));

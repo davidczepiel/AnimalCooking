@@ -38,6 +38,9 @@ public:
 	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
 	Food* getResult(const int& c, const list<int>& list);
 
+	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
+	Food* getResult(const int& c, const vector<int>& vector);
+
 	//Devuelve un int identificador, o -1 si no existe dicha combinacion
 	Food* getResult(const int& c, const set<int>& set);
 

@@ -4,8 +4,8 @@
 #include "Texture.h"
 #include "Timer.h"
 
-enum class CookerStates { empty, ready, cooking, cooked, burned };
-enum class CookerTypes{ type1,type2,typ3};
+enum class CookerStates { empty, cooking, cooked, burned };
+enum class CookerTypes { horno, sarten, type3};
 class Food;
 class Cooker {
 public:
@@ -49,6 +49,11 @@ protected:
 
 	vector<Food*> foods_;
 	static CookerTypes cookerType_;
+};
+
+class Horno : public Cooker {
+public:
+	Horno(Vector2D& pos, Vector2D& size, double rot, Texture* text);
 };
 
 class Sarten : public Cooker {

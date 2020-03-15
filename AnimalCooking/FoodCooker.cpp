@@ -13,7 +13,7 @@ void FoodCooker::init() {
 }
 
 void FoodCooker::startCooked(Cooker *c) {
-	if (c->getCookerState() == CookerStates::ready) {
+	if (c->getCookerState() == CookerStates::empty) {
 		c->setCookerState(CookerStates::cooking);
 		c->getCookerTimer()->setTime(c->getCookingTime());
 		c->getCookerTimer()->timerStart();
@@ -23,7 +23,6 @@ void FoodCooker::startCooked(Cooker *c) {
 void FoodCooker::update() {
 	for (Cooker* c : pool_) {
 		if (c->getCookerState() == CookerStates::cooking){
-
 			if (!c->getCookerTimer()->isTimerEnd()) {
 				c->getCookerTimer()->update();
 			}
