@@ -287,6 +287,12 @@
       <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="SelectorPopUpEntity.cpp" />
+    <ClCompile Include="Dish.cpp">
+      <Filter>Source Files\Dishes</Filter>
+    </ClCompile>
+    <ClCompile Include="DishStack.cpp">
+      <Filter>Source Files\Dishes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -618,6 +624,12 @@
       <Filter>Source Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="SelectorPopUpEntity.h" />
+    <ClInclude Include="Dish.h">
+      <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
+    <ClInclude Include="DishStack.h">
+      <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
