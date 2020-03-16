@@ -7,6 +7,7 @@
 #include "Entity.h"
 #include "ShelfViewer.h"
 #include "Utensil.h"
+#include "Dish.h"
 class Shelf :
 	public Entity, public Interactive
 {

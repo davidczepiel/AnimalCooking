@@ -11,13 +11,13 @@ void Shelf::Swap(int id) {
 	//Sin importar que tenga algo o sea nullptr tanto la repisa como el player
 	Pickable* p = content;
 	if (id == 0) {
-		if (dynamic_cast<Utensil*>(player1_->getObjectInHands()) != nullptr/* || dynamic_cast<Dish*>(player1_->getObjectInHands()) != nullptr*/) {
+		if (dynamic_cast<Utensil*>(player1_->getObjectInHands()) != nullptr || dynamic_cast<Dish*>(player1_->getObjectInHands()) != nullptr) {
 			content = player1_->getObjectInHands();
 			player1_->pick(p);
 		}
 	}
 	else {
-		if (dynamic_cast<Utensil*>(player2_->getObjectInHands()) != nullptr/* || dynamic_cast<Dish*>(player1_->getObjectInHands()) != nullptr*/) {
+		if (dynamic_cast<Utensil*>(player2_->getObjectInHands()) != nullptr || dynamic_cast<Dish*>(player2_->getObjectInHands()) != nullptr) {
 			content = player2_->getObjectInHands();
 			player2_->pick(p);
 		}
