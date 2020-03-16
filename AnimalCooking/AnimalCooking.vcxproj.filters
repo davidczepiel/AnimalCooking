@@ -278,7 +278,6 @@
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="Ingredient.cpp" />
-    <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="SelectorPopUp.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>

@@ -326,7 +326,6 @@
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
-    <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
