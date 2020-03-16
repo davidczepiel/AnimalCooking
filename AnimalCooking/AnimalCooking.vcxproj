@@ -244,6 +244,7 @@
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SelectorPopUp.h" />
+    <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -347,6 +348,7 @@
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SelectorPopUp.cpp" />
+    <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
