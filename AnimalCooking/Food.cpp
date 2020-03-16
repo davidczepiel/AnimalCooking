@@ -10,6 +10,14 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	speed_ = Vector2D();
 }
 
+Food::Food(Resources::FoodType type): Pickable(nullptr, nullptr) {
+	position_ = Vector2D();
+	size_ = Vector2D(50, 50);
+	type_ = type;
+	foodPool_ = nullptr;
+	speed_ = Vector2D();
+}
+
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
 {
 	foodPool_ = foodPool;
