@@ -151,7 +151,26 @@ public:
 		CaughtFish,
 		SlicedChicken,
 		CaughtClam,
-		Empty
+		///
+		Rice,
+		Bread,
+		///
+		Empty,
+		///
+		Salad,
+		Burger,
+		Pizza,
+		Roast,
+		RiceDish,
+		HotDog,
+		Risotto,
+		CookedFish,
+		FriedVegs,
+		BakedChicken,
+		FrenchFries,
+		CookedClams,
+		RiceAndClams
+
 
 	};
 };
