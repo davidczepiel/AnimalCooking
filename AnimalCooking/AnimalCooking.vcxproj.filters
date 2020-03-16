@@ -268,30 +268,38 @@
     <ClCompile Include="UtensilsViewer.cpp">
       <Filter>Source Files\Utensils</Filter>
     </ClCompile>
-    <ClCompile Include="Food.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
     <ClCompile Include="ButtonBehaviour.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="ButtonRenderer.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="Ingredient.cpp" />
-    <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="SelectorPopUp.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="InteractionRect.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="Dish.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
     <ClCompile Include="DishStack.cpp">
       <Filter>Source Files\Dishes</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectorPopUpEntity.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive.cpp">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickable.cpp">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Ingredient.cpp">
+      <Filter>Source Files\Ingredients</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -619,16 +627,20 @@
     <ClInclude Include="Pickable.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Interactive.h" />
     <ClInclude Include="InteractionRect.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="Dish.h">
       <Filter>Header Files\Dishes</Filter>
     </ClInclude>
     <ClInclude Include="DishStack.h">
       <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectorPopUpEntity.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -741,6 +753,9 @@
     </Filter>
     <Filter Include="Source Files\Utensils">
       <UniqueIdentifier>{6ef58959-d3dd-436f-8426-560465eb9d6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{df1ad3d3-5a36-4048-a7d5-3a890ba2c29b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
