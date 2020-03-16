@@ -13,6 +13,9 @@ public:
 	void init() override;
 	void update() override;
 
+	Pickable* getObjectInHands() { return objInHands_; }
+	bool hasEmptyDish();
+
 private:
 	Pickable* objInHands_;
 	Transform* playerTransform_;

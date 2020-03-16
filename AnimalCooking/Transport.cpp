@@ -5,6 +5,7 @@ Transport::Transport() : Component(ecs::Transport)
 {
 	objInHands_ = nullptr;
 	playerTransform_ = nullptr;
+	emptyDish_ = false;
 }
 
 void Transport::pick(Pickable* obj)
@@ -33,4 +34,12 @@ void Transport::init()
 void Transport::update()
 {
 	if (objInHands_ != nullptr) { objInHands_->setSpeed(playerTransform_->getVel()); }
+}
+
+bool Transport::hasEmptyDish()
+{
+	if (dynamic_cast<Dish*>(objInHands_) != nullptr) {
+		return static_cast<Dish*>(objInHands_)->isEmpty();
+	}
+	else return false;
 }
