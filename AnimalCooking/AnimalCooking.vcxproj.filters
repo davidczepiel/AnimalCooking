@@ -278,9 +278,6 @@
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
     <ClCompile Include="Ingredient.cpp" />
-    <ClCompile Include="UtensilWasher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="SelectorPopUp.cpp">
       <Filter>Source Files\Utils</Filter>
@@ -292,6 +289,7 @@
     <ClCompile Include="Shelf.cpp" />
     <ClCompile Include="ShelfViewer.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
+    <ClCompile Include="Sink.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -615,9 +613,6 @@
     <ClInclude Include="ButtonBehaviour.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="UtensilWasher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pickable.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
@@ -628,6 +623,7 @@
     <ClInclude Include="Shelf.h" />
     <ClInclude Include="ShelfViewer.h" />
     <ClInclude Include="SinkViewer.h" />
+    <ClInclude Include="Sink.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

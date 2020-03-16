@@ -246,6 +246,7 @@
     <ClInclude Include="SelectorPopUp.h" />
     <ClInclude Include="Shelf.h" />
     <ClInclude Include="ShelfViewer.h" />
+    <ClInclude Include="Sink.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
@@ -266,7 +267,6 @@
     <ClInclude Include="UtensilsMotion.h" />
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
-    <ClInclude Include="UtensilWasher.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +353,7 @@
     <ClCompile Include="SelectorPopUp.cpp" />
     <ClCompile Include="Shelf.cpp" />
     <ClCompile Include="ShelfViewer.cpp" />
+    <ClCompile Include="Sink.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
@@ -369,7 +370,6 @@
     <ClCompile Include="UtensilsMotion.cpp" />
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
-    <ClCompile Include="UtensilWasher.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
