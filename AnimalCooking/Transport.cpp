@@ -87,5 +87,4 @@ bool Transport::hasEmptyDish()
 		return static_cast<Dish*>(objInHands_)->isEmpty();
 	}
 	else return false;
-	return false;
 }
