@@ -49,6 +49,7 @@ enum CmpId : CmpIdType {
 	ScoreViewer,
 	SoundManager,
 	SelectorPopUp,
+	SelectorPopUpEntity,
 
 	ButtonBehaviour, //Buttons
 	ButtonRenderer,

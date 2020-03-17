@@ -13,7 +13,7 @@ public:
 		Knife, Mace, Grater, Net
 	};
 	enum Player {
-		Player1, Player2;
+		Player1, Player2
 	};
 
 	enum TextureId : std::size_t {

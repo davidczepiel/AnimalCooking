@@ -1,8 +1,27 @@
 #pragma once
+
 #include "Component.h"
-class GameControl: public Component
+#include "IngredientsPool.h"
+#include "Food.h"
+#include "UtensilsPool.h"
+#include "GameLogic.h"
+#include "FoodPool.h"
+
+class GameControl : public Component
 {
 public:
-	GameControl();
-};
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u);
+    ~GameControl() {}
 
+    void init() override {}
+    void update() override {}
+    void newIngredient();
+    void newFood(Resources::FoodType type, Vector2D pos);
+private:
+    Ingredient* newIngType();
+    IngredientsPool* ingPool_;
+    FoodPool* foodPool;
+    UtensilsPool* utensilsPool;
+    Transport* tP1;
+    Transport* tP2;
+};

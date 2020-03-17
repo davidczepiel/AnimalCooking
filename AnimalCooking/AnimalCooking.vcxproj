@@ -180,9 +180,11 @@
     <ClInclude Include="CookerPool.h" />
     <ClInclude Include="CookerViewer.h" />
     <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="Dish.h" />
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
+    <ClInclude Include="DishStack.h" />
     <ClInclude Include="DishViewer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
@@ -246,6 +248,7 @@
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SelectorPopUp.h" />
+    <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -291,9 +294,11 @@
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="Dish.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
+    <ClCompile Include="DishStack.cpp" />
     <ClCompile Include="DishViewer.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -351,6 +356,7 @@
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SelectorPopUp.cpp" />
+    <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
