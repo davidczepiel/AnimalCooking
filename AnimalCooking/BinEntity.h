@@ -2,6 +2,7 @@
 #include "Interactive.h"
 #include "Entity.h"
 #include "BinViewer.h"
+#include "Transport.h"
 
 class BinEntity : public Entity, public Interactive
 {
