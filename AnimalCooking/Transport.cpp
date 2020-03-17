@@ -79,12 +79,6 @@ void Transport::update()
 
 		objInHands_->setPos(objPos - objOffset);
 	}
-
-	/*if (objInHands_ != nullptr && !(playerTransform_->getVel().getX() == 0 && playerTransform_->getVel().getY() == 0)) {
-		
-		objInHands_->setPos(Vector2D(playerTransform_->getPos().getX() + playerTransform_->getW()/2 + playerTransform_->getVel().getX() * playerTransform_->getW()/2,
-			playerTransform_->getPos().getY() + playerTransform_->getH()/2 + playerTransform_->getVel().getY() * playerTransform_->getH()/2));
-	}*/
 }
 
 bool Transport::hasEmptyDish()

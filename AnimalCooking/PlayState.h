@@ -37,7 +37,11 @@ public:
 		SlicedTomato* st = new SlicedTomato(Vector2D(50, 50), transportP1, nullptr);
 		fp->AddFood(st);
 
+		SlicedLettuce* sl = new SlicedLettuce(Vector2D(400, 400), transportP1, nullptr);
+		fp->AddFood(sl);
+
 		transportP1->pick(st);
+		transportP1->pick(sl);
 	}
 
 
