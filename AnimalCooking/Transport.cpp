@@ -83,9 +83,9 @@ void Transport::update()
 
 bool Transport::hasEmptyDish()
 {
-	/*if (dynamic_cast<Dish*>(objInHands_) != nullptr) {
+	if (dynamic_cast<Dish*>(objInHands_) != nullptr) {
 		return static_cast<Dish*>(objInHands_)->isEmpty();
 	}
-	else return false;*/
+	else return false;
 	return false;
 }
