@@ -280,10 +280,6 @@
     <ClCompile Include="InteractionRect.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Shelf.cpp" />
-    <ClCompile Include="ShelfViewer.cpp" />
-    <ClCompile Include="SinkViewer.cpp" />
-    <ClCompile Include="Sink.cpp" />
     <ClCompile Include="Dish.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
@@ -304,6 +300,18 @@
     </ClCompile>
     <ClCompile Include="Ingredient.cpp">
       <Filter>Source Files\Ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="Sink.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="Shelf.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShelfViewer.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="SinkViewer.cpp">
+      <Filter>Source Files\Cookers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -634,10 +642,6 @@
     <ClInclude Include="InteractionRect.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Shelf.h" />
-    <ClInclude Include="ShelfViewer.h" />
-    <ClInclude Include="SinkViewer.h" />
-    <ClInclude Include="Sink.h" />
     <ClInclude Include="Dish.h">
       <Filter>Header Files\Dishes</Filter>
     </ClInclude>
@@ -649,6 +653,18 @@
     </ClInclude>
     <ClInclude Include="Interactive.h">
       <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Shelf.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sink.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShelfViewer.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkViewer.h">
+      <Filter>Header Files\Cookers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

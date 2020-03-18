@@ -7,8 +7,6 @@ void UtensilsViewer::init() {
 
 void UtensilsViewer::draw() {
 	for (Utensil* b : pool_) {
-		if (b->inUse()) {
 			b->render();
-		}
 	}
 }

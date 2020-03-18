@@ -14,17 +14,23 @@ void Shelf::Swap(int id) {
 		if (dynamic_cast<Utensil*>(player1_->getObjectInHands()) != nullptr || dynamic_cast<Dish*>(player1_->getObjectInHands()) != nullptr) {
 			content = player1_->getObjectInHands();
 			player1_->pick(p);
+			p->interactive(0);
 		}
 	}
 	else {
 		if (dynamic_cast<Utensil*>(player2_->getObjectInHands()) != nullptr || dynamic_cast<Dish*>(player2_->getObjectInHands()) != nullptr) {
 			content = player2_->getObjectInHands();
 			player2_->pick(p);
+			p->interactive(1);
 		}
 	}
 	//En casod de que sea algo, lo pongo justo encima mio en el centro para que renderice ahi
-	if (content != nullptr)
+	if (content != nullptr) {
 		content->setPos(position_ + Vector2D(size_.getX() / 2, size_.getY() / 2));
+		Utensil* u = dynamic_cast<Utensil*>(content);
+		if (u != nullptr)
+			u->drop(false);
+	}
 }
 
 void Shelf::interactive(int id) {
