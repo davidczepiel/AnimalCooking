@@ -3,9 +3,10 @@
 #include "Entity.h"
 #include "Collisions.h"
 #include "Transform.h"
+#include "Transport.h"
 #include "Pickable.h"
 
-
+class GameLogic;
 class Utensil : public Pickable{
 
 protected:
@@ -28,40 +29,40 @@ protected:
 	int attackHitBoxHeight_;
 	int attackRate_;
 	int lastAttack_;
-	//Confirmación de que se puede limpiar y que está sucio
+	//Confirmaciï¿½n de que se puede limpiar y que estï¿½ sucio
 	bool dirty_;
 	bool ableToClean_;
 
 	bool isInUse;
-
-	Transform* player_;
 	//Mis 2 texturas
 	Texture* texture_;
 	Texture* secondTexture_;
-	//Control animación ataque
+	//Control animacion ataque
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
-	//Rect que se usará para calcular las colisiones entre la hitbox de un ataque y los ingredientes
+	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	SDL_Rect interactionTrigger_;
+	GameLogic* gameLogic;
 
 	void onHit(Vector2D dir);
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
 	virtual ~Utensil() {}
+	void interactive(int player) override;
 
 	virtual void render() const;
 	virtual void update();
-	virtual void attack() = 0;
+	virtual void attack(Vector2D dir) = 0;
 
 	int getDirt() { return myDirt_; }
 	void drop(bool suelo);
 	void pickMe();
-	void inTheWasher(bool x);
 	void cleanUp();
 	void changeDirtySpeed(int speedModifier);
 	bool inUse() { return isInUse; }
 	void setInUse(bool x) { isInUse = x; }
+	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 
 };
 
@@ -72,7 +73,8 @@ class Knife : public Utensil
 public:
 	Knife(Vector2D pos, Transport* p1, Transport* p2);
 	~Knife() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack(Vector2D dir) {  onHit(dir); }
+
 };
 
 class Mace : public Utensil
@@ -80,7 +82,10 @@ class Mace : public Utensil
 public:
 	Mace(Vector2D pos, Transport* p1, Transport* p2);
 	~Mace() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+
+	virtual void attack(Vector2D dir) {  onHit(dir); }
+
+
 };
 
 
@@ -89,7 +94,8 @@ class Grater : public Utensil
 public:
 	Grater(Vector2D pos, Transport* p1, Transport* p2);
 	~Grater() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack(Vector2D dir) {  onHit(dir); }
+
 };
 
 class Net : public Utensil
@@ -97,5 +103,6 @@ class Net : public Utensil
 public:
 	Net(Vector2D pos, Transport* p1, Transport* p2);
 	~Net() {}
-	virtual void attack() { onHit(Vector2D(1, 1)); }// if (e != nullptr) static_cast<Ingredient>(e)->attacked(myType);
+	virtual void attack(Vector2D dir) {  onHit(dir); }
+
 };
