@@ -13,7 +13,7 @@ void Transport::pick(Pickable* obj, Resources::PickableType objType)
 {
 	if (objInHands_ == nullptr) {
 		objInHands_ = obj;
-		if (objType == Resources::PickableType::Dish) objType_ = Resources::PickableType::Dish;
+		 objType_ = objType;
 	}	
 	else swap(obj, objType);
 	objInHands_->onPick();
@@ -30,7 +30,7 @@ void Transport::swap(Pickable* obj, Resources::PickableType objType)
 {
 	objInHands_ = nullptr;
 	objInHands_ = obj;
-	if (objType_ == Resources::PickableType::Dish)  objType_ = Resources::PickableType::Dish;
+	objType_ = objType;
 }
 
 void Transport::init()

@@ -108,9 +108,9 @@ void Utensil::onPick() {
 void Utensil::interactive(int player) {
 	onPick();
 	if (player == 0)
-		player1_->pick(this);
+		player1_->pick(this,Resources::PickableType::Utensil);
 	else
-		player2_->pick(this);
+		player2_->pick(this, Resources::PickableType::Utensil);
 }
 
 

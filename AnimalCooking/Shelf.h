@@ -12,9 +12,13 @@ class Shelf :
 	public Entity, public Interactive
 {
 	Pickable* content;
+	bool utensil;
+	bool dish;
 public:
 	Shelf(Pickable* c,Transport* p1, Transport* p2);
-	void Swap(int id);
+	void SwapUtensil(int id);
+	void SwapDish(int id);
+	void Save(int id);
 	virtual void interactive(int id);
 	Pickable* getContent() { return content; }
 };
