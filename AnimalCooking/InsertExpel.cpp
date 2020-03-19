@@ -1,17 +1,18 @@
 #include "InsertExpel.h"
+#include "Dish.h"
 #include <list>
+
+//InsertExpel::InsertExpel() :
+//	Component(ecs::InsertExpel),
+//	foodCooker_(nullptr),
+//	transport_(nullptr)
+//{
+//}
 
 InsertExpel::InsertExpel(Transport* tr) :
 	Component(ecs::InsertExpel),
 	transport_(tr),
 	foodCooker_(nullptr)
-{
-}
-
-InsertExpel::InsertExpel() :
-	Component(ecs::InsertExpel),
-	foodCooker_(nullptr),
-	transport_(nullptr)
 {
 }
 
@@ -34,7 +35,6 @@ void InsertExpel::insertFood(Cooker* c) {
 }
 
 void InsertExpel::extractFood(Cooker *c){
-	//if(transport_.hasEmptyDish() && c->getCookerState() != CookerStates::empty) <- Terminar de aclarar con el grupo si se puede sacar estando en cooking
 	if (transport_.hasEmptyDish() && (c->getCookerState() == CookerStates::cooked ||
 									  c->getCookerState() == CookerStates::burned)) {
 		Dish* dish_ = static_cast<Dish*>(transport_.getObjectInHands());

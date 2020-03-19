@@ -24,14 +24,14 @@ void Cooker::draw()
 	texture_->render(rect, rot_); //Cambiar para usar animaciones
 }
 
-Sarten::Sarten(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
+Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 10 * 1000;
-	cookerType_ = CookerTypes::sarten;
+	cookerType_ = CookerTypes::skillet;
 }
 
-Horno::Horno(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
+Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 15 * 1000;
-	cookerType_ = CookerTypes::horno;
+	cookerType_ = CookerTypes::oven;
 }

@@ -5,7 +5,7 @@
 #include "Timer.h"
 
 enum class CookerStates { empty, cooking, cooked, burned };
-enum class CookerTypes { horno, sarten, type3};
+enum class CookerTypes { oven, skillet, type3}; 
 class Food;
 class Cooker {
 public:
@@ -51,12 +51,12 @@ protected:
 	static CookerTypes cookerType_;
 };
 
-class Horno : public Cooker {
+class Oven : public Cooker {
 public:
-	Horno(Vector2D& pos, Vector2D& size, double rot, Texture* text);
+	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text);
 };
 
-class Sarten : public Cooker {
+class Skillet : public Cooker {
 public:
-	Sarten(Vector2D& pos, Vector2D& size, double rot, Texture* text);
+	Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text);
 };
