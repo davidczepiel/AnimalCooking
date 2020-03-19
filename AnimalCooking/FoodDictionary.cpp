@@ -33,57 +33,64 @@ Food* FoodDictionary::bind(const int& c) const
 {
 	switch (c)
 	{
+// Poop
 	case -1:
 		//return new Poop();
 		break;
-	case Resources::FoodType::MashedTomato:
-		//return new Carrot();
+
+// Platos enteros :
+
+	case Resources::FoodType::Pizza:
+		return new Pizza();
 		break;
-	case Resources::FoodType::SlicedLettuce:
-		//return new SlicedLettuce();
+	case Resources::FoodType::Roast:
+		return new Roast();
 		break;
-	case Resources::FoodType::SlicedOnion:
-		//return new SlicedOnion();
+	case Resources::FoodType::RiceDish:
+		return new RiceDish();
 		break;
-	case Resources::FoodType::SlicedMeat:
-		//return new SlicedMeat();
+	case Resources::FoodType::Risotto:
+		return new Risotto();
 		break;
-	case Resources::FoodType::MashedMeat:
-		//return new MashedMeat();
+	case Resources::FoodType::CookedFish:
+		return new CookedFish();
 		break;
-	case Resources::FoodType::SlicedCheese:
-		//return new SlicedCheese();
+	case Resources::FoodType::BakedChicken:
+		return new BakedChicken();
 		break;
-	case Resources::FoodType::GratedCheese:
-		//return new GratedCheese();
+	case Resources::FoodType::FriedVegs:
+		return new FriedVegs();
 		break;
-	case Resources::FoodType::SlicedPotato:
-		//return new SlicedPotato();
+	case Resources::FoodType::CookedClams:
+		return new CookedClams();
 		break;
-	case Resources::FoodType::SlicedSausage:
-		//return new SlicedSausage();
+	case Resources::FoodType::RiceAndClams:
+		return new RiceAndClams();
 		break;
-	case Resources::FoodType::SlicedCarrot:
-		//return new SlicedCarrot();
-		break;
-	case Resources::FoodType::CaughtSausage:
-		//return new CaughtSausage();
-		break;
-	case Resources::FoodType::SlicedMushroom:
-		//return new SlicedMushroom();
-		break;
-	case Resources::FoodType::MashedMushroom:
-		//return new MashedMushroom();
-		break;
-	case Resources::FoodType::CaughtFish:
-		//return new CaughtFish();
-		break;
-	case Resources::FoodType::SlicedChicken:
-		//return new SlicedChicken();
-		break;
-	case Resources::FoodType::CaughtClam:
-		//return new CaughtClam();
-		break;	
+
+// Alimentos individuales : 
+
+	//case Resources::FoodType::TomatoSauce:
+	//	//return new SlicedCarrot();
+	//	break;
+	//case Resources::FoodType::CaughtSausage:
+	//	//return new CaughtSausage();
+	//	break;
+	//case Resources::FoodType::SlicedMushroom:
+	//	//return new SlicedMushroom();
+	//	break;
+	//case Resources::FoodType::MashedMushroom:
+	//	//return new MashedMushroom();
+	//	break;
+	//case Resources::FoodType::CaughtFish:
+	//	//return new CaughtFish();
+	//	break;
+	//case Resources::FoodType::SlicedChicken:
+	//	//return new SlicedChicken();
+	//	break;
+	//case Resources::FoodType::CaughtClam:
+	//	//return new CaughtClam();
+	//	break;	
 	default:
 		//return new Poop();
 		break;
