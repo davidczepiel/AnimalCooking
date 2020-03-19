@@ -1,11 +1,11 @@
 #include "Dish.h"
 
-Dish::Dish(Vector2D pos_)
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2)
 {
 	pos = pos_;
 	width = 100;
 	height = 50;
-	vel = Vector2D(10, 10);
+	vel = Vector2D();
 	foods_ = vector<Food*>();
 }
 
@@ -51,7 +51,7 @@ void Dish::render()
 	//(teniendo en cuenta el índice la comida) y renderizamos
 	for (auto i = foods_.begin(); i != foods_.end(); i++)
 	{		
-		(*i)->setPosition(Vector2D(pos.getX() + (*i)->getSize().getX() / 2,
+		(*i)->setPos(Vector2D(pos.getX() + (*i)->getSize().getX() / 2,
 			pos.getY() - (*i)->getSize().getY() / 4 - (int64_t)((*i)->getSize().getY() * k)));
 		
 		(*i)->draw();

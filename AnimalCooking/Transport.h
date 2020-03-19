@@ -8,15 +8,13 @@ public:
 	Transport();
 
 	void pick(Pickable* obj, Resources::PickableType objType);
-	void drop();
+	void drop(bool onFloor = true);
 
 	void init() override;
 	void update() override;
 
 	Pickable* getObjectInHands() { return objInHands_; }
-	
-	bool hasEmptyDish();
-	bool hasDish() { return objType_ == Resources::PickableType::Dish; }
+	Resources::PickableType getObjectTypeInHands() { return objType_; }
 
 private:
 	Pickable* objInHands_;

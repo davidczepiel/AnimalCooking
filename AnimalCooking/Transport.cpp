@@ -2,11 +2,11 @@
 #include "Entity.h"
 #include "Dish.h"
 
-Transport::Transport() : Component(ecs::Transport)
+Transport::Transport() : Component(ecs::Transport), 
+objInHands_(nullptr), 
+playerTransform_(nullptr), 
+objType_(objType_ = Resources::PickableType::none)
 {
-	objInHands_ = nullptr;
-	playerTransform_ = nullptr;
-	objType_ = Resources::PickableType::none;
 }
 
 void Transport::pick(Pickable* obj, Resources::PickableType objType)
@@ -16,10 +16,12 @@ void Transport::pick(Pickable* obj, Resources::PickableType objType)
 		if (objType == Resources::PickableType::Dish) objType_ = Resources::PickableType::Dish;
 	}	
 	else swap(obj, objType);
+	objInHands_->onPick();
 }
 
-void Transport::drop()
+void Transport::drop(bool onFloor)
 {
+	objInHands_->onDrop(onFloor);
 	objInHands_ = nullptr;
 	objType_ = Resources::PickableType::none;
 }
@@ -85,12 +87,4 @@ void Transport::update()
 
 		objInHands_->setPos(objPos - objOffset);
 	}
-}
-
-bool Transport::hasEmptyDish()
-{
-	if (objType_ == Resources::PickableType::Dish) {
-		return static_cast<Dish*>(objInHands_)->isEmpty();
-	}
-	else return false;
 }

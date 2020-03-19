@@ -8,6 +8,9 @@ public:
 	void setSpeed(Vector2D newSpeed) { speed_ = newSpeed; }
 	Vector2D getSpeed() { return speed_; }
 	
+	virtual void onDrop(bool onFloor) = 0;
+	virtual void onPick() = 0;
+
 protected:
 	Vector2D speed_;
 	Pickable() : Interactive(nullptr, nullptr) {}

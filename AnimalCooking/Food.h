@@ -21,6 +21,9 @@ public:
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw() = 0; //Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
+
+	virtual void onDrop(bool onFloor) {};
+	virtual void onPick() {};
 };
 
 class SlicedTomato : public Food
