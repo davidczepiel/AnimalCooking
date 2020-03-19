@@ -14,7 +14,10 @@ public:
 
 	~Interactive() {}
 
-	virtual void interactive(int player) {};
+	virtual void action1(int player) {};
+	virtual void action2(int player) {};
+	virtual void action3(int player) {};
+	virtual void action4(int player) {};
 
 protected:
 
