@@ -55,8 +55,8 @@ public:
 	virtual void attack(Vector2D dir) = 0;
 
 	int getDirt() { return myDirt_; }
-	void drop(bool suelo);
-	void pickMe();
+	virtual void onDrop(bool onFloor);
+	virtual void onPick();
 	void cleanUp();
 	void changeDirtySpeed(int speedModifier);
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}

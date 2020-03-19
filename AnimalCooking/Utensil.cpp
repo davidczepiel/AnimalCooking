@@ -87,26 +87,26 @@ void Utensil::render()const {
 }
 
 
-void Utensil::drop(bool suelo) {
+void Utensil::onDrop(bool onFloor) {
 	//Hay que volver a situar el trigger en la nueva zona
 	interactionTrigger_.x = position_.getX() - (interactionTrigger_.w / 2);
 	interactionTrigger_.y = position_.getY() - (interactionTrigger_.h / 2);
 
-	if (suelo)
+	if (onFloor)
 		myState = State::floor;
 	else
 		myState = State::shelf;
 }
 
 
-void Utensil::pickMe() {
+void Utensil::onPick() {
 	//Me cambio de estado y paso a no tener suciedad
 	myState = State::playerHand;
 	myDirt_ = 0;
 }
 
 void Utensil::interactive(int player) {
-	pickMe();
+	onPick();
 	if (player == 0)
 		player1_->pick(this);
 	else
