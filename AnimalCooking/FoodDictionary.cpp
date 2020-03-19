@@ -35,9 +35,8 @@ Food* FoodDictionary::bind(const int& c) const
 	{
 // Poop
 	case -1:
-		//return new Poop();
+		return new Poop();
 		break;
-
 // Platos enteros :
 
 	case Resources::FoodType::Pizza:
@@ -70,29 +69,17 @@ Food* FoodDictionary::bind(const int& c) const
 
 // Alimentos individuales : 
 
-	//case Resources::FoodType::TomatoSauce:
-	//	//return new SlicedCarrot();
-	//	break;
-	//case Resources::FoodType::CaughtSausage:
-	//	//return new CaughtSausage();
-	//	break;
-	//case Resources::FoodType::SlicedMushroom:
-	//	//return new SlicedMushroom();
-	//	break;
-	//case Resources::FoodType::MashedMushroom:
-	//	//return new MashedMushroom();
-	//	break;
-	//case Resources::FoodType::CaughtFish:
-	//	//return new CaughtFish();
-	//	break;
-	//case Resources::FoodType::SlicedChicken:
-	//	//return new SlicedChicken();
-	//	break;
-	//case Resources::FoodType::CaughtClam:
-	//	//return new CaughtClam();
-	//	break;	
+	case Resources::FoodType::MashedMeatSkillet:
+		return new MashedMeatSkillet();
+		break;
+	case Resources::FoodType::CaughtSausageSkillet:
+		return new CaughtSausageSkillet();
+		break;
+	case Resources::FoodType::SlicedPotatoSkillet:
+		return new SlicedPotatoSkillet();
+		break;
 	default:
-		//return new Poop();
+		return new Poop();
 		break;
 	}
 }
