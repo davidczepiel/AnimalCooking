@@ -6,24 +6,29 @@ Transport::Transport() : Component(ecs::Transport)
 {
 	objInHands_ = nullptr;
 	playerTransform_ = nullptr;
+	objType_ = Resources::PickableType::none;
 }
 
-void Transport::pick(Pickable* obj)
+void Transport::pick(Pickable* obj, Resources::PickableType objType)
 {
-	if (objInHands_ == nullptr)
+	if (objInHands_ == nullptr) {
 		objInHands_ = obj;
-	else swap(obj);
+		if (objType == Resources::PickableType::Dish) objType_ = Resources::PickableType::Dish;
+	}	
+	else swap(obj, objType);
 }
 
 void Transport::drop()
 {
 	objInHands_ = nullptr;
+	objType_ = Resources::PickableType::none;
 }
 
-void Transport::swap(Pickable* obj)
+void Transport::swap(Pickable* obj, Resources::PickableType objType)
 {
 	objInHands_ = nullptr;
 	objInHands_ = obj;
+	if (objType_ == Resources::PickableType::Dish)  objType_ = Resources::PickableType::Dish;
 }
 
 void Transport::init()
@@ -84,7 +89,7 @@ void Transport::update()
 
 bool Transport::hasEmptyDish()
 {
-	if (dynamic_cast<Dish*>(objInHands_) != nullptr) {
+	if (objType_ == Resources::PickableType::Dish) {
 		return static_cast<Dish*>(objInHands_)->isEmpty();
 	}
 	else return false;
