@@ -12,13 +12,11 @@ class Shelf :
 	public Entity, public Interactive
 {
 	Pickable* content;
-	bool utensil;
-	bool dish;
+	Resources::PickableType contentType;
+
 public:
 	Shelf(Pickable* c,Transport* p1, Transport* p2);
-	void SwapUtensil(int id);
-	void SwapDish(int id);
-	void Save(int id);
+	void Swap(Transport* player, Resources::PickableType onPlayerHands);
 	virtual void action1(int id);
 	Pickable* getContent() { return content; }
 };
