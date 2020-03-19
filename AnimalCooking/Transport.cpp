@@ -1,5 +1,6 @@
 #include "Transport.h"
 #include "Entity.h"
+#include "Dish.h"
 
 Transport::Transport() : Component(ecs::Transport)
 {
