@@ -48,7 +48,7 @@ protected:
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
 	virtual ~Utensil() {}
-	void interactive(int player) override;
+	void action1(int player) override;
 
 	virtual void render() const;
 	virtual void update();

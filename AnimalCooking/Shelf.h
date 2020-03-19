@@ -19,7 +19,7 @@ public:
 	void SwapUtensil(int id);
 	void SwapDish(int id);
 	void Save(int id);
-	virtual void interactive(int id);
+	virtual void action1(int id);
 	Pickable* getContent() { return content; }
 };
 

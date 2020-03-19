@@ -16,7 +16,7 @@ void Sink::draw() { //¿ Para dibujar la barra que indica la cantidad de suciedad
 }
 
 
-void Sink::interactive(int iDp) {
+void Sink::action1(int iDp) {
 
 	if (SDL_GetTicks())
 		if (SDL_GetTicks() - lastClean > cadence) {

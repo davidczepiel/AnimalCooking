@@ -15,7 +15,7 @@ public:
 	Sink(Transport* p1, Transport* p2);
 	void draw() ;
 	virtual ~Sink() {}
-	virtual void interactive(int player);
+	virtual void action1(int player);
 private:
 	int lastClean;
 	int cadence;

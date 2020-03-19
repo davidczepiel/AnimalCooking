@@ -105,7 +105,7 @@ void Utensil::onPick() {
 	myDirt_ = 0;
 }
 
-void Utensil::interactive(int player) {
+void Utensil::action1(int player) {
 	onPick();
 	if (player == 0)
 		player1_->pick(this,Resources::PickableType::Utensil);

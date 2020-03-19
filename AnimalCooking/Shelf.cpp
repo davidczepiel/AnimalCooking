@@ -136,7 +136,7 @@ void Shelf::Save(int id) {
 	}
 }
 
-void Shelf::interactive(int id) {
+void Shelf::action1(int id) {
 	if (content == nullptr)
 		Save(id);
 	else {
