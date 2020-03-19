@@ -157,6 +157,10 @@ public:
 		///
 		Empty,
 		///
+		MashedMeatSkillet,
+		CaughtSausageSkillet,
+		SlicedPotatoSkillet,
+		///
 		Salad,
 		Burger,
 		Pizza,
@@ -170,7 +174,7 @@ public:
 		FrenchFries,
 		CookedClams,
 		RiceAndClams
-
+		///
 
 	};
 

@@ -352,3 +352,47 @@ public:
 	}
 };
 
+class MashedMeatSkillet : public Food
+{
+public:
+	MashedMeatSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::MashedMeatSkillet, p1, p2) {};
+	MashedMeatSkillet() : Food(Resources::FoodType::MashedMeatSkillet) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class CaughtSausageSkillet : public Food
+{
+public:
+	CaughtSausageSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CaughtSausageSkillet, p1, p2) {};
+	CaughtSausageSkillet() : Food(Resources::FoodType::CaughtSausageSkillet) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class SlicedPotatoSkillet : public Food
+{
+public:
+	SlicedPotatoSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedPotatoSkillet, p1, p2) {};
+	SlicedPotatoSkillet() : Food(Resources::FoodType::SlicedPotatoSkillet) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Poop : public Food
+{
+public:
+	Poop(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Empty, p1, p2) {};
+	Poop() : Food(Resources::FoodType::Empty) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
