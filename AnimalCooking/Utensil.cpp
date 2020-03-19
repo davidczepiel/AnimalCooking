@@ -1,6 +1,7 @@
 #include "Utensil.h"
 #include "SDLGame.h"
 #include "SDL_macros.h"
+#include "GameLogic.h"
 #include <math.h> 
 
 Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) {
@@ -14,6 +15,7 @@ Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) 
 	lastAttack_ = SDL_GetTicks();
 	myState = State::shelf;
 	dirty_ = false;
+	isInUse = false;
 	ableToClean_ = false;
 	interactionTrigger_.x = 100;
 	interactionTrigger_.y = 100;
@@ -32,17 +34,25 @@ Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) 
 void Utensil::update() {
 
 	if (isInUse) {
+
 		Pickable::update();
+
 
 		if (myState != State::playerHand) {
 			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+				if(myDirt_<maxDirt_)
 				myDirt_ += getDirtSpeed_;
-				if (myDirt_ >= maxDirt_)
+				else {
 					dirty_ = true;
+					myDirt_ = maxDirt_;
+				}
 			}
+
 		}
 		else
-		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animación que estoy mostrando
+		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animaciï¿½n que estoy mostrando
+			position_.setX(position_.getX() + speed_.getX());
+			position_.setY(position_.getY() + speed_.getY());
 			if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
 				frameAttack++;
 				if (frameAttack >= 5)
@@ -52,28 +62,32 @@ void Utensil::update() {
 	}
 }
 
+
 void Utensil::onHit(Vector2D dir) {
-	/*if (SDLGetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
-		lastAttack_ = SDLGetTicks();
-		if (!dirty_) {  //Solo si estoy limpio mi ataque debería hacer algo significativo
-			lastFrameTick = SDLGetTicks();
-			//Preparo la posición de donde realizo el ataque
-			Vector2D velNormalizada = vel_.normalize();
-			SDLRect ataque;
-			ataque.x = pos.getX() + (velNormalizada.getX() * range_);
-			ataque.y = pos.getY() + (velNormalizada.getY() * range_);
+	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
+		lastAttack_ = SDL_GetTicks();
+
+		if (!dirty_) {  //Solo si estoy limpio mi ataque deberia hacer algo significativo
+			lastFrameTick = SDL_GetTicks();
+			//Preparo la posiciï¿½n de donde realizo el ataque
+			Vector2D velNormalizada = speed_.normalize();
+			SDL_Rect ataque;	
+			ataque.x = position_.getX() + (velNormalizada.getX() * range_);
+			ataque.y = position_.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
 			ataque.h = attackHitBoxHeight_;
-			//ingrediente = gameCtrl->AtaqueIngredientes(ataque);
+			gameLogic->hitIngredient(ataque, myType);
 		}
-	}*/
+	}
 }
+
+
 void Utensil::render()const {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	if (!dirty_ && !attacking_)
-		texture_->render(rect); //EN caso de que solo esté en la mano del jugador	
+		texture_->render(rect); //EN caso de que solo estï¿½ en la mano del jugador	
 	else if ((!dirty_ && attacking_)) {
-		texture_->render(rect); //EN caso de estar atacando habría que hacer un renderFrame
+		texture_->render(rect); //EN caso de estar atacando habrï¿½a que hacer un renderFrame
 	}
 	else
 		secondTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
@@ -99,19 +113,22 @@ void Utensil::pickMe() {
 	myDirt_ = 0;
 }
 
-
-
-
-void Utensil::inTheWasher(bool x) {
-	ableToClean_ = x;
+void Utensil::interactive(int player) {
+	pickMe(); 
+	if (player == 0)
+		player1_->pick(this);
+	else
+		player2_->pick(this);
 }
+
+
 
 void Utensil::changeDirtySpeed(int speedModifier) {
 	getDirtSpeed_ += speedModifier;
 }
 
 void Utensil::cleanUp() {
-	//Me debería llamar el fregadero para decime que me limpie
+	//Me deberia llamar el fregadero para decime que me limpie
 	if (dirty_ && ableToClean_) {
 		myDirt_ -= cleanUpSpeed_;
 		if (myDirt_ <= 0) {
@@ -134,6 +151,7 @@ Knife::Knife(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
 }
+
 
 Mace::Mace(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2){
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);

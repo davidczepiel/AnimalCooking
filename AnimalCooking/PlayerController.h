@@ -1,10 +1,13 @@
 #pragma once
+#include "SDL.h"
 #include "Component.h"
 #include "Transform.h"
 #include "Attack.h"
 #include "Entity.h"
 #include "GPadController.h"
 #include "KeyBoardController.h"
+#include "InteractionRect.h"
+#include "Selector.h"
 
 
 class PlayerController : public Component {
@@ -27,6 +30,8 @@ private:
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
 
 	Transform* tr_ = nullptr;
+	Selector* selector_ = nullptr;
+	InteractionRect* ir_ = nullptr;
 	//Attack* attack_ = nullptr; <<--Cuando se implemente
 
 	void joystickUpdate();
