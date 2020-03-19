@@ -13,17 +13,17 @@ class PlayState : public State
 {
 public:
 	PlayState() : State() {
-		
+
 		Entity* player = stage->addEntity();
 		player->addComponent<Transform>();
 		player->addComponent<PlayerMotion>();
 		player->addComponent<PlayerController>();
 		player->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
-		
+
 	}
 
 
-	
+
 private:
 
 	static void goToEndState();

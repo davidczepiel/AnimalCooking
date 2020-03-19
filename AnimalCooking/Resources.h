@@ -151,7 +151,33 @@ public:
 		CaughtFish,
 		SlicedChicken,
 		CaughtClam,
-		Empty
+		///
+		Rice,
+		Bread,
+		///
+		Empty,
+		///
+		Salad,
+		Burger,
+		Pizza,
+		Roast,
+		RiceDish,
+		HotDog,
+		Risotto,
+		CookedFish,
+		FriedVegs,
+		BakedChicken,
+		FrenchFries,
+		CookedClams,
+		RiceAndClams
 
+
+	};
+
+	enum PickableType : std::size_t {
+		Food,
+		Dish,
+		Utensil,
+		none
 	};
 };

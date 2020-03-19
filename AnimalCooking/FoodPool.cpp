@@ -6,6 +6,14 @@ FoodPool::FoodPool() : Component(ecs::FoodPool)
 	foods_ = vector<Food*>();
 }
 
+FoodPool::~FoodPool() {
+	for (size_t i = 0; i < foods_.size(); i++)
+	{
+		delete foods_.at(i);
+	}
+	foods_.clear();
+}
+
 vector<Food*>* FoodPool::getPool()
 {
 	return &foods_;
