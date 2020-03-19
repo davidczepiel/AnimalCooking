@@ -8,6 +8,6 @@ void PlayerViewer::init()
 
 void PlayerViewer::draw()
 {
-	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),64,64};
+	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),tr_->getW(),tr_->getH()};
 	texture_->render(dest);
 }

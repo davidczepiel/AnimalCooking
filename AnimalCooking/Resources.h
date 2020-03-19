@@ -173,4 +173,11 @@ public:
 
 
 	};
+
+	enum PickableType : std::size_t {
+		Food,
+		Dish,
+		Utensil,
+		none
+	};
 };
