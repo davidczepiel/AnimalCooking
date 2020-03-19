@@ -1,11 +1,12 @@
 #pragma once
 #include "Food.h"
+#include "Pickable.h"
 #include <list>
 
-class Dish
+class Dish : public Pickable
 {
  public:
-	Dish(Vector2D pos_);
+	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2);
 	~Dish() { }
 	//Añade un alimento al plato	
 	void addFood(Food* f);
@@ -35,6 +36,9 @@ class Dish
 	inline void setHeight(int h) { height = h; }
 	inline void setPos(Vector2D value) { pos = value; }
 	inline void setVel(Vector2D value) { vel = value; }
+
+	virtual void onDrop(bool onFloor) {}
+	virtual void onPick() {}
 	
  private:
 	 vector<Food*>::iterator currentFood;

@@ -7,6 +7,8 @@ class FoodPool : public Component
 {
 public:
 	FoodPool();
+	virtual ~FoodPool();
+
 	vector<Food*>* getPool();
 	void AddFood(Food* food);
 	void RemoveFood(std::vector<Food*>::iterator it);

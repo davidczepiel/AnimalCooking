@@ -21,6 +21,9 @@ public:
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw() = 0; //Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
+
+	virtual void onDrop(bool onFloor) {};
+	virtual void onPick() {};
 };
 
 class SlicedTomato : public Food
@@ -183,3 +186,169 @@ public:
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
 	}
 };
+
+class Rice : public Food
+{
+public:
+	Rice(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Rice, p1, p2) {};
+	Rice(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Bread : public Food
+{
+public:
+	Bread(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Bread, p1, p2) {};
+	Bread(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Salad : public Food
+{
+public:
+	Salad(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad, p1, p2) {};
+	Salad(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Burger : public Food
+{
+public:
+	Burger(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger, p1, p2) {};
+	Burger(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Pizza : public Food
+{
+public:
+	Pizza(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Pizza, p1, p2) {};
+	Pizza(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Roast : public Food
+{
+public:
+	Roast(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Roast, p1, p2) {};
+	Roast(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class RiceDish : public Food
+{
+public:
+	RiceDish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceDish, p1, p2) {};
+	RiceDish(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class HotDog : public Food
+{
+public:
+	HotDog(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::HotDog, p1, p2) {};
+	HotDog(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Risotto : public Food
+{
+public:
+	Risotto(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Risotto, p1, p2) {};
+	Risotto(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class CookedFish : public Food
+{
+public:
+	CookedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedFish, p1, p2) {};
+	CookedFish(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class FriedVegs : public Food
+{
+public:
+	FriedVegs(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs, p1, p2) {};
+	FriedVegs(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class BakedChicken : public Food
+{
+public:
+	BakedChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::BakedChicken, p1, p2) {};
+	BakedChicken(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class FrenchFries : public Food
+{
+public:
+	FrenchFries(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FrenchFries, p1, p2) {};
+	FrenchFries(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class CookedClams : public Food
+{
+public:
+	CookedClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedClams, p1, p2) {};
+	CookedClams(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class RiceAndClams : public Food
+{
+public:
+	RiceAndClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceAndClams, p1, p2) {};
+	RiceAndClams(Resources::FoodType type) : Food(type) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
