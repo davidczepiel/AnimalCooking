@@ -154,6 +154,8 @@ public:
 		///
 		Rice,
 		Bread,
+		PizzaMass,
+		Dress,
 		///
 		Empty,
 		///

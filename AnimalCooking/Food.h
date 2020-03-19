@@ -396,3 +396,26 @@ public:
 	}
 };
 
+class PizzaMass : public Food
+{
+public:
+	PizzaMass(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::PizzaMass, p1, p2) {};
+	PizzaMass() : Food(Resources::FoodType::PizzaMass) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+class Dress : public Food
+{
+public:
+	Dress(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Dress, p1, p2) {};
+	Dress() : Food(Resources::FoodType::Dress) {}
+	virtual void draw() {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta)->render(destRect);
+	}
+};
+
+
