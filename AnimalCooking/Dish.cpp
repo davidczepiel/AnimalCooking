@@ -63,3 +63,13 @@ void Dish::update()
 {
 	pos = pos + vel;
 }
+
+void Dish::clearFoods()
+{	
+	auto it = foods_.begin();
+	while (it != foods_.end()) {
+		delete* it;
+		++it;
+	}
+	foods_.clear();
+}
