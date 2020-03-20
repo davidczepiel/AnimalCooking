@@ -26,3 +26,8 @@ Entity* EntityManager::addEntity() {
 	entities.emplace_back(std::move(uPtr));
 	return e;
 }
+
+void EntityManager::addEntity(Entity* e)
+{
+	entities.emplace_back(e);
+}

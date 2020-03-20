@@ -1,112 +1,140 @@
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vc142.pdb
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vc142.idb
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cookerviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cookerpool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\converter.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\configstate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\component.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\collisions.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\buttonrenderer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\buttonbehaviour.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\audiomanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\attack.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\assistantviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\assistantmotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiingredient.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiclient.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiassistant.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityspawn.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversitymotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityloader.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityeffect.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamesave.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamemanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamelogic.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gameloader.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamecontrol.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fsm.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodtextures.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodpool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodmotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodcooker.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fontsmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\font.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\entity.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\endstate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishpool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishmotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishfinisher.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\creditsstate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playermotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playercontroller.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\pausestate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ordermanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menustate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mapstate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\manager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\main.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\loadingbarviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\jute.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\insertexpel.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inputhandler.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inoutfood.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientspool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientspawn.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientmotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gpadcontroller.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\texture.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\staticrenderer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\state.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\soundmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\selector.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdl_macros.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdltexturesmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrendererframe.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrenderer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlgame.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\screenloader.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoreviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoremanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\resources.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playstate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playerviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vector2d.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilwasher.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilspool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsmotion.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensil.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\transport.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\transform.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\timerviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\timerpool.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\timerend.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\texturesmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredient.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\food.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.exe
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.ilk
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.pdb
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.res
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.pdb
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.exe
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.ilk
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.command.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.read.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.write.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.command.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.read.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.write.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.command.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.read.1.tlog
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.write.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\vc142.pdb
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\vc142.idb
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\cookerpool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\cooker.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\converter.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\configstate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\component.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\collisions.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\buttonrenderer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\buttonbehaviour.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\audiomanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\attack.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\assistantviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\assistantmotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\aiingredient.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\aiclient.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\aiassistant.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\adversityviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\adversityspawn.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\adversitymotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\adversityloader.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\adversityeffect.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\fsm.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\foodviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\foodtextures.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\foodpool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\foodmotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\fooddictionary.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\foodcooker.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\food.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\fontsmanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\font.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\entity.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\endstate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dishviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dishstack.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dishpool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dishmotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dishfinisher.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\dish.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\creditsstate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\cookerviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\manager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\main.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\loadingbarviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\jute.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\interactive.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\interactionrect.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\insertexpel.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\inputhandler.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\inoutfood.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ingredientspool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ingredientspawn.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ingredientmotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ingredient.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gpadcontroller.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gamesave.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gamemanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gamelogic.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gameloader.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\gamecontrol.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdlrenderer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdlgame.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\screenloader.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\scoreviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\scoremanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\resources.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playstate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playerviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playermotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playercontroller.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\pickable.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\pausestate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\orderviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ordermanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\menustate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\mapstate.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\timerviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\timerpool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\timerend.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\timer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\texturesmanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\texture.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\staticrenderer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\state.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\soundmanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selectorpopupentity.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sinkviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sink.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\shelfviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\shelf.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selectorpopup.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selector.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdl_macros.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdltexturesmanager.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\sdlrendererframe.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\vector2d.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\utensilspool.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\utensilsmotion.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\utensil.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\transport.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\transform.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\ingredientviewer.obj
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\animalcooking.exe
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\animalcooking.ilk
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\animalcooking.pdb
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.res
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\endstate.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\interactionrect.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\main.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\mapstate.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\menustate.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\pausestate.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playercontroller.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\playstate.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\screenloader.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selector.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selectorpopup.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\selectorpopupentity.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\state.new.obj.enc
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\\animalcooking\animalcooking.pdb
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\\animalcooking\animalcooking.exe
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\\animalcooking\animalcooking.ilk
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.command.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.read.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.write.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.command.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.read.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.write.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.command.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.read.1.tlog
+f:\desarrollo de videojuegos\2 curso\p2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.write.1.tlog

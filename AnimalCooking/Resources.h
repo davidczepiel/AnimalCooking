@@ -42,7 +42,7 @@ public:
 		Cerdo,
 		Pollo,
 		IngredienteMalo,
-
+		CuadradoAux,
 
 
 		// images level specific

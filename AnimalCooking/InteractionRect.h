@@ -5,17 +5,25 @@
 class InteractionRect :	public Component
 {
 public:
-	InteractionRect() : Component(ecs::InteractionRect) {};
+	InteractionRect() : Component(ecs::InteractionRect), radius(60.5), pos_(), dir_(), size_(20, 20) {};
 	~InteractionRect(){}
-	void init() override;
 
-	void setPos(double x, double y) { pos_.setX(x * radius); pos_.setY(y * radius); }
+	void init() override;
+	void draw() override;
+	void update() override;
+
+	void setDir	(double x, double y) { dir_.set(Vector2D(x, y)); }
 	Vector2D getPos() { return pos_; }
+	Vector2D getdir() { return dir_; }
 	double getW() { return size_.getX(); }
 	double getH() { return size_.getX(); }
+
 private:
-	const double radius = 10.5;
+	double radius;
 	Vector2D pos_;
+	Vector2D dir_;
 	Vector2D size_;
+	Texture* tx_;
+	Transform* tr_;
 };
 

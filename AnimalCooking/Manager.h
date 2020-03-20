@@ -13,6 +13,7 @@ public:
 	void update();
 	void draw();
 	Entity* addEntity();
+	void addEntity(Entity* e);
 
 
 private:

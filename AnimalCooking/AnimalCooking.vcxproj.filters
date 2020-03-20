@@ -322,6 +322,9 @@
     <ClCompile Include="SinkViewer.cpp">
       <Filter>Source Files\Cookers</Filter>
     </ClCompile>
+    <ClCompile Include="IngredientViewer.cpp">
+      <Filter>Source Files\Ingredients</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
