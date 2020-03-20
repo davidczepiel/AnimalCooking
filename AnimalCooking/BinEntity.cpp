@@ -1,6 +1,6 @@
 #include "BinEntity.h"
 
-void BinEntity::interactive(int player)
+void BinEntity::action1(int player)
 {
 	Dish* d;
 	if (Resources::Player1 == player && player1_->getObjectInHands() != nullptr) {
