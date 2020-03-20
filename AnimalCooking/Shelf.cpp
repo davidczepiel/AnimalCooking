@@ -1,14 +1,12 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Pickable* c, Transport* p1, Transport* p2) :Interactive(p1, p2) {
-	content = c;
+Shelf::Shelf(Pickable* c, Transport* p1, Transport* p2, EntityManager* mng):Entity(SDLGame::instance(),mng),Interactive(p1, p2),content(c) {
 	addComponent<ShelfViewer>(this);
 	if (content != nullptr)
 		contentType = Resources::PickableType::Utensil;
 	else
 		contentType = Resources::PickableType::none;
-
 }
 
 

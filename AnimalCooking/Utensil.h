@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Transport.h"
 #include "Pickable.h"
+#include "Timer.h"
 
 class GameLogic;
 class Utensil : public Pickable{
@@ -20,7 +21,9 @@ protected:
 	//Suciedad
 	int myDirt_;
 	int maxDirt_;
-	int getDirtSpeed_;
+	Timer* dirtTimer_;
+	int maxTimeOnFloor_;
+
 	//Limpieza
 	int cleanUpSpeed_;
 	//Ataque
@@ -47,14 +50,14 @@ protected:
 	void onHit(Vector2D dir);
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
-	virtual ~Utensil() {}
+	virtual ~Utensil();
 	void action1(int player) override;
 
 	virtual void render() const;
 	virtual void update();
 	virtual void attack(Vector2D dir) = 0;
 
-	int getDirt() { return myDirt_; }
+	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
 	void cleanUp();

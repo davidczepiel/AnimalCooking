@@ -7,7 +7,9 @@
 Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	getDirtSpeed_ = 10;
+	maxTimeOnFloor_ = 10;
+	dirtTimer_ = new Timer();
+	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
@@ -29,16 +31,21 @@ Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) 
 }
 
 
+Utensil::~Utensil() {
+	delete dirtTimer_;
+	dirtTimer_ = nullptr;
+}
+
 void Utensil::update() {
 
 	Pickable::update();
 	if (myState != State::playerHand) {
 		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
-			if (myDirt_ < maxDirt_)
-				myDirt_ += getDirtSpeed_;
-			else {
+			dirtTimer_->update();
+			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
 				myDirt_ = maxDirt_;
+				dirtTimer_->timerReset();
 			}
 		}
 	}
@@ -92,17 +99,19 @@ void Utensil::onDrop(bool onFloor) {
 	interactionTrigger_.x = position_.getX() - (interactionTrigger_.w / 2);
 	interactionTrigger_.y = position_.getY() - (interactionTrigger_.h / 2);
 
-	if (onFloor)
+	if (onFloor) {
 		myState = State::floor;
+		dirtTimer_->timerStart();
+	}
 	else
 		myState = State::shelf;
 }
 
 
 void Utensil::onPick() {
-	//Me cambio de estado y paso a no tener suciedad
+	//Me cambio de estado y desactivo el timer de suciedad
 	myState = State::playerHand;
-	myDirt_ = 0;
+	dirtTimer_->timerReset();
 }
 
 void Utensil::action1(int player) {
@@ -116,7 +125,8 @@ void Utensil::action1(int player) {
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	getDirtSpeed_ += speedModifier;
+	//Este método es parte de las adversidades, hay que ver
+	//cómo se administra esto, como se le quita tiempo al timer de ensuciarse
 }
 
 void Utensil::cleanUp() {

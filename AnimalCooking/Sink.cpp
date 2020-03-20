@@ -1,9 +1,25 @@
 #include "Sink.h"
-Sink::Sink(Transport* p1, Transport* p2) : Interactive(p1, p2){
-	lastClean = 0;
-	cadence = 100;
+Sink::Sink(Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2),cadence(1),canClean(true){
 	addComponent<SinkViewer>(this);
+	cleanTimer = new Timer();
+	cleanTimer->setTime(cadence);
 }
+
+Sink::~Sink() {
+	delete cleanTimer;
+	cleanTimer = nullptr;
+}
+
+void Sink::update() {
+	if (!canClean) {
+		cleanTimer->update();
+		if (cleanTimer->isTimerEnd()) {
+			canClean = true;
+			cleanTimer->timerReset();
+		}
+	}
+}
+
 
 void Sink::draw() { //¿ Para dibujar la barra que indica la cantidad de suciedad que nos queda?
 
@@ -18,17 +34,17 @@ void Sink::draw() { //¿ Para dibujar la barra que indica la cantidad de suciedad
 
 void Sink::action1(int iDp) {
 
-		if (SDL_GetTicks() - lastClean > cadence) {
-			lastClean = SDL_GetTicks();
-			if (iDp == 0) {
-				Utensil* u = dynamic_cast<Utensil*>(player1_->getObjectInHands());
-				if (u != nullptr)
-					u->cleanUp();
-			}
-			else {
-				Utensil* u = dynamic_cast<Utensil*>(player2_->getObjectInHands());
-				if (u != nullptr)
-					u->cleanUp();
-			}
+		if (canClean) {
+
+			canClean = false;
+			cleanTimer->timerStart();
+			//Dependiendo del numero que me llegue me trabajo con el player 1 o 2
+			Transport* player;
+			if (iDp == 0) player = player1_;
+			else player = player2_;
+			//Y SI Y SOLO SI tiene un utensilio le digo que se limpie
+			if (player->getObjectTypeInHands() == Resources::PickableType::Utensil)
+				static_cast<Utensil*>(player->getObjectInHands())->cleanUp();
+
 		}
 }
