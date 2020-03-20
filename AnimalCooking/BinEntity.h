@@ -9,7 +9,7 @@
 class BinEntity : public Entity, public Interactive
 {
 public:
-	BinEntity(SDLGame* game, EntityManager* mngr, Transport* p1, Transport* p2) : Entity(game, mngr), Interactive(p1, p2) {
+	BinEntity(EntityManager* mngr, Transport* p1, Transport* p2) : Entity(SDLGame::instance(), mngr), Interactive(p1, p2) {
 		this->addComponent<Transform>();
 		this->addComponent<BinViewer>();
 	}

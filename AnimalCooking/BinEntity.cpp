@@ -2,29 +2,19 @@
 
 void BinEntity::action1(int player)
 {
-	Dish* d;
-	if (Resources::Player1 == player && player1_->getObjectInHands() != nullptr) {
-		d = dynamic_cast<Dish*>(player1_->getObjectInHands());
-		if (d != nullptr) {
-			//Limpiar el plato
-			std::vector<Food*> foodVector = d->getFoodVector();
+	Transport* playerTransport;
 
-			for (int i = 0; i < foodVector.size(); ++i) {
-				foodVector[i]->Destroy();
-			}
-			foodVector.clear();
-		}
-	}
-	else if(player2_->getObjectInHands() != nullptr) {
-		d = dynamic_cast<Dish*>(player2_->getObjectInHands());
-		if (d != nullptr) {
-			//Limpiar el plato
-			std::vector<Food*> foodVector = d->getFoodVector();
+	player == Resources::Player1 ? playerTransport = player1_ : playerTransport = player2_;	//Se asigna el player correspondiente
 
-			for (int i = 0; i < foodVector.size(); ++i) {
-				foodVector[i]->Destroy();
-			}
-			foodVector.clear();
+	if (playerTransport->getObjectInHands() != nullptr && playerTransport->getObjectTypeInHands() == Resources::Dish) {
+		//Limpiar el plato
+		std::vector<Food*> foodVector = static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector();
+
+		for (int i = 0; i < foodVector.size(); ++i) {
+			foodVector[i]->Destroy();
 		}
+		foodVector.clear();
 	}
+
+	playerTransport = nullptr;
 }
