@@ -7,7 +7,9 @@
 Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	getDirtSpeed_ = 10;
+	maxTimeOnFloor_ = 10;
+	dirtTimer_ = new Timer();
+	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
@@ -15,8 +17,6 @@ Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) 
 	lastAttack_ = SDL_GetTicks();
 	myState = State::shelf;
 	dirty_ = false;
-	isInUse = false;
-	ableToClean_ = false;
 	interactionTrigger_.x = 100;
 	interactionTrigger_.y = 100;
 	interactionTrigger_.w = 100;
@@ -31,32 +31,31 @@ Utensil::Utensil(Vector2D pos, Transport* p1, Transport* p2) : Pickable(p1, p2) 
 }
 
 
+Utensil::~Utensil() {
+	delete dirtTimer_;
+	dirtTimer_ = nullptr;
+}
+
 void Utensil::update() {
 
-	if (isInUse) {
-
-		Pickable::update();
-
-
-		if (myState != State::playerHand) {
-			if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
-				if(myDirt_<maxDirt_)
-				myDirt_ += getDirtSpeed_;
-				else {
-					dirty_ = true;
-					myDirt_ = maxDirt_;
-				}
+	Pickable::update();
+	if (myState != State::playerHand) {
+		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+			dirtTimer_->update();
+			if (dirtTimer_->isTimerEnd()) {
+				dirty_ = true;
+				myDirt_ = maxDirt_;
+				dirtTimer_->timerReset();
 			}
-
 		}
-		else
-		{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animaci�n que estoy mostrando
-			position_.setX(position_.getX() + speed_.getX());
-			position_.setY(position_.getY() + speed_.getY());
-			if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
-				frameAttack++;
-				if (frameAttack >= 5)
-					frameAttack = 0;
+	}
+	else
+	{		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animaci�n que estoy mostrando
+		if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
+			frameAttack++;
+			if (frameAttack >= 5) {
+				frameAttack = 0;
+				attacking_ = false;
 			}
 		}
 	}
@@ -66,12 +65,12 @@ void Utensil::update() {
 void Utensil::onHit(Vector2D dir) {
 	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
 		lastAttack_ = SDL_GetTicks();
-
 		if (!dirty_) {  //Solo si estoy limpio mi ataque deberia hacer algo significativo
+			attacking_ = true;
 			lastFrameTick = SDL_GetTicks();
 			//Preparo la posici�n de donde realizo el ataque
 			Vector2D velNormalizada = speed_.normalize();
-			SDL_Rect ataque;	
+			SDL_Rect ataque;
 			ataque.x = position_.getX() + (velNormalizada.getX() * range_);
 			ataque.y = position_.getY() + (velNormalizada.getY() * range_);
 			ataque.w = attackHitBoxWidth_;
@@ -85,12 +84,12 @@ void Utensil::onHit(Vector2D dir) {
 void Utensil::render()const {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	if (!dirty_ && !attacking_)
-		texture_->render(rect); //EN caso de que solo est� en la mano del jugador	
+		cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
 	else if ((!dirty_ && attacking_)) {
-		texture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
+		attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
 	}
 	else
-		secondTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
+		dirtyTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
 
 }
 
@@ -100,44 +99,45 @@ void Utensil::onDrop(bool onFloor) {
 	interactionTrigger_.x = position_.getX() - (interactionTrigger_.w / 2);
 	interactionTrigger_.y = position_.getY() - (interactionTrigger_.h / 2);
 
-	if (onFloor)
+	if (onFloor) {
 		myState = State::floor;
+		dirtTimer_->timerStart();
+	}
 	else
 		myState = State::shelf;
 }
 
 
 void Utensil::onPick() {
-	//Me cambio de estado y paso a no tener suciedad
+	//Me cambio de estado y desactivo el timer de suciedad
 	myState = State::playerHand;
-	myDirt_ = 0;
+	dirtTimer_->timerReset();
 }
 
-void Utensil::interactive(int player) {
+void Utensil::action1(int player) {
 	onPick();
 	if (player == 0)
-		player1_->pick(this);
+		player1_->pick(this,Resources::PickableType::Utensil);
 	else
-		player2_->pick(this);
+		player2_->pick(this, Resources::PickableType::Utensil);
 }
 
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	getDirtSpeed_ += speedModifier;
+	//Este método es parte de las adversidades, hay que ver
+	//cómo se administra esto, como se le quita tiempo al timer de ensuciarse
 }
 
 void Utensil::cleanUp() {
 	//Me deberia llamar el fregadero para decime que me limpie
-	if (dirty_ && ableToClean_) {
+	if (dirty_) {
 		myDirt_ -= cleanUpSpeed_;
 		if (myDirt_ <= 0) {
 			myDirt_ = 0;
 			dirty_ = false;
 		}
 	}
-
-
 }
 
 
@@ -145,16 +145,21 @@ void Utensil::cleanUp() {
 ///////////////////////////////////////
 
 Knife::Knife(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Knife;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
+
 }
 
 
-Mace::Mace(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2){
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+Mace::Mace(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mace);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mace);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
@@ -163,7 +168,9 @@ Mace::Mace(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2){
 
 
 Grater::Grater(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Grater;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
@@ -172,7 +179,9 @@ Grater::Grater(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2)
 
 
 Net::Net(Vector2D pos, Transport* p1, Transport* p2) :Utensil(pos, p1, p2) {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	myType = Resources::UtensilType::Net;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;

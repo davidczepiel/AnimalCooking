@@ -2,6 +2,7 @@
 #include "FoodPool.h"
 #include "Component.h"
 #include "FoodPool.h"
+#include "Entity.h"
 class FoodViewer : public Component
 {
 private:

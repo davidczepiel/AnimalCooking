@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Transport.h"
 #include "Pickable.h"
+#include "Timer.h"
 
 class GameLogic;
 class Utensil : public Pickable{
@@ -13,14 +14,16 @@ protected:
 	//Estado
 	enum  State
 	{
-		floor, playerHand, shelf, sink
+		floor, playerHand, shelf
 	};
 	Resources::UtensilType myType;
 	State myState;
 	//Suciedad
 	int myDirt_;
 	int maxDirt_;
-	int getDirtSpeed_;
+	Timer* dirtTimer_;
+	int maxTimeOnFloor_;
+
 	//Limpieza
 	int cleanUpSpeed_;
 	//Ataque
@@ -29,14 +32,13 @@ protected:
 	int attackHitBoxHeight_;
 	int attackRate_;
 	int lastAttack_;
-	//Confirmaci�n de que se puede limpiar y que est� sucio
+	//Confirmaci�n de que esta  sucio
 	bool dirty_;
-	bool ableToClean_;
 
-	bool isInUse;
 	//Mis 2 texturas
-	Texture* texture_;
-	Texture* secondTexture_;
+	Texture* cleantexture_;
+	Texture* dirtyTexture_;
+	Texture* attackTexture_;
 	//Control animacion ataque
 	int frameAttack;
 	int lastFrameTick;
@@ -48,20 +50,18 @@ protected:
 	void onHit(Vector2D dir);
 public:
 	Utensil(Vector2D pos, Transport* p1, Transport* p2);
-	virtual ~Utensil() {}
-	void interactive(int player) override;
+	virtual ~Utensil();
+	void action1(int player) override;
 
 	virtual void render() const;
 	virtual void update();
 	virtual void attack(Vector2D dir) = 0;
 
-	int getDirt() { return myDirt_; }
+	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
 	void cleanUp();
 	void changeDirtySpeed(int speedModifier);
-	bool inUse() { return isInUse; }
-	void setInUse(bool x) { isInUse = x; }
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 
 };

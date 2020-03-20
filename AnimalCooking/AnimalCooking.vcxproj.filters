@@ -310,6 +310,18 @@
     <ClCompile Include="Ingredient.cpp">
       <Filter>Source Files\Ingredients</Filter>
     </ClCompile>
+    <ClCompile Include="Sink.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="Shelf.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShelfViewer.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="SinkViewer.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -656,6 +668,18 @@
     </ClInclude>
     <ClInclude Include="Interactive.h">
       <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Shelf.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sink.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShelfViewer.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkViewer.h">
+      <Filter>Header Files\Cookers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

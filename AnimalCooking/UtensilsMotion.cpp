@@ -7,8 +7,6 @@ void UtensilsMotion::init() {
 void UtensilsMotion::update() {
 	for (Utensil* b : pool_) {
 		cout << "b";
-		if (b->inUse()) {
 			b->update();
-		}
 	}
 }

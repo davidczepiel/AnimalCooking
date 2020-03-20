@@ -7,6 +7,7 @@ using CmpIdType = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
+	
 
 	GPadController, //Controls
 	KeyBoardController,
@@ -41,8 +42,12 @@ enum CmpId : CmpIdType {
 
 	IngredientsPool, //Pools
 	UtensilsPool,
-	UtensilsViewer,
+
+
+	UtensilsViewer, //Utensils
 	UtensilsMotion,
+	ShelfViewer,
+	SinkViewer,
 
 
 	CookerPool,		//Cookers
