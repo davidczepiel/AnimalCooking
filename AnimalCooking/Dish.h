@@ -24,6 +24,8 @@ class Dish : public Pickable
 	void render();
 	void update();
 
+	void clearFoods();
+
 	//Getters y setters
 	inline vector<Food*>& getFoodVector() { return foods_; }
 	inline bool isEmpty() { return foods_.empty(); }

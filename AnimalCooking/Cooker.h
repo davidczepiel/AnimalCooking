@@ -5,7 +5,6 @@
 #include "Timer.h"
 
 enum class CookerStates { empty, cooking, cooked, burned };
-enum class CookerTypes { oven, skillet, type3}; 
 class Food;
 class Cooker {
 public:
@@ -48,7 +47,7 @@ protected:
 	Uint32 cookingTime_;
 
 	vector<Food*> foods_;
-	static CookerTypes cookerType_;
+	static Resources::Cookers cookerType_;
 };
 
 class Oven : public Cooker {

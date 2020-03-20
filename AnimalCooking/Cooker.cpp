@@ -27,11 +27,11 @@ void Cooker::draw()
 Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 10 * 1000;
-	cookerType_ = CookerTypes::skillet;
+	cookerType_ = Resources::Cookers::Skillet;
 }
 
 Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text) : Cooker(pos, size, rot, text)
 {
 	cookingTime_ = 15 * 1000;
-	cookerType_ = CookerTypes::oven;
+	cookerType_ = Resources::Cookers::Oven;
 }
