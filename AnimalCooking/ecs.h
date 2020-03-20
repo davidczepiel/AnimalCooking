@@ -27,6 +27,13 @@ enum CmpId : CmpIdType {
 	Selector,
 	InteractionRect,
 
+	DishPool,		//Dish
+	DishMotion,
+	DishViewer,
+	DishStack,
+	InOutFood,		//ELIMINAR SI NO SE IMPLEMENTA
+	DishFinisher,
+
 	FoodMotion,		//Food
 	FoodViewer,
 	FoodPool,
@@ -37,6 +44,11 @@ enum CmpId : CmpIdType {
 	UtensilsViewer,
 	UtensilsMotion,
 
+
+	CookerPool,		//Cookers
+	CookerViewer,	
+	FoodCooker,
+	InsertExpel,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,

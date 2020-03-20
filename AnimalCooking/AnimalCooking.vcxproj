@@ -191,6 +191,8 @@
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="FoodCooker.h" />
+    <ClInclude Include="FoodDictionary.h" />
+    <ClInclude Include="FoodEnum.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodTextures.h" />
@@ -287,6 +289,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigState.cpp" />
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="Cooker.cpp" />
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
@@ -302,6 +305,7 @@
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
+    <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
     <ClCompile Include="FoodTextures.cpp" />
@@ -359,6 +363,7 @@
     <ClCompile Include="StaticRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerEnd.cpp" />
     <ClCompile Include="TimerPool.cpp" />
     <ClCompile Include="TImerViewer.cpp" />

@@ -9,10 +9,14 @@ using namespace std;
 class Resources {
 public:
 	//El tipo de cada uno de los utensilios
-	enum UtensilType {
-		Knife, Mace, Grater, Net
+	enum UtensilType: std::size_t {
+		Knife, 
+		Mace, 
+		Grater, 
+		Net
 	};
-	enum Player {
+
+	enum Player: std::size_t {
 		Player1, Player2
 	};
 
@@ -64,7 +68,7 @@ public:
 		//etc...
 	};
 
-	enum IngredientType {
+	enum IngredientType: std::size_t {
 		tomato,
 		carrot,
 		lettuce,
@@ -133,7 +137,7 @@ public:
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp
 
-	enum FoodType {
+	enum FoodType : std::size_t {
 		SlicedTomato,
 		MashedTomato,
 		SlicedLettuce,
@@ -154,8 +158,14 @@ public:
 		///
 		Rice,
 		Bread,
+		PizzaMass,
+		Dress,
 		///
 		Empty,
+		///
+		MashedMeatSkillet,
+		CaughtSausageSkillet,
+		SlicedPotatoSkillet,
 		///
 		Salad,
 		Burger,
@@ -170,7 +180,7 @@ public:
 		FrenchFries,
 		CookedClams,
 		RiceAndClams
-
+		///
 
 	};
 
@@ -179,5 +189,11 @@ public:
 		Dish,
 		Utensil,
 		none
+	};
+
+	enum Cookers : std::size_t {
+		Oven,
+		Skillet,
+		Hands		//Hands represents the action of finishing a recipe from the dish
 	};
 };

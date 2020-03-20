@@ -256,6 +256,15 @@
     <ClCompile Include="ConfigState.cpp">
       <Filter>Source Files\FSM</Filter>
     </ClCompile>
+    <ClCompile Include="Cooker.cpp">
+      <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodDictionary.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="Utensil.cpp">
       <Filter>Source Files\Utensils</Filter>
     </ClCompile>
@@ -462,9 +471,6 @@
     <ClInclude Include="Adversity.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Cooker.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="Ingredient.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
@@ -605,6 +611,15 @@
     </ClInclude>
     <ClInclude Include="ConfigState.h">
       <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Cooker.h">
+      <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodDictionary.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodEnum.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Utensil.h">
       <Filter>Header Files\Utensils</Filter>
