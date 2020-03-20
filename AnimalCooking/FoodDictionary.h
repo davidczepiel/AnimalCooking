@@ -49,6 +49,4 @@ private:
 	Food* bind(const int& c) const;
 	static unique_ptr<FoodDictionary> instance_;
 	map<par, int, CompareMap> dictionary_;
-
-	jute::jValue jSon_;
 };

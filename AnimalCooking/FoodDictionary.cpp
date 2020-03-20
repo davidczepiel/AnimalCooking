@@ -5,7 +5,6 @@ unique_ptr<FoodDictionary> FoodDictionary::instance_;
 const std::string jsonFileName = "../AnimalCooking/resources/cfg/food.cfg";
 
 FoodDictionary::FoodDictionary() {
-	jSon_ = jute::parser::parse_file(jsonFileName);
 
 	fill();
 }
@@ -15,6 +14,7 @@ FoodDictionary::~FoodDictionary() {
 
 void FoodDictionary::fill()
 {
+	jute::jValue jSon_ = jute::parser::parse_file(jsonFileName);
 	jute::jValue cookers = jSon_["cookers"];
 
 	for (int c = 0; c < cookers.size(); ++c) {
