@@ -18,7 +18,8 @@ protected:
 
 public:
 	~FoodGiver() {};
-
+	
+	void giveFood(int player, Food* f);
 	inline Texture* getTexture() { return texture_; }
 	inline Vector2D getPos() { return position_; }
 	inline Vector2D getSize() { return size_; }
