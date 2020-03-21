@@ -12,7 +12,7 @@ DishFinisher::~DishFinisher()
 
 void DishFinisher::finish()
 {
-	if (tr_->getObjectTypeInHands() == Resources::PickableType::Dish) {
+	if ( tr_->getObjectInHands() != nullptr && tr_->getObjectTypeInHands() == Resources::PickableType::Dish) {
 		Dish* dish = static_cast<Dish*>(tr_->getObjectInHands());
 		
 		if (dish->getFoodVector().size() > 1) {

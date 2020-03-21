@@ -32,8 +32,10 @@ enum CmpId : CmpIdType {
 	DishMotion,
 	DishViewer,
 	DishStack,
+    DishStackViewer,
 	InOutFood,		//ELIMINAR SI NO SE IMPLEMENTA
 	DishFinisher,
+	
 
 	FoodMotion,		//Food
 	FoodViewer,

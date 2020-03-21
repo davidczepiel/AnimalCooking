@@ -1,12 +1,8 @@
 #include "Dish.h"
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2)
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2),pos(pos_),width(100),height(50),vel(Vector2D()),foods_(vector<Food*>())
 {
-	pos = pos_;
-	width = 100;
-	height = 50;
-	vel = Vector2D();
-	foods_ = vector<Food*>();
+
 }
 
 // si el vector estaba vacío pone el iterador al principio
@@ -44,25 +40,8 @@ void Dish::previousFood()
 	if (!foods_.empty() && currentFood != foods_.begin())
 		currentFood--;
 }
-void Dish::render() 
-{
-	int k = 0;
-	//Colocamos la comida en el centro del plato y un poco más arriba del fondo del plato
-	//(teniendo en cuenta el índice la comida) y renderizamos
-	for (auto i = foods_.begin(); i != foods_.end(); i++)
-	{		
-		(*i)->setPos(Vector2D(pos.getX() + (*i)->getSize().getX() / 2,
-			pos.getY() - (*i)->getSize().getY() / 4 - (int64_t)((*i)->getSize().getY() * k)));
-		
-		(*i)->draw();
-		k++;
-	}
-}
 
-void Dish::update()
-{
-	pos = pos + vel;
-}
+
 
 void Dish::clearFoods()
 {	

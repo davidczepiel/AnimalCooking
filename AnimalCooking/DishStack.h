@@ -10,7 +10,7 @@ public:
 	 ~DishStack() { }
 
 	void init() override;
-	Dish* addNewDish(Vector2D pos);
+	Dish* addNewDish(Vector2D pos, Transport* t1, Transport* t2);
 	void removeDish(Dish* d);
 
 private:

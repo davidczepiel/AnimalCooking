@@ -47,7 +47,7 @@ protected:
 	Uint32 cookingTime_;
 
 	vector<Food*> foods_;
-	static Resources::Cookers cookerType_;
+    Resources::Cookers cookerType_;
 };
 
 class Oven : public Cooker {

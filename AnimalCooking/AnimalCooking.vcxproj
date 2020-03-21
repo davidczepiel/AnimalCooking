@@ -185,6 +185,7 @@
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
     <ClInclude Include="DishStack.h" />
+    <ClInclude Include="DishStackViewer.h" />
     <ClInclude Include="DishViewer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
@@ -306,6 +307,7 @@
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
     <ClCompile Include="DishStack.cpp" />
+    <ClCompile Include="DishStackViewer.cpp" />
     <ClCompile Include="DishViewer.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
