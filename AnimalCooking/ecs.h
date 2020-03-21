@@ -59,6 +59,7 @@ enum CmpId : CmpIdType {
 	SDLRendererFrame,
 	StaticRenderer,
 	IngredientViewer,
+	BinViewer,
 
 	GameManager, //Utils
 	ScoreManager,

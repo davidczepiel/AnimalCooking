@@ -167,6 +167,8 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BinEntity.h" />
+    <ClInclude Include="BinViewer.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
@@ -287,6 +289,8 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BinEntity.cpp" />
+    <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
