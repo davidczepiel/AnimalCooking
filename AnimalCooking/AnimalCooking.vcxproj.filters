@@ -289,7 +289,6 @@
     <ClCompile Include="InteractionRect.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-
     <ClCompile Include="Dish.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
@@ -322,6 +321,14 @@
     </ClCompile>
     <ClCompile Include="SinkViewer.cpp">
       <Filter>Source Files\Cookers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinEntity.cpp" />
+    <ClCompile Include="BinViewer.cpp" />
+    <ClCompile Include="FoodGiver.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodGiverViewer.cpp">
+      <Filter>Source Files\Food</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -681,6 +688,14 @@
     </ClInclude>
     <ClInclude Include="SinkViewer.h">
       <Filter>Header Files\Cookers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinEntity.h" />
+    <ClInclude Include="BinViewer.h" />
+    <ClInclude Include="FoodGiver.h">
+      <Filter>Header Files\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiverViewer.h">
+      <Filter>Header Files\Food</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

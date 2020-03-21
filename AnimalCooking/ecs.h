@@ -39,6 +39,8 @@ enum CmpId : CmpIdType {
 	FoodViewer,
 	FoodPool,
 
+	FoodGiverViewer, //FoodGiver
+
 
 	IngredientsPool, //Pools
 	UtensilsPool,
