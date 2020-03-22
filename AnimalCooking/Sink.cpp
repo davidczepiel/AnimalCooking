@@ -1,6 +1,7 @@
 #include "Sink.h"
-Sink::Sink(Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2),cadence(1),canClean(true){
+Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2),cadence(1),canClean(true){
 	addComponent<SinkViewer>(this);
+	position_ = pos;
 	cleanTimer = new Timer();
 	cleanTimer->setTime(cadence);
 }

@@ -44,12 +44,11 @@ protected:
 	int lastFrameTick;
 	bool attacking_;
 	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
-	SDL_Rect interactionTrigger_;
 	GameLogic* gameLogic;
 
 	void onHit(Vector2D dir);
 public:
-	Utensil(Vector2D pos, Transport* p1, Transport* p2);
+	Utensil( Transport* p1, Transport* p2);
 	virtual ~Utensil();
 	void action1(int player) override;
 
@@ -71,7 +70,7 @@ public:
 class Knife : public Utensil
 {
 public:
-	Knife(Vector2D pos, Transport* p1, Transport* p2);
+	Knife( Transport* p1, Transport* p2);
 	~Knife() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 
@@ -80,7 +79,7 @@ public:
 class Mace : public Utensil
 {
 public:
-	Mace(Vector2D pos, Transport* p1, Transport* p2);
+	Mace( Transport* p1, Transport* p2);
 	~Mace() {}
 
 	virtual void attack(Vector2D dir) {  onHit(dir); }
@@ -92,7 +91,7 @@ public:
 class Grater : public Utensil
 {
 public:
-	Grater(Vector2D pos, Transport* p1, Transport* p2);
+	Grater( Transport* p1, Transport* p2);
 	~Grater() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 
@@ -101,7 +100,7 @@ public:
 class Net : public Utensil
 {
 public:
-	Net(Vector2D pos, Transport* p1, Transport* p2);
+	Net( Transport* p1, Transport* p2);
 	~Net() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 

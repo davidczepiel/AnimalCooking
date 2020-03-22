@@ -2,11 +2,11 @@
 
 
 void UtensilsViewer::init() {
-	pool_ = GETCMP1_(UtensilsPool)->getPool();
+	pool_ = &GETCMP1_(UtensilsPool)->getPool();
 }
 
 void UtensilsViewer::draw() {
-	for (Utensil* b : pool_) {
+	for (Utensil* b : *pool_) {
 			b->render();
 	}
 }

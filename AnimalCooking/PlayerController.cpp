@@ -88,8 +88,17 @@ void PlayerController::keyUpdate()
 		ir_->setDir(x, y);
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(SDLK_k) && selector_!= nullptr) { selector_->getSelect()->action1(id_); }
-		if (keyboard->isKeyDown(SDLK_p)) { attack_->attack(); }
+		if (keyboard->isKeyDown(SDLK_k) && selector_!= nullptr)
+		{ 
+			Interactive* i = selector_->getSelect();
+			if(i!= nullptr)
+			i->action1(id_);
+			i = nullptr;
+		}
+		if (keyboard->isKeyDown(SDLK_p))
+		{ 
+			attack_->attack(); 
+		}
 	}
 	else {
 		tr_->setVelX(0);

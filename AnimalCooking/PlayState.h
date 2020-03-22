@@ -60,15 +60,24 @@ public:
 		utensil->addComponent<UtensilsViewer>();
 		utensil->addComponent<UtensilsMotion>();
 
-		Knife* k = new Knife(Vector2D(100, 100), tp, tp);
+		Knife* k = new Knife( tp, tp);
 		utensilpool_->addUtensil(k);
+		Mace* m = new Mace(tp,tp);
+		utensilpool_->addUtensil(m);
 
-		Shelf* shelf = new Shelf(k,tp,tp,stage);
+		Shelf* shelf = new Shelf(Vector2D(100,100),k,tp,tp,stage);
 		shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), shelf);
-		shelf->setPos(Vector2D(100, 100));
-		shelf->setSize(Vector2D(100, 100));
 		stage->addEntity(shelf);
+
+		Shelf* shelf2 = new Shelf(Vector2D(200, 100), m, tp, tp, stage);
+		shelf2->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf2);
+		stage->addEntity(shelf2);
+
+		//Entity* gameManager = stage->addEntity();
+		//GameLogic* glogic =gameManager->addComponent<GameLogic>();
+
 		
 	}
 
