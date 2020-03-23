@@ -41,11 +41,14 @@ void Food::update()
 
 		foodPool_->RemoveFood(iterator_);
 	}
+	else {
+		timer_.update();
+	}
 }
 
 void Food::onDrop(bool onFloor)
 {
-	if (onFloor) timer_.timerStart;
+	if (onFloor) timer_.timerStart();
 }
 
 void Food::onPick() {
