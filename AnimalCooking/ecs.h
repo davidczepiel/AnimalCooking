@@ -55,6 +55,8 @@ enum CmpId : CmpIdType {
 	FoodCooker,
 	InsertExpel,
 
+	OrderManager,	//Clients
+
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
 	StaticRenderer,

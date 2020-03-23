@@ -43,10 +43,13 @@ public:
 	//Devuelve un int identificador, o -1 si no existe dicha combinacion
 	Food* getResult(const int& c, const set<int>& set);
 
+	const set<int>& getIngsForFood(const int& result);
+
 private:
 	FoodDictionary();
 	void fill();
 	Food* bind(const int& c) const;
 	static unique_ptr<FoodDictionary> instance_;
 	map<par, int, CompareMap> dictionary_;
+	map<int, set<int>> resultToSetDictionary_;
 };
