@@ -18,6 +18,7 @@
 #include "UtensilsMotion.h"
 #include "SelectorPopUp.h"
 #include "SelectorPopUpEntity.h"
+#include "GameLogic.h"
 
 
 class PlayState : public State
@@ -75,10 +76,11 @@ public:
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf2);
 		stage->addEntity(shelf2);
 
-		//Entity* gameManager = stage->addEntity();
-		//GameLogic* glogic =gameManager->addComponent<GameLogic>();
+		Entity* gameManager = stage->addEntity();
+		GameLogic* glogic =gameManager->addComponent<GameLogic>();
+		glogic->setUtensilsPool(utensilpool_);
+		glogic->setIngredientPool(pI);
 
-		
 	}
 
 
