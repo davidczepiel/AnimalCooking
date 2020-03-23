@@ -8,7 +8,7 @@ FoodConfig::FoodConfig()
 void FoodConfig::fill()
 {
 	///////////////////////////////////////////////////////////////////////////////////
-	//Fill transformations1:  Ingredient -> Normal food into foodKilled recipes.//////
+	//Fill transformations1:  Ingredient -> Normal food into utensilsRecipes_  //////
 	/////////////////////////////////////////////////////////////////////////////////
 	vector <utensilsTrans> uTrans;
 
@@ -23,7 +23,7 @@ void FoodConfig::fill()
 	uTrans.push_back({ Resources::IngredientType::mushroom, Resources::FoodType::SlicedMushroom });
 	uTrans.push_back({ Resources::IngredientType::onion,	Resources::FoodType::SlicedOnion });
 	uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotato });
-	//uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotatoSkillet });
+	//uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotatoSkillet }); <- Esta receta no tiene potatoSkillet de base, de momento no se puede usar
 	uTrans.push_back({ Resources::IngredientType::sausage,	Resources::FoodType::SlicedSausage });
 	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType::SlicedTomato });
 		
@@ -32,9 +32,17 @@ void FoodConfig::fill()
 	utensilsRecipes_.push_back({ Resources::UtensilType::Knife, uTrans });
 	
 
+	///////////////////////////////////////////////////////////////////////////////////
+	//Fill transformations2:  Normal Food -> Cooked Food into cookersRecipes_    /////
+	/////////////////////////////////////////////////////////////////////////////////
+	vector <cookersTrans> cTrans;
 
+	///////////////////////
+	// OVEN  RECIPES    //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
+	//////////////////////
+	cTrans.push_back({ { Resources::FoodType::PizzaMass, Resources::FoodType::SlicedTomato, Resources::FoodType::GratedCheese },	Resources::FoodType::Pizza });
+	cTrans.push_back({ { Resources::FoodType::MashedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::SlicedTomato },	Resources::FoodType::MashedMeatSkillet });
 
-
-
-	
+	//Adding Oven recipes
+	cookersRecipes_.push_back({ Resources::Oven, cTrans });	
 }
