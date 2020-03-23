@@ -2,7 +2,7 @@
 #include"Entity.h"
 #include "SDL_macros.h"
 
-DishStackViewer ::DishStackViewer() : Component(ecs::DishStackViewer)
+DishStackViewer ::DishStackViewer(Interactive* i) : Component(ecs::DishStackViewer),entity(i)
 {
 
 }
