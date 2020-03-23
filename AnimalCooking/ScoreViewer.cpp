@@ -11,23 +11,16 @@ void ScoreViewer::init()
 void ScoreViewer::draw()
 {
 	int auxPoints = scoreManager_->getScore();
-	std::stack<int> digitsStack;
+	int digits = 0;
 
 	while (auxPoints / 10 != 0) {
-		digitsStack.push(auxPoints % 10);
+		digits++;
 		auxPoints = auxPoints / 10;
 	}
-	digitsStack.push(auxPoints);
+	digits ++;
 
-	SDL_Rect destRect = RECT(50, 50, 100, 50);
-	Texture score;
-	for (int i = 0; i < digitsStack.size(); i++) {
-		score = Texture(game_->getRenderer(), to_string(digitsStack.top()), (game_->getFontMngr()->getFont(Resources::ARIAL24)),
-			{ COLOR(0x1111aaff) });
-		
-		destRect.x += 50;
-		score.render(destRect);
-
-		digitsStack.pop();
-	}
+	SDL_Rect destRect = RECT(50, 50, 50*digits, 100);
+	Texture score = Texture(game_->getRenderer(),"Score: " + to_string(scoreManager_->getScore()), (game_->getFontMngr()->getFont(Resources::ARIAL24)),
+		{ COLOR(0x1111aaff) });
+	score.render(destRect);
 }
