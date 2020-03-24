@@ -15,6 +15,5 @@ public:
 private:
 	Texture* stack = nullptr;
 	Interactive* entity = nullptr;
-	Transform* trDishStack = nullptr;
 };
 

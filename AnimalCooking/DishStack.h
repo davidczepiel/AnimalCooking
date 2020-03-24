@@ -9,11 +9,11 @@ class DishStack : public Entity,public Interactive
 {
 public:
 
-	DishStack(int maxDishes_,Transport* t1,Transport* t2,EntityManager* mng);
+	DishStack(Vector2D pos,int maxDishes_,Transport* t1,Transport* t2,EntityManager* mng,DishPool* dp);
 	 ~DishStack() { }
 
 
-	Dish* addNewDish(Vector2D pos, Transport* t1, Transport* t2);
+	Dish* addNewDish(Vector2D pos);
 	void removeDish(Dish* d);
 	virtual void action1(int id);
 private:
