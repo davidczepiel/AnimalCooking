@@ -56,6 +56,7 @@ enum CmpId : CmpIdType {
 	InsertExpel,
 
 	OrderManager,	//Clients
+	OrderViewer,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,

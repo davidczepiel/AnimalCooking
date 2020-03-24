@@ -6,7 +6,11 @@ class OrderManager : public Component {
 
 public:
 	OrderManager();
-	OrderManager(size_t maxOrders);
+
+	//deltaPosXBetweenOrder es el hueco a dejar entre pedido y pedido
+	//position es la posicion del primer pedido
+	OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position);
+
 	~OrderManager();
 
 	//void update() override;
@@ -27,6 +31,7 @@ public:
 
 private:
 	size_t distXBetweenOrders_;
+	Vector2D position_;
 
 	vector<Order*>::iterator getFreePos();
 	vector<Order*>::iterator getIndexOf(Resources::FoodType finalProduct);

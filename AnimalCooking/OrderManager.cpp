@@ -1,13 +1,13 @@
 #include "OrderManager.h"
 #include "FoodDictionary.h"
 
-OrderManager::OrderManager() : OrderManager(2)
+OrderManager::OrderManager() : OrderManager(2, 100, {100, 700})
 {
 }
 
-OrderManager::OrderManager(size_t maxOrders) : Component(ecs::OrderManager),
+OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position) : Component(ecs::OrderManager),
 		currentOrders_(maxOrders, nullptr), products_(maxOrders, Resources::FoodType::Empty),
-		distXBetweenOrders_(50)
+		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position)
 {
 }
 
@@ -51,7 +51,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 
 				//Se asigna la posicion a los orders aqui, pero tal vez deberia ser el OrderViewer
 
-				Vector2D(100 + distXBetweenOrders_ * (it - currentOrders_.begin()), 700), // pos en x es relativa a su posicion en el vector
+				Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
 				game_->getTextureMngr()->getTexture(finalProduct), // OrderText
 				texturesIngs_ // ingsText
 			);
