@@ -58,7 +58,7 @@ public:
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 		
-		//-----------------------------------------------------Food
+		//EntityFoodPool----------------------------------------
 
 		Entity* foodPool = stage->addEntity();
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
@@ -68,9 +68,12 @@ public:
 		foodPool->addComponent<FoodMotion>();
 		foodPool->addComponent<FoodViewer>();
 
-		//-----------------------------------------------------
+		//EntityUtensilPool----------------------------------------
 		Entity* utensil = stage->addEntity();
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
+		vector<Interactive*>* b = &reinterpret_cast<vector<Interactive*>&>(utensilpool_->getPool());
+		utensil->addComponent<SelectorPopUp>(b, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector));
 		utensil->addComponent<UtensilsViewer>();
 		utensil->addComponent<UtensilsMotion>();
 
@@ -79,16 +82,18 @@ public:
 		Mace* m = new Mace(tp,tp);
 		utensilpool_->addUtensil(m);
 
+		//Repisas----------------------------------------
 		Shelf* shelf = new Shelf(Vector2D(100,100),k,tp,tp,stage);
+		stage->addEntity(shelf);
 		shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), shelf);
-		stage->addEntity(shelf);
 
 		Shelf* shelf2 = new Shelf(Vector2D(200, 100), m, tp, tp, stage);
+		stage->addEntity(shelf2);
 		shelf2->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf2);
-		stage->addEntity(shelf2);
 
+		//GameManager------------------------------------
 		Entity* gameManager = stage->addEntity();
 		GameLogic* glogic =gameManager->addComponent<GameLogic>();
 		gameManager->addComponent<GameControl>(tp, nullptr, utensilpool_, fp);
