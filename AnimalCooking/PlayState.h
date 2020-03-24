@@ -54,7 +54,7 @@ public:
 		i->setPos(Vector2D(10,70));
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
-
+		
 		//-----------------------------------------------------
 		Entity* utensil = stage->addEntity();
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
