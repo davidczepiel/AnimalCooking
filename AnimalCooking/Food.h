@@ -2,6 +2,7 @@
 #include "FoodPool.h"
 #include "SDL_macros.h"
 #include "Pickable.h"
+#include "Transport.h"
 
 class Food : public Pickable 
 {
@@ -24,6 +25,8 @@ public:
 
 	virtual void onDrop(bool onFloor) {};
 	virtual void onPick() {};
+
+	void action1(int player) override;
 };
 
 class SlicedTomato : public Food

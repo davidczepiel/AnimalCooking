@@ -33,3 +33,13 @@ void Food::update()
 {
 	Pickable::update();
 }
+
+void Food::action1(int player)
+{
+	if (player == Resources::Player1) {
+		player1_->pick(this, Resources::PickableType::Food);
+	}
+	else {
+		player2_->pick(this, Resources::PickableType::Food);
+	}
+}

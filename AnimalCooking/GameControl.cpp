@@ -1,16 +1,11 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u) : Component(ecs::GameControl)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp) : Component(ecs::GameControl)
 {
 	utensilsPool = u;
+	foodPool = fp;
 	tP1 = p1;
 	tP2 = p2;
-	GameLogic* g = GETCMP1_(GameLogic);
-
-	vector<Utensil*> v = utensilsPool->getPool();
-	for (int i = 0; i < v.size();i++) {
-		v.at(i)->setGameLogic(g);
-	}
 }
 
 

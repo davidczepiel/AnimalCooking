@@ -19,6 +19,9 @@
 #include "SelectorPopUp.h"
 #include "SelectorPopUpEntity.h"
 #include "GameLogic.h"
+#include "FoodPool.h"
+#include "FoodMotion.h"
+#include "FoodViewer.h"
 
 
 class PlayState : public State
@@ -55,6 +58,15 @@ public:
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 		
+		//-----------------------------------------------------Food
+
+		Entity* foodPool = stage->addEntity();
+		FoodPool* fp = foodPool->addComponent<FoodPool>();
+		foodPool->addComponent<SelectorPopUp>(fp->getPool() , GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector));
+		foodPool->addComponent<FoodMotion>();
+		foodPool->addComponent<FoodViewer>();
+
 		//-----------------------------------------------------
 		Entity* utensil = stage->addEntity();
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
@@ -78,6 +90,7 @@ public:
 
 		Entity* gameManager = stage->addEntity();
 		GameLogic* glogic =gameManager->addComponent<GameLogic>();
+		gameManager->addComponent<GameControl>(tp, nullptr, utensilpool_, fp);
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
 
