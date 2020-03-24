@@ -62,7 +62,8 @@ public:
 
 		Entity* foodPool = stage->addEntity();
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
-		foodPool->addComponent<SelectorPopUp>(fp->getPool() , GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+		vector<Interactive*>* aux = &reinterpret_cast<vector<Interactive*>&>(fp->getPool());
+		foodPool->addComponent<SelectorPopUp>(aux, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector));
 		foodPool->addComponent<FoodMotion>();
 		foodPool->addComponent<FoodViewer>();

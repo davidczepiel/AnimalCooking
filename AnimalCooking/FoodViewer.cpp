@@ -10,11 +10,9 @@ FoodViewer::FoodViewer() : Component(ecs::FoodViewer) {
 
 void FoodViewer::draw()
 {
-	std::vector<Food*>* fp = foodPool_->getPool();
-	Food* aux;
-	for (int i = 0; i < fp->size(); ++i) {
-		aux = fp->at(i);
-		aux->draw();
+	std::vector<Food*> fp = foodPool_->getPool();
+	for (auto f : fp) {
+		f->draw();
 	}
 }
 
