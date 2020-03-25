@@ -1,8 +1,7 @@
 #include "DishPool.h"
 
-DishPool::DishPool() :Component(ecs::DishPool)
+DishPool::DishPool() :Component(ecs::DishPool),dishes_(vector<Dish*>())
 {
-	dishes_ = vector<Dish*>();
 }
 
 void DishPool::addDish(Dish* d)
