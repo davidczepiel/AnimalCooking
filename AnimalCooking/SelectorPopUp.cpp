@@ -9,15 +9,17 @@ SelectorPopUp::~SelectorPopUp()
 //jugador el objeto que puede ser utilizado.
 void SelectorPopUp::update()
 {
-	bool interact1 = false, interact2 = false;
+
 	for (auto it : *pool_) {
 		//Si colisiona el rect del player1 con el interactuable
-		if (Collisions::collidesWithRotation(it1_->getPos(), it1_->getW(), it1_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())) {
+		if (Collisions::collidesWithRotation(it1_->getPos(), it1_->getW(), it1_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())
+			 && tP1->getObjectInHands() != it) {
 			sl1_->setSelect(it);
 			cout << "Cogido";
 		}
 		//Si colisiona el rect del player2 con el interactuable
-		if (Collisions::collidesWithRotation(it2_->getPos(), it2_->getW(), it2_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())) {
+		if (Collisions::collidesWithRotation(it2_->getPos(), it2_->getW(), it2_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())
+			&& tP2->getObjectInHands() != it) {
 			sl2_->setSelect(it);
 		}
 	}

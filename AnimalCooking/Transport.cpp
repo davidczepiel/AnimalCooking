@@ -29,6 +29,7 @@ void Transport::drop(bool onFloor)
 
 void Transport::swap(Pickable* obj, Resources::PickableType objType)
 {
+	objInHands_->onDrop(true);
 	objInHands_ = nullptr;
 	objInHands_ = obj;
 	objType_ = objType;

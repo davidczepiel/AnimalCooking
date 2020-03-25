@@ -49,7 +49,7 @@ public:
 		Ingredient* i = new Tomato();
 		i->setSize(32, 32);
 		i->setVel(Vector2D(0, 0));
-		i->setPos(Vector2D(60,60));
+		i->setPos(Vector2D(400,60));
 		pI->addIngredient(i);
 
 		i = new Onion();
@@ -64,7 +64,7 @@ public:
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
 		vector<Interactive*>* aux = &reinterpret_cast<vector<Interactive*>&>(fp->getPool());
 		foodPool->addComponent<SelectorPopUp>(aux, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
-			GETCMP2(player, Selector), GETCMP2(player, Selector));
+			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));
 		foodPool->addComponent<FoodMotion>();
 		foodPool->addComponent<FoodViewer>();
 
@@ -73,7 +73,7 @@ public:
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
 		vector<Interactive*>* b = &reinterpret_cast<vector<Interactive*>&>(utensilpool_->getPool());
 		utensil->addComponent<SelectorPopUp>(b, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
-			GETCMP2(player, Selector), GETCMP2(player, Selector));
+			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));
 		utensil->addComponent<UtensilsViewer>();
 		utensil->addComponent<UtensilsMotion>();
 

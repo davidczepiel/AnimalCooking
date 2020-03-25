@@ -5,7 +5,7 @@
 class InteractionRect :	public Component
 {
 public:
-	InteractionRect() : Component(ecs::InteractionRect), radius(60.5), pos_(), dir_(), size_(20, 20) {};
+	InteractionRect() : Component(ecs::InteractionRect), radius(60.5), pos_(), dir_(), size_(50, 50) {};
 	~InteractionRect(){}
 
 	void init() override;
