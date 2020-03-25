@@ -35,7 +35,7 @@ void DishStack::removeDish(Dish* d)
 void DishStack::action1(int id)
 {
 	
-	if(id==0)
+	if(id==Resources::Player::Player1)
 	{		
 		if (player1_->getObjectInHands() == nullptr)  player1_->pick(addNewDish(Vector2D()),Resources::PickableType::Dish);
 		else if(player1_->getObjectTypeInHands()==Resources::PickableType::Dish) 
