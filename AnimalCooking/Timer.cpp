@@ -32,7 +32,10 @@ void Timer::draw() {
 
 
 void Timer::timerStart() {
-	if(!timerStarted_) timerStarted_ = true;
+	if (!timerStarted_) {
+		timerStarted_ = true;
+		startedTime_ = game_->getTime();
+	} 
 }
 
 void Timer::timerReset() {
