@@ -18,9 +18,11 @@ public:
 	//Solo llamar cuando aun no se haya hecho ningun pedido
 	void setMaxOrders(size_t size);
 
-	//Se asigna la posicion a los orders aqui, pero tal vez deberia ser el OrderViewer
 	void setDistXBetweenOrders(size_t delta) { distXBetweenOrders_ = delta; }
 
+	void setPosition(Vector2D pos) { position_ = pos; }
+
+	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
 
 	//Preguntar si el finalProduct se encuentra en el Order o hay que guardalo

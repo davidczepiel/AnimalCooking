@@ -6,7 +6,7 @@ OrderManager::OrderManager() : OrderManager(2, 100, {100, 700})
 }
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position) : Component(ecs::OrderManager),
-		currentOrders_(maxOrders, nullptr), products_(maxOrders, Resources::FoodType::Empty),
+		currentOrders_(maxOrders, nullptr), products_(maxOrders, Resources::FoodType::Empty), //Inicializa los vectores con su size a sus valores por defecto
 		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position)
 {
 }
@@ -33,7 +33,7 @@ void OrderManager::setMaxOrders(size_t size)
 
 void OrderManager::addOrder(Resources::FoodType finalProduct)
 {
-	auto it = getFreePos();
+	vector<Order*>::iterator it = getFreePos();
 	if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va
 
 		set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido
@@ -64,9 +64,10 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 
 void OrderManager::removeOrder(Resources::FoodType finalProduct)
 {
-	auto it = getIndexOf(finalProduct);
+	vector<Order*>::iterator it = getIndexOf(finalProduct);
 	if (it != currentOrders_.end()) { //Si encuentra el producto a eliminar, elimina el pedido
-		delete *it; 
+		products_.at(it - currentOrders_.begin()) = Resources::FoodType::Empty; //Asigno en la posicion del pedido que esta vacio
+		delete *it; 	
 		*it = nullptr;
 
 		// Anadir puntos al ScoreManager
@@ -80,7 +81,7 @@ vector<Order*>& OrderManager::getOrders()
 
 vector<Order*>::iterator OrderManager::getFreePos()
 {
-	auto it = currentOrders_.begin();
+	vector<Order*>::iterator it = currentOrders_.begin();
 	while (it != currentOrders_.end()) {
 		if (*it == nullptr) break; //Paro la busqueda cuando encuentro una posicion libre
 		++it;
