@@ -167,6 +167,8 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BinEntity.h" />
+    <ClInclude Include="BinViewer.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
@@ -193,6 +195,8 @@
     <ClInclude Include="FoodCooker.h" />
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
+    <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodTextures.h" />
@@ -287,6 +291,8 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BinEntity.cpp" />
+    <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
@@ -310,6 +316,8 @@
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
+    <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverViewer.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
     <ClCompile Include="FoodTextures.cpp" />

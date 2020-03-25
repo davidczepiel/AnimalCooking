@@ -39,6 +39,8 @@ enum CmpId : CmpIdType {
 	FoodViewer,
 	FoodPool,
 
+	FoodGiverViewer, //FoodGiver
+
 
 	IngredientsPool, //Pools
 	UtensilsPool,
@@ -59,6 +61,7 @@ enum CmpId : CmpIdType {
 	SDLRendererFrame,
 	StaticRenderer,
 	IngredientViewer,
+	BinViewer,
 
 	GameManager, //Utils
 	ScoreManager,

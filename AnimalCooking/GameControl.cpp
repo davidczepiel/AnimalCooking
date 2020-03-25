@@ -61,7 +61,7 @@ Ingredient* GameControl::newIngType() {
 	return i;
 }
 
-void GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 
+Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 
 	Food* f;
 	switch (type) {
 
@@ -132,5 +132,7 @@ void GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar
 		break;
 	}
 	foodPool->AddFood(f);
+
+	return f;
 }
 
