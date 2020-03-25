@@ -38,3 +38,9 @@ protected:
 	Vector2D size_;
 	double rot_;
 };
+
+class FoodTimer : public Timer {
+public:
+	FoodTimer() : Timer() { time_ = 5000; }
+	void draw() {}
+};

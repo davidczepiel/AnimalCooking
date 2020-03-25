@@ -16,7 +16,7 @@ public:
     void init() override {}
     void update() override {}
     void newIngredient();
-    void newFood(Resources::FoodType type, Vector2D pos);
+    Food* newFood(Resources::FoodType type, Vector2D pos);
 private:
     Ingredient* newIngType();
     IngredientsPool* ingPool_;

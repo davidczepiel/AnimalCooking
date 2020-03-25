@@ -196,6 +196,8 @@
     <ClInclude Include="FoodCooker.h" />
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
+    <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodTextures.h" />
@@ -316,6 +318,8 @@
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
+    <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverViewer.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
     <ClCompile Include="FoodTextures.cpp" />
