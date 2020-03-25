@@ -19,8 +19,8 @@ void DishViewer::draw()
 		dish->render(RECT((*i)->getPos().getX(), (*i)->getPos().getY(), (*i)->getSize().getX(), (*i)->getSize().getY()));
 
 		//se renderizan los alimentos del plato		
-		//Colocamos la comida en el centro del plato y un poco más arriba del fondo del plato
-		//(teniendo en cuenta el índice la comida) y renderizamos
+		//Colocamos la comida en el centro del plato y un poco mï¿½s arriba del fondo del plato
+		//(teniendo en cuenta el ï¿½ndice la comida) y renderizamos
         int k = 0;
 		vector<Food*> foods= (*i)->getFoodVector();
 		for (auto it =foods.begin(); it != foods.end(); it++)
@@ -30,7 +30,6 @@ void DishViewer::draw()
 
 			(*it)->setSize(Vector2D((*i)->getSize().getX() / 2, (*i)->getSize().getY()));
 
-			(*it)->draw();
 			k++;
 		}		
 	}
