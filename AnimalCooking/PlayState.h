@@ -22,6 +22,11 @@
 #include "FoodPool.h"
 #include "FoodMotion.h"
 #include "FoodViewer.h"
+#include "DishStack.h"
+#include "DishPool.h"
+#include "DishMotion.h"
+#include "DishViewer.h"
+#include "DishFinisher.h"
 
 
 class PlayState : public State
@@ -92,6 +97,19 @@ public:
 		stage->addEntity(shelf2);
 		shelf2->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf2);
+
+		//Platera---------------------------------------
+		Entity* poolPlatos = stage->addEntity();
+		DishPool* dp =poolPlatos->addComponent<DishPool>();
+		poolPlatos->addComponent<DishMotion>();
+		poolPlatos->addComponent<DishViewer>();
+		/*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
+		poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
+		DishStack* dish = new DishStack(Vector2D(300,100),10,tp,tp,stage,dp);
+		dish->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), dish);
+		stage->addEntity(dish);
 
 		//GameManager------------------------------------
 		Entity* gameManager = stage->addEntity();

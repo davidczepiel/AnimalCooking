@@ -12,7 +12,7 @@ DishStack::DishStack(Vector2D pos,int maxDishes_,Transport* t1_,Transport* t2_,E
 
 
 //A�ade un plato al vector de dishes de la DishPool y lo devuelve
-Dish* DishStack::addNewDish(Vector2D pos, Transport* t1, Transport* t2)
+Dish* DishStack::addNewDish(Vector2D pos)
 {
 	if (dishPool->getNumDishes() < maxDishes)
 	{
