@@ -324,11 +324,8 @@
     </ClCompile>
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
-    <ClCompile Include="FoodGiver.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodGiverViewer.cpp">
-      <Filter>Source Files\Food</Filter>
+    <ClCompile Include="DishStackViewer.cpp">
+      <Filter>Source Files\Dishes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -691,11 +688,8 @@
     </ClInclude>
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
-    <ClInclude Include="FoodGiver.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodGiverViewer.h">
-      <Filter>Header Files\Food</Filter>
+    <ClInclude Include="DishStackViewer.h">
+      <Filter>Header Files\Dishes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
