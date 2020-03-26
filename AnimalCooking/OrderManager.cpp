@@ -89,7 +89,7 @@ vector<Order*>::iterator OrderManager::getIndexOf(Resources::FoodType finalProdu
 {
 	vector<Order*>::iterator it = currentOrders_.begin();
 	while (it != currentOrders_.end()) {
-		if ((*it)->getFinalProduct()) == finalProduct) break; //Paro la busqueda cuando encuentro el pedido de finalProduct
+		if ((*it)->getFinalProduct() == finalProduct) break; //Paro la busqueda cuando encuentro el pedido de finalProduct
 		++it;
 	}
 	return it;

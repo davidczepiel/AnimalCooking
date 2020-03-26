@@ -1,7 +1,11 @@
 #pragma once
-#include "Entity.h"
+#include <vector>
+#include "Texture.h"
+#include "Vector2D.h"
+#include "Resources.h"
+#include "SDLGame.h"
 
-class Order : public Entity
+class Order
 {
 private:
 	Vector2D position_;
@@ -9,10 +13,12 @@ private:
 	vector<Texture*> ingsTexture_;
 	double time_;
 	int nIngredients_;
+	Resources::FoodType finalProduct_;
+	double anger_;
 
 public:
-	Order(Vector2D pos, Texture* orderText, vector<Texture*> ingsText)
-		: Entity(), position_(pos), orderTetxure_(orderText), ingsTexture_(ingsText), nIngredients_(ingsText.size())
+	Order(Vector2D pos, Texture* orderText, vector<Texture*> ingsText, Resources::FoodType finalProduct)
+		: position_(pos), orderTetxure_(orderText), ingsTexture_(ingsText), nIngredients_(ingsText.size()), finalProduct_(finalProduct), anger_()
 	{
 		time_ = SDLGame::instance()->getTime();
 	}
@@ -24,4 +30,10 @@ public:
 	vector<Texture*> getIngsText() { return ingsTexture_; }
 	double getTime() { return time_; }
 	int getNumIngs() { return nIngredients_; }
+
+	Resources::FoodType getFinalProduct() { return finalProduct_; }
+
+	//El anger debe ser entre 0 y 1
+	void setAnger(double Anger) { anger_ = Anger; }
+	double getAnger() const { return anger_; }
 };

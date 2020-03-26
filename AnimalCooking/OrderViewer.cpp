@@ -1,5 +1,6 @@
 #include "OrderViewer.h"
 #include "SDL_macros.h"
+#include "Entity.h"
 
 OrderViewer::OrderViewer() : OrderViewer(80, 50, {5, 5})
 {
