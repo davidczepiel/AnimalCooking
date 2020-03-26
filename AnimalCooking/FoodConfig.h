@@ -1,26 +1,26 @@
 #pragma once
 #include "Resources.h"
 
-// Transform: Ingredient -> Normal food
-struct f1 {
+// Transformations: Ingredient -> Normal food
+struct utensilsTrans {
 	Resources::IngredientType set;
 	Resources::FoodType result;
 };
 
-struct foodKilled {
+struct utensilsRecipes {
 	Resources::UtensilType utensils;
-	vector <f1> transformations;
+	vector <utensilsTrans> transformations;
 };
 
-// Transform:  Normal Food -> Cooked Food
-struct f2 {
+// Transformations:  Normal Food -> Cooked Food
+struct cookersTrans {
 	vector <Resources::FoodType> set;
 	Resources::FoodType result;
 };
 
-struct foodCooked {
+struct cookersRecipes {
 	Resources::Cookers cookers;
-	vector <f2> transformations;
+	vector <cookersTrans> transformations;
 };
 
 
@@ -28,11 +28,12 @@ class FoodConfig {
 public:
 	FoodConfig();
 	~FoodConfig();
-	const vector <foodCooked>& getFoodCooked()  { return foodCooked_; };
-	const vector <foodKilled>& getFoodKilled()  { return foodKilled_; };
+
+	const vector <cookersRecipes>& getCookersRecipes()  { return cookersRecipes_; };
+	const vector <utensilsRecipes>& getUtensilsRecipes()  { return utensilsRecipes_; };
 
 private:
 	void fill();
-	vector <foodCooked> foodCooked_;
-	vector <foodKilled> foodKilled_;
+	vector <cookersRecipes> cookersRecipes_;
+	vector <utensilsRecipes> utensilsRecipes_;
 };
