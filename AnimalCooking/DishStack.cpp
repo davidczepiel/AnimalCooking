@@ -18,7 +18,7 @@ Dish* DishStack::addNewDish(Vector2D pos)
 	{
 		Dish* d = new Dish(pos,player1_,player2_);
 		d->setPos(pos);
-		d->setSize(Vector2D(100, 50));
+		d->setSize(Vector2D(75, 30));
 		d->setSpeed(Vector2D());
 		dishPool->addDish(d);	
 		
@@ -36,8 +36,8 @@ void DishStack::action1(int id)
 {
 	
 	if(id==Resources::Player::Player1)
-	{		
-		if (player1_->getObjectInHands() == nullptr)  player1_->pick(addNewDish(Vector2D()),Resources::PickableType::Dish);
+	{				
+		if (player1_->getObjectInHands() == nullptr)  player1_->pick(addNewDish(Vector2D(position_.getX()+(size_.getX()/4),position_.getY()+(size_.getY()/2))),Resources::PickableType::Dish);
 		else if(player1_->getObjectTypeInHands()==Resources::PickableType::Dish) 
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
