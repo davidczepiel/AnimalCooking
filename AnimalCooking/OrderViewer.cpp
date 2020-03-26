@@ -24,9 +24,12 @@ void OrderViewer::draw()
 			vector<Texture*> ings = o->getIngsText();
 			Texture* orText = o->getOrderText();
 		
+			double anger = o->getAnger();
+			if (anger > 0.8) anger = 0.8; //Maximo anger de 0.8 
+
 			// Fondo
-			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_), 
-									   RECT(o->getAnger() * backGroundTexture_->getWidth() / 5, 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight()));
+			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_),  //Usa getAnger() para determinar que zona usar de la textura
+									   RECT(anger * (backGroundTexture_->getWidth() / 5), 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight()));
 
 			// Las texturas de en medio
 			int ingWidth = width_ - 2 * margin_.getX();

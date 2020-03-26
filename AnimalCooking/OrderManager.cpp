@@ -53,7 +53,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 				Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
 				game_->getTextureMngr()->getTexture(finalProduct), // OrderText
 				texturesIngs_, // ingsText
-				finalProduct
+				finalProduct //Producto que da
 			);
 		}
 	}

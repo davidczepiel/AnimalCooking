@@ -25,7 +25,6 @@ public:
 	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
 
-	//Preguntar si el finalProduct se encuentra en el Order o hay que guardalo
 	//playerDidIt indica si el jugador a conseguido el pedido o no
 	void removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 
