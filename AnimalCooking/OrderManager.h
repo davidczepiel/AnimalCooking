@@ -26,7 +26,8 @@ public:
 	void addOrder(Resources::FoodType finalProduct);
 
 	//Preguntar si el finalProduct se encuentra en el Order o hay que guardalo
-	void removeOrder(Resources::FoodType finalProduct);
+	//playerDidIt indica si el jugador a conseguido el pedido o no
+	void removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 
 	//PUEDE DEVOLVER VALORES A NULLPTR
 	vector<Order*>& getOrders();
@@ -38,6 +39,5 @@ private:
 	vector<Order*>::iterator getFreePos();
 	vector<Order*>::iterator getIndexOf(Resources::FoodType finalProduct);
 
-	vector<Resources::FoodType> products_; //Vector para guardar los pedidos, como enum, que tengo
 	vector<Order*> currentOrders_; //Vector para guardar los Order
 };

@@ -18,17 +18,14 @@ void OrderViewer::init()
 
 void OrderViewer::draw()
 {
-
-	//TODO: cambiar la animacion dependiendo del estado de paciencia del cliente 
-
-
 	for (auto o : om_->getOrders()) {
 		if (o != nullptr) { //Si esta el pedido
 			vector<Texture*> ings = o->getIngsText();
 			Texture* orText = o->getOrderText();
 		
 			// Fondo
-			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_)); 
+			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_), 
+									   RECT(o->getAnger() * backGroundTexture_->getWidth() / 5, 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight()));
 
 			// Las texturas de en medio
 			int ingWidth = width_ - 2 * margin_.getX();

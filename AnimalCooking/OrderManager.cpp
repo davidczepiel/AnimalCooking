@@ -6,7 +6,7 @@ OrderManager::OrderManager() : OrderManager(2, 100, {100, 700})
 }
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position) : Component(ecs::OrderManager),
-		currentOrders_(maxOrders, nullptr), products_(maxOrders, Resources::FoodType::Empty), //Inicializa los vectores con su size a sus valores por defecto
+		currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
 		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position)
 {
 }
@@ -28,7 +28,6 @@ OrderManager::~OrderManager()
 void OrderManager::setMaxOrders(size_t size)
 {
 	currentOrders_.resize(size, nullptr);
-	products_.resize(size, Resources::FoodType::Empty);
 }
 
 void OrderManager::addOrder(Resources::FoodType finalProduct)
@@ -53,24 +52,21 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 
 				Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
 				game_->getTextureMngr()->getTexture(finalProduct), // OrderText
-				texturesIngs_ // ingsText
+				texturesIngs_, // ingsText
+				finalProduct
 			);
-
-			//Asigna el producto que obtendria del pedido en un vector auxiliar
-			products_.at(it - currentOrders_.begin()) = finalProduct; //Asigno en la posicion del pedido que pedido es
 		}
 	}
 }
 
-void OrderManager::removeOrder(Resources::FoodType finalProduct)
+void OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidIt)
 {
 	vector<Order*>::iterator it = getIndexOf(finalProduct);
 	if (it != currentOrders_.end()) { //Si encuentra el producto a eliminar, elimina el pedido
-		products_.at(it - currentOrders_.begin()) = Resources::FoodType::Empty; //Asigno en la posicion del pedido que esta vacio
 		delete *it; 	
 		*it = nullptr;
 
-		// Anadir puntos al ScoreManager
+		if (playerDidIt);// Anadir puntos al ScoreManager
 	}
 }
 
@@ -93,7 +89,7 @@ vector<Order*>::iterator OrderManager::getIndexOf(Resources::FoodType finalProdu
 {
 	vector<Order*>::iterator it = currentOrders_.begin();
 	while (it != currentOrders_.end()) {
-		if (products_.at(it - currentOrders_.begin()) == finalProduct) break; //Paro la busqueda cuando encuentro el pedido de finalProduct
+		if ((*it)->getFinalProduct()) == finalProduct) break; //Paro la busqueda cuando encuentro el pedido de finalProduct
 		++it;
 	}
 	return it;
