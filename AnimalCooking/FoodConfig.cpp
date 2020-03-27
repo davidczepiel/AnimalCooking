@@ -29,9 +29,7 @@ void FoodConfig::fill()
 
 	//Adding Knife recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Knife, uTrans });
-	
-	utensilsRecipes_.clear();
-
+	uTrans.clear();
 
 	///////////////////////
 	// MACE  RECIPES    // -------> SET <--------------   -----------> RESULT <--------------
@@ -43,9 +41,8 @@ void FoodConfig::fill()
 
 
 	//Adding Mace recipes
-	utensilsRecipes_.push_back({ Resources::UtensilType::Mace, uTrans });
-	//AÑADIR AQUI AL DICCIONARIO
-	utensilsRecipes_.clear();
+	utensilsRecipes_.push_back({ Resources::UtensilType::Mace, uTrans });	
+	uTrans.clear();
 
 	///////////////////////
 	// GRATER  RECIPES   // -------> SET <--------------   -----------> RESULT <--------------
@@ -56,7 +53,6 @@ void FoodConfig::fill()
 
 	//Adding Grater recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Grater, uTrans });
-	//AÑADIR AQUI AL DICCIONARIO
 	utensilsRecipes_.clear();
 
 	///////////////////////
@@ -69,8 +65,7 @@ void FoodConfig::fill()
 
 	//Adding Net recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Net, uTrans });
-	//AÑADIR AQUI AL DICCIONARIO
-	utensilsRecipes_.clear();
+	uTrans.clear();
 
 	
 
@@ -91,8 +86,7 @@ void FoodConfig::fill()
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Oven, cTrans });	
-	//AÑADIR AQUI AL DICCIONARIO
-	cookersRecipes_.clear();
+	cTrans.clear();
 
 
 	///////////////////////
@@ -108,10 +102,9 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedMushroom },	Resources::FoodType::FriedVegs });
 
 
-	//Adding Oven recipes
+	//Adding Skillet recipes
 	cookersRecipes_.push_back({ Resources::Skillet, cTrans });
-	//AÑADIR AQUI AL DICCIONARIO
-	cookersRecipes_.clear();
+	cTrans.clear();
 
 
 	///////////////////////
@@ -126,6 +119,5 @@ void FoodConfig::fill()
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Hands, cTrans });
-	//AÑADIR AQUI AL DICCIONARIO
-	cookersRecipes_.clear();
+	cTrans.clear();
 }

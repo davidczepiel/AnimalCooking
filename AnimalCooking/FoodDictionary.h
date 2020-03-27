@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Food.h"
+#include "FoodConfig.h"
 #include "jute.h"
 
 using namespace std;
