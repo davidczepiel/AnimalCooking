@@ -96,8 +96,12 @@ void FoodConfig::fill()
 
 
 	///////////////////////
-	// SKILLET RECIPES  //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
+	// SKILLET RECIPES      //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
 	//////////////////////
+
+	cTrans.push_back({ { Resources::FoodType::MashedMeat},		Resources::FoodType::MashedMeatSkillet });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausage},	Resources::FoodType::CaughtSausageSkillet });
+	cTrans.push_back({ { Resources::FoodType::SlicedPotato},	Resources::FoodType::SlicedPotatoSkillet });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedMushroom, Resources::FoodType::GratedCheese, Resources::FoodType::SlicedOnion },	Resources::FoodType::Risotto });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::CaughtClam, Resources::FoodType::MashedMushroom, Resources::FoodType::SlicedMushroom},	Resources::FoodType::RiceAndClams });
@@ -106,6 +110,22 @@ void FoodConfig::fill()
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Skillet, cTrans });
+	//AÑADIR AQUI AL DICCIONARIO
+	cookersRecipes_.clear();
+
+
+	///////////////////////
+	// HANDS RECIPES     //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
+	//////////////////////
+
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::SlicedOnion, Resources::FoodType::Dress },	Resources::FoodType::Salad });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::Bread, Resources::FoodType::MashedMeatSkillet },	Resources::FoodType::Burger });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet, Resources::FoodType::Bread, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedCheese},	Resources::FoodType::HotDog });
+	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet, Resources::FoodType::Dress},	Resources::FoodType::FrenchFries });
+
+
+	//Adding Oven recipes
+	cookersRecipes_.push_back({ Resources::Hands, cTrans });
 	//AÑADIR AQUI AL DICCIONARIO
 	cookersRecipes_.clear();
 }
