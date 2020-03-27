@@ -3,7 +3,7 @@
 
 vector<Resources::FontInfo> Resources::fonts_{
 	//
-
+	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 }
 };
 
 	
