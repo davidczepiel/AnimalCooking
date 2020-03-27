@@ -95,8 +95,17 @@ void FoodConfig::fill()
 	cookersRecipes_.clear();
 
 
-	
+	///////////////////////
+	// SKILLET RECIPES  //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
+	//////////////////////
+	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
+	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedMushroom, Resources::FoodType::GratedCheese, Resources::FoodType::SlicedOnion },	Resources::FoodType::Risotto });
+	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::CaughtClam, Resources::FoodType::MashedMushroom, Resources::FoodType::SlicedMushroom},	Resources::FoodType::RiceAndClams });
+	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedMushroom },	Resources::FoodType::FriedVegs });
 
 
-
+	//Adding Oven recipes
+	cookersRecipes_.push_back({ Resources::Skillet, cTrans });
+	//AÑADIR AQUI AL DICCIONARIO
+	cookersRecipes_.clear();
 }
