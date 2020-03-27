@@ -23,7 +23,6 @@ void FoodConfig::fill()
 	uTrans.push_back({ Resources::IngredientType::mushroom, Resources::FoodType::SlicedMushroom });
 	uTrans.push_back({ Resources::IngredientType::onion,	Resources::FoodType::SlicedOnion });
 	uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotato });
-	//uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotatoSkillet }); <- Esta receta no tiene potatoSkillet de base, de momento no se puede usar
 	uTrans.push_back({ Resources::IngredientType::sausage,	Resources::FoodType::SlicedSausage });
 	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType::SlicedTomato });
 		
@@ -45,6 +44,31 @@ void FoodConfig::fill()
 
 	//Adding Mace recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Mace, uTrans });
+	//AÑADIR AQUI AL DICCIONARIO
+	utensilsRecipes_.clear();
+
+	///////////////////////
+	// GRATER  RECIPES   // -------> SET <--------------   -----------> RESULT <--------------
+	//////////////////////	
+
+	uTrans.push_back({ Resources::IngredientType::cheese,	Resources::FoodType::GratedCheese }); //
+
+
+	//Adding Grater recipes
+	utensilsRecipes_.push_back({ Resources::UtensilType::Grater, uTrans });
+	//AÑADIR AQUI AL DICCIONARIO
+	utensilsRecipes_.clear();
+
+	///////////////////////
+	// NET  RECIPES      // -------> SET <--------------   -----------> RESULT <--------------
+	//////////////////////	
+	
+	uTrans.push_back({ Resources::IngredientType::clam,		Resources::FoodType::CaughtClam }); 
+	uTrans.push_back({ Resources::IngredientType::fish,		Resources::FoodType::CaughtFish }); 
+	uTrans.push_back({ Resources::IngredientType::sausage,	Resources::FoodType::CaughtSausage }); 
+
+	//Adding Net recipes
+	utensilsRecipes_.push_back({ Resources::UtensilType::Net, uTrans });
 	//AÑADIR AQUI AL DICCIONARIO
 	utensilsRecipes_.clear();
 
