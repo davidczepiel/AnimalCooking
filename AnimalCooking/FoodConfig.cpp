@@ -82,9 +82,21 @@ void FoodConfig::fill()
 	///////////////////////
 	// OVEN  RECIPES    //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
 	//////////////////////
-	cTrans.push_back({ { Resources::FoodType::PizzaMass, Resources::FoodType::SlicedTomato, Resources::FoodType::GratedCheese },	Resources::FoodType::Pizza });
-	cTrans.push_back({ { Resources::FoodType::MashedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::SlicedTomato },	Resources::FoodType::MashedMeatSkillet });
+	cTrans.push_back({ { Resources::FoodType::MashedTomato, Resources::FoodType::PizzaMass, Resources::FoodType::GratedCheese, Resources::FoodType::Dress },	Resources::FoodType::Pizza });
+	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast });
+	cTrans.push_back({ { Resources::FoodType::CaughtFish, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedPotato, Resources::FoodType::Dress },	Resources::FoodType::CookedFish });
+	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedChicken},	Resources::FoodType::BakedChicken });
+	cTrans.push_back({ { Resources::FoodType::CaughtClam, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::CookedClams });
+
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Oven, cTrans });	
+	//AÑADIR AQUI AL DICCIONARIO
+	cookersRecipes_.clear();
+
+
+	
+
+
+
 }
