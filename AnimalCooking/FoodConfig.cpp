@@ -31,6 +31,24 @@ void FoodConfig::fill()
 	//Adding Knife recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Knife, uTrans });
 	
+	utensilsRecipes_.clear();
+
+
+	///////////////////////
+	// MACE  RECIPES    // -------> SET <--------------   -----------> RESULT <--------------
+	//////////////////////	
+
+	uTrans.push_back({ Resources::IngredientType::meat,		Resources::FoodType:: MashedMeat });  //
+	uTrans.push_back({ Resources::IngredientType::mushroom, Resources::FoodType:: MashedMushroom }); //
+	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType:: MashedTomato }); //
+
+
+	//Adding Mace recipes
+	utensilsRecipes_.push_back({ Resources::UtensilType::Mace, uTrans });
+	//AÑADIR AQUI AL DICCIONARIO
+	utensilsRecipes_.clear();
+
+	
 
 	///////////////////////////////////////////////////////////////////////////////////
 	//Fill transformations2:  Normal Food -> Cooked Food into cookersRecipes_    /////
