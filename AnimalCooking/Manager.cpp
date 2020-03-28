@@ -1,5 +1,4 @@
 #include "Manager.h"
-#include "Entity.h"
 
 EntityManager::EntityManager(SDLGame *game) :
 		game_(game) {
@@ -15,8 +14,10 @@ void EntityManager::update() {
 }
 
 void EntityManager::draw() {
-	for (auto &e : entities) {
-		e->draw();
+	for (int i = 0; i < ecs::maxGroups; ++i) {
+		for (auto& e : entitiesGroup[i]) {
+			e->draw();
+		}
 	}
 }
 
@@ -30,4 +31,8 @@ Entity* EntityManager::addEntity() {
 void EntityManager::addEntity(Entity* e)
 {
 	entities.emplace_back(e);
+}
+
+void EntityManager::addToGroup(Entity* e, ecs::GroupID id) {
+	entitiesGroup[id].push_back(e);
 }

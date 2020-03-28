@@ -35,6 +35,7 @@ public:
 	PlayState() : State() {
 		//Player----------------------------------------------
 		Entity* player = stage->addEntity();
+		stage->addToGroup(player, ecs::Layer5);
 		Transform* t = player->addComponent<Transform>();
 		t->setWH(64,64);
 		player->addComponent<PlayerMotion>();
@@ -47,6 +48,7 @@ public:
 
 		//Ingredientes----------------------------------------
 		Entity* ingPool = stage->addEntity();
+		stage->addToGroup(ingPool, ecs::Layer3);
 		IngredientsPool* pI = ingPool->addComponent<IngredientsPool>();
 		ingPool->addComponent<IngredientViewer>();
 		ingPool->addComponent<IngredientMotion>();
@@ -66,6 +68,7 @@ public:
 		//EntityFoodPool----------------------------------------
 
 		Entity* foodPool = stage->addEntity();
+		stage->addToGroup(foodPool, ecs::Layer3);
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
 		vector<Interactive*>* aux = &reinterpret_cast<vector<Interactive*>&>(fp->getPool());
 		foodPool->addComponent<SelectorPopUp>(aux, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
@@ -75,6 +78,7 @@ public:
 
 		//EntityUtensilPool----------------------------------------
 		Entity* utensil = stage->addEntity();
+		stage->addToGroup(utensil, ecs::Layer4);
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
 		vector<Interactive*>* b = &reinterpret_cast<vector<Interactive*>&>(utensilpool_->getPool());
 		utensil->addComponent<SelectorPopUp>(b, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
@@ -89,17 +93,20 @@ public:
 
 		//Repisas----------------------------------------
 		Shelf* shelf = new Shelf(Vector2D(100,100),k,tp,tp,stage);
+		stage->addToGroup(shelf, ecs::Layer1);
 		stage->addEntity(shelf);
 		shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), shelf);
 
 		Shelf* shelf2 = new Shelf(Vector2D(200, 100), m, tp, tp, stage);
 		stage->addEntity(shelf2);
+		stage->addToGroup(shelf2, ecs::Layer1);
 		shelf2->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf2);
 
 		//Platera---------------------------------------
 		Entity* poolPlatos = stage->addEntity();
+		stage->addToGroup(poolPlatos, ecs::Layer2);
 		DishPool* dp =poolPlatos->addComponent<DishPool>();
 		poolPlatos->addComponent<DishMotion>();
 		poolPlatos->addComponent<DishViewer>();

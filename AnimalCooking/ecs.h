@@ -4,6 +4,7 @@
 namespace ecs {
 
 using CmpIdType = std::size_t;
+using Group = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
@@ -85,7 +86,17 @@ enum CmpId : CmpIdType {
 	_LastCmptId_
 };
 
+enum GroupID : Group {
+	Layer1,
+	Layer2,
+	Layer3,
+	Layer4,
+	Layer5,
+	_LastGroupId_	//Identify the max number of groups
+};
+
 constexpr std::size_t maxComponents = _LastCmptId_;
+constexpr std::size_t maxGroups = _LastGroupId_;
 
 // these two should be used to get a component via the field
 // entity_
