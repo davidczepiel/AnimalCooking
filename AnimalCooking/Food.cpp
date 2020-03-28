@@ -5,13 +5,13 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 {
 	timer_ = FoodTimer();
 	position_ = position;
-	size_ = Vector2D(50, 50);
+	size_ = Vector2D(64, 64);
 	type_ = type;
 	foodPool_ = nullptr;
 	speed_ = Vector2D();
 }
 
-Food::Food(Resources::FoodType type): Pickable(nullptr, nullptr) {
+Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr) {
 	position_ = Vector2D();
 	size_ = Vector2D(50, 50);
 	type_ = type;
@@ -35,10 +35,6 @@ void Food::update()
 	Pickable::update();
 
 	if (timer_.isTimerEnd()) {
-		//Genero la caca
-		Poop* p = new Poop();
-		foodPool_->AddFood(p);
-
 		foodPool_->RemoveFood(iterator_);
 	}
 	else {
@@ -48,7 +44,10 @@ void Food::update()
 
 void Food::onDrop(bool onFloor)
 {
-	if (onFloor) timer_.timerStart();
+	if (onFloor) {
+		Pickable::onDrop(onFloor);
+		timer_.timerStart();
+	}
 }
 
 void Food::action1(int player)

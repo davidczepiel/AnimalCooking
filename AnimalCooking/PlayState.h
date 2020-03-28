@@ -27,7 +27,8 @@
 #include "DishMotion.h"
 #include "DishViewer.h"
 #include "DishFinisher.h"
-
+#include "FoodGiver.h"
+#include "FoodGiverViewer.h"
 
 class PlayState : public State
 {
@@ -37,7 +38,7 @@ public:
 		Entity* player = stage->addEntity();
 		stage->addToGroup(player, ecs::Layer5);
 		Transform* t = player->addComponent<Transform>();
-		t->setWH(64,64);
+		t->setWH(128,128);
 		player->addComponent<PlayerMotion>();
 		player->addComponent<Selector>();
 		player->addComponent<InteractionRect>();
@@ -56,14 +57,21 @@ public:
 		Ingredient* i = new Tomato();
 		i->setSize(32, 32);
 		i->setVel(Vector2D(0, 0));
-		i->setPos(Vector2D(400,60));
+		i->setPos(Vector2D(10 ,70));
 		pI->addIngredient(i);
 
 		i = new Onion();
 		i->setSize(32, 32);
-		i->setPos(Vector2D(10,70));
+		i->setPos(Vector2D(400,60));
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
+
+		i = new Onion();
+		i->setSize(32, 32);
+		i->setPos(Vector2D(600, 60));
+		i->setVel(Vector2D(0, 0));
+		pI->addIngredient(i);
+
 		
 		//EntityFoodPool----------------------------------------
 
@@ -98,7 +106,7 @@ public:
 		shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), shelf);
 
-		Shelf* shelf2 = new Shelf(Vector2D(200, 100), m, tp, tp, stage);
+		Shelf* shelf2 = new Shelf(Vector2D(264, 100), m, tp, tp, stage);
 		stage->addEntity(shelf2);
 		stage->addToGroup(shelf2, ecs::Layer1);
 		shelf2->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
@@ -113,18 +121,33 @@ public:
 		/*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
 		poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
-		DishStack* dish = new DishStack(Vector2D(300,100),10,tp,tp,stage,dp);
+		DishStack* dish = new DishStack(Vector2D(400,100),10,tp,tp,stage,dp);
 		dish->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), dish);
 		stage->addEntity(dish);
+		stage->addToGroup(dish, ecs::GroupID::Layer1);
 
 		//GameManager------------------------------------
 		Entity* gameManager = stage->addEntity();
 		GameLogic* glogic =gameManager->addComponent<GameLogic>();
-		gameManager->addComponent<GameControl>(tp, nullptr, utensilpool_, fp);
+		gameManager->addComponent<GameControl>(tp, tp, utensilpool_, fp);
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
 
+		//Arrocera-------------------
+		RiceGiver* riceGiver = new RiceGiver(Vector2D(500, 500), Vector2D(128, 128), GETCMP2(player, Transport), GETCMP2(player, Transport), GETCMP2(gameManager, GameControl));
+		riceGiver->addComponent<FoodGiverViewer>(riceGiver);
+		riceGiver->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), riceGiver);
+		stage->addEntity(riceGiver);
+		stage->addToGroup(riceGiver, ecs::Layer1);
+		//Panera--------------------
+		BreadGiver* breadGiver = new BreadGiver(Vector2D(628, 500), Vector2D(128, 128), GETCMP2(player, Transport), GETCMP2(player, Transport), GETCMP2(gameManager, GameControl));
+		breadGiver->addComponent<FoodGiverViewer>(breadGiver);
+		breadGiver->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), breadGiver);
+		stage->addEntity(breadGiver);
+		stage->addToGroup(breadGiver, ecs::Layer1);
 	}
 
 

@@ -8,7 +8,7 @@ public:
 	void setSpeed(Vector2D newSpeed) { speed_ = newSpeed; }
 	Vector2D getSpeed() { return speed_; }
 	
-	virtual void onDrop(bool onFloor) = 0;
+	virtual void onDrop(bool onFloor);
 	virtual void onPick() = 0;
 
 protected:

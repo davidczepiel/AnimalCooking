@@ -12,6 +12,8 @@ public:
 	void setRot(double newRot) { rotation_ = newRot; }
 	double getRot() { return rotation_; }
 
+	void setCanInteract(bool value) { canInteract = value; }
+	bool isInteractive() { return canInteract; }
 	~Interactive() {}
 
 	virtual void action1(int player) {};
@@ -19,10 +21,11 @@ public:
 	virtual void action3(int player) {};
 	virtual void action4(int player) {};
 
+
 protected:
 
 	Interactive(Transport* p1, Transport* p2) : player1_(p1), player2_(p2), position_(), size_(), rotation_() {};
-
+	bool canInteract= true;
 	Transport* player1_;
 	Transport* player2_;
 	Vector2D position_;

@@ -22,6 +22,8 @@ void Transport::pick(Pickable* obj, Resources::PickableType objType)
 
 void Transport::drop(bool onFloor)
 {
+	if (onFloor)
+		objInHands_->setCanInteract(true);
 	objInHands_->onDrop(onFloor);
 	objInHands_ = nullptr;
 	objType_ = Resources::PickableType::none;
@@ -29,10 +31,13 @@ void Transport::drop(bool onFloor)
 
 void Transport::swap(Pickable* obj, Resources::PickableType objType)
 {
-	objInHands_->onDrop(true);
-	objInHands_ = nullptr;
-	objInHands_ = obj;
-	objType_ = objType;
+	if (objType_ != Resources::PickableType::Dish) {
+		objInHands_->onDrop(true);
+		objInHands_ = nullptr;
+		objInHands_ = obj;
+		objType_ = objType;
+
+	}
 }
 
 void Transport::init()

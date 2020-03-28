@@ -27,7 +27,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Cerdo,"../AnimalCooking/resources/images/personaje.png"},
 	{Basic, Pollo,"../AnimalCooking/resources/images/personaje2.png"},
 	{Basic, Plato,"../AnimalCooking/resources/images/plato.png"},
-	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.jpg"},
+	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{Basic, Suelo,"../AnimalCooking/resources/images/suelo.png"},
 	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
 

@@ -20,6 +20,9 @@ protected:
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void Destroy();
+	void startTimer() {
+		timer_.timerStart();
+	}
 
 	Resources::FoodType getType() { return type_; }
 

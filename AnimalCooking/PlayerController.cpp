@@ -24,7 +24,8 @@ void PlayerController::init()
 
 void PlayerController::update()
 {
-	joystickUpdate();
+	keyUpdate();
+	//joystickUpdate();
 }
 
 void PlayerController::joystickUpdate()
