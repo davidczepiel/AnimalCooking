@@ -30,11 +30,8 @@ void FoodPool::AddFood(Food* food)
 
 void FoodPool::RemoveFood(std::vector<Food*>::iterator it)
 {
-
-	std::vector<Food*>::iterator i = foods_.end();
-	--i;
-	if (i != it)
-		iter_swap(it, i);
-
+	Food* i = *--foods_.end();
+	i->setIt(it);
+	iter_swap(it, --foods_.end());
 	foods_.pop_back();
 }

@@ -19,6 +19,7 @@ protected:
 	FoodTimer timer_;
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
+	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
 	void startTimer() {
 		timer_.timerStart();
