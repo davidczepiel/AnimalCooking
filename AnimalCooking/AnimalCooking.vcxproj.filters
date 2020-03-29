@@ -324,7 +324,6 @@
     </ClCompile>
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
-    <ClCompile Include="FoodConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -686,9 +685,6 @@
     </ClInclude>
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
-    <ClInclude Include="FoodConfig.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
