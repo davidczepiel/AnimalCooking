@@ -14,9 +14,9 @@ FoodPool::~FoodPool() {
 	foods_.clear();
 }
 
-vector<Food*>* FoodPool::getPool()
+vector<Food*>& FoodPool::getPool()
 {
-	return &foods_;
+	return foods_;
 }
 
 void FoodPool::AddFood(Food* food)

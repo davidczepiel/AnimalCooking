@@ -51,6 +51,15 @@ void Food::onDrop(bool onFloor)
 	if (onFloor) timer_.timerStart();
 }
 
+void Food::action1(int player)
+{
+	if (player == Resources::Player1) {
+		player1_->pick(this, Resources::PickableType::Food);
+	}
+	else {
+		player2_->pick(this, Resources::PickableType::Food);
+	}
+}
 void Food::onPick() {
 	timer_.timerReset();
 }

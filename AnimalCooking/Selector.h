@@ -6,13 +6,15 @@
 #include "Entity.h"
 #include "Transform.h"
 
+using namespace std;
+
 class Selector : public Component
 {
 public:
 	Selector() :Component(ecs::Selector) {};
 	~Selector() {};
 	inline Interactive* getSelect() { return select_; }
-	inline void setSelect(Interactive* i) { select_ = i; }
+	inline void setSelect(Interactive* i) { select_ = i;	cout << "interactive2" << endl; }
 
 	void update() override;
 private:

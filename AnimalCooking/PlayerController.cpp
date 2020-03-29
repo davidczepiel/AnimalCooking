@@ -6,6 +6,7 @@ void PlayerController::init()
 	tr_ = GETCMP1_(Transform);
 	ir_ = GETCMP1_(InteractionRect);
 	selector_ = GETCMP1_(Selector);
+	attack_ = GETCMP1_(Attack);
 
 	if (id_ == 0) {
 		keys.up = SDLK_w;
@@ -49,7 +50,7 @@ void PlayerController::joystickUpdate()
 		else {
 			tr_->setVelY(0);
 		}
-		ir_->setPos(x, y);
+		ir_->setDir(x, y);
 		//Botones-------------------------------
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_A)) {
 			//
@@ -76,16 +77,28 @@ void PlayerController::keyUpdate()
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
 		int x = 0, y = 0;	
-		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); x = -1; }
-		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); x = 1; }
+		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); y = -1; }
+		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); y = 1; }
 		else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  y = 1;	}
-		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); y = -1; }
+		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  x = 1;	}
+		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); x = -1; }
 		else tr_->setVelX(0);
 
-		ir_->setPos(x, y);
+		ir_->setDir(x, y);
 		//--------------------Botones
+
+		if (keyboard->isKeyDown(SDLK_k) && selector_!= nullptr)
+		{ 
+			Interactive* i = selector_->getSelect();
+			if(i!= nullptr)
+			i->action1(id_);
+			i = nullptr;
+		}
+		if (keyboard->isKeyDown(SDLK_p))
+		{ 
+			attack_->attack(); 
+		}
 	}
 	else {
 		tr_->setVelX(0);

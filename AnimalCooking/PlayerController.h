@@ -32,7 +32,7 @@ private:
 	Transform* tr_ = nullptr;
 	Selector* selector_ = nullptr;
 	InteractionRect* ir_ = nullptr;
-	//Attack* attack_ = nullptr; <<--Cuando se implemente
+	Attack* attack_ = nullptr; 
 
 	void joystickUpdate();
 	void keyUpdate();

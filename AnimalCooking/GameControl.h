@@ -10,7 +10,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp);
     ~GameControl() {}
 
     void init() override {}

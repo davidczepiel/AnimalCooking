@@ -14,6 +14,9 @@ public:
 
     void init() override {}
     void update() override {}
+    void draw() override {}
+    void setIngredientPool(IngredientsPool* p) {ingPool = p;}
+    void setUtensilsPool(UtensilsPool* u) { utensilPool = u; utensilPool->SetGameLogic(this); }
     void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
 
 private:
