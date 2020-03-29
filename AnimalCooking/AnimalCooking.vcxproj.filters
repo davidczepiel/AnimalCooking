@@ -327,6 +327,12 @@
     <ClCompile Include="DishStackViewer.cpp">
       <Filter>Source Files\Dishes</Filter>
     </ClCompile>
+    <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverViewer.cpp" />
+    <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="FoodConfig.cpp">
+      <Filter>Source Files\Food</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -690,6 +696,11 @@
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="DishStackViewer.h">
       <Filter>Header Files\Dishes</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverViewer.h" />
+    <ClInclude Include="FoodConfig.h">
+      <Filter>Header Files\Food</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

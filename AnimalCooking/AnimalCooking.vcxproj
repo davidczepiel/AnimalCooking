@@ -193,6 +193,7 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="FoodConfig.h" />
     <ClInclude Include="FoodCooker.h" />
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
@@ -316,6 +317,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="FoodConfig.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodGiver.cpp" />
