@@ -42,7 +42,7 @@ public:
 		Cerdo,
 		Pollo,
 		IngredienteMalo,
-
+		CuadradoAux,
 
 
 		// images level specific
@@ -95,7 +95,7 @@ public:
 	};
 
 	enum FontId : std::size_t {
-		ARIAL16, ARIAL24,
+		ARIAL12,
 	};
 
 	struct FontInfo {

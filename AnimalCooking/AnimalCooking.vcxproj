@@ -185,6 +185,7 @@
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
     <ClInclude Include="DishStack.h" />
+    <ClInclude Include="DishStackViewer.h" />
     <ClInclude Include="DishViewer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
@@ -192,9 +193,12 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="FoodConfig.h" />
     <ClInclude Include="FoodCooker.h" />
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
+    <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodTextures.h" />
@@ -307,14 +311,18 @@
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
     <ClCompile Include="DishStack.cpp" />
+    <ClCompile Include="DishStackViewer.cpp" />
     <ClCompile Include="DishViewer.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="FoodConfig.cpp" />
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
+    <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverViewer.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
     <ClCompile Include="FoodTextures.cpp" />
@@ -330,6 +338,7 @@
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
+    <ClCompile Include="IngredientViewer.cpp" />
     <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />

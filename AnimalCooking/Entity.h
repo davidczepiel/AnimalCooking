@@ -50,6 +50,7 @@ public:
 			c->draw();
 		}
 	}
+
 private:
 	SDLGame *game_;
 	EntityManager* mngr_;

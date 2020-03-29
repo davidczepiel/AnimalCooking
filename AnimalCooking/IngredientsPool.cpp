@@ -10,9 +10,10 @@ IngredientsPool::~IngredientsPool()
 
 void IngredientsPool::addIngredient(Ingredient* i)
 {
-	cout << "ingrediente anadido" << endl;
-	ingredients_.push_back(i);
-	i->setInVector(--ingredients_.end(), this);
+	ingredients_.emplace_back(i);
+	std::vector<Ingredient*>::iterator it = ingredients_.end();
+	--it;
+	i->setInVector(it, this);
 }
 
 void IngredientsPool::clearIngredients()

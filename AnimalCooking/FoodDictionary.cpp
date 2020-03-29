@@ -14,18 +14,30 @@ FoodDictionary::~FoodDictionary() {
 
 void FoodDictionary::fill()
 {
-	jute::jValue jSon_ = jute::parser::parse_file(jsonFileName);
-	jute::jValue cookers = jSon_["cookers"];
+	FoodConfig foodCfg;
 
-	for (int c = 0; c < cookers.size(); ++c) {
-		jute::jValue ar = cookers[c][1];
-		for (int i = 0; i < ar.size(); ++i) {
+	for (int u = 0; u < foodCfg.getUtensilsRecipes().size(); ++u) {		
+		
+
+		for (int i = 0; i < foodCfg.getUtensilsRecipes()[u].transformations.size(); ++i) {
 			set<int> set;
-			for (int j = 0; j < ar[i]["set"].size(); ++j) {
-				set.insert(ar[i]["set"][j].as_int());
+
+			set.insert(foodCfg.getUtensilsRecipes()[u].transformations[i].set);
+			dictionary_.insert(Par(par(u, set), foodCfg.getUtensilsRecipes()[u].transformations[i].result));			
+		}
+	}
+
+	for (int c = 0; c < foodCfg.getCookersRecipes().size(); ++c) {
+
+		for (int i = 0; i < foodCfg.getCookersRecipes()[c].transformations.size(); ++i) {
+			set<int> set;
+
+			for (int j = 0; j < foodCfg.getCookersRecipes()[c].transformations[i].set.size(); ++j) {
+				set.insert(foodCfg.getCookersRecipes()[c].transformations[i].set[j]);
 			}
-			dictionary_.insert(Par(par(c, set), ar[i]["result"].as_int()));
-			resultToSetDictionary_.insert(std::make_pair(ar[i]["result"].as_int(), set));
+
+			dictionary_.insert(Par(par(c, set), foodCfg.getCookersRecipes()[c].transformations[i].result));
+			resultToSetDictionary_.insert(std::make_pair(foodCfg.getCookersRecipes()[c].transformations[i].result, set));
 		}
 	}
 }
@@ -34,11 +46,11 @@ Food* FoodDictionary::bind(const int& c) const
 {
 	switch (c)
 	{
-// Poop
+		// Poop
 	case -1:
 		return new Poop();
 		break;
-// Platos enteros :
+		// Platos enteros :
 
 	case Resources::FoodType::Pizza:
 		return new Pizza();
@@ -68,7 +80,7 @@ Food* FoodDictionary::bind(const int& c) const
 		return new RiceAndClams();
 		break;
 
-// Alimentos individuales : 
+		// Alimentos individuales : 
 
 	case Resources::FoodType::MashedMeatSkillet:
 		return new MashedMeatSkillet();

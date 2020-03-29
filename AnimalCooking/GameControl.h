@@ -10,13 +10,13 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp);
     ~GameControl() {}
 
     void init() override {}
     void update() override {}
     void newIngredient();
-    void newFood(Resources::FoodType type, Vector2D pos);
+    Food* newFood(Resources::FoodType type, Vector2D pos);
 private:
     Ingredient* newIngType();
     IngredientsPool* ingPool_;

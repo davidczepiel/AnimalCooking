@@ -2,6 +2,8 @@
 #include "FoodPool.h"
 #include "SDL_macros.h"
 #include "Pickable.h"
+#include "Transport.h"
+#include "Timer.h"
 
 class Food : public Pickable 
 {
@@ -13,6 +15,8 @@ protected:
 
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
+
+	FoodTimer timer_;
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void Destroy();
@@ -20,10 +24,11 @@ public:
 	Resources::FoodType getType() { return type_; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
-	virtual void draw() = 0; //Cada clase que herede de food tendrá su render donde la textura dependerá del tipo
+	virtual void draw() = 0; //Cada clase que herede de food tendrï¿½ su render donde la textura dependerï¿½ del tipo
 
-	virtual void onDrop(bool onFloor) {};
-	virtual void onPick() {};
+	virtual void action1(int player);
+	virtual void onDrop(bool onFloor);
+	virtual void onPick();
 };
 
 class SlicedTomato : public Food

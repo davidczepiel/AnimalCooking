@@ -17,6 +17,6 @@ void DishMotion::update()
 
 	for (auto it = d.begin(); it != d.end(); it++)
 	{
-		(*it)->update();
+		if((*it)->getInHands())(*it)->setPos((*it)->getPos() + (*it)->getSpeed());
 	}	
 }

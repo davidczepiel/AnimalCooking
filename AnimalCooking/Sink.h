@@ -15,7 +15,7 @@ using namespace std;
 class Sink :public Entity, public Interactive
 {
 public:
-	Sink(Transport* p1, Transport* p2, EntityManager* mng);
+	Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng);
 	void draw() ;
 	void update();
 	virtual ~Sink();

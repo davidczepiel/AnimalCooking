@@ -11,4 +11,14 @@ UtensilsPool::~UtensilsPool() {
 	}
 }
 
+void UtensilsPool::SetGameLogic(GameLogic* gl)
+{
+	for (int i = 0; i < pool_.size(); i++) {
+		if (pool_.at(i) != nullptr) {
+			pool_.at(i)->setGameLogic(gl);
+		}
+	}
+
+}
+
 
