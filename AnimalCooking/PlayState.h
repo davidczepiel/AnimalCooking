@@ -32,6 +32,7 @@
 #include "Cooker.h"
 #include "CookerViewer.h"
 #include "CookerPool.h"
+#include "InsertExpel.h"
 #include "Sink.h"
 #include "BinEntity.h"
 #include "BinViewer.h"
@@ -81,7 +82,6 @@ public:
 
 		
 		//EntityFoodPool----------------------------------------
-
 		Entity* foodPool = stage->addEntity();
 		stage->addToGroup(foodPool, ecs::Layer3);
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
@@ -111,31 +111,37 @@ public:
 		stage->addToGroup(cookerPool, ecs::Layer4);
 		CookerPool* cp =cookerPool->addComponent<CookerPool>();
 		cookerPool->addComponent<CookerViewer>();
+		cookerPool->addComponent<InsertExpel>(tp);
 		Vector2D pos = Vector2D(128, 0);
 		Vector2D size = Vector2D(128, 128);
-		Oven* oven = new Oven(pos,size,0,SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker));
+		Oven* oven = new Oven(pos, size, 0, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker), tp, tp, cookerPool);
 		cp->addCooker(oven);
-		pos = Vector2D(0,128);
-		Skillet* skillet = new Skillet(pos, size, 0, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker));
+
+		pos = Vector2D(0, 128);
+		Skillet* skillet = new Skillet(pos, size, 0, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker), tp, tp, cookerPool);
 		cp->addCooker(skillet);
+
+		vector<Interactive*>* c = &reinterpret_cast<vector<Interactive*>&>(cp->getPool());
+		cookerPool->addComponent<SelectorPopUp>(c, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));
 
 
 
 
 		//Repisas----------------------------------------
-		Shelf* knifeShelf = new Shelf(Vector2D(4*128,6*128),k,tp,tp,stage);
+		Shelf* knifeShelf = new Shelf(Vector2D(3*128,5*128),k,tp,tp,stage);
 		stage->addToGroup(knifeShelf, ecs::Layer1);
 		stage->addEntity(knifeShelf);
 		knifeShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), knifeShelf);
 
-		Shelf* maceShelf = new Shelf(Vector2D(5 * 128, 6 * 128), m, tp, tp, stage);
+		Shelf* maceShelf = new Shelf(Vector2D(4 * 128, 5 * 128), m, tp, tp, stage);
 		stage->addEntity(maceShelf);
 		stage->addToGroup(maceShelf, ecs::Layer1);
 		maceShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), maceShelf);
 		
-		Shelf* shelfTercerUtensilio = new Shelf(Vector2D(6 * 128, 6 * 128), nullptr, tp, tp, stage);
+		Shelf* shelfTercerUtensilio = new Shelf(Vector2D(5 * 128, 5 * 128), nullptr, tp, tp, stage);
 		stage->addEntity(shelfTercerUtensilio);
 		stage->addToGroup(shelfTercerUtensilio, ecs::Layer1);
 		shelfTercerUtensilio->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),

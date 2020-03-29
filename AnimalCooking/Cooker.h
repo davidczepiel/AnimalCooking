@@ -3,24 +3,22 @@
 #include <SDL_stdinc.h>
 #include "Texture.h"
 #include "Timer.h"
+#include"Interactive.h"
+#include "Entity.h"
 
 enum class CookerStates { empty, cooking, cooked, burned };
 class Food;
-class Cooker {
+class InsertExpel;
+class Cooker:public Interactive {
 public:
 	virtual ~Cooker();
 	virtual void draw();
 
-	void setPos(Vector2D& pos) { pos_.set(pos); }
-	void setSize(Vector2D& size) { size_.set(size); }
-	void setRot(double rot) { rot_ = rot; }
+	
 	void setTexture(Texture* text) { texture_ = text; }
 	void setCookerState(CookerStates s) { state_ = s; };
 
-	inline const Vector2D& getPos() const { return pos_; }
-	inline int getWidth() const { return size_.getX(); }
-	inline int getHeight() const { return size_.getY(); }
-	inline Vector2D& getSize() { return size_; }
+
 	inline CookerStates getCookerState() { return state_; };
 	Texture* getEmptyTexture() { return texture_; };
 	Texture* getFullTexture() { return nullptr; };
@@ -31,16 +29,15 @@ public:
 	vector<Food*>& getFoods() { return foods_; }
 
 	inline int getCookerType() { return (int) cookerType_; };
+	void action1(int player)override;
 
 protected:
-	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text);
+	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2,Entity* e);
 
-	Vector2D pos_;
-	Vector2D size_;
-	double rot_;
+	
 
 	Texture* texture_;
-
+	Entity* entity_;
 	CookerStates state_;
 
 	Timer* timer_;
@@ -52,10 +49,10 @@ protected:
 
 class Oven : public Cooker {
 public:
-	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text);
+	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
 };
 
 class Skillet : public Cooker {
 public:
-	Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text);
+	Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
 };
