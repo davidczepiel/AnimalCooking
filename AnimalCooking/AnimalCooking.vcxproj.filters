@@ -702,6 +702,9 @@
     <ClInclude Include="FoodConfig.h">
       <Filter>Header Files\Food</Filter>
     </ClInclude>
+    <ClInclude Include="Order.h">
+      <Filter>Header Files\Clients</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

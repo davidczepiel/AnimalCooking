@@ -1,6 +1,7 @@
 #pragma once
 #include "Order.h"
 #include "Component.h"
+#include "ScoreManager.h"
 
 class OrderManager : public Component {
 
@@ -9,9 +10,11 @@ public:
 
 	//deltaPosXBetweenOrder es el hueco a dejar entre pedido y pedido
 	//position es la posicion del primer pedido
-	OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position);
+	OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager);
 
 	~OrderManager();
+
+	void setScoreManager(ScoreManager* scoreManager) { scoreManager_ = scoreManager; }
 
 	//void update() override;
 
@@ -25,7 +28,8 @@ public:
 	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
 
-	//playerDidIt indica si el jugador a conseguido el pedido o no
+	//playerDidIt indica si el jugador a conseguido el pedido o no para añadir puntos al scoreManager
+	//Los puntos que se añaden = numIngs del Order * 15
 	void removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 
 	//PUEDE DEVOLVER VALORES A NULLPTR
@@ -34,6 +38,8 @@ public:
 private:
 	size_t distXBetweenOrders_;
 	Vector2D position_;
+
+	ScoreManager* scoreManager_;
 
 	vector<Order*>::iterator getFreePos();
 	vector<Order*>::iterator getIndexOf(Resources::FoodType finalProduct);

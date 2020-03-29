@@ -5,9 +5,9 @@ OrderManager::OrderManager() : OrderManager(2, 100, {100, 700})
 {
 }
 
-OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position) : Component(ecs::OrderManager),
+OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager = nullptr) : Component(ecs::OrderManager),
 		currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
-		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position)
+		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager)
 {
 }
 
@@ -63,10 +63,9 @@ void OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 {
 	vector<Order*>::iterator it = getIndexOf(finalProduct);
 	if (it != currentOrders_.end()) { //Si encuentra el producto a eliminar, elimina el pedido
-		delete *it; 	
+		if (playerDidIt) scoreManager_->addScore((*it)->getNumIngs() * 15);
+		delete* it;
 		*it = nullptr;
-
-		if (playerDidIt);// Anadir puntos al ScoreManager
 	}
 }
 
