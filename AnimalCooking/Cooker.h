@@ -22,7 +22,7 @@ public:
 	inline int getHeight() const { return size_.getY(); }
 	inline Vector2D& getSize() { return size_; }
 	inline CookerStates getCookerState() { return state_; };
-	Texture* getEmptyTexture() { return nullptr; };
+	Texture* getEmptyTexture() { return texture_; };
 	Texture* getFullTexture() { return nullptr; };
 	Texture* getCookingTexture() { return nullptr; };
 	Texture* getCookedTexture() { return nullptr; };

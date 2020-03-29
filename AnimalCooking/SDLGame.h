@@ -71,7 +71,7 @@ public:
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
-		if (flags & SDL_WINDOW_FULLSCREEN) {
+		if (flags && SDL_WINDOW_FULLSCREEN) {
 			SDL_SetWindowFullscreen(window_, 0);
 		} else {
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
