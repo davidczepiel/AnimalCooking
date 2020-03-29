@@ -6,7 +6,7 @@
 class UtensilsViewer : public Component
 {
 private:
-	vector<Utensil*> pool_;
+	vector<Utensil*>* pool_;
 
 public:
 	UtensilsViewer() : Component(ecs::UtensilsViewer) { }

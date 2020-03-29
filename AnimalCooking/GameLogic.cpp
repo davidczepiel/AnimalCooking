@@ -13,7 +13,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
             Vector2D ingPos = ing->getPos();
             Resources::FoodType result = ing->destroy(type);
             GETCMP1_(GameControl)->newFood(result, ingPos);
-            GETCMP1_(GameControl)->newIngredient();
+            //GETCMP1_(GameControl)->newIngredient();
         }
     }
 }

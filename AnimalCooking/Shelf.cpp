@@ -1,10 +1,14 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Pickable* c, Transport* p1, Transport* p2, EntityManager* mng):Entity(SDLGame::instance(),mng),Interactive(p1, p2),content(c) {
+Shelf::Shelf(Vector2D pos,Pickable* c, Transport* p1, Transport* p2, EntityManager* mng):Entity(SDLGame::instance(),mng),Interactive(p1, p2),content(c) {
 	addComponent<ShelfViewer>(this);
-	if (content != nullptr)
+	position_ = pos;
+	size_ = Vector2D(100, 100);
+	if (content != nullptr) {
 		contentType = Resources::PickableType::Utensil;
+		content->setPos(Vector2D(position_.getX()+(size_.getX()/2),position_.getY()+(size_.getY()/2)));
+	}
 	else
 		contentType = Resources::PickableType::none;
 }
@@ -19,10 +23,15 @@ void Shelf::action1(int id) {
 	//Sabiendo con quien interactuo le pido lo que tiene en las manos
 	onPlayerHands = player->getObjectTypeInHands();
 	Swap(player, onPlayerHands);
+	if (content != nullptr) {
+		content->setPos(Vector2D(position_.getX() + (size_.getX() / 2), position_.getY() + (size_.getY() / 2)));
+	}
+
 }
 
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 	Pickable* c = content;
+
 	//Segun lo que tenga en las manos
 	switch (onPlayerHands) {
 		//SI no tiene nada, le paso mi contenido, diciendole de que tipo es y me quedo con nada

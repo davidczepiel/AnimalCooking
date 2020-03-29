@@ -7,7 +7,7 @@ class UtensilsPool: public Component
 public:
 	UtensilsPool(size_t size=4);
 	~UtensilsPool();
-	vector<Utensil*> getPool() { return pool_; }
+	vector<Utensil*>& getPool() { return pool_; }
 
 	Utensil* addUtensil(Utensil* u) {
 		assert(pool_.size() < pool_.capacity());
@@ -21,6 +21,7 @@ public:
 		pool_.emplace_back(t);
 		return t;
 	}
+	void SetGameLogic(GameLogic* gl);
 private:
 	vector<Utensil*> pool_;
 };

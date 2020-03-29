@@ -3,7 +3,7 @@
 
 vector<Resources::FontInfo> Resources::fonts_{
 	//
-
+	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 }
 };
 
 	
@@ -29,6 +29,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Plato,"../AnimalCooking/resources/images/plato.png"},
 	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.jpg"},
 	{Basic, Suelo,"../AnimalCooking/resources/images/suelo.png"},
+	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
 
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
