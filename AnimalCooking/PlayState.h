@@ -130,7 +130,7 @@ public:
 
 
 
-		//Repisas----------------------------------------
+		//-------------------------Repisas----------------------------------------
 		Shelf* knifeShelf = new Shelf(Vector2D(3*128,5*128),k,tp,tp,stage);
 		stage->addToGroup(knifeShelf, ecs::Layer1);
 		stage->addEntity(knifeShelf);
@@ -159,23 +159,21 @@ public:
 		stage->addEntity(sink);
 		stage->addToGroup(sink, ecs::Layer1);
 
-		BinEntity* bin = new BinEntity(stage,tp,tp);
-		bin->addComponent<BinViewer>();
-		Transform* bintr = GETCMP2(bin,Transform);
-		bintr->setW(128);
-		bintr->setH(128);
-		bintr->setPos(0,128*4);
-		stage->addEntity(bin);
-		stage->addToGroup(bin,ecs::Layer1);
-
-
 		Shelf* shelf0 = new Shelf(Vector2D(0, 0), nullptr, tp, tp, stage);
 		stage->addEntity(shelf0);
 		stage->addToGroup(shelf0, ecs::Layer1);
 		maceShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf0);
 
-		
+		//--------------------------------PAPELERA------------------------------------
+		BinEntity* bin = new BinEntity(stage,tp,tp);
+		bin->addComponent<BinViewer>(bin);
+		bin->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+			GETCMP2(player, Selector), GETCMP2(player, Selector), bin);
+		bin->setSize(Vector2D(128, 128));
+		bin->setPos(Vector2D(0,128*4));
+		stage->addEntity(bin);
+		stage->addToGroup(bin,ecs::Layer1);
 
 		//Platera---------------------------------------
 		Entity* poolPlatos = stage->addEntity();
