@@ -32,6 +32,7 @@
 #include "Cooker.h"
 #include "CookerViewer.h"
 #include "CookerPool.h"
+#include "FoodCooker.h"
 #include "InsertExpel.h"
 #include "Sink.h"
 #include "BinEntity.h"
@@ -106,10 +107,11 @@ public:
 		Mace* m = new Mace(tp,tp);
 		utensilpool_->addUtensil(m);
 
-		//COOkers---------------------------------------
+		//Cookers---------------------------------------
 		Entity* cookerPool = stage->addEntity();
-		stage->addToGroup(cookerPool, ecs::Layer4);
+		stage->addToGroup(cookerPool, ecs::Layer1);
 		CookerPool* cp =cookerPool->addComponent<CookerPool>();
+		cookerPool->addComponent<FoodCooker>(fp);
 		cookerPool->addComponent<CookerViewer>();
 		cookerPool->addComponent<InsertExpel>(tp);
 		Vector2D pos = Vector2D(128, 0);

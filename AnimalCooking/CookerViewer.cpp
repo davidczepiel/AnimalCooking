@@ -14,11 +14,6 @@ void CookerViewer::init() {
 
 void CookerViewer::draw() {
 	for (Cooker* c : *pool_) {
-		switch (c->getCookerState()) {
-			case CookerStates::empty:   c->setTexture(c->getEmptyTexture()); break;
-			case CookerStates::cooking: c->setTexture(c->getCookingTexture()); break;
-			case CookerStates::cooked:  c->setTexture(c->getCookedTexture()); break;
-		}
 		c->draw();
 	}
 }

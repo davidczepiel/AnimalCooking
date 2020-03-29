@@ -14,16 +14,14 @@ public:
 	virtual ~Cooker();
 	virtual void draw();
 
-	
-	void setTexture(Texture* text) { texture_ = text; }
-	void setCookerState(CookerStates s) { state_ = s; };
+	void setCookerState(CookerStates s);
 
 
 	inline CookerStates getCookerState() { return state_; };
-	Texture* getEmptyTexture() { return texture_; };
-	Texture* getFullTexture() { return nullptr; };
-	Texture* getCookingTexture() { return nullptr; };
-	Texture* getCookedTexture() { return nullptr; };
+	inline void setEmptyTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker); };
+	inline void setFullTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite); };
+	inline void setCookingTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pan); };
+	inline void setCookedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Arroz); };
 	Timer* getCookerTimer() { return timer_; };
 	Uint32 getCookingTime() { return cookingTime_; }
 	vector<Food*>& getFoods() { return foods_; }
