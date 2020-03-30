@@ -23,7 +23,7 @@ void Cooker::setCookerState(CookerStates s) {
 		case CookerStates::empty:  setEmptyTexture(); break;
 		case CookerStates::cooking: setCookingTexture(); break;
 		case CookerStates::cooked:  setCookedTexture(); break;
-		case CookerStates::burned:  setFullTexture(); break;
+		case CookerStates::burned:  setBurnedTexture(); break;
 	}
 	state_ = s; 
 };

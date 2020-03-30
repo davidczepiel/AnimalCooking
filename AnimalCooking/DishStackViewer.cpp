@@ -9,7 +9,7 @@ DishStackViewer ::DishStackViewer(Interactive* i) : Component(ecs::DishStackView
 
 void DishStackViewer::init()
 {
-	stack = game_->getTextureMngr()->getTexture(Resources::Repisa);
+	stack = game_->getTextureMngr()->getTexture(Resources::Platera);
 }
 
 void DishStackViewer::draw()

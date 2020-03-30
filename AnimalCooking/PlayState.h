@@ -64,7 +64,7 @@ public:
 		ingPool->addComponent<IngredientMotion>();
 
 		Ingredient* i = new Tomato();
-		i->setSize(32, 32);
+		i->setSize(128, 128);
 		i->setVel(Vector2D(0, 0));
 		i->setPos(Vector2D(960 ,540));
 		pI->addIngredient(i);
