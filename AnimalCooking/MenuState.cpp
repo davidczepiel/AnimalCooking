@@ -19,6 +19,9 @@ MenuState::MenuState() : State() {
 	playMenuButton_ = stage->addEntity();
 	optionsMenu_ = stage->addEntity();
 	creditsMenu_ = stage->addEntity();
+	stage->addToGroup(playMenuButton_, ecs::GroupID::Layer1);
+	stage->addToGroup(optionsMenu_, ecs::GroupID::Layer1);
+	stage->addToGroup(creditsMenu_, ecs::GroupID::Layer1);
 
 	playMenuButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 0), Vector2D(0, 0), 200.0, 100, 0);
 	playMenuButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),nullptr);

@@ -19,7 +19,6 @@ protected:
 public:
 	~FoodGiver() {};
 	
-	void giveFood(int player, Food* f);
 	inline Texture* getTexture() { return texture_; }
 	inline Vector2D getPos() { return position_; }
 	inline Vector2D getSize() { return size_; }
@@ -48,7 +47,7 @@ public:
 	void action1(int player);
 };
 
-class DressingGiver : public FoodGiver //Para aliñado/ketchup porque es lo mismo
+class DressingGiver : public FoodGiver //Para aliï¿½ado/ketchup porque es lo mismo
 {
 public:
 	DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);

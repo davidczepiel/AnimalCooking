@@ -24,3 +24,11 @@ void IngredientsPool::clearIngredients()
 
 	ingredients_.clear();
 }
+
+void IngredientsPool::deleteIngredient(vector<Ingredient*>::iterator it) {
+
+	Ingredient* i = *(--ingredients_.end());
+	i->setIt(it);
+	iter_swap(it, --ingredients_.end());
+	ingredients_.pop_back();
+}

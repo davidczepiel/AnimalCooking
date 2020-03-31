@@ -10,5 +10,5 @@ public:
 	void draw() override;
 
 private:
-	vector<Cooker*> pool_;
+	vector<Cooker*>* pool_;
 };

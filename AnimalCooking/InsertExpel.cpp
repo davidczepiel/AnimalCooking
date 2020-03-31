@@ -28,9 +28,14 @@ void InsertExpel::insertFood(Cooker* cooker) {
 		transport_->getObjectTypeInHands() == Resources::Dish) {
 
 			Dish* dish_ = static_cast<Dish*>(transport_->getObjectInHands());
-			cooker->getFoods().insert(cooker->getFoods().end(), dish_->getFoodVector().begin(), dish_->getFoodVector().end());
-			dish_->getFoodVector().clear();
-			foodCooker_->startCooked(cooker);		
+			if (!dish_->getFoodVector().empty()) {
+				for (auto& i : dish_->getFoodVector()) {
+					i->setCanInteract(false);
+				}
+				cooker->getFoods().insert(cooker->getFoods().end(), dish_->getFoodVector().begin(), dish_->getFoodVector().end());
+				dish_->getFoodVector().clear();
+				foodCooker_->startCooked(cooker);
+			}
 	}
 }
 
@@ -41,7 +46,10 @@ void InsertExpel::extractFood(Cooker *cooker){
 
 			Dish* dish_ = static_cast<Dish*>(transport_->getObjectInHands());
 			dish_->getFoodVector().insert(dish_->getFoodVector().end(), cooker->getFoods().begin(), cooker->getFoods().end());
-			foodCooker_->clearFoods(cooker);
+			for (auto& i : dish_->getFoodVector()) {
+				i->setCanInteract(false);
+			}
+			cooker->getFoods().clear();
 			cooker->setCookerState(CookerStates::empty);
 	}
 }

@@ -17,10 +17,7 @@ public:
 	inline const std::vector<Ingredient*>& getPool() { return ingredients_; }
 
 	void addIngredient(Ingredient* i);
-	void deleteIngredient(vector<Ingredient*>::iterator it) { 
-		iter_swap(it, --ingredients_.end());
-		ingredients_.pop_back();
-	}
+	void deleteIngredient(vector<Ingredient*>::iterator it);
 	void clearIngredients();
 
 private:

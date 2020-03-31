@@ -11,6 +11,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 		Entity* mensajes_ = stage->addEntity();
 
 		barraCarga_ = stage->addEntity();
+		stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
+
 		SDLGame* game_ = SDLGame::instance();
 		int width = SDLGame::instance()->getWindowWidth() / 5;
 		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
@@ -22,6 +24,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 											game_->getTextureMngr()->getTexture(Resources::Button));
 
 		buttonGo_ = stage->addEntity();
+		stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
+
 		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
 									Vector2D(), //Dir
 									50, //Width

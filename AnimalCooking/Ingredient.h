@@ -39,6 +39,7 @@ public:
 	inline Resources::IngredientType getType() { return type_; }
 
 	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
+	void setIt(std::vector<Ingredient*>::iterator i) { it_ = i; }
 	virtual Resources::FoodType destroy(Resources::UtensilType utensilio) = 0;	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
 protected:
 	Vector2D size_, pos_, vel_;

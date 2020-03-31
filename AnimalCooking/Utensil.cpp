@@ -4,7 +4,7 @@
 #include "GameLogic.h"
 #include <math.h> 
 
-Utensil::Utensil( Transport* p1, Transport* p2) : Pickable(p1, p2) {
+Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = 10;
@@ -45,7 +45,7 @@ void Utensil::update() {
 		}
 	}
 	else
-	{	
+	{
 		Pickable::update();
 		//En caso de que este en la mano y haya atacado, voy aumentando el frame de la animaci�n que estoy mostrando
 		if (attacking_ && SDL_GetTicks() - lastFrameTick > 20) {
@@ -62,7 +62,7 @@ void Utensil::update() {
 void Utensil::onHit(Vector2D dir) {
 	if (SDL_GetTicks() > lastAttack_ + attackRate_) {  //Control de que no se pueda espamear el ataque
 		lastAttack_ = SDL_GetTicks();
-		if (!dirty_ && gameLogic!=nullptr) {  //Solo si estoy limpio mi ataque deberia hacer algo significativo
+		if (!dirty_ && gameLogic != nullptr) {  //Solo si estoy limpio mi ataque deberia hacer algo significativo
 			attacking_ = true;
 			lastFrameTick = SDL_GetTicks();
 			//Preparo la posici�n de donde realizo el ataque
@@ -94,6 +94,7 @@ void Utensil::render()const {
 void Utensil::onDrop(bool onFloor) {
 
 	if (onFloor) {
+		Pickable::onDrop(onFloor);
 		myState = State::floor;
 		dirtTimer_->timerStart();
 	}
@@ -143,7 +144,7 @@ void Utensil::cleanUp() {
 
 ///////////////////////////////////////
 
-Knife::Knife( Transport* p1, Transport* p2) :Utensil( p1, p2) {
+Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
@@ -155,7 +156,7 @@ Knife::Knife( Transport* p1, Transport* p2) :Utensil( p1, p2) {
 }
 
 
-Mace::Mace( Transport* p1, Transport* p2) :Utensil( p1, p2) {
+Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mace);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
@@ -166,7 +167,7 @@ Mace::Mace( Transport* p1, Transport* p2) :Utensil( p1, p2) {
 }
 
 
-Grater::Grater( Transport* p1, Transport* p2) :Utensil( p1, p2) {
+Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
@@ -177,7 +178,7 @@ Grater::Grater( Transport* p1, Transport* p2) :Utensil( p1, p2) {
 }
 
 
-Net::Net( Transport* p1, Transport* p2) :Utensil( p1, p2) {
+Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);

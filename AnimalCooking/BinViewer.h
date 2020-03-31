@@ -1,19 +1,18 @@
 #pragma once
 #include "Component.h"
 #include "Texture.h"
-#include "Transform.h"
-#include "Entity.h"
+#include "Interactive.h"
 
 class BinViewer : public Component
 {
 public:
-	BinViewer() : Component(ecs::BinViewer), tex_(nullptr), tr_(nullptr) {}
+	BinViewer(Interactive* e) : Component(ecs::BinViewer), tex_(nullptr), binEnt_(e){}
 	~BinViewer() {}
 
 	void init() override;
 	void draw() override;
 private:
 	Texture* tex_;
-	Transform* tr_;
+	Interactive* binEnt_;
 };
 

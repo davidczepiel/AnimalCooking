@@ -4,6 +4,7 @@ Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng) :Entit
 	position_ = pos;
 	cleanTimer = new Timer();
 	cleanTimer->setTime(cadence);
+	size_ = Vector2D(128, 128);
 }
 
 Sink::~Sink() {

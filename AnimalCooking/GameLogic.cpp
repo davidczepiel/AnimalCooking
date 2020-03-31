@@ -14,6 +14,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
             Resources::FoodType result = ing->destroy(type);
             GETCMP1_(GameControl)->newFood(result, ingPos);
             //GETCMP1_(GameControl)->newIngredient();
+            break;
         }
     }
 }

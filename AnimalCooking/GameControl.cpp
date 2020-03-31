@@ -97,9 +97,10 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		f = new SlicedTomato(pos, tP1, tP2);
 		break;
 
+
 		//////////////MACE
 	case(Resources::FoodType::MashedTomato):
-		f = new SlicedTomato(pos, tP1, tP2); ///Esto está puesto para que no queje de que no se inicializa
+		f = new SlicedTomato(pos, tP1, tP2); ///Esto estï¿½ puesto para que no queje de que no se inicializa
 		//f = new MashedTomato(pos);
 		break;
 	case(Resources::FoodType::MashedMeat):
@@ -132,7 +133,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-
+	f->startTimer();
 	return f;
 }
 

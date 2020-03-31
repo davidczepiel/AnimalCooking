@@ -20,10 +20,10 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\adversitymotion.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\adversityloader.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\adversityeffect.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodgiverviewer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodgiver.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\fooddictionary.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodcooker.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodconfig.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\food.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\fontsmanager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\font.obj
@@ -40,7 +40,6 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\cookerviewer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\cookerpool.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\cooker.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\interactionrect.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\insertexpel.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\inputhandler.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\inoutfood.obj
@@ -60,7 +59,7 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodtextures.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodpool.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodmotion.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\scoremanager.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodgiverviewer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\resources.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\playstate.obj
@@ -80,7 +79,7 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\jute.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\interactive.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\staticrenderer.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\interactionrect.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\state.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\soundmanager.obj
@@ -100,6 +99,7 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\screenloader.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\scoreviewer.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\scoremanager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\vector2d.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\utensilspool.obj
@@ -113,8 +113,9 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\timer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\texturesmanager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\texture.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.exe
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\staticrenderer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.ilk
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.exe
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.pdb
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\animalcooking.res
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\\animalcooking\animalcooking.pdb
