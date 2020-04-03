@@ -4,8 +4,15 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "LoadingBarViewer.h"
+#include "IngAdder.h"
 
-ScreenLoader::ScreenLoader(Resources::Level nivel)
+#define MAKE(t) makeIngredient<t>(type, n)
+
+
+const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
+const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
+
+ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel), jsonLevel(), jsonGeneral(), ingPoolEntity_(nullptr)
 {
 		Entity* menu_ = stage->addEntity();
 		Entity* mensajes_ = stage->addEntity();
@@ -34,26 +41,27 @@ ScreenLoader::ScreenLoader(Resources::Level nivel)
 		buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
 		buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
-		resetResources(nivel);
+		resetResources();
+		initialize();
 }
 
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
 //Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
 //Va actualizando la barra de progreso y renderizandolo
-void ScreenLoader::resetResources(Resources::Level level)
+void ScreenLoader::resetResources()
 {
 	SDL_Renderer* renderer_ = SDLGame::instance()->getRenderer();
 
-	loadTextures(level, renderer_);
-	loadFonts(level);
-	loadMessagges(level, renderer_);
-	loadSounds(level);
-	loadMusics(level);
+	loadTextures(renderer_);
+	loadFonts();
+	loadMessagges(renderer_);
+	loadSounds();
+	loadMusics();
 	
 	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
-void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
+void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
 {
 	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
 
@@ -70,7 +78,7 @@ void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
 	updateLength(0.2);
 }
 
-void ScreenLoader::loadFonts(Resources::Level level)
+void ScreenLoader::loadFonts()
 {
 	FontsManager* fonts_ = SDLGame::instance()->getFontMngr();
 
@@ -86,7 +94,7 @@ void ScreenLoader::loadFonts(Resources::Level level)
 	updateLength(0.2);
 }
 
-void ScreenLoader::loadSounds(Resources::Level level)
+void ScreenLoader::loadSounds()
 {
 	SDLAudioManager* audio_ = static_cast<SDLAudioManager*>(SDLGame::instance()->getAudioMngr());
 
@@ -102,7 +110,7 @@ void ScreenLoader::loadSounds(Resources::Level level)
 	updateLength(0.2);
 }
 
-void ScreenLoader::loadMusics(Resources::Level level)
+void ScreenLoader::loadMusics()
 {
 	SDLAudioManager* audio_ = static_cast<SDLAudioManager*>(SDLGame::instance()->getAudioMngr());
 
@@ -118,7 +126,7 @@ void ScreenLoader::loadMusics(Resources::Level level)
 	updateLength(0.2);
 }
 
-void ScreenLoader::loadMessagges(Resources::Level level, SDL_Renderer* renderer_)
+void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 {
 	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
 	FontsManager* fonts_ = SDLGame::instance()->getFontMngr();
@@ -140,6 +148,92 @@ void ScreenLoader::updateLength(double extra)
 {
 	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
 	draw();
+}
+
+void ScreenLoader::initialize()
+{
+	emPlaystate = new EntityManager(SDLGame::instance());
+	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
+
+	jute::jValue jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
+	jute::jValue jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
+
+	initialize_players();
+	initialize_ingredientsPool();
+}
+
+void ScreenLoader::initialize_players()
+{
+	for (int i = 0; i < players.size(); ++i) {
+		players[i] = emPlaystate->addEntity();
+		emPlaystate->addToGroup(players[i], static_cast<ecs::GroupID>(jsonGeneral["Players"]["Layer"].as_int() - 1));
+		players_initializeTransform(i);
+		players_addComponents(players[i]);
+	}
+
+	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
+	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pollo));
+
+	players_initializeExtraComponents();
+}
+
+void ScreenLoader::players_addComponents(Entity* entity)
+{
+	entity->addComponent<PlayerMotion>();
+	entity->addComponent<Selector>();
+	entity->addComponent<InteractionRect>();
+	entity->addComponent<Attack>();
+	entity->addComponent<Transport>();
+	entity->addComponent<PlayerController>();
+}
+
+void ScreenLoader::players_initializeTransform(size_t player) // VER ENTITIES
+{
+	Transform* t = players[player]->addComponent<Transform>();
+	t->setWH(jsonGeneral["Players"]["entities"][player]["size"]["width"].as_int(), jsonGeneral["Players"]["entities"][player]["size"]["height"].as_int());
+	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_int(), jsonLevel["Players"][player]["pos"]["y"].as_int()));
+}
+
+void ScreenLoader::players_initializeExtraComponents()
+{
+	for (int i = 0; i < players.size(); ++i) {
+		jute::jValue components = jsonLevel["Players"][i]["components"];
+		if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
+			for (int c = 0; c < components.size(); ++c) {
+				initializeComponent(components[c].as_string(), players[i]);
+			}
+		}
+	}
+}
+
+void ScreenLoader::initialize_ingredientsPool()
+{
+	//Ingredientes----------------------------------------
+	ingPoolEntity_ = stage->addEntity();
+
+	stage->addToGroup(ingPoolEntity_, ecs::Layer3);
+
+	ingPoolEntity_->addComponent<IngredientsPool>();
+	ingPoolEntity_->addComponent<IngredientViewer>();
+	ingPoolEntity_->addComponent<IngredientMotion>();
+
+	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral);
+}
+
+constexpr unsigned int str2int(const char* str, int h = 0)
+{
+	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+void ScreenLoader::initializeComponent(const string& component, Entity* entity) //La cadena no puede superar 10 caracteres
+{
+	switch (str2int(component.c_str()))
+	{
+	case str2int("AdvEffect"):
+		break;
+	default:
+		break;
+	}
 }
 
 void ScreenLoader::goToPlayState() {

@@ -213,6 +213,7 @@
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GlobalTimer.h" />
     <ClInclude Include="GPadController.h" />
+    <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientMotion.h" />
     <ClInclude Include="IngredientSpawn.h" />
@@ -333,6 +334,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
