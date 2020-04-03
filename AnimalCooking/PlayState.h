@@ -37,6 +37,8 @@
 #include "Sink.h"
 #include "BinEntity.h"
 #include "BinViewer.h"
+#include "CollisionsSystem.h"
+#include "Physics.h"
 
 class PlayState : public State
 {
@@ -48,10 +50,12 @@ public:
 		Transform* t = player->addComponent<Transform>();
 		t->setWH(128,128);
 		t->setPos(Vector2D(2*128,128));
+		Physics* ph =player->addComponent<Physics>();
 		player->addComponent<PlayerMotion>();
 		player->addComponent<Selector>();
 		player->addComponent<InteractionRect>();
 		player->addComponent<Attack>();
+
 		Transport* tp = player->addComponent<Transport>();
 		player->addComponent<PlayerController>();
 		player->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
@@ -196,6 +200,11 @@ public:
 		gameManager->addComponent<GameControl>(tp, tp, utensilpool_, fp);
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
+		CollisionsSystem* colSystem =gameManager->addComponent<CollisionsSystem>();
+		colSystem->addCollider(t);
+		colSystem->addCollider(shelf1);
+		ph->setCollisionSystem(colSystem);
+
 
 		//Arrocera-------------------
 		/*RiceGiver* riceGiver = new RiceGiver(Vector2D(500, 500), Vector2D(128, 128), GETCMP2(player, Transport), GETCMP2(player, Transport), GETCMP2(gameManager, GameControl));

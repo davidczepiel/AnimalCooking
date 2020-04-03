@@ -333,6 +333,8 @@
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionsSystem.cpp" />
+    <ClCompile Include="Physics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -702,6 +704,8 @@
     <ClInclude Include="FoodConfig.h">
       <Filter>Header Files\Food</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionsSystem.h" />
+    <ClInclude Include="Physics.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
