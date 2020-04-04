@@ -55,7 +55,13 @@ Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::arr
 		u = ADD(Knife);
 		break;
 	case str2int("mace"):
-		u = ADD(Knife);
+		u = ADD(Mace);
+		break;
+	case str2int("grater"):
+		u = ADD(Grater);
+		break;
+	case str2int("net"):
+		u = ADD(Net);
 		break;
 	default:
 		break;

@@ -20,6 +20,9 @@ private:
 	void initialize_utensilPool();
 	void initialize_cookersPool();
 	void initialize_shelfs();
+	void initialize_sinks();
+	void initialize_bin();
+	void initialize_dishes();
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;

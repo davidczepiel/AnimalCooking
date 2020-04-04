@@ -53,6 +53,39 @@ void IngAdder::switchIng(const string& ing, int type, int n)
 	case str2int("Tomato"):
 		MAKE(Tomato);
 		break;
+	case str2int("Carrot"):
+		MAKE(Carrot);
+		break;
+	case str2int("Lettuce"):
+		MAKE(Lettuce);
+		break;
+	case str2int("Mushroom"):
+		MAKE(Mushroom);
+		break;
+	case str2int("Sausage"):
+		MAKE(Sausage);
+		break;
+	case str2int("Chicken"):
+		MAKE(Chicken);
+		break;
+	case str2int("Meat"):
+		MAKE(Meat);
+		break;
+	case str2int("Potato"):
+		MAKE(Potato);
+		break;
+	case str2int("Onion"):
+		MAKE(Onion);
+		break;
+	case str2int("Clam"):
+		MAKE(Clam);
+		break;
+	case str2int("Cheese"):
+		MAKE(Cheese);
+		break;
+	case str2int("Fish"):
+		MAKE(Fish);
+		break;
 	default:
 		break;
 	}

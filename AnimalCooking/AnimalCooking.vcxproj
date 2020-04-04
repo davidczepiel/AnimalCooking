@@ -167,6 +167,7 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="ButtonBehaviour.h" />
@@ -263,6 +264,7 @@
     <ClInclude Include="ShelfAdder.h" />
     <ClInclude Include="ShelfViewer.h" />
     <ClInclude Include="Sink.h" />
+    <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="SoundManager.h" />
@@ -300,6 +302,7 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
@@ -389,6 +392,7 @@
     <ClCompile Include="ShelfAdder.cpp" />
     <ClCompile Include="ShelfViewer.cpp" />
     <ClCompile Include="Sink.cpp" />
+    <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="SoundManager.cpp" />

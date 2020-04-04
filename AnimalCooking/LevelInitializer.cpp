@@ -1,12 +1,16 @@
 #include "LevelInitializer.h"
+#include "ScreenLoader.h"
 #include "Manager.h"
+
 #include "PlayersAdder.h"
 #include "IngAdder.h"
 #include "FoodPoolAdder.h"
 #include "UtensilsAdder.h"
 #include "ShelfAdder.h"
 #include "CookersAdder.h"
-#include "ScreenLoader.h"
+#include "SinkAdder.h"
+#include "BinAdder.h"
+
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -26,6 +30,9 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_utensilPool();
 	initialize_cookersPool();
 	initialize_shelfs();
+	initialize_sinks();
+	initialize_bin();
+	initialize_dishes();
 }
 
 
@@ -84,9 +91,40 @@ void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool));
 
-	//Sink* sink = new Sink(Vector2D(0, 3 * 128), tp, tp, stage);
-	//stage->addEntity(sink);
-	//stage->addToGroup(sink, ecs::Layer1);
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_sinks()
+{
+	SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players);
 
 	sL->updateLength();
+}
+
+void LevelInitializer::initialize_bin()
+{
+	BinAdder(emPlaystate, jsonLevel, jsonGeneral, players);
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_dishes()
+{
+	////Platera---------------------------------------
+	//Entity* poolPlatos = stage->addEntity();
+	//stage->addToGroup(poolPlatos, ecs::Layer2);
+	//DishPool* dp =poolPlatos->addComponent<DishPool>();
+	//poolPlatos->addComponent<DishMotion>();
+	//poolPlatos->addComponent<DishViewer>();
+
+	///*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
+	//poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+	//	GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
+
+	//DishStack* dish = new DishStack(Vector2D(128*4,0),10,tp,tp,stage,dp);
+	//dish->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+	//	GETCMP2(player, Selector), GETCMP2(player, Selector), dish);
+	//stage->addEntity(dish);
+	//stage->addToGroup(dish, ecs::GroupID::Layer1);
+
 }
