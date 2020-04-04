@@ -4,15 +4,9 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "LoadingBarViewer.h"
-#include "IngAdder.h"
+#include "LevelInitializer.h"
 
-#define MAKE(t) makeIngredient<t>(type, n)
-
-
-const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
-const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
-
-ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel), jsonLevel(), jsonGeneral(), ingPoolEntity_(nullptr)
+ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
 		Entity* menu_ = stage->addEntity();
 		Entity* mensajes_ = stage->addEntity();
@@ -150,91 +144,14 @@ void ScreenLoader::updateLength(double extra)
 	draw();
 }
 
+//Inicializa el nivel
 void ScreenLoader::initialize()
 {
 	emPlaystate = new EntityManager(SDLGame::instance());
-	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
 
-	jute::jValue jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
-	jute::jValue jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
-
-	initialize_players();
-	initialize_ingredientsPool();
+	LevelInitializer(emPlaystate, level);
 }
 
-void ScreenLoader::initialize_players()
-{
-	for (int i = 0; i < players.size(); ++i) {
-		players[i] = emPlaystate->addEntity();
-		emPlaystate->addToGroup(players[i], static_cast<ecs::GroupID>(jsonGeneral["Players"]["Layer"].as_int() - 1));
-		players_initializeTransform(i);
-		players_addComponents(players[i]);
-	}
-
-	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
-	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pollo));
-
-	players_initializeExtraComponents();
-}
-
-void ScreenLoader::players_addComponents(Entity* entity)
-{
-	entity->addComponent<PlayerMotion>();
-	entity->addComponent<Selector>();
-	entity->addComponent<InteractionRect>();
-	entity->addComponent<Attack>();
-	entity->addComponent<Transport>();
-	entity->addComponent<PlayerController>();
-}
-
-void ScreenLoader::players_initializeTransform(size_t player) // VER ENTITIES
-{
-	Transform* t = players[player]->addComponent<Transform>();
-	t->setWH(jsonGeneral["Players"]["entities"][player]["size"]["width"].as_int(), jsonGeneral["Players"]["entities"][player]["size"]["height"].as_int());
-	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_int(), jsonLevel["Players"][player]["pos"]["y"].as_int()));
-}
-
-void ScreenLoader::players_initializeExtraComponents()
-{
-	for (int i = 0; i < players.size(); ++i) {
-		jute::jValue components = jsonLevel["Players"][i]["components"];
-		if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-			for (int c = 0; c < components.size(); ++c) {
-				initializeComponent(components[c].as_string(), players[i]);
-			}
-		}
-	}
-}
-
-void ScreenLoader::initialize_ingredientsPool()
-{
-	//Ingredientes----------------------------------------
-	ingPoolEntity_ = stage->addEntity();
-
-	stage->addToGroup(ingPoolEntity_, ecs::Layer3);
-
-	ingPoolEntity_->addComponent<IngredientsPool>();
-	ingPoolEntity_->addComponent<IngredientViewer>();
-	ingPoolEntity_->addComponent<IngredientMotion>();
-
-	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral);
-}
-
-constexpr unsigned int str2int(const char* str, int h = 0)
-{
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
-
-void ScreenLoader::initializeComponent(const string& component, Entity* entity) //La cadena no puede superar 10 caracteres
-{
-	switch (str2int(component.c_str()))
-	{
-	case str2int("AdvEffect"):
-		break;
-	default:
-		break;
-	}
-}
 
 void ScreenLoader::goToPlayState() {
 	SDLGame::instance()->getFSM()->changeState(new PlayState());

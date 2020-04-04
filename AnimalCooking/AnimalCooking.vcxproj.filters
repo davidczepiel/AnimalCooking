@@ -334,6 +334,9 @@
       <Filter>Source Files\Food</Filter>
     </ClCompile>
     <ClCompile Include="IngAdder.cpp" />
+    <ClCompile Include="PlayersAdder.cpp" />
+    <ClCompile Include="FoodPoolAdder.cpp" />
+    <ClCompile Include="LevelInitializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -704,6 +707,9 @@
       <Filter>Header Files\Food</Filter>
     </ClInclude>
     <ClInclude Include="IngAdder.h" />
+    <ClInclude Include="PlayersAdder.h" />
+    <ClInclude Include="FoodPoolAdder.h" />
+    <ClInclude Include="LevelInitializer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

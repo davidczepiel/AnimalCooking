@@ -1,23 +1,14 @@
 #pragma once
-#include <string>
-#include "Entity.h"
 #include "jute.h"
-
+class Entity;
 class LevelInitializer;
-
-class IngAdder
+class FoodPoolAdder
 {
 public:
-	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, LevelInitializer* sl);
-
+	FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jValue jsonGeneral, std::array<Entity*, 2>& players, LevelInitializer* sl);
 private:
-
-	Entity* ingPoolEntity_;
+	Entity* foodPool;
 	jute::jValue& jsonLevel; // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jute::jValue& jsonGeneral; // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
-
-	template <typename T>
-	void makeIngredient(int type, int n);
-	void switchIng(const string& ing, int type, int n);
 };
 
