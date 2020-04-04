@@ -259,6 +259,7 @@
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SelectorPopUp.h" />
     <ClInclude Include="Shelf.h" />
+    <ClInclude Include="ShelfAdder.h" />
     <ClInclude Include="ShelfViewer.h" />
     <ClInclude Include="Sink.h" />
     <ClInclude Include="SinkViewer.h" />
@@ -383,6 +384,7 @@
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SelectorPopUp.cpp" />
     <ClCompile Include="Shelf.cpp" />
+    <ClCompile Include="ShelfAdder.cpp" />
     <ClCompile Include="ShelfViewer.cpp" />
     <ClCompile Include="Sink.cpp" />
     <ClCompile Include="SinkViewer.cpp" />

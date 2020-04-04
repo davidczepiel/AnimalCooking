@@ -2,10 +2,12 @@
 #include "jute.h"
 #include "Resources.h"
 #include <array>
+#include <vector>
 
 class EntityManager;
 class Entity;
 class ScreenLoader;
+
 class LevelInitializer
 {
 public:
@@ -17,9 +19,11 @@ private:
 	void initialize_foodPool();
 	void initialize_utensilPool();
 
+	void initialize_shelfs();
+
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;
-
+	Entity* utensil;
 	ScreenLoader* sL;
 
 	EntityManager* emPlaystate;

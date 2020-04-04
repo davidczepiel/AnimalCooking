@@ -7,7 +7,7 @@
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 #define ADD(t) makeUtensil<t>(player)
 
-UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue jsonLevel, jute::jValue jsonGeneral, std::array<Entity*, 2>& player) :
+UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player) :
 	utensilsPool(utensilsPool), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
 	//Componentes basicos
@@ -16,12 +16,6 @@ UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue jsonLevel, jute:
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), GETCMP2(player[0], Transport), GETCMP2(player[1], Transport));
 	utensilsPool->addComponent<UtensilsViewer>();
 	utensilsPool->addComponent<UtensilsMotion>();
-
-	//Se meten los distintos utensilios a la pool
-	jute::jValue utensTypes = jsonLevel["UtensilPool"]["entities"];
-	for (int i = 0; i < utensTypes.size(); ++i) {
-		switchUten(jsonLevel["UtensilPool"]["entities"][i].as_string(), pool_, player);
-	}
 
 	//Se meten los componentes especificos de ese nivel
 	jute::jValue components = jsonLevel["UtensilPool"]["components"];
@@ -32,32 +26,9 @@ UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue jsonLevel, jute:
 	}
 }
 
-template <typename T>
-void UtensilsAdder::makeUtensil(std::array<Entity*, 2>& player)
-{
-	Utensil* u = new T(GIVETRANSPORT);
-	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_int(), jsonGeneral["Utensils"]["size"]["height"].as_int()));
-	GETCMP2(utensilsPool, UtensilsPool)->addUtensil(u);
-}
-
 constexpr unsigned int str2int(const char* str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
-
-void UtensilsAdder::switchUten(const string& ing, UtensilsPool* pool_, std::array<Entity*, 2>& player)
-{
-	switch (str2int(ing.c_str()))
-	{
-	case str2int("Knife"):
-		ADD(Knife);
-		break;
-	case str2int("Mace"):
-		ADD(Knife);
-		break;
-	default:
-		break;
-	}
 }
 
 //La cadena (component) no puede superar 10 caracteres

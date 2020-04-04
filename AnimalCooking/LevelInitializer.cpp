@@ -4,6 +4,7 @@
 #include "IngAdder.h"
 #include "FoodPoolAdder.h"
 #include "UtensilsAdder.h"
+#include "ShelfAdder.h"
 
 #include "ScreenLoader.h"
 
@@ -61,8 +62,20 @@ void LevelInitializer::initialize_foodPool()
 void LevelInitializer::initialize_utensilPool()
 {
 	//EntityUtensilPool----------------------------------------
-	Entity* utensil = emPlaystate->addEntity();
+	utensil = emPlaystate->addEntity();
 	emPlaystate->addToGroup(utensil, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
 
 	UtensilsAdder(utensil, jsonLevel, jsonGeneral, players);
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_shelfs()
+{
+	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool));
+
+	//Sink* sink = new Sink(Vector2D(0, 3 * 128), tp, tp, stage);
+	//stage->addEntity(sink);
+	//stage->addToGroup(sink, ecs::Layer1);
+
+	sL->updateLength();
 }
