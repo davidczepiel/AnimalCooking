@@ -69,6 +69,13 @@ void LevelInitializer::initialize_utensilPool()
 	sL->updateLength();
 }
 
+void LevelInitializer::initialize_cookersPool()
+{
+	Entity* cookers = emPlaystate->addEntity();
+	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+
+}
+
 void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool));
@@ -78,10 +85,4 @@ void LevelInitializer::initialize_shelfs()
 	//stage->addToGroup(sink, ecs::Layer1);
 
 	sL->updateLength();
-}
-void LevelInitializer::initialize_cookersPool()
-{
-	Entity* cookers = emPlaystate->addEntity();
-	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
-	
 }

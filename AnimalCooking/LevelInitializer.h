@@ -19,7 +19,6 @@ private:
 	void initialize_foodPool();
 	void initialize_utensilPool();
 	void initialize_cookersPool();
-
 	void initialize_shelfs();
 
 	std::array<Entity*, 2> players;
