@@ -24,6 +24,7 @@ private:
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;
 	Entity* utensil;
+	Entity* foodPool;
 	ScreenLoader* sL;
 
 	EntityManager* emPlaystate;

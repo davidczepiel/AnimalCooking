@@ -25,21 +25,22 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 											0); //Rot
 		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
 											game_->getTextureMngr()->getTexture(Resources::Button));
-
+		
 		buttonGo_ = stage->addEntity();
 		stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
 		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
-									Vector2D(), //Dir
-									50, //Width
-									50, //Height
-									0); //Rot
+			Vector2D(), //Dir
+			50, //Width
+			50, //Height 
+			0); //Rot
+
 		buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
 		buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
 		resetResources();
 		initialize();
-
+	
 		GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
@@ -156,5 +157,5 @@ void ScreenLoader::initialize()
 
 
 void ScreenLoader::goToPlayState() {
-	SDLGame::instance()->getFSM()->changeState(new PlayState());
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager()));
 }

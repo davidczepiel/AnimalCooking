@@ -17,9 +17,9 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
 
 	for (int i = 0; i < ingsType.size(); ++i) {
-		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i];
+		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i][1];
 		for (int j = 0; j < ings.size(); ++j) {
-			switchIng(jsonLevel["IngredientsPool"]["entities"][i][j].as_string(), i, j);
+			switchIng(jsonLevel["IngredientsPool"]["entities"][i][0].as_string(), i, j);
 		}
 	}
 
@@ -37,7 +37,7 @@ void IngAdder::makeIngredient(int type, int n)
 	Ingredient* i = new T();
 	i->setSize(128, 128);
 	i->setVel(Vector2D(0, 0));
-	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][n]["pos"]["x"].as_int(), jsonLevel["IngredientsPool"]["entities"][type][n]["pos"]["y"].as_int()));
+	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_int(), jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_int()));
 	GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);
 }
 

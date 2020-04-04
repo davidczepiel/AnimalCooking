@@ -5,7 +5,7 @@
 #include "FoodPoolAdder.h"
 #include "UtensilsAdder.h"
 #include "ShelfAdder.h"
-
+#include "CookersAdder.h"
 #include "ScreenLoader.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
@@ -15,7 +15,7 @@ const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
-	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
+	string ruta_ = rutaNivel + std::to_string(level - 1) + ".cfg";
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
@@ -24,6 +24,8 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_ingredientsPool();
 	initialize_foodPool();
 	initialize_utensilPool();
+	initialize_cookersPool();
+	initialize_shelfs();
 }
 
 
@@ -52,7 +54,7 @@ void LevelInitializer::initialize_ingredientsPool()
 void LevelInitializer::initialize_foodPool()
 {
 	//EntityFoodPool----------------------------------------
-	Entity* foodPool = emPlaystate->addEntity();
+	foodPool = emPlaystate->addEntity();
 	emPlaystate->addToGroup(foodPool, CASTID(jsonGeneral["Foods"]["Layer"].as_int()));
 
 	FoodPoolAdder(foodPool, jsonLevel, jsonGeneral, players);
@@ -72,8 +74,10 @@ void LevelInitializer::initialize_utensilPool()
 void LevelInitializer::initialize_cookersPool()
 {
 	Entity* cookers = emPlaystate->addEntity();
-	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
+	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool));
+	sL->updateLength();
 }
 
 void LevelInitializer::initialize_shelfs()
