@@ -337,6 +337,7 @@
     <ClCompile Include="PlayersAdder.cpp" />
     <ClCompile Include="FoodPoolAdder.cpp" />
     <ClCompile Include="LevelInitializer.cpp" />
+    <ClCompile Include="UtensilsAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -710,6 +711,7 @@
     <ClInclude Include="PlayersAdder.h" />
     <ClInclude Include="FoodPoolAdder.h" />
     <ClInclude Include="LevelInitializer.h" />
+    <ClInclude Include="UtensilsAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

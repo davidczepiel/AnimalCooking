@@ -7,7 +7,7 @@
 
 #define MAKE(t) makeIngredient<t>(type, n)
 
-IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, LevelInitializer* li) :
+IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral) :
 	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
 	ingPoolEntity_->addComponent<IngredientsPool>();
@@ -26,7 +26,7 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
 	if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
 		for (int c = 0; c < components.size(); ++c) {
-			li->initializeComponent(components[c].as_string(), ingPoolEntity_);
+			initializeComponent(components[c].as_string(), ingPoolEntity_);
 		}
 	}
 }
@@ -52,6 +52,18 @@ void IngAdder::switchIng(const string& ing, int type, int n)
 	{
 	case str2int("Tomato"):
 		MAKE(Tomato);
+		break;
+	default:
+		break;
+	}
+}
+
+//La cadena (component) no puede superar 10 caracteres
+void IngAdder::initializeComponent(const string& component, Entity* entity)
+{
+	switch (str2int(component.c_str()))
+	{
+	case str2int("AdvEffect"):
 		break;
 	default:
 		break;

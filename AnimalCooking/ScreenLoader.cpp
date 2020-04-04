@@ -6,6 +6,8 @@
 #include "LoadingBarViewer.h"
 #include "LevelInitializer.h"
 
+constexpr double step_ = 1.0 / 14.0; //14 es el numero de pasos (5 de carga de recursos + 9 de carga de nivel)
+
 ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
 		Entity* menu_ = stage->addEntity();
@@ -37,6 +39,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 
 		resetResources();
 		initialize();
+
+		GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
@@ -51,8 +55,6 @@ void ScreenLoader::resetResources()
 	loadMessagges(renderer_);
 	loadSounds();
 	loadMusics();
-	
-	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
@@ -69,7 +71,7 @@ void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
 		else if (textures_->getTexture(image.id) == nullptr) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
-	updateLength(0.2);
+	updateLength();
 }
 
 void ScreenLoader::loadFonts()
@@ -85,7 +87,7 @@ void ScreenLoader::loadFonts()
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (fonts_->getFont(font.id) == nullptr) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
 void ScreenLoader::loadSounds()
@@ -101,7 +103,7 @@ void ScreenLoader::loadSounds()
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (audio_->getSound(sound.id) == nullptr) audio_->loadSound(sound.id, sound.fileName);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
 void ScreenLoader::loadMusics()
@@ -117,7 +119,7 @@ void ScreenLoader::loadMusics()
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (audio_->getMusic(music.id) == nullptr) audio_->loadMusic(music.id, music.fileName);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
 void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
@@ -135,12 +137,12 @@ void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 		else if (fonts_->getFont(txtmsg.id) == nullptr)
 			textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg, fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::updateLength(double extra)
+void ScreenLoader::updateLength()
 {
-	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
+	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(step_);
 	draw();
 }
 
@@ -149,7 +151,7 @@ void ScreenLoader::initialize()
 {
 	emPlaystate = new EntityManager(SDLGame::instance());
 
-	LevelInitializer(emPlaystate, level);
+	LevelInitializer(emPlaystate, level, this);
 }
 
 

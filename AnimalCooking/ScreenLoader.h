@@ -8,14 +8,14 @@ class ScreenLoader : public State
 public:	
 	ScreenLoader(Resources::Level nivel);
 	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
-
+	void updateLength();
 private:
+
 	void loadTextures(SDL_Renderer* renderer_);
 	void loadFonts();
 	void loadMessagges(SDL_Renderer* renderer_);
 	void loadSounds();
 	void loadMusics();
-	void updateLength(double extra);
 
 	void initialize();	
 

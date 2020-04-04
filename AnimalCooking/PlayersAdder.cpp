@@ -7,7 +7,7 @@
 #include "PlayerViewer.h"
 #include "LevelInitializer.h"
 
-PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, LevelInitializer* li) :
+PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral) :
 	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
 	for (int i = 0; i < players.size(); ++i) {
@@ -18,7 +18,7 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
 	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pollo));
 
-	players_initializeExtraComponents(li);
+	players_initializeExtraComponents();
 }
 
 void PlayersAdder::players_addComponents(Entity* entity)
@@ -38,14 +38,31 @@ void PlayersAdder::players_initializeTransform(size_t player) // VER ENTITIES
 	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_int(), jsonLevel["Players"][player]["pos"]["y"].as_int()));
 }
 
-void PlayersAdder::players_initializeExtraComponents(LevelInitializer* li)
+void PlayersAdder::players_initializeExtraComponents()
 {
 	for (int i = 0; i < players.size(); ++i) {
 		jute::jValue components = jsonLevel["Players"][i]["components"];
 		if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
 			for (int c = 0; c < components.size(); ++c) {
-				li->initializeComponent(components[c].as_string(), players[i]);
+				initializeComponent(components[c].as_string(), players[i]);
 			}
 		}
+	}
+}
+
+constexpr unsigned int str2int(const char* str, int h = 0)
+{
+	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+//La cadena (component) no puede superar 10 caracteres
+void PlayersAdder::initializeComponent(const string& component, Entity* entity)
+{
+	switch (str2int(component.c_str()))
+	{
+	case str2int("AdvEffect"):
+		break;
+	default:
+		break;
 	}
 }

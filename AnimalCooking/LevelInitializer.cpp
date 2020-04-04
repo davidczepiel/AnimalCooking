@@ -3,13 +3,16 @@
 #include "PlayersAdder.h"
 #include "IngAdder.h"
 #include "FoodPoolAdder.h"
+#include "UtensilsAdder.h"
+
+#include "ScreenLoader.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
-LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level): emPlaystate(em), players()
+LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
 	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
 
@@ -19,6 +22,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level): e
 	initialize_players();
 	initialize_ingredientsPool();
 	initialize_foodPool();
+	initialize_utensilPool();
 }
 
 
@@ -29,7 +33,9 @@ void LevelInitializer::initialize_players()
 		emPlaystate->addToGroup(players[i], CASTID(jsonGeneral["Players"]["Layer"].as_int()));
 	}
 
-	PlayersAdder(players, jsonLevel, jsonGeneral, this);
+	PlayersAdder(players, jsonLevel, jsonGeneral);
+
+	sL->updateLength();
 }
 
 void LevelInitializer::initialize_ingredientsPool()
@@ -38,7 +44,8 @@ void LevelInitializer::initialize_ingredientsPool()
 	ingPoolEntity_ = emPlaystate->addEntity();
 	emPlaystate->addToGroup(ingPoolEntity_, CASTID(jsonGeneral["Ingredientes"]["Layer"].as_int()));
 
-	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral, this);
+	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral);
+	sL->updateLength();
 }
 
 void LevelInitializer::initialize_foodPool()
@@ -47,22 +54,15 @@ void LevelInitializer::initialize_foodPool()
 	Entity* foodPool = emPlaystate->addEntity();
 	emPlaystate->addToGroup(foodPool, CASTID(jsonGeneral["Foods"]["Layer"].as_int()));
 
-	FoodPoolAdder(foodPool, jsonLevel, jsonGeneral, players, this);
+	FoodPoolAdder(foodPool, jsonLevel, jsonGeneral, players);
+	sL->updateLength();
 }
 
-constexpr unsigned int str2int(const char* str, int h = 0)
+void LevelInitializer::initialize_utensilPool()
 {
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
+	//EntityUtensilPool----------------------------------------
+	Entity* utensil = emPlaystate->addEntity();
+	emPlaystate->addToGroup(utensil, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
 
-//La cadena (component) no puede superar 10 caracteres
-void LevelInitializer::initializeComponent(const string& component, Entity* entity)
-{
-	switch (str2int(component.c_str()))
-	{
-	case str2int("AdvEffect"):
-		break;
-	default:
-		break;
-	}
+	UtensilsAdder(utensil, jsonLevel, jsonGeneral, players);
 }

@@ -1,11 +1,11 @@
 #include "FoodPoolAdder.h"
-#include "Entity.h"
 #include "LevelInitializer.h"
 #include "SelectorPopUp.h"
 #include "FoodViewer.h"
 #include "FoodMotion.h"
 
-FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jValue jsonGeneral, std::array<Entity*, 2>& players, LevelInitializer* li) :
+
+FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jValue jsonGeneral, std::array<Entity*, 2>& players) :
 	foodPool(foodPool), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
 	FoodPool* fp = foodPool->addComponent<FoodPool>();
@@ -19,7 +19,24 @@ FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jVa
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
 	if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
 		for (int c = 0; c < components.size(); ++c) {
-			li->initializeComponent(components[c].as_string(), foodPool);
+			initializeComponent(components[c].as_string(), foodPool);
 		}
+	}
+}
+
+constexpr unsigned int str2int(const char* str, int h = 0)
+{
+	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+//La cadena (component) no puede superar 10 caracteres
+void FoodPoolAdder::initializeComponent(const string& component, Entity* entity)
+{
+	switch (str2int(component.c_str()))
+	{
+	case str2int("AdvEffect"):
+		break;
+	default:
+		break;
 	}
 }

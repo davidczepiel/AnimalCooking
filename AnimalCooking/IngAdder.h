@@ -3,12 +3,10 @@
 #include "Entity.h"
 #include "jute.h"
 
-class LevelInitializer;
-
 class IngAdder
 {
 public:
-	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, LevelInitializer* sl);
+	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral);
 
 private:
 
@@ -19,5 +17,6 @@ private:
 	template <typename T>
 	void makeIngredient(int type, int n);
 	void switchIng(const string& ing, int type, int n);
+	void initializeComponent(const string& component, Entity* entity);
 };
 
