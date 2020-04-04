@@ -16,6 +16,7 @@ private:
 	void initialize_ingredientsPool();
 	void initialize_foodPool();
 	void initialize_utensilPool();
+	void initialize_cookersPool();
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;

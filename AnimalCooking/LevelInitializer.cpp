@@ -66,3 +66,10 @@ void LevelInitializer::initialize_utensilPool()
 
 	UtensilsAdder(utensil, jsonLevel, jsonGeneral, players);
 }
+
+void LevelInitializer::initialize_cookersPool()
+{
+	Entity* cookers = emPlaystate->addEntity();
+	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+	
+}
