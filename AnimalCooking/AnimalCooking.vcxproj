@@ -201,6 +201,7 @@
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
     <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
@@ -335,6 +336,7 @@
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverAdder.cpp" />
     <ClCompile Include="FoodGiverViewer.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />

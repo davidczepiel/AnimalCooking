@@ -24,6 +24,7 @@ private:
 	void initialize_bin();
 	void initialize_dishes();
 	void initialize_gameManager();
+	void initialize_foodGivers();
 
 	double casilla;
 
@@ -31,6 +32,7 @@ private:
 	Entity* ingPoolEntity_;
 	Entity* utensil;
 	Entity* foodPool;
+	Entity* gameManager;
 	ScreenLoader* sL;
 
 	EntityManager* emPlaystate;

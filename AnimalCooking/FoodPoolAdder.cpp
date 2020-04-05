@@ -17,7 +17,7 @@ FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jVa
 
 	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
-	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se aï¿½ade
 		initializeComponent(components[c].as_string(), foodPool);
 	}
 }

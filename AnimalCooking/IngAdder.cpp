@@ -14,7 +14,7 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 	ingPoolEntity_->addComponent<IngredientViewer>();
 	ingPoolEntity_->addComponent<IngredientMotion>();
 
-	//Se añaden las entidades
+	//Se aï¿½aden las entidades
 	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
 	for (int i = 0; i < ingsType.size(); ++i) {
 		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i][1];
@@ -25,7 +25,7 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 
 	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
-	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se aï¿½ade
 		initializeComponent(components[c].as_string(), ingPoolEntity_);
 	}
 }

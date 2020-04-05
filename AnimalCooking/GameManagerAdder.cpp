@@ -5,10 +5,9 @@
 #include "IngredientsPool.h"
 #include "Manager.h"
 
-GameManagerAdder::GameManagerAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
+GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip)
 {
-	Entity* gameManager = em->addEntity();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>();
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp);
 	glogic->setUtensilsPool(utensilpool_);
