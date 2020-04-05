@@ -11,11 +11,15 @@
 #include "SinkAdder.h"
 #include "BinAdder.h"
 
+#include "SDLGame.h"
+
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
+
+
 
 LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
@@ -23,6 +27,8 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
+
+	casilla = SDLGame::instance()->getWindowHeight() / 9;
 
 	initialize_players();
 	initialize_ingredientsPool();
@@ -43,7 +49,7 @@ void LevelInitializer::initialize_players()
 		emPlaystate->addToGroup(players[i], CASTID(jsonGeneral["Players"]["Layer"].as_int()));
 	}
 
-	PlayersAdder(players, jsonLevel, jsonGeneral);
+	PlayersAdder(players, jsonLevel, jsonGeneral, casilla);
 
 	sL->updateLength();
 }
@@ -54,7 +60,7 @@ void LevelInitializer::initialize_ingredientsPool()
 	ingPoolEntity_ = emPlaystate->addEntity();
 	emPlaystate->addToGroup(ingPoolEntity_, CASTID(jsonGeneral["Ingredientes"]["Layer"].as_int()));
 
-	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral);
+	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral, casilla);
 	sL->updateLength();
 }
 
@@ -83,27 +89,27 @@ void LevelInitializer::initialize_cookersPool()
 	Entity* cookers = emPlaystate->addEntity();
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
-	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool));
+	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool));
+	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
 
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_sinks()
 {
-	SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players);
+	SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
 
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_bin()
 {
-	BinAdder(emPlaystate, jsonLevel, jsonGeneral, players);
+	BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
 
 	sL->updateLength();
 }

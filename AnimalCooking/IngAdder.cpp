@@ -7,8 +7,8 @@
 
 #define MAKE(t) makeIngredient<t>(type, n)
 
-IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral) :
-	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
+IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaLength) :
+	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), casillaLength(casillaLength)
 {
 	ingPoolEntity_->addComponent<IngredientsPool>();
 	ingPoolEntity_->addComponent<IngredientViewer>();
@@ -35,9 +35,11 @@ template <typename T>
 void IngAdder::makeIngredient(int type, int n)
 {
 	Ingredient* i = new T();
-	i->setSize(128, 128);
+	i->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
+			   jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
 	i->setVel(Vector2D(0, 0));
-	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_int(), jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_int()));
+	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_double() * casillaLength,
+					   jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_double() * casillaLength));
 	GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);
 }
 

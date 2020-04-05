@@ -24,6 +24,8 @@ private:
 	void initialize_bin();
 	void initialize_dishes();
 
+	double casilla;
+
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;
 	Entity* utensil;

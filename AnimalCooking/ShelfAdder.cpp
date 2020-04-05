@@ -8,8 +8,8 @@
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_):
-	emPlayState(emPlayState), jsonGeneral(jsonGeneral)
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla):
+	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaLength(casilla)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
 	jute::jValue components = jsonLevel["Shelfs"]["components"];
@@ -37,7 +37,8 @@ template <typename T>
 Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* pool_)
 {
 	Utensil* u = new T(GIVETRANSPORT);
-	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_int(), jsonGeneral["Utensils"]["size"]["height"].as_int()));
+	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength, 
+						jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
 	return pool_->addUtensil(u);
 }
 
@@ -71,7 +72,11 @@ Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::arr
 
 Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
-	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_int(), jsonShelf["y"].as_int()), u, GIVETRANSPORT, emPlayState);
+	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_double() * casillaLength, jsonShelf["y"].as_double() * casillaLength), u, GIVETRANSPORT, emPlayState);
+
+	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
+							jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));
+
 	emPlayState->addToGroup(shelf, CASTID(jsonGeneral["Shelf"]["Layer"].as_int()));
 	emPlayState->addEntity(shelf);
 	shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),

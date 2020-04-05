@@ -6,13 +6,15 @@
 class IngAdder
 {
 public:
-	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral);
+	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casilla);
 
 private:
 
 	Entity* ingPoolEntity_;
 	jute::jValue& jsonLevel; // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jute::jValue& jsonGeneral; // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
+
+	const double casillaLength;
 
 	template <typename T>
 	void makeIngredient(int type, int n);
