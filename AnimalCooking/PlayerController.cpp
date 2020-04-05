@@ -82,7 +82,8 @@ void PlayerController::keyUpdate()
 		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); y = 1; }
 		else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  x = 1;	}
+		if (keyboard->isKeyDown(keys.right)) 
+		{ tr_->setVelX(1);  x = 1;	}
 		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); x = -1; }
 		else tr_->setVelX(0);
 

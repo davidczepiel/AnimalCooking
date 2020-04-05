@@ -74,6 +74,7 @@ enum CmpId : CmpIdType {
 	SelectorPopUp,
 	SelectorPopUpEntity,
 	Physics,
+	PhysicsPool,
 
 	ButtonBehaviour, //Buttons
 	ButtonRenderer,

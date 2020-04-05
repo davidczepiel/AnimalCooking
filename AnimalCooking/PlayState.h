@@ -65,12 +65,13 @@ public:
 		stage->addToGroup(ingPool, ecs::Layer3);
 		IngredientsPool* pI = ingPool->addComponent<IngredientsPool>();
 		ingPool->addComponent<IngredientViewer>();
+		Physics* phIng =ingPool->addComponent<Physics>();
 		ingPool->addComponent<IngredientMotion>();
 
 		Ingredient* i = new Tomato();
 		i->setSize(128, 128);
-		i->setVel(Vector2D(0, 0));
-		i->setPos(Vector2D(960 ,540));
+		i->setVel(Vector2D(-1, 0));
+		i->setPos(Vector2D(400 ,300));
 		pI->addIngredient(i);
 
 		i = new Onion();
@@ -201,9 +202,6 @@ public:
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
 		CollisionsSystem* colSystem =gameManager->addComponent<CollisionsSystem>();
-		colSystem->addCollider(t);
-		colSystem->addCollider(shelf1);
-		ph->setCollisionSystem(colSystem);
 
 
 		//Arrocera-------------------
@@ -228,6 +226,17 @@ public:
 		stage->addEntity(dressGiver);
 		stage->addToGroup(dressGiver, ecs::Layer1);
 			
+		colSystem->addCollider(t);
+		colSystem->addCollider(shelf1);
+		colSystem->addCollider(shelf0);
+		colSystem->addCollider(knifeShelf);
+		colSystem->addCollider(maceShelf);
+		colSystem->addCollider(sink);
+		colSystem->addCollider(bin);
+		colSystem->addCollider(breadGiver);
+		colSystem->addCollider(dressGiver);
+		ph->setCollisionSystem(colSystem);
+		phIng->setCollisionSystem(colSystem);
 
 	}
 
