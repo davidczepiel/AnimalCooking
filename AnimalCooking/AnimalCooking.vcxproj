@@ -163,6 +163,7 @@
     <ClInclude Include="AIAssistant.h" />
     <ClInclude Include="AIClient.h" />
     <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="Animator.h" />
     <ClInclude Include="AssistantMotion.h" />
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
@@ -289,6 +290,7 @@
     <ClCompile Include="AIAssistant.cpp" />
     <ClCompile Include="AIClient.cpp" />
     <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AssistantMotion.cpp" />
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />

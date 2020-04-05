@@ -7,6 +7,7 @@
 #include "PlayerController.h"
 #include "PlayerMotion.h"
 #include "PlayerViewer.h"
+#include "Animator.h"
 #include "Entity.h"
 #include "IngredientsPool.h"
 #include "IngredientViewer.h"
@@ -48,6 +49,7 @@ public:
 		Transform* t = player->addComponent<Transform>();
 		t->setWH(128,128);
 		t->setPos(Vector2D(2*128,128));
+		player->addComponent<Animator>();
 		player->addComponent<PlayerMotion>();
 		player->addComponent<Selector>();
 		player->addComponent<InteractionRect>();

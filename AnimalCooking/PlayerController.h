@@ -8,6 +8,7 @@
 #include "KeyBoardController.h"
 #include "InteractionRect.h"
 #include "Selector.h"
+#include "Animator.h"
 
 
 class PlayerController : public Component {
@@ -33,6 +34,7 @@ private:
 	Selector* selector_ = nullptr;
 	InteractionRect* ir_ = nullptr;
 	Attack* attack_ = nullptr; 
+	Animator* animator = nullptr;
 
 	void joystickUpdate();
 	void keyUpdate();

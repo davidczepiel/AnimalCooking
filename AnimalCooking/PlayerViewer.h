@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Transform.h"
 #include "Entity.h"
+#include "Animator.h"
 
 class PlayerViewer : public Component {
 public:
@@ -12,5 +13,6 @@ public:
 private:
 	Texture* texture_ = nullptr;
 	Transform* tr_ = nullptr;
+	Animator* animator = nullptr;
 };
 

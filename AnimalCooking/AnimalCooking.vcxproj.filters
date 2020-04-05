@@ -333,6 +333,9 @@
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -701,6 +704,9 @@
     <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodConfig.h">
       <Filter>Header Files\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
