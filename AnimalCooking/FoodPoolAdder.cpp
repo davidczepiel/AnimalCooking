@@ -4,7 +4,6 @@
 #include "FoodViewer.h"
 #include "FoodMotion.h"
 
-
 FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jValue jsonGeneral, std::array<Entity*, 2>& players) :
 	foodPool(foodPool), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
@@ -16,11 +15,10 @@ FoodPoolAdder::FoodPoolAdder(Entity* foodPool, jute::jValue jsonLevel, jute::jVa
 	foodPool->addComponent<FoodMotion>();
 	foodPool->addComponent<FoodViewer>();
 
+	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
-	if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-		for (int c = 0; c < components.size(); ++c) {
-			initializeComponent(components[c].as_string(), foodPool);
-		}
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+		initializeComponent(components[c].as_string(), foodPool);
 	}
 }
 

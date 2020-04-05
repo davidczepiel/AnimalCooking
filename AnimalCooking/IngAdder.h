@@ -21,4 +21,3 @@ private:
 	void switchIng(const string& ing, int type, int n);
 	void initializeComponent(const string& component, Entity* entity);
 };
-

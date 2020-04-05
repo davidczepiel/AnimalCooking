@@ -4,9 +4,6 @@
 #include "UtensilsPool.h"
 #include "UtensilsMotion.h"
 
-#define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
-#define ADD(t) makeUtensil<t>(player)
-
 UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player) :
 	utensilsPool(utensilsPool), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
 {
@@ -19,10 +16,8 @@ UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue& jsonLevel, jute
 
 	//Se meten los componentes especificos de ese nivel
 	jute::jValue components = jsonLevel["UtensilPool"]["components"];
-	if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-		for (int c = 0; c < components.size(); ++c) {
-			initializeComponent(components[c].as_string(), utensilsPool);
-		}
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+		initializeComponent(components[c].as_string(), utensilsPool);
 	}
 }
 

@@ -18,7 +18,13 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
 	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pollo));
 
-	players_initializeExtraComponents();
+	//Componentes extras
+	for (int i = 0; i < players.size(); ++i) {
+		jute::jValue components = jsonLevel["Players"][i]["components"];
+		for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+			initializeComponent(components[c].as_string(), players[i]);
+		}
+	}
 }
 
 void PlayersAdder::players_addComponents(Entity* entity)
@@ -35,23 +41,11 @@ void PlayersAdder::players_initializeTransform(size_t player, const double casil
 {
 	Transform* t = players[player]->addComponent<Transform>();
 
-	t->setWH(jsonGeneral["Players"]["entities"][player]["size"]["width"].as_double() * casillaLength, 
-			 jsonGeneral["Players"]["entities"][player]["size"]["height"].as_double() * casillaLength);
+	t->setWH(jsonGeneral["Players"]["entities"][player]["size"]["width"].as_double() * casillaLength,
+		jsonGeneral["Players"]["entities"][player]["size"]["height"].as_double() * casillaLength);
 
-	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_double() * casillaLength, 
-					   jsonLevel["Players"][player]["pos"]["y"].as_double() * casillaLength));
-}
-
-void PlayersAdder::players_initializeExtraComponents()
-{
-	for (int i = 0; i < players.size(); ++i) {
-		jute::jValue components = jsonLevel["Players"][i]["components"];
-		if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-			for (int c = 0; c < components.size(); ++c) {
-				initializeComponent(components[c].as_string(), players[i]);
-			}
-		}
-	}
+	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_double() * casillaLength,
+		jsonLevel["Players"][player]["pos"]["y"].as_double() * casillaLength));
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

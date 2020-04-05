@@ -23,6 +23,7 @@ private:
 	void initialize_sinks();
 	void initialize_bin();
 	void initialize_dishes();
+	void initialize_gameManager();
 
 	double casilla;
 

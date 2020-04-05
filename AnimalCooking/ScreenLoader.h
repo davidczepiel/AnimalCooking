@@ -5,7 +5,7 @@
 
 class ScreenLoader : public State
 {
-public:	
+public:
 	ScreenLoader(Resources::Level nivel);
 	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
 	void updateLength();
@@ -18,7 +18,7 @@ private:
 	void loadSounds();
 	void loadMusics();
 
-	void initialize();	
+	void initialize();
 
 	EntityManager* emPlaystate;
 

@@ -183,6 +183,7 @@
     <ClInclude Include="CookerViewer.h" />
     <ClInclude Include="CreditsState.h" />
     <ClInclude Include="Dish.h" />
+    <ClInclude Include="DishAdder.h" />
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GlobalTimer.h" />
@@ -317,6 +319,7 @@
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="Dish.cpp" />
+    <ClCompile Include="DishAdder.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
@@ -343,6 +346,7 @@
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
     <ClCompile Include="IngAdder.cpp" />

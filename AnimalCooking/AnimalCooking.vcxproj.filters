@@ -342,6 +342,8 @@
     <ClCompile Include="CookersAdder.cpp" />
     <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="BinAdder.cpp" />
+    <ClCompile Include="DishAdder.cpp" />
+    <ClCompile Include="GameManagerAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -720,6 +722,8 @@
     <ClInclude Include="CookersAdder.h" />
     <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="BinAdder.h" />
+    <ClInclude Include="DishAdder.h" />
+    <ClInclude Include="GameManagerAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

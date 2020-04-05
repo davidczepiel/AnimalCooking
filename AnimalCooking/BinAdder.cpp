@@ -15,10 +15,10 @@ BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jso
 		BinEntity* bin = new BinEntity(em, GIVETRANSPORT);
 
 		bin->setSize(Vector2D(jsonGeneral["Bin"]["size"]["width"].as_double() * casillaLength,
-							  jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
+			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
 
 		bin->setPos(Vector2D(bins_[i]["pos"]["x"].as_double() * casillaLength,
-							 bins_[i]["pos"]["y"].as_double() * casillaLength));
+			bins_[i]["pos"]["y"].as_double() * casillaLength));
 
 		em->addEntity(bin);
 		em->addToGroup(bin, CASTID(jsonGeneral["Bin"]["Layer"].as_int()));

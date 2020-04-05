@@ -4,7 +4,7 @@
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength): em(em)
+SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength) : em(em)
 {
 	jute::jValue sinks_ = jsonLevel["Sink"]["entities"];
 	jute::jValue components = jsonLevel["Sink"]["components"];
@@ -14,11 +14,11 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 			GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
 		sink->setSize(Vector2D(jsonGeneral["Sink"]["size"]["width"].as_double() * casillaLength,
-							   jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
+			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
 
 		em->addEntity(sink);
 		em->addToGroup(sink, CASTID(jsonGeneral["Sink"]["Layer"].as_int()));
-		
+
 		for (int i = 0; i < components.size(); ++i) { // Iniciliza en sink componentes extra si los hay
 			initializeComponent(components[i].as_string(), sink);
 		}

@@ -10,38 +10,38 @@ constexpr double step_ = 1.0 / 16.0; //16 es el numero de pasos (5 de carga de r
 
 ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
-		Entity* menu_ = stage->addEntity();
-		Entity* mensajes_ = stage->addEntity();
+	Entity* menu_ = stage->addEntity();
+	Entity* mensajes_ = stage->addEntity();
 
-		barraCarga_ = stage->addEntity();
-		stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
+	barraCarga_ = stage->addEntity();
+	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
 
-		SDLGame* game_ = SDLGame::instance();
-		int width = SDLGame::instance()->getWindowWidth() / 5;
-		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
-											Vector2D(), //Dir
-											width, //Width
-											50, //Height
-											0); //Rot
-		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
-											game_->getTextureMngr()->getTexture(Resources::Button));
-		
-		buttonGo_ = stage->addEntity();
-		stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
+	SDLGame* game_ = SDLGame::instance();
+	int width = SDLGame::instance()->getWindowWidth() / 5;
+	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
+		Vector2D(), //Dir
+		width, //Width
+		50, //Height
+		0); //Rot
+	barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
+		game_->getTextureMngr()->getTexture(Resources::Button));
 
-		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
-			Vector2D(), //Dir
-			50, //Width
-			50, //Height 
-			0); //Rot
+	buttonGo_ = stage->addEntity();
+	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
-		buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
-		buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
+		Vector2D(), //Dir
+		50, //Width
+		50, //Height
+		0); //Rot
 
-		resetResources();
-		initialize();
-	
-		GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
+	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+
+	resetResources();
+	initialize();
+
+	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
@@ -154,7 +154,6 @@ void ScreenLoader::initialize()
 
 	LevelInitializer(emPlaystate, level, this);
 }
-
 
 void ScreenLoader::goToPlayState() {
 	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager()));

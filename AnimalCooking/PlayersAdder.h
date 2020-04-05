@@ -14,8 +14,6 @@ private:
 
 	void players_addComponents(Entity* entity);
 	void players_initializeTransform(size_t player, const double casillaLength);
-	void players_initializeExtraComponents();
 
 	void initializeComponent(const string& component, Entity* entity);
 };
-

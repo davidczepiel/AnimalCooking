@@ -10,16 +10,15 @@
 #include "CookersAdder.h"
 #include "SinkAdder.h"
 #include "BinAdder.h"
+#include "DishAdder.h"
+#include "GameManagerAdder.h"
 
 #include "SDLGame.h"
-
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
-
-
 
 LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
@@ -39,8 +38,8 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_sinks();
 	initialize_bin();
 	initialize_dishes();
+	initialize_gameManager();
 }
-
 
 void LevelInitializer::initialize_players()
 {
@@ -116,21 +115,15 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	////Platera---------------------------------------
-	//Entity* poolPlatos = stage->addEntity();
-	//stage->addToGroup(poolPlatos, ecs::Layer2);
-	//DishPool* dp =poolPlatos->addComponent<DishPool>();
-	//poolPlatos->addComponent<DishMotion>();
-	//poolPlatos->addComponent<DishViewer>();
+	DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
 
-	///*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
-	//poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
-	//	GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
+	sL->updateLength();
+}
 
-	//DishStack* dish = new DishStack(Vector2D(128*4,0),10,tp,tp,stage,dp);
-	//dish->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
-	//	GETCMP2(player, Selector), GETCMP2(player, Selector), dish);
-	//stage->addEntity(dish);
-	//stage->addToGroup(dish, ecs::GroupID::Layer1);
+void LevelInitializer::initialize_gameManager()
+{
+	GameManagerAdder(emPlaystate, jsonLevel, jsonGeneral, players,
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool));
 
+	sL->updateLength();
 }

@@ -14,8 +14,8 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 	ingPoolEntity_->addComponent<IngredientViewer>();
 	ingPoolEntity_->addComponent<IngredientMotion>();
 
+	//Se añaden las entidades
 	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
-
 	for (int i = 0; i < ingsType.size(); ++i) {
 		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i][1];
 		for (int j = 0; j < ings.size(); ++j) {
@@ -23,11 +23,10 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 		}
 	}
 
+	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
-	if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-		for (int c = 0; c < components.size(); ++c) {
-			initializeComponent(components[c].as_string(), ingPoolEntity_);
-		}
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+		initializeComponent(components[c].as_string(), ingPoolEntity_);
 	}
 }
 
@@ -36,10 +35,10 @@ void IngAdder::makeIngredient(int type, int n)
 {
 	Ingredient* i = new T();
 	i->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
-			   jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
 	i->setVel(Vector2D(0, 0));
 	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_double() * casillaLength,
-					   jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_double() * casillaLength));
+		jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_double() * casillaLength));
 	GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);
 }
 

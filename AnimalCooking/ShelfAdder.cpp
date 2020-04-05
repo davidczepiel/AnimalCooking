@@ -8,7 +8,7 @@
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla):
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla) :
 	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaLength(casilla)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
@@ -25,10 +25,8 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 
 		shelf_ = jsonLevel["Shelfs"]["entities"][i]["pos"];
 		Shelf* s = makeShelf(u, player, shelf_);
-		if (components.size() > 0) { //Si tiene algun componente extra en ese nivel
-			for (int c = 0; c < components.size(); ++c) {
-				initializeComponent(components[c].as_string(), s);
-			}
+		for (int c = 0; c < components.size(); ++c) {//Si tiene algun componente extra en ese nivel
+			initializeComponent(components[c].as_string(), s);
 		}
 	}
 }
@@ -37,8 +35,8 @@ template <typename T>
 Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* pool_)
 {
 	Utensil* u = new T(GIVETRANSPORT);
-	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength, 
-						jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
+	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength,
+		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
 	return pool_->addUtensil(u);
 }
 
@@ -75,7 +73,7 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_double() * casillaLength, jsonShelf["y"].as_double() * casillaLength), u, GIVETRANSPORT, emPlayState);
 
 	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
-							jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));
+		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));
 
 	emPlayState->addToGroup(shelf, CASTID(jsonGeneral["Shelf"]["Layer"].as_int()));
 	emPlayState->addEntity(shelf);
@@ -83,7 +81,6 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), shelf);
 	return shelf;
 }
-
 
 //La cadena (component) no puede superar 10 caracteres
 void ShelfAdder::initializeComponent(const string& component, Entity* entity)

@@ -21,4 +21,3 @@ private:
 	template<typename T>
 	void makeCooker(int type, int n);
 };
-
