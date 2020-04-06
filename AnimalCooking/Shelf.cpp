@@ -1,7 +1,7 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2), content(c) {
+Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
 	addComponent<ShelfViewer>(this);
 	position_ = pos;
 	size_ = Vector2D(128, 128);

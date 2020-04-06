@@ -20,6 +20,7 @@ enum CmpId : CmpIdType {
 	GameLoader,
 	GameLogic,
 	GameSave,
+	FeedBack,
 
 	Attack, //Player
 	PlayerController,

@@ -40,7 +40,8 @@ public:
 		Fregadero,
 		Ingrediente,
 		Panera,
-		ComidaMuerta,
+		Tomato,
+		Onion,
 		ComidaCocinada,
 		Pedido,
 		Papelera,
@@ -49,6 +50,11 @@ public:
 		IngredienteMalo,
 		CuadradoAux,
 
+		//FeedBackImages
+		TomatoFeedBack,
+		OnionFeedBack,
+		CuchilloFeedBack,
+		Panel,
 
 		// images level specific
 		Pan,

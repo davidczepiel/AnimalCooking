@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2D.h"
+#include "Texture.h"
 class Transport;
 class Interactive {
 public:
@@ -14,19 +15,23 @@ public:
 
 	void setCanInteract(bool value) { canInteract = value; }
 	bool isInteractive() { return canInteract; }
+
+	void setTexture(Texture* t) { feedbackVisual_ = t; }
 	~Interactive() {}
 
 	virtual void action1(int player) {};
 	virtual void action2(int player) {};
 	virtual void action3(int player) {};
 	virtual void action4(int player) {};
+	virtual void feedback() {};
 
 
 protected:
 
-	Interactive(Transport* p1, Transport* p2) : player1_(p1), player2_(p2), position_(), size_(), rotation_() {};
+	Interactive(Transport* p1, Transport* p2, Texture* t) : player1_(p1), player2_(p2), position_(), size_(), rotation_(), feedbackVisual_(t){};
 	bool canInteract= true;
 	Transport* player1_;
+	Texture* feedbackVisual_;
 	Transport* player2_;
 	Vector2D position_;
 	Vector2D size_;

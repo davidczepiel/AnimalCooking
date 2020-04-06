@@ -11,7 +11,7 @@ protected:
 	GameControl* gameControl_;
 
 	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl)
-		: Interactive(p1, p2), gameControl_(gameControl) {
+		: Interactive(p1, p2,nullptr), gameControl_(gameControl) {
 		position_ = pos;
 		size_ = size;
 	}

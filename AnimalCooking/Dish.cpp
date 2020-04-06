@@ -1,6 +1,6 @@
 #include "Dish.h"
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>())
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2, nullptr),foods_(vector<Food*>())
 {
 }
 

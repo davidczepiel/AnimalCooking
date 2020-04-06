@@ -3,7 +3,7 @@
 #include "SDL_macros.h"
 #include "InsertExpel.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2),
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
 	state_(CookerStates::empty), cookingTime_(5),entity_(e)
 {
 	setPos(pos);
@@ -11,6 +11,7 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transpo
 	setRot(rot);
 	setEmptyTexture();
 	timer_ = new Timer();
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
 Cooker::~Cooker() {
@@ -45,6 +46,19 @@ void Cooker::action1(int player)
 	else 
 	{
 		ie->extractFood(this);
+	}
+}
+
+void Cooker::feedback()
+{
+	if (state_ != CookerStates::empty) {
+		int ofset = 100;
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 180, 300);
+		feedbackVisual_->render(rect);
+				
+		for (auto& f : foods_) {
+			rect = RECT(position_.getX() + ofset + rect.x/2, position_.getY() + ofset + , 80 + foods_.size() * 20, 200 + foods_.size() * 20);
+		}
 	}
 }
 

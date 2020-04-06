@@ -333,6 +333,7 @@
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
+    <ClCompile Include="FeedBack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -702,6 +703,7 @@
     <ClInclude Include="FoodConfig.h">
       <Filter>Header Files\Food</Filter>
     </ClInclude>
+    <ClInclude Include="FeedBack.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
