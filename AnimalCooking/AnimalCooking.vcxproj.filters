@@ -329,22 +329,46 @@
     </ClCompile>
     <ClCompile Include="FoodGiver.cpp" />
     <ClCompile Include="FoodGiverViewer.cpp" />
-    <ClCompile Include="IngredientViewer.cpp" />
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
-    <ClCompile Include="IngAdder.cpp" />
-    <ClCompile Include="PlayersAdder.cpp" />
-    <ClCompile Include="FoodPoolAdder.cpp" />
-    <ClCompile Include="LevelInitializer.cpp" />
-    <ClCompile Include="UtensilsAdder.cpp" />
-    <ClCompile Include="ShelfAdder.cpp" />
-    <ClCompile Include="CookersAdder.cpp" />
-    <ClCompile Include="SinkAdder.cpp" />
-    <ClCompile Include="BinAdder.cpp" />
-    <ClCompile Include="DishAdder.cpp" />
-    <ClCompile Include="GameManagerAdder.cpp" />
-    <ClCompile Include="FoodGiverAdder.cpp" />
+    <ClCompile Include="UtensilsAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodPoolAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManagerAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="IngAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelInitializer.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayersAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="ShelfAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="SinkAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodGiverAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="DishAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="BinAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="CookersAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="IngredientViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -714,18 +738,42 @@
     <ClInclude Include="FoodConfig.h">
       <Filter>Header Files\Food</Filter>
     </ClInclude>
-    <ClInclude Include="IngAdder.h" />
-    <ClInclude Include="PlayersAdder.h" />
-    <ClInclude Include="FoodPoolAdder.h" />
-    <ClInclude Include="LevelInitializer.h" />
-    <ClInclude Include="UtensilsAdder.h" />
-    <ClInclude Include="ShelfAdder.h" />
-    <ClInclude Include="CookersAdder.h" />
-    <ClInclude Include="SinkAdder.h" />
-    <ClInclude Include="BinAdder.h" />
-    <ClInclude Include="DishAdder.h" />
-    <ClInclude Include="GameManagerAdder.h" />
-    <ClInclude Include="FoodGiverAdder.h" />
+    <ClInclude Include="BinAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="CookersAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="DishAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiverAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodPoolAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManagerAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="IngAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelInitializer.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShelfAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
@@ -840,6 +888,12 @@
     </Filter>
     <Filter Include="Source Files\Interfaces">
       <UniqueIdentifier>{df1ad3d3-5a36-4048-a7d5-3a890ba2c29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Adders">
+      <UniqueIdentifier>{a06161c1-ddd5-4cc0-8a3f-787e8effada0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Adders">
+      <UniqueIdentifier>{0c21c7b9-4140-42bd-8aa6-a96ded1d4c17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
