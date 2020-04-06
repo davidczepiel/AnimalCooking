@@ -11,9 +11,9 @@ FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jV
 		const string entityName = ents[i][0].as_string();
 		for (size_t n = 0; n < ents[i][1].size(); n++)
 		{
-		SwitchFG(entityName, i,n);
-		const string componentName = ents[i][1].as_string();
-		initializeComponent(componentName, entities.at(n));
+			SwitchFG(entityName, i, n);
+			const string componentName = ents[i][1][n][1].as_string();
+			initializeComponent(componentName, entities.at(n * ents.size() + i));
 		}
 	}
 
@@ -22,7 +22,7 @@ constexpr unsigned int str2int(const char* str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
-void FoodGiverAdder::SwitchFG(const string& fg, int type,int n) {
+void FoodGiverAdder::SwitchFG(const string& fg, int type, int n) {
 	switch (str2int(fg.c_str()))
 	{
 	case str2int("BreadGiver"):
@@ -39,13 +39,12 @@ void FoodGiverAdder::SwitchFG(const string& fg, int type,int n) {
 	}
 }
 template <typename T>
-void FoodGiverAdder::makeFoodGiver(int type,int n)
+void FoodGiverAdder::makeFoodGiver(int type, int n)
 {
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casilla, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casilla),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casilla, general["Givers"]["size"]["height"].as_double() * casilla),
 		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), GETCMP2(gameManager, GameControl));
 	fg->addComponent<FoodGiverViewer>(fg);
-	cout << nivel["FoodGivers"][type][0]["x"].as_double() * casilla << endl;
 	fg->addComponent<SelectorPopUpEntity>(GETCMP2(players[0], InteractionRect), GETCMP2(players[1], InteractionRect),
 		GETCMP2(players[0], Selector), GETCMP2(players[1], Selector), fg);
 	mngr->addEntity(fg);
