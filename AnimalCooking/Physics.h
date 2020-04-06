@@ -8,14 +8,14 @@ class Physics :
 private:
 	CollisionsSystem* colSystem;
 	SDL_Rect lastCol;
+	void ReadjustPos(Transform* t);
 
 public:
 	Physics() :Component(ecs::Physics) {}
 	bool Collided(SDL_Rect pos, Vector2D vel);
-	bool Collided(Transform* t);
+	bool Collided(Transform* t, int Speed);
 	void setCollisionSystem(CollisionsSystem* col) { colSystem=col; }
 	SDL_Rect getLastCol() { return lastCol; }
-	Vector2D ReadjustPos(Vector2D pos);
-	Vector2D ReadjustVel(Vector2D vel);
+	void ReadjustVel(Transform* t, int Speed);
 };
 

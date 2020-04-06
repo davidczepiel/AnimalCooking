@@ -6,10 +6,10 @@ bool Physics::Collided(SDL_Rect body, Vector2D vel)
 }
 
 
-bool Physics::Collided(Transform* t) {
+bool Physics::Collided(Transform* t, int Speed) {
 	SDL_Rect body;
-	body.x = t->getPos().getX();
-	body.y = t->getPos().getY();
+	body.x = t->getPos().getX()+ t->getVel().getX()*Speed;
+	body.y = t->getPos().getY()+ t->getVel().getY()*Speed;
 	body.w = t->getW();
 	body.h = t->getH();
 	if (colSystem->Collides(body, t->getVel())) {
@@ -20,8 +20,9 @@ bool Physics::Collided(Transform* t) {
 		return false;
 }
 
-Vector2D Physics::ReadjustPos(Vector2D pos) {
+void Physics::ReadjustPos(Transform* t) {
 	Vector2D finalPos;
+	Vector2D pos = t->getPos();
 	if (lastCol.w > lastCol.h) {
 		int diference = abs(pos.getY() - lastCol.y);
 		if (lastCol.y > pos.getY())
@@ -36,11 +37,12 @@ Vector2D Physics::ReadjustPos(Vector2D pos) {
 		else
 			finalPos=(Vector2D(pos.getX() + lastCol.w, pos.getY()));
 	}
-	return finalPos;
+	t->setPos(finalPos);
 }
 
-Vector2D Physics::ReadjustVel(Vector2D vel) {
+void Physics::ReadjustVel(Transform* t, int Speed) {
 	Vector2D finalVel;
+	Vector2D vel = t->getVel();
 	if (lastCol.w > lastCol.h) {
 		if (vel.getX() < 0)finalVel = Vector2D(-1, 0);
 		else if(vel.getX()>0)finalVel = Vector2D(1, 0);
@@ -49,6 +51,8 @@ Vector2D Physics::ReadjustVel(Vector2D vel) {
 		if (vel.getY() < 0)finalVel = Vector2D(0, -1);
 		else if(vel.getY()>0)finalVel = Vector2D(0, 1);
 	}
-
-	return finalVel;
+	t->setVel(finalVel);
+	ReadjustPos(t);
+	if (Collided(t,Speed))
+		t->setVel(Vector2D(0,0));
 }
