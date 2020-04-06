@@ -1,5 +1,5 @@
 #include "FoodGiverAdder.h"
-#define ADD(T)makeFoodGiver<T>(type,n)
+#define ADD(T) fg = makeFoodGiver<T>(type,n)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla)
@@ -8,22 +8,23 @@ FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jV
 	jute::jValue ents = nivel["FoodGivers"];
 	for (size_t i = 0; i < ents.size(); i++)
 	{
-		const string entityName = ents[i][0].as_string();
 		for (size_t n = 0; n < ents[i][1].size(); n++)
 		{
-			SwitchFG(entityName, i, n);
-			const string componentName = ents[i][1][n][1].as_string();
-			initializeComponent(componentName, entities.at(n * ents.size() + i));
+			FoodGiver* fg = SwitchFG(ents[i][0].as_string(), i, n);
+			for (int c = 0; c < ents[i][1]["components"].size(); ++c) {
+				initializeComponent(ents[i][1]["components"][c].as_string(), fg);
+			}
 		}
 	}
-
 }
+
 constexpr unsigned int str2int(const char* str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
-void FoodGiverAdder::SwitchFG(const string& fg, int type, int n) {
-	switch (str2int(fg.c_str()))
+FoodGiver* FoodGiverAdder::SwitchFG(const string& fgName, int type, int n) {
+	FoodGiver* fg = nullptr;
+	switch (str2int(fgName.c_str()))
 	{
 	case str2int("BreadGiver"):
 		ADD(BreadGiver);
@@ -37,9 +38,10 @@ void FoodGiverAdder::SwitchFG(const string& fg, int type, int n) {
 	default:
 		break;
 	}
+	return fg;
 }
 template <typename T>
-void FoodGiverAdder::makeFoodGiver(int type, int n)
+FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 {
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casilla, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casilla),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casilla, general["Givers"]["size"]["height"].as_double() * casilla),
@@ -47,9 +49,10 @@ void FoodGiverAdder::makeFoodGiver(int type, int n)
 	fg->addComponent<FoodGiverViewer>(fg);
 	fg->addComponent<SelectorPopUpEntity>(GETCMP2(players[0], InteractionRect), GETCMP2(players[1], InteractionRect),
 		GETCMP2(players[0], Selector), GETCMP2(players[1], Selector), fg);
+
 	mngr->addEntity(fg);
 	mngr->addToGroup(fg, CASTID(general["Givers"]["Layer"].as_int()));
-	entities.push_back(fg);
+	return fg;
 }
 //La cadena (component) no puede superar 10 caracteres
 void FoodGiverAdder::initializeComponent(const string& component, Entity* entity)

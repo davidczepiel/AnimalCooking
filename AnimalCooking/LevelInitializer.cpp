@@ -134,4 +134,6 @@ void LevelInitializer::initialize_gameManager()
 void LevelInitializer::initialize_foodGivers()
 {
 	FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	sL->updateLength();
 }
