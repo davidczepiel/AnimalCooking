@@ -44,3 +44,27 @@ public:
 	FoodTimer() : Timer() { time_ = 5000; }
 	void draw() {}
 };
+
+class LevelTimer : public Timer {
+public:
+	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; }
+	void draw() {}
+
+	void update() {
+		if (isTimerEnd) {
+			//Fin nivel
+		}
+	}
+};
+
+class CookerTimer : public Timer {
+public:
+	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; }
+	void draw() {}
+
+	void update() {
+		if (isTimerEnd) {
+			//Cocinar ingredientes
+		}
+	}
+};
