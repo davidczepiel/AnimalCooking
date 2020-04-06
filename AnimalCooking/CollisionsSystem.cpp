@@ -9,7 +9,7 @@ bool CollisionsSystem::Collides(SDL_Rect body, Vector2D vel) {
 		SDL_Rect result = body;
 		result.x += vel.getX();
 		result.y += vel.getY();
-		auto iter0 = entidades.begin();
+		/*auto iter0 = entidades.begin();
 		while (!hasCollided && iter0 != entidades.end()) {
 			if ((body.x != (int)(*iter0)->getPos().getX() && body.y != (int)(*iter0)->getPos().getY()) &&
 				Collisions::collides(Vector2D(result.x,result.y), body.w, body.h,
@@ -23,7 +23,7 @@ bool CollisionsSystem::Collides(SDL_Rect body, Vector2D vel) {
 				 SDL_IntersectRect(&result,&obstacle,&lastCol);
 			}
 			++iter0;
-		}
+		}*/
 		auto iter = entidadesInt.begin();
 		while (!hasCollided && iter != entidadesInt.end()) {
 			if (Collisions::collides(Vector2D(result.x, result.y), body.w, body.h,

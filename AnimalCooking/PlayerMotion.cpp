@@ -17,20 +17,11 @@ void PlayerMotion::update()
 	if (!ph->Collided(tr_))
 		tr_->setPos(tr_->getPos() + tr_->getVel() * SPEED);
 	else {
-		SDL_Rect colision = ph->getLastCol();
-		if (colision.w > colision.h) {
-				int diference = abs(tr_->getPos().getY() - colision.y);
-			if (colision.y > tr_->getPos().getY())
-				tr_->setPos(Vector2D(tr_->getPos().getX(),tr_->getPos().getY()-colision.h));
-			else
-				tr_->setPos(Vector2D(tr_->getPos().getX(), tr_->getPos().getY()+ colision.h));
-		}
-		else {
-			int diference = abs(tr_->getPos().getX() - colision.x);
-			if (colision.x > tr_->getPos().getX())
-				tr_->setPos(Vector2D(tr_->getPos().getX()-colision.w, tr_->getPos().getY()));
-			else
-				tr_->setPos(Vector2D(tr_->getPos().getX()+colision.w, tr_->getPos().getY()));
-		}
+		tr_->setPos(ph->ReadjustPos(tr_->getPos()) + ph->ReadjustVel(tr_->getVel()) * SPEED);
+		/*tr_->setVel(ph->ReadjustVel(tr_->getVel()));
+		lugar.x = tr_->getPos().getX()+tr_->getVel().getX();
+		lugar.y = tr_->getPos().getY()+tr_->getVel().getY();
+		if (!ph->Collided(lugar, tr_->getVel()))
+			tr_->setPos(tr_->setPos(tr_->getPos() + tr_->getVel() * SPEED););*/
 	}
 }

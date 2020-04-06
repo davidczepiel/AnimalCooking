@@ -15,5 +15,7 @@ public:
 	bool Collided(Transform* t);
 	void setCollisionSystem(CollisionsSystem* col) { colSystem=col; }
 	SDL_Rect getLastCol() { return lastCol; }
+	Vector2D ReadjustPos(Vector2D pos);
+	Vector2D ReadjustVel(Vector2D vel);
 };
 
