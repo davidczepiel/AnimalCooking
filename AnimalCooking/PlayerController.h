@@ -38,5 +38,5 @@ private:
 
 	void joystickUpdate();
 	void keyUpdate();
-	
+	bool idle=true;
 };
