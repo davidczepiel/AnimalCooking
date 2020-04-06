@@ -53,11 +53,19 @@ void Cooker::feedback()
 {
 	if (state_ != CookerStates::empty) {
 		int ofset = 100;
+		int offsetInside = 15;
 		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 180, 300);
 		feedbackVisual_->render(rect);
-				
-		for (auto& f : foods_) {
-			rect = RECT(position_.getX() + ofset + rect.x/2, position_.getY() + ofset + , 80 + foods_.size() * 20, 200 + foods_.size() * 20);
+		
+		rect.x += offsetInside;
+		rect.y += offsetInside;
+
+		int rows = ceil(foods_.size() / 2);
+		int size = 128 / rows;
+
+		for (int i = 0; i < foods_.size(); ++i) {
+			SDL_Rect r = RECT(rect.x + size * (i % 2), rect.y * size * (i / 2), size, size);
+			foods_[i]->draw(r);
 		}
 	}
 }

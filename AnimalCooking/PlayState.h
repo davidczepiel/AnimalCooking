@@ -37,6 +37,7 @@
 #include "Sink.h"
 #include "BinEntity.h"
 #include "BinViewer.h"
+#include "FeedBack.h"
 
 class PlayState : public State
 {
