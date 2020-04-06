@@ -11,13 +11,13 @@ public:
 	Animator();
 	~Animator() { }
 
-	void update()override;
-
 	State getCurrentState() { return currentState; };
 	void setCurrentState(State s) { currentState = s; };
+	SDL_Rect& animate(Texture* t, int fx, int fy,int numRows, int numCols);
 private:
 
 	State currentState;
-	int animSpeed;
+	SDL_Rect clip;
+
 };
 

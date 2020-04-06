@@ -35,6 +35,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{Basic, Suelo,"../AnimalCooking/resources/images/suelo.png"},
 	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
+	{Basic, Dog,"../AnimalCooking/resources/images/dog.png"},
 
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},

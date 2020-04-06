@@ -7,13 +7,14 @@
 
 class PlayerViewer : public Component {
 public:
-	PlayerViewer(Texture* t,Texture* t1) : Component(ecs::PlayerViewer), texture_(t),texture1_(t1) {};
+	PlayerViewer(Texture* t) : Component(ecs::PlayerViewer), texture_(t) {};
 	void init() override;
 	void draw() override;
 private:
 	Texture* texture_ = nullptr;
-	Texture* texture1_ = nullptr;
 	Transform* tr_ = nullptr;
 	Animator* animator = nullptr;
+
+
 };
 

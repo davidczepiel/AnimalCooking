@@ -48,6 +48,7 @@ public:
 		Pollo,
 		IngredienteMalo,
 		CuadradoAux,
+		Dog,
 
 
 		// images level specific

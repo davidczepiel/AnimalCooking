@@ -11,9 +11,7 @@ void PlayerViewer::draw()
 {
 	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),tr_->getW(),tr_->getH()};
 
-	if (animator->getCurrentState() == Animator::State::Idle) cout << "Idle" << endl;
-	else if (animator->getCurrentState() == Animator::State::Walk) cout << "Walk" << endl;
-	else if (animator->getCurrentState() == Animator::State::Attack)cout << "Attack" << endl;
-
-	texture_->render(dest);
+	if (animator->getCurrentState() == Animator::State::Idle) texture_->render(dest);
+	else if (animator->getCurrentState() == Animator::State::Walk) texture_->render(dest,animator->animate(texture_, int(((game_->getTime() / 60) % 6)),0,1,6));
+	else if (animator->getCurrentState() == Animator::State::Attack) texture_->render(dest, animator->animate(texture_, int(((game_->getTime() / 60) % 6)), 0, 1, 6));
 }

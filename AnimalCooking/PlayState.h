@@ -56,7 +56,7 @@ public:
 		player->addComponent<Attack>();
 		Transport* tp = player->addComponent<Transport>();
 		player->addComponent<PlayerController>();
-		player->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo), SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux));
+		player->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dog));
 
 		//Ingredientes----------------------------------------
 		Entity* ingPool = stage->addEntity();
