@@ -56,6 +56,7 @@ public:
 		CuchilloFeedBack,
 		Panel,
 		PlatoFeedBack,
+		PapelertaFeedBack,
 
 		// images level specific
 		Pan,

@@ -41,6 +41,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, TomatoFeedBack,"../AnimalCooking/resources/images/feedbackTomate.png"},
 	{Basic, OnionFeedBack,"../AnimalCooking/resources/images/onionFeedBack.png"},
 	{Basic, CuchilloFeedBack,"../AnimalCooking/resources/images/cuchilloFeedBack.png"},
+	{Basic, PapelertaFeedBack,"../AnimalCooking/resources/images/papeleraFeedBack.png"},
 	{Basic, PlatoFeedBack,"../AnimalCooking/resources/images/platoFeedBack.png"},
 	{Basic, Panel,"../AnimalCooking/resources/images/panel.png"},
 
