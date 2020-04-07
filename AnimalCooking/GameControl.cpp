@@ -129,7 +129,6 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		//////////////EMPTY
 	default:
 		f = new SlicedTomato(pos, tP1, tP2); // Para que no queje
-		cout << "Creado empty"<<endl;
 		break;
 	}
 	foodPool->AddFood(f);

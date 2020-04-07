@@ -23,7 +23,7 @@ public:
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
 	void startTimer() {
-		timer_.timerStart();
+		//timer_.timerStart();
 	}
 
 	Resources::FoodType getType() { return type_; }
