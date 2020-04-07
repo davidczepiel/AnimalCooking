@@ -2,6 +2,7 @@
 
 Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2, nullptr),foods_(vector<Food*>())
 {
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatoFeedBack);
 }
 
 // si el vector estaba vacío pone el iterador al principio
@@ -50,4 +51,10 @@ void Dish::clearFoods()
 		++it;
 	}
 	foods_.clear();
+}
+
+void Dish::feedback()
+{
+	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	feedbackVisual_->render(rect);
 }

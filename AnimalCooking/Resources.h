@@ -55,6 +55,7 @@ public:
 		OnionFeedBack,
 		CuchilloFeedBack,
 		Panel,
+		PlatoFeedBack,
 
 		// images level specific
 		Pan,

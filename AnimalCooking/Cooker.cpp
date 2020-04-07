@@ -52,19 +52,20 @@ void Cooker::action1(int player)
 void Cooker::feedback()
 {
 	if (state_ != CookerStates::empty) {
-		int ofset = 100;
+		int ofset = 60;
 		int offsetInside = 15;
-		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 180, 300);
+		int rows = ceil(foods_.size() / 2.0);
+		if (rows == 0) rows = 1;
+
+		int w = 190/ 2 - offsetInside * 2;
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 190, rows*w + offsetInside*2);
 		feedbackVisual_->render(rect);
-		
 		rect.x += offsetInside;
 		rect.y += offsetInside;
 
-		int rows = ceil(foods_.size() / 2);
-		int size = 128 / rows;
-
 		for (int i = 0; i < foods_.size(); ++i) {
-			SDL_Rect r = RECT(rect.x + size * (i % 2), rect.y * size * (i / 2), size, size);
+
+			SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
 			foods_[i]->draw(r);
 		}
 	}

@@ -29,7 +29,8 @@ class Dish : public Pickable
 
 	virtual void onDrop(bool onFloor) { inHands = false; }
 	virtual void onPick() { inHands = true; }
-	
+	virtual void feedback();
+
 	inline void setInHands(bool b) { inHands = b; }
 	inline bool getInHands() { return inHands; }
 

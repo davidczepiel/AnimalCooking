@@ -33,6 +33,13 @@ void Shelf::action1(int id) {
 
 }
 
+void Shelf::feedback()
+{
+	if (contentType != Resources::PickableType::none) {
+		content->feedback();
+	}
+}
+
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 	Pickable* c = content;
 

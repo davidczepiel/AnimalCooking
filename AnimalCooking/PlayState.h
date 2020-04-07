@@ -45,7 +45,7 @@ public:
 	PlayState() : State() {
 		//Player----------------------------------------------
 		Entity* player = stage->addEntity();
-		stage->addToGroup(player, ecs::Layer5);
+		stage->addToGroup(player, ecs::PlayerLayer);
 		Transform* t = player->addComponent<Transform>();
 		t->setWH(128,128);
 		t->setPos(Vector2D(2*128,128));
@@ -59,7 +59,7 @@ public:
 
 		//Ingredientes----------------------------------------
 		Entity* ingPool = stage->addEntity();
-		stage->addToGroup(ingPool, ecs::Layer3);
+		stage->addToGroup(ingPool, ecs::FoodLayer);
 		IngredientsPool* pI = ingPool->addComponent<IngredientsPool>();
 		ingPool->addComponent<IngredientViewer>();
 		ingPool->addComponent<IngredientMotion>();
@@ -85,7 +85,7 @@ public:
 		
 		//EntityFoodPool----------------------------------------
 		Entity* foodPool = stage->addEntity();
-		stage->addToGroup(foodPool, ecs::Layer3);
+		stage->addToGroup(foodPool, ecs::FoodLayer);
 		FoodPool* fp = foodPool->addComponent<FoodPool>();
 		vector<Interactive*>* aux = &reinterpret_cast<vector<Interactive*>&>(fp->getPool());
 		foodPool->addComponent<SelectorPopUp>(aux, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
@@ -95,7 +95,7 @@ public:
 
 		//EntityUtensilPool----------------------------------------
 		Entity* utensil = stage->addEntity();
-		stage->addToGroup(utensil, ecs::Layer4);
+		stage->addToGroup(utensil, ecs::FoodLayer);
 		UtensilsPool* utensilpool_ = utensil->addComponent<UtensilsPool>();
 		vector<Interactive*>* b = &reinterpret_cast<vector<Interactive*>&>(utensilpool_->getPool());
 		utensil->addComponent<SelectorPopUp>(b, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
@@ -197,6 +197,10 @@ public:
 		gameManager->addComponent<GameControl>(tp, tp, utensilpool_, fp);
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
+
+		Entity* feedBack = stage->addEntity();
+		feedBack->addComponent<FeedBack>(GETCMP2(player, Selector), GETCMP2(player, Selector));
+		stage->addToGroup(feedBack, ecs::FeedBackLayer);
 
 		//Arrocera-------------------
 		/*RiceGiver* riceGiver = new RiceGiver(Vector2D(500, 500), Vector2D(128, 128), GETCMP2(player, Transport), GETCMP2(player, Transport), GETCMP2(gameManager, GameControl));
