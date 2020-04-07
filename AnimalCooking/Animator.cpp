@@ -2,10 +2,9 @@
 
 Animator::Animator() : Component(ecs::Animator)
 {
-
 }
 
-SDL_Rect& Animator::animate(Texture* t, int fx, int fy, int numRows = 1, int numCols = 1)
+SDL_Rect& Animator::animate(Texture* t, int fx, int fy, int numRows, int numCols)
 {
 	int fw = t->getWidth() / numCols;
 	int fh = t->getHeight() / numRows;
