@@ -33,6 +33,16 @@ void Shelf::action1(int id) {
 
 }
 
+
+void Shelf::action2(int id)
+{
+	cout << "Selector de platos" << endl;
+	if (contentType == Resources::PickableType::Dish)
+	{
+		static_cast<Dish*>(content)->nextFood();
+	}
+}
+
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 	Pickable* c = content;
 

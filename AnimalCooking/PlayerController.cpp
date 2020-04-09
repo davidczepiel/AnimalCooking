@@ -100,6 +100,13 @@ void PlayerController::keyUpdate()
 		{ 
 			attack_->attack(); 
 		}
+
+		if (keyboard->isKeyDown(SDLK_e) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)i->action2(id_);
+		}
+
 	}
 	else {
 		tr_->setVelX(0);

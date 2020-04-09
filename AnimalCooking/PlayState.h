@@ -71,7 +71,7 @@ public:
 
 		i = new Onion();
 		i->setSize(32, 32);
-		i->setPos(Vector2D(1200,540));
+		i->setPos(Vector2D(1000,540));
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 
@@ -181,6 +181,7 @@ public:
 		DishPool* dp =poolPlatos->addComponent<DishPool>();
 		poolPlatos->addComponent<DishMotion>();
 		poolPlatos->addComponent<DishViewer>();
+		poolPlatos->addComponent<DishFinisher>(tp, tp);
 		/*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
 		poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
