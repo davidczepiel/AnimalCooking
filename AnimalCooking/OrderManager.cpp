@@ -32,29 +32,31 @@ void OrderManager::setMaxOrders(size_t size)
 
 void OrderManager::addOrder(Resources::FoodType finalProduct)
 {
-	vector<Order*>::iterator it = getFreePos();
-	if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va
+	if (availableOrders_.find(finalProduct) != availableOrders_.end()) { //Si es posible meter este pedido
+		vector<Order*>::iterator it = getFreePos();
+		if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va
 
-		set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido
+			set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido
 
-		if (!ings_.empty()) {
+			if (!ings_.empty()) {
 
-			//Vector de texturas
-			vector<Texture*> texturesIngs_;
-			for (auto i : ings_) {				//el id de Resources::FoodType debe coincidir con el de Resources::Textures
-				texturesIngs_.push_back(game_->getTextureMngr()->getTexture(i)); 
+				//Vector de texturas
+				vector<Texture*> texturesIngs_;
+				for (auto i : ings_) {				//el id de Resources::FoodType debe coincidir con el de Resources::Textures
+					texturesIngs_.push_back(game_->getTextureMngr()->getTexture(i));
+				}
+
+				//Mete el pedido
+				*it = new Order( //Mete un order en la posicion libre			 
+
+					//Se asigna la posicion a los orders aqui, pero tal vez deberia ser el OrderViewer
+
+					Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
+					game_->getTextureMngr()->getTexture(finalProduct), // OrderText
+					texturesIngs_, // ingsText
+					finalProduct //Producto que da
+				);
 			}
-
-			//Mete el pedido
-			*it = new Order( //Mete un order en la posicion libre			 
-
-				//Se asigna la posicion a los orders aqui, pero tal vez deberia ser el OrderViewer
-
-				Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
-				game_->getTextureMngr()->getTexture(finalProduct), // OrderText
-				texturesIngs_, // ingsText
-				finalProduct //Producto que da
-			);
 		}
 	}
 }

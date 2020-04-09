@@ -2,6 +2,7 @@
 #include "Order.h"
 #include "Component.h"
 #include "ScoreManager.h"
+#include <set>
 
 class OrderManager : public Component {
 
@@ -14,16 +15,16 @@ public:
 
 	~OrderManager();
 
-	void setScoreManager(ScoreManager* scoreManager) { scoreManager_ = scoreManager; }
+	inline void setScoreManager(ScoreManager* scoreManager) { scoreManager_ = scoreManager; }
 
 	//void update() override;
 
 	//Solo llamar cuando aun no se haya hecho ningun pedido
 	void setMaxOrders(size_t size);
 
-	void setDistXBetweenOrders(size_t delta) { distXBetweenOrders_ = delta; }
+	inline void setDistXBetweenOrders(size_t delta) { distXBetweenOrders_ = delta; }
 
-	void setPosition(Vector2D pos) { position_ = pos; }
+	inline void setPosition(Vector2D pos) { position_ = pos; }
 
 	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
@@ -35,6 +36,14 @@ public:
 	//PUEDE DEVOLVER VALORES A NULLPTR
 	vector<Order*>& getOrders();
 
+	void fillPosibleOrders(initializer_list<Resources::FoodType>& lista) {
+		for (auto elem : lista) {
+			availableOrders_.insert(elem);
+		}
+	}
+
+	inline const set<Resources::FoodType>& getPosibleOrders() const { return availableOrders_; }
+
 private:
 	size_t distXBetweenOrders_;
 	Vector2D position_;
@@ -44,5 +53,6 @@ private:
 	vector<Order*>::iterator getFreePos();
 	vector<Order*>::iterator getIndexOf(Resources::FoodType finalProduct);
 
+	set<Resources::FoodType> availableOrders_; // posibles platos en este nivel
 	vector<Order*> currentOrders_; //Vector para guardar los Order
 };
