@@ -9,7 +9,6 @@ void PlayerMotion::init()
 
 void PlayerMotion::update()
 {
-	
 	if (!ph->Collided(tr_, SPEED))
 		tr_->setPos(tr_->getPos() + tr_->getVel() * SPEED);
 	else {

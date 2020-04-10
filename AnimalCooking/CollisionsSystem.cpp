@@ -1,84 +1,97 @@
 #include "CollisionsSystem.h"
+#include "Ingredient.h"
 
+#define CHECK_DIFF_BODY(body, other) body.x != other.x && body.y != other.y && body.w != other.w && body.h != other.h
+#define COLLIDES(body, other) Collisions::collides(Vector2D(body.x, body.y), body.w, body.h, Vector2D(other.x, other.y), other.w, other.h)
 
+//Devuelve el SDL_Rect de un transform
+#define GETBODY_TR(e) { e->getPos().getX(), e->getPos().getY(), e->getW(), e->getH() }
 
-bool CollisionsSystem::Collides(SDL_Rect body, Vector2D vel) {
-	if (vel.getX() != 0 || vel.getY() != 0) {
-		bool hasCollided = false;
-		int i = 0;
-		SDL_Rect result = body;
-		result.x += vel.getX();
-		result.y += vel.getY();
-		/*auto iter0 = entidades.begin();
-		while (!hasCollided && iter0 != entidades.end()) {
-			if ((body.x != (int)(*iter0)->getPos().getX() && body.y != (int)(*iter0)->getPos().getY()) &&
-				Collisions::collides(Vector2D(result.x,result.y), body.w, body.h,
-				(*iter0)->getPos(), (*iter0)->getW(), (*iter0)->getH())) {
-				hasCollided = true;
-				SDL_Rect obstacle;
-				obstacle.x = (*iter0)->getPos().getX();
-				obstacle.y = (*iter0)->getPos().getY();
-				obstacle.w = (*iter0)->getW();
-				obstacle.h = (*iter0)->getH();
-				 SDL_IntersectRect(&result,&obstacle,&lastCol);
-			}
-			++iter0;
-		}*/
-		auto iter = entidadesInt.begin();
-		while (!hasCollided && iter != entidadesInt.end()) {
-			if (Collisions::collides(Vector2D(result.x, result.y), body.w, body.h,
-				(*iter)->getPos(), (*iter)->getSize().getX(), (*iter)->getSize().getY())) {
-				hasCollided = true;
-				SDL_Rect obstacle;
-				obstacle.x = (*iter)->getPos().getX();
-				obstacle.y = (*iter)->getPos().getY();
-				obstacle.w = (*iter)->getSize().getX();
-				obstacle.h = (*iter)->getSize().getY();
-				SDL_IntersectRect(&result, &obstacle, &lastCol);
-			}
-			++iter;
-		}
-		auto iter2 = cookersPool.begin();
-		while (!hasCollided && iter2 != cookersPool.end()) {
-			if (Collisions::collides(Vector2D(result.x, result.y), body.w, body.h,
-				(*iter2)->getPos(), (*iter2)->getSize().getX(), (*iter2)->getSize().getY())) {
-				hasCollided = true;
-				SDL_Rect obstacle;
-				obstacle.x = (*iter2)->getPos().getX();
-				obstacle.y = (*iter2)->getPos().getY();
-				obstacle.w = (*iter2)->getSize().getX();
-				obstacle.h = (*iter2)->getSize().getY();
-				SDL_IntersectRect(&result, &obstacle, &lastCol);
-			}
-			i++;
-		}
-		auto iter3 = ingredientesPools.begin();
-		while (!hasCollided && i < ingredientesPools.size()) {
-			if ((body.x != (int)(*iter3)->getPos().getX() && body.y != (int)(*iter3)->getPos().getY()) &&
-				Collisions::collides(Vector2D(result.x, result.y), body.w, body.h,
-				(*iter3)->getPos(), (*iter3)->getSize().getX(), (*iter3)->getSize().getY())) {
-				hasCollided = true;
-				SDL_Rect obstacle;
-				obstacle.x = (*iter3)->getPos().getX();
-				obstacle.y = (*iter3)->getPos().getY();
-				obstacle.w = (*iter3)->getSize().getX();
-				obstacle.h = (*iter3)->getSize().getY();
-				SDL_IntersectRect(&result, &obstacle, &lastCol);
-			}
-			i++;
-		}
+//Devuelve el SDL_Rect de un interactive
+#define GETBODY_INT(e) { e->getPos().getX(), e->getPos().getY(), e->getSize().getX(), e->getSize().getY() }
 
-		return hasCollided;
+//Devuelve el SDL_Rect de un ingrediente
+#define GETBODY_ING(e) { e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight() }
+
+void CollisionsSystem::update()
+{
+	//Resolvemos las colisiones si el objeto es movible
+	for (auto en : entidadesTr) {
+		if(en.second) resolveCollisions(en.first);
 	}
-	else
-		return false;
+
+	for (auto en : entidadesInt) {
+		if (en.second) resolveCollisions(en.first);
+	}
+
+	for (auto en : entidadesIng) {
+		if (en.second) resolveCollisions(en.first);
+	}
 }
 
+list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
+{
+	list<SDL_Rect> collisions;
+	for (auto en : entidadesTr) {
+		checkCollision(body, GETBODY_TR(en.first), collisions);
+	}
 
-SDL_Rect CollisionsSystem::getLastCollision() {
-	SDL_Rect aux = lastCol;
-	lastCol = SDL_Rect();
-	return aux;
+	for (auto en : entidadesInt) {
+		checkCollision(body, GETBODY_INT(en.first), collisions);
+	}
+
+	for (auto en : entidadesIng) {
+		checkCollision(body, GETBODY_ING(en.first), collisions);
+	}
 }
 
+void CollisionsSystem::checkCollision(SDL_Rect body, SDL_Rect other, list<SDL_Rect>& collisions)
+{
+	if (CHECK_DIFF_BODY(body, other) && COLLIDES(body, other)) { //Si es otro cuerpo y colisionan
+		SDL_Rect colision_;
+		SDL_IntersectRect(&body, &other, &colision_);
+		collisions.push_back(colision_); //Se mete en la lista de colisiones
+	}
+}
 
+void CollisionsSystem::resolveCollisions(Transform* tr)
+{
+	list<SDL_Rect> collisions_ = collisions(GETBODY_TR(tr));
+
+	//Arregla la colision
+	/*
+	Caso 1 colision
+		si no es cuadrado, se elige la orientacion por ancho > alto
+			si alto = ancho, se elige por velocidad
+				si abs(velovidad.x) = abs(velovidad.y) se resuelve en diagonal
+	Caso 2 colisiones
+		se resuelve antes la mayor area como un caso de 1 colision, si no es un cuadrado perfecto
+			si es cuadrado perfecto, se suman las colisiones y se resuelve como un caso de 1 colision
+		si areas son iguales, se suman las colisiones y se resuelve como un caso de 1 colision
+	Caso 3 colisiones
+		Se elige la de mayor area, se suma su colision vertical u horizontal con su vecino y se resulve como una sola colision		
+	Se vuelve a arreglar las colisiones que puedan quedar sin resolver recursivamente
+	*/
+
+
+
+	resolveCollisions(tr);
+}
+
+void CollisionsSystem::resolveCollisions(Interactive* in)
+{
+	list<SDL_Rect> collisions_ = collisions(GETBODY_INT(in));
+
+	//Arregla la colision
+
+	resolveCollisions(in);
+}
+
+void CollisionsSystem::resolveCollisions(Ingredient* in)
+{
+	list<SDL_Rect> collisions_ = collisions(GETBODY_ING(in));
+
+	//Arregla la colision
+
+	resolveCollisions(in);
+}

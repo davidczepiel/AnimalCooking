@@ -225,7 +225,7 @@ public:
 			GETCMP2(player, Selector), GETCMP2(player, Selector), dressGiver);
 		stage->addEntity(dressGiver);
 		stage->addToGroup(dressGiver, ecs::Layer1);
-			
+		
 		colSystem->addCollider(t);
 		colSystem->addCollider(shelf1);
 		colSystem->addCollider(shelf0);

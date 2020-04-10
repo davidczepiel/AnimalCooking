@@ -8,23 +8,28 @@
 #include "Interactive.h"
 #include <list>
 
+class Ingredient;
 class CollisionsSystem :
 	public Component
 {
-	SDL_Rect lastCol;
-
 public:
 	CollisionsSystem() :Component(ecs::CollisionsSystem) { }
-	bool Collides(SDL_Rect body, Vector2D vel);
-	void addCollider(Transform* t) { entidades.push_back(t);}
-	void addCollider(Interactive* i) { entidadesInt.push_back(i); }
-	SDL_Rect getLastCollision();
 
-	list<Transform*> entidades;
-	list<Interactive*> entidadesInt;
-	list<Interactive*> ingredientesPools;
-	list<Interactive*> cookersPool;
+	void addCollider(Transform* t, bool isInmovable = true) { entidadesTr.push_back(std::make_pair(t, isInmovable)); }
+	void addCollider(Interactive* i, bool isInmovable = false) { entidadesInt.push_back(std::make_pair(i, isInmovable)); }
+	void addCollider(Ingredient* i, bool isInmovable = true) { entidadesIng.push_back(std::make_pair(i, isInmovable)); }
+	void update();
 
+private:
+	list<std::pair<Transform*, bool>> entidadesTr;
+	list<std::pair<Interactive*, bool>> entidadesInt;
+	list<std::pair<Ingredient*, bool>> entidadesIng;
 
+	list<SDL_Rect> collisions(SDL_Rect body);
+
+	void checkCollision(SDL_Rect body, SDL_Rect other, list<SDL_Rect>& collisions);
+	void resolveCollisions(Transform* tr);
+	void resolveCollisions(Interactive* in);
+	void resolveCollisions(Ingredient* in);
 };
 
