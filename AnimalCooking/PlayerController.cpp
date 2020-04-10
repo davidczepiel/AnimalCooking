@@ -78,13 +78,45 @@ void PlayerController::keyUpdate()
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
 		int x = 0, y = 0;
-		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); y = -1; }
-		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); y = 1; }
-		else tr_->setVelY(0);
+		if (keyboard->isKeyDown(keys.up)) {
+			tr_->setVelY(-1); y = -1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		else if (keyboard->isKeyDown(keys.down)) {
+			tr_->setVelY(1); y = 1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		//else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  x = 1; }
-		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); x = -1; }
-		else tr_->setVelX(0);
+		if (keyboard->isKeyDown(keys.right)) {
+			tr_->setVelX(1);  x = 1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		else if (keyboard->isKeyDown(keys.left)) {
+			tr_->setVelX(-1); x = -1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		//else tr_->setVelX(0);
 
 		ir_->setDir(x, y);
 		//--------------------Botones

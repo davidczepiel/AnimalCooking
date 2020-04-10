@@ -75,7 +75,7 @@ public:
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 
-		i = new Onion();
+		i = new Meat();
 		i->setSize(32, 32);
 		i->setPos(Vector2D(1500, 540));
 		i->setVel(Vector2D(0, 0));

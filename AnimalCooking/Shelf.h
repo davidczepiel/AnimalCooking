@@ -24,6 +24,7 @@ public:
 	virtual void action2(int id);
 	virtual void action3(int id);
 	virtual void action4(int id);
+	void onMoved(int id);
 	Pickable* getContent() { return content; }
 };
 

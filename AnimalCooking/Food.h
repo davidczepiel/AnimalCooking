@@ -74,7 +74,7 @@ class SlicedMeat : public Food
 {
 public:
 	SlicedMeat(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedMeat, p1, p2) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta);
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker);
 	}
 	SlicedMeat() : Food(Resources::FoodType::SlicedMeat) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta);

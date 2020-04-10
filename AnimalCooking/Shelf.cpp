@@ -31,14 +31,12 @@ void Shelf::action1(int id) {
 		if (onPlayerHands == Resources::PickableType::Food)
 		{
 			Food* aux = d->takeFood();
-			aux->resetTimer();
 			Food* hands = static_cast<Food*>(player->getObjectInHands());
 			static_cast<Dish*>(content)->addFood(hands);
-			hands->resetTimer();
-			player->pick(aux, Resources::PickableType::Food);
+			player->pick(aux, Resources::PickableType::Food, false);
 		}
 		else if (onPlayerHands == Resources::PickableType::none)
-			player->pick(d->takeFood(), Resources::PickableType::Food);
+			player->pick(d->takeFood(), Resources::PickableType::Food, false);
 
 	}
 	else {
@@ -76,15 +74,22 @@ void Shelf::action4(int id)
 	if (contentType == Resources::PickableType::Dish)
 	{
 		Dish* d = static_cast<Dish*>(content);
-		if (d->getIsViewingContent())
-			d->setIsViewingContent(false);
-		else {
+		if (!d->getIsViewingContent())
+		{
 			d->firstFood();
 			d->setIsViewingContent(true);
 		}
 	}
 }
+void Shelf::onMoved(int id) {
 
+	if (contentType == Resources::PickableType::Dish)
+	{
+		Dish* d = static_cast<Dish*>(content);
+		if (d->getIsViewingContent())
+			d->setIsViewingContent(false);
+	}
+}
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 	Pickable* c = content;
 
