@@ -1,7 +1,8 @@
 #include "Dish.h"
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>())
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int maxFood) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>()),isViewingContent(false),inHands(true)
 {
+	foods_.reserve(maxFood);
 }
 
 // si el vector estaba vacío pone el iterador al principio
@@ -9,7 +10,7 @@ void Dish::addFood(Food* f)
 {
 	if (f != nullptr) 
 	{
-		foods_.push_back(f);				
+		foods_.emplace_back(f);			
 		currentFood = foods_.begin();		
 	}
 }
@@ -30,17 +31,26 @@ Food* Dish::takeFood()
 //Comprobamos que no está el vector vacío y no se ha llegado al último elemento
 void Dish::nextFood() 
 {
-	if (!foods_.empty() && currentFood != (--foods_.end()))
+	if (!foods_.empty() && isViewingContent && currentFood != (--foods_.end()))
 		currentFood++;
+	cout << (*currentFood)->getType();
 }
 //Comprobamos que no está el vector vacío y no estamos en el primer elemento
 void Dish::previousFood() 
 {
-	if (!foods_.empty() && currentFood != foods_.begin())
+	if (!foods_.empty() && isViewingContent && currentFood != foods_.begin())
 		currentFood--;
+	cout << (*currentFood)->getType();
 }
 
 
+
+void Dish::firstFood()
+{
+	currentFood = foods_.begin();
+	if(!foods_.empty())cout << (*currentFood)->getType();
+
+}
 
 void Dish::clearFoods()
 {	

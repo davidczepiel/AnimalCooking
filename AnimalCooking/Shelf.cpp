@@ -18,17 +18,36 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 
 void Shelf::action1(int id) {
 	Transport* player;
-	Resources::PickableType onPlayerHands;
 	//Dependiendo del numero que me ha llegado trabajare con el player1 o el player2
 	if (id == 0)player = player1_;
 	else player = player2_;
+	Resources::PickableType onPlayerHands;
 	//Sabiendo con quien interactuo le pido lo que tiene en las manos
 	onPlayerHands = player->getObjectTypeInHands();
-	Swap(player, onPlayerHands);
-	if (content != nullptr) {
-		content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-			position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
-		content->setCanInteract(false);
+
+	if (contentType == Resources::PickableType::Dish && static_cast<Dish*>(content)->getIsViewingContent()) {
+		Dish* d = static_cast<Dish*>(content);
+
+		if (onPlayerHands == Resources::PickableType::Food)
+		{
+			Food* aux = d->takeFood();
+			aux->resetTimer();
+			Food* hands = static_cast<Food*>(player->getObjectInHands());
+			static_cast<Dish*>(content)->addFood(hands);
+			hands->resetTimer();
+			player->pick(aux, Resources::PickableType::Food);
+		}
+		else if (onPlayerHands == Resources::PickableType::none)
+			player->pick(d->takeFood(), Resources::PickableType::Food);
+
+	}
+	else {
+		Swap(player, onPlayerHands);
+		if (content != nullptr) {
+			content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
+				position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
+			content->setCanInteract(false);
+		}
 	}
 
 }
@@ -40,6 +59,29 @@ void Shelf::action2(int id)
 	if (contentType == Resources::PickableType::Dish)
 	{
 		static_cast<Dish*>(content)->nextFood();
+	}
+}
+
+void Shelf::action3(int id)
+{
+	cout << "Selector de platos" << endl;
+	if (contentType == Resources::PickableType::Dish)
+	{
+		static_cast<Dish*>(content)->previousFood();
+	}
+}
+
+void Shelf::action4(int id)
+{
+	if (contentType == Resources::PickableType::Dish)
+	{
+		Dish* d = static_cast<Dish*>(content);
+		if (d->getIsViewingContent())
+			d->setIsViewingContent(false);
+		else {
+			d->firstFood();
+			d->setIsViewingContent(true);
+		}
 	}
 }
 

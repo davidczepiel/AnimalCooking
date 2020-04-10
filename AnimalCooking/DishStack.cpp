@@ -16,7 +16,7 @@ Dish* DishStack::addNewDish(Vector2D pos)
 {
 	if (dishPool->getNumDishes() < maxDishes)
 	{
-		Dish* d = new Dish(pos, player1_, player2_);
+		Dish* d = new Dish(pos, player1_, player2_,5);
 		d->setPos(pos);
 		d->setSize(Vector2D(75, 30));
 		d->setSpeed(Vector2D());

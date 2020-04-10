@@ -22,6 +22,8 @@ public:
 	void Swap(Transport* player, Resources::PickableType onPlayerHands);
 	virtual void action1(int id);
 	virtual void action2(int id);
+	virtual void action3(int id);
+	virtual void action4(int id);
 	Pickable* getContent() { return content; }
 };
 

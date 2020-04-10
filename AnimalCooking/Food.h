@@ -25,6 +25,9 @@ public:
 	void startTimer() {
 		timer_.timerStart();
 	}
+	void resetTimer() {
+		timer_.timerReset();
+	}
 
 	Resources::FoodType getType() { return type_; }
 
@@ -34,6 +37,7 @@ public:
 	virtual void action1(int player);
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
+
 };
 
 class SlicedTomato : public Food
@@ -60,7 +64,7 @@ class SlicedOnion : public Food
 {
 public:
 	SlicedOnion(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedOnion, p1, p2) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta);
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite);
 	}
 	SlicedOnion() : Food(Resources::FoodType::SlicedOnion) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ComidaMuerta);

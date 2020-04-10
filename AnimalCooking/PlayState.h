@@ -212,7 +212,7 @@ public:
 			GETCMP2(player, Selector), GETCMP2(player, Selector), breadGiver);
 		stage->addEntity(breadGiver);
 		stage->addToGroup(breadGiver, ecs::Layer1);
-		//Mesa de aliñado
+		//Mesa de aliï¿½ado
 		DressingGiver* dressGiver = new DressingGiver(Vector2D(2*128,0),Vector2D(128,128),tp,tp,GETCMP2(gameManager,GameControl));
 		dressGiver->addComponent<FoodGiverViewer>(dressGiver);
 		dressGiver->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
