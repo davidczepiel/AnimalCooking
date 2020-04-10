@@ -16,7 +16,7 @@ public:
 	CollisionsSystem() :Component(ecs::CollisionsSystem) { }
 
 	void addCollider(Transform* t, bool isInmovable = true) { entidadesTr.push_back(std::make_pair(t, isInmovable)); }
-	void addCollider(Interactive* i, bool isInmovable = false) { entidadesInt.push_back(std::make_pair(i, isInmovable)); }
+	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }
 	void addCollider(Ingredient* i, bool isInmovable = true) { entidadesIng.push_back(std::make_pair(i, isInmovable)); }
 	void update();
 
@@ -28,12 +28,10 @@ private:
 	list<SDL_Rect> collisions(SDL_Rect body);
 
 	void checkCollision(SDL_Rect body, SDL_Rect other, list<SDL_Rect>& collisions);
-	void resolveCollisions(Transform* tr);
-	void resolveCollisions(Interactive* in);
-	void resolveCollisions(Ingredient* in);
+	void resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel);
 
-	void singleCollision(Transform* tr, const SDL_Rect& col);
-	void verticalCollision(Transform* tr, const SDL_Rect& col);
-	void horizontalCollision(Transform* tr, const SDL_Rect& col);
+	void singleCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
+	void verticalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
+	void horizontalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
 };
 
