@@ -38,7 +38,6 @@
 #include "BinEntity.h"
 #include "BinViewer.h"
 #include "CollisionsSystem.h"
-#include "Physics.h"
 
 class PlayState : public State
 {
@@ -50,7 +49,6 @@ public:
 		Transform* t = player->addComponent<Transform>();
 		t->setWH(128,128);
 		t->setPos(Vector2D(2*128,128));
-		Physics* ph =player->addComponent<Physics>();
 		player->addComponent<PlayerMotion>();
 		player->addComponent<Selector>();
 		player->addComponent<InteractionRect>();
@@ -65,7 +63,6 @@ public:
 		stage->addToGroup(ingPool, ecs::Layer3);
 		IngredientsPool* pI = ingPool->addComponent<IngredientsPool>();
 		ingPool->addComponent<IngredientViewer>();
-		Physics* phIng =ingPool->addComponent<Physics>();
 		ingPool->addComponent<IngredientMotion>();
 
 		Ingredient* i = new Tomato();
@@ -227,17 +224,22 @@ public:
 		stage->addToGroup(dressGiver, ecs::Layer1);
 		
 		colSystem->addCollider(t);
-		colSystem->addCollider(shelf1);
-		colSystem->addCollider(shelf0);
 		colSystem->addCollider(knifeShelf);
 		colSystem->addCollider(maceShelf);
+		colSystem->addCollider(shelfTercerUtensilio);
+
 		colSystem->addCollider(sink);
 		colSystem->addCollider(bin);
 		colSystem->addCollider(breadGiver);
 		colSystem->addCollider(dressGiver);
-		ph->setCollisionSystem(colSystem);
-		phIng->setCollisionSystem(colSystem);
 
+		colSystem->addCollider(oven);
+		colSystem->addCollider(skillet);
+
+		colSystem->addCollider(shelf1);
+		colSystem->addCollider(shelf0);
+		
+		colSystem->addCollider(dish);
 	}
 
 

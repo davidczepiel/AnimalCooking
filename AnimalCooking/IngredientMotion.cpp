@@ -16,7 +16,6 @@ void IngredientMotion::update() {
 		body.w = b->getWidth();
 		body.h = b->getHeight();
 		Vector2D vel = b->getVel();
-		if(!ph->Collided(body,vel))
 		b->update();
 		/*else {
 			b->setPos(ph->ReadjustPos(b->getPos()));

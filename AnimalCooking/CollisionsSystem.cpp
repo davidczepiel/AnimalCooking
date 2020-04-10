@@ -1,18 +1,18 @@
 #include "CollisionsSystem.h"
 #include "Ingredient.h"
+#include "SDL_macros.h"
 
-#define CHECK_DIFF_BODY(body, other) body.x != other.x && body.y != other.y && body.w != other.w && body.h != other.h
+#define CHECK_DIFF_BODY(body, other) body.x != other.x || body.y != other.y || body.w != other.w || body.h != other.h
 #define COLLIDES(body, other) Collisions::collides(Vector2D(body.x, body.y), body.w, body.h, Vector2D(other.x, other.y), other.w, other.h)
 
-
 //Devuelve el SDL_Rect de un transform
-#define GETBODY_TR(e) { e->getPos().getX(), e->getPos().getY(), e->getW(), e->getH() }
+#define GETBODY_TR(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getW(), e->getH())
 
 //Devuelve el SDL_Rect de un interactive
-#define GETBODY_INT(e) { e->getPos().getX(), e->getPos().getY(), e->getSize().getX(), e->getSize().getY() }
+#define GETBODY_INT(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getSize().getX(), e->getSize().getY())
 
 //Devuelve el SDL_Rect de un ingrediente
-#define GETBODY_ING(e) { e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight() }
+#define GETBODY_ING(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight())
 
 //Calcula el área de un SDL_Rect
 #define AREA(rect) rect.w * rect.h
@@ -43,11 +43,12 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 	for (auto en : entidadesIng) {
 		checkCollision(body, GETBODY_ING(en.first), collisions);
 	}
+	return collisions;
 }
 
 void CollisionsSystem::checkCollision(SDL_Rect body, SDL_Rect other, list<SDL_Rect>& collisions)
 {
-	if (CHECK_DIFF_BODY(body, other) && COLLIDES(body, other)) { //Si es otro cuerpo y colisionan
+	if ((CHECK_DIFF_BODY(body, other)) && COLLIDES(body, other)) { //Si es otro cuerpo y colisionan
 		SDL_Rect colision_;
 		SDL_IntersectRect(&body, &other, &colision_);
 		collisions.push_back(colision_); //Se mete en la lista de colisiones
@@ -70,21 +71,49 @@ void CollisionsSystem::checkCollision(SDL_Rect body, SDL_Rect other, list<SDL_Re
 
 void CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel)
 {
-	list<SDL_Rect> collisions_ = collisions({ pos.getX(), pos.getY(), size.getX(), size.getY() });
-	
-	if (collisions_.size() == 1) {
-		singleCollision(pos, size, vel, collisions_.front());
-	}
-	else if (collisions_.size() == 2) {
-		SDL_Rect col1 = collisions_.front(), col2 = collisions_.back();
-		//se prioriza el de mayor area
-		if(AREA(col1) > AREA(col2)){
-			singleCollision(pos, size, vel, col1);
+	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX(), pos.getY(), size.getX(), size.getY()));
+
+	if (!collisions_.empty()) {
+		if (collisions_.size() == 1) {
+			singleCollision(pos, size, vel, collisions_.front());
 		}
-		else if (AREA(col1) < AREA(col2)) {
-			singleCollision(pos, size, vel, col2);
+		else if (collisions_.size() == 2) {
+			SDL_Rect col1 = collisions_.front(), col2 = collisions_.back();
+			//se prioriza el de mayor area
+			if (AREA(col1) > AREA(col2)) {
+				singleCollision(pos, size, vel, col1);
+			}
+			else if (AREA(col1) < AREA(col2)) {
+				singleCollision(pos, size, vel, col2);
+			}
+			else { //Ambas areas son iguales
+				if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
+					col1.h += col2.h;
+					singleCollision(pos, size, vel, col1);
+				}
+				else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
+					col1.w += col2.w;
+					singleCollision(pos, size, vel, col1);
+				}
+				else {
+					if (vel.getX() < 0) { //Se mueve hacia la izda
+						if (vel.getY() < 0) pos = Vector2D(pos.getX() + col1.w, pos.getY() + col1.h); //arriba a la izda
+						else pos = Vector2D(pos.getX() + col1.w, pos.getY() - col1.h); //abajo a la izda
+					}
+					else { //Se mueve hacia la dcha
+						if (vel.getY() < 0) pos = Vector2D(pos.getX() - col1.w, pos.getY() + col1.h); //arriba a la dcha
+						else pos = Vector2D(pos.getX() - col1.w, pos.getY() - col1.h); //abajo a la dcha
+					}
+				}
+			}
 		}
-		else { //Ambas areas son iguales
+		else {
+			SDL_Rect col1, col2, col3;
+			col1 = collisions_.front();
+			collisions_.pop_front();
+			col2 = collisions_.front();
+			col3 = collisions_.back();
+
 			if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
 				col1.h += col2.h;
 				singleCollision(pos, size, vel, col1);
@@ -94,54 +123,27 @@ void CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& size, co
 				singleCollision(pos, size, vel, col1);
 			}
 			else {
-				if (vel.getX() < 0) { //Se mueve hacia la izda
-					if (vel.getY() < 0) pos = Vector2D(pos.getX() + col1.w, pos.getY() + col1.h); //arriba a la izda
-					else pos = Vector2D(pos.getX() + col1.w, pos.getY() - col1.h); //abajo a la izda
+				if (col1.x == col3.x) { //Los rectangulos estan alineados en vertical
+					col1.h += col3.h;
+					singleCollision(pos, size, vel, col1);
 				}
-				else { //Se mueve hacia la dcha
-					if (vel.getY() < 0) pos = Vector2D(pos.getX() - col1.w, pos.getY() + col1.h); //arriba a la dcha
-					else pos = Vector2D(pos.getX() - col1.w, pos.getY() - col1.h); //abajo a la dcha
+				else if (col1.y == col3.y) { //Los rectangulos estan alineados en horizontal
+					col1.w += col3.w;
+					singleCollision(pos, size, vel, col1);
 				}
 			}
 		}
+		resolveCollisions(pos, size, vel);
 	}
-	else {	
-		SDL_Rect col1, col2, col3;
-		col1 = collisions_.front();
-		collisions_.pop_front();
-		col2 = collisions_.front();
-		col3 = collisions_.back();
-
-		if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
-			col1.h += col2.h;
-			singleCollision(pos, size, vel, col1);
-		}
-		else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
-			col1.w += col2.w;
-			singleCollision(pos, size, vel, col1);
-		}
-		else {
-			if (col1.x == col3.x) { //Los rectangulos estan alineados en vertical
-				col1.h += col3.h;
-				singleCollision(pos, size, vel, col1);
-			}
-			else if (col1.y == col3.y) { //Los rectangulos estan alineados en horizontal
-				col1.w += col3.w;
-				singleCollision(pos, size, vel, col1);
-			}
-		}
-	}
-
-	if(!collisions_.empty()) resolveCollisions(pos, size, vel);
 }
 
 
 void CollisionsSystem::singleCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if (col.w > col.h) { //Colision Vertical
+	if (col.w - col.h > 5) { //Colision Vertical
 		verticalCollision(pos, size, vel, col);
 	}
-	else if (col.w < col.h) { //Colision horizontal
+	else if (col.w - col.h < -5) { //Colision horizontal
 		horizontalCollision(pos, size, vel, col);
 	}
 	else { //Colision en esquina-->Check de la velocidad
