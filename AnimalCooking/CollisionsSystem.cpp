@@ -1,6 +1,9 @@
 #include "CollisionsSystem.h"
 #include "Ingredient.h"
+#include "Transform.h"
+#include "Interactive.h"
 #include "SDL_macros.h"
+#include "Collisions.h"
 
 #define CHECK_DIFF_BODY(body, other) body.x != other.x || body.y != other.y || body.w != other.w || body.h != other.h
 #define COLLIDES(body, other) Collisions::collides(Vector2D(body.x, body.y), body.w, body.h, Vector2D(other.x, other.y), other.w, other.h)

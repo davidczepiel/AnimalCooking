@@ -235,7 +235,6 @@
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
-    <ClInclude Include="Physics.h" />
     <ClInclude Include="Pickable.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
@@ -357,7 +356,6 @@
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
-    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />

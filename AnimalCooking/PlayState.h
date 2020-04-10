@@ -68,7 +68,7 @@ public:
 		Ingredient* i = new Tomato();
 		i->setSize(128, 128);
 		i->setVel(Vector2D(-1, 0));
-		i->setPos(Vector2D(400 ,300));
+		i->setPos(Vector2D(400 , 300));
 		pI->addIngredient(i);
 
 		i = new Onion();
@@ -79,11 +79,10 @@ public:
 
 		i = new Onion();
 		i->setSize(32, 32);
-		i->setPos(Vector2D(1500, 540));
+		i->setPos(Vector2D(500, 380));
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
-
-		
+	
 		//EntityFoodPool----------------------------------------
 		Entity* foodPool = stage->addEntity();
 		stage->addToGroup(foodPool, ecs::Layer3);
@@ -198,7 +197,7 @@ public:
 		gameManager->addComponent<GameControl>(tp, tp, utensilpool_, fp);
 		glogic->setUtensilsPool(utensilpool_);
 		glogic->setIngredientPool(pI);
-		CollisionsSystem* colSystem =gameManager->addComponent<CollisionsSystem>();
+		CollisionsSystem* colSystem = gameManager->addComponent<CollisionsSystem>();
 
 
 		//Arrocera-------------------
@@ -241,8 +240,6 @@ public:
 		
 		colSystem->addCollider(dish);
 	}
-
-
 
 private:
 

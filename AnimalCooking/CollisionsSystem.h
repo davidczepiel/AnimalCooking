@@ -1,14 +1,10 @@
 #pragma once
 #include "Component.h"
-#include "Transform.h"
-#include "ObjectPool.h"
-#include "IngredientsPool.h"
-#include "CookerPool.h"
-#include "Collisions.h"
-#include "Interactive.h"
 #include <list>
 
 class Ingredient;
+class Interactive;
+class Transform;
 class CollisionsSystem :
 	public Component
 {
