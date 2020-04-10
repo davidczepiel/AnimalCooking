@@ -31,5 +31,9 @@ private:
 	void resolveCollisions(Transform* tr);
 	void resolveCollisions(Interactive* in);
 	void resolveCollisions(Ingredient* in);
+
+	void singleCollision(Transform* tr, const SDL_Rect& col);
+	void verticalCollision(Transform* tr, const SDL_Rect& col);
+	void horizontalCollision(Transform* tr, const SDL_Rect& col);
 };
 

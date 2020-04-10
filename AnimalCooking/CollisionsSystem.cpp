@@ -13,6 +13,9 @@
 //Devuelve el SDL_Rect de un ingrediente
 #define GETBODY_ING(e) { e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight() }
 
+//Calcula el área de un SDL_Rect
+#define AREA(rect) rect.w * rect.h
+
 void CollisionsSystem::update()
 {
 	//Resolvemos las colisiones si el objeto es movible
@@ -73,10 +76,72 @@ void CollisionsSystem::resolveCollisions(Transform* tr)
 	Se vuelve a arreglar las colisiones que puedan quedar sin resolver recursivamente
 	*/
 
+	if (collisions_.size() == 1) {
+		singleCollision(tr, collisions_.front());
+	}
+	else if (collisions_.size() == 2) {
+		SDL_Rect col1 = collisions_.front(), col2 = collisions_.back();
+		//se prioriza el de mayor area
+		if(AREA(col1) > AREA(col2)){
+			singleCollision(tr, col1);
+		}
+		else if (AREA(col1) < AREA(col2)) {
+			singleCollision(tr, col2);
+		}
+		else { //Ambas areas son iguales
+			if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
+				col1.h += col2.h;
+				singleCollision(tr, col1);
+			}
+			else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
+				col1.w += col2.w;
+				singleCollision(tr, col1);
+			}
+			else {
+				Vector2D v = tr->getVel();
+				Vector2D p = tr->getPos();
+				if (v.getX() < 0) { //Se mueve hacia la izda
+					if (v.getY() < 0) tr->setPos(Vector2D(p.getX() + col1.w, p.getY() + col1.h)); //arriba a la izda
+					else tr->setPos(Vector2D(p.getX() + col1.w, p.getY() - col1.h)); //abajo a la izda
+				}
+				else { //Se mueve hacia la dcha
+					if (v.getY() < 0) tr->setPos(Vector2D(p.getX() - col1.w, p.getY() + col1.h)); //arriba a la dcha
+					else tr->setPos(Vector2D(p.getX() - col1.w, p.getY() - col1.h)); //abajo a la dcha
+				}
+			}
+		}
+	}
+	else {	
+		SDL_Rect col1, col2, col3;
+		col1 = collisions_.front();
+		collisions_.pop_front();
+		col2 = collisions_.front();
+		col3 = collisions_.back();
 
+		if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
+			col1.h += col2.h;
+			singleCollision(tr, col1);
+		}
+		else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
+			col1.w += col2.w;
+			singleCollision(tr, col1);
+		}
+		else {
+			if (col1.x == col3.x) { //Los rectangulos estan alineados en vertical
+				col1.h += col3.h;
+				singleCollision(tr, col1);
+			}
+			else if (col1.y == col3.y) { //Los rectangulos estan alineados en horizontal
+				col1.w += col3.w;
+				singleCollision(tr, col1);
+			}
+		}
+	}
 
-	resolveCollisions(tr);
+	if(!collisions_.empty()) resolveCollisions(tr);
 }
+
+
 
 void CollisionsSystem::resolveCollisions(Interactive* in)
 {
@@ -94,4 +159,38 @@ void CollisionsSystem::resolveCollisions(Ingredient* in)
 	//Arregla la colision
 
 	resolveCollisions(in);
+}
+
+void CollisionsSystem::singleCollision(Transform* tr, const SDL_Rect& col)
+{
+	if (col.w > col.h) { //Colision Vertical
+		verticalCollision(tr, col);
+	}
+	else if (col.w < col.h) { //Colision horizontal
+		horizontalCollision(tr, col);
+	}
+	else { //Colision en esquina-->Check de la velocidad
+		if (abs(tr->getVel().getX()) > abs(tr->getVel().getY())) { //Movimiento horizontal
+			verticalCollision(tr, col);
+		}
+		else if (abs(tr->getVel().getX()) < abs(tr->getVel().getY())) { //Movimiento vertical
+			horizontalCollision(tr, col);
+		}
+		else { // El movimiento es justo hacia la esquina
+			verticalCollision(tr, col);
+			horizontalCollision(tr, col);
+		}
+	}
+}
+
+void CollisionsSystem::verticalCollision(Transform* tr, const SDL_Rect& col)
+{
+	if (tr->getPos().getY() < col.y) tr->setPosY(tr->getPos().getY() - col.h); //Hay que subirlo
+	else tr->setPosY(tr->getPos().getY() + col.h); // Hay que bajarlo
+}
+
+void CollisionsSystem::horizontalCollision(Transform* tr, const SDL_Rect& col)
+{
+	if (tr->getPos().getX() < col.x) tr->setPosX(tr->getPos().getX() - col.w); //Hay que moverlo a la izda
+	else tr->setPosX(tr->getPos().getX() + col.w); // Hay que moverlo a la dcha
 }
