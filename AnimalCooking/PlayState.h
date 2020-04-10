@@ -75,9 +75,9 @@ public:
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 
-		i = new Meat();
+		i = new Lettuce();
 		i->setSize(32, 32);
-		i->setPos(Vector2D(1500, 540));
+		i->setPos(Vector2D(1100, 540));
 		i->setVel(Vector2D(0, 0));
 		pI->addIngredient(i);
 
@@ -136,24 +136,28 @@ public:
 		stage->addEntity(knifeShelf);
 		knifeShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 												 GETCMP2(player, Selector), GETCMP2(player, Selector), knifeShelf);
+		/*knifeShelf->addComponent<DishFinisher>(tp, tp);*/
 
 		Shelf* maceShelf = new Shelf(Vector2D(4 * 128, 5 * 128), m, tp, tp, stage);
 		stage->addEntity(maceShelf);
 		stage->addToGroup(maceShelf, ecs::Layer1);
 		maceShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), maceShelf);
-		
+		/*maceShelf->addComponent<DishFinisher>(tp, tp);*/
+
 		Shelf* shelfTercerUtensilio = new Shelf(Vector2D(5 * 128, 5 * 128), nullptr, tp, tp, stage);
 		stage->addEntity(shelfTercerUtensilio);
 		stage->addToGroup(shelfTercerUtensilio, ecs::Layer1);
 		shelfTercerUtensilio->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelfTercerUtensilio);
+		/*shelfTercerUtensilio->addComponent<DishFinisher>(tp, tp);*/
 
 		Shelf* shelf1 = new Shelf(Vector2D(0, 2 * 128), nullptr, tp, tp, stage);
 		stage->addEntity(shelf1);
 		stage->addToGroup(shelf1, ecs::Layer1);
 		shelf1->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf1);
+		/*shelf1->addComponent<DishFinisher>(tp, tp);*/
 
 		Sink* sink = new Sink(Vector2D(0,3*128),tp,tp,stage);
 		stage->addEntity(sink);
@@ -162,9 +166,9 @@ public:
 		Shelf* shelf0 = new Shelf(Vector2D(0, 0), nullptr, tp, tp, stage);
 		stage->addEntity(shelf0);
 		stage->addToGroup(shelf0, ecs::Layer1);
-		maceShelf->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
+		shelf0->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), shelf0);
-
+		/*shelf0->addComponent<DishFinisher>(tp, tp);*/
 		//--------------------------------PAPELERA------------------------------------
 		BinEntity* bin = new BinEntity(stage,tp,tp);
 		bin->addComponent<BinViewer>(bin);
@@ -180,12 +184,11 @@ public:
 		stage->addToGroup(poolPlatos, ecs::Layer2);
 		DishPool* dp =poolPlatos->addComponent<DishPool>();
 		poolPlatos->addComponent<DishMotion>();
-		poolPlatos->addComponent<DishViewer>();
-		poolPlatos->addComponent<DishFinisher>(tp, tp);
+		poolPlatos->addComponent<DishViewer>();		
 		/*vector<Interactive*>* d = &reinterpret_cast<vector<Interactive*>&>(dp->getDishes());
 		poolPlatos->addComponent<SelectorPopUp>(d, GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), GETCMP2(player, Transport), GETCMP2(player, Transport));*/
-		DishStack* dish = new DishStack(Vector2D(128*4,0),10,tp,tp,stage,dp);
+		DishStack* dish = new DishStack(Vector2D(128*4,0),10,tp,tp,stage,dp,fp);
 		dish->addComponent<SelectorPopUpEntity>(GETCMP2(player, InteractionRect), GETCMP2(player, InteractionRect),
 			GETCMP2(player, Selector), GETCMP2(player, Selector), dish);
 		stage->addEntity(dish);

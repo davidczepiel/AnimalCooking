@@ -1,6 +1,6 @@
 #include "Dish.h"
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int maxFood) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>()),isViewingContent(false),inHands(true)
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>()),isViewingContent(false),inHands(true),foodPool(fp)
 {
 	foods_.reserve(maxFood);
 }
@@ -56,8 +56,9 @@ void Dish::clearFoods()
 {	
 	auto it = foods_.begin();
 	while (it != foods_.end()) {
-		delete* it;
+		delete* it;		
 		++it;
 	}
 	foods_.clear();
+	foodPool->getPool().clear();
 }

@@ -159,6 +159,14 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
+		if (keyboard->isKeyDown(SDLK_r) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action5(id_);
+				i = nullptr;
+			}
+		}
 
 	}
 	else {

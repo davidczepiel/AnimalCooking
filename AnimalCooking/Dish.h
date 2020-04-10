@@ -2,11 +2,11 @@
 #include "Food.h"
 #include "Pickable.h"
 #include <list>
-
+#include "FoodPool.h"
 class Dish : public Pickable
 {
  public:
-	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood);
+	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood,FoodPool* fp);
 	~Dish() { }
 	//Añade un alimento al plato	
 	void addFood(Food* f);
@@ -37,9 +37,14 @@ class Dish : public Pickable
 	inline bool getInHands() { return inHands; }
 	inline void setIsViewingContent(bool value) { isViewingContent = value; }
 	inline bool getIsViewingContent() { return isViewingContent; }
+	  void addFinalFood(Food* f) { 
+		  addFood(f);
+		  foodPool->AddFood(f);
+	  }
  private:
 	 vector<Food*>::iterator currentFood;
 	 vector<Food*> foods_;
+	 FoodPool* foodPool;
 	 bool inHands;
 	 bool isViewingContent;
 };

@@ -1,7 +1,7 @@
 #include "DishStack.h"
 #include "DishStackViewer.h"
 
-DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp) : Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_), maxDishes(maxDishes_), dishPool(dp)
+DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_), maxDishes(maxDishes_), dishPool(dp),foodPool(fp)
 {
 	position_ = pos;
 	size_ = Vector2D(128, 128);
@@ -16,7 +16,7 @@ Dish* DishStack::addNewDish(Vector2D pos)
 {
 	if (dishPool->getNumDishes() < maxDishes)
 	{
-		Dish* d = new Dish(pos, player1_, player2_,5);
+		Dish* d = new Dish(pos, player1_, player2_,5,foodPool);
 		d->setPos(pos);
 		d->setSize(Vector2D(75, 30));
 		d->setSpeed(Vector2D());

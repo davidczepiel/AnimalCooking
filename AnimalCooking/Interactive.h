@@ -20,6 +20,7 @@ public:
 	virtual void action2(int player) {};
 	virtual void action3(int player) {};
 	virtual void action4(int player) {};
+	virtual void action5(int player) {};
 	virtual void onMoved(int player) {};
 
 

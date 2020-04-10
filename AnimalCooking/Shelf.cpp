@@ -3,6 +3,8 @@
 
 Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2), content(c) {
 	addComponent<ShelfViewer>(this);
+	dishFinisher=addComponent<DishFinisher>(p1,p2);
+	//dishFinisher = getComponent<DishFinisher>(ecs::DishFinisher); //GETCMP1_(DishFinisher);
 	position_ = pos;
 	size_ = Vector2D(128, 128);
 	if (content != nullptr) {
@@ -53,7 +55,6 @@ void Shelf::action1(int id) {
 
 void Shelf::action2(int id)
 {
-	cout << "Selector de platos" << endl;
 	if (contentType == Resources::PickableType::Dish)
 	{
 		static_cast<Dish*>(content)->nextFood();
@@ -62,7 +63,6 @@ void Shelf::action2(int id)
 
 void Shelf::action3(int id)
 {
-	cout << "Selector de platos" << endl;
 	if (contentType == Resources::PickableType::Dish)
 	{
 		static_cast<Dish*>(content)->previousFood();
@@ -90,6 +90,17 @@ void Shelf::onMoved(int id) {
 			d->setIsViewingContent(false);
 	}
 }
+
+void Shelf::action5(int id)
+{
+	if (contentType == Resources::PickableType::Dish)
+	{
+	  Dish* d = static_cast<Dish*>(content);
+      dishFinisher->finish(id,d);
+	}
+	
+}
+
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 	Pickable* c = content;
 
