@@ -16,6 +16,7 @@ public:
 	Dish* addNewDish(Vector2D pos);
 	void removeDish(Dish* d);
 	virtual void action1(int id);
+	virtual void feedback(int id);
 private:
 	int maxDishes;
 	DishPool* dishPool = nullptr;

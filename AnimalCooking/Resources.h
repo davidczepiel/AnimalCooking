@@ -57,13 +57,16 @@ public:
 		Panel,
 		PlatoFeedBack,
 		PapelertaFeedBack,
+		Coger,
+		Dejar,
 
 		// images level specific
 		Pan,
 		Arroz,
-		Aceite
+		Aceite,
 
 		// text
+		
 	
 	};
 

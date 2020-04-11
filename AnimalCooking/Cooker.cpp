@@ -49,7 +49,7 @@ void Cooker::action1(int player)
 	}
 }
 
-void Cooker::feedback()
+void Cooker::feedback(int player)
 {
 	if (state_ != CookerStates::empty) {
 		int ofset = 60;

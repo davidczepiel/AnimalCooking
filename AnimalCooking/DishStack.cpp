@@ -57,3 +57,23 @@ void DishStack::action1(int id)
 		}
 	}
 }
+
+void DishStack::feedback(int id)
+{
+	SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
+
+	if (id == Resources::Player::Player1)
+	{
+		if (player1_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+	}
+	else
+	{
+		if (player2_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+	}
+
+	if(feedbackVisual_ !=nullptr) feedbackVisual_->render(r);
+	feedbackVisual_ = nullptr;
+	
+}

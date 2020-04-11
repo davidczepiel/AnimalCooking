@@ -15,6 +15,6 @@ public:
 	~BinEntity() {}
 
 	void action1(int player) override;
-	void feedback() override;
+	void feedback(int player) override;
 };
 

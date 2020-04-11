@@ -44,6 +44,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, PapelertaFeedBack,"../AnimalCooking/resources/images/papeleraFeedBack.png"},
 	{Basic, PlatoFeedBack,"../AnimalCooking/resources/images/platoFeedBack.png"},
 	{Basic, Panel,"../AnimalCooking/resources/images/panel.png"},
+	{Basic, Coger,"../AnimalCooking/resources/images/coger.png"},
+	{Basic, Dejar,"../AnimalCooking/resources/images/dejar.png"},
 
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
@@ -51,9 +53,10 @@ vector<Resources::ImageInfo> Resources::images_{
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
-	//
+
 
 };
+
 
 vector<Resources::MusicInfo> Resources::musics_{
 	//

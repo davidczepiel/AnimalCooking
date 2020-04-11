@@ -33,10 +33,10 @@ void Shelf::action1(int id) {
 
 }
 
-void Shelf::feedback()
+void Shelf::feedback(int player)
 {
 	if (contentType != Resources::PickableType::none) {
-		content->feedback();
+		content->feedback(player);
 	}
 }
 

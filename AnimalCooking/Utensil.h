@@ -51,7 +51,7 @@ public:
 	Utensil( Transport* p1, Transport* p2);
 	virtual ~Utensil();
 	void action1(int player) override;
-	void feedback() override;
+	void feedback(int player) override;
 
 	virtual void render() const;
 	virtual void update();
