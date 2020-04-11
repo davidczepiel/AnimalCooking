@@ -157,6 +157,7 @@
     <ClInclude Include="Adversity.h" />
     <ClInclude Include="AdversityEffect.h" />
     <ClInclude Include="AdversityLoader.h" />
+    <ClInclude Include="AdversityManager.h" />
     <ClInclude Include="AdversityMotion.h" />
     <ClInclude Include="AdversitySpawn.h" />
     <ClInclude Include="AdversityViewer.h" />
@@ -293,8 +294,10 @@
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Adversity.cpp" />
     <ClCompile Include="AdversityEffect.cpp" />
     <ClCompile Include="AdversityLoader.cpp" />
+    <ClCompile Include="AdversityManager.cpp" />
     <ClCompile Include="AdversityMotion.cpp" />
     <ClCompile Include="AdversitySpawn.cpp" />
     <ClCompile Include="AdversityViewer.cpp" />

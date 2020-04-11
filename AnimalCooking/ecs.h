@@ -79,6 +79,7 @@ enum CmpId : CmpIdType {
 	ButtonDirector,
 
 	LoadingBarViewer, //Bar
+	AdversityManager,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max
@@ -93,6 +94,10 @@ enum GroupID : Group {
 	Layer4,
 	Layer5,
 	_LastGroupId_	//Identify the max number of groups
+};
+
+enum AdversityID  {
+	
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;
