@@ -4,56 +4,61 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "LoadingBarViewer.h"
+#include "LevelInitializer.h"
 
-ScreenLoader::ScreenLoader(Resources::Level nivel)
+constexpr double step_ = 1.0 / 16.0; //16 es el numero de pasos (5 de carga de recursos + 11 de carga de nivel)
+
+ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
-		Entity* menu_ = stage->addEntity();
-		Entity* mensajes_ = stage->addEntity();
+	Entity* menu_ = stage->addEntity();
+	Entity* mensajes_ = stage->addEntity();
 
-		barraCarga_ = stage->addEntity();
-		stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
+	barraCarga_ = stage->addEntity();
+	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
 
-		SDLGame* game_ = SDLGame::instance();
-		int width = SDLGame::instance()->getWindowWidth() / 5;
-		barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
-											Vector2D(), //Dir
-											width, //Width
-											50, //Height
-											0); //Rot
-		barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
-											game_->getTextureMngr()->getTexture(Resources::Button));
+	SDLGame* game_ = SDLGame::instance();
+	int width = SDLGame::instance()->getWindowWidth() / 5;
+	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
+		Vector2D(), //Dir
+		width, //Width
+		50, //Height
+		0); //Rot
+	barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
+		game_->getTextureMngr()->getTexture(Resources::Button));
 
-		buttonGo_ = stage->addEntity();
-		stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
+	buttonGo_ = stage->addEntity();
+	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
-		buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
-									Vector2D(), //Dir
-									50, //Width
-									50, //Height
-									0); //Rot
-		buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
-		buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
+		Vector2D(), //Dir
+		50, //Width
+		50, //Height
+		0); //Rot
 
-		resetResources(nivel);
+	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+
+	resetResources();
+	initialize();
+
+	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
 
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
 //Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
 //Va actualizando la barra de progreso y renderizandolo
-void ScreenLoader::resetResources(Resources::Level level)
+void ScreenLoader::resetResources()
 {
 	SDL_Renderer* renderer_ = SDLGame::instance()->getRenderer();
 
-	loadTextures(level, renderer_);
-	loadFonts(level);
-	loadMessagges(level, renderer_);
-	loadSounds(level);
-	loadMusics(level);
-	
-	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
+	loadTextures(renderer_);
+	loadFonts();
+	loadMessagges(renderer_);
+	loadSounds();
+	loadMusics();
 }
 
-void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
+void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
 {
 	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
 
@@ -67,10 +72,10 @@ void ScreenLoader::loadTextures(Resources::Level level, SDL_Renderer* renderer_)
 		else if (textures_->getTexture(image.id) == nullptr) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::loadFonts(Resources::Level level)
+void ScreenLoader::loadFonts()
 {
 	FontsManager* fonts_ = SDLGame::instance()->getFontMngr();
 
@@ -83,10 +88,10 @@ void ScreenLoader::loadFonts(Resources::Level level)
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (fonts_->getFont(font.id) == nullptr) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::loadSounds(Resources::Level level)
+void ScreenLoader::loadSounds()
 {
 	SDLAudioManager* audio_ = static_cast<SDLAudioManager*>(SDLGame::instance()->getAudioMngr());
 
@@ -99,10 +104,10 @@ void ScreenLoader::loadSounds(Resources::Level level)
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (audio_->getSound(sound.id) == nullptr) audio_->loadSound(sound.id, sound.fileName);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::loadMusics(Resources::Level level)
+void ScreenLoader::loadMusics()
 {
 	SDLAudioManager* audio_ = static_cast<SDLAudioManager*>(SDLGame::instance()->getAudioMngr());
 
@@ -115,10 +120,10 @@ void ScreenLoader::loadMusics(Resources::Level level)
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (audio_->getMusic(music.id) == nullptr) audio_->loadMusic(music.id, music.fileName);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::loadMessagges(Resources::Level level, SDL_Renderer* renderer_)
+void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 {
 	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
 	FontsManager* fonts_ = SDLGame::instance()->getFontMngr();
@@ -133,15 +138,23 @@ void ScreenLoader::loadMessagges(Resources::Level level, SDL_Renderer* renderer_
 		else if (fonts_->getFont(txtmsg.id) == nullptr)
 			textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg, fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
-	updateLength(0.2);
+	updateLength();
 }
 
-void ScreenLoader::updateLength(double extra)
+void ScreenLoader::updateLength()
 {
-	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(extra);
+	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(step_);
 	draw();
 }
 
+//Inicializa el nivel
+void ScreenLoader::initialize()
+{
+	emPlaystate = new EntityManager(SDLGame::instance());
+
+	LevelInitializer(emPlaystate, level, this);
+}
+
 void ScreenLoader::goToPlayState() {
-	SDLGame::instance()->getFSM()->changeState(new PlayState());
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager()));
 }

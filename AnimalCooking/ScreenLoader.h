@@ -2,20 +2,28 @@
 #include "State.h"
 #include "FSM.h"
 #include "PlayState.h"
+
 class ScreenLoader : public State
 {
-public:	
+public:
 	ScreenLoader(Resources::Level nivel);
-	void resetResources(Resources::Level nivel); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
+	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
+	void updateLength();
+	EntityManager* getEntityManager() { return emPlaystate; }
 private:
-	void loadTextures(Resources::Level level, SDL_Renderer* renderer_);
-	void loadFonts(Resources::Level level);
-	void loadMessagges(Resources::Level level, SDL_Renderer* renderer_);
-	void loadSounds(Resources::Level level);
-	void loadMusics(Resources::Level level);
-	void updateLength(double extra);
+
+	void loadTextures(SDL_Renderer* renderer_);
+	void loadFonts();
+	void loadMessagges(SDL_Renderer* renderer_);
+	void loadSounds();
+	void loadMusics();
+
+	void initialize();
+
+	EntityManager* emPlaystate;
+
+	Resources::Level level;
 	Entity* barraCarga_;
 	Entity* buttonGo_;
 	static void goToPlayState();
 };
-
