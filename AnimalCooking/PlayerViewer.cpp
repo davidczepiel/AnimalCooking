@@ -13,9 +13,10 @@ void PlayerViewer::draw()
 
 	// int(((game_->getTime() / animator->getAnimSpeed()) % 6)) --> usarlo como parametro para el metodo animate del Animator
 
-	if (animator->getCurrentState() == Animator::States::Idle) cout << "Idle" << endl;
-	else if (animator->getCurrentState() == Animator::States::Walk)  cout << "Walk" << endl;
-	else if (animator->getCurrentState() == Animator::States::Attack) cout << "Attack" << endl;
+	//Aqui habra que mostrar las diferentes animaciones,de momento solo muestra la textura de cerdo
+	if (animator->getCurrentState() == Animator::States::Idle) texture_->render(dest);
+	else if (animator->getCurrentState() == Animator::States::Walk) texture_->render(dest);
+	else if (animator->getCurrentState() == Animator::States::Attack) texture_->render(dest);
 
-	texture_->render(dest);
+	
 }
