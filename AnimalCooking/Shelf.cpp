@@ -4,7 +4,6 @@
 Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2), content(c) {
 	addComponent<ShelfViewer>(this);
 	dishFinisher=addComponent<DishFinisher>(p1,p2);
-	//dishFinisher = getComponent<DishFinisher>(ecs::DishFinisher); //GETCMP1_(DishFinisher);
 	position_ = pos;
 	size_ = Vector2D(128, 128);
 	if (content != nullptr) {
@@ -52,7 +51,7 @@ void Shelf::action1(int id) {
 
 }
 
-
+//Mueve el selector hacia delante
 void Shelf::action2(int id)
 {
 	if (contentType == Resources::PickableType::Dish)
@@ -60,7 +59,7 @@ void Shelf::action2(int id)
 		static_cast<Dish*>(content)->nextFood();
 	}
 }
-
+//Mueve el selector hacia atras
 void Shelf::action3(int id)
 {
 	if (contentType == Resources::PickableType::Dish)
@@ -68,7 +67,7 @@ void Shelf::action3(int id)
 		static_cast<Dish*>(content)->previousFood();
 	}
 }
-
+//Activa el selector
 void Shelf::action4(int id)
 {
 	if (contentType == Resources::PickableType::Dish)
@@ -81,6 +80,7 @@ void Shelf::action4(int id)
 		}
 	}
 }
+//Desactiva el selector si nos movemos
 void Shelf::onMoved(int id) {
 
 	if (contentType == Resources::PickableType::Dish)
@@ -91,6 +91,7 @@ void Shelf::onMoved(int id) {
 	}
 }
 
+//Finaliza el plato
 void Shelf::action5(int id)
 {
 	if (contentType == Resources::PickableType::Dish)
