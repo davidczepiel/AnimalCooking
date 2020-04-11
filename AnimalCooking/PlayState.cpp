@@ -1,5 +1,7 @@
 #include "PlayState.h"
 #include "FSM.h"
+#include "PauseState.h"
+#include "EndState.h"
 
 /*void PlayState::handleEvent()
 {

@@ -167,6 +167,7 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="ButtonBehaviour.h" />
@@ -178,9 +179,11 @@
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Cooker.h" />
     <ClInclude Include="CookerPool.h" />
+    <ClInclude Include="CookersAdder.h" />
     <ClInclude Include="CookerViewer.h" />
     <ClInclude Include="CreditsState.h" />
     <ClInclude Include="Dish.h" />
+    <ClInclude Include="DishAdder.h" />
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
@@ -199,9 +202,11 @@
     <ClInclude Include="FoodDictionary.h" />
     <ClInclude Include="FoodEnum.h" />
     <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
+    <ClInclude Include="FoodPoolAdder.h" />
     <ClInclude Include="FoodTextures.h" />
     <ClInclude Include="FoodViewer.h" />
     <ClInclude Include="framework.h" />
@@ -210,10 +215,12 @@
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GlobalTimer.h" />
     <ClInclude Include="GPadController.h" />
+    <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientMotion.h" />
     <ClInclude Include="IngredientSpawn.h" />
@@ -226,6 +233,7 @@
     <ClInclude Include="Interactive.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="LevelInitializer.h" />
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapState.h" />
@@ -238,6 +246,7 @@
     <ClInclude Include="Pickable.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
+    <ClInclude Include="PlayersAdder.h" />
     <ClInclude Include="PlayerViewer.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
@@ -256,8 +265,10 @@
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SelectorPopUp.h" />
     <ClInclude Include="Shelf.h" />
+    <ClInclude Include="ShelfAdder.h" />
     <ClInclude Include="ShelfViewer.h" />
     <ClInclude Include="Sink.h" />
+    <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="SoundManager.h" />
@@ -276,6 +287,7 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="Utensil.h" />
+    <ClInclude Include="UtensilsAdder.h" />
     <ClInclude Include="UtensilsMotion.h" />
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
@@ -294,6 +306,7 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
@@ -304,9 +317,11 @@
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Cooker.cpp" />
     <ClCompile Include="CookerPool.cpp" />
+    <ClCompile Include="CookersAdder.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="Dish.cpp" />
+    <ClCompile Include="DishAdder.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
@@ -323,9 +338,11 @@
     <ClCompile Include="FoodCooker.cpp" />
     <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverAdder.cpp" />
     <ClCompile Include="FoodGiverViewer.cpp" />
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
+    <ClCompile Include="FoodPoolAdder.cpp" />
     <ClCompile Include="FoodTextures.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
@@ -333,8 +350,10 @@
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
@@ -347,6 +366,7 @@
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="LevelInitializer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -359,6 +379,7 @@
     <ClCompile Include="Pickable.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
+    <ClCompile Include="PlayersAdder.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
@@ -376,8 +397,10 @@
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SelectorPopUp.cpp" />
     <ClCompile Include="Shelf.cpp" />
+    <ClCompile Include="ShelfAdder.cpp" />
     <ClCompile Include="ShelfViewer.cpp" />
     <ClCompile Include="Sink.cpp" />
+    <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -393,6 +416,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />
+    <ClCompile Include="UtensilsAdder.cpp" />
     <ClCompile Include="UtensilsMotion.cpp" />
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
