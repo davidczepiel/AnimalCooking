@@ -66,6 +66,7 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 			//tellIngredient(en.first, cT);
 		}
 	}
+
 	return collisions;
 }
 
@@ -104,6 +105,16 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 {
 	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX(), pos.getY(), size.getX(), size.getY()));
 	ColisionType cT = ColisionType::noColision;
+
+	//Check de colisiones con los bordes del mundo
+	if (pos.getX() < 0)
+		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-size.getX()), size.getY()));
+	else if (pos.getX() + size.getX() > game_->getWindowWidth())
+		cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
+	if (pos.getY() < 0)
+		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
+	else if (pos.getY() + size.getY() > game_->getWindowHeight())
+		cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
 
 	if (!collisions_.empty()) {
 		if (collisions_.size() == 1) {
@@ -201,20 +212,19 @@ ColisionType CollisionsSystem::singleCollision(Vector2D& pos, const Vector2D& si
 
 void CollisionsSystem::verticalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if (pos.getY() < col.y) pos.setY(pos.getY() - col.h); //Hay que subirlo
+	if ((int)pos.getY() < col.y) pos.setY(pos.getY() - col.h); //Hay que subirlo
 	else pos.setY(pos.getY() + col.h); // Hay que bajarlo
 }
 
 void CollisionsSystem::horizontalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if (pos.getX() < col.x)pos.setX(pos.getX() - col.w); //Hay que moverlo a la izda
+	if ((int)pos.getX() < col.x)pos.setX(pos.getX() - col.w); //Hay que moverlo a la izda
 	else pos.setX(pos.getX() + col.w); // Hay que moverlo a la dcha
 }
 
 void CollisionsSystem::tellIngredient(Ingredient* en, const ColisionType& colType)
 {
 	if (colType != ColisionType::noColision) {
-		cout << colType << " tell" << endl;
 		if (colType == ColisionType::horizontal) en->onCollisionX();
 		else if (colType == ColisionType::vertical) en->onCollisionY();
 		else if (colType == ColisionType::both) {
