@@ -1,5 +1,9 @@
 #include "PlaneAdversity.h"
 
+void PlaneAdversity::StartPlane() {
+	RandomNumberGenerator* rnd = SDLGame::instance()->getRandGen();
+}
+
 void PlaneAdversity::update() {
 
 }
