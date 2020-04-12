@@ -1,6 +1,7 @@
 #include "RainAdversity.h"
+#include "AdversityManager.h"
 
-RainAdversity::RainAdversity()
+RainAdversity::RainAdversity(AdversityManager* am):Adversity(am)
 {
 	rainTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo);
 	//utensilsPool = &uP;

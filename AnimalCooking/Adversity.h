@@ -1,6 +1,6 @@
 #pragma once
-#include "AdversityManager.h"
 
+class AdversityManager;
 class Adversity
 {
 protected:
