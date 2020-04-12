@@ -20,6 +20,8 @@
 //Calcula el área de un SDL_Rect
 #define AREA(rect) rect.w * rect.h
 
+#define DIVIDEROUNDUP(x) (collisions.back().x / 2) + (collisions.back().x % 2 != 0)
+
 void CollisionsSystem::update()
 {
 	//Resolvemos las colisiones si el objeto es movible
@@ -30,6 +32,7 @@ void CollisionsSystem::update()
 	for (auto en : entidadesIng) {
 		if (en.second){
 			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel()); 
+			
 			//Aviso al ingrediente que ha colisionado
 			tellIngredient(en.first, cT);
 		}
@@ -42,8 +45,9 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 	for (auto en : entidadesTr) {
 		//Si choca con algo, y es movible, mueve ese objeto la mitad que le corresponde
 		if (checkCollision(body, GETBODY_TR(en.first), collisions) && en.second) {
-			singleCollision(en.first->getPosReference(), Vector2D(en.first->getW(), en.first->getH()), en.first->getVel(), 
-				RECT(collisions.back().x, collisions.back().y, collisions.back().w / 2, collisions.back().h / 2));
+			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
+			singleCollision(en.first->getPosReference(), Vector2D(en.first->getW(), en.first->getH()), en.first->getVel(), col);
+			changeBackCol(collisions, col);
 		}
 	}
 
@@ -54,13 +58,21 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 	for (auto en : entidadesIng) {
 		//Si choca con algo, y es movible, mueve ese objeto la mitad que le corresponde
 		if (checkCollision(body, GETBODY_ING(en.first), collisions) && en.second) {
-			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(),
-				RECT(collisions.back().x, collisions.back().y, collisions.back().w / 2, collisions.back().h / 2));
+			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
+			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), col);
+			changeBackCol(collisions, col);
+			
 			//Aviso al ingrediente que ha colisionado
-			tellIngredient(en.first, cT);
+			//tellIngredient(en.first, cT);
 		}
 	}
 	return collisions;
+}
+
+void CollisionsSystem::changeBackCol(std::list<SDL_Rect>& collisions, const SDL_Rect& col)
+{
+	collisions.pop_back();
+	collisions.push_back(col);
 }
 
 bool CollisionsSystem::checkCollision(const SDL_Rect& body, const SDL_Rect& other, list<SDL_Rect>& collisions)
@@ -201,10 +213,13 @@ void CollisionsSystem::horizontalCollision(Vector2D& pos, const Vector2D& size, 
 
 void CollisionsSystem::tellIngredient(Ingredient* en, const ColisionType& colType)
 {
-	if (colType == ColisionType::horizontal) en->onCollisionX();
-	else if (colType == ColisionType::vertical) en->onCollisionY();
-	else if(colType == ColisionType::both) {
-		en->onCollisionX();
-		en->onCollisionY();
-	}
+	if (colType != ColisionType::noColision) {
+		cout << colType << " tell" << endl;
+		if (colType == ColisionType::horizontal) en->onCollisionX();
+		else if (colType == ColisionType::vertical) en->onCollisionY();
+		else if (colType == ColisionType::both) {
+			en->onCollisionX();
+			en->onCollisionY();
+		}
+	}	
 }

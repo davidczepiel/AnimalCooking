@@ -239,6 +239,7 @@ public:
 		colSystem->addCollider(shelf0);
 		
 		colSystem->addCollider(dish);
+		colSystem->addCollider(i);
 	}
 
 private:

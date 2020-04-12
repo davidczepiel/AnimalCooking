@@ -34,6 +34,8 @@ private:
 
 	list<SDL_Rect> collisions(SDL_Rect body);
 
+	void changeBackCol(std::list<SDL_Rect>& collisions, const SDL_Rect& col);
+
 	bool checkCollision(const SDL_Rect& body, const SDL_Rect& other, list<SDL_Rect>& collisions);
 	ColisionType resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel);
 
