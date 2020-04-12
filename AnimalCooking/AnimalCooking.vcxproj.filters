@@ -373,6 +373,7 @@
     <ClCompile Include="Adversity.cpp" />
     <ClCompile Include="RainAdversity.cpp" />
     <ClCompile Include="HookAdversity.cpp" />
+    <ClCompile Include="PlaneAdversity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -781,6 +782,7 @@
     <ClInclude Include="AdversityManager.h" />
     <ClInclude Include="RainAdversity.h" />
     <ClInclude Include="HookAdversity.h" />
+    <ClInclude Include="PlaneAdversity.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
