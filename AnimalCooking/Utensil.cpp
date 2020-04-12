@@ -41,6 +41,7 @@ void Utensil::update() {
 				dirty_ = true;
 				myDirt_ = maxDirt_;
 				dirtTimer_->timerReset();
+				resetDirtTimer();
 			}
 		}
 	}
@@ -125,8 +126,12 @@ void Utensil::action1(int player) {
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	//Este método es parte de las adversidades, hay que ver
-	//cómo se administra esto, como se le quita tiempo al timer de ensuciarse
+	dirtTimer_->setTime(dirtTimer_->getTime()+speedModifier);
+}
+
+void Utensil::resetDirtTimer()
+{
+	dirtTimer_->setTime(maxTimeOnFloor_);
 }
 
 void Utensil::cleanUp() {

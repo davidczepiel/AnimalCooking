@@ -61,6 +61,7 @@ public:
 	virtual void onPick();
 	void cleanUp();
 	void changeDirtySpeed(int speedModifier);
+	void resetDirtTimer();
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 
 };
