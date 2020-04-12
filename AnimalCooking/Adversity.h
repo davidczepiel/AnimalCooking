@@ -3,6 +3,7 @@
 
 class Adversity
 {
+protected:
 	AdversityManager* adversityMngr_;
 
 public:
