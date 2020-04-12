@@ -371,7 +371,7 @@
     <ClCompile Include="IngredientViewer.cpp" />
     <ClCompile Include="AdversityManager.cpp" />
     <ClCompile Include="Adversity.cpp" />
-    <ClCompile Include="RainAdversity.cpp" />
+    <ClCompile Include="PlaneAdversity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -778,7 +778,7 @@
       <Filter>Header Files\Adders</Filter>
     </ClInclude>
     <ClInclude Include="AdversityManager.h" />
-    <ClInclude Include="RainAdversity.h" />
+    <ClInclude Include="PlaneAdversity.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

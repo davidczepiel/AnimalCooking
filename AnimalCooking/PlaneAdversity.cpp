@@ -14,7 +14,7 @@ void PlaneAdversity::update() {
 	planeRect_.y += velocity_;
 
 	for (Ingredient* i : adversityMngr_->getIngredientsPool()->getPool()) {
-		i->setPos(i->getPos() + Vector2D(0, force_));
+		i->setPos(i->getPos() + Vector2D(0, force_));		//delta time ¿?
 	}
 }
 
