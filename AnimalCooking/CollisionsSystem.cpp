@@ -108,7 +108,7 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 
 	//Check de colisiones con los bordes del mundo
 	if (pos.getX() < 0)
-		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-size.getX()), size.getY()));
+		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX()), size.getY()));
 	else if (pos.getX() + size.getX() > game_->getWindowWidth())
 		cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
 	if (pos.getY() < 0)

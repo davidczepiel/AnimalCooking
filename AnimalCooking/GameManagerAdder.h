@@ -8,6 +8,7 @@ class EntityManager;
 class UtensilsPool;
 class FoodPool;
 class IngredientsPool;
+class CollisionsSystem;
 
 class GameManagerAdder
 {
@@ -16,5 +17,6 @@ public:
 	
 private:
 	void initializeComponent(const string& component, Entity* entity);
+	void initializeCollisionSystem(CollisionsSystem* gameManager, std::array<Entity*, 2>& player, IngredientsPool* ip);
 };
 
