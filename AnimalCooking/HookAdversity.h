@@ -28,6 +28,10 @@ class HookAdversity :
 	void Catching(int advancedTicks);
 	void Lifting(int advancedTicks);
 	void GoingDown(int advancedTicks);
+	void Ending(int advancedTicks);
+	void Start();
+	void Move(bool down, int advancedTicks);
+	void SetContentPos(Transform* contentHook1, Transform* contentHook2);
 public:
 	HookAdversity(AdversityManager* am);
 	virtual void update();
