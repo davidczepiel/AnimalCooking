@@ -20,7 +20,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{Basic, Platera,"../AnimalCooking/resources/images/platera.png"},
 	{Basic, ComidaCocinada,"../AnimalCooking/resources/images/comidaCocinada.jpg"},
-	{Basic, Tomato,"../AnimalCooking/resources/images/tomato.png"},
+	{Basic, Tomato,"../AnimalCooking/resources/images/tomateCortado.png"},
 	{Basic, Onion,"../AnimalCooking/resources/images/onion.png"},
 	{Basic, Cuchillo,"../AnimalCooking/resources/images/cuchillo.png"},
 	{Basic, CuchilloSucio,"../AnimalCooking/resources/images/cuchilloSucio.jpg"},
