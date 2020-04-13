@@ -34,6 +34,7 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
+		CookerOverHeated,
 		Platera,
 		Cuchillo,
 		CuchilloSucio,

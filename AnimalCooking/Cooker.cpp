@@ -24,6 +24,7 @@ void Cooker::setCookerState(CookerStates s) {
 		case CookerStates::cooking: setCookingTexture(); break;
 		case CookerStates::cooked:  setCookedTexture(); break;
 		case CookerStates::burned:  setBurnedTexture(); break;
+		case CookerStates::overheated: setOverHeatedTexture(); break;
 	}
 	state_ = s; 
 };

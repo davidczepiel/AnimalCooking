@@ -6,7 +6,7 @@
 #include"Interactive.h"
 #include "Entity.h"
 
-enum class CookerStates { empty, cooking, cooked, burned };
+enum class CookerStates { empty, cooking, cooked, burned, overheated };
 class Food;
 class InsertExpel;
 class Cooker:public Interactive {
@@ -22,6 +22,7 @@ public:
 	inline void setBurnedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
 	inline void setCookingTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooking); };
 	inline void setCookedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
+	inline void setOverHeatedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerOverHeated); };
 	Timer* getCookerTimer() { return timer_; };
 	Uint32 getCookingTime() { return cookingTime_; }
 	vector<Food*>& getFoods() { return foods_; }
@@ -31,8 +32,6 @@ public:
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2,Entity* e);
-
-	
 
 	Texture* texture_;
 	Entity* entity_;

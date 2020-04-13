@@ -18,6 +18,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{Basic, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
 	{Basic, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
+	{Basic, CookerOverHeated,"../AnimalCooking/resources/images/sartenoverheated.png"},
 	{Basic, Platera,"../AnimalCooking/resources/images/platera.png"},
 	{Basic, ComidaCocinada,"../AnimalCooking/resources/images/comidaCocinada.jpg"},
 	{Basic, ComidaMuerta,"../AnimalCooking/resources/images/comidaMuerta.png"},
