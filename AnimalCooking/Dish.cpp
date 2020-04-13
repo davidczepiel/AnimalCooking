@@ -12,6 +12,7 @@ void Dish::addFood(Food* f)
 	{
 		foods_.emplace_back(f);			
 		currentFood = ++(foods_.rbegin());		
+		f->setCanInteract(false);
 	}
 }
 
