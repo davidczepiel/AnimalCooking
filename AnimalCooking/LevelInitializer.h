@@ -25,6 +25,7 @@ private:
 	void initialize_dishes();
 	void initialize_gameManager();
 	void initialize_foodGivers();
+	void initialize_feedback();
 
 	double casilla;
 

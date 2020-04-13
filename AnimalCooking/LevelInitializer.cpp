@@ -13,6 +13,7 @@
 #include "DishAdder.h"
 #include "GameManagerAdder.h"
 #include "FoodGiverAdder.h"
+#include "FeedBack.h"
 
 #include "SDLGame.h"
 
@@ -134,6 +135,15 @@ void LevelInitializer::initialize_gameManager()
 void LevelInitializer::initialize_foodGivers()
 {
 	FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_feedback()
+{
+	Entity* feedbackEntity = emPlaystate->addEntity();
+	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
+	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
 
 	sL->updateLength();
 }
