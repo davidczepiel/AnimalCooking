@@ -3,6 +3,7 @@
 #include "InteractionRect.h"
 #include "Selector.h"
 #include "Attack.h"
+#include "Animator.h"
 #include "PlayerController.h"
 #include "PlayerViewer.h"
 #include "LevelInitializer.h"
@@ -29,6 +30,7 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 
 void PlayersAdder::players_addComponents(Entity* entity)
 {
+	entity->addComponent<Animator>();
 	entity->addComponent<PlayerMotion>();
 	entity->addComponent<Selector>();
 	entity->addComponent<InteractionRect>();

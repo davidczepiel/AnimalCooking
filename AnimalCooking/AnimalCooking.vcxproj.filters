@@ -335,6 +335,43 @@
     <ClCompile Include="Animator.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="BinAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="CookersAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="DishAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodGiverAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodPoolAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManagerAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelInitializer.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayersAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="ShelfAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="SinkAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilsAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="IngAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -706,6 +743,42 @@
     </ClInclude>
     <ClInclude Include="Animator.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BinAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="CookersAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="DishAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiverAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodPoolAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManagerAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="IngAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelInitializer.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShelfAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsAdder.h">
+      <Filter>Header Files\Adders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
