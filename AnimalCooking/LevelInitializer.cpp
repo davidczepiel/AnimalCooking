@@ -42,6 +42,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_dishes();
 	initialize_gameManager();
 	initialize_foodGivers();
+	initialize_feedback();
 }
 
 void LevelInitializer::initialize_players()
