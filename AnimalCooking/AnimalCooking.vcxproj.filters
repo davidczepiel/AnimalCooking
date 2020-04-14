@@ -329,7 +329,6 @@
     </ClCompile>
     <ClCompile Include="FoodGiver.cpp" />
     <ClCompile Include="FoodGiverViewer.cpp" />
-    <ClCompile Include="IngredientViewer.cpp" />
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
@@ -822,6 +821,12 @@
     </Filter>
     <Filter Include="Source Files\Interfaces">
       <UniqueIdentifier>{df1ad3d3-5a36-4048-a7d5-3a890ba2c29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Adders">
+      <UniqueIdentifier>{a06161c1-ddd5-4cc0-8a3f-787e8effada0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Adders">
+      <UniqueIdentifier>{0c21c7b9-4140-42bd-8aa6-a96ded1d4c17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,10 @@ public:
 	virtual void action3(int player) {};
 	virtual void action4(int player) {};
 
+	void setTransports(Transport* transportP1, Transport* transportP2) {
+		player1_ = transportP1;
+		player2_ = transportP2;
+	}
 
 protected:
 
