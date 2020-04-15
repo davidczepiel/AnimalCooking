@@ -20,6 +20,7 @@ enum CmpId : CmpIdType {
 	GameLoader,
 	GameLogic,
 	GameSave,
+	FeedBack,
 
 	Attack, //Player
 	PlayerController,
@@ -90,9 +91,9 @@ enum CmpId : CmpIdType {
 enum GroupID : Group {
 	Layer1,
 	Layer2,
-	Layer3,
-	Layer4,
-	Layer5,
+	FoodLayer,
+	FeedBackLayer,
+	PlayerLayer,
 	_LastGroupId_	//Identify the max number of groups
 };
 

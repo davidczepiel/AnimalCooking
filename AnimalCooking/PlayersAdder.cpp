@@ -13,7 +13,7 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 {
 	for (int i = 0; i < players.size(); ++i) {
 		players_initializeTransform(i, casillaLength);
-		players_addComponents(players[i]);
+		players_addComponents(players[i], i);
 	}
 
 	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
@@ -28,7 +28,7 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 	}
 }
 
-void PlayersAdder::players_addComponents(Entity* entity)
+void PlayersAdder::players_addComponents(Entity* entity, int id)
 {
 	entity->addComponent<Animator>();
 	entity->addComponent<PlayerMotion>();
@@ -36,7 +36,7 @@ void PlayersAdder::players_addComponents(Entity* entity)
 	entity->addComponent<InteractionRect>();
 	entity->addComponent<Attack>();
 	entity->addComponent<Transport>();
-	entity->addComponent<PlayerController>();
+	entity->addComponent<PlayerController>(id);
 }
 
 void PlayersAdder::players_initializeTransform(size_t player, const double casillaLength) // VER ENTITIES

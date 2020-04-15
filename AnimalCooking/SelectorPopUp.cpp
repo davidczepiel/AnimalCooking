@@ -16,7 +16,6 @@ void SelectorPopUp::update()
 			if (Collisions::collidesWithRotation(it1_->getPos(), it1_->getW(), it1_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())
 				&& tP1->getObjectInHands() != it) {
 				sl1_->setSelect(it);
-				cout << "SelectorPopUP"<<endl;
 			}
 			//Si colisiona el rect del player2 con el interactuable
 			if (Collisions::collidesWithRotation(it2_->getPos(), it2_->getW(), it2_->getH(), 0, it->getPos(), it->getSize().getX(), it->getSize().getY(), it->getRot())

@@ -1,7 +1,7 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2), content(c) {
+Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
 	addComponent<ShelfViewer>(this);
 	dishFinisher=addComponent<DishFinisher>(p1,p2);
 	position_ = pos;
@@ -100,6 +100,13 @@ void Shelf::action5(int id)
       dishFinisher->finish(id,d);
 	}
 	
+}
+
+void Shelf::feedback(int player)
+{
+	if (contentType != Resources::PickableType::none) {
+		content->feedback(player);
+	}
 }
 
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {

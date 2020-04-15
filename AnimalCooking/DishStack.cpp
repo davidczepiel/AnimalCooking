@@ -1,7 +1,8 @@
 #include "DishStack.h"
 #include "DishStackViewer.h"
 
-DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_), maxDishes(maxDishes_), dishPool(dp),foodPool(fp)
+
+DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_,nullptr), maxDishes(maxDishes_), dishPool(dp),foodPool(fp)
 {
 	position_ = pos;
 	size_ = Vector2D(128, 128);
@@ -56,4 +57,24 @@ void DishStack::action1(int id)
 		player->drop(false);
 		player->pick(d, Resources::PickableType::Dish);
 	}
+}
+
+void DishStack::feedback(int id)
+{
+	SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
+
+	if (id == Resources::Player::Player1)
+	{
+		if (player1_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+	}
+	else
+	{
+		if (player2_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+	}
+
+	if(feedbackVisual_ !=nullptr) feedbackVisual_->render(r);
+	feedbackVisual_ = nullptr;
+	
 }

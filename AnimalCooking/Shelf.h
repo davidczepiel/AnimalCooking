@@ -28,6 +28,7 @@ public:
 	virtual void action3(int id);
 	virtual void action4(int id);
 	virtual void action5(int id);
+	virtual void feedback(int player);
 	void onMoved(int id);
 	Pickable* getContent() { return content; }
 };

@@ -56,7 +56,10 @@ protected:
 class Tomato : public Ingredient 
 {
 public:
-	Tomato() : Ingredient(Resources::tomato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Tomato() : Ingredient(Resources::tomato) { 
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); 
+
+	}
 	~Tomato() {}
 };
 
