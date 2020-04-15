@@ -7,6 +7,9 @@ void PlayerController::init()
 	ir_ = GETCMP1_(InteractionRect);
 	selector_ = GETCMP1_(Selector);
 	attack_ = GETCMP1_(Attack);
+	animator = GETCMP1_(Animator);
+
+	animator->setCurrentState(Animator::States::Idle);
 
 	if (id_ == 0) {
 		keys.up = SDLK_w;
@@ -117,8 +120,11 @@ void PlayerController::keyUpdate()
 			}
 		}
 		//else tr_->setVelX(0);
-
+		
 		ir_->setDir(x, y);
+
+		if(tr_->getVel().getX()!=0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
+
 		//--------------------Botones
 
 		if (keyboard->isKeyDown(SDLK_k) && selector_ != nullptr)
@@ -133,6 +139,7 @@ void PlayerController::keyUpdate()
 		if (keyboard->isKeyDown(SDLK_p))
 		{
 			attack_->attack();
+			animator->setCurrentState(Animator::States::Attack);
 		}
 
 		if (keyboard->isKeyDown(SDLK_e) && selector_ != nullptr)
@@ -166,11 +173,14 @@ void PlayerController::keyUpdate()
 				i->action5(id_);
 				i = nullptr;
 			}
-		}
+
+		
 
 	}
 	else {
 		tr_->setVelX(0);
-		tr_->setVelY(0);
+		tr_->setVelY(0);	
 	}
+
+	if(keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);	 
 }
