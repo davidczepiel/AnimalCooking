@@ -5,7 +5,9 @@
 class PlayState : public State
 {
 public:
+
 	PlayState(EntityManager* em) : State(em) {
+
 	}
 
 private:

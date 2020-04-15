@@ -38,9 +38,9 @@ void PlayerController::joystickUpdate()
 	if (gpad->joysticksInitialised()) {
 		double x = 0, y = 0;	//interactive
 		//Axis------------------------
-		if (gpad->xvalue(id_, 1) > 0 ||	gpad->xvalue(id_, 1) < 0)
+		if (gpad->xvalue(id_, 1) > 0 || gpad->xvalue(id_, 1) < 0)
 		{
-			tr_->setVelX(gpad->xvalue(id_,1));
+			tr_->setVelX(gpad->xvalue(id_, 1));
 			x = gpad->xvalue(id_, 1);
 		}
 		else {
@@ -48,7 +48,7 @@ void PlayerController::joystickUpdate()
 		}
 		if (gpad->yvalue(id_, 1) > 0 || gpad->yvalue(id_, 1) < 0)
 		{
-			tr_->setVelY(gpad->yvalue(id_,1));
+			tr_->setVelY(gpad->yvalue(id_, 1));
 			y = gpad->xvalue(id_, 1);
 		}
 		else {
@@ -80,14 +80,46 @@ void PlayerController::keyUpdate()
 
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
-		int x = 0, y = 0;	
-		if (keyboard->isKeyDown(keys.up)) { tr_->setVelY(-1); y = -1; }
-		else if (keyboard->isKeyDown(keys.down)) { tr_->setVelY(1); y = 1; }
-		else { tr_->setVelY(0); }
+		int x = 0, y = 0;
+		if (keyboard->isKeyDown(keys.up)) {
+			tr_->setVelY(-1); y = -1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		else if (keyboard->isKeyDown(keys.down)) {
+			tr_->setVelY(1); y = 1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		//else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) { tr_->setVelX(1);  x = 1;	}
-		else if (keyboard->isKeyDown(keys.left)) { tr_->setVelX(-1); x = -1; }
-		else { tr_->setVelX(0);}
+		if (keyboard->isKeyDown(keys.right)) {
+			tr_->setVelX(1);  x = 1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		else if (keyboard->isKeyDown(keys.left)) {
+			tr_->setVelX(-1); x = -1;
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr)
+			{
+				i->onMoved(id_);
+				i = nullptr;
+			}
+		}
+		//else tr_->setVelX(0);
 		
 		ir_->setDir(x, y);
 
@@ -95,18 +127,55 @@ void PlayerController::keyUpdate()
 
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(SDLK_k) && selector_!= nullptr)
-		{ 
+		if (keyboard->isKeyDown(SDLK_k) && selector_ != nullptr)
+		{
 			Interactive* i = selector_->getSelect();
-			if(i!= nullptr)
-			i->action1(id_);
-			i = nullptr;
+			if (i != nullptr)
+			{
+				i->action1(id_);
+				i = nullptr;
+			}
 		}
 		if (keyboard->isKeyDown(SDLK_p))
-		{ 
-			attack_->attack(); 
+		{
+			attack_->attack();
 			animator->setCurrentState(Animator::States::Attack);
 		}
+
+		if (keyboard->isKeyDown(SDLK_e) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action2(id_);
+				i = nullptr;
+			}
+		}
+		if (keyboard->isKeyDown(SDLK_q) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action3(id_);
+				i = nullptr;
+			}
+		}
+		if (keyboard->isKeyDown(SDLK_f) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action4(id_);
+				i = nullptr;
+			}
+		}
+		if (keyboard->isKeyDown(SDLK_r) && selector_ != nullptr)
+		{
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action5(id_);
+				i = nullptr;
+			}
+
+		}
+
 	}
 	else {
 		tr_->setVelX(0);

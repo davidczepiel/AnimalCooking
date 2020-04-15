@@ -14,6 +14,7 @@ void InteractionRect::draw()
 
 void InteractionRect::update()
 {
-	pos_.set(tr_->getPos().getX() +tr_->getW() / 2  + radius * dir_.getX() - size_.getX() / 2, 
-			 tr_->getPos().getY() + radius * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2 );
+	if (!(dir_.getX() == 0 && dir_.getY() == 0))
+		pos_.set(tr_->getPos().getX() + tr_->getW() / 2 + radius * dir_.getX() - size_.getX() / 2,
+			tr_->getPos().getY() + radius * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2);
 }
