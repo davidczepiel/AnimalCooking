@@ -174,7 +174,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 
-		
+		}
 
 	}
 	else {
