@@ -117,7 +117,7 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool),casilla);
 
 	sL->updateLength();
 }
