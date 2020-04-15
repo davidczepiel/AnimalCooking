@@ -23,6 +23,10 @@ public:
 	virtual void action5(int player) {};
 	virtual void onMoved(int player) {};
 
+	void setTransports(Transport* transportP1, Transport* transportP2) {
+		player1_ = transportP1;
+		player2_ = transportP2;
+	}
 
 protected:
 
