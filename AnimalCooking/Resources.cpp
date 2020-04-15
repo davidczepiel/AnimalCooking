@@ -38,7 +38,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
-	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"}
+	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"},
 	
 
 	//FeedBack
@@ -49,7 +49,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, PlatoFeedBack,"../AnimalCooking/resources/images/platoFeedBack.png"},
 	{Basic, Panel,"../AnimalCooking/resources/images/panel.png"},
 	{Basic, Coger,"../AnimalCooking/resources/images/coger.png"},
-	{Basic, Dejar,"../AnimalCooking/resources/images/dejar.png"},
+	{Basic, Dejar,"../AnimalCooking/resources/images/dejar.png"}
 
 };
 
