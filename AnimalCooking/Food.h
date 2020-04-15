@@ -25,6 +25,9 @@ public:
 	void startTimer() {
 		//timer_.timerStart();
 	}
+	void resetTimer() {
+		timer_.timerReset();
+	}
 
 	Resources::FoodType getType() { return type_; }
 
@@ -36,6 +39,7 @@ public:
 	virtual void feedback();
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
+
 };
 
 class SlicedTomato : public Food

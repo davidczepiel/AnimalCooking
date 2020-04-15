@@ -1,5 +1,4 @@
 #pragma once
-
 #include "State.h"
 #include "Manager.h"
 
@@ -7,7 +6,9 @@
 class PlayState : public State
 {
 public:
+
 	PlayState(EntityManager* em) : State(em) {
+
 	}
 
 private:

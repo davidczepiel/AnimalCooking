@@ -334,15 +334,26 @@
     </ClCompile>
     <ClCompile Include="FeedBack.cpp" />
     <ClCompile Include="UtensilsAdder.cpp">
+    <ClCompile Include="Animator.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="BinAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="CookersAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="DishAdder.cpp">
+      <Filter>Source Files\Adders</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodGiverAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
     <ClCompile Include="FoodPoolAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
     <ClCompile Include="GameManagerAdder.cpp">
-      <Filter>Source Files\Adders</Filter>
-    </ClCompile>
-    <ClCompile Include="IngAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
     <ClCompile Include="LevelInitializer.cpp">
@@ -357,19 +368,12 @@
     <ClCompile Include="SinkAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
-    <ClCompile Include="FoodGiverAdder.cpp">
+    <ClCompile Include="UtensilsAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
-    <ClCompile Include="DishAdder.cpp">
+    <ClCompile Include="IngAdder.cpp">
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
-    <ClCompile Include="BinAdder.cpp">
-      <Filter>Source Files\Adders</Filter>
-    </ClCompile>
-    <ClCompile Include="CookersAdder.cpp">
-      <Filter>Source Files\Adders</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -740,6 +744,9 @@
       <Filter>Header Files\Food</Filter>
     </ClInclude>
     <ClInclude Include="FeedBack.h" />
+    <ClInclude Include="Animator.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
     <ClInclude Include="BinAdder.h">
       <Filter>Header Files\Adders</Filter>
     </ClInclude>

@@ -29,6 +29,7 @@ enum CmpId : CmpIdType {
 	Transport,
 	Selector,
 	InteractionRect,
+	Animator,
 
 	DishPool,		//Dish
 	DishMotion,

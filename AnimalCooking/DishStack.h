@@ -4,12 +4,13 @@
 #include "Entity.h"
 #include "SDLGame.h"
 #include "Transport.h"
+#include "FoodPool.h"
 
 class DishStack : public Entity,public Interactive
 {
 public:
 
-	DishStack(Vector2D pos,int maxDishes_,Transport* t1,Transport* t2,EntityManager* mng,DishPool* dp);
+	DishStack(Vector2D pos,int maxDishes_,Transport* t1,Transport* t2,EntityManager* mng,DishPool* dp,FoodPool* fp);
 	 ~DishStack() { }
 
 
@@ -20,5 +21,6 @@ public:
 private:
 	int maxDishes;
 	DishPool* dishPool = nullptr;
+	FoodPool* foodPool = nullptr;
 };
 

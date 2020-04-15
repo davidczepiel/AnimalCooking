@@ -36,6 +36,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{Basic, Suelo,"../AnimalCooking/resources/images/suelo.png"},
 	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
+	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
+	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
+	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"}
+	
 
 	//FeedBack
 	{Basic, TomatoFeedBack,"../AnimalCooking/resources/images/feedbackTomate.png"},
@@ -47,9 +51,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Coger,"../AnimalCooking/resources/images/coger.png"},
 	{Basic, Dejar,"../AnimalCooking/resources/images/dejar.png"},
 
-	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
-	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
-	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

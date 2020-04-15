@@ -5,10 +5,12 @@
 
 class DishFinisher : public Component {
 public:
-	DishFinisher(Transport* tr);
+	DishFinisher(Transport* tr1,Transport* tr2);
 	~DishFinisher();
-	void finish();
+	void finish(int id,Dish* d);
 
 private:
-	Transport* tr_;
+	Transport* tr1_;
+	Transport* tr2_;
+
 };
