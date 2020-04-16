@@ -130,7 +130,7 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla);
+	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla);
 
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 

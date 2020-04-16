@@ -6,7 +6,7 @@
 #include "LoadingBarViewer.h"
 #include "LevelInitializer.h"
 
-constexpr double step_ = 1.0 / 17.0; //17 es el numero de pasos (5 de carga de recursos + 12 de carga de nivel)
+constexpr double step_ = 1.0 / 18.0; //18 es el numero de pasos (5 de carga de recursos + 13 de carga de nivel)
 
 ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
