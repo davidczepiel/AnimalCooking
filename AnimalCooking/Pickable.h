@@ -13,8 +13,8 @@ public:
 
 protected:
 	Vector2D speed_;
-	Pickable() : Interactive(nullptr, nullptr) {}
-	Pickable(Transport* p1, Transport* p2): Interactive(p1,p2) {}
+	Pickable() : Interactive(nullptr, nullptr, nullptr) {}
+	Pickable(Transport* p1, Transport* p2, Texture* t): Interactive(p1,p2,t) {}
 	~Pickable() {};
 	//Los updates de las clases hijas deben llamar a este update
 	virtual void update() {

@@ -27,6 +27,7 @@ private:
 	void initialize_gameManager();
 	void initialize_foodGivers();
 	void initialize_colSystem();
+	void initialize_feedback();
 
 	double casilla;
 
