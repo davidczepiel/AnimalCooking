@@ -370,6 +370,8 @@
       <Filter>Source Files\Adders</Filter>
     </ClCompile>
     <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="FeedBack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -776,6 +778,8 @@
     <ClInclude Include="UtensilsAdder.h">
       <Filter>Header Files\Adders</Filter>
     </ClInclude>
+    <ClInclude Include="Animator.h" />
+    <ClInclude Include="FeedBack.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
