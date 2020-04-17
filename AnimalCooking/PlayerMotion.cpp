@@ -8,5 +8,5 @@ void PlayerMotion::init()
 
 void PlayerMotion::update()
 {
-	tr_->setPos(tr_->getPos() + tr_->getVel()*SPEED);
+	tr_->setPos(tr_->getPos() + tr_->getVel() * SPEED);
 }

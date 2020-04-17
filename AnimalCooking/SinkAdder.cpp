@@ -22,6 +22,7 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 		for (int i = 0; i < components.size(); ++i) { // Iniciliza en sink componentes extra si los hay
 			initializeComponent(components[i].as_string(), sink);
 		}
+		interactives_.push_back(sink);
 	}
 }
 

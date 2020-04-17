@@ -175,6 +175,7 @@
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
+    <ClInclude Include="CollisionsSystem.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConfigState.h" />
     <ClInclude Include="Converter.h" />
@@ -314,6 +315,7 @@
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="CollisionsSystem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigState.cpp" />
     <ClCompile Include="Converter.cpp" />

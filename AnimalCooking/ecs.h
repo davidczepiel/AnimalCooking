@@ -20,6 +20,7 @@ enum CmpId : CmpIdType {
 	GameLoader,
 	GameLogic,
 	GameSave,
+	CollisionsSystem,
 	FeedBack,
 
 	Attack, //Player
@@ -74,6 +75,8 @@ enum CmpId : CmpIdType {
 	SoundManager,
 	SelectorPopUp,
 	SelectorPopUpEntity,
+	Physics,
+	PhysicsPool,
 
 	ButtonBehaviour, //Buttons
 	ButtonRenderer,
