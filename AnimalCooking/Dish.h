@@ -3,11 +3,12 @@
 #include "Pickable.h"
 #include <list>
 
+class DishStack;
 class Dish : public Pickable
 {
  public:
-	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2);
-	~Dish() { }
+	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, DishStack* dT);
+	~Dish();
 	//Añade un alimento al plato	
 	void addFood(Food* f);
 	
@@ -36,6 +37,7 @@ class Dish : public Pickable
  private:
 	 vector<Food*>::iterator currentFood;
 	 vector<Food*> foods_;
+	 DishStack* dishStack;
 	 bool inHands;
 };
 

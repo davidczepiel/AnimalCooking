@@ -1,7 +1,12 @@
 #include "Dish.h"
+#include "DishStack.h"
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>())
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, DishStack* dT) : Pickable(transPlayer1, transPlayer2),foods_(vector<Food*>()),dishStack(dT)
 {
+}
+
+Dish::~Dish() {
+	dishStack->removeDish(this);
 }
 
 // si el vector estaba vacío pone el iterador al principio
