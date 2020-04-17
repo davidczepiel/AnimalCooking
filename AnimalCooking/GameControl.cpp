@@ -1,11 +1,15 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp) : Component(ecs::GameControl)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, Resources::Level level) : Component(ecs::GameControl)
 {
 	utensilsPool = u;
 	foodPool = fp;
 	tP1 = p1;
 	tP2 = p2;
+	ingPool_ = ip;
+
+	string ruta = "../AnimalCooking/resources/cfg/nivel" + std::to_string(level - 1) + ".cfg";
+	jsonLevel = jute::parser::parse_file(ruta);
 }
 
 

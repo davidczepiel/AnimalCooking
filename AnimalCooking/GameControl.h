@@ -1,16 +1,16 @@
 #pragma once
-
 #include "Component.h"
 #include "IngredientsPool.h"
 #include "Food.h"
 #include "UtensilsPool.h"
 #include "GameLogic.h"
 #include "FoodPool.h"
+#include "jute.h"
 
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,Resources::Level level);
     ~GameControl() {}
 
     void init() override {}
@@ -25,4 +25,6 @@ private:
     UtensilsPool* utensilsPool;
     Transport* tP1;
     Transport* tP2;
+	jute::jValue jsonLevel;
+	jute::jValue jsonGeneral;
 };
