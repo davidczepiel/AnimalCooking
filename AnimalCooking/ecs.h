@@ -52,6 +52,7 @@ enum CmpId : CmpIdType {
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
+	OrderServiceViewer,
 	SinkViewer,
 
 

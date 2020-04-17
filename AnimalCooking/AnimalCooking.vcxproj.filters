@@ -333,6 +333,8 @@
     <ClCompile Include="FoodConfig.cpp">
       <Filter>Source Files\Food</Filter>
     </ClCompile>
+    <ClCompile Include="OrderService.cpp" />
+    <ClCompile Include="OrderServiceViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimalCooking.h">
@@ -705,6 +707,8 @@
     <ClInclude Include="Order.h">
       <Filter>Header Files\Clients</Filter>
     </ClInclude>
+    <ClInclude Include="OrderService.h" />
+    <ClInclude Include="OrderServiceViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
