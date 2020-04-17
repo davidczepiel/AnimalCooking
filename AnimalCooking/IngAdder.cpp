@@ -39,7 +39,7 @@ void IngAdder::makeIngredient(int type, int n)
 	i->setVel(Vector2D(0, 0));
 	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_double() * casillaLength,
 		jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_double() * casillaLength));
-	GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);
+	/*GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);*/
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

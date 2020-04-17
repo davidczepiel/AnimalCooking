@@ -45,7 +45,6 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gamemanager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gamelogic.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gameloader.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gamecontrol.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\fsm.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodviewer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\foodtextures.obj
@@ -65,6 +64,7 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\manager.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\main.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\loadingbarviewer.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\levelinitializer.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\jute.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\interactive.obj
@@ -128,11 +128,12 @@ c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\transport.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\transform.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\timerviewer.obj
-c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\levelinitializer.obj
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gamecontrol.obj
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.exe
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.ilk
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\animalcooking.pdb
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\animalcooking.res
+c:\users\felip\onedrive\desktop\programas\github\animalcooking\animalcooking\x64\debug\gamecontrol.new.obj.enc
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\\animalcooking\animalcooking.pdb
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\\animalcooking\animalcooking.exe
 c:\users\felip\onedrive\desktop\programas\github\animalcooking\\animalcooking\animalcooking.ilk

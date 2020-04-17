@@ -13,13 +13,13 @@ public:
     GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,Resources::Level level);
     ~GameControl() {}
 
-    void init() override {}
-    void update() override {}
+	void init() override;
+	void update() override;
     void newIngredient();
     Food* newFood(Resources::FoodType type, Vector2D pos);
     void newFood(Food* f, Vector2D pos);
 private:
-    Ingredient* newIngType();
+    Ingredient* newIngType(const string& s);
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
     UtensilsPool* utensilsPool;
@@ -27,4 +27,5 @@ private:
     Transport* tP2;
 	jute::jValue jsonLevel;
 	jute::jValue jsonGeneral;
+	bool startSpawning = true;
 };

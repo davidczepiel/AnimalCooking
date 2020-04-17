@@ -1,5 +1,6 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
+
 GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, Resources::Level level) : Component(ecs::GameControl)
 {
 	utensilsPool = u;
@@ -8,58 +9,105 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 	tP2 = p2;
 	ingPool_ = ip;
 
-	string ruta = "../AnimalCooking/resources/cfg/nivel" + std::to_string(level - 1) + ".cfg";
-	jsonLevel = jute::parser::parse_file(ruta);
+	const string rutaNivel = "../AnimalCooking/resources/cfg/nivel" + std::to_string(level - 1) + ".cfg";
+	jsonLevel = jute::parser::parse_file(rutaNivel);
+
+	const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
+	jsonGeneral = jute::parser::parse_file(rutaGeneral);
 }
 
+void GameControl::init()
+{
+	
+}
 
-void GameControl::newIngredient() {
-	double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
-	Ingredient* ing = newIngType(); // Se crea un ingrediente nuevo aleatorio 
-	ing->setTransform(50, 50, Vector2D(game_->getWindowWidth() + 50, y), Vector2D(-10, 0));
+void GameControl::update()
+{
+	if (startSpawning)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			newIngredient();
+		}
+
+		startSpawning = false;
+	}
+	
+}
+
+void GameControl::newIngredient() 
+
+{   // Se crea un ingrediente nuevo aleatorio
+	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
+	int n = SDLGame::instance()->getRandGen()->nextInt(0, ingsType.size());
+	string s = jsonLevel["IngredientsPool"]["entities"][n][0].as_string();	
+	Ingredient* ing = newIngType(s);  
+
+	double casilla = SDLGame::instance()->getWindowHeight() / 9;    
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casilla,
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casilla);
+
+   //double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
+	double y = game_->getRandGen()->nextInt(0, game_->getWindowHeight());
+    ing->setVel(Vector2D(-1,0));
+    ing->setPos(Vector2D(game_->getWindowWidth() + 50, y));
+	//ing->setTransform(50, 50, Vector2D(game_->getWindowWidth() + 50, y), Vector2D(-10, 0));
+
 	ingPool_->addIngredient(ing);
+
 	ing = nullptr;
 }
 
-Ingredient* GameControl::newIngType() {
-	Ingredient* i;
-	int random = SDLGame::instance()->getRandGen()->nextInt(1, 13);
-	switch (random) {
-	case 0:
+constexpr unsigned int str2int(const char* str, int h = 0)
+{
+	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+Ingredient* GameControl::newIngType(const string& s) {
+
+	Ingredient* i =nullptr;
+	
+	switch (str2int(s.c_str()))
+	{
+	case str2int("Tomato"):
 		i = new Tomato();
+		cout << "Tomato" << endl;
 		break;
-	case 1:
+	case str2int("Carrot"):
 		i = new Carrot();
 		break;
-	case 2:
+	case str2int("Lettuce"):
 		i = new Lettuce();
 		break;
-	case 3:
+	case str2int("Mushroom"):
 		i = new Mushroom();
 		break;
-	case 4:
+	case str2int("Sausage"):
 		i = new Sausage();
 		break;
-	case 5:
+	case str2int("Chicken"):
 		i = new Chicken();
 		break;
-	case 6:
+	case str2int("Meat"):
 		i = new Meat();
 		break;
-	case 7:
+	case str2int("Potato"):
 		i = new Potato();
 		break;
-	case 8:
+	case str2int("Onion"):
 		i = new Onion();
+		cout << "Onion" << endl;
 		break;
-	case 9:
+	case str2int("Clam"):
 		i = new Clam();
 		break;
-	case 10:
+	case str2int("Cheese"):
 		i = new Cheese();
 		break;
-	default:
+	case str2int("Fish"):
 		i = new Fish();
+		break;
+	default:
 		break;
 	}
 	return i;
