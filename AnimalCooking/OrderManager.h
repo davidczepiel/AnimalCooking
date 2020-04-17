@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "ScoreManager.h"
 #include <set>
+#include <list>
 
 class OrderManager : public Component {
 
@@ -31,7 +32,7 @@ public:
 
 	//playerDidIt indica si el jugador a conseguido el pedido o no para añadir puntos al scoreManager
 	//Los puntos que se añaden = numIngs del Order * 15
-	void removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
+	bool removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 
 	//PUEDE DEVOLVER VALORES A NULLPTR
 	vector<Order*>& getOrders();
@@ -51,7 +52,8 @@ private:
 	ScoreManager* scoreManager_;
 
 	vector<Order*>::iterator getFreePos();
-	vector<Order*>::iterator getIndexOf(Resources::FoodType finalProduct);
+	list<vector<Order*>::iterator>& getListOf(Resources::FoodType finalProduct);
+	vector<Order*>::iterator getFirst(const list<vector<Order*>::iterator>& lista);
 
 	set<Resources::FoodType> availableOrders_; // posibles platos en este nivel
 	vector<Order*> currentOrders_; //Vector para guardar los Order
