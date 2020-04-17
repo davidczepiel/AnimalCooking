@@ -16,11 +16,12 @@
 #include "OrderManager.h"
 #include "OrderViewer.h"
 #include "Food.h"
+#include "AIClient.h"
+
 class OrderService: public Entity, public Interactive
 {
 private:
-	Dish* orderSent;
-	bool ClientWantsOrder();
+	OrderManager* orderMngr;
 
 public:
 	OrderService(Vector2D pos, Transport* p1, Transport* p2, EntityManager* mng,ScoreManager* scoremanager);

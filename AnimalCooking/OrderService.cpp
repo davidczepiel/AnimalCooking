@@ -5,12 +5,11 @@ OrderService::OrderService(Vector2D pos, Transport* p1, Transport* p2, EntityMan
 	size_.setX(128*3);
 	size_.setY(128);
 	addComponent<OrderServiceViewer>(this);
-	addComponent<OrderManager>(3,size_.getX()/3,pos,scoreManager);
-	addComponent<OrderViewer>(size_.getX(),size_.getY());
-	//addComponent<AIClient>();
+	orderMngr =addComponent<OrderManager>(3,size_.getX()/3,pos,scoreManager);
+	addComponent<OrderViewer>(size_.getX(),size_.getY(), Vector2D(0,0));
+	addComponent<AIClient>();
 	position_ = pos;
-	orderSent= nullptr;
-	size_ = Vector2D(100, 100);
+	size_ = Vector2D(128*3, 128);
 }
 
 void OrderService::action1(int id)
@@ -26,8 +25,11 @@ void OrderService::action1(int id)
 		vector<Food*>* foods = &finalProduct->getFoodVector();
 		if (foods->size()==1)
 		{
-			player->drop(false);
-			//AIClients->recieveOrder(finalProduct);
+			Resources::FoodType type = foods->at(0)->getType();
+			if (orderMngr->removeOrder(type,true)) {
+				player->drop(false);
+				delete finalProduct;
+			}
 		}
 
 	}

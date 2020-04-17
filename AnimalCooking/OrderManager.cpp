@@ -1,7 +1,7 @@
 #include "OrderManager.h"
 #include "FoodDictionary.h"
 
-OrderManager::OrderManager() : OrderManager(2, 100, {100, 700})
+OrderManager::OrderManager() : OrderManager(2, 100, {100, 700},nullptr)
 {
 }
 
