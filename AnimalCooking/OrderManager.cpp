@@ -1,11 +1,11 @@
 #include "OrderManager.h"
 #include "FoodDictionary.h"
 
-OrderManager::OrderManager() : OrderManager(2, 100, {100, 700},nullptr)
+OrderManager::OrderManager() : OrderManager(2, 100, { 100, 700 })
 {
 }
 
-OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager = nullptr) : Component(ecs::OrderManager),
+OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager) : Component(ecs::OrderManager),
 		currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
 		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager)
 {
@@ -33,7 +33,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 				//Mete el pedido
 				*it = new Order( //Mete un order en la posicion libre			 
 					Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
-					game_->getTextureMngr()->getTexture(finalProduct), // OrderText
+					game_->getTextureMngr()->getTexture(Resources::Pedido + Resources::_FirstOfFoods_ - finalProduct), // OrderText
 					ings_.size(), // ingsSize
 					finalProduct, //Producto que da
 					45

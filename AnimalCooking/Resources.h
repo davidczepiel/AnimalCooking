@@ -37,7 +37,7 @@ public:
 		Ingrediente,
 		ComidaMuerta,
 		ComidaCocinada,
-		Pedido,
+		Pedido, //Justo despues de este van el resto de pedidos, en orden respecto a Resources::FoodType::_FirstOfFoods_
 		Papelera,
 		Cerdo,
 		Pollo,
@@ -166,6 +166,8 @@ public:
 		MashedMeatSkillet,
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
+		///
+		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
 		Salad,
 		Burger,

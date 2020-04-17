@@ -27,8 +27,8 @@ void OrderViewer::draw()
 			if (anger > 0.6) anger = 0.8; //Maximo anger de 0.8 
 
 			// Fondo
-			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_),  //Usa getAnger() para determinar que zona usar de la textura
-									   RECT(anger * (backGroundTexture_->getWidth() / 5), 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight()));
+			backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_)/*,  //Usa getAnger() para determinar que zona usar de la textura
+									   RECT(anger * (backGroundTexture_->getWidth() / 5), 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight())*/);
 
 			// El pedido final
 			orText->render(RECT(o->getPos().getX() + margin_.getX(), o->getPos().getY() + margin_.getY(), width_ - margin_.getX() * 2, height_ - margin_.getY() * 2));

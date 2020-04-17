@@ -12,7 +12,7 @@ public:
 
 	//deltaPosXBetweenOrder es el hueco a dejar entre pedido y pedido
 	//position es la posicion del primer pedido
-	OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager);
+	OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager = nullptr);
 
 	~OrderManager();
 
