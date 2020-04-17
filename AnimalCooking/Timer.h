@@ -33,37 +33,38 @@ protected:
 	bool timerStarted_;
 	bool timerEnd_;
 	
-
 	Vector2D pos_;
 	Vector2D size_;
 	double rot_;
-};
 
-class FoodTimer : public Timer {
-public:
-	FoodTimer() : Timer() { time_ = 5000; }
-	void draw() {}
+	SDL_Renderer* renderer_;
 };
 
 class LevelTimer : public Timer {
 public:
 	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; }
-	void draw() {}
+	void draw();
 
 	void update() {
-		if (isTimerEnd) {
+		if (timerEnd_) {
 			//Fin nivel
 		}
 	}
 };
 
+class FoodTimer : public Timer {
+public:
+	FoodTimer() : Timer() { time_ = 5000; }
+	void draw() {};
+};
+
 class CookerTimer : public Timer {
 public:
 	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; }
-	void draw() {}
+	void draw();
 
 	void update() {
-		if (isTimerEnd) {
+		if (timerEnd_) {
 			//Cocinar ingredientes
 		}
 	}

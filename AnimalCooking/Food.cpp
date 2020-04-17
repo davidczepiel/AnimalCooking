@@ -13,6 +13,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr),
+	timer_(FoodTimer()),
 	type_(type),
 	foodPool_(nullptr)
 {
@@ -48,6 +49,8 @@ void Food::draw()
 {
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	texture_->render(destRect);
+
+	timer_.draw();
 }
 
 void Food::onDrop(bool onFloor)
@@ -55,6 +58,7 @@ void Food::onDrop(bool onFloor)
 	if (onFloor) {
 		Pickable::onDrop(onFloor);
 		timer_.timerStart();
+		timer_.setPos(Vector2D(position_.getX(), position_.getY() + size_.getY() + 5 ));
 	}
 }
 

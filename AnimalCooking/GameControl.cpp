@@ -133,7 +133,8 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-	f->startTimer();
+	//f->startTimer();
+	f->onDrop(true);
 	return f;
 }
 

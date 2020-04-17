@@ -38,7 +38,7 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
-	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"}
+	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"},
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
