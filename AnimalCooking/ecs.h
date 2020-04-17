@@ -61,6 +61,7 @@ enum CmpId : CmpIdType {
 	FoodCooker,
 	InsertExpel,
 
+	AIClient,
 	OrderManager,	//Clients
 	OrderViewer,
 
