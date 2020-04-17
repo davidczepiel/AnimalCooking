@@ -13,7 +13,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 	Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
 	Entity* bg = stage->addEntity();
-	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite));
+	//-2 porque level tiene 2 valores extra al principio
+	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::level0Menu + level - 2));
 	stage->addToGroup(bg, ecs::GroupID::Layer1);
 	barraCarga_ = stage->addEntity();
 	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
@@ -21,7 +22,7 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
 	int height = 50;
-	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight()-height), //Pos
+	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
 		height, //Height
