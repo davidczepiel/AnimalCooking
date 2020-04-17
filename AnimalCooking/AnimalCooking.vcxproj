@@ -167,6 +167,7 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BackGroundViewer.h" />
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
@@ -305,6 +306,7 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BackGroundViewer.cpp" />
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
