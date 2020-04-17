@@ -211,12 +211,6 @@
     <ClCompile Include="AssistantViewer.cpp">
       <Filter>Source Files\Assistant</Filter>
     </ClCompile>
-    <ClCompile Include="TimerEnd.cpp">
-      <Filter>Source Files\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerPool.cpp">
-      <Filter>Source Files\Timers</Filter>
-    </ClCompile>
     <ClCompile Include="TImerViewer.cpp">
       <Filter>Source Files\Timers</Filter>
     </ClCompile>
@@ -485,9 +479,6 @@
     <ClInclude Include="TextSpeechBubbleViewer.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalTimer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
@@ -583,15 +574,6 @@
     </ClInclude>
     <ClInclude Include="AssistantMotion.h">
       <Filter>Header Files\Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerPool.h">
-      <Filter>Header Files\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerViewer.h">
-      <Filter>Header Files\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerEnd.h">
-      <Filter>Header Files\Timers</Filter>
     </ClInclude>
     <ClInclude Include="DishPool.h">
       <Filter>Header Files\Dishes</Filter>
