@@ -26,13 +26,19 @@ FoodGiver* FoodGiverAdder::SwitchFG(const string& fgName, int type, int n) {
 	FoodGiver* fg = nullptr;
 	switch (str2int(fgName.c_str()))
 	{
-	case str2int("BreadGiver"):
-		ADD(BreadGiver);
+	case str2int("BreadBurger"):
+		ADD(BreadBurgerGiver);
 		break;
-	case str2int("DressingGiver"):
+	case str2int("BreadHotDog"):
+		ADD(BreadHotDogGiver);
+		break;
+	case str2int("Dough"):
+		ADD(DoughGiver);
+		break;
+	case str2int("Dressing"):
 		ADD(DressingGiver);
 		break;
-	case str2int("RiceGiver"):
+	case str2int("Rice"):
 		ADD(RiceGiver);
 		break;
 	default:
