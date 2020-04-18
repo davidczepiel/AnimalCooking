@@ -16,6 +16,12 @@ MenuState::MenuState() : State() {
 	cout << "Menu State" << endl;
 	game_ = SDLGame::instance();
 
+	slider = stage->addEntity();
+	stage->addToGroup(slider, ecs::GroupID::Layer1);
+	slider->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 4, game_->getWindowHeight() / 2), Vector2D(0, 0), 300.0, 50.0, 0);
+	slider->addComponent<SliderBehaviour>();
+	slider->addComponent<SliderRenderer>();
+
 	playMenuButton_ = stage->addEntity();
 	optionsMenu_ = stage->addEntity();
 	creditsMenu_ = stage->addEntity();

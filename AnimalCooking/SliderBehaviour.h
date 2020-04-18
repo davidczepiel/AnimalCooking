@@ -8,6 +8,7 @@ class SliderBehaviour : public Component
 protected:
 	Transform* transform;
 	SDL_Rect rectMovePoint;
+	int value;
 
 public:
 	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr) {}

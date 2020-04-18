@@ -12,8 +12,8 @@ void SliderRenderer::init()
 
 void SliderRenderer::draw()
 { 
-	sliderBackground_->render(RECT(transform_->getPos().getX(), transform_->getPos().getY(), transform_->getW(), transform_->getH));
+	sliderBackground_->render(RECT(transform_->getPos().getX(), transform_->getPos().getY(), transform_->getW(), transform_->getH()));
 
 	SDL_Rect moveRect = *sliderBehav_->getMovePointRect();
-	sliderMovePoint_->render(RECT(moveRect.x - (moveRect.w / 2), moveRect.y + (moveRect.h / 2), moveRect.w, moveRect.h));
+	sliderMovePoint_->render(RECT(moveRect.x - (moveRect.w / 2), moveRect.y - (moveRect.h / 2), moveRect.w, moveRect.h));
 }

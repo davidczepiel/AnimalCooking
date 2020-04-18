@@ -8,6 +8,8 @@
 #include "ConfigState.h"
 #include "MapState.h"
 #include "CreditsState.h"
+#include "SliderBehaviour.h"
+#include "SliderRenderer.h"
 
 class MenuState: public State
 {
@@ -17,6 +19,7 @@ private:
 	Entity* playMenuButton_ = nullptr;
 	Entity* optionsMenu_ = nullptr;
 	Entity* creditsMenu_ = nullptr;
+	Entity* slider = nullptr;
 
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;

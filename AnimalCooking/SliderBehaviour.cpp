@@ -21,5 +21,6 @@ void SliderBehaviour::update()
 	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT) && SDL_PointInRect(&mousePosition, &rectMovePoint) && ih->mouseMotionEvent() &&
 		mousePosition.x >= transform->getPos().getX() && mousePosition.x <= transform->getPos().getX() + transform->getW()) {
 		rectMovePoint.x = mousePosition.x;
+		value = rectMovePoint.x / transform->getW();
 	}
 }

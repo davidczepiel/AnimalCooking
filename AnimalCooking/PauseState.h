@@ -21,8 +21,5 @@ private:
 	static void configCallback();
 	static void menuCallback();
 	static void resumeCallback();
-
-
-
 };
 
