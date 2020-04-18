@@ -69,6 +69,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::FriedVegs,"../AnimalCooking/resources/images/Foods/verdurasFritas.png"},
 	{AllLevels, TextureId::BakedChicken,"../AnimalCooking/resources/images/Foods/pollo.png"},
 	{AllLevels, TextureId::FrenchFries,"../AnimalCooking/resources/images/Foods/patatasFritas.png"},
+	{AllLevels, TextureId::CookedClams,"../AnimalCooking/resources/images/Foods/vieraGratinada.png"},
+	{AllLevels, TextureId::RiceAndClams,"../AnimalCooking/resources/images/Foods/mariscoConArroz.png"},
+	{AllLevels, TextureId::MashedMeatSkillet,"../AnimalCooking/resources/images/Foods/carneSarten.png"},
+	{AllLevels, TextureId::CaughtSausageSkillet,"../AnimalCooking/resources/images/Foods/salchichaSarten.png"},
+	{AllLevels, TextureId::SlicedPotatoSkillet,"../AnimalCooking/resources/images/Foods/patatasFritas.png"},
+	{AllLevels, TextureId::Dress,"../AnimalCooking/resources/images/Foods/dress.png"},
 	//FeedBack---------------------------------------------------------------
 		//Food
 		{AllLevels, PoopFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/caca.png"},
@@ -101,6 +107,12 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, FriedVegsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/verdurasFritas.png"},
 		{AllLevels, BakedChickenFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pollo.png"},
 		{AllLevels, FrenchFriesFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasFritas.png"},
+		{AllLevels, CookedClamsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/vieraGratinada.png"},
+		{AllLevels, RiceAndClamsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/mariscoConArroz.png"},
+		{AllLevels, MashedMeatSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/carneSarten.png"},
+		{AllLevels, CaughtSausageSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/salchichaSarten.png"},
+		{AllLevels, SlicedPotatoSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasFritas.png"},
+		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
 
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/cuchilloFeedBack.png"},

@@ -79,6 +79,12 @@ public:
 		FriedVegs,
 		BakedChicken,
 		FrenchFries,
+		CookedClams,
+		RiceAndClams,
+		MashedMeatSkillet,
+		CaughtSausageSkillet,
+		SlicedPotatoSkillet,
+		Dress,
 
 		//FeedBackImages---------------------------------------------
 			//Food
@@ -113,6 +119,12 @@ public:
 			FriedVegsFeedBack,
 			BakedChickenFeedBack,
 			FrenchFriesFeedBack,
+			CookedClamsFeedBack,
+			RiceAndClamsFeedBack,
+			MashedMeatSkilletFeedBack,
+			CaughtSausageSkilletFeedBack,
+			SlicedPotatoSkilletFeedBack,
+			DressFeedBack,
 
 			//Utensils
 			CuchilloFeedBack,
