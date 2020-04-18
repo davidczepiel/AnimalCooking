@@ -10,7 +10,7 @@ private:
 protected:
 	Transform* transform;
 	SDL_Rect rectMovePoint;
-	int value;
+	float value;
 
 public:
 	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false) {}
@@ -19,5 +19,6 @@ public:
 	void update() override;
 
 	inline const SDL_Rect* getMovePointRect() { return &rectMovePoint; }
+	inline float getValue() { return value; }
 };
 
