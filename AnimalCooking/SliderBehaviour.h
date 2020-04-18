@@ -5,13 +5,15 @@
 
 class SliderBehaviour : public Component
 {
+private:
+	bool active;
 protected:
 	Transform* transform;
 	SDL_Rect rectMovePoint;
 	int value;
 
 public:
-	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr) {}
+	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false) {}
 
 	void init() override;
 	void update() override;

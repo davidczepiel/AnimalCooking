@@ -103,6 +103,17 @@ private:
 		} else if (event.button.button == SDL_BUTTON_RIGHT) {
 			mbState_[RIGHT] = isDown;
 		}
+
+		if (event.type == SDL_MOUSEBUTTONUP) {
+		isMouseButtonUpEvent_ = true;
+		if (event.button.button == SDL_BUTTON_LEFT) {
+			mbState_[LEFT] = false;
+		} else if (event.button.button == SDL_BUTTON_MIDDLE) {
+			mbState_[MIDDLE] = false;
+		} else if (event.button.button == SDL_BUTTON_RIGHT) {
+			mbState_[RIGHT] = false;
+		}
+		}
 	}
 
 	static unique_ptr<InputHandler> instance_;
@@ -112,6 +123,7 @@ private:
 	bool isKeyDownEvent_;
 	bool isMouseMotionEvent_;
 	bool isMouseButtonEvent_;
+	bool isMouseButtonUpEvent_;
 
 	Vector2D mousePos_;
 	std::array<bool, 3> mbState_;

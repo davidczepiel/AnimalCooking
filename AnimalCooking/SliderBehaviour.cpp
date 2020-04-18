@@ -15,11 +15,11 @@ void SliderBehaviour::init()
 void SliderBehaviour::update()
 {
 	InputHandler* ih = InputHandler::instance();
-
 	SDL_Point mousePosition = { ih->getMousePos().getX(), ih->getMousePos().getY() };
+	SDL_Rect rect = RECT(rectMovePoint.x - (rectMovePoint.w / 2), rectMovePoint.y - (rectMovePoint.h / 2), rectMovePoint.w, rectMovePoint.h);
 
-	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT) && SDL_PointInRect(&mousePosition, &rectMovePoint) && ih->mouseMotionEvent() &&
-		mousePosition.x >= transform->getPos().getX() && mousePosition.x <= transform->getPos().getX() + transform->getW()) {
+	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT) && SDL_PointInRect(&mousePosition, &rect) 
+		&& mousePosition.x >= transform->getPos().getX() && mousePosition.x <= transform->getPos().getX() + transform->getW()){
 		rectMovePoint.x = mousePosition.x;
 		value = rectMovePoint.x / transform->getW();
 	}
