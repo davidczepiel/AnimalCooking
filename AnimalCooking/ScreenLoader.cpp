@@ -5,23 +5,29 @@
 #include "ButtonRenderer.h"
 #include "LoadingBarViewer.h"
 #include "LevelInitializer.h"
+#include "BackGroundViewer.h"
 
 constexpr double step_ = 1.0 / 18.0; //18 es el numero de pasos (5 de carga de recursos + 13 de carga de nivel)
+
 
 ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
 {
 	Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
-
+	Entity* bg = stage->addEntity();
+	//-2 porque level tiene 2 valores extra al principio
+	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::level0Menu + level - 2));
+	stage->addToGroup(bg, ecs::GroupID::Layer1);
 	barraCarga_ = stage->addEntity();
 	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
 
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
-	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
+	int height = 50;
+	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
-		50, //Height
+		height, //Height
 		0); //Rot
 	barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::Button));
@@ -29,10 +35,10 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 	buttonGo_ = stage->addEntity();
 	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
-	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
+	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		50, //Width
-		50, //Height
+		height, //Height
 		0); //Rot
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);

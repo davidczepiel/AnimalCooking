@@ -49,6 +49,11 @@ public:
 		Pollo,
 		IngredienteMalo,
 		CuadradoAux,
+		level0Menu,
+		level1Menu,
+		level2Menu,
+		level3Menu,
+		level4Menu,
 		
 
 		//FeedBackImages

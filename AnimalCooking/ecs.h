@@ -68,6 +68,7 @@ enum CmpId : CmpIdType {
 	StaticRenderer,
 	IngredientViewer,
 	BinViewer,
+	BackGroundViewer,
 
 	GameManager, //Utils
 	ScoreManager,
