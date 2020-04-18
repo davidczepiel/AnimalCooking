@@ -113,9 +113,9 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 	case(Resources::FoodType::MashedMeat):
 		f = new MashedMeat(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::MashedMushroom):
+	/*case(Resources::FoodType::MashedMushroom):
 		f = new MashedMushroom(pos, tP1, tP2);
-		break;
+		break;*/
 	
 		///////////////GRATER
 	case(Resources::FoodType::GratedCheese):

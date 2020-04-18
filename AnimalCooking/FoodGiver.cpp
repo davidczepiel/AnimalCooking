@@ -65,7 +65,7 @@ void BreadHotDogGiver::action1(int player) {
 
 DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Pan);
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PizzaMassT);
 }
 
 void DoughGiver::action1(int player) {
