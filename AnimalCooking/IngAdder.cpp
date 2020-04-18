@@ -15,13 +15,13 @@ IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGener
 	ingPoolEntity_->addComponent<IngredientMotion>();
 
 	//Se a�aden las entidades
-	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
+	/*jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
 	for (int i = 0; i < ingsType.size(); ++i) {
 		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i][1];
 		for (int j = 0; j < ings.size(); ++j) {
 			switchIng(jsonLevel["IngredientsPool"]["entities"][i][0].as_string(), i, j);
 		}
-	}
+	}*/
 
 	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];
@@ -39,7 +39,7 @@ void IngAdder::makeIngredient(int type, int n)
 	i->setVel(Vector2D(0, 0));
 	i->setPos(Vector2D(jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["x"].as_double() * casillaLength,
 		jsonLevel["IngredientsPool"]["entities"][type][1][n]["pos"]["y"].as_double() * casillaLength));
-	/*GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);*/
+	GETCMP2(ingPoolEntity_, IngredientsPool)->addIngredient(i);
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

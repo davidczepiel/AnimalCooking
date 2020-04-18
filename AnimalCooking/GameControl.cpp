@@ -1,19 +1,16 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, Resources::Level level) : Component(ecs::GameControl)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, Resources::Level level) : Component(ecs::GameControl),utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip)
 {
-	utensilsPool = u;
-	foodPool = fp;
-	tP1 = p1;
-	tP2 = p2;
-	ingPool_ = ip;
-
 	const string rutaNivel = "../AnimalCooking/resources/cfg/nivel" + std::to_string(level - 1) + ".cfg";
 	jsonLevel = jute::parser::parse_file(rutaNivel);
 
 	const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 	jsonGeneral = jute::parser::parse_file(rutaGeneral);
+
+	timer.setTime(1000);
+	timer.timerStart();
 }
 
 void GameControl::init()
@@ -23,16 +20,16 @@ void GameControl::init()
 
 void GameControl::update()
 {
-	if (startSpawning)
+	//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
+	if (timer.isTimerEnd())
 	{
 		for (int i = 0; i < 4; i++)
 		{
 			newIngredient();
 		}
-
-		startSpawning = false;
+		timer.timerReset();
 	}
-	
+	else timer.update();
 }
 
 void GameControl::newIngredient() 
@@ -44,17 +41,14 @@ void GameControl::newIngredient()
 	Ingredient* ing = newIngType(s);  
 
 	double casilla = SDLGame::instance()->getWindowHeight() / 9;    
-	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casilla,
-		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casilla);
-
-   //double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
-	double y = game_->getRandGen()->nextInt(0, game_->getWindowHeight());
-    ing->setVel(Vector2D(-1,0));
-    ing->setPos(Vector2D(game_->getWindowWidth() + 50, y));
-	//ing->setTransform(50, 50, Vector2D(game_->getWindowWidth() + 50, y), Vector2D(-10, 0));
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casilla,jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casilla);
+		
+    //double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
+	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()-25);
+    ing->setVel(Vector2D(0,0));
+    ing->setPos(Vector2D(game_->getWindowWidth() - 25, y));
 
 	ingPool_->addIngredient(ing);
-
 	ing = nullptr;
 }
 
@@ -75,24 +69,31 @@ Ingredient* GameControl::newIngType(const string& s) {
 		break;
 	case str2int("Carrot"):
 		i = new Carrot();
+		cout << "Carrot" << endl;
 		break;
 	case str2int("Lettuce"):
 		i = new Lettuce();
+		cout << "Lettuce" << endl;
 		break;
 	case str2int("Mushroom"):
 		i = new Mushroom();
+		cout << "Mushroom" << endl;
 		break;
 	case str2int("Sausage"):
 		i = new Sausage();
+		cout << "Sausage" << endl;
 		break;
 	case str2int("Chicken"):
 		i = new Chicken();
+		cout << "Chicken" << endl;
 		break;
 	case str2int("Meat"):
 		i = new Meat();
+		cout << "Meat" << endl;
 		break;
 	case str2int("Potato"):
 		i = new Potato();
+		cout << "Potato" << endl;
 		break;
 	case str2int("Onion"):
 		i = new Onion();
@@ -100,12 +101,15 @@ Ingredient* GameControl::newIngType(const string& s) {
 		break;
 	case str2int("Clam"):
 		i = new Clam();
+		cout << "Clam" << endl;
 		break;
 	case str2int("Cheese"):
 		i = new Cheese();
+		cout << "Cheese" << endl;
 		break;
 	case str2int("Fish"):
 		i = new Fish();
+		cout << "Fish" << endl;
 		break;
 	default:
 		break;
@@ -118,6 +122,7 @@ void GameControl::newFood(Food* f, Vector2D pos) {
 	f->onDrop(true);
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
+	newIngredient(); //al matar un ingrediente aparece otro
 }
 
 Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 

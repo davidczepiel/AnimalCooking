@@ -6,6 +6,7 @@
 #include "GameLogic.h"
 #include "FoodPool.h"
 #include "jute.h"
+#include "Timer.h"
 
 class GameControl : public Component
 {
@@ -27,5 +28,5 @@ private:
     Transport* tP2;
 	jute::jValue jsonLevel;
 	jute::jValue jsonGeneral;
-	bool startSpawning = true;
+	Timer timer;
 };
