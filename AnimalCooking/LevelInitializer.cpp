@@ -96,6 +96,7 @@ void LevelInitializer::initialize_cookersPool()
 
 	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
 
+
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
 	sL->updateLength();

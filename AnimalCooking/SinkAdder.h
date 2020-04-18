@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include <array>
 #include <string>
+#include "SelectorPopUpEntity.h"
+#include "InteractionRect.h"
 class EntityManager;
 class Interactive;
 class SinkAdder
