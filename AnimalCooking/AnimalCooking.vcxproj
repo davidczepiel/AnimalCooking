@@ -274,6 +274,8 @@
     <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SelectorPopUpEntity.h" />
+    <ClInclude Include="SliderBehaviour.h" />
+    <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -409,6 +411,8 @@
     <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SelectorPopUpEntity.cpp" />
+    <ClCompile Include="SliderBehaviour.cpp" />
+    <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
