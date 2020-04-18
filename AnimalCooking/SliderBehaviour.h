@@ -6,15 +6,15 @@
 class SliderBehaviour : public Component
 {
 protected:
-	Texture* sliderBackground;
-	Texture* sliderMovePoint;
 	Transform* transform;
 	SDL_Rect rectMovePoint;
 
 public:
-	SliderBehaviour() : Component(ecs::SliderBehaviour), sliderBackground(nullptr), sliderMovePoint(nullptr), transform(nullptr) {}
+	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr) {}
 
-	void init();
-	void update();
+	void init() override;
+	void update() override;
+
+	inline const SDL_Rect* getMovePointRect() { return &rectMovePoint; }
 };
 
