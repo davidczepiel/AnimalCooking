@@ -5,6 +5,7 @@
 #include "CookerViewer.h"
 #include "InsertExpel.h"
 #include "Cooker.h"
+#include "SelectorPopUp.h"
 class CookersAdder
 {
 public:

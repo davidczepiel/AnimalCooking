@@ -13,6 +13,8 @@
 #include "DishAdder.h"
 #include "GameManagerAdder.h"
 #include "FoodGiverAdder.h"
+#include "CollisionsSystem.h"
+#include "FeedBack.h"
 
 #include "SDLGame.h"
 
@@ -41,6 +43,8 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_dishes();
 	initialize_gameManager();
 	initialize_foodGivers();
+	initialize_colSystem();
+	initialize_feedback();
 }
 
 void LevelInitializer::initialize_players()
@@ -91,33 +95,45 @@ void LevelInitializer::initialize_cookersPool()
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
 	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
+
+
+	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
+
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
+	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
+
+	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_sinks()
 {
-	SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	SinkAdder sa = SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+
+	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_bin()
 {
-	BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	BinAdder ba = BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+
+	interactives_.insert(interactives_.end(), ba.getInteractives().begin(), ba.getInteractives().end());
 
 	sL->updateLength();
 }
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla);
+
+	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
 	sL->updateLength();
 }
@@ -133,7 +149,30 @@ void LevelInitializer::initialize_gameManager()
 
 void LevelInitializer::initialize_foodGivers()
 {
-	FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+	FoodGiverAdder fa = FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	interactives_.insert(interactives_.end(), fa.getInteractives().begin(), fa.getInteractives().end());
 
 	sL->updateLength();
 }
+
+void LevelInitializer::initialize_colSystem()
+{
+	//Players e ingredientes se inicializan en el initialize_gameManager
+	CollisionsSystem* col = GETCMP2(gameManager, CollisionsSystem);
+	for (auto& i : interactives_) {
+		col->addCollider(i);
+	}
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_feedback()
+{
+	Entity* feedbackEntity = emPlaystate->addEntity();
+	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
+	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
+
+	sL->updateLength();
+}
+

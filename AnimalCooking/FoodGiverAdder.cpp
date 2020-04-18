@@ -52,6 +52,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 
 	mngr->addEntity(fg);
 	mngr->addToGroup(fg, CASTID(general["Givers"]["Layer"].as_int()));
+	interactives_.push_back(fg);
 	return fg;
 }
 //La cadena (component) no puede superar 10 caracteres

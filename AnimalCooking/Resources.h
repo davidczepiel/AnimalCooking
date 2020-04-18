@@ -40,7 +40,8 @@ public:
 		Fregadero,
 		Ingrediente,
 		Panera,
-		ComidaMuerta,
+		Tomato,
+		Onion,
 		ComidaCocinada,
 		Pedido,
 		Papelera,
@@ -53,13 +54,25 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		
+
+		//FeedBackImages
+		TomatoFeedBack,
+		OnionFeedBack,
+		CuchilloFeedBack,
+		Panel,
+		PlatoFeedBack,
+		PapelertaFeedBack,
+		Coger,
+		Dejar,
 
 		// images level specific
 		Pan,
 		Arroz,
-		Aceite
+		Aceite,
 
 		// text
+		
 	
 	};
 

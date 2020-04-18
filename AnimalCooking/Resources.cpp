@@ -20,7 +20,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{Basic, Platera,"../AnimalCooking/resources/images/platera.png"},
 	{Basic, ComidaCocinada,"../AnimalCooking/resources/images/comidaCocinada.jpg"},
-	{Basic, ComidaMuerta,"../AnimalCooking/resources/images/comidaMuerta.png"},
+	{Basic, Tomato,"../AnimalCooking/resources/images/tomateCortado.png"},
+	{Basic, Onion,"../AnimalCooking/resources/images/onion.png"},
 	{Basic, Cuchillo,"../AnimalCooking/resources/images/cuchillo.png"},
 	{Basic, CuchilloSucio,"../AnimalCooking/resources/images/cuchilloSucio.jpg"},
 	{Basic, Fregadero,"../AnimalCooking/resources/images/fregadero.jpg"},
@@ -43,13 +44,26 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
-	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"}
+	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"},
+	
+
+	//FeedBack
+	{Basic, TomatoFeedBack,"../AnimalCooking/resources/images/feedbackTomate.png"},
+	{Basic, OnionFeedBack,"../AnimalCooking/resources/images/onionFeedBack.png"},
+	{Basic, CuchilloFeedBack,"../AnimalCooking/resources/images/cuchilloFeedBack.png"},
+	{Basic, PapelertaFeedBack,"../AnimalCooking/resources/images/papeleraFeedBack.png"},
+	{Basic, PlatoFeedBack,"../AnimalCooking/resources/images/platoFeedBack.png"},
+	{Basic, Panel,"../AnimalCooking/resources/images/panel.png"},
+	{Basic, Coger,"../AnimalCooking/resources/images/coger.png"},
+	{Basic, Dejar,"../AnimalCooking/resources/images/dejar.png"}
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
-	//
+
 
 };
+
 
 vector<Resources::MusicInfo> Resources::musics_{
 	//

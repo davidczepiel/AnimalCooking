@@ -36,7 +36,6 @@ void FoodConfig::fill()
 	//////////////////////	
 
 	uTrans.push_back({ Resources::IngredientType::meat,		Resources::FoodType:: MashedMeat });  //
-	uTrans.push_back({ Resources::IngredientType::mushroom, Resources::FoodType:: MashedMushroom }); //
 	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType:: MashedTomato }); //
 
 

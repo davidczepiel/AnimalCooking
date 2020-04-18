@@ -4,7 +4,7 @@
 #include "GameLogic.h"
 #include <math.h> 
 
-Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2) {
+Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = 10;
@@ -122,6 +122,12 @@ void Utensil::action1(int player) {
 	}
 }
 
+void Utensil::feedback(int player)
+{
+	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	feedbackVisual_->render(rect);
+}
+
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
@@ -148,6 +154,7 @@ Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Knife;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
@@ -160,6 +167,7 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mace);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
@@ -171,6 +179,7 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Grater;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;
@@ -182,6 +191,7 @@ Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Net;
 	range_ = 100;
 	attackHitBoxWidth_ = 100;

@@ -35,6 +35,7 @@ public:
 	inline double getWidth() { return size_.getX(); }
 	inline double getHeight() { return size_.getY(); }
 	inline Vector2D getPos() { return pos_; }
+	Vector2D& getPosReference() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
 	inline Resources::IngredientType getType() { return type_; }
 
@@ -56,7 +57,10 @@ protected:
 class Tomato : public Ingredient 
 {
 public:
-	Tomato() : Ingredient(Resources::tomato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Tomato() : Ingredient(Resources::tomato) { 
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); 
+
+	}
 	~Tomato() {}
 };
 

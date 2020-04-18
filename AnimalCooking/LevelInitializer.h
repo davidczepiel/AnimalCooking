@@ -7,6 +7,7 @@
 class EntityManager;
 class Entity;
 class ScreenLoader;
+class Interactive;
 
 class LevelInitializer
 {
@@ -25,6 +26,8 @@ private:
 	void initialize_dishes();
 	void initialize_gameManager();
 	void initialize_foodGivers();
+	void initialize_colSystem();
+	void initialize_feedback();
 
 	double casilla;
 
@@ -33,6 +36,8 @@ private:
 	Entity* utensil;
 	Entity* foodPool;
 	Entity* gameManager;
+	std::vector<Interactive*> interactives_;
+
 	ScreenLoader* sL;
 
 	EntityManager* emPlaystate;
