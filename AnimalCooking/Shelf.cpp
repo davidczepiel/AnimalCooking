@@ -98,6 +98,7 @@ void Shelf::action5(int id)
 	{
 	  Dish* d = static_cast<Dish*>(content);
       dishFinisher->finish(id,d);
+	  SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CompleteDish, 0);
 	}
 	
 }

@@ -37,7 +37,7 @@ void Sink::draw() { //¿ Para dibujar la barra que indica la cantidad de suciedad
 void Sink::action1(int iDp) {
 
 		if (canClean) {
-
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Wash, 0);
 			canClean = false;
 			cleanTimer->timerStart();
 			//Dependiendo del numero que me llegue me trabajo con el player 1 o 2

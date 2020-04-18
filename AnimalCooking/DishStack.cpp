@@ -49,6 +49,7 @@ void DishStack::action1(int id)
 		Dish* d = static_cast<Dish*>(player->getObjectInHands());
 		player->drop(false);
 		removeDish(d);
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::DropDish, 0);
 
 	}
 	else if (player->getObjectTypeInHands() == Resources::PickableType::Food) {

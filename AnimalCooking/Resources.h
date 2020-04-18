@@ -105,6 +105,15 @@ public:
 		Beat,
 		Cheer,
 		Boooo,
+		KnifeAttack,
+		DropDish,
+		CompleteDish,
+		Wash,
+		Fry,
+		FryBurn,
+		MaceAttack,
+		MicroWave,
+		Door,
 
 		// sound effects
 		Wall_Hit,
