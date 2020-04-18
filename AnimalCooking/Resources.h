@@ -71,6 +71,14 @@ public:
 		Salad,
 		Burger,
 		Pizza,
+		Roast,
+		RiceDish,
+		HotDog,
+		Risotto,
+		CookedFish,
+		FriedVegs,
+		BakedChicken,
+		FrenchFries,
 
 		//FeedBackImages---------------------------------------------
 			//Food
@@ -97,6 +105,14 @@ public:
 			SaladFeedBack,
 			BurgerFeedBack,
 			PizzaFeedBack,
+			RoastFeedBack,
+			RiceDishFeedBack,
+			HotDogFeedBack,
+			RisottoFeedBack,
+			CookedFishFeedBack,
+			FriedVegsFeedBack,
+			BakedChickenFeedBack,
+			FrenchFriesFeedBack,
 
 			//Utensils
 			CuchilloFeedBack,

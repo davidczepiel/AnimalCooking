@@ -34,12 +34,20 @@ public:
 	void action1(int player);
 };
 
-class BreadGiver : public FoodGiver //Para pan
+class BreadBurgerGiver : public FoodGiver //Para pan de hamburguesa
 {
 public:
-	BreadGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
 	void action1(int player);
 };
+
+class BreadHotDogGiver : public FoodGiver //Para pan de perrito
+{
+public:
+	BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	void action1(int player);
+};
+
 
 class DoughGiver : public FoodGiver //Para masa
 {

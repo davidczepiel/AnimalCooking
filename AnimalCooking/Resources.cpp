@@ -68,6 +68,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::CookedFish,"../AnimalCooking/resources/images/Foods/pescadoAlHorno.png"},
 	{AllLevels, TextureId::FriedVegs,"../AnimalCooking/resources/images/Foods/verdurasFritas.png"},
 	{AllLevels, TextureId::BakedChicken,"../AnimalCooking/resources/images/Foods/pollo.png"},
+	{AllLevels, TextureId::FrenchFries,"../AnimalCooking/resources/images/Foods/patatasFritas.png"},
 	//FeedBack---------------------------------------------------------------
 		//Food
 		{AllLevels, PoopFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/caca.png"},
@@ -99,6 +100,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, CookedFishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pescadoAlHorno.png"},
 		{AllLevels, FriedVegsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/verdurasFritas.png"},
 		{AllLevels, BakedChickenFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pollo.png"},
+		{AllLevels, FrenchFriesFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasFritas.png"},
 
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/cuchilloFeedBack.png"},
