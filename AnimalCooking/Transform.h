@@ -13,6 +13,11 @@ public:
 	const Vector2D& getPos() const {
 		return position_;
 	}
+
+	Vector2D& getPosReference() {
+		return position_;
+	}
+
 	void setPos(const Vector2D &pos) {
 		position_.set(pos);
 	}

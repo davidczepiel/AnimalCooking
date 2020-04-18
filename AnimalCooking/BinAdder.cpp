@@ -30,6 +30,7 @@ BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jso
 		for (int i = 0; i < components.size(); ++i) { // Iniciliza en bin componentes extra si los hay
 			initializeComponent(components[i].as_string(), bin);
 		}
+		interactives_.push_back(bin);
 	}
 }
 

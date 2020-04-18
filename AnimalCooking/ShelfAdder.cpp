@@ -79,6 +79,7 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	emPlayState->addEntity(shelf);
 	shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), shelf);
+	interactives_.push_back(shelf);
 	return shelf;
 }
 
