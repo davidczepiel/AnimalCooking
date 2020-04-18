@@ -12,6 +12,8 @@ vector<Resources::FontInfo> Resources::fonts_{
 vector<Resources::ImageInfo> Resources::images_{
 	//
 	{Basic, Button,"../AnimalCooking/resources/images/button.jpg"},
+	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
+	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 
 	{Basic, IngredienteMalo,"../AnimalCooking/resources/images/caca.png"},
 	{Basic, Cooker,"../AnimalCooking/resources/images/sarten.png"},

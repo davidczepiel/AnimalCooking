@@ -23,7 +23,8 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
-
+		SliderBackground,
+		SliderMovPoint,
 
 		// images all
 		Repisa,
