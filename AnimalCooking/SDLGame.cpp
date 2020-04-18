@@ -82,6 +82,10 @@ void SDLGame::initResources() {
 		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
+	for (auto& spritesheet : Resources::spritesheets_) {
+		if (spritesheet.level == Resources::Level::Basic) textures_->loadFromSprSheet(spritesheet.id, renderer_, spritesheet.fileName, spritesheet.numRows, spritesheet.numCols);
+	}
+
 	for (auto &font : Resources::fonts_) {
 		if (font.level == Resources::Level::Basic) fonts_->loadFont(font.id, font.fileName, font.size);
 	}

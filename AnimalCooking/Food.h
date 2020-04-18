@@ -17,7 +17,7 @@ protected:
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
-	FoodTimer timer_;
+	CookerTimer timer_;
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };

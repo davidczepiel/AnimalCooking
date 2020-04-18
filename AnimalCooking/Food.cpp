@@ -2,7 +2,7 @@
 #include "SDL_macros.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2),
-	timer_(FoodTimer()),
+	timer_(CookerTimer(5000)),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -13,7 +13,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr),
-	timer_(FoodTimer()),
+	timer_(CookerTimer(5000)),
 	type_(type),
 	foodPool_(nullptr)
 {

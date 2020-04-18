@@ -8,7 +8,7 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = 10;
-	dirtTimer_ = new Timer();
+	dirtTimer_ = new DefaultTimer();
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
 	attackHitBoxWidth_ = 100;

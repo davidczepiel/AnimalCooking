@@ -9,7 +9,7 @@ using namespace std;
 class Texture {
 public:
 	Texture();
-	Texture(SDL_Renderer *renderer, const string& fileName);
+	Texture(SDL_Renderer *renderer, const string& fileName, int numRows = 1, int numCols = 1);
 	Texture(SDL_Renderer *renderer, const string& text, const Font *font,
 			const SDL_Color& color);
 	virtual ~Texture();
@@ -24,6 +24,14 @@ public:
 
 	inline bool isReady() {
 		return texture_ != nullptr;
+	}
+
+	inline int getNumCols() {
+		return nCols_;
+	}
+
+	inline int getNumRows() {
+		return nRows_;
 	}
 
 	// load from image or text, in both cases we should provide a rendered
@@ -43,6 +51,9 @@ public:
 	// if no clip provided it renders all texture (scaled to dest).
 	void render(const SDL_Rect &dest, double angle,	const SDL_Rect &clip) const;
 	void render(const SDL_Rect &dest, double angle) const;
+	void render(const SDL_Rect& dest, double angle, const SDL_Rect& clip, SDL_RendererFlip flip) const;
+
+	void renderFrame(const SDL_Rect& destRect, int row, int col, int angle, SDL_RendererFlip flip = SDL_FLIP_NONE) const;
 
 	void close();
 
@@ -51,4 +62,6 @@ private:
 	SDL_Renderer *renderer_;
 	int width_;
 	int height_;
+	int nRows_;
+	int nCols_;
 };

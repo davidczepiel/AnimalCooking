@@ -51,6 +51,23 @@ bool SDLTexturesManager::loadFromImg(std::size_t tag,
 	return false;
 }
 
+
+bool SDLTexturesManager::loadFromSprSheet(std::size_t tag,
+	SDL_Renderer* renderer, const string& fileName, int nRows, int nCols) {
+
+	if (!initialized_)
+		return false;
+
+	Texture* texture = new Texture(renderer, fileName);
+	if (texture->isReady()) {
+		storeTexture(tag, texture);
+		return true;
+	}
+
+	// if we get here something went wrong
+	return false;
+}
+
 bool SDLTexturesManager::loadFromText(std::size_t tag,
 		SDL_Renderer *renderer, const string &text, const Font *font,
 		const SDL_Color &color) {

@@ -24,7 +24,7 @@ public:
 		// images basic
 		Button,
 		RectangleOutline,
-
+		
 
 		// images all
 		Repisa,
@@ -54,7 +54,10 @@ public:
 		// images level specific
 		Pan,
 		Arroz,
-		Aceite
+		Aceite,
+		
+		//spritesheets
+		CircularTimer
 
 		// text
 	
@@ -117,6 +120,14 @@ public:
 		string fileName;
 	};
 
+	struct SpritesheetInfo {
+		Level level;
+		TextureId id;
+		string fileName;
+		int numCols;
+		int numRows;
+	};
+
 	struct TextMsgInfo {
 		Level level;
 		TextureId id;
@@ -139,6 +150,7 @@ public:
 
 	static vector<FontInfo> fonts_; // initialized in .cpp
 	static vector<ImageInfo> images_; // initialized in .cpp
+	static vector<SpritesheetInfo> spritesheets_; // initialized in .cpp
 	static vector<TextMsgInfo> messages_; // initialized in .cpp
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp

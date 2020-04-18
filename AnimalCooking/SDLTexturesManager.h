@@ -20,6 +20,8 @@ public:
 
 	bool loadFromImg(std::size_t, SDL_Renderer *renderer,
 			const string &fileName) override;
+	bool loadFromSprSheet(std::size_t tag,
+		SDL_Renderer* renderer, const string& fileName, int nRows, int nCols) override;
 	bool loadFromText(std::size_t, SDL_Renderer *renderer, const string &text,
 			const Font *font, const SDL_Color &color) override;
 	void destroyTexture(std::size_t tag);

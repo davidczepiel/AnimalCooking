@@ -9,7 +9,7 @@ public:
 	Timer();
 	~Timer();
 	virtual void update();
-	virtual void draw();
+	virtual void draw() = 0;
 
 	void setTime(Uint32 t) { time_ = t; };	
 	void setTexture(Texture* t) { texture_ = t; };
@@ -40,6 +40,7 @@ protected:
 
 class LevelTimer : public Timer {
 public:
+	LevelTimer() : Timer(), outlineText_(nullptr) {}
 	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; outlineText_ = game_->getTextureMngr()->getTexture(Resources::RectangleOutline);}
 	void draw();
 
@@ -53,6 +54,13 @@ private:
 	Texture* outlineText_;
 };
 
+class DefaultTimer : public Timer {
+public:
+	DefaultTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	DefaultTimer( Uint32 time ) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	void draw();
+};
+
 class FoodTimer : public Timer {
 public:
 	FoodTimer() : Timer() { time_ = 5000; }
@@ -61,7 +69,8 @@ public:
 
 class CookerTimer : public Timer {
 public:
-	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; }
+	CookerTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CircularTimer); size_ = Vector2D(50, 50); }
+	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; texture_ = game_->getTextureMngr()->getTexture(Resources::CircularTimer); size_ = Vector2D(50, 50); }
 	void draw();
 
 	void update() {
@@ -69,4 +78,5 @@ public:
 			//Cocinar ingredientes
 		}
 	}
+
 };

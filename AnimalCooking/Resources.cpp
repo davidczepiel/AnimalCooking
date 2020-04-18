@@ -42,6 +42,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"},
 };
 
+vector<Resources::SpritesheetInfo> Resources::spritesheets_{
+	//
+	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8}
+};
+
 vector<Resources::TextMsgInfo> Resources::messages_{
 	//
 

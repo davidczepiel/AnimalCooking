@@ -3,7 +3,7 @@
 
 Timer::Timer(): 
 	game_(SDLGame::instance()),
-	texture_(game_->getTextureMngr()->getTexture(Resources::CuadradoAux)),
+	texture_(nullptr),
 	time_(0),
 	startedTime_(0),  
 	timerEnd_(false), 
@@ -12,7 +12,6 @@ Timer::Timer():
 	size_(Vector2D(0, 5)), 
 	rot_(0)
 {
-
 }
 
 Timer::~Timer() {
@@ -27,7 +26,7 @@ void Timer::update() {
 	}
 }
 
-void Timer::draw() {
+void DefaultTimer::draw() {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	texture_->render(rect);
 }
@@ -48,9 +47,16 @@ void Timer::timerReset() {
 
 void LevelTimer::draw()
 {
-	SDL_Rect outline = RECT(pos_.getX(), pos_.getY(), time_ / 100, size_.getY());
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), time_ / 100, size_.getY());
+	outlineText_->render(rect);
 
-	Timer::draw();
+	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	texture_->render(rect);
+}
 
-	outlineText_->render(outline);
+void CookerTimer::draw()
+{
+	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	int col = 0 + (game_->getTime() - startedTime_) % texture_->getNumCols();
+	texture_->renderFrame(destRect, 1, 1, 0);
 }

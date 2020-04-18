@@ -10,7 +10,7 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transpo
 	setSize(size);
 	setRot(rot);
 	setEmptyTexture();
-	timer_ = new Timer();
+	timer_ = new DefaultTimer();
 }
 
 Cooker::~Cooker() {
