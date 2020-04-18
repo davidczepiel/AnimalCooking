@@ -15,7 +15,16 @@ public:
 	inline void setAvailableOrders(initializer_list<Resources::FoodType>& lista) {
 		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
 	}
+	inline void setAvailableOrders(vector<Resources::FoodType>& lista) {
+		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
+	}
+
 	inline void setInitialOrders(initializer_list<Resources::FoodType>& lista) {
+		for (auto elem : lista) {
+			initialOrders_.push(elem);
+		}
+	}
+	inline void setInitialOrders(vector<Resources::FoodType>& lista) {
 		for (auto elem : lista) {
 			initialOrders_.push(elem);
 		}

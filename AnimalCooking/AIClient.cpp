@@ -7,7 +7,7 @@ AIClient::AIClient() : AIClient(45)
 }
 
 AIClient::AIClient(Uint32 deltaTimePerOrder) : Component(ecs::AIClient),
-	deltaTimePerOrder_(deltaTimePerOrder), orMngr_(nullptr), availableOrders_(), initialOrders_()
+	deltaTimePerOrder_(deltaTimePerOrder * 1000 /*ms*/), orMngr_(nullptr), availableOrders_(), initialOrders_()
 {
 }
 
@@ -30,7 +30,7 @@ void AIClient::update()
 void AIClient::checkNewOrder()
 {
 	if (game_->getTime() - lastOrderTime_ > deltaTimePerOrder_) {
-		if (!initialOrders_.empty()) {
+		if (!initialOrders_.empty()) { //Primero saco los pedidos en cierto orden, si quedan
 			orMngr_->addOrder(initialOrders_.front());
 			initialOrders_.pop();
 		}
