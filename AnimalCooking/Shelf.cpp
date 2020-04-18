@@ -134,6 +134,8 @@ void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 		player->drop(false);
 		player->pick(c, contentType);
 		contentType = onPlayerHands;
+		if(contentType == Resources::PickableType::Dish)
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::DropDish, 0);
 		break;
 	}
 }

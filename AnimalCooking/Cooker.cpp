@@ -4,7 +4,7 @@
 #include "InsertExpel.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
-	state_(CookerStates::empty), cookingTime_(5),entity_(e)
+	state_(CookerStates::empty), cookingTime_(5),entity_(e),lastTimeSound_(SDL_GetTicks())
 {
 	setPos(pos);
 	setSize(size);
@@ -67,6 +67,23 @@ void Cooker::feedback(int player)
 
 			SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
 			foods_[i]->draw(r);
+		}
+	}
+}
+
+void Cooker::sound()
+{
+	if (SDL_GetTicks() - lastTimeSound_ > 2000) {
+		lastTimeSound_ = SDL_GetTicks();
+		switch (cookerType_) {
+		case Resources::Cookers::Skillet:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Fry,0);
+			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FryBurn, 0);
+			break;
+		case Resources::Cookers::Oven:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Fry,0);
+			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FryBurn, 0);
+			break;
 		}
 	}
 }

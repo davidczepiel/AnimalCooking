@@ -74,9 +74,7 @@ public:
 	Knife( Transport* p1, Transport* p2);
 	~Knife() {}
 	virtual void attack(Vector2D dir) {
-		onHit(dir);
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::KnifeAttack, 0);
-	}
+		onHit(dir);	}
 
 };
 
@@ -86,9 +84,7 @@ public:
 	Mace( Transport* p1, Transport* p2);
 	~Mace() {}
 
-	virtual void attack(Vector2D dir) {  onHit(dir);
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::MaceAttack, 0);
-	}
+	virtual void attack(Vector2D dir) {  onHit(dir);	}
 
 
 };

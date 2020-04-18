@@ -74,11 +74,13 @@ vector<Resources::SoundInfo> Resources::sounds_{
 {Basic,MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
 {Basic,MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
 {Basic,Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
-{Basic,FryBurn,"../AnimalCooking/resources/sounds/Freir Quemar.wav" }
-
-
-
-
+{Basic,FryBurn,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
+{Basic,Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
+{Basic,PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
+{Basic,AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
+{Basic,BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
+{Basic,CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
+{Basic,Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" }
 
 };
 
