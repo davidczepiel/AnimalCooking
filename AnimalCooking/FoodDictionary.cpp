@@ -40,6 +40,7 @@ void FoodDictionary::fill()
 			resultToSetDictionary_.insert(std::make_pair(foodCfg.getCookersRecipes()[c].transformations[i].result, set));
 		}
 	}
+
 }
 
 Food* FoodDictionary::bind(const int& c) const
@@ -50,8 +51,55 @@ Food* FoodDictionary::bind(const int& c) const
 	case -1:
 		return new Poop();
 		break;
-		// Platos enteros :
+		
+		//Ingredientes
+	case Resources::FoodType::SlicedTomato:
+		return new SlicedTomato;
+		break;
+	/*case Resources::FoodType::MashedTomato:
+		return new MashedTomato;
+		break;*/
+	case Resources::FoodType::SlicedLettuce:
+		return new SlicedLettuce;
+		break;
+	case Resources::FoodType::SlicedOnion:
+		return new SlicedOnion;
+		break;
+	case Resources::FoodType::SlicedMeat:
+		return new SlicedMeat;
+		break;
+	case Resources::FoodType::SlicedCheese:
+		return new SlicedCheese;
+		break;
+	case Resources::FoodType::GratedCheese:
+		return new GratedCheese;
+		break;
+	case Resources::FoodType::SlicedPotato:
+		return new SlicedPotato;
+		break;
+	case Resources::FoodType::SlicedSausage:
+		return new SlicedSausage;
+		break;
+	case Resources::FoodType::SlicedCarrot:
+		return new SlicedCarrot;
+		break;
+	case Resources::FoodType::CaughtSausage:
+		return new CaughtSausage;
+		break;
+	case Resources::FoodType::SlicedMushroom:
+		return new SlicedMushroom;
+		break;
+	case Resources::FoodType::CaughtFish:
+		return new CaughtFish;
+		break;
+	case Resources::FoodType::SlicedChicken:
+		return new SlicedChicken;
+		break;
+	case Resources::FoodType::CaughtClam:
+		return new CaughtClam;
+		break;
 
+	// Platos enteros :
 	case Resources::FoodType::Pizza:
 		return new Pizza();
 		break;

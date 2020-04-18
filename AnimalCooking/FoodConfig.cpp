@@ -52,7 +52,7 @@ void FoodConfig::fill()
 
 	//Adding Grater recipes
 	utensilsRecipes_.push_back({ Resources::UtensilType::Grater, uTrans });
-	utensilsRecipes_.clear();
+	uTrans.clear();
 
 	///////////////////////
 	// NET  RECIPES      // -------> SET <--------------   -----------> RESULT <--------------
