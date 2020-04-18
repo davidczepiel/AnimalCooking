@@ -36,13 +36,11 @@ protected:
 	Vector2D pos_;
 	Vector2D size_;
 	double rot_;
-
-	SDL_Renderer* renderer_;
 };
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; }
+	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; outlineText_ = game_->getTextureMngr()->getTexture(Resources::RectangleOutline);}
 	void draw();
 
 	void update() {
@@ -50,12 +48,15 @@ public:
 			//Fin nivel
 		}
 	}
+
+private:
+	Texture* outlineText_;
 };
 
 class FoodTimer : public Timer {
 public:
 	FoodTimer() : Timer() { time_ = 5000; }
-	void draw() {};
+	void draw() {}
 };
 
 class CookerTimer : public Timer {

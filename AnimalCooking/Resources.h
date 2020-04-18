@@ -23,6 +23,7 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
+		RectangleOutline,
 
 
 		// images all

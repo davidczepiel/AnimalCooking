@@ -12,6 +12,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 vector<Resources::ImageInfo> Resources::images_{
 	//
 	{Basic, Button,"../AnimalCooking/resources/images/button.jpg"},
+	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
 
 	{Basic, IngredienteMalo,"../AnimalCooking/resources/images/caca.png"},
 	{Basic, Cooker,"../AnimalCooking/resources/images/sarten.png"},
