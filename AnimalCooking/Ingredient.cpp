@@ -28,3 +28,8 @@ void Ingredient::escape(Vector2D cpos) {
 	if (pos_.getX() - cpos.getX() < escapeRadius_ && pos_.getY() - cpos.getY() < escapeRadius_)
 		vel_ = pos_ - cpos;
 }
+
+void Ingredient::destroy(Resources::UtensilType utensilio)
+{
+	ingredientPool_->deleteIngredient(it_);
+}

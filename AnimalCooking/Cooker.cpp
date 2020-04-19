@@ -3,14 +3,16 @@
 #include "SDL_macros.h"
 #include "InsertExpel.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2),
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
 	state_(CookerStates::empty), cookingTime_(5),entity_(e)
 {
 	setPos(pos);
 	setSize(size);
 	setRot(rot);
 	setEmptyTexture();
+
 	timer_ = new DefaultTimer();
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
 Cooker::~Cooker() {
@@ -45,6 +47,28 @@ void Cooker::action1(int player)
 	else 
 	{
 		ie->extractFood(this);
+	}
+}
+
+void Cooker::feedback(int player)
+{
+	if (state_ != CookerStates::empty) {
+		int ofset = 60;
+		int offsetInside = 15;
+		int rows = ceil(foods_.size() / 2.0);
+		if (rows == 0) rows = 1;
+
+		int w = 190/ 2 - offsetInside * 2;
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 190, rows*w + offsetInside*2);
+		feedbackVisual_->render(rect);
+		rect.x += offsetInside;
+		rect.y += offsetInside;
+
+		for (int i = 0; i < foods_.size(); ++i) {
+
+			SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
+			foods_[i]->draw(r);
+		}
 	}
 }
 

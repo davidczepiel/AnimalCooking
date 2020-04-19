@@ -1,7 +1,7 @@
 #include "Food.h"
 #include "SDL_macros.h"
 
-Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2),
+Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
 	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr),
@@ -12,7 +12,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	speed_ = Vector2D();
 }
 
-Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr),
+Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr)
@@ -53,6 +53,11 @@ void Food::draw()
 	timer_->draw();
 }
 
+void Food::draw(SDL_Rect r)
+{
+	texture_->render(r);
+}
+
 void Food::onDrop(bool onFloor)
 {
 	if (onFloor) {
@@ -70,6 +75,12 @@ void Food::action1(int player)
 	else {
 		player2_->pick(this, Resources::PickableType::Food);
 	}
+}
+
+void Food::feedback()
+{
+	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	feedbackVisual_->render(destRect);
 }
 
 void Food::onPick() {

@@ -37,5 +37,4 @@ void LoadingBarViewer::plusLength(double extra)
 {	
 	percentage_ += extra;
 	cout << "Carga al: " << percentage_ << endl;
-	assert(percentage_ <= 1);
 }

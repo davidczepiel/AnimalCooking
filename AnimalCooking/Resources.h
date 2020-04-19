@@ -25,6 +25,8 @@ public:
 		Button,
 		RectangleOutline,
 		
+		SliderBackground,
+		SliderMovPoint,
 
 		// images all
 		Repisa,
@@ -41,7 +43,8 @@ public:
 		Fregadero,
 		Ingrediente,
 		Panera,
-		ComidaMuerta,
+		Tomato,
+		Onion,
 		ComidaCocinada,
 		Pedido,
 		Papelera,
@@ -49,7 +52,22 @@ public:
 		Pollo,
 		IngredienteMalo,
 		CuadradoAux,
+		level0Menu,
+		level1Menu,
+		level2Menu,
+		level3Menu,
+		level4Menu,
+		
 
+		//FeedBackImages
+		TomatoFeedBack,
+		OnionFeedBack,
+		CuchilloFeedBack,
+		Panel,
+		PlatoFeedBack,
+		PapelertaFeedBack,
+		Coger,
+		Dejar,
 
 		// images level specific
 		Pan,
@@ -60,6 +78,7 @@ public:
 		CircularTimer
 
 		// text
+		
 	
 	};
 

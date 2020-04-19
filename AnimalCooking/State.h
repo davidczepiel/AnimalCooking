@@ -14,6 +14,7 @@ protected:
 
 public:
 	State();
+	State(EntityManager* em);
 	virtual ~State() { delete stage; }
 	virtual void update();
 	virtual void draw();

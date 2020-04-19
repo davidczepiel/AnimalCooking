@@ -41,10 +41,13 @@ void Timer::timerStart() {
 	if (!timerStarted_) {
 		timerStarted_ = true;
 		startedTime_ = game_->getTime();
+		cout << "STARTED TIME : " << startedTime_ << endl;
+		cout << "TIME : " << time_ << endl;
 	} 
 }
 
 void Timer::timerReset() {
+	cout << "RESET TIME : " << startedTime_ << endl;
 	startedTime_ = 0;
 	timerStarted_ = false;
 	timerEnd_ = false;
