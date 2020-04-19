@@ -14,7 +14,7 @@ OrderViewer::OrderViewer(size_t width, size_t height, Vector2D margin) : Compone
 void OrderViewer::init()
 {
 	om_ = GETCMP1_(OrderManager);
-	backGroundTexture_ = game_->getTextureMngr()->getTexture(Resources::TextureId::Pedido);
+	backGroundTexture_ = game_->getTextureMngr()->getTexture(Resources::TextureId::Tomato);
 }
 
 void OrderViewer::draw()

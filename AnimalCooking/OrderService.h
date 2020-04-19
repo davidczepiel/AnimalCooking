@@ -15,7 +15,7 @@
 class OrderService: public Entity, public Interactive
 {
 public:
-	OrderService(Vector2D pos, Transport* p1, Transport* p2, EntityManager* mng);
+	OrderService(Transport* p1, Transport* p2, EntityManager* mng);
 	virtual void action1(int id);
 	OrderManager* setOrderMngr(OrderManager* om) { orderMngr = om; return orderMngr; }
 private:

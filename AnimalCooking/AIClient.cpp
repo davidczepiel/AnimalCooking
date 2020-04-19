@@ -7,7 +7,7 @@ AIClient::AIClient() : AIClient(45)
 }
 
 AIClient::AIClient(Uint32 deltaTimePerOrder) : Component(ecs::AIClient),
-	deltaTimePerOrder_(deltaTimePerOrder * 1000 /*ms*/), orMngr_(nullptr), availableOrders_(), initialOrders_()
+	deltaTimePerOrder_(deltaTimePerOrder * 1000 /*ms*/), orMngr_(nullptr), availableOrders_(), initialOrders_(), lastOrderTime_(SDLGame::instance()->getTime())
 {
 }
 

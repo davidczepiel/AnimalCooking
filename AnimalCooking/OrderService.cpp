@@ -1,6 +1,6 @@
 #include "OrderService.h"
 
-OrderService::OrderService(Vector2D pos, Transport* p1, Transport* p2, EntityManager* mng): 
+OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng): 
 	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr)
 {
 }

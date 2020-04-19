@@ -33,7 +33,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 				//Mete el pedido
 				*it = new Order( //Mete un order en la posicion libre			 
 					Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
-					game_->getTextureMngr()->getTexture(Resources::Pedido + Resources::_FirstOfFoods_ - finalProduct), // OrderText
+					game_->getTextureMngr()->getTexture(Resources::Onion /*+ Resources::_FirstOfFoods_ - finalProduct*/), // OrderText
 					ings_.size(), // ingsSize
 					finalProduct, //Producto que da
 					msPerIng_ * ings_.size()
