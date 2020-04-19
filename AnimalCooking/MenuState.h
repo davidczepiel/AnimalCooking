@@ -7,6 +7,7 @@
 #include "AnimalCooking.h"
 #include "ConfigState.h"
 #include "MapState.h"
+#include "checkML.h"
 #include "CreditsState.h"
 
 class MenuState: public State
@@ -17,15 +18,18 @@ private:
 	Entity* playMenuButton_ = nullptr;
 	Entity* optionsMenu_ = nullptr;
 	Entity* creditsMenu_ = nullptr;
+	Entity* exitButton_ = nullptr;
 
 	Transform* playMenuTr_ = nullptr;
 	Transform* optionsMenuTr_ = nullptr;
 	Transform* creditsMenuTr_ = nullptr;
-	static void playMenuCallback();		
-	static void optionsMenuCallback();	
-	static void creditsMenuCallback();	
+	Transform* exitButtonTr_ = nullptr;
+	static void playMenuCallback(AnimalCooking* ac);
+	static void optionsMenuCallback(AnimalCooking* ac);
+	static void creditsMenuCallback(AnimalCooking* ac);
+	static void closeGame(AnimalCooking* ac);
 public:
-	MenuState();
+	MenuState(AnimalCooking* ac);
 	~MenuState() {}
 };
 
