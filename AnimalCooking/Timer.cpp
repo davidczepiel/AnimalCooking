@@ -22,13 +22,18 @@ void Timer::update() {
 		if (game_->getTime() - startedTime_ >= time_) {
 			timerEnd_ = true;
 		}
-		size_.setX((game_->getTime() - startedTime_)/100);
 	}
 }
 
 void DefaultTimer::draw() {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	texture_->render(rect);
+}
+
+void DefaultTimer::update()
+{
+	Timer::update();
+	size_.setX((game_->getTime() - startedTime_) / 100);
 }
 
 
@@ -57,6 +62,7 @@ void LevelTimer::draw()
 void CookerTimer::draw()
 {
 	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
-	int col = 0 + (game_->getTime() - startedTime_) % texture_->getNumCols();
-	texture_->renderFrame(destRect, 1, 1, 0);
+	int col = (((game_->getTime() - startedTime_) * texture_->getNumCols()) / time_);
+	cout << col << endl;
+	texture_->renderFrame(destRect, 0, col, 0);
 }

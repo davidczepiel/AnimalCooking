@@ -58,7 +58,7 @@ bool SDLTexturesManager::loadFromSprSheet(std::size_t tag,
 	if (!initialized_)
 		return false;
 
-	Texture* texture = new Texture(renderer, fileName);
+	Texture* texture = new Texture(renderer, fileName, nRows, nCols);
 	if (texture->isReady()) {
 		storeTexture(tag, texture);
 		return true;

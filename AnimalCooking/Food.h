@@ -10,6 +10,7 @@ class Food : public Pickable
 protected:
 	Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2);
 	Food(Resources::FoodType type);
+	~Food() { delete timer_; }
 
 	Resources::FoodType type_;
 	Texture* texture_;
@@ -17,13 +18,13 @@ protected:
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
-	CookerTimer timer_;
+	FoodTimer* timer_;
 public:
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
 	void startTimer() {
-		timer_.timerStart();
+		timer_->timerStart();
 	}
 
 	Resources::FoodType getType() { return type_; }

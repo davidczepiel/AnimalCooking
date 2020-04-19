@@ -2,7 +2,7 @@
 #include "SDL_macros.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2),
-	timer_(CookerTimer(5000)),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -13,7 +13,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr),
-	timer_(CookerTimer(5000)),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr)
 {
@@ -37,11 +37,11 @@ void Food::update()
 {
 	Pickable::update();
 
-	if (timer_.isTimerEnd()) {
+	if (timer_->isTimerEnd()) {
 		foodPool_->RemoveFood(iterator_);
 	}
 	else {
-		timer_.update();
+		timer_->update();
 	}
 }
 
@@ -50,15 +50,15 @@ void Food::draw()
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	texture_->render(destRect);
 
-	timer_.draw();
+	timer_->draw();
 }
 
 void Food::onDrop(bool onFloor)
 {
 	if (onFloor) {
 		Pickable::onDrop(onFloor);
-		timer_.timerStart();
-		timer_.setPos(Vector2D(position_.getX(), position_.getY() + size_.getY() + 5 ));
+		timer_->timerStart();
+		timer_->setPos(Vector2D(position_.getX(), position_.getY() + size_.getY() + 5 ));
 	}
 }
 
@@ -73,7 +73,7 @@ void Food::action1(int player)
 }
 
 void Food::onPick() {
-	timer_.timerReset();
+	timer_->timerReset();
 }
 
 

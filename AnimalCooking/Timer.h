@@ -45,6 +45,7 @@ public:
 	void draw();
 
 	void update() {
+		Timer::update();
 		if (timerEnd_) {
 			//Fin nivel
 		}
@@ -59,6 +60,7 @@ public:
 	DefaultTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
 	DefaultTimer( Uint32 time ) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
 	void draw();
+	void update();
 };
 
 class FoodTimer : public Timer {
@@ -74,6 +76,7 @@ public:
 	void draw();
 
 	void update() {
+		Timer::update();
 		if (timerEnd_) {
 			//Cocinar ingredientes
 		}

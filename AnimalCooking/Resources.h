@@ -124,8 +124,8 @@ public:
 		Level level;
 		TextureId id;
 		string fileName;
-		int numCols;
 		int numRows;
+		int numCols;
 	};
 
 	struct TextMsgInfo {
