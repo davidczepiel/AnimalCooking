@@ -1,15 +1,15 @@
 #include "FoodCooker.h"
 #include "FoodDictionary.h"
 
-FoodCooker::FoodCooker() :
-	Component(ecs::FoodCooker){
+FoodCooker::FoodCooker(FoodPool* fp) :
+	Component(ecs::FoodCooker), fp_(fp){
 }
 
 FoodCooker::~FoodCooker() {
 }
 
 void FoodCooker::init() {
-	pool_ = GETCMP1_(CookerPool)->getPool();
+	pool_ = GETCMP1_(CookerPool);
 }
 
 void FoodCooker::startCooked(Cooker *c) {
@@ -21,23 +21,23 @@ void FoodCooker::startCooked(Cooker *c) {
 }
 
 void FoodCooker::clearFoods(Cooker* c) {
-	auto it = c->getFoods().begin();
-	while (it != c->getFoods().end()) {
-		delete *it;
-		++it;
+	for (auto& it : c->getFoods()) {
+		it->Destroy();
 	}
 	c->getFoods().clear();
 }
 
 void FoodCooker::update() {
-	for (Cooker* c : pool_) {
+	for (auto& c : pool_->getPool()) {
 		if (c->getCookerState() == CookerStates::cooking || c->getCookerState() == CookerStates::cooked) {
 			if (!c->getCookerTimer()->isTimerEnd()) {
 				c->getCookerTimer()->update();
 			}
 			else if (c->getCookerState() == CookerStates::cooking) {
-				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());				
+				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());	
+				newFood->setCanInteract(false);
 				clearFoods(c);
+				fp_->AddFood(newFood);
 				c->getFoods().push_back(newFood);
 
 				c->setCookerState(CookerStates::cooked);
@@ -47,7 +47,9 @@ void FoodCooker::update() {
 			}
 			else {
 				Food* burnedFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
+				burnedFood->setCanInteract(false);
 				clearFoods(c);
+				fp_->AddFood(burnedFood);
 				c->getFoods().push_back(burnedFood);
 				
 				c->setCookerState(CookerStates::burned);

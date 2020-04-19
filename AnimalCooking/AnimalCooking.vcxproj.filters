@@ -1,833 +1,292 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="AnimalCooking.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FSM.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="GPadController.cpp">
-      <Filter>Source Files\Singletons</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyBoardController.cpp">
-      <Filter>Source Files\Singletons</Filter>
-    </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="GameControl.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLoader.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSave.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="FontsManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="jute.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumberGenerator.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="sdl_macros.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLFontsManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="SRandBasedGenerator.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLAudioManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLRenderer.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLRendererFrame.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticRenderer.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadingBarViewer.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLTexturesManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="TexturesManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Collisions.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Resources.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientsPool.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="AIIngredient.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreViewer.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerController.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMotion.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerViewer.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Selector.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Transport.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Converter.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientMotion.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientSpawn.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodMotion.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodPool.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodTextures.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodViewer.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="CookerPool.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="CookerViewer.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodCooker.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="InsertExpel.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityEffect.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityLoader.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityMotion.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversitySpawn.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityViewer.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AIClient.cpp">
-      <Filter>Source Files\Clients</Filter>
-    </ClCompile>
-    <ClCompile Include="OrderManager.cpp">
-      <Filter>Source Files\Clients</Filter>
-    </ClCompile>
-    <ClCompile Include="OrderViewer.cpp">
-      <Filter>Source Files\Clients</Filter>
-    </ClCompile>
-    <ClCompile Include="AIAssistant.cpp">
-      <Filter>Source Files\Assistant</Filter>
-    </ClCompile>
-    <ClCompile Include="AssistantMotion.cpp">
-      <Filter>Source Files\Assistant</Filter>
-    </ClCompile>
-    <ClCompile Include="AssistantViewer.cpp">
-      <Filter>Source Files\Assistant</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerEnd.cpp">
-      <Filter>Source Files\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="TimerPool.cpp">
-      <Filter>Source Files\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="TImerViewer.cpp">
-      <Filter>Source Files\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="DishFinisher.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="DishMotion.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="DishPool.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="DishViewer.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="InOutFood.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="MapState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenLoader.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="CreditsState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="EndState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="ConfigState.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="Cooker.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FoodDictionary.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Utensil.cpp">
-      <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
-    <ClCompile Include="UtensilsMotion.cpp">
-      <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
-    <ClCompile Include="UtensilsPool.cpp">
-      <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
-    <ClCompile Include="UtensilsViewer.cpp">
-      <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonBehaviour.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonRenderer.cpp">
-      <Filter>Source Files\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectorPopUp.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="InteractionRect.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Dish.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="DishStack.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectorPopUpEntity.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Interactive.cpp">
-      <Filter>Source Files\Interfaces</Filter>
-    </ClCompile>
-    <ClCompile Include="Pickable.cpp">
-      <Filter>Source Files\Interfaces</Filter>
-    </ClCompile>
-    <ClCompile Include="Food.cpp">
-      <Filter>Source Files\Interfaces</Filter>
-    </ClCompile>
-    <ClCompile Include="Ingredient.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="Sink.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="Shelf.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="ShelfViewer.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
-    <ClCompile Include="SinkViewer.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
+    <ClCompile Include="AdversityEffect.cpp" />
+    <ClCompile Include="AdversityLoader.cpp" />
+    <ClCompile Include="AdversityMotion.cpp" />
+    <ClCompile Include="AdversitySpawn.cpp" />
+    <ClCompile Include="AdversityViewer.cpp" />
+    <ClCompile Include="AIAssistant.cpp" />
+    <ClCompile Include="AIClient.cpp" />
+    <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="AssistantMotion.cpp" />
+    <ClCompile Include="AssistantViewer.cpp" />
+    <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
-    <ClCompile Include="DishStackViewer.cpp">
-      <Filter>Source Files\Dishes</Filter>
-    </ClCompile>
+    <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonRenderer.cpp" />
+    <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="CollisionsSystem.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ConfigState.cpp" />
+    <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="Cooker.cpp" />
+    <ClCompile Include="CookerPool.cpp" />
+    <ClCompile Include="CookersAdder.cpp" />
+    <ClCompile Include="CookerViewer.cpp" />
+    <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="Dish.cpp" />
+    <ClCompile Include="DishAdder.cpp" />
+    <ClCompile Include="DishFinisher.cpp" />
+    <ClCompile Include="DishMotion.cpp" />
+    <ClCompile Include="DishPool.cpp" />
+    <ClCompile Include="DishStack.cpp" />
+    <ClCompile Include="DishStackViewer.cpp" />
+    <ClCompile Include="DishViewer.cpp" />
+    <ClCompile Include="EndState.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FeedBack.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontsManager.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="FoodConfig.cpp" />
+    <ClCompile Include="FoodCooker.cpp" />
+    <ClCompile Include="FoodDictionary.cpp" />
     <ClCompile Include="FoodGiver.cpp" />
+    <ClCompile Include="FoodGiverAdder.cpp" />
     <ClCompile Include="FoodGiverViewer.cpp" />
+    <ClCompile Include="FoodMotion.cpp" />
+    <ClCompile Include="FoodPool.cpp" />
+    <ClCompile Include="FoodPoolAdder.cpp" />
+    <ClCompile Include="FoodTextures.cpp" />
+    <ClCompile Include="FoodViewer.cpp" />
+    <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="GameLoader.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameManagerAdder.cpp" />
+    <ClCompile Include="GameSave.cpp" />
+    <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="IngAdder.cpp" />
+    <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="IngredientMotion.cpp" />
+    <ClCompile Include="IngredientSpawn.cpp" />
+    <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="IngredientViewer.cpp" />
-    <ClCompile Include="FoodConfig.cpp">
-      <Filter>Source Files\Food</Filter>
-    </ClCompile>
     <ClCompile Include="OrderService.cpp" />
     <ClCompile Include="OrderServiceViewer.cpp" />
+    <ClCompile Include="InOutFood.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InsertExpel.cpp" />
+    <ClCompile Include="InteractionRect.cpp" />
+    <ClCompile Include="Interactive.cpp" />
+    <ClCompile Include="jute.cpp" />
+    <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="LevelInitializer.cpp" />
+    <ClCompile Include="LoadingBarViewer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="OrderManager.cpp" />
+    <ClCompile Include="OrderViewer.cpp" />
+    <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="Pickable.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="PlayerMotion.cpp" />
+    <ClCompile Include="PlayersAdder.cpp" />
+    <ClCompile Include="PlayerViewer.cpp" />
+    <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="RandomNumberGenerator.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
+    <ClCompile Include="ScoreViewer.cpp" />
+    <ClCompile Include="ScreenLoader.cpp" />
+    <ClCompile Include="SDLAudioManager.cpp" />
+    <ClCompile Include="SDLFontsManager.cpp" />
+    <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLRenderer.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
+    <ClCompile Include="SDLTexturesManager.cpp" />
+    <ClCompile Include="sdl_macros.cpp" />
+    <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="SelectorPopUp.cpp" />
+    <ClCompile Include="Shelf.cpp" />
+    <ClCompile Include="ShelfAdder.cpp" />
+    <ClCompile Include="ShelfViewer.cpp" />
+    <ClCompile Include="Sink.cpp" />
+    <ClCompile Include="SinkAdder.cpp" />
+    <ClCompile Include="SinkViewer.cpp" />
+    <ClCompile Include="SelectorPopUpEntity.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SRandBasedGenerator.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StaticRenderer.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturesManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TimerEnd.cpp" />
+    <ClCompile Include="TimerPool.cpp" />
+    <ClCompile Include="TImerViewer.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="Utensil.cpp" />
+    <ClCompile Include="UtensilsAdder.cpp" />
+    <ClCompile Include="UtensilsMotion.cpp" />
+    <ClCompile Include="UtensilsPool.cpp" />
+    <ClCompile Include="UtensilsViewer.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="SliderBehaviour.cpp" />
+    <ClCompile Include="SliderRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimalCooking.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AIIngredient.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="checkML.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="ecs.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="FontsManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Collisions.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLAudioManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLFontsManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="jute.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SRandBasedGenerator.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2D.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectPool.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomNumberGenerator.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="TexturesManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SDL_macros.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLTexturesManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="IngredientsPool.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="GPadController.h">
-      <Filter>Header Files\Singletons</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyBoardController.h">
-      <Filter>Header Files\Singletons</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLRenderer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLRendererFrame.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticRenderer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="FSM.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSave.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameControl.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLoader.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLogic.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreViewer.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreManager.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadingBarViewer.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectorPopUp.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="TextSpeechBubble.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="TextSpeechBubbleViewer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalTimer.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Adversity.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Ingredient.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Food.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerViewer.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMotion.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerController.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Selector.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Transport.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="IngredientMotion.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="IngredientViewer.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="Converter.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="IngredientSpawn.h">
-      <Filter>Header Files\Ingredients</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodPool.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodViewer.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodMotion.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodTextures.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="CookerPool.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="CookerViewer.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodCooker.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="InsertExpel.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityLoader.h">
-      <Filter>Header Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityViewer.h">
-      <Filter>Header Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityMotion.h">
-      <Filter>Header Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversitySpawn.h">
-      <Filter>Header Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityEffect.h">
-      <Filter>Header Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AIClient.h">
-      <Filter>Header Files\Clients</Filter>
-    </ClInclude>
-    <ClInclude Include="OrderManager.h">
-      <Filter>Header Files\Clients</Filter>
-    </ClInclude>
-    <ClInclude Include="OrderViewer.h">
-      <Filter>Header Files\Clients</Filter>
-    </ClInclude>
-    <ClInclude Include="AIAssistant.h">
-      <Filter>Header Files\Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="AssistantViewer.h">
-      <Filter>Header Files\Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="AssistantMotion.h">
-      <Filter>Header Files\Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerPool.h">
-      <Filter>Header Files\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerViewer.h">
-      <Filter>Header Files\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="TimerEnd.h">
-      <Filter>Header Files\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="DishPool.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="DishViewer.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="DishMotion.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="InOutFood.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="DishFinisher.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStates.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.h">
-      <Filter>Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="MapState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenLoader.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="CreditsState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="EndState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="ConfigState.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="Cooker.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodDictionary.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodEnum.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utensil.h">
-      <Filter>Header Files\Utensils</Filter>
-    </ClInclude>
-    <ClInclude Include="UtensilsMotion.h">
-      <Filter>Header Files\Utensils</Filter>
-    </ClInclude>
-    <ClInclude Include="UtensilsPool.h">
-      <Filter>Header Files\Utensils</Filter>
-    </ClInclude>
-    <ClInclude Include="UtensilsViewer.h">
-      <Filter>Header Files\Utensils</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonRenderer.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonBehaviour.h">
-      <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="Pickable.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="InteractionRect.h">
-      <Filter>Source Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Dish.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="DishStack.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectorPopUpEntity.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Interactive.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Shelf.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="Sink.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="ShelfViewer.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
-    <ClInclude Include="SinkViewer.h">
-      <Filter>Header Files\Cookers</Filter>
-    </ClInclude>
+    <ClInclude Include="Adversity.h" />
+    <ClInclude Include="AdversityEffect.h" />
+    <ClInclude Include="AdversityLoader.h" />
+    <ClInclude Include="AdversityMotion.h" />
+    <ClInclude Include="AdversitySpawn.h" />
+    <ClInclude Include="AdversityViewer.h" />
+    <ClInclude Include="AIAssistant.h" />
+    <ClInclude Include="AIClient.h" />
+    <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="Animator.h" />
+    <ClInclude Include="AssistantMotion.h" />
+    <ClInclude Include="AssistantViewer.h" />
+    <ClInclude Include="Attack.h" />
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
-    <ClInclude Include="DishStackViewer.h">
-      <Filter>Header Files\Dishes</Filter>
-    </ClInclude>
+    <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonRenderer.h" />
+    <ClInclude Include="checkML.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="CollisionsSystem.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ConfigState.h" />
+    <ClInclude Include="Converter.h" />
+    <ClInclude Include="Cooker.h" />
+    <ClInclude Include="CookerPool.h" />
+    <ClInclude Include="CookersAdder.h" />
+    <ClInclude Include="CookerViewer.h" />
+    <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="Dish.h" />
+    <ClInclude Include="DishAdder.h" />
+    <ClInclude Include="DishFinisher.h" />
+    <ClInclude Include="DishMotion.h" />
+    <ClInclude Include="DishPool.h" />
+    <ClInclude Include="DishStack.h" />
+    <ClInclude Include="DishStackViewer.h" />
+    <ClInclude Include="DishViewer.h" />
+    <ClInclude Include="ecs.h" />
+    <ClInclude Include="EndState.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="FeedBack.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontsManager.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="FoodConfig.h" />
+    <ClInclude Include="FoodCooker.h" />
+    <ClInclude Include="FoodDictionary.h" />
+    <ClInclude Include="FoodEnum.h" />
     <ClInclude Include="FoodGiver.h" />
+    <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
-    <ClInclude Include="FoodConfig.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="Order.h">
-      <Filter>Header Files\Clients</Filter>
-    </ClInclude>
+    <ClInclude Include="Order.h" />
     <ClInclude Include="OrderService.h" />
     <ClInclude Include="OrderServiceViewer.h" />
+    <ClInclude Include="FoodMotion.h" />
+    <ClInclude Include="FoodPool.h" />
+    <ClInclude Include="FoodPoolAdder.h" />
+    <ClInclude Include="FoodTextures.h" />
+    <ClInclude Include="FoodViewer.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="FSM.h" />
+    <ClInclude Include="GameControl.h" />
+    <ClInclude Include="GameLoader.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameManagerAdder.h" />
+    <ClInclude Include="GameSave.h" />
+    <ClInclude Include="GameStates.h" />
+    <ClInclude Include="GlobalTimer.h" />
+    <ClInclude Include="GPadController.h" />
+    <ClInclude Include="IngAdder.h" />
+    <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="IngredientMotion.h" />
+    <ClInclude Include="IngredientSpawn.h" />
+    <ClInclude Include="IngredientsPool.h" />
+    <ClInclude Include="IngredientViewer.h" />
+    <ClInclude Include="InOutFood.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InsertExpel.h" />
+    <ClInclude Include="InteractionRect.h" />
+    <ClInclude Include="Interactive.h" />
+    <ClInclude Include="jute.h" />
+    <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="LevelInitializer.h" />
+    <ClInclude Include="LoadingBarViewer.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="MapState.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="OrderManager.h" />
+    <ClInclude Include="OrderViewer.h" />
+    <ClInclude Include="PauseState.h" />
+    <ClInclude Include="Pickable.h" />
+    <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="PlayerMotion.h" />
+    <ClInclude Include="PlayersAdder.h" />
+    <ClInclude Include="PlayerViewer.h" />
+    <ClInclude Include="PlayState.h" />
+    <ClInclude Include="RandomNumberGenerator.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="ScoreViewer.h" />
+    <ClInclude Include="ScreenLoader.h" />
+    <ClInclude Include="SDLAudioManager.h" />
+    <ClInclude Include="SDLFontsManager.h" />
+    <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLRenderer.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
+    <ClInclude Include="SDLTexturesManager.h" />
+    <ClInclude Include="SDL_macros.h" />
+    <ClInclude Include="Selector.h" />
+    <ClInclude Include="SelectorPopUp.h" />
+    <ClInclude Include="Shelf.h" />
+    <ClInclude Include="ShelfAdder.h" />
+    <ClInclude Include="ShelfViewer.h" />
+    <ClInclude Include="Sink.h" />
+    <ClInclude Include="SinkAdder.h" />
+    <ClInclude Include="SinkViewer.h" />
+    <ClInclude Include="SelectorPopUpEntity.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SRandBasedGenerator.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StaticRenderer.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextSpeechBubble.h" />
+    <ClInclude Include="TextSpeechBubbleViewer.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturesManager.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerEnd.h" />
+    <ClInclude Include="TimerPool.h" />
+    <ClInclude Include="TimerViewer.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Transport.h" />
+    <ClInclude Include="Utensil.h" />
+    <ClInclude Include="UtensilsAdder.h" />
+    <ClInclude Include="UtensilsMotion.h" />
+    <ClInclude Include="UtensilsPool.h" />
+    <ClInclude Include="UtensilsViewer.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="SliderBehaviour.h" />
+    <ClInclude Include="SliderRenderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="AnimalCooking.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="small.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ResourceCompile Include="AnimalCooking.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{8b227f7c-4ef3-4be4-b642-312fc61c04fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{95c8c5ec-e3da-4099-ae0b-6811eb7be951}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{9a4242da-258f-4ca1-af3a-8812f239818a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{38909879-f780-444e-8463-101d78348517}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Ingredients">
-      <UniqueIdentifier>{cdd1ddd8-41da-4de4-93b9-fb129080ab50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Food">
-      <UniqueIdentifier>{1566ca37-119d-4633-958a-8d83b6052c56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Cookers">
-      <UniqueIdentifier>{c44cee5c-4a3e-41f9-846f-e166b69b6f2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Adversities">
-      <UniqueIdentifier>{9eadca7e-7525-43bb-8fa7-3a5c43122c8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Clients">
-      <UniqueIdentifier>{99def1b3-0147-4797-8d49-29fdcb5ca1bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Assistant">
-      <UniqueIdentifier>{d5b8b80f-1dee-4a17-abbe-f5c30989f3e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Timers">
-      <UniqueIdentifier>{0c2a61cc-4a80-4fdf-b7db-b135a98889a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Dishes">
-      <UniqueIdentifier>{520656be-3e2b-46fa-b3d8-8299d7a2d6c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{71b0e162-9d0e-47c2-ac48-0fc0ae61bdd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Resources">
-      <UniqueIdentifier>{f929366c-241d-4587-9e83-d466bf2c2200}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interfaces">
-      <UniqueIdentifier>{cb13130c-d58d-49fb-b33f-82683f9f6bb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FSM">
-      <UniqueIdentifier>{e06f370b-91cb-4ab2-9463-5bf68fca5828}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Singletons">
-      <UniqueIdentifier>{69ea3211-9a3d-4350-a748-9fc89cba61e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FSM">
-      <UniqueIdentifier>{e2aae3cb-286a-4334-99a6-81e87d69f98a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Singletons">
-      <UniqueIdentifier>{dac9cd8d-8ea7-49a9-8611-95beb39a4e0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameManager">
-      <UniqueIdentifier>{82c2c3a0-64d6-475b-a523-f8502d8508cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Resources">
-      <UniqueIdentifier>{8a2f31ac-76a6-4933-aed3-51104d1b20db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{e72734b3-3604-4a1d-a16b-c9bab46bed07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{2dcee631-aae1-4f46-9e00-53004c5d929f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Ingredients">
-      <UniqueIdentifier>{b77974a5-9852-4348-8e7d-aeeb4f420e3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Food">
-      <UniqueIdentifier>{042c84a3-c58f-4425-ae77-5f9e1276bf4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Cookers">
-      <UniqueIdentifier>{70bbcc9f-acd9-42c7-9a1c-4454a2df2980}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Adversities">
-      <UniqueIdentifier>{5859c91e-63a0-4a2a-aa4e-8131be25853d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Clients">
-      <UniqueIdentifier>{f4206560-d8d0-4784-a0b0-ec33eeb080b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Assistant">
-      <UniqueIdentifier>{e30b20a5-fed7-4f4f-af65-21f8579a7ffe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Timers">
-      <UniqueIdentifier>{e26de860-1a70-4396-8510-eddd1c24c353}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Dishes">
-      <UniqueIdentifier>{edcc1906-ac6a-4d19-882e-72244ad6a5b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameManager">
-      <UniqueIdentifier>{0ed99d65-1715-4774-a8b9-8f20770807fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utensils">
-      <UniqueIdentifier>{66cfff7b-6a9a-48a6-a9b3-7fef1126212c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utensils">
-      <UniqueIdentifier>{6ef58959-d3dd-436f-8426-560465eb9d6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces">
-      <UniqueIdentifier>{df1ad3d3-5a36-4048-a7d5-3a890ba2c29b}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="AnimalCooking.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <Image Include="AnimalCooking.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
 </Project>

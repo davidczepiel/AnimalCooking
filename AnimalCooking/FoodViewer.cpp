@@ -11,7 +11,7 @@ FoodViewer::FoodViewer() : Component(ecs::FoodViewer) {
 void FoodViewer::draw()
 {
 	std::vector<Food*> fp = foodPool_->getPool();
-	for (auto f : fp) {
+	for (auto& f : fp) {
 		f->draw();
 	}
 }

@@ -4,6 +4,7 @@
 FoodPool::FoodPool() : Component(ecs::FoodPool)
 {
 	foods_ = vector<Food*>();
+	foods_.reserve(40);
 }
 
 FoodPool::~FoodPool() {
@@ -22,13 +23,15 @@ vector<Food*>& FoodPool::getPool()
 void FoodPool::AddFood(Food* food)
 {
 	if (food != nullptr) {
-		foods_.push_back(food);
+		foods_.emplace_back(food);
 		food->setFoodPool(this, --foods_.end());
 	}
 }
 
 void FoodPool::RemoveFood(std::vector<Food*>::iterator it)
 {
-	delete* it;
-	foods_.erase(it);
+	Food* i = *--foods_.end();
+	i->setIt(it);
+	iter_swap(it, --foods_.end());
+	foods_.pop_back();
 }

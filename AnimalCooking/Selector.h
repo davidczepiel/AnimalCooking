@@ -14,7 +14,7 @@ public:
 	Selector() :Component(ecs::Selector) {};
 	~Selector() {};
 	inline Interactive* getSelect() { return select_; }
-	inline void setSelect(Interactive* i) { select_ = i;	cout << "interactive2" << endl; }
+	inline void setSelect(Interactive* i) { select_ = i; }
 
 	void update() override;
 private:

@@ -1,21 +1,23 @@
 #include "Food.h"
 #include "SDL_macros.h"
 
-Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2)
-{
-	timer_ = FoodTimer();
+Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
+	timer_(FoodTimer()),
+	type_(type),
+	foodPool_(nullptr),
+	texture_(nullptr)
+{	
 	position_ = position;
-	size_ = Vector2D(50, 50);
-	type_ = type;
-	foodPool_ = nullptr;
+	size_ = Vector2D(64, 64);
 	speed_ = Vector2D();
 }
 
-Food::Food(Resources::FoodType type): Pickable(nullptr, nullptr) {
+Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
+	type_(type),
+	foodPool_(nullptr)
+{
 	position_ = Vector2D();
 	size_ = Vector2D(50, 50);
-	type_ = type;
-	foodPool_ = nullptr;
 	speed_ = Vector2D();
 }
 
@@ -35,10 +37,6 @@ void Food::update()
 	Pickable::update();
 
 	if (timer_.isTimerEnd()) {
-		//Genero la caca
-		Poop* p = new Poop();
-		foodPool_->AddFood(p);
-
 		foodPool_->RemoveFood(iterator_);
 	}
 	else {
@@ -46,9 +44,23 @@ void Food::update()
 	}
 }
 
+void Food::draw()
+{
+	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	texture_->render(destRect);
+}
+
+void Food::draw(SDL_Rect r)
+{
+	texture_->render(r);
+}
+
 void Food::onDrop(bool onFloor)
 {
-	if (onFloor) timer_.timerStart();
+	if (onFloor) {
+		Pickable::onDrop(onFloor);
+		timer_.timerStart();
+	}
 }
 
 void Food::action1(int player)
@@ -60,6 +72,13 @@ void Food::action1(int player)
 		player2_->pick(this, Resources::PickableType::Food);
 	}
 }
+
+void Food::feedback()
+{
+	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	feedbackVisual_->render(destRect);
+}
+
 void Food::onPick() {
 	timer_.timerReset();
 }

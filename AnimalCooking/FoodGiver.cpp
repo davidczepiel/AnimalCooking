@@ -1,13 +1,7 @@
 #include "FoodGiver.h"
 #include "Food.h"
 
-void FoodGiver::giveFood(int player, Food* f)
-{
-	if (player == 0)
-		player1_->pick(f, Resources::PickableType::Food);
-	else
-		player2_->pick(f, Resources::PickableType::Food);
-}
+
 
 //-----------------------------
 RiceGiver::RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
@@ -16,21 +10,37 @@ RiceGiver::RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, 
 }
 
 void RiceGiver::action1(int player) {
-	Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 
-	giveFood(player, f);
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
+
+
 }
 
 //-----------------------------
 BreadGiver::BreadGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Pan);
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 }
 
 void BreadGiver::action1(int player) {
-	Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
 
-	giveFood(player, f);
 }
 
 //-----------------------------
@@ -40,9 +50,16 @@ DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2
 }
 
 void DoughGiver::action1(int player) {
-	Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
 
-	giveFood(player, f);
 }
 
 //-----------------------------
@@ -52,7 +69,26 @@ DressingGiver::DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transpo
 }
 
 void DressingGiver::action1(int player) {
-	Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
 
-	giveFood(player, f);
+}
+
+void FoodGiver::feedback(int player)
+{
+	bool render = false;
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr) render = true;
+	if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) render = true;
+
+	if (render) {
+		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
+		feedbackVisual_->render(r);
+	}
 }

@@ -61,6 +61,13 @@ Ingredient* GameControl::newIngType() {
 	return i;
 }
 
+void GameControl::newFood(Food* f, Vector2D pos) {
+	foodPool->AddFood(f);
+	f->onDrop(true);
+	f->setPos(pos);
+	f->setTransports(tP1, tP2);
+}
+
 Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 
 	Food* f;
 	switch (type) {
@@ -97,9 +104,10 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		f = new SlicedTomato(pos, tP1, tP2);
 		break;
 
+
 		//////////////MACE
 	case(Resources::FoodType::MashedTomato):
-		f = new SlicedTomato(pos, tP1, tP2); ///Esto está puesto para que no queje de que no se inicializa
+		f = new SlicedTomato(pos, tP1, tP2); ///Esto estï¿½ puesto para que no queje de que no se inicializa
 		//f = new MashedTomato(pos);
 		break;
 	case(Resources::FoodType::MashedMeat):
@@ -128,11 +136,10 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		//////////////EMPTY
 	default:
 		f = new SlicedTomato(pos, tP1, tP2); // Para que no queje
-		cout << "Creado empty"<<endl;
 		break;
 	}
 	foodPool->AddFood(f);
-
+	f->onDrop(true);
 	return f;
 }
 

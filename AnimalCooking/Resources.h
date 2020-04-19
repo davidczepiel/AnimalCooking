@@ -23,7 +23,8 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
-
+		SliderBackground,
+		SliderMovPoint,
 
 		// images all
 		Repisa,
@@ -31,11 +32,17 @@ public:
 		Suelo,
 		Hierba,
 		Cooker,
+		CookerCooking,
+		CookerBurned,
+		CookerCooked,
+		Platera,
 		Cuchillo,
 		CuchilloSucio,
 		Fregadero,
 		Ingrediente,
-		ComidaMuerta,
+		Panera,
+		Tomato,
+		Onion,
 		ComidaCocinada,
 		Pedido, //Justo despues de este van el resto de pedidos, en orden respecto a Resources::FoodType::_FirstOfFoods_
 		Papelera,
@@ -43,14 +50,30 @@ public:
 		Pollo,
 		IngredienteMalo,
 		CuadradoAux,
+		level0Menu,
+		level1Menu,
+		level2Menu,
+		level3Menu,
+		level4Menu,
+		
 
+		//FeedBackImages
+		TomatoFeedBack,
+		OnionFeedBack,
+		CuchilloFeedBack,
+		Panel,
+		PlatoFeedBack,
+		PapelertaFeedBack,
+		Coger,
+		Dejar,
 
 		// images level specific
 		Pan,
 		Arroz,
-		Aceite
+		Aceite,
 
 		// text
+		
 	
 	};
 

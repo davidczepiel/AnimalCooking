@@ -27,6 +27,7 @@ struct cookersRecipes {
 class FoodConfig {
 public:
 	FoodConfig();
+	~FoodConfig() { };
 
 	const vector <cookersRecipes>& getCookersRecipes()  { return cookersRecipes_; };
 	const vector <utensilsRecipes>& getUtensilsRecipes()  { return utensilsRecipes_; };

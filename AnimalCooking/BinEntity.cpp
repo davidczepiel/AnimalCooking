@@ -8,13 +8,20 @@ void BinEntity::action1(int player)
 
 	if (playerTransport->getObjectInHands() != nullptr && playerTransport->getObjectTypeInHands() == Resources::Dish) {
 		//Limpiar el plato
-		std::vector<Food*> foodVector = static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector();
 
-		for (int i = 0; i < foodVector.size(); ++i) {
-			foodVector[i]->Destroy();
+		for (auto& i : static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector()) {
+			i->Destroy();
 		}
-		foodVector.clear();
+		static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector().clear();
 	}
 
 	playerTransport = nullptr;
+}
+
+void BinEntity::feedback(int player)
+{
+	SDL_Rect rect;
+	rect.x = position_.getX(); rect.y = position_.getY(); rect.w = size_.getX(); rect.h = size_.getY();
+
+	feedbackVisual_->render(rect);
 }
