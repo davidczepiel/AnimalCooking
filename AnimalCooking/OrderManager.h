@@ -26,6 +26,7 @@ public:
 	inline void setDistXBetweenOrders(size_t delta) { distXBetweenOrders_ = delta; }
 
 	inline void setPosition(Vector2D pos) { position_ = pos; }
+	inline void setSecondsPerIng(int s) { msPerIng_ = s * 1000; }
 
 	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
@@ -37,7 +38,7 @@ public:
 	//PUEDE DEVOLVER VALORES A NULLPTR
 	vector<Order*>& getOrders();
 
-	void fillPosibleOrders(initializer_list<Resources::FoodType>& lista) {
+	void fillPosibleOrders(vector<Resources::FoodType>& lista) {
 		for (auto elem : lista) {
 			availableOrders_.insert(elem);
 		}
@@ -46,7 +47,7 @@ public:
 	inline const set<Resources::FoodType>& getPosibleOrders() const { return availableOrders_; }
 
 private:
-	size_t distXBetweenOrders_;
+	size_t distXBetweenOrders_, msPerIng_;
 	Vector2D position_;
 
 	ScoreManager* scoreManager_;

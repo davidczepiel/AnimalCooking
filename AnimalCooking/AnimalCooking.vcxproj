@@ -244,6 +244,7 @@
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderAdder.h" />
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderService.h" />
     <ClInclude Include="OrderServiceViewer.h" />
@@ -384,6 +385,7 @@
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderService.cpp" />
     <ClCompile Include="OrderServiceViewer.cpp" />

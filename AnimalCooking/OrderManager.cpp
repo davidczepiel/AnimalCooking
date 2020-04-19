@@ -36,7 +36,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 					game_->getTextureMngr()->getTexture(Resources::Pedido + Resources::_FirstOfFoods_ - finalProduct), // OrderText
 					ings_.size(), // ingsSize
 					finalProduct, //Producto que da
-					45
+					msPerIng_ * ings_.size()
 				);
 			}
 		}
