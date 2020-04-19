@@ -8,10 +8,6 @@ Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int m
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatoFeedBack);
 }
 
-Dish::~Dish() {
-	dishStack->removeDish(this);
-}
-
 // si el vector estaba vacío pone el iterador al principio
 void Dish::addFood(Food* f)
 {
