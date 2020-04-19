@@ -10,7 +10,6 @@ class Food : public Pickable
 protected:
 	Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2);
 	Food(Resources::FoodType type);
-	~Food() { delete timer_; }
 
 	Resources::FoodType type_;
 	Texture* texture_;
@@ -20,6 +19,8 @@ protected:
 
 	FoodTimer* timer_;
 public:
+	virtual ~Food() { delete timer_; }
+
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
@@ -27,7 +28,7 @@ public:
 		timer_->timerStart();
 	}
 	void resetTimer() {
-		timer_.timerReset();
+		timer_->timerReset();
 	}
 
 	Resources::FoodType getType() { return type_; }

@@ -416,7 +416,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TImerViewer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />

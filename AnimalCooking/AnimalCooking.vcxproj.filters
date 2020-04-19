@@ -119,9 +119,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TimerEnd.cpp" />
-    <ClCompile Include="TimerPool.cpp" />
-    <ClCompile Include="TImerViewer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />
@@ -132,6 +129,7 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="SliderBehaviour.cpp" />
     <ClCompile Include="SliderRenderer.cpp" />
+    <ClCompile Include="BackGroundViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -200,7 +198,6 @@
     <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
-    <ClInclude Include="GlobalTimer.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
@@ -263,9 +260,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="TimerEnd.h" />
-    <ClInclude Include="TimerPool.h" />
-    <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="Utensil.h" />
@@ -276,6 +270,7 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="SliderBehaviour.h" />
     <ClInclude Include="SliderRenderer.h" />
+    <ClInclude Include="BackGroundViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
