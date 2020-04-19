@@ -66,6 +66,5 @@ void CookerTimer::draw()
 {
 	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	int col = (((game_->getTime() - startedTime_) * texture_->getNumCols()) / time_);
-	cout << col << endl;
 	texture_->renderFrame(destRect, 0, col, 0);
 }

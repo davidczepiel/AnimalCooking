@@ -2,7 +2,8 @@
 #include "Ingredient.h"
 #include "FoodDictionary.h"
 
-GameLogic::GameLogic() : Component(ecs::GameLogic)
+GameLogic::GameLogic() : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
+foodPool(nullptr), levelTimer_(new LevelTimer())
 {
 }
 

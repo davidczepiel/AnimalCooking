@@ -40,8 +40,8 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(nullptr) {}
-	LevelTimer(Uint32 lvlT) : Timer() { time_ = lvlT; outlineText_ = game_->getTextureMngr()->getTexture(Resources::RectangleOutline);}
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) {}
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) { time_ = lvlT; }
 	void draw();
 
 	void update() {

@@ -63,7 +63,6 @@ void Food::onDrop(bool onFloor)
 	if (onFloor) {
 		Pickable::onDrop(onFloor);
 		timer_->timerStart();
-		timer_->setPos(Vector2D(position_.getX(), position_.getY() + size_.getY() + 5 ));
 	}
 }
 

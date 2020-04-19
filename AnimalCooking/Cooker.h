@@ -39,7 +39,7 @@ protected:
 	Entity* entity_;
 	CookerStates state_;
 
-	DefaultTimer* timer_;
+	CookerTimer* timer_;
 	Uint32 cookingTime_;
 
 	vector<Food*> foods_;

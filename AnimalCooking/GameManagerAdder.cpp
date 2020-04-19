@@ -13,6 +13,8 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
+	glogic->setLevelTimer(jsonLevel["LevelTimer"]["Time"].as_int(),
+		Vector2D(jsonLevel["LevelTimer"]["pos"]["x"].as_int(), jsonLevel["LevelTimer"]["pos"]["y"].as_int()));
 
 	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(), player, ip);
 

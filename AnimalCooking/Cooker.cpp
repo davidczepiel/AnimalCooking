@@ -11,7 +11,8 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transpo
 	setRot(rot);
 	setEmptyTexture();
 
-	timer_ = new DefaultTimer();
+	timer_ = new CookerTimer(cookingTime_);
+	timer_->setPos(Vector2D(position_.getX(), position_.getY()));
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
@@ -35,6 +36,8 @@ void Cooker::draw()
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
 	texture_->render(rect, rotation_); //Cambiar para usar animaciones
+
+	timer_->draw();
 }
 
 void Cooker::action1(int player)
