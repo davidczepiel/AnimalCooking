@@ -13,7 +13,7 @@ class CollisionsSystem;
 class GameManagerAdder
 {
 public:
-	GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, FoodPool* fp, IngredientsPool* ip, Resources::Level level);
+	GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, FoodPool* fp, IngredientsPool* ip, int casilla);
 	
 private:
 	void initializeComponent(const string& component, Entity* entity);

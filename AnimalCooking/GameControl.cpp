@@ -1,13 +1,9 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, Resources::Level level) : Component(ecs::GameControl),utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl),utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(vector<string>()),casillaLength(casilla)
 {
-	const string rutaNivel = "../AnimalCooking/resources/cfg/nivel" + std::to_string(level - 1) + ".cfg";
-	jsonLevel = jute::parser::parse_file(rutaNivel);
-
-	const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
-	jsonGeneral = jute::parser::parse_file(rutaGeneral);
+	jsonGeneral = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
 
 	timer.setTime(1000);
 	timer.timerStart();
@@ -23,7 +19,7 @@ void GameControl::update()
 	//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
 	if (timer.isTimerEnd())
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			newIngredient();
 		}
@@ -33,20 +29,14 @@ void GameControl::update()
 }
 
 void GameControl::newIngredient() 
+{   
+	Ingredient* ing = newIngType(levelIngType[game_->getRandGen()->nextInt(0, levelIngType.size())]);  
 
-{   // Se crea un ingrediente nuevo aleatorio
-	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
-	int n = SDLGame::instance()->getRandGen()->nextInt(0, ingsType.size());
-	string s = jsonLevel["IngredientsPool"]["entities"][n][0].as_string();	
-	Ingredient* ing = newIngType(s);  
-
-	double casilla = SDLGame::instance()->getWindowHeight() / 9;    
-	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casilla,jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casilla);
-		
-    //double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
-	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()-25);
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
+	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()-50);
     ing->setVel(Vector2D(0,0));
-    ing->setPos(Vector2D(game_->getWindowWidth() - 25, y));
+    ing->setPos(Vector2D(game_->getWindowWidth()/2, y));
 
 	ingPool_->addIngredient(ing);
 	ing = nullptr;

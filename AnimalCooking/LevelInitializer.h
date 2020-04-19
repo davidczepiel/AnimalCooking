@@ -24,10 +24,11 @@ private:
 	void initialize_sinks();
 	void initialize_bin();
 	void initialize_dishes();
-	void initialize_gameManager(Resources::Level level);
+	void initialize_gameManager(int casilla);
 	void initialize_foodGivers();
 	void initialize_colSystem();
 	void initialize_feedback();
+	void initialize_levelIngredients();
 
 	double casilla;
 

@@ -11,7 +11,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,Resources::Level level);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,int casilla);
     ~GameControl() {}
 
 	void init() override;
@@ -19,6 +19,8 @@ public:
     void newIngredient();
     Food* newFood(Resources::FoodType type, Vector2D pos);
     void newFood(Food* f, Vector2D pos);
+	vector<string>& getLevelIngType() { return levelIngType; }
+
 private:
     Ingredient* newIngType(const string& s);
     IngredientsPool* ingPool_;
@@ -26,7 +28,8 @@ private:
     UtensilsPool* utensilsPool;
     Transport* tP1;
     Transport* tP2;
-	jute::jValue jsonLevel;
 	jute::jValue jsonGeneral;
 	Timer timer;
+	int casillaLength;
+	vector<string> levelIngType;
 };

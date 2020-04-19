@@ -7,10 +7,10 @@
 #include "CollisionsSystem.h"
 
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
-	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, Resources::Level level)
+	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla)
 {
 	GameLogic* glogic = gameManager->addComponent<GameLogic>();
-	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip,level);
+	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip,casilla);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
 
