@@ -16,31 +16,24 @@ void FoodDictionary::fill()
 {
 	FoodConfig foodCfg;
 
-	for (int u = 0; u < foodCfg.getUtensilsRecipes().size(); ++u) {		
-		
-
+	for (int u = 0; u < foodCfg.getUtensilsRecipes().size(); ++u) {				
 		for (int i = 0; i < foodCfg.getUtensilsRecipes()[u].transformations.size(); ++i) {
 			set<int> set;
-
 			set.insert(foodCfg.getUtensilsRecipes()[u].transformations[i].set);
-			dictionary_.insert(Par(par(u, set), foodCfg.getUtensilsRecipes()[u].transformations[i].result));			
+			dictionaryIng_.insert(Par(par(u, set), foodCfg.getUtensilsRecipes()[u].transformations[i].result));			
 		}
 	}
 
 	for (int c = 0; c < foodCfg.getCookersRecipes().size(); ++c) {
-
 		for (int i = 0; i < foodCfg.getCookersRecipes()[c].transformations.size(); ++i) {
 			set<int> set;
-
 			for (int j = 0; j < foodCfg.getCookersRecipes()[c].transformations[i].set.size(); ++j) {
 				set.insert(foodCfg.getCookersRecipes()[c].transformations[i].set[j]);
 			}
-
-			dictionary_.insert(Par(par(c, set), foodCfg.getCookersRecipes()[c].transformations[i].result));
+			dictionaryCookers_.insert(Par(par(c, set), foodCfg.getCookersRecipes()[c].transformations[i].result));
 			resultToSetDictionary_.insert(std::make_pair(foodCfg.getCookersRecipes()[c].transformations[i].result, set));
 		}
 	}
-
 }
 
 Food* FoodDictionary::bind(const int& c) const
@@ -145,29 +138,34 @@ Food* FoodDictionary::bind(const int& c) const
 	}
 }
 
-Food* FoodDictionary::getResult(const int& c, vector<int>& vector)
+Food* FoodDictionary::getResult(const int& c, vector<int>& vector, bool isCooker)
 {
 	set<int> set;
 	for (auto elem : vector) {
 		if (!set.insert(elem).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
 	}
-	return getResult(c, set);
+	return getResult(c, set, isCooker);
 }
 
-Food* FoodDictionary::getResult(const int& c, vector<Food*>& vector)
+Food* FoodDictionary::getResult(const int& c, vector<Food*>& vector, bool isCooker)
 {
 	set<int> set;
 	for (auto elem : vector) {
 		if (!set.insert(elem->getType()).second) return bind(-1); //Devuelvo fallo si hay dos elementos repetidos
 	}
-	return getResult(c, set);
+	return getResult(c, set, isCooker);
 }
 
-
-Food* FoodDictionary::getResult(const int& c, const set<int>& set)
+Food* FoodDictionary::getResult(const int& c, const set<int>& set, bool isCooker)
 {
-	auto it = dictionary_.find(par(c, set));
-	return it != dictionary_.end() ? bind(it->second) : bind(-1); //Devuelve el result si lo encuentra, y si no devuelve fallo
+	if (isCooker) {
+		auto it = dictionaryCookers_.find(par(c, set));
+		return it != dictionaryCookers_.end() ? bind(it->second) : bind(-1); //Devuelve el result si lo encuentra, y si no devuelve fallo
+	}
+	else {
+		auto it = dictionaryIng_.find(par(c, set));
+		return it != dictionaryIng_.end() ? bind(it->second) : bind(-1); //Devuelve el result si lo encuentra, y si no devuelve fallo
+	}	
 }
 
 const set<int>& FoodDictionary::getIngsForFood(const int& result)
