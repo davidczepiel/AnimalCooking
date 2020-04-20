@@ -22,7 +22,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 	os->addComponent<OrderServiceViewer>(os);
 
 	OrderManager* om = os->setOrderMngr(os->addComponent<OrderManager>(nivel["Clients"]["pedidos"]["maxPedidos"].as_int(),
-		(int)(nivel["Clients"]["pedidos"]["deltaX"].as_double() * casilla),
+		(int)(general["Clients"]["pedidos"]["deltaX"].as_double() * casilla),
 		Vector2D(nivel["Clients"]["pedidos"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["pedidos"]["pos"]["y"].as_double() * casilla), GETCMP2(gameManager, ScoreManager)));
 	om->setSecondsPerIng(nivel["Clients"]["pedidos"]["segundosPorIngrediente"].as_double());
 
@@ -42,7 +42,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 	//Inicializacion de los pedidos iniciales en ese nivel
 	vector<Resources::FoodType> iniciales;
 	for (int c = 0; c < nivel["Clients"]["pedidos"]["pedidosIniciales"].size(); ++c) {
-		switchPedido(nivel["Clients"]["pedidos"]["pedidosIniciales"][c].as_string(), posibles);
+		switchPedido(nivel["Clients"]["pedidos"]["pedidosIniciales"][c].as_string(), iniciales);
 	}
 	ai->setInitialOrders(iniciales);
 
