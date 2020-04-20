@@ -14,7 +14,7 @@ public:
     GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,int casilla);
     ~GameControl() {}
 
-	void init() override;
+	void init() override {}
 	void update() override;
     void newIngredient();
     Food* newFood(Resources::FoodType type, Vector2D pos);

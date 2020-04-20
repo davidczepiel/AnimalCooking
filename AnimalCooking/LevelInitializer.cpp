@@ -179,6 +179,7 @@ void LevelInitializer::initialize_feedback()
 
 void LevelInitializer::initialize_levelIngredients()
 {
+	//Le decimos al GameControl que tipos de ingredientes van a aparecer en el nivel actual
 	IngredientInitializer(jsonLevel, GETCMP2(gameManager, GameControl));
 
 	sL->updateLength();

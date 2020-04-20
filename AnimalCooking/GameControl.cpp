@@ -9,17 +9,13 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 	timer.timerStart();
 }
 
-void GameControl::init()
-{
-	
-}
 
 void GameControl::update()
 {
 	//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
 	if (timer.isTimerEnd())
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			newIngredient();
 		}
@@ -35,6 +31,8 @@ void GameControl::newIngredient()
 	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
 	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()-50);
+	//double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
+	//De momento aparecen con velocidad 0 y en el centro de la pantalla
     ing->setVel(Vector2D(0,0));
     ing->setPos(Vector2D(game_->getWindowWidth()/2, y));
 
@@ -55,51 +53,39 @@ Ingredient* GameControl::newIngType(const string& s) {
 	{
 	case str2int("Tomato"):
 		i = new Tomato();
-		cout << "Tomato" << endl;
 		break;
 	case str2int("Carrot"):
 		i = new Carrot();
-		cout << "Carrot" << endl;
 		break;
 	case str2int("Lettuce"):
 		i = new Lettuce();
-		cout << "Lettuce" << endl;
 		break;
 	case str2int("Mushroom"):
 		i = new Mushroom();
-		cout << "Mushroom" << endl;
 		break;
 	case str2int("Sausage"):
 		i = new Sausage();
-		cout << "Sausage" << endl;
 		break;
 	case str2int("Chicken"):
 		i = new Chicken();
-		cout << "Chicken" << endl;
 		break;
 	case str2int("Meat"):
 		i = new Meat();
-		cout << "Meat" << endl;
 		break;
 	case str2int("Potato"):
 		i = new Potato();
-		cout << "Potato" << endl;
 		break;
 	case str2int("Onion"):
 		i = new Onion();
-		cout << "Onion" << endl;
 		break;
 	case str2int("Clam"):
 		i = new Clam();
-		cout << "Clam" << endl;
 		break;
 	case str2int("Cheese"):
 		i = new Cheese();
-		cout << "Cheese" << endl;
 		break;
 	case str2int("Fish"):
 		i = new Fish();
-		cout << "Fish" << endl;
 		break;
 	default:
 		break;
