@@ -12,9 +12,9 @@ class CreditsState :
 	public State
 {
 private:
-	static void GoBackMenu();
+	static void GoBackMenu(AnimalCooking* ac);
 public:
-	CreditsState();
+	CreditsState(AnimalCooking* ac);
 
 };
 

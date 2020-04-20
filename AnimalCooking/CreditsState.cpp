@@ -3,11 +3,11 @@
 
 
 
-CreditsState::CreditsState() {
+CreditsState::CreditsState(AnimalCooking* ac):State(ac) {
 	cout << "Credits";
 	Entity* returnToMenuState = stage->addEntity();
 	returnToMenuState->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, SDLGame::instance()->getWindowHeight()/ 4),Vector2D(0,0),100,50,0);
-	returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu);
+	returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
 	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
 	//Se pondr�an los 
 
@@ -17,7 +17,7 @@ CreditsState::CreditsState() {
 }
 
 
-void CreditsState::GoBackMenu() {
+void CreditsState::GoBackMenu(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 	
 
