@@ -55,11 +55,22 @@ void Timer::timerReset() {
 
 void LevelTimer::draw()
 {
-	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), time_ / 100, size_.getY());
-	outlineText_->render(rect);
+	double widthMultiplier = (game_->getTime() - startedTime_) / double(time_);
+
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX() * widthMultiplier, size_.getY());
+	texture_->render(rect);
 
 	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
-	texture_->render(rect);
+	outlineText_->render(rect);
+}
+
+void LevelTimer::update()
+{
+	Timer::update();
+
+	if (timerEnd_) {
+		//Fin nivel
+	}
 }
 
 void CookerTimer::draw()

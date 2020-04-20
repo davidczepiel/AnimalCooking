@@ -144,6 +144,8 @@ void LevelInitializer::initialize_gameManager()
 	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
 		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool));
 
+	emPlaystate->addToGroup(gameManager, CASTID(jsonGeneral["LevelTimer"]["Layer"].as_int()));
+
 	sL->updateLength();
 }
 

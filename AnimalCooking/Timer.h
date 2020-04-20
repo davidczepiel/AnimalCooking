@@ -40,16 +40,15 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) {}
-	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) { time_ = lvlT; }
-	void draw();
-
-	void update() {
-		Timer::update();
-		if (timerEnd_) {
-			//Fin nivel
-		}
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) {
+		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) { 
+		time_ = lvlT;
+		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
+	}
+	void draw();
+	void update();
 
 private:
 	Texture* outlineText_;
