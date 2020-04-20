@@ -14,6 +14,5 @@ public:
 private:
 
 	static void goToEndState(AnimalCooking* ac);
-	static void goToPauseState(AnimalCooking* ac);
 };
 

@@ -27,7 +27,7 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 
 	closeButton = stage->addEntity();
 	closeButton->addComponent<Transform>(Vector2D(50, 200), Vector2D(0, 0), 80, 40, 0);
-	closeButton->addComponent<ButtonBehaviour>(menuCallback, app);
+	closeButton->addComponent<ButtonBehaviour>(closeCallback, app);
 	closeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
 	stage->addToGroup(closeButton, ecs::GroupID::Layer1);
 }

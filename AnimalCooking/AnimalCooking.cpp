@@ -12,6 +12,7 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "GPadController.h"
+#include "PauseState.h"
 
 
 using namespace std;
@@ -79,8 +80,8 @@ void AnimalCooking::handleInput() {
 			InputHandler::instance()->update(event);
 	}
 
-	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE))
-		stop();
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
+		game_->getFSM()->pushState(new PauseState(this));
 }
 
 void AnimalCooking::update() {
