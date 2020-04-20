@@ -54,6 +54,18 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedTomatoFeedBack);
 	}
 };
+class MashedTomato : public Food
+{
+public:
+	MashedTomato(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::MashedTomato, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::MashedTomatoT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedTomatoFeedBack);
+	}
+	MashedTomato() : Food(Resources::FoodType::MashedTomato) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::MashedTomatoT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedTomatoFeedBack);
+	}
+};
 class SlicedLettuce : public Food
 {
 public:

@@ -51,7 +51,22 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
-		
+
+		//Pedidos------------------------------------------------------
+		Bocadillo,
+		SaladOrder,
+		BurgerOrder,
+		PizzaOrder,
+		RoastOrder,
+		RiceDishOrder,
+		HotDogOrder,
+		RisottoOrder,
+		CookedFishOrder,
+		FriedVegsOrder,
+		BakedChickenOrder,
+		FrenchFriesOrder,
+		CookedClamsOrder,
+		RiceAndClamsOrder,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -90,6 +105,7 @@ public:
 		CaughtSausageSkilletT,
 		SlicedPotatoSkilletT,
 		DressT,
+		MashedTomatoT,
 
 		//FeedBackImages---------------------------------------------
 			//Food
@@ -130,6 +146,7 @@ public:
 			CaughtSausageSkilletFeedBack,
 			SlicedPotatoSkilletFeedBack,
 			DressFeedBack,
+			MashedTomatoFeedBack,
 
 			//Utensils
 			CuchilloFeedBack,

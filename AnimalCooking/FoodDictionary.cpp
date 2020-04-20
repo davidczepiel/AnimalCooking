@@ -49,9 +49,9 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::SlicedTomato:
 		return new SlicedTomato;
 		break;
-	/*case Resources::FoodType::MashedTomato:
+	case Resources::FoodType::MashedTomato:
 		return new MashedTomato;
-		break;*/
+		break;
 	case Resources::FoodType::SlicedLettuce:
 		return new SlicedLettuce;
 		break;

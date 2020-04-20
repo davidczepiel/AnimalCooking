@@ -42,6 +42,22 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic,level3Menu,"../AnimalCooking/resources/images/level3Menu.png"},
 	{Basic,level4Menu,"../AnimalCooking/resources/images/level4Menu.png"},
 
+	//Pedidos--------------------------------------------------------------
+	{Basic,Bocadillo,"../AnimalCooking/resources/images/Pedidos/bocadillo.png"},
+	{AllLevels,SaladOrder,"../AnimalCooking/resources/images/Pedidos/ensalada.png"},
+	{AllLevels,BurgerOrder,"../AnimalCooking/resources/images/Pedidos/hamburguesa.png"},
+	{AllLevels,PizzaOrder,"../AnimalCooking/resources/images/Pedidos/pizza.png"},
+	{AllLevels,RoastOrder,"../AnimalCooking/resources/images/Pedidos/asado.png"},
+	{AllLevels,RiceDishOrder,"../AnimalCooking/resources/images/Pedidos/arrozCasa.png"},
+	{AllLevels,HotDogOrder,"../AnimalCooking/resources/images/Pedidos/hotdog.png"},
+	{AllLevels,RisottoOrder,"../AnimalCooking/resources/images/Pedidos/risotto.png"},
+	{AllLevels,CookedFishOrder,"../AnimalCooking/resources/images/Pedidos/pescadoAlHorno.png"},
+	{AllLevels,FriedVegsOrder,"../AnimalCooking/resources/images/Pedidos/verdurasFritas.png"},
+	{AllLevels,BakedChickenOrder,"../AnimalCooking/resources/images/Pedidos/polloAsado.png"},
+	{AllLevels,FrenchFriesOrder,"../AnimalCooking/resources/images/Pedidos/patatasFristas.png"},
+	{AllLevels,CookedClamsOrder,"../AnimalCooking/resources/images/Pedidos/vieira.png"},
+	{AllLevels,RiceAndClamsOrder,"../AnimalCooking/resources/images/Pedidos/mariscoConArroz.png"},
+
 	
 	//Foods-----------------------------------------------------------------
 	{AllLevels, TextureId::PoopT,"../AnimalCooking/resources/images/Foods/caca.png"},
@@ -81,6 +97,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::CaughtSausageSkilletT,"../AnimalCooking/resources/images/Foods/salchichaSarten.png"},
 	{AllLevels, TextureId::SlicedPotatoSkilletT,"../AnimalCooking/resources/images/Foods/patatasSarten.png"},
 	{AllLevels, TextureId::DressT,"../AnimalCooking/resources/images/Foods/dress.png"},
+	{AllLevels, TextureId::MashedTomatoT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png"},
 	//FeedBack---------------------------------------------------------------
 		//Food
 		{AllLevels, PoopFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/caca.png"},
@@ -119,6 +136,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, CaughtSausageSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/salchichaSarten.png"},
 		{AllLevels, SlicedPotatoSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasSarten.png"},
 		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
+		{AllLevels, MashedTomatoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
 
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
