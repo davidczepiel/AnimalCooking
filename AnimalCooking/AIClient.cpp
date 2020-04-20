@@ -7,7 +7,7 @@ AIClient::AIClient() : AIClient(45)
 }
 
 AIClient::AIClient(Uint32 deltaTimePerOrder) : Component(ecs::AIClient),
-	deltaTimePerOrder_(deltaTimePerOrder * 1000 /*ms*/), orMngr_(nullptr), availableOrders_(), initialOrders_(), lastOrderTime_(SDLGame::instance()->getTime())
+	deltaTimePerOrder_(deltaTimePerOrder), orMngr_(nullptr), availableOrders_(), initialOrders_(), lastOrderTime_(SDLGame::instance()->getTime())
 {
 }
 
@@ -20,8 +20,10 @@ void AIClient::update()
 {
 	for (auto& o : orMngr_->getOrders()) {
 		if (o != nullptr) {
-			o->setAnger((game_->getTime() - o->getStartTime()) / o->getMaxTime());
-			if (o->getAnger() > 1) orMngr_->removeOrder(o->getFinalProduct(), false);
+			o->setAnger((game_->getTime() - o->getStartTime()) / (double)o->getMaxTime());
+			if (o->getAnger() > 1) 
+				orMngr_->removeOrder(o->getFinalProduct(), false);
+			
 		}
 	}
 	checkNewOrder();
@@ -30,14 +32,14 @@ void AIClient::update()
 void AIClient::checkNewOrder()
 {
 	if (game_->getTime() - lastOrderTime_ > deltaTimePerOrder_) {
+		lastOrderTime_ = game_->getTime();
 		if (!initialOrders_.empty()) { //Primero saco los pedidos en cierto orden, si quedan
 			orMngr_->addOrder(initialOrders_.front());
 			initialOrders_.pop();
 		}
 		else {	
 			orMngr_->addOrder(chooseRandomOrder());
-		}
-		lastOrderTime_ = game_->getTime();
+		}		
 	}
 }
 

@@ -12,6 +12,10 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
+	em->addEntity(os);
+	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
+	interactives_.push_back(os);
+
 	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla));
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casilla, general["Clients"]["repisa"]["size"]["height"].as_double() * casilla));
 
@@ -20,12 +24,12 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 	OrderManager* om = os->setOrderMngr(os->addComponent<OrderManager>(nivel["Clients"]["pedidos"]["maxPedidos"].as_int(),
 		(int)(nivel["Clients"]["pedidos"]["deltaX"].as_double() * casilla),
 		Vector2D(nivel["Clients"]["pedidos"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["pedidos"]["pos"]["y"].as_double() * casilla), GETCMP2(gameManager, ScoreManager)));
-	om->setSecondsPerIng(nivel["Clients"]["pedidos"]["segundosPorIngrediente"].as_int());
+	om->setSecondsPerIng(nivel["Clients"]["pedidos"]["segundosPorIngrediente"].as_double());
 
 	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casilla, general["Clients"]["pedidos"]["size"]["height"].as_double() * casilla, 
 		Vector2D(general["Clients"]["pedidos"]["margin"]["x"].as_double() * casilla, general["Clients"]["pedidos"]["margin"]["y"].as_double() * casilla));
 	
-	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_int());
+	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000);
 
 	//Inicializacion de los posibles pedidos en ese nivel
 	vector<Resources::FoodType> posibles;
@@ -45,11 +49,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 	//Inicializacion de los componentes extra de ese nivel
 	for (int c = 0; c < nivel["Clients"]["components"].size(); ++c) {
 		initializeComponent(nivel["Clients"]["components"][c].as_string(), os);
-	}
-
-	em->addEntity(os);
-	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
-	interactives_.push_back(os);
+	}	
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

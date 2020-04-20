@@ -27,16 +27,16 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 {
 	if (availableOrders_.find(finalProduct) != availableOrders_.end()) { //Si es posible meter este pedido
 		vector<Order*>::iterator it = getFreePos();
-		if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va
+		if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va		
 			set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido
 			if (!ings_.empty()) {
 				//Mete el pedido
 				*it = new Order( //Mete un order en la posicion libre			 
 					Vector2D(position_.getX() + distXBetweenOrders_ * (it - currentOrders_.begin()), position_.getY()), // pos en x es relativa a su posicion en el vector
-					game_->getTextureMngr()->getTexture(Resources::Onion /*+ Resources::_FirstOfFoods_ - finalProduct*/), // OrderText
+					game_->getTextureMngr()->getTexture(Resources::Onion /*- Resources::_FirstOfFoods_ + finalProduct*/), // OrderText
 					ings_.size(), // ingsSize
 					finalProduct, //Producto que da
-					msPerIng_ * ings_.size()
+					msPerIng_ * ings_.size() //Tiempo que se mantiene en vigor
 				);
 			}
 		}
@@ -45,7 +45,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 
 bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidIt)
 {
-	list<vector<Order*>::iterator>& lista = getListOf(finalProduct);
+	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
 	if (!lista.empty()) { //Si encuentra el producto a eliminar, elimina el pedido
 		vector<Order*>::iterator it = getFirst(lista);
 		if (playerDidIt) scoreManager_->addScore((*it)->getNumIngs() * 15);
@@ -63,20 +63,15 @@ vector<Order*>& OrderManager::getOrders()
 
 vector<Order*>::iterator OrderManager::getFreePos()
 {
-	vector<Order*>::iterator it = currentOrders_.begin();
-	while (it != currentOrders_.end()) {
-		if (*it == nullptr) break; //Paro la busqueda cuando encuentro una posicion libre
-		++it;
-	}
-	return it;
+	return find(currentOrders_.begin(), currentOrders_.end(), nullptr);
 }
 
-list<vector<Order*>::iterator>& OrderManager::getListOf(Resources::FoodType finalProduct)
+list<vector<Order*>::iterator> OrderManager::getListOf(Resources::FoodType finalProduct)
 {
 	list<vector<Order*>::iterator> lista;
 	vector<Order*>::iterator it = currentOrders_.begin();
 	while (it != currentOrders_.end()) {
-		if ((*it)->getFinalProduct() == finalProduct) lista.push_back(it);
+		if (*it != nullptr && (*it)->getFinalProduct() == finalProduct) lista.push_back(it);
 		++it;
 	}
 	return lista;
@@ -84,9 +79,9 @@ list<vector<Order*>::iterator>& OrderManager::getListOf(Resources::FoodType fina
 
 vector<Order*>::iterator OrderManager::getFirst(const list<vector<Order*>::iterator>& lista)
 {
-	vector<Order*>::iterator first = *lista.begin();
+	vector<Order*>::iterator first = (*lista.begin());
 	for (vector<Order*>::iterator it : lista) {
-		if ((*it)->getAnger() > (*first)->getAnger()) first = it;
+		if (*it != nullptr && (*it)->getAnger() > (*first)->getAnger()) first = it;
 	}
 	return first;
 }
