@@ -11,11 +11,11 @@ class EndState :
 {
 private:
 	//Cuando se cambie el callback por std::function se quita el static (y quizá el sdlGame)
-	static void goToMapState();
-	static void goToLoadState();
-	static void goToMenuState();
+	static void goToMapState(AnimalCooking* ac);
+	static void goToLoadState(AnimalCooking* ac);
+	static void goToMenuState(AnimalCooking* ac);
 public:
-	EndState();
+	EndState(AnimalCooking* ac);
 
 };
 

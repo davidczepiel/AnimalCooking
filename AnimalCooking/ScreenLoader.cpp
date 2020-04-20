@@ -9,8 +9,7 @@
 
 constexpr double step_ = 1.0 / 19.0; //18 es el numero de pasos (5 de carga de recursos + 13 de carga de nivel)
 
-
-ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
+ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
 	Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
@@ -41,7 +40,7 @@ ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level
 		height, //Height
 		0); //Rot
 
-	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
+	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
 	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
 	resetResources();
@@ -161,6 +160,6 @@ void ScreenLoader::initialize()
 	LevelInitializer(emPlaystate, level, this);
 }
 
-void ScreenLoader::goToPlayState() {
-	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager()));
+void ScreenLoader::goToPlayState(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),ac));
 }

@@ -25,28 +25,47 @@ void RiceGiver::action1(int player) {
 }
 
 //-----------------------------
-BreadGiver::BreadGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+BreadBurgerGiver::BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 }
 
-void BreadGiver::action1(int player) {
+void BreadBurgerGiver::action1(int player) {
 	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
 	else if (player2_->getObjectInHands() == nullptr) {
-		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
 
 }
 
 //-----------------------------
+BreadHotDogGiver::BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+{
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+}
+
+void BreadHotDogGiver::action1(int player) {
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
+
+}
+//-----------------------------
+
 DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Pan);
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PizzaMassT);
 }
 
 void DoughGiver::action1(int player) {

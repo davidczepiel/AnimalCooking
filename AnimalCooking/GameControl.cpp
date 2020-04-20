@@ -72,70 +72,25 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 	Food* f;
 	switch (type) {
 
-		///////////KNIFE
-	case(Resources::FoodType::SlicedTomato):
-		f = new SlicedTomato(pos,tP1,tP2);
+		//////////////FOOD GIVER
+	case(Resources::FoodType::BreadBurger):
+		f = new BreadBurger(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::SlicedCheese):
-		f = new SlicedCheese(pos, tP1, tP2);
+	case(Resources::FoodType::BreadHotDog):
+		f = new BreadHotDog(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::SlicedCarrot):
-		f = new SlicedCarrot(pos, tP1, tP2);
+	case(Resources::FoodType::PizzaMass):
+		f = new PizzaMass(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::SlicedMeat):
-		f = new SlicedMeat(pos, tP1, tP2);
+	case(Resources::FoodType::Rice):
+		f = new Rice(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::SlicedLettuce):
-		f = new SlicedLettuce(pos, tP1, tP2);
+	case(Resources::FoodType::Dress):
+		f = new Dress(pos, tP1, tP2);
 		break;
-	case(Resources::FoodType::SlicedSausage):
-		f = new SlicedSausage(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::SlicedMushroom):
-		f = new SlicedMushroom(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::SlicedPotato):
-		f = new SlicedPotato(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::SlicedOnion):
-		f = new SlicedOnion(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::SlicedChicken):
-		f = new SlicedTomato(pos, tP1, tP2);
-		break;
-
-
-		//////////////MACE
-	case(Resources::FoodType::MashedTomato):
-		f = new SlicedTomato(pos, tP1, tP2); ///Esto est� puesto para que no queje de que no se inicializa
-		//f = new MashedTomato(pos);
-		break;
-	case(Resources::FoodType::MashedMeat):
-		f = new MashedMeat(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::MashedMushroom):
-		f = new MashedMushroom(pos, tP1, tP2);
-		break;
-	
-		///////////////GRATER
-	case(Resources::FoodType::GratedCheese):
-		f = new GratedCheese(pos, tP1, tP2);
-		break;
-
-		///////////////NET
-	case(Resources::FoodType::CaughtClam):
-		f = new CaughtClam(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::CaughtFish):
-		f = new CaughtFish(pos, tP1, tP2);
-		break;
-	case(Resources::FoodType::CaughtSausage):
-		f = new CaughtSausage(pos, tP1, tP2);
-		break;
-	
 		//////////////EMPTY
 	default:
-		f = new SlicedTomato(pos, tP1, tP2); // Para que no queje
+		f = nullptr;
 		break;
 	}
 	foodPool->AddFood(f);
