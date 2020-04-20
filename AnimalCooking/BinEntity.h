@@ -10,7 +10,7 @@ class BinEntity : public Entity, public Interactive
 {
 public:
 	BinEntity(EntityManager* mngr, Transport* p1, Transport* p2) : Entity(SDLGame::instance(), mngr), Interactive(p1, p2,nullptr) {
-		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PapelertaFeedBack);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PapeleraFeedBack);
 	}
 	~BinEntity() {}
 
