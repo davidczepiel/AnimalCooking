@@ -132,7 +132,22 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 	case(Resources::FoodType::CaughtSausage):
 		f = new CaughtSausage(pos, tP1, tP2);
 		break;
-	
+		//////////////FOOD GIVER
+	case(Resources::FoodType::BreadBurger):
+		f = new BreadBurger(pos, tP1, tP2);
+		break;
+	case(Resources::FoodType::BreadHotDog):
+		f = new BreadHotDog(pos, tP1, tP2);
+		break;
+	case(Resources::FoodType::PizzaMass):
+		f = new PizzaMass(pos, tP1, tP2);
+		break;
+	case(Resources::FoodType::Rice):
+		f = new Rice(pos, tP1, tP2);
+		break;
+	case(Resources::FoodType::Dress):
+		f = new Dress(pos, tP1, tP2);
+		break;
 		//////////////EMPTY
 	default:
 		f = new SlicedTomato(pos, tP1, tP2); // Para que no queje

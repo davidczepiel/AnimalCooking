@@ -35,8 +35,8 @@ void FoodConfig::fill()
 	// MACE  RECIPES    // -------> SET <--------------   -----------> RESULT <--------------
 	//////////////////////	
 
-	uTrans.push_back({ Resources::IngredientType::meat,		Resources::FoodType:: MashedMeat });  //
-	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType:: MashedTomato }); //
+	uTrans.push_back({ Resources::IngredientType::meat,		Resources::FoodType::MashedMeat });  //
+	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType::MashedTomato }); //
 
 
 	//Adding Mace recipes
