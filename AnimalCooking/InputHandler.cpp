@@ -36,7 +36,10 @@ void InputHandler::clearState() {
 	isKeyUpEvent_ = false;
 	isMouseButtonEvent_ = false;
 	isMouseMotionEvent_ = false;
+	isMouseButtonUpEvent_ = false;
+	/*
 	for (int i = 0; i < 3; i++) {
 		mbState_[i] = false;
 	}
+	*/
 }

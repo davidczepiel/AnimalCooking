@@ -23,7 +23,8 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
-
+		SliderBackground,
+		SliderMovPoint,
 
 		// images all
 		Repisa,
@@ -49,6 +50,11 @@ public:
 		Pollo,
 		IngredienteMalo,
 		CuadradoAux,
+		level0Menu,
+		level1Menu,
+		level2Menu,
+		level3Menu,
+		level4Menu,
 		
 
 		//FeedBackImages

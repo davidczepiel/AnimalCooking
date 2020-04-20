@@ -6,12 +6,14 @@ vector<Resources::FontInfo> Resources::fonts_{
 	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 }
 };
 
-	
-	
+
+
 
 vector<Resources::ImageInfo> Resources::images_{
 	//
 	{Basic, Button,"../AnimalCooking/resources/images/button.jpg"},
+	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
+	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 
 	{Basic, IngredienteMalo,"../AnimalCooking/resources/images/caca.png"},
 	{Basic, Cooker,"../AnimalCooking/resources/images/sarten.png"},
@@ -36,6 +38,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{Basic, Suelo,"../AnimalCooking/resources/images/suelo.png"},
 	{Basic, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
+	{Basic,level0Menu,"../AnimalCooking/resources/images/level0Menu.png"},
+	{Basic,level1Menu,"../AnimalCooking/resources/images/level1Menu.png"},
+	{Basic,level2Menu,"../AnimalCooking/resources/images/level2Menu.png"},
+	{Basic,level3Menu,"../AnimalCooking/resources/images/level3Menu.png"},
+	{Basic,level4Menu,"../AnimalCooking/resources/images/level4Menu.png"},
+
 	{Basic, Pan,"../AnimalCooking/resources/images/pan.png"},
 	{Basic, Aceite,"../AnimalCooking/resources/images/aceite.png"},
 	{Basic, Arroz,"../AnimalCooking/resources/images/arroz.png"},
