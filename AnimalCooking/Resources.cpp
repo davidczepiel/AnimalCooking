@@ -79,7 +79,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::RiceAndClamsT,"../AnimalCooking/resources/images/Foods/mariscoConArroz.png"},
 	{AllLevels, TextureId::MashedMeatSkilletT,"../AnimalCooking/resources/images/Foods/carneSarten.png"},
 	{AllLevels, TextureId::CaughtSausageSkilletT,"../AnimalCooking/resources/images/Foods/salchichaSarten.png"},
-	{AllLevels, TextureId::SlicedPotatoSkilletT,"../AnimalCooking/resources/images/Foods/patatasFritas.png"},
+	{AllLevels, TextureId::SlicedPotatoSkilletT,"../AnimalCooking/resources/images/Foods/patatasSarten.png"},
 	{AllLevels, TextureId::DressT,"../AnimalCooking/resources/images/Foods/dress.png"},
 	//FeedBack---------------------------------------------------------------
 		//Food
@@ -117,7 +117,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, RiceAndClamsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/mariscoConArroz.png"},
 		{AllLevels, MashedMeatSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/carneAplastada.png"},
 		{AllLevels, CaughtSausageSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/salchichaSarten.png"},
-		{AllLevels, SlicedPotatoSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasFritas.png"},
+		{AllLevels, SlicedPotatoSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasSarten.png"},
 		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
 
 		//Utensil
