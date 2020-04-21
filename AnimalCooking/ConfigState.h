@@ -11,12 +11,12 @@ class ConfigState :
 {
 	SDLGame* game_;
 
-	static void backButtonCallback( );
+	static void backButtonCallback(AnimalCooking* ac);
 	Entity* backButton_;
 
 public:
 	
-	ConfigState();
+	ConfigState(AnimalCooking* ac);
 
 
 };

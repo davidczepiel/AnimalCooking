@@ -57,18 +57,18 @@ void MenuState::playMenuCallback() {
 	 SDLGame::instance()->getFSM()->pushState(new MapState());
 }
 
-void MenuState::optionsMenuCallback() {
-	SDLGame::instance() ->getFSM()->pushState(new ConfigState());
+void MenuState::optionsMenuCallback(AnimalCooking* ac) {
+	SDLGame::instance() ->getFSM()->pushState(new ConfigState(ac));
 }
 
-void MenuState::creditsMenuCallback() {
-	SDLGame::instance()->getFSM()->pushState(new CreditsState());
+void MenuState::creditsMenuCallback(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->pushState(new CreditsState(ac));
 }
 
 MenuState::MenuState() : State(), state(SelectionState::Play) {
 	cout << "Menu State" << endl;
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
-	//ruedecillaRect = RECT()        <------ a ojo ¿?
+	//ruedecillaRect = RECT()        <------ a ojo ï¿½?
 	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SliderBackground);
 	//ruedecilla = SDLGame::instance()->getTextureMngr()->getTexture();
 
@@ -96,3 +96,7 @@ MenuState::~MenuState()
 
 
 
+	exitButtonTr_ = exitButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 4) * 3), Vector2D(0, 0), 200.0, 100, 0);
+	exitButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	exitButton_->addComponent<ButtonBehaviour>(closeGame, app);
+}

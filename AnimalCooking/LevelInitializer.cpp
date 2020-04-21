@@ -15,6 +15,8 @@
 #include "FoodGiverAdder.h"
 #include "CollisionsSystem.h"
 #include "FeedBack.h"
+#include "IngredientInitializer.h"
+#include "OrderAdder.h"
 
 #include "SDLGame.h"
 
@@ -41,10 +43,12 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_sinks();
 	initialize_bin();
 	initialize_dishes();
-	initialize_gameManager();
+	initialize_gameManager(casilla);
 	initialize_foodGivers();
-	initialize_colSystem();
 	initialize_feedback();
+	initialize_levelIngredients();
+	initialize_clients();
+	initialize_colSystem();
 }
 
 void LevelInitializer::initialize_players()
@@ -65,7 +69,7 @@ void LevelInitializer::initialize_ingredientsPool()
 	ingPoolEntity_ = emPlaystate->addEntity();
 	emPlaystate->addToGroup(ingPoolEntity_, CASTID(jsonGeneral["Ingredientes"]["Layer"].as_int()));
 
-	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral, casilla);
+	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral/*, casilla*/);
 	sL->updateLength();
 }
 
@@ -138,11 +142,11 @@ void LevelInitializer::initialize_dishes()
 	sL->updateLength();
 }
 
-void LevelInitializer::initialize_gameManager()
+void LevelInitializer::initialize_gameManager(int casilla)
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool));
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool),casilla);
 
 	sL->updateLength();
 }
@@ -172,6 +176,23 @@ void LevelInitializer::initialize_feedback()
 	Entity* feedbackEntity = emPlaystate->addEntity();
 	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
 	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_levelIngredients()
+{
+	//Le decimos al GameControl que tipos de ingredientes van a aparecer en el nivel actual
+	IngredientInitializer(jsonLevel, GETCMP2(gameManager, GameControl));
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_clients()
+{
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 
 	sL->updateLength();
 }

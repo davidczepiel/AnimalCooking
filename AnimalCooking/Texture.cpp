@@ -101,3 +101,21 @@ void Texture::render(const SDL_Rect &dest, double angle) const {
 	SDL_Rect clip = {0, 0, width_, height_ };
 	render(dest, angle, clip);
 }
+
+void Texture::renderWithTint(const SDL_Rect& dest, Uint8 r, Uint8 g, Uint8 b)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_, r, g, b);
+		render(dest);
+		SDL_SetTextureColorMod(texture_, 0, 0, 0);
+	}
+}
+
+void Texture::renderWithTint(const SDL_Rect& dest, const SDL_Rect& clip, Uint8 r, Uint8 g, Uint8 b)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_, r, g, b);
+		render(dest, clip);
+		SDL_SetTextureColorMod(texture_, 0, 0, 0);
+	}
+}

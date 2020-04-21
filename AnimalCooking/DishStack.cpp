@@ -47,9 +47,11 @@ void DishStack::action1(int id)
 	else if (player->getObjectTypeInHands() == Resources::PickableType::Dish)
 	{
 		Dish* d = static_cast<Dish*>(player->getObjectInHands());
-		player->drop(false);
-		removeDish(d);
-
+		if (d->isEmpty())
+		{
+			player->drop(false);
+			removeDish(d);
+		}
 	}
 	else if (player->getObjectTypeInHands() == Resources::PickableType::Food) {
 		Dish* d = addNewDish(Vector2D(position_.getX() + (size_.getX() / 4), position_.getY() + (size_.getY() / 2)));
@@ -66,12 +68,14 @@ void DishStack::feedback(int id)
 	if (id == Resources::Player::Player1)
 	{
 		if (player1_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
-		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player1_->getObjectInHands())->isEmpty()) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Food) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
 	}
 	else
 	{
 		if (player2_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
-		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player2_->getObjectInHands())->isEmpty()) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
+		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Food) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
 	}
 
 	if(feedbackVisual_ !=nullptr) feedbackVisual_->render(r);

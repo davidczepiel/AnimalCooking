@@ -1,28 +1,35 @@
 #pragma once
-
 #include "Component.h"
 #include "IngredientsPool.h"
 #include "Food.h"
 #include "UtensilsPool.h"
 #include "GameLogic.h"
 #include "FoodPool.h"
+#include "jute.h"
+#include "Timer.h"
 
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,int casilla);
     ~GameControl() {}
 
-    void init() override {}
-    void update() override {}
+	void init() override {}
+	void update() override;
     void newIngredient();
     Food* newFood(Resources::FoodType type, Vector2D pos);
     void newFood(Food* f, Vector2D pos);
+	vector<string>& getLevelIngType() { return levelIngType; }
+
 private:
-    Ingredient* newIngType();
+    Ingredient* newIngType(const string& s);
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
     UtensilsPool* utensilsPool;
     Transport* tP1;
     Transport* tP2;
+	jute::jValue jsonGeneral;
+	Timer timer;
+	int casillaLength;
+	vector<string> levelIngType;
 };

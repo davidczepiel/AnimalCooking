@@ -17,7 +17,7 @@
 //Devuelve el SDL_Rect de un ingrediente
 #define GETBODY_ING(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight())
 
-//Calcula el área de un SDL_Rect
+//Calcula el ï¿½rea de un SDL_Rect
 #define AREA(rect) rect.w * rect.h
 
 #define DIVIDEROUNDUP(x) (collisions.back().x / 2) + (collisions.back().x % 2 != 0)

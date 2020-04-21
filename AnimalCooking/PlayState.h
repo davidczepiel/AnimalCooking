@@ -7,13 +7,12 @@ class PlayState : public State
 {
 public:
 
-	PlayState(EntityManager* em) : State(em) {
+	PlayState(EntityManager* em,AnimalCooking* ac) : State(em,ac) {
 
 	}
 
 private:
 
-	static void goToEndState();
-	static void goToPauseState();
+	static void goToEndState(AnimalCooking* ac);
 };
 

@@ -8,12 +8,17 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 	size_ = Vector2D(128, 128);
 	if (content != nullptr) {
 		contentType = Resources::PickableType::Utensil;
-		content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-			position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
-		content->setCanInteract(false);
+		setContentPos();
 	}
 	else
 		contentType = Resources::PickableType::none;
+}
+
+void Shelf::setContentPos()
+{
+	content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
+		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
+	content->setCanInteract(false);
 }
 
 
@@ -43,9 +48,7 @@ void Shelf::action1(int id) {
 	else {
 		Swap(player, onPlayerHands);
 		if (content != nullptr) {
-			content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-				position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
-			content->setCanInteract(false);
+			setContentPos();
 		}
 	}
 
