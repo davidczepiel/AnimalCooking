@@ -78,13 +78,13 @@ MenuState::MenuState() : State(), state(SelectionState::Play) {
 	stage->addToGroup(rightButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(leftButton_, ecs::GroupID::Layer1);
 
-	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 2, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
-	rightButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
-	rightButton_->addComponent<MenuButtonBehaviour>(this, true);
-
-	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 3, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
+	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 2, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
 	leftButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
 	leftButton_->addComponent<MenuButtonBehaviour>(this, false);
+
+	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 3, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
+	rightButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
+	rightButton_->addComponent<MenuButtonBehaviour>(this, true);
 }
 
 MenuState::~MenuState()
