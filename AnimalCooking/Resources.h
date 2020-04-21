@@ -280,6 +280,8 @@ public:
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
 		///
+		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
+		///
 		Salad,
 		Burger,
 		Pizza,

@@ -55,6 +55,7 @@ enum CmpId : CmpIdType {
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
+	OrderServiceViewer,
 	SinkViewer,
 
 
@@ -62,6 +63,10 @@ enum CmpId : CmpIdType {
 	CookerViewer,	
 	FoodCooker,
 	InsertExpel,
+
+	AIClient,
+	OrderManager,	//Clients
+	OrderViewer,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,

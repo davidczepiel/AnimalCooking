@@ -21,6 +21,8 @@ private:
 	Resources::PickableType contentType;
 public:
 	Shelf(Vector2D pos ,Pickable* c,Transport* p1, Transport* p2, EntityManager* mng);
+
+	void setContentPos();
 	
 	void Swap(Transport* player, Resources::PickableType onPlayerHands);
 	virtual void action1(int id);

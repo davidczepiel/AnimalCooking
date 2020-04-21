@@ -15,6 +15,7 @@
 #include "FoodGiverAdder.h"
 #include "CollisionsSystem.h"
 #include "FeedBack.h"
+#include "OrderAdder.h"
 
 #include "SDLGame.h"
 
@@ -43,8 +44,10 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_dishes();
 	initialize_gameManager();
 	initialize_foodGivers();
-	initialize_colSystem();
 	initialize_feedback();
+	initialize_clients();
+
+	initialize_colSystem();
 }
 
 void LevelInitializer::initialize_players()
@@ -172,6 +175,15 @@ void LevelInitializer::initialize_feedback()
 	Entity* feedbackEntity = emPlaystate->addEntity();
 	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
 	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_clients()
+{
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 
 	sL->updateLength();
 }

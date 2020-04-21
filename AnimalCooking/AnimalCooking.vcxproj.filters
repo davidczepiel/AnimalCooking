@@ -68,6 +68,8 @@
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="OrderService.cpp" />
+    <ClCompile Include="OrderServiceViewer.cpp" />
     <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
@@ -132,6 +134,8 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="SliderBehaviour.cpp" />
     <ClCompile Include="SliderRenderer.cpp" />
+    <ClCompile Include="BackGroundViewer.cpp" />
+    <ClCompile Include="OrderAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -186,6 +190,9 @@
     <ClInclude Include="FoodGiver.h" />
     <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
+    <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderService.h" />
+    <ClInclude Include="OrderServiceViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodPoolAdder.h" />
@@ -276,6 +283,8 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="SliderBehaviour.h" />
     <ClInclude Include="SliderRenderer.h" />
+    <ClInclude Include="BackGroundViewer.h" />
+    <ClInclude Include="OrderAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

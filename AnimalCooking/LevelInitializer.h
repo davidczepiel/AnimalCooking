@@ -28,6 +28,7 @@ private:
 	void initialize_foodGivers();
 	void initialize_colSystem();
 	void initialize_feedback();
+	void initialize_clients();
 
 	double casilla;
 
