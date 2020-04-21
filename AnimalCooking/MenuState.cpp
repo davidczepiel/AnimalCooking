@@ -3,7 +3,7 @@
 
 void MenuState::draw()
 {
-	background->render(backgroundRect);
+	//background->render(backgroundRect);
 	//ruedecilla->render(ruedecillaRect);
 	State::draw();
 }
@@ -69,7 +69,7 @@ MenuState::MenuState() : State(), state(SelectionState::Play) {
 	cout << "Menu State" << endl;
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
 	//ruedecillaRect = RECT()        <------ a ojo ¿?
-	//background = SDLGame::instance()->getTextureMngr()->getTexture();
+	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SliderBackground);
 	//ruedecilla = SDLGame::instance()->getTextureMngr()->getTexture();
 
 	rightButton_ = stage->addEntity();

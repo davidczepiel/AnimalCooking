@@ -11,7 +11,7 @@ private:
 	MenuState* menuState_;
 	bool right_;
 public:
-	MenuButtonBehaviour(MenuState* ms, bool isRight) : Component(ecs::MenuButtonRenderer), menuState_(ms), right_(isRight) {}
+	MenuButtonBehaviour(MenuState* ms, bool isRight) : Component(ecs::MenuButtonBehaviour), menuState_(ms), right_(isRight) {}
 	~MenuButtonBehaviour() { menuState_ = nullptr; tr_ = nullptr; }
 
 	void init() override;

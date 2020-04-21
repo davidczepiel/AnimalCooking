@@ -12,4 +12,6 @@ void MenuButtonRenderer::draw()
 	Vector2D pos = tr_->getPos();
 
 	SDL_Rect dest = RECT(pos.getX(), pos.getY(), tr_->getW(), tr_->getH());
+
+	texture->render(dest);
 }
