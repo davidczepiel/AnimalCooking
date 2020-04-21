@@ -8,24 +8,33 @@
 #include "ConfigState.h"
 #include "MapState.h"
 #include "CreditsState.h"
+#include "Texture.h"
 
 class MenuState: public State
 {
+	enum SelectionState { Options, Play, Credits};
+
 private:
-	SDLGame* game_;
+	SelectionState state;
+	SDL_Rect backgroundRect;
+	SDL_Rect ruedecillaRect;
 
-	Entity* playMenuButton_ = nullptr;
-	Entity* optionsMenu_ = nullptr;
-	Entity* creditsMenu_ = nullptr;
+	Texture* background;
+	Texture* ruedecilla;
 
-	Transform* playMenuTr_ = nullptr;
-	Transform* optionsMenuTr_ = nullptr;
-	Transform* creditsMenuTr_ = nullptr;
+	Entity* leftButton_;
+	Entity* rightButton_;
+
+	void draw() override;
+	void leftState();
+	void rightState();
+	void selectedState();
+
 	static void playMenuCallback();		
 	static void optionsMenuCallback();	
 	static void creditsMenuCallback();	
 public:
 	MenuState();
-	~MenuState() {}
+	~MenuState();
 };
 

@@ -1,6 +1,59 @@
 #include "MenuState.h"
+#include "SDL_macros.h"
 
- void MenuState::playMenuCallback() {
+void MenuState::draw()
+{
+	background->render(backgroundRect);
+	ruedecilla->render(ruedecillaRect);
+	State::draw();
+}
+
+void MenuState::leftState()
+{
+	switch (state) {
+	case Credits:
+		state = Play;
+		break;
+	case Play:
+		state = Options;
+		break;
+	case Options:
+		state = Credits;
+		break;
+	}
+}
+
+void MenuState::rightState()
+{
+	switch (state) {
+	case Credits:
+		state = Options;
+		break;
+	case Options:
+		state = Play;
+		break;
+	case Play:
+		state = Credits;
+		break;
+	}
+}
+
+void MenuState::selectedState()
+{
+	switch (state) {
+	case Credits:
+		creditsMenuCallback();
+		break;
+	case Options:
+		playMenuCallback();
+		break;
+	case Play:
+		optionsMenuCallback();
+		break;
+	}
+}
+
+void MenuState::playMenuCallback() {
 	 SDLGame::instance()->getFSM()->pushState(new MapState());
 }
 
@@ -12,28 +65,32 @@ void MenuState::creditsMenuCallback() {
 	SDLGame::instance()->getFSM()->pushState(new CreditsState());
 }
 
-MenuState::MenuState() : State() {
+MenuState::MenuState() : State(), state(SelectionState::Play) {
 	cout << "Menu State" << endl;
-	game_ = SDLGame::instance();
+	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
+	//ruedecillaRect = RECT()        <------ a ojo ¿?
+	//background = SDLGame::instance()->getTextureMngr()->getTexture();
+	//ruedecilla = SDLGame::instance()->getTextureMngr()->getTexture();
 
-	playMenuButton_ = stage->addEntity();
-	optionsMenu_ = stage->addEntity();
-	creditsMenu_ = stage->addEntity();
-	stage->addToGroup(playMenuButton_, ecs::GroupID::Layer1);
-	stage->addToGroup(optionsMenu_, ecs::GroupID::Layer1);
-	stage->addToGroup(creditsMenu_, ecs::GroupID::Layer1);
+	rightButton_ = stage->addEntity();
+	leftButton_ = stage->addEntity();
 
-	playMenuButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 0), Vector2D(0, 0), 200.0, 100, 0);
-	playMenuButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),nullptr);
-	playMenuButton_->addComponent<ButtonBehaviour>(playMenuCallback);
+	stage->addToGroup(rightButton_, ecs::GroupID::Layer1);
+	stage->addToGroup(leftButton_, ecs::GroupID::Layer1);
 
-	optionsMenu_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 1), Vector2D(0, 0), 200.0, 100, 0);
-	optionsMenu_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	optionsMenu_->addComponent<ButtonBehaviour>(optionsMenuCallback);
+	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 2, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
+	rightButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
+	rightButton_->addComponent<ButtonBehaviour>(rightButton_);
 
-	creditsMenu_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 2), Vector2D(0, 0), 200.0, 100, 0);
-	creditsMenu_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	creditsMenu_->addComponent<ButtonBehaviour>(creditsMenuCallback);
+	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 3, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
+	leftButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	leftButton_->addComponent<ButtonBehaviour>(leftButton_);
+}
+
+MenuState::~MenuState()
+{
+	delete rightButton_;
+	delete leftButton_;
 }
 
 
