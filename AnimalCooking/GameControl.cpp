@@ -30,7 +30,7 @@ void GameControl::newIngredient()
 
 	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
-	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()-50);
+	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
 	//double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
 	//De momento aparecen con velocidad 0 y en el centro de la pantalla
     ing->setVel(Vector2D(0,0));
