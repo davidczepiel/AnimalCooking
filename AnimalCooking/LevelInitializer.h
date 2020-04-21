@@ -20,6 +20,7 @@ private:
 	void initialize_foodPool();
 	void initialize_utensilPool();
 	void initialize_cookersPool();
+	void initialize_timerViewer();
 	void initialize_shelfs();
 	void initialize_sinks();
 	void initialize_bin();

@@ -15,6 +15,7 @@
 #include "FoodGiverAdder.h"
 #include "CollisionsSystem.h"
 #include "FeedBack.h"
+#include "TimerViewer.h"
 
 #include "SDLGame.h"
 
@@ -98,6 +99,16 @@ void LevelInitializer::initialize_cookersPool()
 
 
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_timerViewer()
+{
+	Entity* timersViewer = emPlaystate->addEntity();
+	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
+
+	timersViewer->addComponent<TimerViewer>();
 
 	sL->updateLength();
 }

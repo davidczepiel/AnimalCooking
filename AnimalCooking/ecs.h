@@ -22,6 +22,7 @@ enum CmpId : CmpIdType {
 	GameSave,
 	CollisionsSystem,
 	FeedBack,
+	TimerViewer,
 
 	Attack, //Player
 	PlayerController,

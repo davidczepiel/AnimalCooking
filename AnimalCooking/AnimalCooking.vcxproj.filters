@@ -130,6 +130,7 @@
     <ClCompile Include="SliderBehaviour.cpp" />
     <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="BackGroundViewer.cpp" />
+    <ClCompile Include="TimerViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -271,6 +272,7 @@
     <ClInclude Include="SliderBehaviour.h" />
     <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="BackGroundViewer.h" />
+    <ClInclude Include="TimerViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
