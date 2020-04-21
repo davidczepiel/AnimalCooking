@@ -225,6 +225,7 @@
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="IngredientInitializer.h" />
     <ClInclude Include="IngredientMotion.h" />
     <ClInclude Include="IngredientSpawn.h" />
     <ClInclude Include="IngredientsPool.h" />
@@ -367,6 +368,7 @@
     <ClCompile Include="GPadController.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="IngredientInitializer.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />

@@ -132,6 +132,7 @@
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="IngredientInitializer.cpp" />
     <ClCompile Include="SliderBehaviour.cpp" />
     <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="BackGroundViewer.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="IngredientInitializer.h" />
     <ClInclude Include="SliderBehaviour.h" />
     <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="BackGroundViewer.h" />
