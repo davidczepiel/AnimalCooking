@@ -1,7 +1,7 @@
 #pragma once
 #include "State.h"
-#include "ButtonBehaviour.h"
-#include "ButtonRenderer.h"
+#include "MenuButtonBehaviour.h"
+#include "MenuButtonRenderer.h"
 #include "Transform.h"
 #include "SDLGame.h"
 #include "AnimalCooking.h"
@@ -26,8 +26,6 @@ private:
 	Entity* rightButton_;
 
 	void draw() override;
-	void leftState();
-	void rightState();
 	void selectedState();
 
 	static void playMenuCallback();		
@@ -36,5 +34,8 @@ private:
 public:
 	MenuState();
 	~MenuState();
+
+	void leftState();
+	void rightState();
 };
 

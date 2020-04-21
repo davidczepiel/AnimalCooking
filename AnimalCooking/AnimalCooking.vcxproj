@@ -240,6 +240,8 @@
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapState.h" />
+    <ClInclude Include="MenuButtonBehaviour.h" />
+    <ClInclude Include="MenuButtonRenderer.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
@@ -380,6 +382,8 @@
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="MenuButtonBehaviour.cpp" />
+    <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
