@@ -75,6 +75,8 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));
 
+	if (u != nullptr) shelf->setContentPos();
+
 	emPlayState->addToGroup(shelf, CASTID(jsonGeneral["Shelf"]["Layer"].as_int()));
 	emPlayState->addEntity(shelf);
 	shelf->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),

@@ -14,12 +14,9 @@
 	}
 }*/
 
-void PlayState::goToEndState() {
-	SDLGame::instance()->getFSM()->pushState(new EndState());
+void PlayState::goToEndState(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->pushState(new EndState(ac));
 }
-void PlayState::goToPauseState() {
-	SDLGame::instance()->getFSM()->pushState(new PauseState());
 
-}
 
 

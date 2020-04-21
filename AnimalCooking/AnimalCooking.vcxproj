@@ -168,6 +168,7 @@
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BackGroundViewer.h" />
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
@@ -243,7 +244,11 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderAdder.h" />
     <ClInclude Include="OrderManager.h" />
+    <ClInclude Include="OrderService.h" />
+    <ClInclude Include="OrderServiceViewer.h" />
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pickable.h" />
@@ -274,6 +279,8 @@
     <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SelectorPopUpEntity.h" />
+    <ClInclude Include="SliderBehaviour.h" />
+    <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -310,6 +317,7 @@
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BackGroundViewer.cpp" />
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
@@ -379,7 +387,10 @@
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
+    <ClCompile Include="OrderService.cpp" />
+    <ClCompile Include="OrderServiceViewer.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pickable.cpp" />
@@ -409,6 +420,8 @@
     <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SelectorPopUpEntity.cpp" />
+    <ClCompile Include="SliderBehaviour.cpp" />
+    <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />

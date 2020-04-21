@@ -4,13 +4,13 @@
 #include "ButtonRenderer.h"
 #include "ButtonBehaviour.h"
 
- void MapState::screenLoaderCallback() {
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1));
+ void MapState::screenLoaderCallback(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1,ac));
 }
-void MapState::backButtonCallback() {
+void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
-MapState::MapState(): State() {
+MapState::MapState(AnimalCooking* ac): State(ac) {
 	game_ = SDLGame::instance();
 	cout << "Map State" << endl;
 
@@ -21,9 +21,9 @@ MapState::MapState(): State() {
 
 	screenLoaderButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 0), Vector2D(0, 0), 200.0, 100, 0);
 	screenLoaderButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	screenLoaderButton_->addComponent<ButtonBehaviour>(screenLoaderCallback);
+	screenLoaderButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
 
 	backButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 1), Vector2D(0, 0), 200.0, 100, 0);
 	backButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	backButton_->addComponent<ButtonBehaviour>(backButtonCallback);
+	backButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
 }

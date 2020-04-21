@@ -16,6 +16,7 @@
 #include "CollisionsSystem.h"
 #include "FeedBack.h"
 #include "IngredientInitializer.h"
+#include "OrderAdder.h"
 
 #include "SDLGame.h"
 
@@ -44,9 +45,10 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_dishes();
 	initialize_gameManager(casilla);
 	initialize_foodGivers();
-	initialize_colSystem();
 	initialize_feedback();
 	initialize_levelIngredients();
+	initialize_clients();
+	initialize_colSystem();
 }
 
 void LevelInitializer::initialize_players()
@@ -97,6 +99,7 @@ void LevelInitializer::initialize_cookersPool()
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
 	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
+
 
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
@@ -184,3 +187,13 @@ void LevelInitializer::initialize_levelIngredients()
 
 	sL->updateLength();
 }
+
+void LevelInitializer::initialize_clients()
+{
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+
+	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
+
+	sL->updateLength();
+}
+

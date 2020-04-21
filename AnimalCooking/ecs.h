@@ -55,6 +55,7 @@ enum CmpId : CmpIdType {
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
+	OrderServiceViewer,
 	SinkViewer,
 
 
@@ -63,11 +64,16 @@ enum CmpId : CmpIdType {
 	FoodCooker,
 	InsertExpel,
 
+	AIClient,
+	OrderManager,	//Clients
+	OrderViewer,
+
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
 	StaticRenderer,
 	IngredientViewer,
 	BinViewer,
+	BackGroundViewer,
 
 	GameManager, //Utils
 	ScoreManager,
@@ -82,6 +88,9 @@ enum CmpId : CmpIdType {
 	ButtonRenderer,
 	ButtonsViewer,
 	ButtonDirector,
+
+	SliderBehaviour,	//Sliders
+	SliderRenderer,
 
 	LoadingBarViewer, //Bar
 

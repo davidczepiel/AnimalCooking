@@ -44,6 +44,9 @@ public:
 	void render(const SDL_Rect &dest, double angle,	const SDL_Rect &clip) const;
 	void render(const SDL_Rect &dest, double angle) const;
 
+	void renderWithTint(const SDL_Rect& dest, Uint8 r, Uint8 g, Uint8 b);
+	void renderWithTint(const SDL_Rect& dest, const SDL_Rect& clip, Uint8 r, Uint8 g, Uint8 b);
+
 	void close();
 
 private:

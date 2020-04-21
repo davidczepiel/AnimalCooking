@@ -5,7 +5,7 @@ class MapState :public State
 private:
 	SDLGame* game_;
 public:
-	MapState();
-	static void screenLoaderCallback();
-	static void backButtonCallback();
+	MapState(AnimalCooking* ac);
+	static void screenLoaderCallback(AnimalCooking* ac);
+	static void backButtonCallback(AnimalCooking* ac);
 };

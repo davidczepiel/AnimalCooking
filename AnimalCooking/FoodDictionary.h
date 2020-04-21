@@ -36,13 +36,13 @@ public:
 	}
 
 	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
-	Food* getResult(const int& c, vector<int>& vector);
+	Food* getResult(const int& c, vector<int>& vector, bool isCooker = true);
 
 	//Devuelve un int identificador, o -1 si en la lista hay elementos repetidos o no existe dicha combinacion
-	Food* getResult(const int& c, vector<Food*>& vector);
+	Food* getResult(const int& c, vector<Food*>& vector, bool isCooker = true);
 
 	//Devuelve un int identificador, o -1 si no existe dicha combinacion
-	Food* getResult(const int& c, const set<int>& set);
+	Food* getResult(const int& c, const set<int>& set, bool isCooker = true);
 
 	const set<int>& getIngsForFood(const int& result);
 
@@ -51,6 +51,7 @@ private:
 	void fill();
 	Food* bind(const int& c) const;
 	static unique_ptr<FoodDictionary> instance_;
-	map<par, int, CompareMap> dictionary_;
+	map<par, int, CompareMap> dictionaryCookers_;
+	map<par, int, CompareMap> dictionaryIng_;
 	map<int, set<int>> resultToSetDictionary_;
 };

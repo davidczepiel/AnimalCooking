@@ -29,6 +29,7 @@ private:
 	void initialize_colSystem();
 	void initialize_feedback();
 	void initialize_levelIngredients();
+	void initialize_clients();
 
 	double casilla;
 
