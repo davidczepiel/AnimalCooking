@@ -22,6 +22,7 @@ enum CmpId : CmpIdType {
 	GameSave,
 	CollisionsSystem,
 	FeedBack,
+	TimerViewer,
 
 	Attack, //Player
 	PlayerController,
@@ -108,6 +109,7 @@ enum GroupID : Group {
 	FoodLayer,
 	FeedBackLayer,
 	PlayerLayer,
+	ui,
 	_LastGroupId_	//Identify the max number of groups
 };
 

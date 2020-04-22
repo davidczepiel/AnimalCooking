@@ -39,7 +39,7 @@ void InsertExpel::insertFood(Cooker* cooker) {
 	}
 }
 
-void InsertExpel::extractFood(Cooker *cooker){
+void InsertExpel::extractFood(Cooker *cooker, Timer* timer){
 	if ((cooker->getCookerState() == CookerStates::cooked ||
 		cooker->getCookerState() == CookerStates::burned) &&
 		transport_->getObjectTypeInHands() == Resources::Dish) {
@@ -51,5 +51,6 @@ void InsertExpel::extractFood(Cooker *cooker){
 			}
 			cooker->getFoods().clear();
 			cooker->setCookerState(CookerStates::empty);
+			timer->timerReset();
 	}
 }

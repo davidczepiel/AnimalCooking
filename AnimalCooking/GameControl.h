@@ -29,7 +29,7 @@ private:
     Transport* tP1;
     Transport* tP2;
 	jute::jValue jsonGeneral;
-	Timer timer;
+	FoodTimer timer;
 	int casillaLength;
 	vector<string> levelIngType;
 };

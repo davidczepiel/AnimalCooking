@@ -21,7 +21,7 @@ public:
 	virtual ~Sink();
 	virtual void action1(int player);
 private:
-	Timer* cleanTimer;
+	DefaultTimer* cleanTimer;
 	bool canClean;
 	int cadence;
 
