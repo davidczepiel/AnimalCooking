@@ -107,15 +107,15 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	stage->addToGroup(leftButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(selectionButton_, ecs::GroupID::Layer1);
 
-	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 650) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), 100.0, 100.0, 0);
+	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 650) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), (SDLGame::instance()->getWindowWidth() * 200.0) / 1920, (SDLGame::instance()->getWindowHeight() * 200.0) / 1080, 0);
 	leftButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuArrow));
 	leftButton_->addComponent<MenuButtonBehaviour>(this, MenuButtonBehaviour::ButtonType::LeftArrow);
 
-	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 1050) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), 100.0, 100.0, 0);
+	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 1050) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), (SDLGame::instance()->getWindowWidth() * 200.0) / 1920, (SDLGame::instance()->getWindowHeight() * 200.0) / 1080, 0);
 	rightButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuArrowR));
 	rightButton_->addComponent<MenuButtonBehaviour>(this, MenuButtonBehaviour::ButtonType::RightArr);
 
-	selectionButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 400) / 1920, (SDLGame::instance()->getWindowHeight() * 250) / 1080), Vector2D(0, 0), 536.0, 180.0, 0);
+	selectionButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 400) / 1920, (SDLGame::instance()->getWindowHeight() * 250) / 1080), Vector2D(0, 0), (SDLGame::instance()->getWindowWidth() * 1072.0) / 1920, (SDLGame::instance()->getWindowHeight() * 360.0) / 1080, 0);
 	selectionButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 	selectionButton_->addComponent<MenuButtonBehaviour>(this, MenuButtonBehaviour::ButtonType::SelectionButton);
 }
