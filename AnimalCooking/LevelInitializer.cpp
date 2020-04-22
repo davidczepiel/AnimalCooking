@@ -37,6 +37,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_ingredientsPool();
 	initialize_foodPool();
 	initialize_utensilPool();
+	initialize_timerViewer();
 	initialize_cookersPool();
 	initialize_shelfs();
 	initialize_sinks();
@@ -109,6 +110,8 @@ void LevelInitializer::initialize_timerViewer()
 	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
 
 	timersViewer->addComponent<TimerViewer>();
+
+	SDLGame::instance()->setTimersViewer(timersViewer);
 
 	sL->updateLength();
 }

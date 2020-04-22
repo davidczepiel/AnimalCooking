@@ -17,3 +17,8 @@ void TimerViewer::deleteTimer(Timer* timerToDelete)
 {
 	timersList_.remove(timerToDelete);
 }
+
+void TimerViewer::addTimer(Timer* timerToAdd)
+{
+	timersList_.push_back(timerToAdd);
+}

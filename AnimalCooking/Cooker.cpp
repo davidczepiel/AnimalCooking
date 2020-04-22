@@ -2,6 +2,7 @@
 #include "SDLGame.h"
 #include "SDL_macros.h"
 #include "InsertExpel.h"
+#include "TimerViewer.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
 	state_(CookerStates::empty), cookingTime_(5),entity_(e)
@@ -13,12 +14,14 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transpo
 
 	timer_ = new CookerTimer(cookingTime_);
 	timer_->setPos(Vector2D(position_.getX(), position_.getY()));
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
 Cooker::~Cooker() {
 	delete timer_;
 	timer_ = nullptr;
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
 }
 
 void Cooker::setCookerState(CookerStates s) { 
@@ -36,8 +39,6 @@ void Cooker::draw()
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
 	texture_->render(rect, rotation_); //Cambiar para usar animaciones
-
-	timer_->draw();
 }
 
 void Cooker::action1(int player)
