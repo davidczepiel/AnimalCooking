@@ -18,6 +18,16 @@ void MenuButtonBehaviour::update()
 	SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), tr_->getW(), tr_->getH());
 
 	if (SDL_PointInRect(&mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
-		right_ ? menuState_->rightState(): menuState_->leftState();
+		switch (buttonType_) {
+		case RightArr:
+			ms_->rightState();
+			break;
+		case LeftArrow:
+			ms_->leftState();
+			break;
+		case SelectionButton:
+			ms_->selectedState();
+			break;
+		}
 	}
 }

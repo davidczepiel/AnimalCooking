@@ -28,9 +28,9 @@ private:
 
 	Entity* leftButton_;
 	Entity* rightButton_;
+	Entity* selectionButton_;
 
 	void draw() override;
-	void selectedState();
 
 	void playMenuCallback();
 	void optionsMenuCallback();
@@ -42,5 +42,6 @@ public:
 
 	void leftState();
 	void rightState();
+	void selectedState();
 };
 

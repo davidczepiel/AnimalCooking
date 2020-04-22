@@ -4,17 +4,20 @@
 
 class MenuState;
 
+using CallBackOnClick = void();
+
 class MenuButtonBehaviour : public Component
 {
-private:
-	Transform* tr_;
-	MenuState* menuState_;
-	bool right_;
 public:
-	MenuButtonBehaviour(MenuState* ms, bool isRight) : Component(ecs::MenuButtonBehaviour), menuState_(ms), right_(isRight) {}
-	~MenuButtonBehaviour() { menuState_ = nullptr; tr_ = nullptr; }
+	enum ButtonType { RightArr, LeftArrow, SelectionButton};
+	MenuButtonBehaviour(MenuState* ms, ButtonType t) : Component(ecs::MenuButtonBehaviour), ms_(ms),buttonType_(t) {}
+	~MenuButtonBehaviour() { tr_ = nullptr; }
 
 	void init() override;
 	void update() override;
+private:
+	Transform* tr_;
+	MenuState* ms_;
+	ButtonType buttonType_;
 };
 
