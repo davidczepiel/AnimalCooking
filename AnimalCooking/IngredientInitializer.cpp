@@ -7,10 +7,10 @@ IngredientInitializer::IngredientInitializer(jute::jValue& jsonLevel, GameContro
 {
 	//Se a�aden las ingredientes del nivel actual en el GameControl
 	jute::jValue ingsType = jsonLevel["IngredientsPool"]["entities"];
-	for (int i = 0; i < ingsType.size(); ++i) {
-		jute::jValue ings = jsonLevel["IngredientsPool"]["entities"][i][0];
-		
-		gc->getLevelIngType().push_back(newIngType(ings.as_string()));
+	for (int i = 0; i < ingsType.size(); ++i) 
+	{
+		jute::jValue ingType = jsonLevel["IngredientsPool"]["entities"][i];		
+		gc->getLevelIngType().push_back(newIngType(ingType.as_string()));
 	}
 }
 
