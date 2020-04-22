@@ -178,7 +178,7 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 				}
 			}
 		}
-		resolveCollisions(pos, size, vel);	
+		//resolveCollisions(pos, size, vel);	
 	}
 	return cT;
 }

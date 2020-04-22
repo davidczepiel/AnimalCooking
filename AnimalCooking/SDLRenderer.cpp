@@ -22,7 +22,7 @@ void SDLRenderer::draw()
 		}
 		if (currPos < tr->getPos().getX() + tr->getW()) { //Se dibuja el resto (si queda) haciendo crop
 			double rest = tr->getPos().getX() + tr->getW() - currPos;
-			SDL_Rect srcRect = RECT(0, 0, rest * t->getWidth() / size, t->getHeight());
+			SDL_Rect srcRect = RECT(0, 0, t->getWidth(), rest * t->getHeight() / size);
 			t->render(RECT(currPos, tr->getPos().getY(), rest, tr->getH()), tr->getRot(), srcRect);
 		}
 	}
@@ -35,7 +35,7 @@ void SDLRenderer::draw()
 		}
 		if (currPos < tr->getPos().getY() + tr->getH()) { //Se dibuja el resto (si queda) haciendo crop
 			double rest = tr->getPos().getY() + tr->getH() - currPos;
-			SDL_Rect srcRect = RECT(0, 0, rest * t->getWidth() / size, t->getHeight());
+			SDL_Rect srcRect = RECT(0, 0, t->getWidth(), rest * t->getHeight() / size);
 			t->render(RECT(tr->getPos().getX(), currPos, tr->getW(), rest), tr->getRot(), srcRect);
 		}
 	}

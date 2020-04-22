@@ -9,7 +9,7 @@
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla), player, ip);
 
 	GameLogic* glogic = gameManager->addComponent<GameLogic>();
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip,casilla);
