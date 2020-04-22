@@ -12,7 +12,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip,int casilla);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip, int casilla);
     ~GameControl() {}
 
     void init() override;
@@ -25,6 +25,7 @@ public:
 private:
     CollisionsSystem* colSys_;
     Ingredient* newIngType(const Resources::IngredientType& iT);
+    Resources::IngredientType chooseIng();
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
     UtensilsPool* utensilsPool;
@@ -34,4 +35,6 @@ private:
 	Timer timer;
 	int casillaLength;
 	vector<Resources::IngredientType> levelIngType;
+    bool justStarted;
+    int maxIngr;
 };
