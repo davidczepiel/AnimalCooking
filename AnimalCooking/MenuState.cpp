@@ -18,6 +18,9 @@ void MenuState::leftState()
 		state = Options;
 		break;
 	case Options:
+		state = Exit;
+		break;
+	case Exit:
 		state = Credits;
 		break;
 	}
@@ -26,8 +29,11 @@ void MenuState::leftState()
 void MenuState::rightState()
 {
 	switch (state) {
-	case Credits:
+	case Exit:
 		state = Options;
+		break;
+	case Credits:
+		state = Exit;
 		break;
 	case Options:
 		state = Play;
@@ -54,18 +60,22 @@ void MenuState::selectedState()
 }
 
 void MenuState::playMenuCallback() {
-	 SDLGame::instance()->getFSM()->pushState(new MapState());
+	 SDLGame::instance()->getFSM()->pushState(new MapState(app));
 }
 
-void MenuState::optionsMenuCallback(AnimalCooking* ac) {
-	SDLGame::instance() ->getFSM()->pushState(new ConfigState(ac));
+void MenuState::optionsMenuCallback() {
+	SDLGame::instance() ->getFSM()->pushState(new ConfigState(app));
 }
 
-void MenuState::creditsMenuCallback(AnimalCooking* ac) {
-	SDLGame::instance()->getFSM()->pushState(new CreditsState(ac));
+void MenuState::creditsMenuCallback() {
+	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
 }
 
-MenuState::MenuState() : State(), state(SelectionState::Play) {
+void MenuState::closeGame() {
+	app->stop();
+}
+
+MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play) {
 	cout << "Menu State" << endl;
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
 	//ruedecillaRect = RECT()        <------ a ojo �?

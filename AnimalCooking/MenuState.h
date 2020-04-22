@@ -10,10 +10,11 @@
 #include "checkML.h"
 #include "CreditsState.h"
 #include "Texture.h"
+#include "AnimalCooking.h"
 
 class MenuState: public State
 {
-	enum SelectionState { Options, Play, Credits};
+	enum SelectionState { Options, Play, Credits, Exit};
 
 private:
 	SelectionState state;
@@ -29,11 +30,12 @@ private:
 	void draw() override;
 	void selectedState();
 
-	static void playMenuCallback();		
-	static void optionsMenuCallback();	
-	static void creditsMenuCallback();	
+	void playMenuCallback();
+	void optionsMenuCallback();
+	void creditsMenuCallback();
+	void closeGame();
 public:
-	MenuState();
+	MenuState(AnimalCooking* ac);
 	~MenuState();
 
 	void leftState();
