@@ -34,6 +34,10 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 
 PauseState::~PauseState()
 {
+	delete resumeButton;
+	delete configButton;
+	delete menuButton;
+
 	resumeButton = nullptr;
 	configButton = nullptr;
 	menuButton = nullptr;

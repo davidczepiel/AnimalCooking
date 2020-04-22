@@ -1,7 +1,7 @@
 #pragma once
 #include "State.h"
-#include "ButtonBehaviour.h"
-#include "ButtonRenderer.h"
+#include "MenuButtonBehaviour.h"
+#include "MenuButtonRenderer.h"
 #include "Transform.h"
 #include "SDLGame.h"
 #include "AnimalCooking.h"
@@ -9,27 +9,39 @@
 #include "MapState.h"
 #include "checkML.h"
 #include "CreditsState.h"
+#include "Texture.h"
+#include "AnimalCooking.h"
 
 class MenuState: public State
 {
+	enum SelectionState { Options, Play, Credits, Exit};
+
 private:
-	SDLGame* game_;
+	SelectionState state;
+	SDL_Rect backgroundRect;
+	SDL_Rect ruedecillaRect;
+	double ruedecillaAngle;
 
-	Entity* playMenuButton_ = nullptr;
-	Entity* optionsMenu_ = nullptr;
-	Entity* creditsMenu_ = nullptr;
-	Entity* exitButton_ = nullptr;
+	Texture* background;
+	Texture* ruedecilla;
+	Texture* ruedecillaShadow;
 
-	Transform* playMenuTr_ = nullptr;
-	Transform* optionsMenuTr_ = nullptr;
-	Transform* creditsMenuTr_ = nullptr;
-	Transform* exitButtonTr_ = nullptr;
-	static void playMenuCallback(AnimalCooking* ac);
-	static void optionsMenuCallback(AnimalCooking* ac);
-	static void creditsMenuCallback(AnimalCooking* ac);
-	static void closeGame(AnimalCooking* ac);
+	Entity* leftButton_;
+	Entity* rightButton_;
+	Entity* selectionButton_;
+
+	void draw() override;
+
+	void playMenuCallback();
+	void optionsMenuCallback();
+	void creditsMenuCallback();
+	void closeGame();
 public:
 	MenuState(AnimalCooking* ac);
-	~MenuState() {}
+	~MenuState();
+
+	void leftState();
+	void rightState();
+	void selectedState();
 };
 

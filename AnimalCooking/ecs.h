@@ -89,6 +89,8 @@ enum CmpId : CmpIdType {
 	ButtonRenderer,
 	ButtonsViewer,
 	ButtonDirector,
+	MenuButtonRenderer,
+	MenuButtonBehaviour,
 
 	SliderBehaviour,	//Sliders
 	SliderRenderer,

@@ -23,6 +23,15 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
+		MainMenuBackground,
+		MainMenuRuedecilla,
+		MainMenuRuedecillaShadow,
+		MainMenuArrow,
+		MainMenuArrowR,
+		MainMenuPlayButton,
+		MainMenuConfigButton,
+		MainMenuExitButton,
+		MainMenuCreditsButton,
 		RectangleOutline,
 		
 		SliderBackground,
