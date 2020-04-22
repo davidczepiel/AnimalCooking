@@ -1,7 +1,8 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl),utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(vector<string>()),casillaLength(casilla)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl), 
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(),casillaLength(casilla)
 {
 	jsonGeneral = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
 
@@ -9,6 +10,11 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 	timer.timerStart();
 }
 
+
+void GameControl::init()
+{
+	colSys_ = GETCMP1_(CollisionsSystem);
+}
 
 void GameControl::update()
 {
@@ -37,54 +43,50 @@ void GameControl::newIngredient()
     ing->setPos(Vector2D(game_->getWindowWidth()/2, y));
 
 	ingPool_->addIngredient(ing);
+	colSys_->addCollider(ing);
 	ing = nullptr;
 }
 
-constexpr unsigned int str2int(const char* str, int h = 0)
-{
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
+Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 
-Ingredient* GameControl::newIngType(const string& s) {
-
-	Ingredient* i =nullptr;
+	Ingredient* i = nullptr;
 	
-	switch (str2int(s.c_str()))
+	switch (iT)
 	{
-	case str2int("Tomato"):
+	case Resources::IngredientType::tomato:
 		i = new Tomato();
 		break;
-	case str2int("Carrot"):
+	case Resources::IngredientType::carrot:
 		i = new Carrot();
 		break;
-	case str2int("Lettuce"):
+	case Resources::IngredientType::lettuce:
 		i = new Lettuce();
 		break;
-	case str2int("Mushroom"):
+	case Resources::IngredientType::mushroom:
 		i = new Mushroom();
 		break;
-	case str2int("Sausage"):
+	case Resources::IngredientType::sausage:
 		i = new Sausage();
 		break;
-	case str2int("Chicken"):
+	case Resources::IngredientType::chicken:
 		i = new Chicken();
 		break;
-	case str2int("Meat"):
+	case Resources::IngredientType::meat:
 		i = new Meat();
 		break;
-	case str2int("Potato"):
+	case Resources::IngredientType::potato:
 		i = new Potato();
 		break;
-	case str2int("Onion"):
+	case Resources::IngredientType::onion:
 		i = new Onion();
 		break;
-	case str2int("Clam"):
+	case Resources::IngredientType::clam:
 		i = new Clam();
 		break;
-	case str2int("Cheese"):
+	case Resources::IngredientType::cheese:
 		i = new Cheese();
 		break;
-	case str2int("Fish"):
+	case Resources::IngredientType::fish:
 		i = new Fish();
 		break;
 	default:

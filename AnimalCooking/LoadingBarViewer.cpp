@@ -29,7 +29,7 @@ void LoadingBarViewer::draw()
 
 	//Renderiza el contorno de la barra, volviendo el Width a su valor normal
 	dest.w = ownerTransform_->getW();
-	contorno_->render(dest);
+	//contorno_->render(dest);
 }
 
 //Extra between 0 and 1, adding % of its total length

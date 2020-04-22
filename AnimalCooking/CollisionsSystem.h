@@ -22,6 +22,7 @@ public:
 	void addCollider(Transform* t, bool isMovable = true) { entidadesTr.push_back(std::make_pair(t, isMovable)); }
 	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }
 	void addCollider(Ingredient* i, bool isMovable = true) { entidadesIng.push_back(std::make_pair(i, isMovable)); }
+	void removeCollider(Ingredient* i) { entidadesIng.remove(std::make_pair(i, true)); }
 	void update();
 
 private:

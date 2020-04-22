@@ -43,7 +43,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_sinks();
 	initialize_bin();
 	initialize_dishes();
-	initialize_gameManager(casilla);
+	initialize_gameManager();
 	initialize_foodGivers();
 	initialize_feedback();
 	initialize_levelIngredients();
@@ -142,11 +142,11 @@ void LevelInitializer::initialize_dishes()
 	sL->updateLength();
 }
 
-void LevelInitializer::initialize_gameManager(int casilla)
+void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool),casilla);
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla);
 
 	sL->updateLength();
 }
