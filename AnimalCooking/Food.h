@@ -38,6 +38,7 @@ public:
 	virtual void action1(int player);
 	virtual void feedback();
 	virtual void onDrop(bool onFloor);
+	void onFloor();
 	virtual void onPick();
 
 };

@@ -18,7 +18,6 @@ void Transport::pick(Pickable* obj, Resources::PickableType objType, bool inFloo
 	else swap(obj, objType, inFloor);
 	if (objInHands_ != nullptr)
 		objInHands_->onPick();
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
 void Transport::drop(bool onFloor)

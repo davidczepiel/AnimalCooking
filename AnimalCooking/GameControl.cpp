@@ -63,7 +63,7 @@ Ingredient* GameControl::newIngType() {
 
 void GameControl::newFood(Food* f, Vector2D pos) {
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
 }
@@ -139,7 +139,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	return f;
 }
 

@@ -70,17 +70,17 @@ vector<Resources::SoundInfo> Resources::sounds_{
 {Basic,DropDish,"../AnimalCooking/resources/sounds/Dejar Plato 1.wav"}, //
 {Basic,CompleteDish,"../AnimalCooking/resources/sounds/Elaborar Plato 1.wav"},//
 {Basic,Wash,"../AnimalCooking/resources/sounds/Fregar 1.wav"},
-{Basic,FrySound,"../AnimalCooking/resources/sounds/Freir corto.wav"},
+{Basic,FrySound,"../AnimalCooking/resources/sounds/Freir Loop 2.wav"},
 {Basic,MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
 {Basic,MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
 {Basic,Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
 {Basic,FrySoundBurned,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
 {Basic,Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
 {Basic,PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
+{Basic,Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" },
 {Basic,AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
 {Basic,BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
-{Basic,CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
-{Basic,Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" }
+{Basic,CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" }
 
 };
 
