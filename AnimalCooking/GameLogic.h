@@ -20,6 +20,7 @@ public:
     void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
 
 private:
+    void playHit(Resources::UtensilType type);
     IngredientsPool* ingPool;
     FoodPool* foodPool;
     UtensilsPool* utensilPool;

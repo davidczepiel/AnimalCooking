@@ -12,16 +12,15 @@ Sink::~Sink() {
 
 
 void Sink::action1(int iDp) {
-		if (SDL_GetTicks()-lastClean >cadence) {
-			lastClean = SDL_GetTicks();
-			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Wash, 0);
-			canClean = false;
-			//Dependiendo del numero que me llegue me trabajo con el player 1 o 2
+	//Me quedo con el player que está interactuando
 			Transport* player;
 			if (iDp == 0) player = player1_;
 			else player = player2_;
-			//Y SI Y SOLO SI tiene un utensilio le digo que se limpie
-			if (player->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			//en caso de que se pueda limpiar y el player tenga un utensilio limpio
+		if (SDL_GetTicks()-lastClean >cadence && player->getObjectTypeInHands() == Resources::PickableType::Utensil) {
+			lastClean = SDL_GetTicks();
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Wash, 0);
+			canClean = false;
 				static_cast<Utensil*>(player->getObjectInHands())->cleanUp();
 		}
 }

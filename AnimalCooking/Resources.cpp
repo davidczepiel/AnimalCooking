@@ -70,11 +70,11 @@ vector<Resources::SoundInfo> Resources::sounds_{
 {Basic,DropDish,"../AnimalCooking/resources/sounds/Dejar Plato 1.wav"}, //
 {Basic,CompleteDish,"../AnimalCooking/resources/sounds/Elaborar Plato 1.wav"},//
 {Basic,Wash,"../AnimalCooking/resources/sounds/Fregar 1.wav"},
-{Basic,Fry,"../AnimalCooking/resources/sounds/Freir corto.wav"},
+{Basic,FrySound,"../AnimalCooking/resources/sounds/Freir corto.wav"},
 {Basic,MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
 {Basic,MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
 {Basic,Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
-{Basic,FryBurn,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
+{Basic,FrySoundBurned,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
 {Basic,Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
 {Basic,PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
 {Basic,AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },

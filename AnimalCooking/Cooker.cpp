@@ -75,14 +75,15 @@ void Cooker::sound()
 {
 	if (SDL_GetTicks() - lastTimeSound_ > 2000) {
 		lastTimeSound_ = SDL_GetTicks();
+		//Miro qué tipo de cooker soy y reprocuzco un sonido u otro dependiendo de si he quemado algo o no 
 		switch (cookerType_) {
 		case Resources::Cookers::Skillet:
-			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Fry,0);
-			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FryBurn, 0);
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
 			break;
 		case Resources::Cookers::Oven:
-			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Fry,0);
-			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FryBurn, 0);
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
 			break;
 		}
 	}
