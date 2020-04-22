@@ -149,7 +149,7 @@ void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla);
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla, offset);
 
 	sL->updateLength();
 }

@@ -17,7 +17,7 @@ class CollisionsSystem :
 	public Component
 {
 public:
-	CollisionsSystem(const double casilla) :Component(ecs::CollisionsSystem), flexibility(casilla/20) { }
+	CollisionsSystem(const double casilla, const size_t leftBorder) :Component(ecs::CollisionsSystem), flexibility(casilla/20), leftBorder(leftBorder)  { }
 
 	void addCollider(Transform* t, bool isMovable = true) { entidadesTr.push_back(std::make_pair(t, isMovable)); }
 	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }
@@ -28,6 +28,7 @@ public:
 private:
 
 	int flexibility;
+	size_t leftBorder;
 
 	list<std::pair<Transform*, bool>> entidadesTr;
 	list<std::pair<Interactive*, bool>> entidadesInt;
@@ -38,7 +39,8 @@ private:
 	void changeBackCol(std::list<SDL_Rect>& collisions, const SDL_Rect& col);
 
 	bool checkCollision(const SDL_Rect& body, const SDL_Rect& other, list<SDL_Rect>& collisions);
-	ColisionType resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel);
+	ColisionType resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng = false);
+	ColisionType worldCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng);
 
 	ColisionType singleCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
 	void verticalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
