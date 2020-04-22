@@ -15,6 +15,7 @@
 #include "FoodGiverAdder.h"
 #include "CollisionsSystem.h"
 #include "FeedBack.h"
+#include "TimerViewer.h"
 #include "IngredientInitializer.h"
 #include "OrderAdder.h"
 
@@ -38,6 +39,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_ingredientsPool();
 	initialize_foodPool();
 	initialize_utensilPool();
+	initialize_timerViewer();
 	initialize_cookersPool();
 	initialize_shelfs();
 	initialize_sinks();
@@ -106,6 +108,17 @@ void LevelInitializer::initialize_cookersPool()
 	sL->updateLength();
 }
 
+void LevelInitializer::initialize_timerViewer()
+{
+	Entity* timersViewer = emPlaystate->addEntity();
+	timersViewer->addComponent<TimerViewer>();
+	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
+
+	SDLGame::instance()->setTimersViewer(timersViewer);
+
+	sL->updateLength();
+}
+
 void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
@@ -147,6 +160,8 @@ void LevelInitializer::initialize_gameManager(int casilla)
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
 		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool),casilla);
+
+	emPlaystate->addToGroup(gameManager, CASTID(jsonGeneral["LevelTimer"]["Layer"].as_int()));
 
 	sL->updateLength();
 }

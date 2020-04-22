@@ -15,6 +15,8 @@
 
 using namespace std;
 class FSM;
+class Entity;
+
 class SDLGame {
 public:
 	virtual ~SDLGame();
@@ -85,6 +87,9 @@ public:
 		return SDL_GetTicks();
 	}
 
+	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
+	inline Entity* getTimersViewer() { return timersViewer_; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -107,6 +112,8 @@ protected:
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
+
+	Entity* timersViewer_;
 
 	static unique_ptr<SDLGame> instance_;
 

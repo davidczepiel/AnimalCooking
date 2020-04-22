@@ -12,7 +12,7 @@ unique_ptr<SDLGame> SDLGame::instance_;
 
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
-		windowTitle_(windowTitle), width_(width), height_(height) {
+		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr) {
 	initSDL();
 	initResources();
 }
@@ -80,6 +80,10 @@ void SDLGame::initResources() {
 
 	for (auto &image : Resources::images_) {
 		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
+	}
+
+	for (auto& spritesheet : Resources::spritesheets_) {
+		if (spritesheet.level == Resources::Level::Basic) textures_->loadFromSprSheet(spritesheet.id, renderer_, spritesheet.fileName, spritesheet.numRows, spritesheet.numCols);
 	}
 
 	for (auto &font : Resources::fonts_) {

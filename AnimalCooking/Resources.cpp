@@ -12,6 +12,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 vector<Resources::ImageInfo> Resources::images_{
 	//
 	{Basic, Button,"../AnimalCooking/resources/images/button.jpg"},
+	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 
@@ -150,6 +151,13 @@ vector<Resources::ImageInfo> Resources::images_{
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/aceite.png"},
 	{AllLevels, Arroz,"../AnimalCooking/resources/images/arroz.png"}
+};
+
+vector<Resources::SpritesheetInfo> Resources::spritesheets_{
+	//
+	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
+	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8}
+	
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
