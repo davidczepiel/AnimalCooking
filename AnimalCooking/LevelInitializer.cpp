@@ -17,6 +17,7 @@
 #include "FeedBack.h"
 #include "IngredientInitializer.h"
 #include "OrderAdder.h"
+#include "WallAdder.h"
 
 #include "SDLGame.h"
 
@@ -33,6 +34,8 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
 
 	casilla = SDLGame::instance()->getWindowHeight() / 9;
+	offset = casilla * 0.15;
+	casilla -= offset / 9;
 
 	initialize_players();
 	initialize_ingredientsPool();
@@ -49,6 +52,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_levelIngredients();
 	initialize_clients();
 	initialize_colSystem();
+	initialize_walls();
 }
 
 void LevelInitializer::initialize_players()
@@ -98,8 +102,7 @@ void LevelInitializer::initialize_cookersPool()
 	Entity* cookers = emPlaystate->addEntity();
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
-	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
-
+	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla, offset);
 
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
@@ -108,7 +111,7 @@ void LevelInitializer::initialize_cookersPool()
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
+	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla, offset);
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -117,7 +120,7 @@ void LevelInitializer::initialize_shelfs()
 
 void LevelInitializer::initialize_sinks()
 {
-	SinkAdder sa = SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	SinkAdder sa = SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla, offset);
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -126,7 +129,7 @@ void LevelInitializer::initialize_sinks()
 
 void LevelInitializer::initialize_bin()
 {
-	BinAdder ba = BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	BinAdder ba = BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla, offset);
 
 	interactives_.insert(interactives_.end(), ba.getInteractives().begin(), ba.getInteractives().end());
 
@@ -135,7 +138,7 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla);
+	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla, offset);
 
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
@@ -153,7 +156,7 @@ void LevelInitializer::initialize_gameManager()
 
 void LevelInitializer::initialize_foodGivers()
 {
-	FoodGiverAdder fa = FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+	FoodGiverAdder fa = FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla, offset);
 
 	interactives_.insert(interactives_.end(), fa.getInteractives().begin(), fa.getInteractives().end());
 
@@ -190,9 +193,16 @@ void LevelInitializer::initialize_levelIngredients()
 
 void LevelInitializer::initialize_clients()
 {
-	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla, offset);
 
 	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_walls()
+{
+	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), casilla, offset);
 
 	sL->updateLength();
 }

@@ -137,6 +137,8 @@
     <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="BackGroundViewer.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -287,6 +289,8 @@
     <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="BackGroundViewer.h" />
     <ClInclude Include="OrderAdder.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

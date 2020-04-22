@@ -302,6 +302,8 @@
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdversityEffect.cpp" />
@@ -440,6 +442,8 @@
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

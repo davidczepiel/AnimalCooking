@@ -7,7 +7,7 @@
 class FoodGiverAdder
 {
 public:
-	FoodGiverAdder(EntityManager*mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player,Entity* gameManager,const double casilla);
+	FoodGiverAdder(EntityManager*mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player,Entity* gameManager,const double casilla, const double offset);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 private:
 	FoodGiver* SwitchFG(const string& fg,int type,int n);
@@ -17,7 +17,7 @@ private:
 
 	void initializeComponent(const string& component, Entity* entity);
 
-	double casilla;
+	double casilla, offset;
 	jute::jValue nivel;
 	jute::jValue general;
 	EntityManager* mngr;

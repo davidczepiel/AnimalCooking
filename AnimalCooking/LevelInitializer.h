@@ -30,8 +30,10 @@ private:
 	void initialize_feedback();
 	void initialize_levelIngredients();
 	void initialize_clients();
+	void initialize_walls();
 
 	double casilla;
+	double offset;
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;

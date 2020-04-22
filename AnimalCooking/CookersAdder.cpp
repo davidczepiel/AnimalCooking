@@ -3,8 +3,8 @@
 
 #define ADD(t)makeCooker<t>(type, n)
 
-CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::jValue& jsongeneral, std::array<Entity*, 2> players, FoodPool* fp, const double casillaLength) :
-	nivel(jsonnivel), general(jsongeneral), players(players), cookersPool(cookersPool), casillaLength(casillaLength)
+CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::jValue& jsongeneral, std::array<Entity*, 2> players, FoodPool* fp, const double casillaLength, const double offset) :
+	nivel(jsonnivel), general(jsongeneral), players(players), cookersPool(cookersPool), casillaLength(casillaLength), offset(offset)
 {
 	CookerPool* cookerP =cookersPool->addComponent<CookerPool>();
 	cookersPool->addComponent<FoodCooker>(fp);
@@ -42,8 +42,8 @@ void CookersAdder::switchCookers(const string& cooker, int type, int n) {
 }
 template<typename T>
 void CookersAdder::makeCooker(int type, int n) {
-	Vector2D pos(nivel["CookersPool"][type][1][n]["pos"]["x"].as_double() * casillaLength,
-		nivel["CookersPool"][type][1][n]["pos"]["y"].as_double() * casillaLength);
+	Vector2D pos(nivel["CookersPool"][type][1][n]["pos"]["x"].as_double() * casillaLength + offset,
+		nivel["CookersPool"][type][1][n]["pos"]["y"].as_double() * casillaLength + offset);
 
 	Vector2D size(general["Cookers"]["size"]["width"].as_double() * casillaLength,
 		general["Cookers"]["size"]["height"].as_double() * casillaLength);

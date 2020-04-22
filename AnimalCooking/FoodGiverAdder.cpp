@@ -2,8 +2,8 @@
 #define ADD(T) fg = makeFoodGiver<T>(type,n)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla)
-	:mngr(mngr), nivel(nivel), general(general), casilla(casilla), players(player), gameManager(gameManager)
+FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla, const double offset)
+	:mngr(mngr), nivel(nivel), general(general), casilla(casilla), players(player), gameManager(gameManager), offset(offset)
 {
 	jute::jValue ents = nivel["FoodGivers"];
 	for (size_t i = 0; i < ents.size(); i++)
@@ -49,7 +49,7 @@ FoodGiver* FoodGiverAdder::SwitchFG(const string& fgName, int type, int n) {
 template <typename T>
 FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 {
-	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casilla, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casilla),
+	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casilla + offset, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casilla + offset),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casilla, general["Givers"]["size"]["height"].as_double() * casilla),
 		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), GETCMP2(gameManager, GameControl));
 	fg->addComponent<FoodGiverViewer>(fg);
