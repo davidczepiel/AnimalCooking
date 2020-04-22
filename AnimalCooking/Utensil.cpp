@@ -7,7 +7,7 @@
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	maxTimeOnFloor_ = 10;
+	maxTimeOnFloor_ = 10000;
 	dirtTimer_ = new Timer();
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
@@ -164,9 +164,9 @@ Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 
 
 Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
-	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
-	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mace);
-	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
 	range_ = 100;

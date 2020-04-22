@@ -38,6 +38,7 @@ public:
 		Platera,
 		Cuchillo,
 		CuchilloSucio,
+		Maza,
 		Fregadero,
 		Ingrediente,
 		Panera,
