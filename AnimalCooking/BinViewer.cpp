@@ -1,7 +1,7 @@
 #include "BinViewer.h"
 
 void BinViewer::init() {
-	tex_ = game_->getTextureMngr()->getTexture(Resources::Papelera);
+	tex_ = game_->getTextureMngr()->getTexture(Resources::TextureId::Papelera);
 }
 
 void BinViewer::draw()

@@ -55,6 +55,9 @@ public:
 
 	void renderFrame(const SDL_Rect& destRect, int row, int col, int angle, SDL_RendererFlip flip = SDL_FLIP_NONE) const;
 
+	void renderWithTint(const SDL_Rect& dest, Uint8 r, Uint8 g, Uint8 b);
+	void renderWithTint(const SDL_Rect& dest, const SDL_Rect& clip, Uint8 r, Uint8 g, Uint8 b);
+
 	void close();
 
 private:
