@@ -15,7 +15,10 @@ public:
 	void setTexture(Texture* t) { texture_ = t; };
 	void setPos(Vector2D p) { pos_ = p; };
 	void setSize(Vector2D s) { size_ = s; };
+	inline Vector2D getSize() { return size_; }
 	void setRot(double r) { rot_ = r; };
+
+	inline bool isStarted() { return timerStarted_; }
 	
 	Uint32 getTime() { return time_; };
 	bool isTimerEnd() { return timerEnd_; };

@@ -75,7 +75,8 @@ public:
 		Aceite,
 		
 		//spritesheets
-		CircularTimer
+		CircularTimer,
+		BurnedTimer
 
 		// text
 		

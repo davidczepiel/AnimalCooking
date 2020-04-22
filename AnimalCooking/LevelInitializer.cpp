@@ -107,9 +107,8 @@ void LevelInitializer::initialize_cookersPool()
 void LevelInitializer::initialize_timerViewer()
 {
 	Entity* timersViewer = emPlaystate->addEntity();
-	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
-
 	timersViewer->addComponent<TimerViewer>();
+	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
 
 	SDLGame::instance()->setTimersViewer(timersViewer);
 

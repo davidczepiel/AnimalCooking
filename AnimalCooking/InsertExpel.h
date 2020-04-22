@@ -12,7 +12,7 @@ public:
 	void init() override;
 
 	void insertFood(Cooker* c);
-	void extractFood(Cooker *c);
+	void extractFood(Cooker *c, Timer* timer);
 
 private:
 	FoodCooker* foodCooker_;

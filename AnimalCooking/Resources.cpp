@@ -62,7 +62,8 @@ vector<Resources::ImageInfo> Resources::images_{
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	//
-	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8}
+	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
+	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

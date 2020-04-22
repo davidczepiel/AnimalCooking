@@ -33,7 +33,7 @@ public:
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2,Entity* e);
 
-	
+	void initTimer();
 
 	Texture* texture_;
 	Entity* entity_;
