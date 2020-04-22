@@ -107,7 +107,7 @@ void Texture::renderWithTint(const SDL_Rect& dest, Uint8 r, Uint8 g, Uint8 b)
 	if (texture_) {
 		SDL_SetTextureColorMod(texture_, r, g, b);
 		render(dest);
-		SDL_SetTextureColorMod(texture_, 0, 0, 0);
+		SDL_SetTextureColorMod(texture_, 255, 255, 255);
 	}
 }
 
@@ -116,6 +116,6 @@ void Texture::renderWithTint(const SDL_Rect& dest, const SDL_Rect& clip, Uint8 r
 	if (texture_) {
 		SDL_SetTextureColorMod(texture_, r, g, b);
 		render(dest, clip);
-		SDL_SetTextureColorMod(texture_, 0, 0, 0);
+		SDL_SetTextureColorMod(texture_, 255, 255, 255);
 	}
 }

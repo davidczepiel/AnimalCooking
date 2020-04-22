@@ -14,6 +14,15 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Button,"../AnimalCooking/resources/images/button.jpg"},
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
+	{Basic, MainMenuBackground,"../AnimalCooking/resources/images/Menu/mainmenu.png"},
+	{Basic, MainMenuRuedecilla,"../AnimalCooking/resources/images/Menu/Boton/boton.png"},
+	{Basic, MainMenuRuedecillaShadow,"../AnimalCooking/resources/images/Menu/Boton/sombraboton.png"},
+	{Basic, MainMenuArrow,"../AnimalCooking/resources/images/Menu/Boton/flecha.png"},
+	{Basic, MainMenuArrowR,"../AnimalCooking/resources/images/Menu/Boton/flechar.png"},
+	{Basic, MainMenuPlayButton,"../AnimalCooking/resources/images/Menu/Boton/playButton.png"},
+	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
+	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
+	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},

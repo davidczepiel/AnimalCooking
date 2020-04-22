@@ -20,9 +20,11 @@ private:
 	SelectionState state;
 	SDL_Rect backgroundRect;
 	SDL_Rect ruedecillaRect;
+	double ruedecillaAngle;
 
 	Texture* background;
 	Texture* ruedecilla;
+	Texture* ruedecillaShadow;
 
 	Entity* leftButton_;
 	Entity* rightButton_;

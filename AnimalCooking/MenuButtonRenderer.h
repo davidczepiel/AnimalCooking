@@ -7,6 +7,7 @@ class MenuButtonRenderer : public Component
 private:
 	Transform* tr_;
 	Texture* texture;
+
 public:
 	MenuButtonRenderer(Texture* t) : Component(ecs::MenuButtonRenderer), texture(t) {}
 	~MenuButtonRenderer() { texture = nullptr; }

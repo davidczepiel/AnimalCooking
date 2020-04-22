@@ -3,8 +3,9 @@
 
 void MenuState::draw()
 {
-	//background->render(backgroundRect);
-	//ruedecilla->render(ruedecillaRect);
+	background->render(backgroundRect);
+	ruedecillaShadow->render(ruedecillaRect);
+	ruedecilla->render(ruedecillaRect, ruedecillaAngle);
 	State::draw();
 }
 
@@ -24,6 +25,7 @@ void MenuState::leftState()
 		state = Credits;
 		break;
 	}
+	ruedecillaAngle -= 45.0;
 }
 
 void MenuState::rightState()
@@ -42,6 +44,7 @@ void MenuState::rightState()
 		state = Credits;
 		break;
 	}
+	ruedecillaAngle += 45.0;
 }
 
 void MenuState::selectedState()
@@ -78,9 +81,12 @@ void MenuState::closeGame() {
 MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play) {
 	cout << "Menu State" << endl;
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
-	//ruedecillaRect = RECT()        <------ a ojo �?
-	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SliderBackground);
-	//ruedecilla = SDLGame::instance()->getTextureMngr()->getTexture();
+	ruedecillaRect = RECT((SDLGame::instance()->getWindowWidth() * 850) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080, (SDLGame::instance()->getWindowWidth() * 192) / 1920, (SDLGame::instance()->getWindowWidth() * 195) / 1920);
+	ruedecillaAngle = 0.0;
+
+	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuBackground);
+	ruedecilla = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuRuedecilla);
+	ruedecillaShadow = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuRuedecillaShadow);
 
 	rightButton_ = stage->addEntity();
 	leftButton_ = stage->addEntity();
@@ -88,12 +94,12 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	stage->addToGroup(rightButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(leftButton_, ecs::GroupID::Layer1);
 
-	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 2, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
-	leftButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
+	leftButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 650) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), 100.0, 100.0, 0);
+	leftButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuArrow));
 	leftButton_->addComponent<MenuButtonBehaviour>(this, false);
 
-	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() / 4) * 3, (SDLGame::instance()->getWindowHeight() / 4) * 3), Vector2D(0, 0), 100.0, 100.0, 0);
-	rightButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
+	rightButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 1050) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080), Vector2D(0, 0), 100.0, 100.0, 0);
+	rightButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuArrowR));
 	rightButton_->addComponent<MenuButtonBehaviour>(this, true);
 }
 
@@ -101,12 +107,4 @@ MenuState::~MenuState()
 {
 	delete rightButton_;
 	delete leftButton_;
-}
-
-
-
-
-	exitButtonTr_ = exitButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 4) * 3), Vector2D(0, 0), 200.0, 100, 0);
-	exitButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
-	exitButton_->addComponent<ButtonBehaviour>(closeGame, app);
 }
