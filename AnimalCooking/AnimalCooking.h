@@ -29,7 +29,8 @@ private:
 
 	bool exit_;
 
-	const static int _WINDOW_WIDTH_ = 960;
-	const static int _WINDOW_HEIGHT_ = 540;
+	//960,540
+	const static int _WINDOW_WIDTH_ = 1366;
+	const static int _WINDOW_HEIGHT_ = 768;
 
 };
