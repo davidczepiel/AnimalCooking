@@ -36,7 +36,8 @@ public:
 
 private:
 	static unique_ptr<GPadController> instance_;
-
+	void ControllerButtonDown(SDL_Event& event);
+	void ControllerButtonUp(SDL_Event& event);
 	GPadController();
 	void initialiseJoysticks();
 	void clean();

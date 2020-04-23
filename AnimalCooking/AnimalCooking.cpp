@@ -73,7 +73,7 @@ void AnimalCooking::handleInput() {
 	InputHandler::instance()->clearState();
 	while (SDL_PollEvent(&event))
 	{
-		//GPadController::instance()->update(event);
+		GPadController::instance()->update(event);
 		if (event.type == SDL_QUIT)
 			stop();
 		else

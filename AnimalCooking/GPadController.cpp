@@ -104,7 +104,7 @@ void GPadController::update(SDL_Event &event)
         {
             if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
             {
-                m_joystickValues[whichOne].first->setX(event.jaxis.value/ 32678.0);
+                m_joystickValues[whichOne].first->setX(event.jaxis.value / 32678.0);
             }
             else
             {
@@ -148,6 +148,44 @@ void GPadController::update(SDL_Event &event)
             }
         }
     }
-    
+    else if (event.type == SDL_JOYBUTTONDOWN)
+        ControllerButtonDown(event);
+    else if (event.type == SDL_JOYBUTTONUP)
+        ControllerButtonUp(event);
 }
 
+void GPadController::ControllerButtonDown(SDL_Event& event) {
+    int whichOne = event.jaxis.which;
+    switch (event.cbutton.button) {
+    case SDL_CONTROLLER_BUTTON_A:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_A) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_B:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_B) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_X:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_X) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_Y:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = true;
+        break;
+    }
+}
+
+void GPadController::ControllerButtonUp(SDL_Event& event) {
+    int whichOne = event.jaxis.which;
+    switch (event.cbutton.button) {
+    case SDL_CONTROLLER_BUTTON_A:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_A) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_B:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_B) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_X:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_X) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_Y:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = false;
+        break;
+    }
+}

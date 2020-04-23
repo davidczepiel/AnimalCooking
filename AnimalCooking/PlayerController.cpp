@@ -28,7 +28,7 @@ void PlayerController::init()
 void PlayerController::update()
 {
 	keyUpdate();
-	//joystickUpdate();
+	joystickUpdate();
 }
 
 void PlayerController::joystickUpdate()
@@ -57,10 +57,8 @@ void PlayerController::joystickUpdate()
 		ir_->setDir(x, y);
 		//Botones-------------------------------
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_A)) {
-			//
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_B)) {
-			//
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 			selector_->getSelect()->action1(id_);
