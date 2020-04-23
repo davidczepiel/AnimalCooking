@@ -74,6 +74,7 @@ enum CmpId : CmpIdType {
 	IngredientViewer,
 	BinViewer,
 	BackGroundViewer,
+	DoorRenderer,
 
 	GameManager, //Utils
 	ScoreManager,
