@@ -3,8 +3,9 @@
 #include "CollisionsSystem.h"
 #include "Manager.h"
 #include "Transform.h"
+#include "Door.h"
 
-WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, const double casilla, const double offset)
+WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, std::array<Entity*, 2>& players, const double casilla, const double offset)
 {
 	vector<Data> data; 
 	data.push_back(Data(Vector2D(), //Izq Arr hor
@@ -50,9 +51,15 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 	for (auto& d : data) {
 		maker(d, casilla, colSys_, mngr);
 	}
+
+	//Hacer puerta
+	Door* d = new Door(Vector2D(6 * casilla + offset, 3.5 * casilla + offset), Vector2D(offset, 2 * casilla), 
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panel), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
+	mngr->addEntity(d);
+	mngr->addToGroup(d, ecs::GroupID::FoodLayer);
 }
 
-void WallAdder::maker(const Data& d, const double casilla, CollisionsSystem* colSys_,  EntityManager* mngr)
+void WallAdder::maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr)
 {
 	double rot = 90;
 	if (d.size.getY() > d.size.getX()) rot = 0;
