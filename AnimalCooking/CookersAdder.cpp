@@ -57,6 +57,7 @@ void CookersAdder::makeCooker(int type, int n) {
 		initializeComponent(com[i].as_string(), cookersPool);
 	}
 	GETCMP2(cookersPool, CookerPool)->addCooker(c);
+	timers_.push_back(c->getCookerTimer());
 }
 
 void CookersAdder::initializeComponent(const string& component, Entity* entity) {

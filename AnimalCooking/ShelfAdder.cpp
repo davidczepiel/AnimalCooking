@@ -37,6 +37,7 @@ Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* p
 	Utensil* u = new T(GIVETRANSPORT);
 	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
+	timers_.push_back(u->getTimer());
 	return pool_->addUtensil(u);
 }
 

@@ -58,6 +58,7 @@ public:
 	virtual void attack(Vector2D dir) = 0;
 
 	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
+	Timer* getTimer() { return dirtTimer_; }
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
 	void cleanUp();

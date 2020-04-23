@@ -80,8 +80,11 @@ void AnimalCooking::handleInput() {
 			InputHandler::instance()->update(event);
 	}
 
-	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState()) != nullptr)
+	{
+		static_cast<PlayState*>(game_->getFSM()->currentState())->pauseTimers();
 		game_->getFSM()->pushState(new PauseState(this));
+	}
 }
 
 void AnimalCooking::update() {

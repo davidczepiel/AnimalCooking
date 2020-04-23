@@ -22,6 +22,7 @@ public:
 
 	void timerStart();
 	void timerReset();
+	void timerPause();
 
 protected:
 	SDLGame* game_;

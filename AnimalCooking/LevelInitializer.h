@@ -3,7 +3,8 @@
 #include "Resources.h"
 #include <array>
 #include <vector>
-
+#include <list>
+#include "Timer.h"
 class EntityManager;
 class Entity;
 class ScreenLoader;
@@ -13,6 +14,7 @@ class LevelInitializer
 {
 public:
 	LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL);
+	list<Timer*>& getTimers() { return timers_; }
 private:
 
 	void initialize_players();
@@ -43,6 +45,7 @@ private:
 	std::vector<Interactive*> interactives_;
 
 	ScreenLoader* sL;
+	std::list<Timer*> timers_;
 
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;

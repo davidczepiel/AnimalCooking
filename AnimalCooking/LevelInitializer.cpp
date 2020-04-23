@@ -102,8 +102,8 @@ void LevelInitializer::initialize_cookersPool()
 	Entity* cookers = emPlaystate->addEntity();
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
-	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla, offset);
-
+	list<Timer*> aux = CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla, offset).getTimers();
+	aux.splice(aux.begin(), timers_);
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
 	sL->updateLength();
@@ -113,6 +113,8 @@ void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla, offset);
 
+	list<Timer*>aux = sa.getTimers();
+	aux.splice(aux.begin(), timers_);
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
 	sL->updateLength();
@@ -138,7 +140,7 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool,FoodPool), casilla, offset);
+	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla, offset);
 
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
@@ -148,7 +150,7 @@ void LevelInitializer::initialize_dishes()
 void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
-	GameManagerAdder(gameManager,emPlaystate, jsonLevel, jsonGeneral, players,
+	GameManagerAdder(gameManager, emPlaystate, jsonLevel, jsonGeneral, players,
 		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla, offset);
 
 	sL->updateLength();

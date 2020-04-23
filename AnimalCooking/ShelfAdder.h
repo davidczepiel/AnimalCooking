@@ -2,7 +2,8 @@
 #include <array>
 #include "Entity.h"
 #include "jute.h"
-
+#include <list>
+#include "Timer.h"
 class EntityManager;
 class Utensil;
 class UtensilsPool;
@@ -13,6 +14,7 @@ class ShelfAdder
 public:
 	ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla, const double offset);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
+	std::list<Timer*>& getTimers() { return timers_; }
 private:
 
 	EntityManager* emPlayState;
@@ -28,5 +30,6 @@ private:
 
 	Shelf* makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf);
 	void initializeComponent(const string& component, Entity* entity);
-	
+	std::list<Timer*> timers_;
+
 };
