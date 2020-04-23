@@ -17,6 +17,7 @@ public:
 	bool isInteractive() { return canInteract; }
 
 	void setTexture(Texture* t) { feedbackVisual_ = t; }
+	Texture* getTexture() { return feedbackVisual_; }
 	~Interactive() {}
 
 	virtual void action1(int player) {};
