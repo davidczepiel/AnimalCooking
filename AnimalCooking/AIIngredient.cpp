@@ -56,7 +56,6 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 
 Vector2D AIIngredient::calculateNewVel(Ingredient* i) {
 	Vector2D newVel;
-	//newVel = Vector2D(SDLGame::instance()->getWindowWidth() * 0.66 - i->getPos().getX(), SDLGame::instance()->getWindowHeight() / 2 - i->getPos().getY()).normalize() * (i->getMaxVel() / 2);
 	newVel = Vector2D(SDLGame::instance()->getRandGen()->nextInt(-5, 6), SDLGame::instance()->getRandGen()->nextInt(-5, 6)).normalize() * i->getMaxVel();
 
 	return newVel;
