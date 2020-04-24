@@ -49,6 +49,13 @@ void Timer::timerReset() {
 
 void Timer::timerPause()
 {
-	time_ = time_ - (SDLGame::instance()->getTime() - startedTime_);
-	timerReset();
+	pausedTime_ = SDLGame::instance()->getTime() - startedTime_;
+	timerStarted_ = false;
+}
+
+void Timer::timerResume()
+{
+	startedTime_ = SDLGame::instance()->getTime() - pausedTime_;
+	pausedTime_ = 0;
+	timerStarted_ = true;
 }

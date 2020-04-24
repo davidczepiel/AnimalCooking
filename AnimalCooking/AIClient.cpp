@@ -20,10 +20,9 @@ void AIClient::update()
 {
 	for (auto& o : orMngr_->getOrders()) {
 		if (o != nullptr) {
-			o->setAnger((game_->getTime() - o->getStartTime()) / (double)o->getMaxTime());
+			o->update();
 			if (o->getAnger() > 1) 
 				orMngr_->removeOrder(o->getFinalProduct(), false);
-			
 		}
 	}
 	checkNewOrder();

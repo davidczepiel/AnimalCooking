@@ -24,16 +24,16 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Vector2D(offset, 1.75 * casilla),
 		Resources::TextureId::Suelo));
 
-	data.push_back(Data(Vector2D(6 * casilla + offset, 7 * casilla), //Aba hor
-		Vector2D(10 * casilla, offset),
+	data.push_back(Data(Vector2D(6 * casilla + 2 * offset, 7 * casilla), //Aba hor
+		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset) - offset , offset),
 		Resources::TextureId::Button));
 
 	data.push_back(Data(Vector2D(6 * casilla + 2 * offset, 0), //Arr hor
-		Vector2D(10 * casilla, offset),
+		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset) - offset, offset),
 		Resources::TextureId::Button));
 
-	data.push_back(Data(Vector2D(SDLGame::instance()->getWindowWidth() - offset, 0), //Der arr ver
-		Vector2D(offset, 1 * casilla + offset),
+	data.push_back(Data(Vector2D(SDLGame::instance()->getWindowWidth() - offset, offset), //Der arr ver
+		Vector2D(offset, 1 * casilla),
 		Resources::TextureId::Button));
 
 	data.push_back(Data(Vector2D(SDLGame::instance()->getWindowWidth() - offset, 2 * casilla + offset), //Der medio 1 ver
@@ -41,7 +41,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Resources::TextureId::Button));
 
 	data.push_back(Data(Vector2D(SDLGame::instance()->getWindowWidth() - offset, 4 * casilla + offset), //Der medio 2 ver
-		Vector2D(offset, 1 * casilla + offset),
+		Vector2D(offset, 1 * casilla),
 		Resources::TextureId::Button));
 
 	data.push_back(Data(Vector2D(SDLGame::instance()->getWindowWidth() - offset, 6 * casilla + offset), //Der medio 2 ver
@@ -61,9 +61,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 void WallAdder::maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr)
 {
-	double rot = 90;
-	if (d.size.getY() > d.size.getX()) rot = 0;
-	Wall* w = new Wall(d.pos, d.size, rot, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casilla, mngr);
+	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casilla, mngr);
 
 	mngr->addEntity(w);
 	mngr->addToGroup(w, ecs::GroupID::FoodLayer);

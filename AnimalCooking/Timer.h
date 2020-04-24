@@ -23,6 +23,9 @@ public:
 	void timerStart();
 	void timerReset();
 	void timerPause();
+	void timerResume();
+
+	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
 
 protected:
 	SDLGame* game_;
@@ -30,6 +33,7 @@ protected:
 
 	Uint32 time_;
 	Uint32 startedTime_;
+	Uint32 pausedTime_;
 
 	bool timerStarted_;
 	bool timerEnd_;

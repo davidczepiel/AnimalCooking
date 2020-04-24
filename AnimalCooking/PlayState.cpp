@@ -24,7 +24,7 @@ void PlayState::pauseTimers()
 void PlayState::resumeTimers()
 {
 	for (Timer* t : timers) {
-		t->timerStart();
+		t->timerResume();
 	}
 }
 

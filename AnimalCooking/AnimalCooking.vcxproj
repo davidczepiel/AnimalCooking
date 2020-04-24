@@ -393,6 +393,7 @@
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderService.cpp" />

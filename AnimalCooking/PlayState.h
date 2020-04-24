@@ -16,7 +16,9 @@ public:
 	void resumeTimers();
 
 	void addTimer(Timer* t) { timers.push_back(t); }
-	void removeTimer(Timer* t) { timers.remove(t); }
+	void removeTimer(Timer* t) { 
+		timers.remove(t); }
+
 private:
 	list<Timer*> timers;
 	static void goToEndState(AnimalCooking* ac);
