@@ -27,6 +27,11 @@ void SDLGame::initSDL() {
 	int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
 	assert(sdlInit_ret == 0);
 
+	SDL_DisplayMode DM;
+	SDL_GetCurrentDisplayMode(0, &DM);
+	width_ = DM.w;
+	height_ = DM.h;
+
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,

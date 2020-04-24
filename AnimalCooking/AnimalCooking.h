@@ -28,8 +28,4 @@ private:
 	SDLGame* game_;
 
 	bool exit_;
-
-	const static int _WINDOW_WIDTH_ = 1600;
-	const static int _WINDOW_HEIGHT_ = 800;
-
 };
