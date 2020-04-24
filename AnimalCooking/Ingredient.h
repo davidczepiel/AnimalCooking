@@ -11,7 +11,10 @@ enum IngredientState { Idle, Walking, Scaping};
 class Ingredient
 {
 public:
-	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), escapeRadius_(0), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Idle) { } //2 de prueba
+	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), maxVel_(1.2), ingredientPool_(nullptr), type_(type), state(Idle) { 
+		internalTimer.setTime(5000);
+		internalTimer.timerStart();
+	} //2 de prueba
 	virtual ~Ingredient() {}; //Todos a virtual aunque luego no sea necesario
 
 	virtual void update();
@@ -19,7 +22,6 @@ public:
 	virtual void onHit() {};
 	virtual void onCollisionX(); //Llamado por game manager
 	virtual void onCollisionY(); //Llamado por game manager
-	virtual void escape(Vector2D pos); //Llamado por game manager si el jugador esta en la zona de caza
 
 	void setTransform(double w, double h, Vector2D pos, Vector2D vel) {
 		size_.set(w, h);
