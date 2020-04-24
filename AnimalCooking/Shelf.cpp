@@ -76,7 +76,8 @@ void Shelf::action4(int id)
 	if (contentType == Resources::PickableType::Dish)
 	{
 		Dish* d = static_cast<Dish*>(content);
-		if (!d->getIsViewingContent())
+		//Si no esta mostrando el selector y el plato no esta vacio
+		if (!d->getIsViewingContent() && !d->isEmpty())
 		{
 			d->firstFood();
 			d->setIsViewingContent(true);
@@ -115,13 +116,13 @@ void Shelf::feedback(int player)
 		{
 			vector<Food*> foods = d->getFoodVector();
 
-			int ofset = 60;
+			int ofset = 55;
 			int offsetInside = 15;
 			int rows = ceil(foods.size() / 2.0);
 			if (rows == 0) rows = 1;
 
-			int w = 190 / 2 - offsetInside * 2;
-			SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 190, rows * w + offsetInside * 2);
+			int w = 140 / 2 - offsetInside * 2;
+			SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
 			feedbackVisual_->render(rect);
 			rect.x += offsetInside;
 			rect.y += offsetInside;
@@ -129,8 +130,10 @@ void Shelf::feedback(int player)
 			for (int i = 0; i < foods.size(); ++i) {
 
 				SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
+				//Cojo la comida seleccionada y muestro su feedback
 				Food* currentFood = *(--d->getCurrentFood());
-				if(foods[i]==currentFood)currentFood->getTexture()->render(r);				
+				if(foods[i]==currentFood)currentFood->getTexture()->render(r);		
+				//Se dibuja la comida seleccionada
 				foods[i]->draw(r);
 			}
 		}		
