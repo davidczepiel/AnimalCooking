@@ -166,7 +166,9 @@ void ScreenLoader::initialize()
 {
 	emPlaystate = new EntityManager(SDLGame::instance());
 
-	timers_=LevelInitializer(emPlaystate, level, this).getTimers();
+	LevelInitializer li = LevelInitializer(emPlaystate, level, this);
+	timers_ = li.getTimers();
+
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
