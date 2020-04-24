@@ -91,6 +91,7 @@ enum CmpId : CmpIdType {
 	ButtonDirector,
 	MenuButtonRenderer,
 	MenuButtonBehaviour,
+	MainMenuPadNavigation,
 
 	SliderBehaviour,	//Sliders
 	SliderRenderer,

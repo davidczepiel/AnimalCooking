@@ -10,6 +10,7 @@
 #include "checkML.h"
 #include "CreditsState.h"
 #include "Texture.h"
+#include "MainMenuPadNavigation.h"
 #include "AnimalCooking.h"
 
 class MenuState: public State
@@ -29,6 +30,7 @@ private:
 	Entity* leftButton_;
 	Entity* rightButton_;
 	Entity* selectionButton_;
+	Entity* padNavigation_;
 
 	void draw() override;
 

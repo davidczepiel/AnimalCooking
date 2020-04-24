@@ -31,3 +31,17 @@ void MenuButtonBehaviour::update()
 		}
 	}
 }
+
+void MenuButtonBehaviour::action() {
+	switch (buttonType_) {
+	case RightArr:
+		ms_->rightState();
+		break;
+	case LeftArrow:
+		ms_->leftState();
+		break;
+	case SelectionButton:
+		ms_->selectedState();
+		break;
+	}
+}

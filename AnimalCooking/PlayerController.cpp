@@ -27,8 +27,8 @@ void PlayerController::init()
 
 void PlayerController::update()
 {
-	keyUpdate();
 	joystickUpdate();
+	//keyUpdate();
 }
 
 void PlayerController::joystickUpdate()
@@ -38,18 +38,20 @@ void PlayerController::joystickUpdate()
 	if (gpad->joysticksInitialised()) {
 		double x = 0, y = 0;	//interactive
 		//Axis------------------------
-		if (gpad->xvalue(id_, 1) > 0 || gpad->xvalue(id_, 1) < 0)
+		double Xvalue = gpad->xvalue(id_, 1);
+		if (Xvalue > 0 || Xvalue < 0)
 		{
-			tr_->setVelX(gpad->xvalue(id_, 1));
-			x = gpad->xvalue(id_, 1);
+			x = Xvalue/1.00275;
+			tr_->setVelX(x);
 		}
 		else {
 			tr_->setVelX(0);
 		}
-		if (gpad->yvalue(id_, 1) > 0 || gpad->yvalue(id_, 1) < 0)
+		double Yvalue = gpad->yvalue(id_, 1);
+		if (Yvalue > 0 || Yvalue < 0)
 		{
-			tr_->setVelY(gpad->yvalue(id_, 1));
-			y = gpad->xvalue(id_, 1);
+			y = Yvalue/ 1.00275;
+			tr_->setVelY(y);
 		}
 		else {
 			tr_->setVelY(0);
@@ -57,11 +59,18 @@ void PlayerController::joystickUpdate()
 		ir_->setDir(x, y);
 		//Botones-------------------------------
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_A)) {
+			Interactive* i = selector_->getSelect();
+			if (i != nullptr) {
+				i->action1(id_);
+				i = nullptr;
+			}
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_B)) {
+		cout << "X = " << x << "Y= " << y << endl;
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
-			selector_->getSelect()->action1(id_);
+			attack_->attack();
+			animator->setCurrentState(Animator::States::Attack);
 		}
 		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_Y)) {
 			Interactive* i = selector_->getSelect();
