@@ -17,6 +17,11 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
 	gameManager->addComponent<ScoreManager>();
+	glogic->setLevelTimer(jsonLevel["LevelTimer"]["Time"].as_int(),
+		Vector2D(jsonLevel["LevelTimer"]["pos"]["x"].as_int(), jsonLevel["LevelTimer"]["pos"]["y"].as_int()),
+		Vector2D(jsonGeneral["LevelTimer"]["size"]["width"].as_int(), jsonGeneral["LevelTimer"]["size"]["height"].as_int()));
+
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(), player, ip);
 
 	jute::jValue components = jsonLevel["GameManager"]["components"];
 	for (int c = 0; c < components.size(); ++c) {

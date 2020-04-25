@@ -9,8 +9,9 @@ Timer::Timer():
 	timerEnd_(false), 
 	timerStarted_(false),
 	pos_(), 
-	size_(), 
-	rot_(0){
+	size_(Vector2D(0, 5)), 
+	rot_(0)
+{
 }
 
 Timer::~Timer() {
@@ -24,10 +25,15 @@ void Timer::update() {
 	}
 }
 
-void Timer::draw() {
+void DefaultTimer::draw() {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	texture_->render(rect);
+}
 
-	texture_->render(rect, rot_);
+void DefaultTimer::update()
+{
+	Timer::update();
+	size_.setX((game_->getTime() - startedTime_) / 100);
 }
 
 
@@ -58,4 +64,30 @@ void Timer::timerResume()
 	startedTime_ = SDLGame::instance()->getTime() - pausedTime_;
 	pausedTime_ = 0;
 	timerStarted_ = true;
+}
+void LevelTimer::draw()
+{
+	double widthMultiplier = (game_->getTime() - startedTime_) / double(time_);
+
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX() * widthMultiplier, size_.getY());
+	texture_->render(rect);
+
+	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	outlineText_->render(rect);
+}
+
+void LevelTimer::update()
+{
+	Timer::update();
+
+	if (timerEnd_) {
+		//Fin nivel
+	}
+}
+
+void CookerTimer::draw()
+{
+	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	int col = (((game_->getTime() - startedTime_) * texture_->getNumCols()) / time_);
+	texture_->renderFrame(destRect, 0, col, 0);
 }

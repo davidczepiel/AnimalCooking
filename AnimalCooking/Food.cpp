@@ -2,9 +2,11 @@
 #include "SDL_macros.h"
 #include "PlayState.h"
 #include "FSM.h"
+#include "TimerViewer.h"
+#include "Entity.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
-	timer_(FoodTimer()),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -13,15 +15,20 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	size_ = Vector2D(64, 64);
 	speed_ = Vector2D();
 	static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->addTimer(&timer_);
+
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr)
 {
 	position_ = Vector2D();
 	size_ = Vector2D(50, 50);
 	speed_ = Vector2D();
+
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
@@ -34,17 +41,18 @@ void Food::Destroy()
 {
 	static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->removeTimer(&timer_);
 	foodPool_->RemoveFood(iterator_);
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
 }
 
 void Food::update()
 {
 	Pickable::update();
 
-	if (timer_.isTimerEnd()) {
+	if (timer_->isTimerEnd()) {
 		foodPool_->RemoveFood(iterator_);
 	}
 	else {
-		timer_.update();
+		timer_->update();
 	}
 }
 
@@ -63,7 +71,7 @@ void Food::onDrop(bool onFloor)
 {
 	if (onFloor) {
 		Pickable::onDrop(onFloor);
-		timer_.timerStart();
+		timer_->timerStart();
 	}
 }
 
@@ -84,7 +92,7 @@ void Food::feedback()
 }
 
 void Food::onPick() {
-	timer_.timerReset();
+	timer_->timerReset();
 }
 
 

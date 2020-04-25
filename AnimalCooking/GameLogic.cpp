@@ -2,7 +2,8 @@
 #include "Ingredient.h"
 #include "FoodDictionary.h"
 
-GameLogic::GameLogic() : Component(ecs::GameLogic)
+GameLogic::GameLogic() : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
+foodPool(nullptr), levelTimer_(new LevelTimer())
 {
 }
 
@@ -29,4 +30,11 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
             break;
         }
     }
+}
+
+void GameLogic::setLevelTimer(Uint32 time, Vector2D pos, Vector2D size)
+{
+    levelTimer_->setTime(time); 
+    levelTimer_->setPos(pos);
+    levelTimer_->setSize(size);
 }

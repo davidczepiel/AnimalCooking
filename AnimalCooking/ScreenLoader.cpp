@@ -7,8 +7,7 @@
 #include "LevelInitializer.h"
 #include "BackGroundViewer.h"
 
-constexpr double step_ = 1.0 / 21.0; //20 es el numero de pasos (5 de carga de recursos + 16 de carga de nivel)
-
+constexpr double step_ = 1.0 / 21.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
 
 ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
