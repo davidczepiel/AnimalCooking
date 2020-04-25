@@ -21,8 +21,6 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 		Vector2D(jsonLevel["LevelTimer"]["pos"]["x"].as_int(), jsonLevel["LevelTimer"]["pos"]["y"].as_int()),
 		Vector2D(jsonGeneral["LevelTimer"]["size"]["width"].as_int(), jsonGeneral["LevelTimer"]["size"]["height"].as_int()));
 
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(), player, ip);
-
 	jute::jValue components = jsonLevel["GameManager"]["components"];
 	for (int c = 0; c < components.size(); ++c) {
 		initializeComponent(components[c].as_string(), gameManager);

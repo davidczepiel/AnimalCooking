@@ -2,5 +2,5 @@
 
 void Order::update()
 {
-	timer.update();
+	timer->update();
 }

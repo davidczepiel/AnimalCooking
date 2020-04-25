@@ -9,7 +9,7 @@ public:
 	Timer();
 	~Timer();
 	virtual void update();
-	virtual void draw() = 0;
+	virtual void draw() {}
 
 	void setTime(Uint32 t) { time_ = t; };	
 	void setTexture(Texture* t) { texture_ = t; };

@@ -25,8 +25,6 @@ void Cooker::initTimer()
 }
 
 Cooker::~Cooker() {
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
-	delete timer_;
 	timer_ = nullptr;
 }
 

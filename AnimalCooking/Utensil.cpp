@@ -3,6 +3,7 @@
 #include "SDL_macros.h"
 #include "GameLogic.h"
 #include <math.h> 
+#include "TimerViewer.h"
 
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
@@ -23,12 +24,12 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	lastFrameTick = 0;
 	gameLogic = nullptr;
 	size_ = Vector2D(50, 50);
+
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(dirtTimer_);
 }
 
 
 Utensil::~Utensil() {
-	delete dirtTimer_;
-	dirtTimer_ = nullptr;
 }
 
 void Utensil::update() {

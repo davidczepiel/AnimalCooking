@@ -13,7 +13,7 @@ public:
     GameLogic();
     ~GameLogic() {}
 
-    void init() override {}
+    void init() override;
     virtual void update() override { levelTimer_->update(); }
     virtual void draw() override { levelTimer_->draw(); }
     void setIngredientPool(IngredientsPool* p) {ingPool = p;}

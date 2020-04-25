@@ -14,7 +14,6 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	position_ = position;
 	size_ = Vector2D(64, 64);
 	speed_ = Vector2D();
-	static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->addTimer(&timer_);
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
@@ -39,9 +38,8 @@ void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
 
 void Food::Destroy()
 {
-	static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->removeTimer(&timer_);
-	foodPool_->RemoveFood(iterator_);
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
+	foodPool_->RemoveFood(iterator_);
 }
 
 void Food::update()

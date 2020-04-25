@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "FSM.h"
 #include "PlayState.h"
+#include "TimerViewer.h"
 
 class Order
 {
@@ -14,9 +15,13 @@ public:
 	Order(Vector2D pos, Texture* orderText, int nIngredients, Resources::FoodType finalProduct, Uint32 maxTime)
 		: position_(pos), orderTetxure_(orderText), nIngredients_(nIngredients), finalProduct_(finalProduct)
 	{
-		timer.setTime(maxTime);
-		timer.timerStart();
-		static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->addTimer(&timer);
+		timer = new Timer();
+		timer->setTime(maxTime);
+		timer->timerStart();
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer);
+	}
+	~Order() {
+		timer = nullptr;
 	}
 	void update();
 
@@ -30,15 +35,15 @@ public:
 	Resources::FoodType getFinalProduct() { return finalProduct_; }
 
 	//El anger debe ser entre 0 y 1
-	double getAnger() { return timer.getProgress(); }
+	double getAnger() { return timer->getProgress(); }
 
 	void removeTimer() {
-		static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->removeTimer(&timer);
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer);
 	}
 
 private:
 
-	Timer timer;
+	Timer* timer;
 	Vector2D position_;
 	Texture* orderTetxure_;
 	int nIngredients_;

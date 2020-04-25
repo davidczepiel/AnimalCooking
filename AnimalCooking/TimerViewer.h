@@ -8,6 +8,12 @@ class TimerViewer : public Component
 {
 public:
 	TimerViewer();
+	~TimerViewer() {
+		for (auto& t : timersList_) {
+			delete t;
+			t = nullptr;
+		}
+	}
 	virtual void draw() override;
 	void deleteTimer(Timer* timerToDelete);
 	void addTimer(Timer* timerToAdd);

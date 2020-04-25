@@ -15,10 +15,6 @@ public:
 	//al continuar el juego se debería llamar a este método(buscar dónde se continua)
 	void resumeTimers();
 
-	void addTimer(Timer* t) { timers.push_back(t); }
-	void removeTimer(Timer* t) { 
-		timers.remove(t); }
-
 private:
 	list<Timer*> timers;
 	static void goToEndState(AnimalCooking* ac);
