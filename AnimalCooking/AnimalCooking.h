@@ -24,6 +24,7 @@ private:
 	void handleInput();
 	void update();
 	void render();
+	bool pauseRequest();
 
 	SDLGame* game_;
 

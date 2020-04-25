@@ -1,7 +1,7 @@
 #include "MainMenuPadNavigation.h"
 
 MainMenuPadNavigation::MainMenuPadNavigation() : Component(ecs::MainMenuPadNavigation),
-selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false)
+selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false), aButtonPressed(true)
 {
 }
 
@@ -16,22 +16,25 @@ void MainMenuPadNavigation::update() {
 	//SOlo hago si hay un pad conectado
 	if (gpad->joysticksInitialised()) {
 		//Valor en x del joystick izquierdo del jugador 1
-		double Xvalue = gpad->xvalue(0, 1);
-		if ((Xvalue > 0 || Xvalue < 0) && !xAxisMoved)
+		double xValue = gpad->xvalue(0, 1);
+		if ((xValue > 0 || xValue < 0) && !xAxisMoved)
 		{
 			xAxisMoved = true;
-			changeFocus(Xvalue);
+			changeFocus(xValue);
 		}
-		else if (xAxisMoved && Xvalue != 0)
-			arrowFocused(Xvalue);
-		else  if (xAxisMoved && Xvalue == 0)
+		else if (xAxisMoved && xValue != 0)
+			arrowFocused(xValue);
+		else  if (xAxisMoved && xValue == 0)
 			noArrowsFocused();
 
-		if (gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A)) {
+		if (gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A) && !aButtonPressed) {
 			if (selectButton != nullptr) {
 				MenuButtonBehaviour* m = GETCMP2(selectButton, MenuButtonBehaviour);
 				m->action();
 			}
+		}
+		if (!gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A)) {
+			aButtonPressed = false;
 		}
 	}
 

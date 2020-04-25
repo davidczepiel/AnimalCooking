@@ -8,6 +8,7 @@ ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback,AnimalCooking* ac) : 
 	callback_ = callback;
 	ownerTransform_ = nullptr;
 	active_ = true;
+	focused_ = false;
 	ac_ = ac;
 }
 
@@ -30,4 +31,10 @@ void ButtonBehaviour::update()
 			callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
 		}
 	}
+}
+
+//este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
+void ButtonBehaviour::action() {
+	callback_(ac_); 
+
 }

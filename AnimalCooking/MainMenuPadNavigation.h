@@ -23,6 +23,7 @@ private:
 	Entity* rightArrow;
 	Entity* selectButton;
 	bool xAxisMoved;
+	bool aButtonPressed;
 
 };
 

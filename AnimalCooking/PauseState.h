@@ -4,6 +4,7 @@
 #include "ButtonRenderer.h"
 #include "ConfigState.h"
 #include "Transform.h"
+#include "ButtonPadNavigation.h"
 
 class PauseState : public State	
 {
@@ -18,6 +19,7 @@ private:
 	Entity* configButton = nullptr;
 	Entity* menuButton = nullptr;
 	Entity* closeButton = nullptr;
+	Entity* padNavigation = nullptr;
 
 	static void configCallback(AnimalCooking* ac);
 	static void menuCallback(AnimalCooking* ac);

@@ -80,8 +80,16 @@ void AnimalCooking::handleInput() {
 			InputHandler::instance()->update(event);
 	}
 
-	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
+	if (pauseRequest()&& dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
 		game_->getFSM()->pushState(new PauseState(this));
+}
+
+bool AnimalCooking::pauseRequest() {
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) ||
+		GPadController::instance()->getButtonState(0, SDL_CONTROLLER_BUTTON_BACK))
+		return true;
+	else 
+		return false;
 }
 
 void AnimalCooking::update() {
