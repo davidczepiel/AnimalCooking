@@ -85,8 +85,8 @@ void AnimalCooking::handleInput() {
 }
 
 bool AnimalCooking::pauseRequest() {
-	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) ||
-		GPadController::instance()->getButtonState(0, SDL_CONTROLLER_BUTTON_BACK))
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) || ( (GPadController::instance()->joysticksInitialised()) &&
+		GPadController::instance()->getButtonState(0, SDL_CONTROLLER_BUTTON_LEFTSTICK)))
 		return true;
 	else 
 		return false;

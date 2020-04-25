@@ -169,6 +169,23 @@ void GPadController::ControllerButtonDown(SDL_Event& event) {
     case SDL_CONTROLLER_BUTTON_Y:
         m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = true;
         break;
+    case SDL_CONTROLLER_BUTTON_LEFTSTICK:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_LEFTSTICK) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_UP) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_DOWN) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_LEFT) = true;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) = true;
+        break;
+ 
+
     }
 }
 
@@ -186,6 +203,21 @@ void GPadController::ControllerButtonUp(SDL_Event& event) {
         break;
     case SDL_CONTROLLER_BUTTON_Y:
         m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_LEFTSTICK:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_LEFTSTICK) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_UP) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_DOWN) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_LEFT) = false;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) = false;
         break;
     }
 }
