@@ -17,7 +17,6 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	lastAttack_ = SDL_GetTicks();
 	myState = State::shelf;
 	dirty_ = false;
-	cleanUpSpeed_ = 25;
 	speed_ = Vector2D(0, 0);
 	frameAttack = 0;
 	attacking_ = false;
@@ -82,7 +81,7 @@ void Utensil::render()const {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	if (!dirty_ && !attacking_)
 		cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
-	else if ((!dirty_ && attacking_)) {
+	else if (!dirty_ && attacking_) {
 		attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
 	}
 	else
@@ -138,11 +137,8 @@ void Utensil::changeDirtySpeed(int speedModifier) {
 void Utensil::cleanUp() {
 	//Me deberia llamar el fregadero para decime que me limpie
 	if (dirty_) {
-		myDirt_ -= cleanUpSpeed_;
-		if (myDirt_ <= 0) {
-			myDirt_ = 0;
-			dirty_ = false;
-		}
+		myDirt_ = 0;
+		dirty_ = false;
 	}
 }
 

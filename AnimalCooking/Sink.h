@@ -19,8 +19,7 @@ public:
 	virtual ~Sink();
 	virtual void action1(int player);
 private:
-	bool canClean;
-	int cadence;
-	int lastClean;
+	size_t nTries, maxTries;
+	Uint32 lastTry, cadence;
 
 };
