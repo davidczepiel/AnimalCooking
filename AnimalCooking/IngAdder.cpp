@@ -3,14 +3,15 @@
 #include "LevelInitializer.h"
 #include "IngredientViewer.h"
 #include "IngredientMotion.h"
+#include "AIIngredient.h"
 
-
-IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral/*, const double casillaLength*/) :
+IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, Transform* t1, Transform* t2/*, const double casillaLength*/) :
 	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)/*, casillaLength(casillaLength)*/
 {
 	ingPoolEntity_->addComponent<IngredientsPool>();
 	ingPoolEntity_->addComponent<IngredientViewer>();
 	ingPoolEntity_->addComponent<IngredientMotion>();
+	ingPoolEntity_->addComponent<AIIngredient>(GETCMP2(ingPoolEntity_, IngredientsPool), t1, t2);
 
 	//Componentes extra
 	jute::jValue components = jsonLevel["IngredientsPool"]["components"];

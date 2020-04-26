@@ -2,11 +2,12 @@
 #include <string>
 #include "Entity.h"
 #include "jute.h"
+#include "Transform.h"
 
 class IngAdder
 {
 public:
-	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral/*, const double casilla*/);
+	IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, Transform* t1, Transform* t2/*, const double casilla*/);
 
 private:
 

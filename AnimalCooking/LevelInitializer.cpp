@@ -75,7 +75,7 @@ void LevelInitializer::initialize_ingredientsPool()
 	ingPoolEntity_ = emPlaystate->addEntity();
 	emPlaystate->addToGroup(ingPoolEntity_, CASTID(jsonGeneral["Ingredientes"]["Layer"].as_int()));
 
-	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral/*, casilla*/);
+	IngAdder(ingPoolEntity_, jsonLevel, jsonGeneral, GETCMP2(players[0], Transform), GETCMP2(players[1], Transform)/*, casilla*/);
 	sL->updateLength();
 }
 
