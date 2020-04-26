@@ -31,21 +31,21 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 		i->setState(Walking);
 		i->setVel(calculateNewVel(i));
 		timer.timerReset();
-		timer.setTime(timeWalking);
+		timer.setTime(SDLGame::instance()->getRandGen()->nextInt(0,maxTimeWalking));
 		timer.timerStart();
 	}
 	else if (state == IngredientState::Walking && timer.isTimerEnd()) {
 		i->setState(Idle);
 		i->setVel(Vector2D(0, 0));
 		timer.timerReset();
-		timer.setTime(timeIdle);
+		timer.setTime(SDLGame::instance()->getRandGen()->nextInt(0, maxTimeIdle));
 		timer.timerStart();
 	}
 	else if (state == IngredientState::Scaping) {
 		if (distance1 > range && distance2 > range) {	//fuera de rango los dos players
 			i->setState(Idle);
 			timer.timerReset();
-			timer.setTime(timeIdle);
+			timer.setTime(SDLGame::instance()->getRandGen()->nextInt(0, maxTimeIdle));
 			timer.timerStart();
 		}
 		else {	//alguno está en rango
@@ -56,7 +56,13 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 
 Vector2D AIIngredient::calculateNewVel(Ingredient* i) {
 	Vector2D newVel;
-	newVel = Vector2D(SDLGame::instance()->getRandGen()->nextInt(-5, 6), SDLGame::instance()->getRandGen()->nextInt(-5, 6)).normalize() * i->getMaxVel();
+	Vector2D orientation;
+
+	orientation = Vector2D((SDLGame::instance()->getWindowWidth() * 0.65) - i->getPos().getX(), (SDLGame::instance()->getWindowHeight() * 0.4) - i->getPos().getY()).normalize() / 4;
+
+	newVel = Vector2D(SDLGame::instance()->getRandGen()->nextInt(-5, 6), SDLGame::instance()->getRandGen()->nextInt(-5, 6)).normalize();
+	newVel = newVel + orientation;
+	newVel = newVel.normalize() * i->getMaxVel();
 
 	return newVel;
 }
