@@ -1,6 +1,7 @@
 #include "AIClient.h"
 #include "Entity.h"
 #include "OrderManager.h"
+#include "GameConfig.h"
 
 AIClient::AIClient() : AIClient(45)
 {

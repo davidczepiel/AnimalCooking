@@ -12,6 +12,7 @@
 #include <assert.h>
 
 #include "InputHandler.h"
+#include "jute.h"
 
 using namespace std;
 class FSM;
@@ -86,6 +87,7 @@ public:
 	inline Uint32 getTime() {
 		return SDL_GetTicks();
 	}
+	inline jute::jValue& getJsonGeneral() { return json_general; }
 
 	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
 	inline Entity* getTimersViewer() { return timersViewer_; }
@@ -105,7 +107,7 @@ protected:
 	AudioManager *audio_;
 	RandomNumberGenerator *random_;
 	FSM* fsm_;
-
+	jute::jValue json_general;
 	SDL_Window *window_; // the window
 	SDL_Renderer *renderer_;  // the renderer
 

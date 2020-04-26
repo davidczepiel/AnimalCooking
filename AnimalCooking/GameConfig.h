@@ -16,6 +16,13 @@ namespace config {
 	//ANIMATOR
 	constexpr int ANIM_SPEED = 60;
 
+	//COOKERS
+	constexpr int SKILLET_SECONDS_TO_COOK = 10;
+	constexpr int OVEN_SECONDS_TO_COOK = 15;
+
+	//DISHES
+	constexpr int DISH_MAX_INGR = 5;
+
 	//PauseState
 	constexpr double PAUSESTATE_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla
 	constexpr double PAUSESTATE_BUTTON_HEIGHT = 1 / 15; //Porcentaje respecto a la pantalla

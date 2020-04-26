@@ -2,7 +2,8 @@
 #include "DishStack.h"
 
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2,nullptr),foods_(vector<Food*>()),isViewingContent(false),inHands(true),foodPool(fp)
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2, nullptr),
+	foods_(vector<Food*>()),isViewingContent(false), inHands(true), foodPool(fp)
 {
 	foods_.reserve(maxFood);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatoFeedBack);

@@ -16,7 +16,6 @@ public:
 
 	void setCookerState(CookerStates s);
 
-
 	inline CookerStates getCookerState() { return state_; };
 	inline void setEmptyTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker); };
 	inline void setBurnedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
