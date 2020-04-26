@@ -34,7 +34,7 @@ void CollisionsSystem::update()
 			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true); 
 			
 			//Aviso al ingrediente que ha colisionado
-			tellIngredient(en.first, cT);
+			//tellIngredient(en.first, cT);
 		}
 	}
 }
@@ -170,7 +170,7 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 				}
 			}
 		}
-		//resolveCollisions(pos, size, vel);	
+		resolveCollisions(pos, size, vel);	
 	}
 	return cT;
 }

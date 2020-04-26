@@ -5,7 +5,7 @@
 #include "TimerViewer.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
-	state_(CookerStates::empty), cookingTime_(5),entity_(e), timer_(nullptr)
+	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr)
 {
 	setPos(pos);
 	setSize(size);
