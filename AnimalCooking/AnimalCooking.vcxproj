@@ -216,6 +216,7 @@
     <ClInclude Include="FoodViewer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
@@ -364,6 +365,7 @@
     <ClCompile Include="FoodTextures.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
