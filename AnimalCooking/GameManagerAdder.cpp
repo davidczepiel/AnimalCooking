@@ -5,16 +5,18 @@
 #include "IngredientsPool.h"
 #include "Manager.h"
 #include "CollisionsSystem.h"
+#include "ScoreManager.h"
 
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + offset), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + 2 * offset), player, ip);
 
 	GameLogic* glogic = gameManager->addComponent<GameLogic>();
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip,casilla);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
+	gameManager->addComponent<ScoreManager>();
 
 	jute::jValue components = jsonLevel["GameManager"]["components"];
 	for (int c = 0; c < components.size(); ++c) {

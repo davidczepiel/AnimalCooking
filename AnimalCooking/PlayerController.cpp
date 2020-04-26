@@ -81,11 +81,12 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
+	int speed = 2;
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
 		int x = 0, y = 0;
 		if (keyboard->isKeyDown(keys.up)) {
-			tr_->setVelY(-1); y = -1;
+			tr_->setVelY(-speed); y = -1;
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
 			{
@@ -94,7 +95,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 		else if (keyboard->isKeyDown(keys.down)) {
-			tr_->setVelY(1); y = 1;
+			tr_->setVelY(speed); y = 1;
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
 			{
@@ -105,7 +106,7 @@ void PlayerController::keyUpdate()
 		//else tr_->setVelY(0);
 
 		if (keyboard->isKeyDown(keys.right)) {
-			tr_->setVelX(1);  x = 1;
+			tr_->setVelX(speed);  x = 1;
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
 			{
@@ -114,7 +115,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 		else if (keyboard->isKeyDown(keys.left)) {
-			tr_->setVelX(-1); x = -1;
+			tr_->setVelX(-speed); x = -1;
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
 			{

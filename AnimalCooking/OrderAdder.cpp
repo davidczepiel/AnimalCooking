@@ -4,6 +4,9 @@
 #include "OrderManager.h"
 #include "AIClient.h"
 #include "Vector2D.h"
+#include "SelectorPopUpEntity.h"
+#include "Selector.h"
+#include "InteractionRect.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
@@ -15,6 +18,9 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	em->addEntity(os);
 	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
 	interactives_.push_back(os);
+
+	os->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
+		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), os);
 
 	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla + offset, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla + offset));
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casilla, general["Clients"]["repisa"]["size"]["height"].as_double() * casilla));

@@ -103,7 +103,8 @@ void LevelInitializer::initialize_cookersPool()
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
 	list<Timer*> aux = CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla, offset).getTimers();
-	aux.splice(aux.begin(), timers_);
+	timers_.insert(timers_.end(), aux.begin(), aux.end());
+
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
 	sL->updateLength();
@@ -113,8 +114,9 @@ void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla, offset);
 
-	list<Timer*>aux = sa.getTimers();
-	aux.splice(aux.begin(), timers_);
+	list<Timer*> aux = sa.getTimers();
+	timers_.insert(timers_.end(), aux.begin(), aux.end());
+
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
 	sL->updateLength();

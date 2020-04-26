@@ -1,6 +1,7 @@
 #include "FSM.h"
 #include"checkML.h"
 
+
 FSM::~FSM()
 {
 	while (!statesStack.empty())
@@ -12,6 +13,14 @@ FSM::~FSM()
 
 void FSM::pushState(State* s) {
 	events.push({ true, s });
+}
+
+void FSM::popState()
+{
+	if (!statesStack.empty())
+	{
+		events.push({ false, nullptr });
+	}
 }
 
 State* FSM::currentState() {
@@ -34,14 +43,17 @@ void FSM::refresh()
 			delete statesStack.top();
 			statesStack.pop();
 		}
+		if (events.front().f != nullptr) {
+			events.front().f();
+		}
 		events.pop();
 	}
 }
 
-void FSM::popState()
+void FSM::popState(std::function<void()> f)
 {
 	if (!statesStack.empty()) 
 	{ 
-		events.push({ false, nullptr });
+		events.push({ false, nullptr, f });
 	}
 }

@@ -1,7 +1,6 @@
 #include "PauseState.h"
-#include "PauseState.h"
-#include"MenuState.h"
-#include"PlayState.h"
+#include "MenuState.h"
+#include "PlayState.h"
 //#include "ConfigState.h"
 
 PauseState::PauseState(AnimalCooking* ac) : State(ac)
@@ -61,7 +60,7 @@ void PauseState::configCallback(AnimalCooking* ac)
 void PauseState::resumeCallback(AnimalCooking* ac)
 {
 	cout << "Resume";
-	SDLGame::instance()->getFSM()->popState();
+	SDLGame::instance()->getFSM()->popState([]() { static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers(); });
 }
 
 void PauseState::closeCallback(AnimalCooking* ac)
