@@ -38,6 +38,10 @@ namespace config {
 	constexpr double INTERACTION_RECT_OFFSET = 1;
 	constexpr double INTERACTION_RECT_SIDELENGTH = 1;
 
+	//Score Manager
+
+	constexpr double SCORE_MANAGER_NOT_SERVED_PENALIZATION = -7.5;
+	constexpr double SCORE_MANAGER_SERVED_BONUS = 15.0;
 	//Score Viewer
 	constexpr double SCOREVIEWER_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla
 	constexpr double SCOREVIEWER_BUTTON_HEIGHT = 1 / 15; //Porcentaje respecto a la pantalla
@@ -102,7 +106,7 @@ namespace config {
 			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT = SDLK_g;
 			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER = SDLK_j;
 		};
-		
+
 	};
 }
 
