@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Transport.h"
 #include "Pickable.h"
+#include "GameConfig.h"
 #include "Timer.h"
 
 class GameLogic;

@@ -4,12 +4,11 @@
 #include "GameLogic.h"
 #include <math.h> 
 #include "TimerViewer.h"
-#include "GameConfig.h"
 
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	maxTimeOnFloor_ = 10;
+	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
 	dirtTimer_ = new DefaultTimer();
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
