@@ -26,25 +26,36 @@ void ButtonPadNavigation::update() {
 	//Me hago con el gamePad
 	GPadController* gpad = GPadController::instance();
 	//SOlo hago si hay un pad conectado
-	if (gpad->joysticksInitialised()) {
 		//Valor en x del joystick izquierdo del jugador 1
-		double xValue = gpad->xvalue(0, 1);
-		double yValue = gpad->yvalue(0, 1);
-
-		if ((xValue != 0 || yValue != 0) && !xAxisMoved)
-		{
-			if (abs(xValue) > abs(yValue))
-				horizontalMove(xValue);
-			else if (abs(xValue < abs(yValue)))
-				verticalMove(yValue);
-		}
-		if (gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A) && !aButtonPressed) {
+	horizontalInput();
+	verticalInput();
+		if ((GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
+			GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
+			&& !aButtonPressed) {
 			action();
 		}
-		if (!gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A))
+		if (!GPadController::playerPressed(0,SDL_CONTROLLER_BUTTON_A) &&
+			!GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
 			aButtonPressed = false;
-	}
 
+}
+
+void ButtonPadNavigation::horizontalInput() {
+	if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
+		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+		horizontalMove(-1);
+	else if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
+		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+		horizontalMove(1);
+}
+
+void ButtonPadNavigation::verticalInput() {
+	if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
+		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP))
+		horizontalMove(-1);
+	else if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||
+		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+		verticalMove(1);
 }
 
 void ButtonPadNavigation::action() {

@@ -8,7 +8,6 @@ void PlayerController::init()
 	selector_ = GETCMP1_(Selector);
 	attack_ = GETCMP1_(Attack);
 	animator = GETCMP1_(Animator);
-
 	animator->setCurrentState(Animator::States::Idle);
 
 	if (id_ == 0) {
@@ -23,6 +22,7 @@ void PlayerController::init()
 		keys.right = SDLK_RIGHT;
 		keys.left = SDLK_LEFT;
 	}
+	GPadController::getPlayer(id_);
 }
 
 void PlayerController::update()
@@ -34,54 +34,63 @@ void PlayerController::update()
 void PlayerController::joystickUpdate()
 {
 	GPadController* gpad = GPadController::instance();
-
-	if (gpad->joysticksInitialised()) {
-		double x = 0, y = 0;	//interactive
-		//Axis------------------------
-		double Xvalue = gpad->xvalue(id_, 1);
-		if (Xvalue > 0 || Xvalue < 0)
-		{
-			x = Xvalue/1.00275;
-			tr_->setVelX(x);
-		}
-		else {
-			tr_->setVelX(0);
-		}
-		double Yvalue = gpad->yvalue(id_, 1);
-		if (Yvalue > 0 || Yvalue < 0)
-		{
-			y = Yvalue/ 1.00275;
-			tr_->setVelY(y);
-		}
-		else {
-			tr_->setVelY(0);
-		}
-		ir_->setDir(x, y);
-		//Botones-------------------------------
-		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_A)) {
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr) {
-				i->action1(id_);
-				i = nullptr;
-			}
-		}
-		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_B)) {
-		cout << "X = " << x << "Y= " << y << endl;
-		}
-		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
-			attack_->attack();
-			animator->setCurrentState(Animator::States::Attack);
-		}
-		if (gpad->getButtonState(id_, SDL_CONTROLLER_BUTTON_Y)) {
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-				i->action1(id_);
+	//if (gpad->joysticksInitialised()) {
+	double x = 0, y = 0;	//interactive
+	//Axis------------------------
+	double Xvalue = GPadController::getAxisX(id_, 0);
+	if (Xvalue > 0 || Xvalue < 0)
+	{
+		x = Xvalue;
+		tr_->setVelX(x);
+	}
+	else {
+		tr_->setVelX(0);
+	}
+	double Yvalue = GPadController::getAxisY(id_, 1);
+	if (Yvalue > 0 || Yvalue < 0)
+	{
+		y = Yvalue;
+		tr_->setVelY(Yvalue);
+	}
+	else {
+		tr_->setVelY(0);
+	}
+	ir_->setDir(x, y);
+	//Botones-------------------------------
+	if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_A)) {
+		ableToPress = false;
+		cout << id_ + " ha pulsado A" << endl;
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr) {
+			i->action1(id_);
 			i = nullptr;
 		}
 	}
-	else {
-		keyUpdate();
+	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_B)) {
+		cout << "X = " << x << "Y= " << y << endl;
 	}
+	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
+		attack_->attack();
+		animator->setCurrentState(Animator::States::Attack);
+	}
+	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr)
+			i->action1(id_);
+		i = nullptr;
+	}
+	else if (!ableToPress&& padNotTouched())
+		ableToPress = true;
+}
+
+bool PlayerController::padNotTouched() {
+	if (!GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_A) &&
+		!GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_B) &&
+		!GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_X) &&
+		!GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_Y))
+		return true;
+	else 
+		return false;
 }
 
 void PlayerController::keyUpdate()
@@ -130,10 +139,10 @@ void PlayerController::keyUpdate()
 			}
 		}
 		//else tr_->setVelX(0);
-		
+
 		ir_->setDir(x, y);
 
-		if(tr_->getVel().getX()!=0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
+		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
 
 		//--------------------Botones
 
@@ -189,8 +198,8 @@ void PlayerController::keyUpdate()
 	}
 	else {
 		tr_->setVelX(0);
-		tr_->setVelY(0);	
+		tr_->setVelY(0);
 	}
 
-	if(keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);	 
+	if (keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);
 }

@@ -15,6 +15,8 @@ public:
 private:
 	void changeFocus(Entity* e);
 	void action();
+	void horizontalInput();
+	void verticalInput();
 	void horizontalMove(double xValue);
 	void verticalMove(double yValue);
 	struct button {

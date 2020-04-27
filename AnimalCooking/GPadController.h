@@ -18,6 +18,11 @@ public:
 		}
 		return instance_.get();
 	}
+
+	static void getPlayer(int id);
+	static double getAxisX(int player, int axis);
+	static double getAxisY(int player, int axis);
+	static bool playerPressed(int player, SDL_GameControllerButton button);
 	void update(SDL_Event& event);
 
 	inline bool joysticksInitialised() const{
@@ -33,6 +38,8 @@ public:
 
 	double xvalue(int joy, int stick);
 	double yvalue(int joy, int stick);
+	static SDL_GameController* player1_;
+	static SDL_GameController* player2_;
 
 private:
 	static unique_ptr<GPadController> instance_;
@@ -45,7 +52,7 @@ private:
 
 	//--------------Variables-------------------------
 	//Jostick
-	const int m_joystickDeadZone = 10000;
+	static const int m_joystickDeadZone = 10000;
 	vector<SDL_Joystick*> m_joysticks;
 	vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;	//contiene los controladores con axis multiples(uno para cada stick)
 	bool m_bJoysticksInitialised;

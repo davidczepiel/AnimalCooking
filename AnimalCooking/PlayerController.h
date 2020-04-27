@@ -37,6 +37,8 @@ private:
 	Animator* animator = nullptr;
 
 	void joystickUpdate();
+	bool padNotTouched();
 	void keyUpdate();
 	bool idle=true;
+	bool ableToPress = true;
 };

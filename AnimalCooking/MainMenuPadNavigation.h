@@ -20,6 +20,7 @@ private:
 	void arrowFocused(double xValue);
 	void noArrowsFocused();
 	bool dPadUsed(double* dpad);
+	bool dPadNotUsed();
 	Entity* leftArrow;
 	Entity* rightArrow;
 	Entity* selectButton;
