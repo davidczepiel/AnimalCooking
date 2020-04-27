@@ -69,17 +69,12 @@ void LevelTimer::draw()
 {
 	double widthMultiplier = (game_->getTime() - startedTime_) / double(time_);
 
-	int windowWidth = SDLGame::instance()->getWindowWidth();
-	int windowHeight = SDLGame::instance()->getWindowHeight();
-
-	int posX = windowWidth - (windowWidth * pos_.getX());
-	int posY = windowHeight - (windowHeight * pos_.getY());
-
-	SDL_Rect rect = RECT( posX, posY,
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(),
 		size_.getX() * widthMultiplier, size_.getY());
+
 	texture_->render(rect);
 
-	rect = RECT(posX, posY, size_.getX(), size_.getY());
+	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	outlineText_->render(rect);
 }
 
