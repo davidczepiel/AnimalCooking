@@ -49,6 +49,7 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 	if (!lista.empty()) { //Si encuentra el producto a eliminar, elimina el pedido
 		vector<Order*>::iterator it = getFirst(lista);
 		if (playerDidIt) scoreManager_->addScore((*it)->getNumIngs() * 15);
+		else scoreManager_->addScore((*it)->getNumIngs() * -7.5);
 		(*it)->removeTimer();
 		delete* it;
 		*it = nullptr;

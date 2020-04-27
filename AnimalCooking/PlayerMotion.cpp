@@ -1,5 +1,6 @@
 #include "PlayerMotion.h"
 #include "Entity.h"
+#include "GameConfig.h"
 
 void PlayerMotion::init()
 {
@@ -8,5 +9,5 @@ void PlayerMotion::init()
 
 void PlayerMotion::update()
 {
-	tr_->setPos(tr_->getPos() + tr_->getVel() * SPEED);
+	tr_->setPos(tr_->getPos() + tr_->getVel() * config::PLAYER_SPEED);
 }

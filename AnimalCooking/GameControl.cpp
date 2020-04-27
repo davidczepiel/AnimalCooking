@@ -5,7 +5,7 @@
 GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl), 
 	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(),casillaLength(casilla), justStarted(true)
 {
-	timer.setTime(500);
+	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
 }
 

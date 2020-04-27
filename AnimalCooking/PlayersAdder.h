@@ -16,4 +16,6 @@ private:
 	void players_initializeTransform(size_t player, const double casillaLength);
 
 	void initializeComponent(const string& component, Entity* entity);
+
+	double casilla;
 };

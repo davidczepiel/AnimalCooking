@@ -5,7 +5,7 @@
 #include "UtensilsPool.h"
 
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
-#define ADD(t) makeUtensil<t>(player, pool_)
+#define ADD(t) makeUtensil<t>(player, pool_, casillaLength-)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla, const double offset) :

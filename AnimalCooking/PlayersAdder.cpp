@@ -9,7 +9,7 @@
 #include "LevelInitializer.h"
 
 PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaLength) :
-	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
+	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), casilla(casillaLength)
 {
 	for (int i = 0; i < players.size(); ++i) {
 		players_initializeTransform(i, casillaLength);
@@ -33,7 +33,7 @@ void PlayersAdder::players_addComponents(Entity* entity, int id)
 	entity->addComponent<Animator>();
 	entity->addComponent<PlayerMotion>();
 	entity->addComponent<Selector>();
-	entity->addComponent<InteractionRect>();
+	entity->addComponent<InteractionRect>(casilla);
 	entity->addComponent<Attack>();
 	entity->addComponent<Transport>();
 	entity->addComponent<PlayerController>(id);
