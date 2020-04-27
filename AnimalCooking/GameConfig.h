@@ -10,6 +10,7 @@ namespace config {
 	constexpr int AI_INGREDIENT_RANGE = 250;
 
 	constexpr int AI_INGREDIENT_MIN_TIME_WALKING = 500;
+	constexpr int AI_INGREDIENT_MAX_TIME_WALKING = 2000;
 	constexpr int AI_INGREDIENT_MIN_TIME_IDLE = 500;
 	constexpr int AI_INGREDIENT_MAX_TIME_IDLE = 2000;
 
