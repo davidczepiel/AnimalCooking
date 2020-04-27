@@ -2,8 +2,8 @@
 #include "Ingredient.h"  
 #include "GameConfig.h"
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl), 
-	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(),casillaLength(casilla), justStarted(true)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip) : Component(ecs::GameControl), 
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
@@ -35,14 +35,14 @@ void GameControl::newIngredient()
 	Ingredient* ing = newIngType(chooseIng());  
 
 	jute::jValue& jsonGeneral = game_->getJsonGeneral();
-	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
-		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(),
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
 
 	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
-	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * casillaLength;
+	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaLength();
 
     ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
-    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength, y));
+    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), y));
 	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
 	colSys_->addCollider(ing);

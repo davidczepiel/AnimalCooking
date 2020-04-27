@@ -25,14 +25,14 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
-const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
+
 
 LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
 	string ruta_ = rutaNivel + std::to_string(level - 1) + ".cfg";
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
-	jsonGeneral = jute::parser::parse_file(rutaGeneral); // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
+	jsonGeneral = SDLGame::instance()->getJsonGeneral();
 
 	casilla = SDLGame::instance()->getWindowHeight() / 9;
 	offset = casilla * 0.15;

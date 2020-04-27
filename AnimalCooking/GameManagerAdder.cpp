@@ -14,7 +14,7 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + 2 * offset), player, ip);
 
 	GameLogic* glogic = gameManager->addComponent<GameLogic>();
-	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip,casilla);
+	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
 	gameManager->addComponent<ScoreManager>();

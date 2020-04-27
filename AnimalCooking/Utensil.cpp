@@ -147,49 +147,49 @@ void Utensil::cleanUp() {
 
 ///////////////////////////////////////
 
-Knife::Knife(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
+Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Knife;
-	range_ = config::KNIFE_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * casillaLength;
+	range_ = config::KNIFE_RANGE * SDLGame::instance()->getCasillaLength();
+	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
+	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
 }
 
 
-Mace::Mace(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
+Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
-	range_ = config::MACE_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * casillaLength;
+	range_ = config::MACE_RANGE * SDLGame::instance()->getCasillaLength();
+	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
+	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
 }
 
 
-Grater::Grater(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
+Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Grater;
-	range_ = config::GRATER_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * casillaLength;
+	range_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaLength();
+	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
+	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
 }
 
 
-Net::Net(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
+Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Net;
-	range_ = config::NET_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * casillaLength;
+	range_ = config::NET_RANGE * SDLGame::instance()->getCasillaLength();
+	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
+	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
 }

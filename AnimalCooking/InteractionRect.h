@@ -6,7 +6,7 @@
 class InteractionRect :	public Component
 {
 public:
-	InteractionRect(double casillaLength) ;
+	InteractionRect() ;
 	~InteractionRect(){}
 
 	void init() override;

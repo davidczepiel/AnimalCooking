@@ -8,8 +8,9 @@
 
 #include "SRandBasedGenerator.h"
 #include "FSM.h"
-unique_ptr<SDLGame> SDLGame::instance_;
 
+unique_ptr<SDLGame> SDLGame::instance_;
+const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
 		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr) {
@@ -108,7 +109,7 @@ void SDLGame::initResources() {
 		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
-	json_general = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
+	json_general = jute::parser::parse_file(rutaGeneral);
 }
 
 void SDLGame::closeResources() {

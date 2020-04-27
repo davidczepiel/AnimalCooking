@@ -12,7 +12,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip, int casilla);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip);
     ~GameControl() {}
 
     void init() override;

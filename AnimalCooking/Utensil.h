@@ -71,7 +71,7 @@ protected:
 class Knife : public Utensil
 {
 public:
-	Knife( Transport* p1, Transport* p2, double casillaLength);
+	Knife( Transport* p1, Transport* p2);
 	~Knife() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 
@@ -80,7 +80,7 @@ public:
 class Mace : public Utensil
 {
 public:
-	Mace( Transport* p1, Transport* p2, double casillaLength);
+	Mace( Transport* p1, Transport* p2);
 	~Mace() {}
 
 	virtual void attack(Vector2D dir) {  onHit(dir); }
@@ -92,7 +92,7 @@ public:
 class Grater : public Utensil
 {
 public:
-	Grater( Transport* p1, Transport* p2, double casillaLength);
+	Grater( Transport* p1, Transport* p2);
 	~Grater() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 
@@ -101,7 +101,7 @@ public:
 class Net : public Utensil
 {
 public:
-	Net( Transport* p1, Transport* p2, double casillaLength);
+	Net( Transport* p1, Transport* p2);
 	~Net() {}
 	virtual void attack(Vector2D dir) {  onHit(dir); }
 
