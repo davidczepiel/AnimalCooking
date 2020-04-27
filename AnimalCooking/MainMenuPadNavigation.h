@@ -19,10 +19,12 @@ public:
 private:
 	void arrowFocused(double xValue);
 	void noArrowsFocused();
+	bool dPadUsed(double* dpad);
 	Entity* leftArrow;
 	Entity* rightArrow;
 	Entity* selectButton;
 	bool xAxisMoved;
+	bool xDpadMoved;
 	bool aButtonPressed;
 
 };

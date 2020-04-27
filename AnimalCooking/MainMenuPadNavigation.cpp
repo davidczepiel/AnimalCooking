@@ -1,7 +1,7 @@
 #include "MainMenuPadNavigation.h"
 
 MainMenuPadNavigation::MainMenuPadNavigation() : Component(ecs::MainMenuPadNavigation),
-selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false), aButtonPressed(true)
+selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false), aButtonPressed(true),xDpadMoved(false)
 {
 }
 
@@ -16,15 +16,23 @@ void MainMenuPadNavigation::update() {
 	//SOlo hago si hay un pad conectado
 	if (gpad->joysticksInitialised()) {
 		//Valor en x del joystick izquierdo del jugador 1
+		double dpad = 0;
+		if (!xDpadMoved  && dPadUsed(&dpad)) {
+			xDpadMoved = true;
+			changeFocus(dpad);
+		}
 		double xValue = gpad->xvalue(0, 1);
-		if ((xValue > 0 || xValue < 0) && !xAxisMoved)
+		if ((xValue > 0 || xValue < 0) && !xAxisMoved && !xDpadMoved)
 		{
 			xAxisMoved = true;
 			changeFocus(xValue);
 		}
 		else if (xAxisMoved && xValue != 0)
 			arrowFocused(xValue);
-		else  if (xAxisMoved && xValue == 0)
+		else if (xDpadMoved && dpad != 0)
+			arrowFocused(dpad);
+
+		else  if ((xAxisMoved || xDpadMoved) && xValue == 0 && !dPadUsed(&dpad))
 			noArrowsFocused();
 
 		if (gpad->getButtonState(0, SDL_CONTROLLER_BUTTON_A) && !aButtonPressed) {
@@ -38,6 +46,19 @@ void MainMenuPadNavigation::update() {
 		}
 	}
 
+}
+
+bool MainMenuPadNavigation::dPadUsed(double* dpad) {
+	if (SDL_GameControllerGetButton(SDL_GameControllerOpen(0), SDL_CONTROLLER_BUTTON_DPAD_LEFT)) {
+		*dpad = -1;
+		return true;
+	}
+	else if (SDL_GameControllerGetButton(SDL_GameControllerOpen(0), SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) {
+		*dpad = 1;
+		return true;
+	}
+	else
+		return false;
 }
 
 //Hago que la flecha de la izquierda o la flecha de la derecha cambien el  estado selectButton
@@ -56,6 +77,7 @@ void MainMenuPadNavigation::arrowFocused(double xValue) {
 //Restauro las flechas
 void MainMenuPadNavigation::noArrowsFocused() {
 	xAxisMoved = false;
+	xDpadMoved = false;
 	GETCMP2(rightArrow, MenuButtonRenderer)->setFocused(false);
 	GETCMP2(leftArrow, MenuButtonRenderer)->setFocused(false);
 }

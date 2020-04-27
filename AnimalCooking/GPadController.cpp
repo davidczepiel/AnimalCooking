@@ -27,7 +27,6 @@ void GPadController::initialiseJoysticks()
             {
                 m_joysticks.push_back(joy);
                 m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0))); //Añadimos un nuevo par de stick
-                
                 vector<bool> tempButtons;
                 for (int j = 0; j < SDL_JoystickNumButtons(joy); j++)
                 {
@@ -35,7 +34,6 @@ void GPadController::initialiseJoysticks()
                 }
                 m_buttonStates.push_back(tempButtons);
             }
-
         }
         //Le decimos a SDL que empiece a "escuchar" a los eventos de tipo joystick
         SDL_JoystickEventState(SDL_ENABLE);
@@ -95,7 +93,6 @@ double GPadController::yvalue(int joy, int stick)
 }
 void GPadController::update(SDL_Event &event)
 {
- 
     if (event.type == SDL_JOYAXISMOTION)
     {
         int whichOne = event.jaxis.which;
@@ -169,24 +166,9 @@ void GPadController::ControllerButtonDown(SDL_Event& event) {
     case SDL_CONTROLLER_BUTTON_Y:
         m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = true;
         break;
-    case SDL_CONTROLLER_BUTTON_LEFTSTICK:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_LEFTSTICK) = true;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_UP:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_UP) = true;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_DOWN) = true;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_LEFT) = true;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) = true;
-        break;
- 
 
     }
+
 }
 
 void GPadController::ControllerButtonUp(SDL_Event& event) {
@@ -204,20 +186,6 @@ void GPadController::ControllerButtonUp(SDL_Event& event) {
     case SDL_CONTROLLER_BUTTON_Y:
         m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = false;
         break;
-    case SDL_CONTROLLER_BUTTON_LEFTSTICK:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_LEFTSTICK) = false;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_UP:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_UP) = false;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_DOWN) = false;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_LEFT) = false;
-        break;
-    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-        m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_DPAD_RIGHT) = false;
-        break;
+
     }
 }
