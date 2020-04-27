@@ -170,7 +170,7 @@ void PlayerController::keyUpdate()
 			animator->setCurrentState(Animator::States::Attack);
 		}
 
-		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -178,7 +178,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
