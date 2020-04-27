@@ -31,7 +31,6 @@ private:
     UtensilsPool* utensilsPool;
     Transport* tP1;
     Transport* tP2;
-	jute::jValue jsonGeneral;
 	FoodTimer timer;
 	int casillaLength;
 	vector<Resources::IngredientType> levelIngType;

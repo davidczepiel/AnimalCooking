@@ -6,7 +6,7 @@
 #include "IngredientsPool.h"
 #include "Timer.h"
 
-enum IngredientState { Idle, Walking, Scaping};
+enum IngredientState { Idle, Walking, Escaping};
 
 class Ingredient
 {

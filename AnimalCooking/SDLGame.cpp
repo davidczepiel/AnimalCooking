@@ -108,6 +108,7 @@ void SDLGame::initResources() {
 		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
+	json_general = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
 }
 
 void SDLGame::closeResources() {

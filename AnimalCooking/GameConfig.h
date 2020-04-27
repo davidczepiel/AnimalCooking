@@ -8,9 +8,12 @@ namespace config {
 
 	//AI INGREDIENT
 	constexpr int AI_INGREDIENT_RANGE = 250;
-	constexpr int AI_INGREDIENT_MAX_TIME_WALKING = 2000;
+
+	constexpr int AI_INGREDIENT_MIN_TIME_WALKING = 500;
+	constexpr int AI_INGREDIENT_MIN_TIME_IDLE = 500;
 	constexpr int AI_INGREDIENT_MAX_TIME_IDLE = 2000;
-	constexpr int AI_INGREDIENT_MAX_VEL = 6;
+
+	constexpr int AI_INGREDIENT_MAX_VEL = 2;
 
 	//ANIMATOR
 	constexpr int ANIM_SPEED = 60;
@@ -21,6 +24,10 @@ namespace config {
 
 	//DISHES
 	constexpr int DISH_MAX_INGR = 5;
+
+	//INGREDIENTS
+	constexpr int ING_STARTING_DELTA_TIME = 0.5;
+	constexpr int ING_MAX_IN_SCENE = 8;
 
 	//PauseState
 	constexpr double PAUSESTATE_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla
