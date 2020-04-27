@@ -50,6 +50,8 @@ public:
 		Cuchillo,
 		CuchilloSucio,
 		Maza,
+		Rallador,
+		Red,
 		Fregadero,
 		Ingrediente,
 		Panera,
@@ -58,11 +60,36 @@ public:
 		Cerdo,
 		Pollo,
 		CuadradoAux,
+		BarraDcha,
+		BarraIzda,
+		BarraCentro,
+		BarraConTimbre,
+		BarraSinTimbre,
 		level0Menu,
 		level1Menu,
 		level2Menu,
 		level3Menu,
 		level4Menu,
+			//Encimeras
+			EncimeraAbajoConMantel,
+			EncimeraAbajoSinMantel,
+			EncimeraHorizConMantel,
+			EncimeraHorizSinMantel,
+			EncimeraVertConMantelDcha,
+			EncimeraVertConMantelIzda,
+			EncimeraVertSinMantelDcha,
+			EncimeraVertSinMantelIzda,
+			EncimeraVEsquinaInferiorIzda,
+			EncimeraVEsquinaSuperiorDcha,
+			//Esquinas
+			EsquinaSupDchaCopas,
+			EsquinaSupIzdaCopas,
+			EsquinaSupDchaVino,
+			EsquinaSupIzdaVino,
+			EsquinaSupDchaAgua,
+			EsquinaSupIzdaAgua,
+			EsquinaSupDchaVacia,
+			EsquinaSupIzdaVacia,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,
@@ -172,6 +199,7 @@ public:
 		// images level specific
 		Arroz,
 		Aceite,
+		EncimeraMasa,
 		
 		//spritesheets
 		CircularTimer,

@@ -8,7 +8,7 @@
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	maxTimeOnFloor_ = 10;
+	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
 	dirtTimer_ = new DefaultTimer();
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	range_ = 100;
@@ -147,50 +147,49 @@ void Utensil::cleanUp() {
 
 ///////////////////////////////////////
 
-Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
+Knife::Knife(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Knife;
-	range_ = 100;
-	attackHitBoxWidth_ = 100;
-	attackHitBoxHeight_ = 50;
-
+	range_ = config::KNIFE_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * casillaLength;
 }
 
 
-Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
+Mace::Mace(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
-	range_ = 100;
-	attackHitBoxWidth_ = 100;
-	attackHitBoxHeight_ = 50;
+	range_ = config::MACE_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * casillaLength;
 }
 
 
-Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
+Grater::Grater(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Grater;
-	range_ = 100;
-	attackHitBoxWidth_ = 100;
-	attackHitBoxHeight_ = 50;
+	range_ = config::GRATER_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * casillaLength;
 }
 
 
-Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
+Net::Net(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Net;
-	range_ = 100;
-	attackHitBoxWidth_ = 100;
-	attackHitBoxHeight_ = 50;
+	range_ = config::NET_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * casillaLength;
 }

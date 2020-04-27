@@ -34,7 +34,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 template <typename T>
 Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* pool_)
 {
-	Utensil* u = new T(GIVETRANSPORT);
+	Utensil* u = new T(GIVETRANSPORT, casillaLength);
 	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
 	timers_.push_back(u->getTimer());

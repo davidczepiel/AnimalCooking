@@ -1,5 +1,5 @@
 #include "PlayerController.h"
-
+#include "GameConfig.h"
 
 void PlayerController::init()
 {
@@ -11,19 +11,43 @@ void PlayerController::init()
 
 	animator->setCurrentState(Animator::States::Idle);
 
+	updateKeys(id_);
+}
+
+
+void PlayerController::updateKeys(int id_)
+{
 	if (id_ == 0) {
-		keys.up = SDLK_w;
-		keys.down = SDLK_s;
-		keys.right = SDLK_d;
-		keys.left = SDLK_a;
-	}
-	else {
-		keys.up = SDLK_UP;
-		keys.down = SDLK_DOWN;
-		keys.right = SDLK_RIGHT;
-		keys.left = SDLK_LEFT;
+		config::Options::Player1 k;
+		keys = {
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_UP,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_DOWN,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_LEFT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_RIGHT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PICKUP,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_ATTACK,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_OPEN,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PREVIOUS,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_NEXT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_FINISHER
+		};
+	} else {
+		config::Options::Player2 k;
+		keys = {
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_UP,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_DOWN,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_LEFT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_RIGHT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PICKUP,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_ATTACK,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_OPEN,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PREVIOUS,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT,
+			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER
+		};
 	}
 }
+
 
 void PlayerController::update()
 {
@@ -131,7 +155,7 @@ void PlayerController::keyUpdate()
 
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(SDLK_k) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.pickUp) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
@@ -140,13 +164,13 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(SDLK_p))
+		if (keyboard->isKeyDown(keys.attack))
 		{
 			attack_->attack();
 			animator->setCurrentState(Animator::States::Attack);
 		}
 
-		if (keyboard->isKeyDown(SDLK_e) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -154,7 +178,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(SDLK_q) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -162,7 +186,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(SDLK_f) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.open) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -170,7 +194,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(SDLK_r) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.finish) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {

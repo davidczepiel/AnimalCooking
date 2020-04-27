@@ -1,12 +1,11 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
+#include "GameConfig.h"
 
 GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl), 
 	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(),casillaLength(casilla), justStarted(true)
 {
-	jsonGeneral = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
-	maxIngr = jsonGeneral["Ingredientes"]["maxIngr"].as_int();
-	timer.setTime(500);
+	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
 }
 
@@ -22,7 +21,7 @@ void GameControl::update()
 		//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
 		if (timer.isTimerEnd())
 		{
-			if (maxIngr > ingPool_->getPool().size()) newIngredient();
+			if (config::ING_MAX_IN_SCENE > ingPool_->getPool().size()) newIngredient();
 			else justStarted = false;
 			timer.timerReset();
 			timer.timerStart();
@@ -35,15 +34,16 @@ void GameControl::newIngredient()
 {   
 	Ingredient* ing = newIngType(chooseIng());  
 
+	jute::jValue& jsonGeneral = game_->getJsonGeneral();
 	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
 
 	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
-	double y = game_->getRandGen()->nextInt(1, 4) * 2 * casillaLength;
+	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * casillaLength;
 
     ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
     ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength, y));
-
+	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
 	colSys_->addCollider(ing);
 	ing = nullptr;

@@ -9,7 +9,7 @@ CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::j
 	CookerPool* cookerP =cookersPool->addComponent<CookerPool>();
 	cookersPool->addComponent<FoodCooker>(fp);
 	cookersPool->addComponent<CookerViewer>();
-	cookersPool->addComponent<InsertExpel>(GETCMP2(players[0], Transport)/*players[1], Transport*/);
+	cookersPool->addComponent<InsertExpel>(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
 	cookersPool->addComponent<SelectorPopUp>(&reinterpret_cast<vector<Interactive*>&>(cookerP->getPool()), GETCMP2(players[0], InteractionRect), GETCMP2(players[1], InteractionRect),
 		GETCMP2(players[0], Selector), GETCMP2(players[1], Selector), GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
 

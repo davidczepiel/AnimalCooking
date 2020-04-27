@@ -23,9 +23,12 @@ private:
 		SDL_Keycode left;
 		SDL_Keycode right;
 
-		/*SDL_Keycode button1;
-		SDL_Keycode button2;
-		SDL_Keycode button3;*/
+		SDL_Keycode pickUp;
+		SDL_Keycode attack;
+		SDL_Keycode open;
+		SDL_Keycode next;
+		SDL_Keycode back;
+		SDL_Keycode finish;
 	};
 	Keys keys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
@@ -39,4 +42,6 @@ private:
 	void joystickUpdate();
 	void keyUpdate();
 	bool idle=true;
+
+	void updateKeys(int id);
 };
