@@ -9,12 +9,12 @@ class EntityManager;
 class Entity;
 class ScreenLoader;
 class Interactive;
+class TimerViewer;
 
 class LevelInitializer
 {
 public:
 	LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL);
-	list<Timer*>& getTimers() { return timers_; }
 private:
 
 	void initialize_players();

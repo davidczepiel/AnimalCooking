@@ -1,7 +1,7 @@
 #pragma once
 #include "FoodPool.h"
 #include "Component.h"
-#include "FoodPool.h"
+
 class FoodMotion : public Component
 {
 private:

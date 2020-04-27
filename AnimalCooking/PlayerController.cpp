@@ -105,7 +105,7 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
-	int speed = 2;
+	int speed = 1;
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
 		int x = 0, y = 0;

@@ -33,8 +33,8 @@ namespace config {
 	constexpr double PAUSESTATE_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla
 	constexpr double PAUSESTATE_BUTTON_HEIGHT = 1 / 15; //Porcentaje respecto a la pantalla
 
-	//Player
-	constexpr double PLAYER_SPEED = 5.3;
+	//Player 
+	constexpr double PLAYER_SPEED = 5;   //Casillas por segundo
 	constexpr double INTERACTION_RECT_OFFSET = 1;
 	constexpr double INTERACTION_RECT_SIDELENGTH = 1;
 

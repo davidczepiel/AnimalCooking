@@ -1,13 +1,13 @@
 #pragma once
 #include "State.h"
 #include "Manager.h"
-#include "Timer.h"
+#include "TimerViewer.h"
 #include <list>
 class PlayState : public State
 {
 public:
 
-	PlayState(EntityManager* em, list<Timer*>timers, AnimalCooking* ac) : State(em, ac), timers(timers) {
+	PlayState(EntityManager* em, TimerViewer* timers, AnimalCooking* ac) : State(em, ac), timerViewer_(timers) {
 
 	}
 	//Al pausar el juego se llama a este método
@@ -16,7 +16,7 @@ public:
 	void resumeTimers();
 
 private:
-	list<Timer*> timers;
+	TimerViewer* timerViewer_;
 	static void goToEndState(AnimalCooking* ac);
 };
 

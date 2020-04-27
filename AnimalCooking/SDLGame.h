@@ -92,6 +92,9 @@ public:
 	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
 	inline Entity* getTimersViewer() { return timersViewer_; }
 
+	inline void setCasillaLength(const double& CasillaLength) { casillaLength = CasillaLength; }
+	inline const double& getCasillaLength() const { return casillaLength; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -115,6 +118,7 @@ protected:
 	int width_; // window width
 	int height_; // window height
 
+	double casillaLength;
 	Entity* timersViewer_;
 
 	static unique_ptr<SDLGame> instance_;

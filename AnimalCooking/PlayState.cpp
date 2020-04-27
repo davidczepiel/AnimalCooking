@@ -2,7 +2,7 @@
 #include "FSM.h"
 #include "PauseState.h"
 #include "EndState.h"
-
+#include "Timer.h"
 /*void PlayState::handleEvent()
 {
 	InputHandler* ih = InputHandler::instance();
@@ -16,14 +16,14 @@
 
 void PlayState::pauseTimers()
 {
-	for (Timer* t : timers) {
+	for (Timer* t : timerViewer_->getTimers()) {
 		t->timerPause();
 	}
 }
 
 void PlayState::resumeTimers()
 {
-	for (Timer* t : timers) {
+	for (Timer* t : timerViewer_->getTimers()) {
 		t->timerResume();
 	}
 }

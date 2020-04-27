@@ -7,7 +7,6 @@ class ScreenLoader : public State
 {
 public:
 	ScreenLoader(Resources::Level nivel, AnimalCooking* ac);
-	virtual ~ScreenLoader() { timers_.clear(); }
 	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
 	void updateLength();
 	EntityManager* getEntityManager() { return emPlaystate; }
@@ -22,8 +21,7 @@ private:
 	void initialize();
 
 	EntityManager* emPlaystate;
-	//lista estática con los timers que se crean en el initializar para poder pasársela por copia a playstate
-	static std::list<Timer*>timers_;
+
 	Resources::Level level;
 	Entity* barraCarga_;
 	Entity* buttonGo_;

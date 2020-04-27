@@ -17,6 +17,7 @@ public:
 	virtual void draw() override;
 	void deleteTimer(Timer* timerToDelete);
 	void addTimer(Timer* timerToAdd);
+	inline const std::list<Timer*>& getTimers() const { return timersList_; }
 private:
 	std::list<Timer*> timersList_;
 };

@@ -7,7 +7,7 @@
 #include "LevelInitializer.h"
 #include "BackGroundViewer.h"
 
-constexpr double step_ = 1.0 / 21.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
+constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
 
 ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
@@ -48,7 +48,6 @@ ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac)
 
 	GETCMP2(buttonGo_, ButtonBehaviour)->setActive(true);
 }
-std::list<Timer*> ScreenLoader::timers_ = std::list<Timer*>();
 
 //Carga en memoria los recursos asociados a un nivel en especifico, y si no estan cargados los recursos comunes a los niveles, los carga
 //Si esta cargado en memoria algun recurso que no pertenezca a ese nivel, se descarga de memoria
@@ -165,11 +164,10 @@ void ScreenLoader::initialize()
 {
 	emPlaystate = new EntityManager(SDLGame::instance());
 
-	LevelInitializer li = LevelInitializer(emPlaystate, level, this);
-	timers_ = li.getTimers();
-
+	LevelInitializer(emPlaystate, level, this);
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
-	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),timers_,ac));
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac));
 }

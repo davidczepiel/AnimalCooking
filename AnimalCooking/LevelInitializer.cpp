@@ -37,6 +37,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	casilla = SDLGame::instance()->getWindowHeight() / 9;
 	offset = casilla * 0.15;
 	casilla -= offset / 9;
+	SDLGame::instance()->setCasillaLength(casilla);
 
 	initialize_players();
 	initialize_ingredientsPool();
