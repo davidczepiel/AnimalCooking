@@ -16,7 +16,7 @@ void RiceGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -36,7 +36,7 @@ void BreadBurgerGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -55,7 +55,7 @@ void BreadHotDogGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -74,7 +74,7 @@ void DoughGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -93,7 +93,7 @@ void DressingGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}

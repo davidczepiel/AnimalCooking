@@ -42,6 +42,9 @@ class Dish : public Pickable
 		  addFood(f);
 		  foodPool->AddFood(f);
 	  }
+
+	  inline vector<Food*>::reverse_iterator getCurrentFood() { return currentFood; }
+
  private:
 	 vector<Food*>::reverse_iterator currentFood;
 	 vector<Food*> foods_;
