@@ -2,7 +2,7 @@
 #include "GameConfig.h"
 
 InteractionRect::InteractionRect(double casillaLength) : Component(ecs::InteractionRect), pos_(), dir_(), 
-	size_(config::INTERACTION_RECT_SIZE_X * casillaLength, config::INTERACTION_RECT_SIZE_Y * casillaLength)
+	size_(config::INTERACTION_RECT_SIZE_X * casillaLength, config::INTERACTION_RECT_SIZE_Y * casillaLength), radius(config::INTERACTION_RECT_RADIUS * casillaLength)
 {
 }
 
@@ -21,6 +21,6 @@ void InteractionRect::draw()
 void InteractionRect::update()
 {
 	if (!(dir_.getX() == 0 && dir_.getY() == 0))
-		pos_.set(tr_->getPos().getX() + tr_->getW() / 2 + config::INTERACTION_RECT_RADIUS * dir_.getX() - size_.getX() / 2,
-			tr_->getPos().getY() + config::INTERACTION_RECT_RADIUS * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2);
+		pos_.set(tr_->getPos().getX() + tr_->getW() / 2 + radius * dir_.getX() - size_.getX() / 2,
+			tr_->getPos().getY() + radius * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2);
 }

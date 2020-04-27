@@ -20,6 +20,7 @@ public:
 	double getH() { return size_.getX(); }
 
 private:
+	double radius;
 	Vector2D pos_;
 	Vector2D dir_;
 	Vector2D size_;

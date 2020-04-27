@@ -56,6 +56,23 @@ namespace config {
 	constexpr double KNIFE_HITBOX_WIDTH = 0.8;
 	constexpr double KNIFE_HITBOX_HEIGHT = 0.5;
 
+	constexpr double MACE_RANGE = 0.8;
+	constexpr double MACE_HITBOX_WIDTH = 0.8;
+	constexpr double MACE_HITBOX_HEIGHT = 0.5;
+
+	constexpr double GRATER_RANGE = 0.8;
+	constexpr double GRATER_HITBOX_WIDTH = 0.8;
+	constexpr double GRATER_HITBOX_HEIGHT = 0.5;
+
+	constexpr double NET_RANGE = 0.8;
+	constexpr double NET_HITBOX_WIDTH = 0.8;
+	constexpr double NET_HITBOX_HEIGHT = 0.5;
+
+	//SINK
+	constexpr int SINK_MIN_TRIES = 3;
+	constexpr int SINK_MAX_TRIES = 6;
+	constexpr int SINK_CADENCE = 333;
+
 	struct Options
 	{
 		struct Player1 {

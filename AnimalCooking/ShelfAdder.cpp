@@ -5,7 +5,7 @@
 #include "UtensilsPool.h"
 
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
-#define ADD(t) makeUtensil<t>(player, pool_, casillaLength-)
+#define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla, const double offset) :
@@ -34,7 +34,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 template <typename T>
 Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* pool_)
 {
-	Utensil* u = new T(GIVETRANSPORT);
+	Utensil* u = new T(GIVETRANSPORT, casillaLength);
 	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
 	timers_.push_back(u->getTimer());

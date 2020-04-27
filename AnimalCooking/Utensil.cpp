@@ -166,9 +166,9 @@ Mace::Mace(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) 
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
-	range_ = config::KNIFE_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * casillaLength;
+	range_ = config::MACE_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * casillaLength;
 }
 
 
@@ -178,9 +178,9 @@ Grater::Grater(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, 
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Grater;
-	range_ = config::KNIFE_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * casillaLength;
+	range_ = config::GRATER_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * casillaLength;
 }
 
 
@@ -190,7 +190,7 @@ Net::Net(Transport* p1, Transport* p2, double casillaLength) :Utensil(p1, p2) {
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Net;
-	range_ = config::KNIFE_RANGE * casillaLength;
-	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * casillaLength;
-	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * casillaLength;
+	range_ = config::NET_RANGE * casillaLength;
+	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * casillaLength;
+	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * casillaLength;
 }

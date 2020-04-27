@@ -20,6 +20,6 @@ public:
 	virtual void action1(int player);
 private:
 	size_t nTries, maxTries;
-	Uint32 lastTry, cadence;
+	Uint32 lastTry;
 
 };
