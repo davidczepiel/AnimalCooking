@@ -21,11 +21,11 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Resources::TextureId::Suelo));
 
 	data.push_back(Data(Vector2D(6 * casilla + offset, 0), //medio 1 ver
-		Vector2D(offset, 3.75 * casilla + offset),
+		Vector2D(offset, 4.25 * casilla + offset),
 		Resources::TextureId::Suelo));
 
-	data.push_back(Data(Vector2D(6 * casilla + offset, 5.25 * casilla + offset),	//Medio 2 ver
-		Vector2D(offset, 1.75 * casilla),
+	data.push_back(Data(Vector2D(6 * casilla + offset, 5.75 * casilla + offset),	//Medio 2 ver
+		Vector2D(offset, 1.25 * casilla),
 		Resources::TextureId::Suelo));
 
 	data.push_back(Data(Vector2D(6 * casilla + 2 * offset, 7 * casilla), //Aba hor
@@ -69,7 +69,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	}
 
 	//Hacer puerta
-	Door* d = new Door(Vector2D(5.5 * casilla + offset, 3.75 * casilla + offset), Vector2D(1 * casilla + offset, 1.5 * casilla), 
+	Door* d = new Door(Vector2D(5.5 * casilla + offset, 4.25 * casilla + offset), Vector2D(1 * casilla + offset, 1.5 * casilla), 
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panel), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
 	mngr->addToGroup(d, ecs::GroupID::FoodLayer);
