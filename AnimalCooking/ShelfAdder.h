@@ -13,7 +13,7 @@ class ShelfAdder
 {
 public:
 	ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, 
-		UtensilsPool* pool_, const double casilla, const double offset);
+		UtensilsPool* pool_, const double casilla);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 	std::list<Timer*>& getTimers() { return timers_; }
 private:
@@ -22,7 +22,7 @@ private:
 	jute::jValue& jsonGeneral; // json con las caracteristicas de los actores (size, velocidad, componentes genericos, etc...)
 
 	std::vector<Interactive*> interactives_;
-	const double casillaLength, offset;
+	const double casillaLength;
 
 	Utensil* switchUten(const string& ing, UtensilsPool* pool_, std::array<Entity*, 2>& player);
 

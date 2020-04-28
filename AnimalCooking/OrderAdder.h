@@ -8,7 +8,7 @@ class EntityManager;
 class OrderAdder
 {
 public:
-	OrderAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla, const double offset);
+	OrderAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 
 private:

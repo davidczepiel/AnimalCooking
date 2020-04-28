@@ -8,7 +8,7 @@ class Interactive;
 class BinAdder
 {
 public:
-	BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casilla, const double offset);
+	BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casilla);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 private:
 	void initializeComponent(const string& component, Entity* entity);

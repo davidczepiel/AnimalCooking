@@ -11,7 +11,7 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
 
-OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla, const double offset)
+OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla)
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
@@ -22,14 +22,14 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	os->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), os);
 
-	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla + offset, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla + offset));
+	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla));
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casilla, general["Clients"]["repisa"]["size"]["height"].as_double() * casilla));
 
 	os->addComponent<OrderServiceViewer>(os);
 
 	OrderManager* om = os->setOrderMngr(os->addComponent<OrderManager>(nivel["Clients"]["pedidos"]["maxPedidos"].as_int(),
 		(int)(general["Clients"]["pedidos"]["deltaX"].as_double() * casilla),
-		Vector2D(nivel["Clients"]["pedidos"]["pos"]["x"].as_double() * casilla + offset, nivel["Clients"]["pedidos"]["pos"]["y"].as_double() * casilla + offset), GETCMP2(gameManager, ScoreManager)));
+		Vector2D(nivel["Clients"]["pedidos"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["pedidos"]["pos"]["y"].as_double() * casilla), GETCMP2(gameManager, ScoreManager)));
 	om->setSecondsPerIng(nivel["Clients"]["pedidos"]["segundosPorIngrediente"].as_double());
 
 	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casilla, general["Clients"]["pedidos"]["size"]["height"].as_double() * casilla, 

@@ -9,8 +9,8 @@
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla, const double offset) :
-	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaLength(casilla), offset(offset)
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla) :
+	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaLength(casilla)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
 	jute::jValue components = jsonLevel["Shelfs"]["components"];
@@ -72,7 +72,7 @@ Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::arr
 
 Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
-	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_double() * casillaLength + offset, jsonShelf["y"].as_double() * casillaLength + offset), u, GIVETRANSPORT, emPlayState);
+	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_double() * casillaLength, jsonShelf["y"].as_double() * casillaLength), u, GIVETRANSPORT, emPlayState);
 
 	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));

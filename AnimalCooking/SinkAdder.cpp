@@ -4,13 +4,13 @@
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength, const double offset) : em(em)
+SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength) : em(em)
 {
 	jute::jValue sinks_ = jsonLevel["Sink"]["entities"];
 	jute::jValue components = jsonLevel["Sink"]["components"];
 
 	for (int i = 0; i < sinks_.size(); ++i) {
-		Sink* sink = new Sink(Vector2D(sinks_[i]["pos"]["x"].as_double() * casillaLength + offset, sinks_[i]["pos"]["y"].as_double() * casillaLength + offset),
+		Sink* sink = new Sink(Vector2D(sinks_[i]["pos"]["x"].as_double() * casillaLength, sinks_[i]["pos"]["y"].as_double() * casillaLength),
 			GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
 		sink->setSize(Vector2D(jsonGeneral["Sink"]["size"]["width"].as_double() * casillaLength,
