@@ -21,6 +21,6 @@ class WallAdder
 public:
 	WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, std::array<Entity*, 2>& players, const double casilla, const double offset);
 private:
-	void maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr);
+	void maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr, const double offset);
 };
 

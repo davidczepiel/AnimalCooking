@@ -6,11 +6,12 @@
 class SDLRenderer : public Component
 {
 public:
-	SDLRenderer(Texture* t, size_t size);
+	SDLRenderer(Texture* t, Vector2D size);
 	void init() override;
 	void draw() override;
 private:
-	size_t size;
+	void renderColumn(size_t x, size_t restX);
+	Vector2D size;
 	Transform* tr;
 	Texture* t;
 };
