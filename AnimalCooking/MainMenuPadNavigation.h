@@ -27,6 +27,7 @@ private:
 	bool xAxisMoved;
 	bool xDpadMoved;
 	bool aButtonPressed;
+	bool someDpadConnected;
 
 };
 

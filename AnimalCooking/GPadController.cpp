@@ -7,145 +7,44 @@ SDL_GameController* GPadController::player2_ = nullptr;
 
 GPadController::GPadController()
 {
-	initialiseJoysticks();
 }
 
-void GPadController::getPlayer(int id) {
+bool GPadController::playerDPAD(int id) {
 	if (id == 0) {
-		SDL_GameController* g = SDL_GameControllerOpen(0);
-		player1_ = g;
+		if (player1_ == nullptr) {
+			SDL_GameController* g = SDL_GameControllerOpen(0);
+			if (g != NULL) {
+				player1_ = g;
+				return true;
+			}
+			else return false;
+		}
+		else
+			return true;
 	}
 	else {
-		SDL_GameController* g = SDL_GameControllerOpen(1);
-		player2_ = g;
-	}
-}
-
-//Inicialilamos el GamePad. Para ello encontramos el numero de 
-//joysticks al que SDL tiene acceso y los inicializamos.
-void GPadController::initialiseJoysticks()
-{
-	if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)    //Inicialimamos con un subsistema
-	{
-		SDL_InitSubSystem(SDL_INIT_JOYSTICK);   //Si no se inicializa usamos esta llamada para inicializarlo
-	}
-	if (SDL_NumJoysticks() > 0)
-	{
-		//Para casa joystick usable, lo abrimos y metemos en el vector
-		for (int i = 0; i < SDL_NumJoysticks(); i++)
-		{
-			SDL_Joystick* joy = SDL_JoystickOpen(i);
-
-			if (SDL_JoystickOpen(i))
-			{
-				m_joysticks.push_back(joy);
-				m_joystickValues.push_back(std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0))); //Añadimos un nuevo par de stick
-				vector<bool> tempButtons;
-				for (int j = 0; j < SDL_JoystickNumButtons(joy); j++)
-				{
-					tempButtons.push_back(false);
-				}
-				m_buttonStates.push_back(tempButtons);
+		if (player2_ == nullptr) {
+			SDL_GameController* g = SDL_GameControllerOpen(1);
+			if (g != NULL) {
+				player2_ = g;
+				return true;
 			}
+			else return false;
 		}
-		//Le decimos a SDL que empiece a "escuchar" a los eventos de tipo joystick
-		SDL_JoystickEventState(SDL_ENABLE);
-		m_bJoysticksInitialised = true;
-	}
-	else
-	{
-		m_bJoysticksInitialised = false;
+		else
+			return true;
 	}
 }
+
+
 
 //Desinicializamos los joysticks
 void GPadController::clean()
 {
-	if (m_bJoysticksInitialised)
-	{
-		for (unsigned int i = 0; i < SDL_NumJoysticks(); i++)
-		{
-			SDL_JoystickClose(m_joysticks[i]);
-		}
-	}
-}
-//-joy = ID del joystick que queremos usar
-//-stick = 1(para stick izquierdo) 2(para stick dcho)
-double GPadController::xvalue(int joy, int stick)
-{
-	if (m_joystickValues.size() > 0)
-	{
-		if (stick == 1)
-		{
-			return m_joystickValues[joy].first->getX();
-		}
-		else if (stick == 2)
-		{
-			return m_joystickValues[joy].second->getX();
-		}
-	}
-	return 0;
+
 }
 
-//-joy = ID del joystick que queremos usar
-//-stick = 1(para stick izquierdo) 2(para stick dcho)
-double GPadController::yvalue(int joy, int stick)
-{
-	if (m_joystickValues.size() > 0)
-	{
-		if (stick == 1)
-		{
-			return m_joystickValues[joy].first->getY();
-		}
-		else if (stick == 2)
-		{
-			return m_joystickValues[joy].second->getY();
-		}
-	}
-	return 0;
-}
-void GPadController::update(SDL_Event& event)
-{
-	if (event.type == SDL_JOYAXISMOTION)
-	{
-		int whichOne = event.jaxis.which;
-		// left stick move left or right
-		if (event.jaxis.axis == 0)
-		{
-			if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-			{
-				m_joystickValues[whichOne].first->setX(event.jaxis.value / 32678.0);
-							}
-			else
-			{
-				m_joystickValues[whichOne].first->setX(0);
-			}
 
-		}
-		// left stick move up or down
-		if (event.jaxis.axis == 1)
-		{
-			if (event.jaxis.value > m_joystickDeadZone || event.jaxis.value < -m_joystickDeadZone)
-			{
-				m_joystickValues[whichOne].first->setY(event.jaxis.value / 32678.0);
-				SDL_GameController* g = SDL_GameControllerOpen(1);
-				cout << SDL_GameControllerGetAxis(g, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY) << endl;
-				g = SDL_GameControllerOpen(0);
-				cout << SDL_GameControllerGetAxis(g, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY) << endl;
-
-			}
-			else
-			{
-				m_joystickValues[whichOne].first->setY(0);
-			}
-		}
-	}
-
-	else if (event.type == SDL_JOYBUTTONDOWN)
-		ControllerButtonDown(event);
-	else if (event.type == SDL_JOYBUTTONUP)
-		ControllerButtonUp(event);
-}
 
 double ::GPadController::getAxisX(int player, int axis) {
 	SDL_GameController* p;

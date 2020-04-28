@@ -1,10 +1,10 @@
 #include "MainMenuPadNavigation.h"
 
 MainMenuPadNavigation::MainMenuPadNavigation() : Component(ecs::MainMenuPadNavigation),
-selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false),xDpadMoved(false),aButtonPressed(true)
+selectButton(nullptr), leftArrow(nullptr), rightArrow(nullptr), xAxisMoved(false), xDpadMoved(false), aButtonPressed(true)
 {
-	GPadController::getPlayer(0);
-	GPadController::getPlayer(1);
+	if (GPadController::playerDPAD(0) || GPadController::playerDPAD(1)) someDpadConnected = true;
+	else someDpadConnected = false;
 }
 
 void MainMenuPadNavigation::setSelectButton(Entity* e) {
@@ -13,9 +13,7 @@ void MainMenuPadNavigation::setSelectButton(Entity* e) {
 }
 
 void MainMenuPadNavigation::update() {
-	//Me hago con el gamePad
-	GPadController* gpad = GPadController::instance();
-	//SOlo hago si hay un pad conectado
+	if (someDpadConnected) {
 
 		//Valor en x del joystick izquierdo del jugador 1
 		double dpad = 0;
@@ -23,18 +21,18 @@ void MainMenuPadNavigation::update() {
 			xDpadMoved = true;
 			changeFocus(dpad);
 		}
-	/*	double xValue = gpad->xvalue(0, 1);
-		if ((xValue > 0 || xValue < 0) && !xAxisMoved && !xDpadMoved)
-		{
-			xAxisMoved = true;
-			changeFocus(xValue);
-		}*/
-		//else if (xAxisMoved && xValue != 0)
-		//	arrowFocused(xValue);
-		else if (xDpadMoved && dpad !=0)
+		/*	double xValue = gpad->xvalue(0, 1);
+			if ((xValue > 0 || xValue < 0) && !xAxisMoved && !xDpadMoved)
+			{
+				xAxisMoved = true;
+				changeFocus(xValue);
+			}*/
+			//else if (xAxisMoved && xValue != 0)
+			//	arrowFocused(xValue);
+		else if (xDpadMoved && dpad != 0)
 			arrowFocused(dpad);
 
-		else  if ( xDpadMoved && dpad==0)
+		else  if (xDpadMoved && dpad == 0)
 			noArrowsFocused();
 
 		if (!aButtonPressed && (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
@@ -49,6 +47,7 @@ void MainMenuPadNavigation::update() {
 			!GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A)))
 			aButtonPressed = false;
 	}
+}
 
 bool MainMenuPadNavigation::dPadUsed(double* dpad) {
 	if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
@@ -73,13 +72,13 @@ bool MainMenuPadNavigation::dPadNotUsed() {
 		return true;
 	else
 		return false;
-	
+
 }
 
 //Hago que la flecha de la izquierda o la flecha de la derecha cambien el  estado selectButton
 void MainMenuPadNavigation::changeFocus(float xValue) {
-		if (xValue < 0) 	GETCMP2(leftArrow, MenuButtonBehaviour)->action();
-		else if (xValue > 0) 	GETCMP2(rightArrow, MenuButtonBehaviour)->action();
+	if (xValue < 0) 	GETCMP2(leftArrow, MenuButtonBehaviour)->action();
+	else if (xValue > 0) 	GETCMP2(rightArrow, MenuButtonBehaviour)->action();
 }
 
 //HAgo que la flecha que corresponda tenga brilli brilli

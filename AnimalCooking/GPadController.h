@@ -19,15 +19,13 @@ public:
 		return instance_.get();
 	}
 
-	static void getPlayer(int id);
+	static bool playerDPAD(int id);
 	static double getAxisX(int player, int axis);
 	static double getAxisY(int player, int axis);
 	static bool playerPressed(int player, SDL_GameControllerButton button);
-	void update(SDL_Event& event);
+	
 
-	inline bool joysticksInitialised() const{
-		return m_bJoysticksInitialised;
-	}
+
 	//-joy = ID del joystick que queremos usar
 	// buttonNumber 
 	//https://wiki.libsdl.org/SDL_GameControllerButton?highlight=%28%5CbCategoryGameController%5Cb%29%7C%28CategoryEnum%29
@@ -36,8 +34,7 @@ public:
 		return m_buttonStates[joy][buttonNumber];
 	}
 
-	double xvalue(int joy, int stick);
-	double yvalue(int joy, int stick);
+	
 	static SDL_GameController* player1_;
 	static SDL_GameController* player2_;
 
@@ -47,15 +44,11 @@ private:
 	void ControllerButtonDown(SDL_Event& event);
 	void ControllerButtonUp(SDL_Event& event);
 	GPadController();
-	void initialiseJoysticks();
 	void clean();
 
 	//--------------Variables-------------------------
 	//Jostick
 	static const int m_joystickDeadZone = 10000;
-	vector<SDL_Joystick*> m_joysticks;
-	vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;	//contiene los controladores con axis multiples(uno para cada stick)
-	bool m_bJoysticksInitialised;
 
 	//Botones
 	vector<std::vector<bool>> m_buttonStates;

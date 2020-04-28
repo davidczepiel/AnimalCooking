@@ -22,7 +22,7 @@ void PlayerController::init()
 		keys.right = SDLK_RIGHT;
 		keys.left = SDLK_LEFT;
 	}
-	GPadController::getPlayer(id_);
+	
 }
 
 void PlayerController::update()
@@ -42,6 +42,12 @@ void PlayerController::joystickUpdate()
 	{
 		x = Xvalue;
 		tr_->setVelX(x);
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr)
+		{
+			i->onMoved(id_);
+			i = nullptr;
+		}
 	}
 	else {
 		tr_->setVelX(0);
@@ -51,6 +57,12 @@ void PlayerController::joystickUpdate()
 	{
 		y = Yvalue;
 		tr_->setVelY(Yvalue);
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr)
+		{
+			i->onMoved(id_);
+			i = nullptr;
+		}
 	}
 	else {
 		tr_->setVelY(0);
@@ -67,7 +79,10 @@ void PlayerController::joystickUpdate()
 		}
 	}
 	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_B)) {
-		cout << "X = " << x << "Y= " << y << endl;
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr)
+			i->action4(id_);
+		i = nullptr;
 	}
 	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 		attack_->attack();
@@ -76,11 +91,28 @@ void PlayerController::joystickUpdate()
 	else if (ableToPress && GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
-			i->action1(id_);
+			i->action5(id_);
 		i = nullptr;
 	}
 	else if (!ableToPress&& padNotTouched())
 		ableToPress = true;
+
+	if (GPadController::playerPressed(id_,SDL_CONTROLLER_BUTTON_DPAD_DOWN) && selector_ != nullptr)
+	{
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr) {
+			i->action2(id_);
+			i = nullptr;
+		}
+	}
+	else if (GPadController::playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_UP) && selector_ != nullptr)
+	{
+		Interactive* i = selector_->getSelect();
+		if (i != nullptr) {
+			i->action3(id_);
+			i = nullptr;
+		}
+	}
 }
 
 bool PlayerController::padNotTouched() {
