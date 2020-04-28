@@ -3,6 +3,7 @@
 #include "SelectorPopUpEntity.h"
 #include "Utensil.h"
 #include "UtensilsPool.h"
+#include "SDLRenderer.h"
 
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 #define ADD(t) makeUtensil<t>(player, pool_)

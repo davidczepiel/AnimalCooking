@@ -4,6 +4,10 @@
 #include "Manager.h"
 #include "Transform.h"
 #include "Door.h"
+#include "SDLRenderer.h"
+
+#define CASTID(t) static_cast<ecs::GroupID>(t - 1)
+
 
 WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, std::array<Entity*, 2>& players, const double casilla, const double offset)
 {
@@ -50,6 +54,18 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	for (auto& d : data) {
 		maker(d, casilla, colSys_, mngr);
+	}
+
+	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
+		Entity* corner = mngr->addEntity();
+		int t = Resources::TextureId::EsquinaSupDchaCopas + (2 * SDLGame::instance()->getRandGen()->nextInt(0, 4));
+		if (nivel["Shelfs"]["corners"][i]["sitio"].as_string() == "izq") ++t;
+		corner->addComponent<Transform>(Vector2D(nivel["Shelfs"]["corners"][i]["pos"]["x"].as_double() * casilla + offset,
+			nivel["Shelfs"]["corners"][i]["pos"]["y"].as_double() * casilla + offset), Vector2D(),
+			general["Shelf"]["size"]["width"].as_double() * casilla, general["Shelf"]["size"]["height"].as_double() * casilla);
+		corner->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), casilla);
+		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int()));
+		colSys_->addCollider(GETCMP2(corner, Transform), false);
 	}
 
 	//Hacer puerta

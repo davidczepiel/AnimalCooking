@@ -12,7 +12,8 @@ class Interactive;
 class ShelfAdder
 {
 public:
-	ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla, const double offset);
+	ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, 
+		UtensilsPool* pool_, const double casilla, const double offset);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 	std::list<Timer*>& getTimers() { return timers_; }
 private:
