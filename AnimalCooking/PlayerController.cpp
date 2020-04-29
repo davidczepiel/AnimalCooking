@@ -27,8 +27,8 @@ void PlayerController::init()
 
 void PlayerController::update()
 {
-	joystickUpdate();
-	//keyUpdate();
+	if(GPadController::playerControllerConnected(id_))	joystickUpdate();
+	else keyUpdate();
 }
 
 void PlayerController::joystickUpdate()
@@ -37,7 +37,7 @@ void PlayerController::joystickUpdate()
 	//if (gpad->joysticksInitialised()) {
 	double x = 0, y = 0;	//interactive
 	//Axis------------------------
-	double Xvalue = GPadController::getAxisX(id_, 0);
+	double Xvalue = GPadController::getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
 	if (Xvalue > 0 || Xvalue < 0)
 	{
 		x = Xvalue;
@@ -52,7 +52,7 @@ void PlayerController::joystickUpdate()
 	else {
 		tr_->setVelX(0);
 	}
-	double Yvalue = GPadController::getAxisY(id_, 1);
+	double Yvalue = GPadController::getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY);
 	if (Yvalue > 0 || Yvalue < 0)
 	{
 		y = Yvalue;

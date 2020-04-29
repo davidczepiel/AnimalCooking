@@ -23,21 +23,19 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 
 
 void ButtonPadNavigation::update() {
-	//Me hago con el gamePad
 	GPadController* gpad = GPadController::instance();
-	//SOlo hago si hay un pad conectado
-		//Valor en x del joystick izquierdo del jugador 1
-	horizontalInput();
-	verticalInput();
+	if (GPadController::playerControllerConnected(0) || GPadController::playerControllerConnected(1)) {
+		horizontalInput();
+		verticalInput();
 		if ((GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
 			GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
 			&& !aButtonPressed) {
 			action();
 		}
-		if (!GPadController::playerPressed(0,SDL_CONTROLLER_BUTTON_A) &&
+		if (!GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) &&
 			!GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
 			aButtonPressed = false;
-
+	}
 }
 
 void ButtonPadNavigation::horizontalInput() {

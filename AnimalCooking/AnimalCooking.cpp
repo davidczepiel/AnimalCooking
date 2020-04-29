@@ -31,8 +31,7 @@ AnimalCooking::~AnimalCooking() {
 void AnimalCooking::initGame() {
 
 	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-	GPadController::playerDPAD(0);
-	GPadController::playerDPAD(1);
+	GPadController::getPlayerGPADS();
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
 	game_->getFSM()->pushState(new MenuState(this));
@@ -77,8 +76,10 @@ void AnimalCooking::handleInput() {
 	{
 		if (event.type == SDL_QUIT)
 			stop();
-		else
+		else {
 			InputHandler::instance()->update(event);
+			GPadController::instance()->update(event);
+		}
 	}
 
 	if (pauseRequest()&& dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)

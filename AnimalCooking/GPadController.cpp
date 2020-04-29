@@ -9,110 +9,71 @@ GPadController::GPadController()
 {
 }
 
-bool GPadController::playerDPAD(int id) {
-	if (id == 0) {
+void GPadController::update(SDL_Event& event) {
+	//Si se ha añadido un mando se lo asigno al player que le falte
+	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
-			SDL_GameController* g = SDL_GameControllerOpen(0);
-			if (g != NULL) {
-				player1_ = g;
-				return true;
-			}
-			else return false;
+			player1_ = SDL_GameControllerOpen(0);
 		}
-		else
-			return true;
+		else if(player2_ == nullptr){
+			player2_ = SDL_GameControllerOpen(1);
+		}
 	}
-	else {
-		if (player2_ == nullptr) {
-			SDL_GameController* g = SDL_GameControllerOpen(1);
-			if (g != NULL) {
-				player2_ = g;
-				return true;
-			}
-			else return false;
-		}
-		else
-			return true;
+	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual teno y cual no
+	else if (event.type == SDL_CONTROLLERDEVICEREMOVED) {
+		player1_ = SDL_GameControllerOpen(0);
+		player2_ = SDL_GameControllerOpen(1);
 	}
 }
 
+bool GPadController::playerControllerConnected(int id) {
+	//Me hago con el player que interesa
+	SDL_GameController* g;
+	if (id == 0) g = player1_;
+	else g = player2_;
 
+	//Devuelvo si hay algun dispositivo o no
+	if (g == nullptr || g == NULL)
+		return false;
+	else
+		return true;
+}
 
-//Desinicializamos los joysticks
-void GPadController::clean()
-{
-
+//Metodo llamado al principio de la ejecucion para conseguir mandos en caso de que estén conectados
+void GPadController::getPlayerGPADS() {
+	player1_ = SDL_GameControllerOpen(0);
+	player2_ = SDL_GameControllerOpen(1);
 }
 
 
-
-double ::GPadController::getAxisX(int player, int axis) {
+double ::GPadController::getAxis(int player, SDL_GameControllerAxis axis) {
+	//Me quedo con el player que me interesa
 	SDL_GameController* p;
 	if (player == 0)
 		p = player1_;
 	else
 		p = player2_;
-	double value = SDL_GameControllerGetAxis(p, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
-
-	if (abs(value) < m_joystickDeadZone) return (0);
-	else return (value/32678);
+	//EN caso de que haya mando conectado pregunto por el valor
+	//Si o hay mando devuelvo 0
+	if (p != nullptr && p != NULL) {
+		double value = SDL_GameControllerGetAxis(p,axis);
+		if (abs(value) < m_joystickDeadZone) return (0);
+		else return (value / 32678);
+	}
+	else return 0;
 }
 
-double ::GPadController::getAxisY(int player, int axis) {
-	SDL_GameController* p;
-	if (player == 0)
-		p = player1_;
-	else
-		p = player2_;
-	double value = SDL_GameControllerGetAxis(p, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY);
-	if (abs(value) < m_joystickDeadZone) return (0);
-	else 
-		return (value / 32678);
-}
 
 bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
+	//Me hago con el mando que me interesa
 	SDL_GameController* c;
 	if (id == 0)c = player1_;
 	else c = player2_;
-	return SDL_GameControllerGetButton(c, button);
+	//Si hay un mando asi conectado pregunto por la tecla, si no hay mando, no hay pulsación
+	if (c != nullptr && c != NULL)
+		return SDL_GameControllerGetButton(c, button);
+	else
+		return false;
 }
 
 
-void GPadController::ControllerButtonDown(SDL_Event& event) {
-	int whichOne = event.jaxis.which;
-	switch (event.cbutton.button) {
-	case SDL_CONTROLLER_BUTTON_A:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_A) = true;
-		break;
-	case SDL_CONTROLLER_BUTTON_B:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_B) = true;
-		break;
-	case SDL_CONTROLLER_BUTTON_X:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_X) = true;
-		break;
-	case SDL_CONTROLLER_BUTTON_Y:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = true;
-		break;
-
-	}
-
-}
-
-void GPadController::ControllerButtonUp(SDL_Event& event) {
-	int whichOne = event.jaxis.which;
-	switch (event.cbutton.button) {
-	case SDL_CONTROLLER_BUTTON_A:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_A) = false;
-		break;
-	case SDL_CONTROLLER_BUTTON_B:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_B) = false;
-		break;
-	case SDL_CONTROLLER_BUTTON_X:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_X) = false;
-		break;
-	case SDL_CONTROLLER_BUTTON_Y:
-		m_buttonStates[whichOne].at(SDL_CONTROLLER_BUTTON_Y) = false;
-		break;
-
-	}
-}
