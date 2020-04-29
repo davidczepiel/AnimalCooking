@@ -104,8 +104,7 @@ void LevelInitializer::initialize_cookersPool()
 	Entity* cookers = emPlaystate->addEntity();
 	emPlaystate->addToGroup(cookers, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
-	list<Timer*> aux = CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla).getTimers();
-	timers_.insert(timers_.end(), aux.begin(), aux.end());
+	CookersAdder(cookers, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
 
 	interactives_.insert(interactives_.end(), GETCMP2(cookers, CookerPool)->getPool().begin(), GETCMP2(cookers, CookerPool)->getPool().end());
 
@@ -115,7 +114,7 @@ void LevelInitializer::initialize_cookersPool()
 void LevelInitializer::initialize_timerViewer()
 {
 	Entity* timersViewer = emPlaystate->addEntity();
-	timersViewer->addComponent<TimerViewer>();
+	tv_ = timersViewer->addComponent<TimerViewer>();
 	emPlaystate->addToGroup(timersViewer, ecs::GroupID::ui);
 
 	SDLGame::instance()->setTimersViewer(timersViewer);
@@ -126,9 +125,6 @@ void LevelInitializer::initialize_timerViewer()
 void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
-
-	list<Timer*> aux = sa.getTimers();
-	timers_.insert(timers_.end(), aux.begin(), aux.end());
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -166,7 +162,7 @@ void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager, emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla, offset);
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla, offset, tv_);
 
 	emPlaystate->addToGroup(gameManager, CASTID(jsonGeneral["LevelTimer"]["Layer"].as_int()));
 
@@ -212,7 +208,7 @@ void LevelInitializer::initialize_levelIngredients()
 
 void LevelInitializer::initialize_clients()
 {
-	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla, tv_);
 
 	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 

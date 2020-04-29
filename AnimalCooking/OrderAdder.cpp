@@ -7,11 +7,12 @@
 #include "SelectorPopUpEntity.h"
 #include "Selector.h"
 #include "InteractionRect.h"
+#include "TimerViewer.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
 
-OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla)
+OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla, TimerViewer* tv)
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
@@ -35,7 +36,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casilla, general["Clients"]["pedidos"]["size"]["height"].as_double() * casilla, 
 		Vector2D(general["Clients"]["pedidos"]["margin"]["x"].as_double() * casilla, general["Clients"]["pedidos"]["margin"]["y"].as_double() * casilla));
 	
-	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000);
+	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000, tv);
 
 	//Inicializacion de los posibles pedidos en ese nivel
 	vector<Resources::FoodType> posibles;

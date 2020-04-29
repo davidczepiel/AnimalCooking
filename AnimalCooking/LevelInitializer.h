@@ -46,7 +46,7 @@ private:
 	std::vector<Interactive*> interactives_;
 
 	ScreenLoader* sL;
-	std::list<Timer*> timers_;
+	TimerViewer* tv_;
 
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;

@@ -7,13 +7,14 @@
 #include "CollisionsSystem.h"
 #include "ScoreManager.h"
 #include "ScoreViewer.h"
+#include "TimerViewer.h"
 
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
-	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset)
+	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset, TimerViewer* tv)
 {
 	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + offset), player, ip);
 
-	GameLogic* glogic = gameManager->addComponent<GameLogic>();
+	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);

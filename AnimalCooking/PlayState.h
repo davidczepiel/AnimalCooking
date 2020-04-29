@@ -15,6 +15,7 @@ public:
 	//al continuar el juego se debería llamar a este método(buscar dónde se continua)
 	void resumeTimers();
 
+	void resetTimers();
 private:
 	TimerViewer* timerViewer_;
 	static void goToEndState(AnimalCooking* ac);

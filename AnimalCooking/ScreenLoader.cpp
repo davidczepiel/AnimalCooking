@@ -169,5 +169,7 @@ void ScreenLoader::initialize()
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac));
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac), []() {
+			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resetTimers();
+		});
 }

@@ -92,11 +92,6 @@ public:
 			EsquinaSupDchaVacia,
 			EsquinaSupIzdaVacia,
 
-			//BarraCocina
-			CocinaBarraCentro,
-			CocinaBarraDerecha,
-			CocinaBarraIzquierda,
-
 		//Pedidos------------------------------------------------------
 		Bocadillo,
 		SaladOrder,

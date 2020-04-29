@@ -15,6 +15,11 @@ void FSM::pushState(State* s) {
 	events.push({ true, s });
 }
 
+void FSM::pushState(State* s, std::function<void()> f)
+{
+	events.push({ true, s, f });
+}
+
 void FSM::popState()
 {
 	if (!statesStack.empty())
@@ -31,6 +36,12 @@ void FSM::changeState(State* s)
 {
 	popState();
 	pushState(s);
+}
+
+void FSM::changeState(State* s, std::function<void()> f)
+{
+	popState();
+	pushState(s, f);
 }
 
 void FSM::refresh()

@@ -28,6 +28,14 @@ void PlayState::resumeTimers()
 	}
 }
 
+void PlayState::resetTimers()
+{
+	for (Timer* t : timerViewer_->getTimers()) {
+		t->timerReset();
+		t->timerStart();
+	}
+}
+
 void PlayState::goToEndState(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->pushState(new EndState(ac));
 }
