@@ -42,17 +42,23 @@ public:
 		Plato,
 		Suelo,
 		Hierba,
-		Cooker,
+		OvenOFF,
+		SkilletOFF,
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
 		Platera,
+		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
 		Maza,
+		MazaSucia,
 		Rallador,
+		RalladorSucio,
 		Red,
+		RedSucia,
 		Fregadero,
+		FregaderoON,
 		Ingrediente,
 		Panera,
 		Pedido,
@@ -60,11 +66,13 @@ public:
 		Cerdo,
 		Pollo,
 		CuadradoAux,
+		//Barra de entregas
 		BarraDcha,
 		BarraIzda,
 		BarraCentro,
 		BarraConTimbre,
 		BarraSinTimbre,
+		//Menu
 		level0Menu,
 		level1Menu,
 		level2Menu,
@@ -72,7 +80,11 @@ public:
 		level4Menu,
 			//Encimeras
 			EncimeraAbajoConMantel,
+			EncimeraAbajoConMantelDcha,
+			EncimeraAbajoConMantelIzda,
 			EncimeraAbajoSinMantel,
+			EncimeraAbajoSinMantelDcha,
+			EncimeraAbajoSinMantelIzda,
 			EncimeraHorizConMantel,
 			EncimeraHorizSinMantel,
 			EncimeraVertConMantelDcha,
@@ -82,6 +94,7 @@ public:
 			EncimeraVEsquinaInferiorIzda,
 			EncimeraVEsquinaInferiorDcha,
 			EncimeraVEsquinaSuperiorDcha,
+			EncimeraVEsquinaSuperiorIzda,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -204,7 +217,9 @@ public:
 		
 		//spritesheets
 		CircularTimer,
-		BurnedTimer
+		BurnedTimer,
+		OvenON,
+		SkilletON
 
 		// text
 		

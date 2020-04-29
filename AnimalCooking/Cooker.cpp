@@ -11,7 +11,6 @@ Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transpo
 	setPos(pos);
 	setSize(size);
 	setRot(rot);
-	setEmptyTexture();
 
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
@@ -43,7 +42,11 @@ void Cooker::draw()
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
-	texture_->render(rect, rotation_); //Cambiar para usar animaciones
+	if (state_ == CookerStates::cooking) {
+		int row = (timer_->getProgress() / (17 % texture_->getNumRows()));
+		texture_->renderFrame(rect, row, 0, rotation_);
+	}
+	else texture_->render(rect, rotation_);
 }
 
 void Cooker::action1(int player)
@@ -86,6 +89,7 @@ Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transp
 	cookingTime_ = config::SKILLET_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Skillet;
 	initTimer();
+	setEmptyTexture();
 }
 
 Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text, t1, t2, e)
@@ -93,4 +97,5 @@ Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* 
 	cookingTime_ = config::OVEN_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Oven;
 	initTimer();
+	setEmptyTexture();
 }

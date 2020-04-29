@@ -30,38 +30,51 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
-	{AllLevels, Cooker,"../AnimalCooking/resources/images/sarten.png"},
+	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
+	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
 	{AllLevels, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
+	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
-	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/cuchilloSucio.png"},
+	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/Cocina/pickable/cuchilloSucio.png"},
 	{AllLevels, Maza,"../AnimalCooking/resources/images/Cocina/pickable/maza.png"},
+	{AllLevels, MazaSucia,"../AnimalCooking/resources/images/Cocina/pickable/mazaSucia.png"},
 	{AllLevels, Rallador,"../AnimalCooking/resources/images/Cocina/pickable/rallador.png"},
+	{AllLevels, RalladorSucio,"../AnimalCooking/resources/images/Cocina/pickable/ralladorSucio.png"},
 	{AllLevels, Red,"../AnimalCooking/resources/images/Cocina/pickable/red.png"},
+	{AllLevels, RedSucia,"../AnimalCooking/resources/images/Cocina/pickable/redSucia.png"},
+
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
+	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
 	{AllLevels, Ingrediente,"../AnimalCooking/resources/images/ingrediente.png"},
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
 	{AllLevels, Pedido,"../AnimalCooking/resources/images/pedido.png"},
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
+	//Personajes
 	{AllLevels, Cerdo,"../AnimalCooking/resources/images/personaje.png"},
 	{AllLevels, Pollo,"../AnimalCooking/resources/images/personaje2.png"},
 	{AllLevels, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
+	//Barra entregas
 	{AllLevels, BarraDcha,"../AnimalCooking/resources/images/Cocina/barra/barraDcha.png"},
 	{AllLevels, BarraIzda,"../AnimalCooking/resources/images/Cocina/barra/barraIzq.png"},
 	{AllLevels, BarraCentro,"../AnimalCooking/resources/images/Cocina/barra/barraCentro.png"},
 	{AllLevels, BarraConTimbre,"../AnimalCooking/resources/images/Cocina/barra/barraCocinaCon.png"},
 	{AllLevels, BarraSinTimbre,"../AnimalCooking/resources/images/Cocina/barra/barraCocinaSin.png"},
-
+	//Menu
 	{Basic,level0Menu,"../AnimalCooking/resources/images/level0Menu.png"},
 	{Basic,level1Menu,"../AnimalCooking/resources/images/level1Menu.png"},
 	{Basic,level2Menu,"../AnimalCooking/resources/images/level2Menu.png"},
 	{Basic,level3Menu,"../AnimalCooking/resources/images/level3Menu.png"},
 	{Basic,level4Menu,"../AnimalCooking/resources/images/level4Menu.png"},
-
+	//Encimera
 	{AllLevels,EncimeraAbajoConMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoCon.png"},
+	{AllLevels,EncimeraAbajoConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoConDcha.png"},
+	{AllLevels,EncimeraAbajoConMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoConIzq.png"},
 	{AllLevels,EncimeraAbajoSinMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoSin.png"},
+	{AllLevels,EncimeraAbajoSinMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoSinDcha.png"},
+	{AllLevels,EncimeraAbajoSinMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoSinIzq.png"},
 	{AllLevels,EncimeraHorizConMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizCon.png"},
 	{AllLevels,EncimeraHorizSinMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizSin.png"},
 	{AllLevels,EncimeraVertConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertCon1.png"},
@@ -71,7 +84,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraVEsquinaInferiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior2.png"},
 	{AllLevels,EncimeraVEsquinaInferiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
-
+	{AllLevels,EncimeraVEsquinaSuperiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior2.png"},
+	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
 	{AllLevels,EsquinaSupIzdaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-2.png"},
 	{AllLevels,EsquinaSupDchaVino,"../AnimalCooking/resources/images/Cocina/esquinas/esquina2-1.png"},
@@ -198,8 +212,9 @@ vector<Resources::ImageInfo> Resources::images_{
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	//
 	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
-	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8}
-	
+	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
+	{Basic, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
+	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

@@ -161,7 +161,7 @@ Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 
 Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
-	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazaSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Mace;
@@ -172,8 +172,8 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 
 
 Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
-	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
-	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Grater);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Grater;
@@ -184,8 +184,8 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 
 
 Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
-	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
-	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Net);
+	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Red);
+	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Net;

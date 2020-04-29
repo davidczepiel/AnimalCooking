@@ -32,7 +32,8 @@ void PlayState::resetTimers()
 {
 	for (Timer* t : timerViewer_->getTimers()) {
 		t->timerReset();
-		t->timerStart();
+		if(dynamic_cast<CookerTimer*>(t) == nullptr)
+			t->timerStart();
 	}
 }
 
