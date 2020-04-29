@@ -81,6 +81,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EsquinaSupDchaVacia,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-1.png"},
 	{AllLevels,EsquinaSupIzdaVacia,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-2.png"},
 
+	//Clientes
+	{AllLevels,CocinaBarraCentro,"../AnimalCooking/resources/images/Cocina/barra/barraCentro.png"},
+	{AllLevels,CocinaBarraDerecha,"../AnimalCooking/resources/images/Cocina/barra/barraDcha.png"},
+	{AllLevels,CocinaBarraIzquierda,"../AnimalCooking/resources/images/Cocina/barra/barraIzq.png"},
+
 	//Pedidos--------------------------------------------------------------
 	{Basic,Bocadillo,"../AnimalCooking/resources/images/Pedidos/bocadillo.png"},
 	{AllLevels,SaladOrder,"../AnimalCooking/resources/images/Pedidos/ensalada.png"},
