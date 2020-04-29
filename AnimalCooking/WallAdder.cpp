@@ -33,7 +33,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//Hacer esquinas
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
 		Entity* corner = mngr->addEntity();
-		int t = Resources::TextureId::EsquinaSupDchaCopas + (2 * SDLGame::instance()->getRandGen()->nextInt(0, 4));
+		int t = Resources::TextureId::EsquinaSupDchaCopas + (2 * SDLGame::instance()->getRandGen()->nextInt(0, 3));
 		if (nivel["Shelfs"]["corners"][i]["sitio"].as_string() == "izq") ++t;
 		corner->addComponent<Transform>(Vector2D(nivel["Shelfs"]["corners"][i]["pos"]["x"].as_double() * casilla,
 			nivel["Shelfs"]["corners"][i]["pos"]["y"].as_double() * casilla), Vector2D(),

@@ -80,6 +80,7 @@ public:
 			EncimeraVertSinMantelDcha,
 			EncimeraVertSinMantelIzda,
 			EncimeraVEsquinaInferiorIzda,
+			EncimeraVEsquinaInferiorDcha,
 			EncimeraVEsquinaSuperiorDcha,
 			//Esquinas
 			EsquinaSupDchaCopas,

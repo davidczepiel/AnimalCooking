@@ -24,7 +24,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 			u = switchUten(shelf_[0].as_string(), pool_, player);
 		}
 
-		shelf_ = jsonLevel["Shelfs"]["entities"][i]["pos"];
+		shelf_ = jsonLevel["Shelfs"]["entities"][i];
 		Shelf* s = makeShelf(u, player, shelf_);
 		for (int c = 0; c < components.size(); ++c) {//Si tiene algun componente extra en ese nivel
 			initializeComponent(components[c].as_string(), s);
@@ -72,7 +72,27 @@ Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::arr
 
 Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
-	Shelf* shelf = new Shelf(Vector2D(jsonShelf["x"].as_double() * casillaLength, jsonShelf["y"].as_double() * casillaLength), u, GIVETRANSPORT, emPlayState);
+	Vector2D pos = Vector2D(jsonShelf["pos"]["x"].as_double() * casillaLength, jsonShelf["pos"]["y"].as_double() * casillaLength);
+	int t = 0;
+	if (jsonShelf["texture"].as_string() == "top") {
+		t = Resources::TextureId::EncimeraHorizConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2);
+	}
+	else if (jsonShelf["texture"].as_string() == "right") {
+		t = Resources::TextureId::EncimeraVertConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
+	}
+	else if (jsonShelf["texture"].as_string() == "left") {
+		t = Resources::TextureId::EncimeraVertConMantelIzda + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
+	}
+	else if (jsonShelf["texture"].as_string() == "bottom") {
+		t = Resources::TextureId::EncimeraAbajoConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2);
+	}
+	else if (jsonShelf["texture"].as_string() == "cornerRight") {
+		t = Resources::TextureId::EncimeraVEsquinaInferiorDcha;
+	}
+	else { //CornerLeft
+		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;
+	}
+	Shelf* shelf = new Shelf(pos, u, GIVETRANSPORT, emPlayState, SDLGame::instance()->getTextureMngr()->getTexture(t));
 
 	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));

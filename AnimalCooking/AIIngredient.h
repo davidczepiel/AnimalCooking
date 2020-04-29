@@ -9,8 +9,9 @@ private:
 	IngredientsPool* ip_;
 	Transform* t1_;
 	Transform* t2_;
+	double range;
 public:
-	AIIngredient(IngredientsPool* ip, Transform* t1, Transform* t2) : Component(ecs::AIIngredient), ip_(ip), t1_(t1), t2_(t2) {}
+	AIIngredient(IngredientsPool* ip, Transform* t1, Transform* t2);
 	~AIIngredient() {}
 
 	void update() override;

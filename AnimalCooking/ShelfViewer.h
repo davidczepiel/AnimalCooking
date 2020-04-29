@@ -12,8 +12,7 @@ class ShelfViewer :
 	Interactive* entity;
 	Texture* text;
 public:
-	ShelfViewer(Interactive* i):Component(ecs::ShelfViewer) {entity = i;}
-	void init()override;
+	ShelfViewer(Interactive* i, Texture* texture):Component(ecs::ShelfViewer), entity(i), text(texture) {}
 	void draw() override;
 };
 
