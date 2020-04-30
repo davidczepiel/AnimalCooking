@@ -19,6 +19,7 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void handleEvent() {};
+	inline AnimalCooking* getAnimalCooking() { return app; }
 	
 };
 

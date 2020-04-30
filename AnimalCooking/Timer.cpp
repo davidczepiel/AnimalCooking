@@ -1,6 +1,7 @@
 #include "Timer.h"
 #include "SDL_macros.h"
-
+#include "FSM.h";
+#include "PlayState.h"
 Timer::Timer(): 
 	game_(SDLGame::instance()),
 	texture_(nullptr),
@@ -81,6 +82,9 @@ void LevelTimer::update()
 	Timer::update();
 
 	if (timerEnd_) {
+		timerReset();
+		PlayState* p = static_cast<PlayState*> (SDLGame::instance()->getFSM()->currentState());
+		p->goToEndState(p->getAnimalCooking());
 		//Fin nivel
 	}
 }

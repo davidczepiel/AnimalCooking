@@ -16,8 +16,8 @@ public:
 	void resumeTimers();
 
 	void resetTimers();
+	void goToEndState(AnimalCooking* ac);
 private:
 	TimerViewer* timerViewer_;
-	static void goToEndState(AnimalCooking* ac);
 };
 
