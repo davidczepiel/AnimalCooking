@@ -12,15 +12,15 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "GPadController.h"
+#include "PauseState.h"
 
 
 using namespace std;
 
 AnimalCooking::AnimalCooking() :
-		game_(nullptr), //
-		exit_(false) {
+	game_(nullptr), //
+	exit_(false) {
 	initGame();
-	
 }
 
 AnimalCooking::~AnimalCooking() {
@@ -29,14 +29,11 @@ AnimalCooking::~AnimalCooking() {
 
 void AnimalCooking::initGame() {
 
-	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+	game_ = SDLGame::init("AnimalCooking", 1000, 800);
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
-	game_->getFSM()->pushState(new MenuState());
+	game_->getFSM()->pushState(new MenuState(this));
 	game_->getFSM()->refresh();
-
-
-
 
 }
 
@@ -46,7 +43,7 @@ void AnimalCooking::closeGame() {
 
 void AnimalCooking::start() {
 	exit_ = false;
-	
+
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
 
@@ -73,7 +70,16 @@ void AnimalCooking::handleInput() {
 	while (SDL_PollEvent(&event))
 	{
 		//GPadController::instance()->update(event);
-		InputHandler::instance()->update(event);
+		if (event.type == SDL_QUIT)
+			stop();
+		else
+			InputHandler::instance()->update(event);
+	}
+
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState()) != nullptr)
+	{
+		static_cast<PlayState*>(game_->getFSM()->currentState())->pauseTimers();
+		game_->getFSM()->pushState(new PauseState(this));
 	}
 }
 
@@ -81,7 +87,7 @@ void AnimalCooking::update() {
 	game_->getFSM()->currentState()->update();
 	game_->getFSM()->refresh();
 
-	
+
 }
 
 void AnimalCooking::render() {

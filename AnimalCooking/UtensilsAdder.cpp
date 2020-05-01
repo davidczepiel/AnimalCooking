@@ -16,7 +16,7 @@ UtensilsAdder::UtensilsAdder(Entity* utensilsPool, jute::jValue& jsonLevel, jute
 
 	//Se meten los componentes especificos de ese nivel
 	jute::jValue components = jsonLevel["UtensilPool"]["components"];
-	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se añade
+	for (int c = 0; c < components.size(); ++c) { //Si tiene algun componente extra en ese nivel, se aï¿½ade
 		initializeComponent(components[c].as_string(), utensilsPool);
 	}
 }

@@ -1,8 +1,12 @@
 #include "Food.h"
 #include "SDL_macros.h"
+#include "PlayState.h"
+#include "FSM.h"
+#include "TimerViewer.h"
+#include "Entity.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
-	timer_(FoodTimer()),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -10,15 +14,20 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	position_ = position;
 	size_ = Vector2D(64, 64);
 	speed_ = Vector2D();
+
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
+	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr)
 {
 	position_ = Vector2D();
 	size_ = Vector2D(50, 50);
 	speed_ = Vector2D();
+
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
@@ -29,6 +38,7 @@ void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
 
 void Food::Destroy()
 {
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
 	foodPool_->RemoveFood(iterator_);
 }
 
@@ -36,11 +46,11 @@ void Food::update()
 {
 	Pickable::update();
 
-	if (timer_.isTimerEnd()) {
+	if (timer_->isTimerEnd()) {
 		foodPool_->RemoveFood(iterator_);
 	}
 	else {
-		timer_.update();
+		timer_->update();
 	}
 }
 
@@ -57,16 +67,17 @@ void Food::draw(SDL_Rect r)
 
 void Food::onDrop(bool onfloor)
 {
-	if (onfloor) {
-		onFloor();
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
+	if (onFloor) {
+		Pickable::onDrop(onFloor);
+		timer_->timerStart();
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
 	}
 }
 
 void Food::onFloor()
 {
-	//El gameControl llamaba al método onDrop pero siempre con true, se necesita hacer está distinción
-	//porque sino el gameControl al generar una comida desencadena que se reproduzca el sonido de dejar caer cuando no debería
+	//El gameControl llamaba al mï¿½todo onDrop pero siempre con true, se necesita hacer estï¿½ distinciï¿½n
+	//porque sino el gameControl al generar una comida desencadena que se reproduzca el sonido de dejar caer cuando no deberï¿½a
 	Pickable::onDrop(true);
 	timer_.timerStart();
 }

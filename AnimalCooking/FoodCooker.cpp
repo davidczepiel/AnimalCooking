@@ -46,6 +46,7 @@ void FoodCooker::update() {
 				c->getCookerTimer()->timerReset();
 				c->getCookerTimer()->setTime(c->getCookingTime() / 2); //Tiempo de quemado a definir, de momento tQuemado = tCocinar/2
 				c->getCookerTimer()->timerStart();
+				c->getCookerTimer()->setTexture(game_->getTextureMngr()->getTexture(Resources::BurnedTimer));
 			}
 			else {
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::BurnedBeep,0);

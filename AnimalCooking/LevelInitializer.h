@@ -3,11 +3,13 @@
 #include "Resources.h"
 #include <array>
 #include <vector>
-
+#include <list>
+#include "Timer.h"
 class EntityManager;
 class Entity;
 class ScreenLoader;
 class Interactive;
+class TimerViewer;
 
 class LevelInitializer
 {
@@ -19,6 +21,7 @@ private:
 	void initialize_ingredientsPool();
 	void initialize_foodPool();
 	void initialize_utensilPool();
+	void initialize_timerViewer();
 	void initialize_cookersPool();
 	void initialize_shelfs();
 	void initialize_sinks();
@@ -28,8 +31,12 @@ private:
 	void initialize_foodGivers();
 	void initialize_colSystem();
 	void initialize_feedback();
+	void initialize_levelIngredients();
+	void initialize_clients();
+	void initialize_walls();
 
 	double casilla;
+	double offset;
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;
@@ -39,6 +46,7 @@ private:
 	std::vector<Interactive*> interactives_;
 
 	ScreenLoader* sL;
+	TimerViewer* tv_;
 
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;

@@ -23,48 +23,203 @@ public:
 	enum TextureId : std::size_t {
 		// images basic
 		Button,
-
+		MainMenuBackground,
+		MainMenuRuedecilla,
+		MainMenuRuedecillaShadow,
+		MainMenuArrow,
+		MainMenuArrowR,
+		MainMenuPlayButton,
+		MainMenuConfigButton,
+		MainMenuExitButton,
+		MainMenuCreditsButton,
+		RectangleOutline,
+		
+		SliderBackground,
+		SliderMovPoint,
 
 		// images all
 		Repisa,
 		Plato,
 		Suelo,
 		Hierba,
-		Cooker,
+		OvenOFF,
+		SkilletOFF,
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
 		Platera,
+		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
+		Maza,
+		MazaSucia,
+		Rallador,
+		RalladorSucio,
+		Red,
+		RedSucia,
 		Fregadero,
+		FregaderoON,
 		Ingrediente,
 		Panera,
-		Tomato,
-		Onion,
-		ComidaCocinada,
 		Pedido,
 		Papelera,
 		Cerdo,
 		Pollo,
-		IngredienteMalo,
 		CuadradoAux,
-		
+		//Barra de entregas
+		BarraDcha,
+		BarraIzda,
+		BarraCentro,
+		BarraConTimbre,
+		BarraSinTimbre,
+		//Menu
+		level0Menu,
+		level1Menu,
+		level2Menu,
+		level3Menu,
+		level4Menu,
+			//Encimeras
+			EncimeraAbajoConMantel,
+			EncimeraAbajoConMantelDcha,
+			EncimeraAbajoConMantelIzda,
+			EncimeraAbajoSinMantel,
+			EncimeraAbajoSinMantelDcha,
+			EncimeraAbajoSinMantelIzda,
+			EncimeraHorizConMantel,
+			EncimeraHorizSinMantel,
+			EncimeraVertConMantelDcha,
+			EncimeraVertConMantelIzda,
+			EncimeraVertSinMantelDcha,
+			EncimeraVertSinMantelIzda,
+			EncimeraVEsquinaInferiorIzda,
+			EncimeraVEsquinaInferiorDcha,
+			EncimeraVEsquinaSuperiorDcha,
+			EncimeraVEsquinaSuperiorIzda,
+			//Esquinas
+			EsquinaSupDchaCopas,
+			EsquinaSupIzdaCopas,
+			EsquinaSupDchaVino,
+			EsquinaSupIzdaVino,
+			EsquinaSupDchaAgua,
+			EsquinaSupIzdaAgua,
+			EsquinaSupDchaVacia,
+			EsquinaSupIzdaVacia,
 
-		//FeedBackImages
-		TomatoFeedBack,
-		OnionFeedBack,
-		CuchilloFeedBack,
-		Panel,
-		PlatoFeedBack,
-		PapelertaFeedBack,
-		Coger,
-		Dejar,
+		//Pedidos------------------------------------------------------
+		Bocadillo,
+		SaladOrder,
+		BurgerOrder,
+		PizzaOrder,
+		RoastOrder,
+		RiceDishOrder,
+		HotDogOrder,
+		RisottoOrder,
+		CookedFishOrder,
+		FriedVegsOrder,
+		BakedChickenOrder,
+		FrenchFriesOrder,
+		CookedClamsOrder,
+		RiceAndClamsOrder,
+		//Food---------------------------------------------------------
+		PoopT,
+		SlicedTomatoT,
+		SlicedLettuceT,
+		SlicedOnionT,
+		SlicedMeatT,
+		MashedMeatT,
+		SlicedCheeseT,
+		GratedCheeseT,
+		SlicedPotatoT,
+		SlicedSausageT,
+		SlicedCarrotT,
+		CaughtSausageT,
+		SlicedMushroomT,
+		CaughtFishT,
+		SlicedChickenT,
+		CaughtClamT,
+		RiceT,
+		BreadBurgerT,
+		BreadHotDogT,
+		PizzaMassT,
+		SaladT,
+		BurgerT,
+		PizzaT,
+		RoastT,
+		RiceDishT,
+		HotDogT,
+		RisottoT,
+		CookedFishT,
+		FriedVegsT,
+		BakedChickenT,
+		FrenchFriesT,
+		CookedClamsT,
+		RiceAndClamsT,
+		MashedMeatSkilletT,
+		CaughtSausageSkilletT,
+		SlicedPotatoSkilletT,
+		DressT,
+		MashedTomatoT,
+
+		//FeedBackImages---------------------------------------------
+			//Food
+			PoopFeedBack,
+			SlicedTomatoFeedBack,
+			SlicedLettuceFeedBack,
+			SlicedOnionFeedBack,
+			SlicedMeatFeedBack,
+			MashedMeatFeedBack,
+			SlicedCheeseFeedBack,
+			GratedCheeseFeedBack,
+			SlicedPotatoFeedBack,
+			SlicedSausageFeedBack,
+			SlicedCarrotFeedBack,
+			CaughtSausageFeedBack,
+			SlicedMushroomFeedBack,
+			CaughtFishFeedBack,
+			SlicedChickenFeedBack,
+			CaughtClamFeedBack,
+			RiceFeedBack,
+			BreadBurgerFeedBack,
+			BreadHotDogFeedBack,
+			PizzaMassFeedBack,
+			SaladFeedBack,
+			BurgerFeedBack,
+			PizzaFeedBack,
+			RoastFeedBack,
+			RiceDishFeedBack,
+			HotDogFeedBack,
+			RisottoFeedBack,
+			CookedFishFeedBack,
+			FriedVegsFeedBack,
+			BakedChickenFeedBack,
+			FrenchFriesFeedBack,
+			CookedClamsFeedBack,
+			RiceAndClamsFeedBack,
+			MashedMeatSkilletFeedBack,
+			CaughtSausageSkilletFeedBack,
+			SlicedPotatoSkilletFeedBack,
+			DressFeedBack,
+			MashedTomatoFeedBack,
+
+			//Utensils
+			CuchilloFeedBack,
+			//General
+			Panel,
+			PlatoFeedBack,
+			PapeleraFeedBack,
+			Coger,
+			Dejar,
 
 		// images level specific
-		Pan,
 		Arroz,
 		Aceite,
+		EncimeraMasa,
+		
+		//spritesheets
+		CircularTimer,
+		BurnedTimer,
+		OvenON,
+		SkilletON
 
 		// text
 		
@@ -143,6 +298,14 @@ public:
 		string fileName;
 	};
 
+	struct SpritesheetInfo {
+		Level level;
+		TextureId id;
+		string fileName;
+		int numRows;
+		int numCols;
+	};
+
 	struct TextMsgInfo {
 		Level level;
 		TextureId id;
@@ -165,6 +328,7 @@ public:
 
 	static vector<FontInfo> fonts_; // initialized in .cpp
 	static vector<ImageInfo> images_; // initialized in .cpp
+	static vector<SpritesheetInfo> spritesheets_; // initialized in .cpp
 	static vector<TextMsgInfo> messages_; // initialized in .cpp
 	static vector<MusicInfo> musics_; // initialized in .cpp
 	static vector<SoundInfo> sounds_; // initialized in .cpp
@@ -189,7 +353,8 @@ public:
 		CaughtClam,
 		///
 		Rice,
-		Bread,
+		BreadBurger,
+		BreadHotDog,
 		PizzaMass,
 		Dress,
 		///
@@ -198,6 +363,8 @@ public:
 		MashedMeatSkillet,
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
+		///
+		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
 		Salad,
 		Burger,

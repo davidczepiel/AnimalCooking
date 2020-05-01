@@ -17,7 +17,7 @@
 //Devuelve el SDL_Rect de un ingrediente
 #define GETBODY_ING(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight())
 
-//Calcula el área de un SDL_Rect
+//Calcula el ï¿½rea de un SDL_Rect
 #define AREA(rect) rect.w * rect.h
 
 #define DIVIDEROUNDUP(x) (collisions.back().x / 2) + (collisions.back().x % 2 != 0)
@@ -31,10 +31,10 @@ void CollisionsSystem::update()
 
 	for (auto en : entidadesIng) {
 		if (en.second){
-			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel()); 
+			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true); 
 			
 			//Aviso al ingrediente que ha colisionado
-			tellIngredient(en.first, cT);
+			//tellIngredient(en.first, cT);
 		}
 	}
 }
@@ -101,20 +101,12 @@ bool CollisionsSystem::checkCollision(const SDL_Rect& body, const SDL_Rect& othe
 	Se vuelve a arreglar las colisiones que puedan quedar sin resolver recursivamente
 */
 
-ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel)
+ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng)
 {
 	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX(), pos.getY(), size.getX(), size.getY()));
 	ColisionType cT = ColisionType::noColision;
 
-	//Check de colisiones con los bordes del mundo
-	if (pos.getX() < 0)
-		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX()), size.getY()));
-	else if (pos.getX() + size.getX() > game_->getWindowWidth())
-		cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
-	if (pos.getY() < 0)
-		cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
-	else if (pos.getY() + size.getY() > game_->getWindowHeight())
-		cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
+	cT = worldCollision(pos, size, vel, imIng);
 
 	if (!collisions_.empty()) {
 		if (collisions_.size() == 1) {
@@ -179,6 +171,33 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 			}
 		}
 		resolveCollisions(pos, size, vel);	
+	}
+	return cT;
+}
+
+ColisionType CollisionsSystem::worldCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng)
+{
+	ColisionType cT = ColisionType::noColision;
+	//Check de colisiones con los bordes del mundo
+	if (imIng) {
+		if (pos.getX() < leftBorder)
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX() + leftBorder), size.getY()));
+		else if (pos.getX() + size.getX() > game_->getWindowWidth())
+			cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
+		if (pos.getY() < 0)
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
+		else if (pos.getY() + size.getY() > game_->getWindowHeight())
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
+	}
+	else {
+		if (pos.getX() < 0)
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX()), size.getY()));
+		else if (pos.getX() + size.getX() > game_->getWindowWidth())
+			cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
+		if (pos.getY() < 0)
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
+		else if (pos.getY() + size.getY() > game_->getWindowHeight())
+			cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
 	}
 	return cT;
 }

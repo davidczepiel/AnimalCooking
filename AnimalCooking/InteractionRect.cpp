@@ -1,4 +1,11 @@
 #include "InteractionRect.h"
+#include "GameConfig.h"
+
+InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), dir_(), 
+	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaLength(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaLength()),
+	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaLength())
+{
+}
 
 void InteractionRect::init()
 {
@@ -8,7 +15,7 @@ void InteractionRect::init()
 
 void InteractionRect::draw()
 {
-	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(),size_.getY() };
+	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
 	tx_->render(d);
 }
 

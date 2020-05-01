@@ -1,19 +1,24 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
-	addComponent<ShelfViewer>(this);
+Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
+	addComponent<ShelfViewer>(this, texture);
 	dishFinisher=addComponent<DishFinisher>(p1,p2);
 	position_ = pos;
 	size_ = Vector2D(128, 128);
 	if (content != nullptr) {
 		contentType = Resources::PickableType::Utensil;
-		content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-			position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
-		content->setCanInteract(false);
+		setContentPos();
 	}
 	else
 		contentType = Resources::PickableType::none;
+}
+
+void Shelf::setContentPos()
+{
+	content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
+		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
+	content->setCanInteract(false);
 }
 
 
@@ -43,9 +48,7 @@ void Shelf::action1(int id) {
 	else {
 		Swap(player, onPlayerHands);
 		if (content != nullptr) {
-			content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-				position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
-			content->setCanInteract(false);
+			setContentPos();
 		}
 	}
 
@@ -73,7 +76,8 @@ void Shelf::action4(int id)
 	if (contentType == Resources::PickableType::Dish)
 	{
 		Dish* d = static_cast<Dish*>(content);
-		if (!d->getIsViewingContent())
+		//Si no esta mostrando el selector y el plato no esta vacio
+		if (!d->getIsViewingContent() && !d->isEmpty())
 		{
 			d->firstFood();
 			d->setIsViewingContent(true);
@@ -105,8 +109,35 @@ void Shelf::action5(int id)
 
 void Shelf::feedback(int player)
 {
-	if (contentType != Resources::PickableType::none) {
-		content->feedback(player);
+	if (contentType == Resources::PickableType::Dish)
+	{
+		Dish* d = static_cast<Dish*>(content);
+		setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
+		if (d->getIsViewingContent())
+		{
+			vector<Food*> foods = d->getFoodVector();
+
+			int ofset = 55;
+			int offsetInside = 15;
+			int rows = ceil(foods.size() / 2.0);
+			if (rows == 0) rows = 1;
+
+			int w = 140 / 2 - offsetInside * 2;
+			SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
+			feedbackVisual_->render(rect);
+			rect.x += offsetInside;
+			rect.y += offsetInside;
+
+			for (int i = 0; i < foods.size(); ++i) {
+
+				SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
+				//Cojo la comida seleccionada y muestro su feedback
+				Food* currentFood = *(--d->getCurrentFood());
+				if(foods[i]==currentFood)currentFood->getTexture()->render(r);		
+				//Se dibuja la comida seleccionada
+				foods[i]->draw(r);
+			}
+		}		
 	}
 }
 

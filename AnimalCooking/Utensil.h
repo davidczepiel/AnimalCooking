@@ -5,10 +5,29 @@
 #include "Transform.h"
 #include "Transport.h"
 #include "Pickable.h"
+#include "GameConfig.h"
 #include "Timer.h"
 
 class GameLogic;
 class Utensil : public Pickable{
+
+public:
+	Utensil( Transport* p1, Transport* p2);
+	virtual ~Utensil();
+	void action1(int player) override;
+	void feedback(int player) override;
+
+	virtual void render() const;
+	virtual void update();
+	virtual void attack(Vector2D dir) = 0;
+
+	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
+	Timer* getTimer() { return dirtTimer_; }
+	virtual void onDrop(bool onFloor);
+	virtual void onPick();
+	void cleanUp();
+	void changeDirtySpeed(int speedModifier);
+	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 
 protected:
 	//Estado
@@ -24,8 +43,6 @@ protected:
 	Timer* dirtTimer_;
 	int maxTimeOnFloor_;
 
-	//Limpieza
-	int cleanUpSpeed_;
 	//Ataque
 	int range_;
 	int attackHitBoxWidth_;
@@ -47,23 +64,6 @@ protected:
 	GameLogic* gameLogic;
 
 	void onHit(Vector2D dir);
-public:
-	Utensil( Transport* p1, Transport* p2);
-	virtual ~Utensil();
-	void action1(int player) override;
-	void feedback(int player) override;
-
-	virtual void render() const;
-	virtual void update();
-	virtual void attack(Vector2D dir) = 0;
-
-	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
-	virtual void onDrop(bool onFloor);
-	virtual void onPick();
-	void cleanUp();
-	void changeDirtySpeed(int speedModifier);
-	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
-
 };
 
 /////////////////////////////////////////////Utensilios//////////////////////////////

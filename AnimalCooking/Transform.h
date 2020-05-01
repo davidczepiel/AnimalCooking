@@ -5,7 +5,7 @@
 
 class Transform: public Component {
 public:
-	Transform(Vector2D pos, Vector2D vel, double width, double height, double rotation);
+	Transform(Vector2D pos, Vector2D vel, double width, double height, double rotation = 0.0);
 	Transform();
 	virtual ~Transform();
 

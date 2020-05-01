@@ -1,7 +1,9 @@
 #include "Dish.h"
+#include "DishStack.h"
 
 
-Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2,int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2,nullptr),foods_(vector<Food*>()),isViewingContent(false),inHands(true),foodPool(fp)
+Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2, nullptr),
+	foods_(vector<Food*>()),isViewingContent(false), inHands(true), foodPool(fp)
 {
 	foods_.reserve(maxFood);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatoFeedBack);
@@ -31,28 +33,24 @@ Food* Dish::takeFood()
 	}
 	else return nullptr;
 }
+
 //Comprobamos que no está el vector vacío y no se ha llegado al último elemento
 void Dish::nextFood() 
 {
 	if (!foods_.empty() && isViewingContent && currentFood != foods_.rend())
 		currentFood++;
-	cout << (*currentFood.base())->getType();
 }
+
 //Comprobamos que no está el vector vacío y no estamos en el primer elemento
 void Dish::previousFood() 
 {
 	if (!foods_.empty() && isViewingContent && currentFood != ++(foods_.rbegin()))
 		currentFood--;
-	cout << (*currentFood)->getType();
 }
-
-
 
 void Dish::firstFood()
 {
 	currentFood = ++(foods_.rbegin());
-	if(!foods_.empty())cout << (*currentFood.base())->getType();
-
 }
 
 void Dish::clearFoods()
