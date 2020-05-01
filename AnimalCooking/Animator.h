@@ -6,7 +6,10 @@ class Animator : public Component
 	
 public:
 
-	enum States {Idle, Walk, Attack};
+	enum States { Idle, IdleWithKnife, IdleWithMace, IdleWithGrater, IdleWithNet,
+		          Walk, WalkWithKnife, WalkWithMace, WalkWithGrater, WalkWithNet,
+		          Attack, AttackWithKnife, AttackWithMace, AttackWithGrater, AttackWithNet };
+	
 	
 	Animator();
 	~Animator() { }
@@ -14,10 +17,10 @@ public:
 	States getCurrentState() { return currentState; };
 	void setCurrentState(States s) { currentState = s; };
 
-	SDL_Rect& animate(Texture* t, int fx, int fy,int numRows=1, int numCols=1);
+	/*SDL_Rect& animate(Texture* t, int fx, int fy,int numRows=1, int numCols=1);
 
 	int getAnimSpeed() { return animSpeed; }
-	void setAnimSpeed(int s) { animSpeed = s; }
+	void setAnimSpeed(int s) { animSpeed = s; }*/
 
 private:
 
