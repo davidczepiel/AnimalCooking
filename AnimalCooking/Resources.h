@@ -276,6 +276,8 @@ public:
 		AttackMiss,
 		BurnedBeep,
 		CookedFood,
+		IngredientSpawned,
+		OrderRecieved,
 		End_Win,
 		End_Lost,
 

@@ -245,6 +245,8 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
 	{AllLevels, BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
+	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
+	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
 	{AllLevels, End_Win,"../AnimalCooking/resources/sounds/END_WIN.ogg" },
 	{AllLevels, End_Lost,"../AnimalCooking/resources/sounds/END_LOST.ogg" }
 };
