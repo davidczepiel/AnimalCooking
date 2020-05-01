@@ -257,6 +257,7 @@ public:
 
 	enum AudioId : std::size_t {
 		// music
+		Level1,
 		Beat,
 		Cheer,
 		Boooo,
@@ -275,6 +276,8 @@ public:
 		AttackMiss,
 		BurnedBeep,
 		CookedFood,
+		End_Win,
+		End_Lost,
 
 		// sound effects
 		Wall_Hit,

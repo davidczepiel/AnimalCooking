@@ -38,6 +38,7 @@ void PlayState::resetTimers()
 }
 
 void PlayState::goToEndState(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->haltMusic();
 	SDLGame::instance()->getFSM()->pushState(new EndState(ac));
 }
 

@@ -225,26 +225,27 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 
 vector<Resources::MusicInfo> Resources::musics_{
 	//
-
+	{AllLevels, Level1, "../AnimalCooking/resources/sounds/Ingame piano.ogg"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_{
 	//
-	{Basic, KnifeAttack,"../AnimalCooking/resources/sounds/Cuchillo 1.wav"},
-{Basic,DropDish,"../AnimalCooking/resources/sounds/Dejar Plato 1.wav"}, //
-{Basic,CompleteDish,"../AnimalCooking/resources/sounds/Elaborar Plato 1.wav"},//
-{Basic,Wash,"../AnimalCooking/resources/sounds/Fregar 1.wav"},
-{Basic,FrySound,"../AnimalCooking/resources/sounds/Freir Loop 2.wav"},
-{Basic,MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
-{Basic,MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
-{Basic,Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
-{Basic,FrySoundBurned,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
-{Basic,Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
-{Basic,PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
-{Basic,Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" },
-{Basic,AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
-{Basic,BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
-{Basic,CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" }
-
+	{AllLevels, KnifeAttack,"../AnimalCooking/resources/sounds/Cuchillo 1.wav"},
+	{AllLevels, DropDish,"../AnimalCooking/resources/sounds/Dejar Plato 1.wav"}, //
+	{AllLevels, CompleteDish,"../AnimalCooking/resources/sounds/Elaborar Plato 1.wav"},//
+	{AllLevels, Wash,"../AnimalCooking/resources/sounds/Fregar 1.wav"},
+	{AllLevels, FrySound,"../AnimalCooking/resources/sounds/Freir Loop 2.wav"},
+	{AllLevels, MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
+	{AllLevels, MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
+	{AllLevels, Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
+	{AllLevels, FrySoundBurned,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
+	{AllLevels, Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
+	{AllLevels, PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
+	{AllLevels, Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" },
+	{AllLevels, AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
+	{AllLevels, BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
+	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
+	{AllLevels, End_Win,"../AnimalCooking/resources/sounds/END_WIN.ogg" },
+	{AllLevels, End_Lost,"../AnimalCooking/resources/sounds/END_LOST.ogg" }
 };
 

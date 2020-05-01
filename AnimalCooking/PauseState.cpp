@@ -6,6 +6,9 @@
 PauseState::PauseState(AnimalCooking* ac) : State(ac)
 {
 	cout << "PauseState";
+
+	SDLGame::instance()->getAudioMngr()->pauseMusic();
+
 	int x = SDLGame::instance()->getWindowWidth()/2;
 	int y = SDLGame::instance()->getWindowHeight()/5;
 	int buttonHeight = 40;
@@ -57,7 +60,10 @@ void PauseState::configCallback(AnimalCooking* ac)
 void PauseState::resumeCallback(AnimalCooking* ac)
 {
 	cout << "Resume";
-	SDLGame::instance()->getFSM()->popState([]() { static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers(); });
+	SDLGame::instance()->getFSM()->popState([]() { 
+			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers();
+			SDLGame::instance()->getAudioMngr()->resumeMusic();
+		});
 }
 
 void PauseState::closeCallback(AnimalCooking* ac)

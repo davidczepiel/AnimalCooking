@@ -1,5 +1,8 @@
 #include "EndState.h"
 EndState::EndState(AnimalCooking* ac) :State(ac) {
+
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
+
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2 - 150,
 		SDLGame::instance()->getWindowHeight() / 2 - 125), Vector2D(), 300, 100, 0);
