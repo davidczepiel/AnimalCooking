@@ -43,9 +43,21 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		colSys_->addCollider(GETCMP2(corner, Transform), false);
 	}
 
+	//Hacer falsa barra de entregas
+	Entity* e;
+	for (int i = 0; i < general["Clients"]["repisa"]["size"]["width"].as_int(); i++) {
+		e = mngr->addEntity();
+		e->addComponent<Transform>(Vector2D(nivel["repisaFalsa"]["pos"]["x"].as_int() * casilla,
+			nivel["repisaFalsa"]["pos"]["y"].as_int()) * casilla, Vector2D(),
+			casilla, casilla);
+		if(i==0)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraConTimbre), Vector2D(casilla, casilla));
+		else e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraSinTimbre), Vector2D(casilla, casilla));
+		mngr->addToGroup(e, CASTID(general["Clients"]["Layer"].as_int()));
+	}
+
 	//Suelos
 	Entity* cocina = mngr->addEntity();
-	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 6 * casilla + offset, 6 * casilla);
+	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 6 * casilla + offset, 7 * casilla);
 	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casilla, casilla));
 	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
 

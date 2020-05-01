@@ -56,7 +56,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	//Inicializacion de los componentes extra de ese nivel
 	for (int c = 0; c < nivel["Clients"]["components"].size(); ++c) {
 		initializeComponent(nivel["Clients"]["components"][c].as_string(), os);
-	}	
+	}
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

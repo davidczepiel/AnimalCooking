@@ -83,11 +83,20 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	else if (jsonShelf["texture"].as_string() == "left") {
 		t = Resources::TextureId::EncimeraVertConMantelIzda + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
 	}
-	else if (jsonShelf["texture"].as_string() == "bottom") {
-		t = Resources::TextureId::EncimeraAbajoConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2);
+	else if (jsonShelf["texture"].as_string() == "bottomLeft") {
+		t = Resources::TextureId::EncimeraAbajoConMantelIzda + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
+	}
+	else if (jsonShelf["texture"].as_string() == "bottomCenter") {
+		t = Resources::TextureId::EncimeraAbajoConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
+	}
+	else if (jsonShelf["texture"].as_string() == "bottomRight") {
+		t = Resources::TextureId::EncimeraAbajoConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
 	}
 	else if (jsonShelf["texture"].as_string() == "cornerRight") {
 		t = Resources::TextureId::EncimeraVEsquinaInferiorDcha;
+	}
+	else if (jsonShelf["texture"].as_string() == "cornerLeft") {
+		t = Resources::TextureId::EncimeraVEsquinaInferiorIzda;
 	}
 	else { //CornerLeft
 		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;
