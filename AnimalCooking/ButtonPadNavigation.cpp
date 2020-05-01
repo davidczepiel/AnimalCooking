@@ -24,35 +24,35 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 
 void ButtonPadNavigation::update() {
 	GPadController* gpad = GPadController::instance();
-	if (GPadController::playerControllerConnected(0) || GPadController::playerControllerConnected(1)) {
+	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 		horizontalInput();
 		verticalInput();
-		if ((GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
-			GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
+		if ((GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
+			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A))
 			&& !aButtonPressed) {
 			action();
 		}
-		if (!GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_A) &&
-			!GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_A))
+		if (!GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_A) &&
+			!GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A))
 			aButtonPressed = false;
 	}
 }
 
 void ButtonPadNavigation::horizontalInput() {
-	if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
-		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+	if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
+		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
 		horizontalMove(-1);
-	else if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
-		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+	else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
+		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
 		horizontalMove(1);
 }
 
 void ButtonPadNavigation::verticalInput() {
-	if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
-		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP))
+	if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
+		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP))
 		horizontalMove(-1);
-	else if (GPadController::playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||
-		GPadController::playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+	else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||
+		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
 		verticalMove(1);
 }
 

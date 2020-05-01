@@ -19,12 +19,12 @@ public:
 		return instance_.get();
 	}
 
-	static void getPlayerGPADS();
-	static bool playerControllerConnected(int id);
-	static double getAxis(int player, SDL_GameControllerAxis axis);
-	static bool playerPressed(int player, SDL_GameControllerButton button);
-	static SDL_GameController* player1_;
-	static SDL_GameController* player2_;
+	void getPlayerGPADS();
+	bool playerControllerConnected(int id);
+	double getAxis(int player, SDL_GameControllerAxis axis);
+	bool playerPressed(int player, SDL_GameControllerButton button);
+	SDL_GameController* player1_;
+	SDL_GameController* player2_;
 
 	void update(SDL_Event& event);
 

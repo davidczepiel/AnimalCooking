@@ -2,11 +2,12 @@
 #include <SDL.h>
 
 unique_ptr<GPadController> GPadController::instance_;
-SDL_GameController* GPadController::player1_ = nullptr;
-SDL_GameController* GPadController::player2_ = nullptr;
+
 
 GPadController::GPadController()
 {
+	player1_ = nullptr;
+	player2_ = nullptr;
 }
 
 void GPadController::update(SDL_Event& event) {
