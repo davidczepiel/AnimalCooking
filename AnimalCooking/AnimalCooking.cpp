@@ -21,7 +21,6 @@ AnimalCooking::AnimalCooking() :
 	game_(nullptr), //
 	exit_(false) {
 	initGame();
-
 }
 
 AnimalCooking::~AnimalCooking() {
@@ -30,14 +29,11 @@ AnimalCooking::~AnimalCooking() {
 
 void AnimalCooking::initGame() {
 
-	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+	game_ = SDLGame::init("AnimalCooking", 1000, 800);
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
 	game_->getFSM()->pushState(new MenuState(this));
 	game_->getFSM()->refresh();
-
-
-
 
 }
 
@@ -80,8 +76,11 @@ void AnimalCooking::handleInput() {
 			InputHandler::instance()->update(event);
 	}
 
-	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
+	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) && dynamic_cast<PlayState*>(game_->getFSM()->currentState()) != nullptr)
+	{
+		static_cast<PlayState*>(game_->getFSM()->currentState())->pauseTimers();
 		game_->getFSM()->pushState(new PauseState(this));
+	}
 }
 
 void AnimalCooking::update() {

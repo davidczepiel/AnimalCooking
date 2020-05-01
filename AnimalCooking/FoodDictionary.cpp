@@ -61,6 +61,9 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::SlicedMeat:
 		return new SlicedMeat;
 		break;
+	case Resources::FoodType::MashedMeat:
+		return new MashedMeat;
+		break;
 	case Resources::FoodType::SlicedCheese:
 		return new SlicedCheese;
 		break;
@@ -93,6 +96,12 @@ Food* FoodDictionary::bind(const int& c) const
 		break;
 
 	// Platos enteros :
+	case Resources::FoodType::Salad:
+		return new Salad();
+		break;
+	case Resources::FoodType::Burger:
+		return new Burger();
+		break;
 	case Resources::FoodType::Pizza:
 		return new Pizza();
 		break;

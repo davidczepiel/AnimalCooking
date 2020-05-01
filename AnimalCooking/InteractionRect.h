@@ -2,10 +2,11 @@
 #include "Component.h"
 #include "Transform.h"
 #include "Entity.h"
+
 class InteractionRect :	public Component
 {
 public:
-	InteractionRect() : Component(ecs::InteractionRect), radius(60.5), pos_(), dir_(), size_(50, 50) {};
+	InteractionRect() ;
 	~InteractionRect(){}
 
 	void init() override;

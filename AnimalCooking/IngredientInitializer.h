@@ -11,6 +11,6 @@ public:
 	IngredientInitializer(jute::jValue& jsonLevel,GameControl* gc);
 
 private:
-	jute::jValue& jsonLevel; // json con la informacion del nivel (pos, componentes extras particulares, etc...)
+	Resources::IngredientType newIngType(const string& s);
 };
 

@@ -8,7 +8,9 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 
-DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player,FoodPool* fp ,const double casillaLength) : em(em)
+DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, 
+	std::array<Entity*, 2>& player,FoodPool* fp ,const double casillaLength) : 
+	em(em)
 {
 	//DishPool
 	Entity* poolPlatos = em->addEntity();
@@ -28,6 +30,8 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp,fp);
 	em->addEntity(dish);
 	em->addToGroup(dish, CASTID(jsonGeneral["DishStack"]["Layer"].as_int()));
+
+	dish->setDishSize(Vector2D(jsonGeneral["Dish"]["size"]["width"].as_double() * casillaLength, jsonGeneral["Dish"]["size"]["height"].as_double() * casillaLength));
 
 	dish->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), dish);

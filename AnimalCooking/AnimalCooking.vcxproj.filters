@@ -137,6 +137,12 @@
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="TimerViewer.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallAdder.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DoorRenderer.cpp" />
+    <ClCompile Include="Order.cpp" />
+    <ClCompile Include="GameConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -286,6 +292,11 @@
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="OrderAdder.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallAdder.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="DoorRenderer.h" />
+    <ClInclude Include="GameConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

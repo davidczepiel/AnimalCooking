@@ -8,6 +8,5 @@ public:
 	void update() override;
 private:
 	Transform* tr_ = nullptr;
-	const double SPEED = 5.3;
 };
 

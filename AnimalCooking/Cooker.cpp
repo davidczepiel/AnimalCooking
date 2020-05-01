@@ -3,30 +3,28 @@
 #include "SDL_macros.h"
 #include "InsertExpel.h"
 #include "TimerViewer.h"
+#include "GameConfig.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
-	state_(CookerStates::empty), cookingTime_(5),entity_(e), timer_(nullptr)
+	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr)
 {
 	setPos(pos);
 	setSize(size);
 	setRot(rot);
-	setEmptyTexture();
 
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
 void Cooker::initTimer()
 {
-	timer_ = new CookerTimer(cookingTime_ * 1000);
+	timer_ = new CookerTimer(cookingTime_);
 
-	timer_->setPos(Vector2D((position_.getX() + size_.getX()/2) - timer_->getSize().getX()/2, 
-		(position_.getY() + size_.getY()/2) - timer_->getSize().getY()/2));
+	timer_->setPos(Vector2D((position_.getX() + size_.getX() / 2) - timer_->getSize().getX() / 2,
+		(position_.getY() + size_.getY() / 2) - timer_->getSize().getY() / 2));
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
 Cooker::~Cooker() {
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
-	delete timer_;
 	timer_ = nullptr;
 }
 
@@ -44,7 +42,11 @@ void Cooker::draw()
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
-	texture_->render(rect, rotation_); //Cambiar para usar animaciones
+	if (state_ == CookerStates::cooking) {
+		int row = (timer_->getProgress() / (17 % texture_->getNumRows()));
+		texture_->renderFrame(rect, row, 0, rotation_);
+	}
+	else texture_->render(rect, rotation_);
 }
 
 void Cooker::action1(int player)
@@ -52,11 +54,11 @@ void Cooker::action1(int player)
 	InsertExpel* ie = entity_->getComponent<InsertExpel>(ecs::InsertExpel);
 	if (this->getCookerState() == CookerStates::empty)
 	{
-		ie->insertFood(this);
+		ie->insertFood(this, player);
 	}
 	else 
 	{
-		ie->extractFood(this, timer_);
+		ie->extractFood(this, timer_, player);
 	}
 }
 
@@ -84,14 +86,16 @@ void Cooker::feedback(int player)
 
 Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2, Entity* e) : Cooker(pos, size, rot, text,t1,t2,e)
 {
-	cookingTime_ = 10 * 1000;
+	cookingTime_ = config::SKILLET_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Skillet;
 	initTimer();
+	setEmptyTexture();
 }
 
-Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text,t1,t2,e)
+Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text, t1, t2, e)
 {
-	cookingTime_ = 15 * 1000;
+	cookingTime_ = config::OVEN_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Oven;
 	initTimer();
+	setEmptyTexture();
 }

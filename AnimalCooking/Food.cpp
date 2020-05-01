@@ -1,5 +1,7 @@
 #include "Food.h"
 #include "SDL_macros.h"
+#include "PlayState.h"
+#include "FSM.h"
 #include "TimerViewer.h"
 #include "Entity.h"
 
@@ -36,8 +38,8 @@ void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
 
 void Food::Destroy()
 {
-	foodPool_->RemoveFood(iterator_);
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
+	foodPool_->RemoveFood(iterator_);
 }
 
 void Food::update()

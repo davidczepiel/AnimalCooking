@@ -7,7 +7,7 @@ class UtensilsMotion :
 	public Component
 {
 private:
-	vector<Utensil*> pool_;
+	vector<Utensil*>* pool_;
 
 public:
 	UtensilsMotion() : Component(ecs::UtensilsMotion) { }

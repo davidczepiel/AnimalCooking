@@ -1,14 +1,19 @@
 #include "AIClient.h"
 #include "Entity.h"
 #include "OrderManager.h"
+#include "GameConfig.h"
 
-AIClient::AIClient() : AIClient(45)
+AIClient::AIClient() : AIClient(45, nullptr)
 {
 }
 
-AIClient::AIClient(Uint32 deltaTimePerOrder) : Component(ecs::AIClient),
-	deltaTimePerOrder_(deltaTimePerOrder), orMngr_(nullptr), availableOrders_(), initialOrders_(), lastOrderTime_(SDLGame::instance()->getTime())
+AIClient::AIClient(Uint32 deltaTimePerOrder, TimerViewer* tv) : Component(ecs::AIClient),
+	orMngr_(nullptr), availableOrders_(), initialOrders_()
 {
+	t = new Timer();
+	t->setTime(deltaTimePerOrder);
+
+	tv->addTimer(t);
 }
 
 void AIClient::init()
@@ -18,12 +23,12 @@ void AIClient::init()
 
 void AIClient::update()
 {
+	t->update();
 	for (auto& o : orMngr_->getOrders()) {
 		if (o != nullptr) {
-			o->setAnger((game_->getTime() - o->getStartTime()) / (double)o->getMaxTime());
+			o->update();
 			if (o->getAnger() > 1) 
 				orMngr_->removeOrder(o->getFinalProduct(), false);
-			
 		}
 	}
 	checkNewOrder();
@@ -31,15 +36,16 @@ void AIClient::update()
 
 void AIClient::checkNewOrder()
 {
-	if (game_->getTime() - lastOrderTime_ > deltaTimePerOrder_) {
-		lastOrderTime_ = game_->getTime();
+	if (t->isTimerEnd()) {
 		if (!initialOrders_.empty()) { //Primero saco los pedidos en cierto orden, si quedan
 			orMngr_->addOrder(initialOrders_.front());
 			initialOrders_.pop();
 		}
 		else {	
 			orMngr_->addOrder(chooseRandomOrder());
-		}		
+		}	
+		t->timerReset();
+		t->timerStart();
 	}
 }
 

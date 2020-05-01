@@ -7,7 +7,7 @@
 #include "LevelInitializer.h"
 #include "BackGroundViewer.h"
 
-constexpr double step_ = 1.0 / 20.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
+constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
 
 ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
@@ -28,7 +28,7 @@ ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac)
 		width, //Width
 		height, //Height
 		0); //Rot
-	barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	barraCarga_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
 		game_->getTextureMngr()->getTexture(Resources::Button));
 
 	buttonGo_ = stage->addEntity();
@@ -149,7 +149,14 @@ void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 void ScreenLoader::updateLength()
 {
 	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(step_);
+
+	SDL_SetRenderDrawColor(SDLGame::instance()->getRenderer(), COLOR(0x00AAAAFF));
+	SDL_RenderClear(SDLGame::instance()->getRenderer());
+
 	draw();
+
+	SDL_RenderPresent(SDLGame::instance()->getRenderer());
+	SDL_Delay(10);
 }
 
 //Inicializa el nivel
@@ -161,5 +168,8 @@ void ScreenLoader::initialize()
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
-	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),ac));
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac), []() {
+			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resetTimers();
+		});
 }

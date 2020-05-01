@@ -1,96 +1,132 @@
 #include "GameControl.h" 
 #include "Ingredient.h"  
+#include "GameConfig.h"
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int casilla) : Component(ecs::GameControl),utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(vector<string>()),casillaLength(casilla)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip) : Component(ecs::GameControl), 
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true)
 {
-	jsonGeneral = jute::parser::parse_file("../AnimalCooking/resources/cfg/general.cfg");
-
-	timer.setTime(1000);
+	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
 }
 
 
+void GameControl::init()
+{
+	colSys_ = GETCMP1_(CollisionsSystem);
+}
+
 void GameControl::update()
 {
-	//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
-	if (timer.isTimerEnd())
-	{
-		for (int i = 0; i < 4; i++)
+	if (justStarted) {
+		//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
+		if (timer.isTimerEnd())
 		{
-			newIngredient();
+			if (config::ING_MAX_IN_SCENE > ingPool_->getPool().size()) newIngredient();
+			else justStarted = false;
+			timer.timerReset();
+			timer.timerStart();
 		}
-		timer.timerReset();
+		else timer.update();
 	}
-	else timer.update();
 }
 
 void GameControl::newIngredient() 
 {   
-	Ingredient* ing = newIngType(levelIngType[game_->getRandGen()->nextInt(0, levelIngType.size())]);  
+	Ingredient* ing = newIngType(chooseIng());  
 
-	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * casillaLength,
-		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * casillaLength);
-	double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
-	//double y = (game_->getWindowHeight() / 4) * game_->getRandGen()->nextInt(1, 4);
-	//De momento aparecen con velocidad 0 y en el centro de la pantalla
-    ing->setVel(Vector2D(0,0));
-    ing->setPos(Vector2D(game_->getWindowWidth()/2, y));
+	jute::jValue& jsonGeneral = game_->getJsonGeneral();
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(),
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
 
+	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
+	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaLength();
+
+    ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
+    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), y));
+	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
+	colSys_->addCollider(ing);
 	ing = nullptr;
 }
 
-constexpr unsigned int str2int(const char* str, int h = 0)
-{
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
+Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 
-Ingredient* GameControl::newIngType(const string& s) {
-
-	Ingredient* i =nullptr;
+	Ingredient* i = nullptr;
 	
-	switch (str2int(s.c_str()))
+	switch (iT)
 	{
-	case str2int("Tomato"):
+	case Resources::IngredientType::tomato:
 		i = new Tomato();
 		break;
-	case str2int("Carrot"):
+	case Resources::IngredientType::carrot:
 		i = new Carrot();
 		break;
-	case str2int("Lettuce"):
+	case Resources::IngredientType::lettuce:
 		i = new Lettuce();
 		break;
-	case str2int("Mushroom"):
+	case Resources::IngredientType::mushroom:
 		i = new Mushroom();
 		break;
-	case str2int("Sausage"):
+	case Resources::IngredientType::sausage:
 		i = new Sausage();
 		break;
-	case str2int("Chicken"):
+	case Resources::IngredientType::chicken:
 		i = new Chicken();
 		break;
-	case str2int("Meat"):
+	case Resources::IngredientType::meat:
 		i = new Meat();
 		break;
-	case str2int("Potato"):
+	case Resources::IngredientType::potato:
 		i = new Potato();
 		break;
-	case str2int("Onion"):
+	case Resources::IngredientType::onion:
 		i = new Onion();
 		break;
-	case str2int("Clam"):
+	case Resources::IngredientType::clam:
 		i = new Clam();
 		break;
-	case str2int("Cheese"):
+	case Resources::IngredientType::cheese:
 		i = new Cheese();
 		break;
-	case str2int("Fish"):
+	case Resources::IngredientType::fish:
 		i = new Fish();
 		break;
 	default:
 		break;
 	}
 	return i;
+}
+
+Resources::IngredientType GameControl::chooseIng()
+{
+	//Rellenar un diccionario con los ingredientes que hay en escena 
+	map<Resources::IngredientType, size_t> ingsInScene;
+
+	for (auto type : levelIngType) {
+		ingsInScene.insert(make_pair(type, 0));
+	}
+	for (auto ing : ingPool_->getPool()) {
+		++ingsInScene.find(ing->getType())->second;
+	}
+
+
+	vector<Resources::IngredientType> lista;
+	lista.reserve(levelIngType.size());
+
+	//Buscar el ingrediente con menos apariciones
+	size_t min = SIZE_MAX;
+	for (auto ings : ingsInScene) {
+		if(ings.second < min){
+			min = ings.second;
+		}
+	}
+	for (auto ings : ingsInScene) {
+		if (ings.second <= min + 1) {
+			lista.emplace_back(ings.first);
+		}
+	}
+
+	return lista[game_->getRandGen()->nextInt(0, lista.size())];
 }
 
 void GameControl::newFood(Food* f, Vector2D pos) {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -193,6 +193,8 @@
     <ClInclude Include="DishStack.h" />
     <ClInclude Include="DishStackViewer.h" />
     <ClInclude Include="DishViewer.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="DoorRenderer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
@@ -214,6 +216,7 @@
     <ClInclude Include="FoodViewer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
@@ -301,6 +304,8 @@
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdversityEffect.cpp" />
@@ -340,6 +345,8 @@
     <ClCompile Include="DishStack.cpp" />
     <ClCompile Include="DishStackViewer.cpp" />
     <ClCompile Include="DishViewer.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DoorRenderer.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FeedBack.cpp" />
@@ -358,6 +365,7 @@
     <ClCompile Include="FoodTextures.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
@@ -388,6 +396,7 @@
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderService.cpp" />
@@ -439,6 +448,8 @@
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
