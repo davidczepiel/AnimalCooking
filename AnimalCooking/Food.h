@@ -19,7 +19,7 @@ protected:
 
 	FoodTimer* timer_;
 public:
-	virtual ~Food() { delete timer_; }
+	virtual ~Food() { timer_ = nullptr; }
 
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };

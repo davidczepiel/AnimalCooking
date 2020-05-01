@@ -17,6 +17,7 @@ void TimerViewer::draw()
 void TimerViewer::deleteTimer(Timer* timerToDelete)
 {
 	timersList_.remove(timerToDelete);
+	delete timerToDelete;
 }
 
 void TimerViewer::addTimer(Timer* timerToAdd)

@@ -1,6 +1,7 @@
 #include "Timer.h"
 #include "SDL_macros.h"
-
+#include "FSM.h";
+#include "PlayState.h"
 Timer::Timer(): 
 	game_(SDLGame::instance()),
 	texture_(nullptr),
@@ -41,23 +42,35 @@ void Timer::timerStart() {
 	if (!timerStarted_) {
 		timerStarted_ = true;
 		startedTime_ = game_->getTime();
-		cout << "STARTED TIME : " << startedTime_ << endl;
-		cout << "TIME : " << time_ << endl;
+		timerEnd_ = false;
 	} 
 }
 
 void Timer::timerReset() {
-	cout << "RESET TIME : " << startedTime_ << endl;
 	startedTime_ = 0;
 	timerStarted_ = false;
 	timerEnd_ = false;
 }
 
+void Timer::timerPause()
+{
+	pausedTime_ = SDLGame::instance()->getTime() - startedTime_;
+	timerStarted_ = false;
+}
+
+void Timer::timerResume()
+{
+	startedTime_ = SDLGame::instance()->getTime() - pausedTime_;
+	pausedTime_ = 0;
+	timerStarted_ = true;
+}
 void LevelTimer::draw()
 {
 	double widthMultiplier = (game_->getTime() - startedTime_) / double(time_);
 
-	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX() * widthMultiplier, size_.getY());
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(),
+		size_.getX() * widthMultiplier, size_.getY());
+
 	texture_->render(rect);
 
 	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
@@ -69,6 +82,9 @@ void LevelTimer::update()
 	Timer::update();
 
 	if (timerEnd_) {
+		timerReset();
+		PlayState* p = static_cast<PlayState*> (SDLGame::instance()->getFSM()->currentState());
+		p->goToEndState(p->getAnimalCooking());
 		//Fin nivel
 	}
 }

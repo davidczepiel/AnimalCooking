@@ -10,10 +10,10 @@ class OrderServiceViewer :
 	public Component
 {
 	Interactive* entity;
-	Texture* text;
+	Texture* textLeft, *textMid, *textRight;
 	SDL_Rect position;
 public:
-	OrderServiceViewer(Interactive* i) :Component(ecs::ShelfViewer) { entity = i; }
+	OrderServiceViewer(Interactive* i) :Component(ecs::ShelfViewer), entity(i) {}
 	void init()override;
 	void draw() override;
 };

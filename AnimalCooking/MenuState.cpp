@@ -128,6 +128,4 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 
 MenuState::~MenuState()
 {
-	delete rightButton_;
-	delete leftButton_;
 }

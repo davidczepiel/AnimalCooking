@@ -1,6 +1,7 @@
 #include "OrderViewer.h"
 #include "SDL_macros.h"
 #include "Entity.h"
+#include "GameConfig.h"
 
 OrderViewer::OrderViewer() : OrderViewer(80, 50, {5, 5})
 {
@@ -23,9 +24,10 @@ void OrderViewer::draw()
 		if (o != nullptr) { //Si esta el pedido
 			Texture* orText = o->getOrderText();
 		
-			double anger = o->getAnger() - 0.25;
+			double anger = o->getAnger() - config::ORDERVIEWER_START_RED_OFFSET;
 			if (anger < 0) anger = 0;
-			else if (anger > 0.5) anger = 0.5; //Maximo anger de 0.5
+			else if (anger > config::ORDERVIEWER_MAX_RED_OFFSET - config::ORDERVIEWER_START_RED_OFFSET) 
+				anger = config::ORDERVIEWER_MAX_RED_OFFSET - config::ORDERVIEWER_START_RED_OFFSET; //Maximo anger de 0.5
 			
 			//// Fondo
 			//backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_)/*,  //Usa getAnger() para determinar que zona usar de la textura

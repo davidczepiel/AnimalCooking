@@ -1,13 +1,13 @@
 #include "OrderManager.h"
 #include "FoodDictionary.h"
-
+#include "GameConfig.h"
 OrderManager::OrderManager() : OrderManager(2, 100, { 100, 700 })
 {
 }
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager) : Component(ecs::OrderManager),
-		currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
-		distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager)
+currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
+distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager)
 {
 }
 
@@ -48,7 +48,10 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
 	if (!lista.empty()) { //Si encuentra el producto a eliminar, elimina el pedido
 		vector<Order*>::iterator it = getFirst(lista);
-		if (playerDidIt) scoreManager_->addScore((*it)->getNumIngs() * 15);
+		if (playerDidIt) scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
+		else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
+			scoreManager_->addScore((*it)->getNumIngs() * -7.5);
+		(*it)->removeTimer();
 		delete* it;
 		*it = nullptr;
 		return true;

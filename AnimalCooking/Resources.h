@@ -42,14 +42,23 @@ public:
 		Plato,
 		Suelo,
 		Hierba,
-		Cooker,
+		OvenOFF,
+		SkilletOFF,
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
 		Platera,
+		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
+		Maza,
+		MazaSucia,
+		Rallador,
+		RalladorSucio,
+		Red,
+		RedSucia,
 		Fregadero,
+		FregaderoON,
 		Ingrediente,
 		Panera,
 		Pedido,
@@ -57,11 +66,44 @@ public:
 		Cerdo,
 		Pollo,
 		CuadradoAux,
+		//Barra de entregas
+		BarraDcha,
+		BarraIzda,
+		BarraCentro,
+		BarraConTimbre,
+		BarraSinTimbre,
+		//Menu
 		level0Menu,
 		level1Menu,
 		level2Menu,
 		level3Menu,
 		level4Menu,
+			//Encimeras
+			EncimeraAbajoConMantel,
+			EncimeraAbajoConMantelDcha,
+			EncimeraAbajoConMantelIzda,
+			EncimeraAbajoSinMantel,
+			EncimeraAbajoSinMantelDcha,
+			EncimeraAbajoSinMantelIzda,
+			EncimeraHorizConMantel,
+			EncimeraHorizSinMantel,
+			EncimeraVertConMantelDcha,
+			EncimeraVertConMantelIzda,
+			EncimeraVertSinMantelDcha,
+			EncimeraVertSinMantelIzda,
+			EncimeraVEsquinaInferiorIzda,
+			EncimeraVEsquinaInferiorDcha,
+			EncimeraVEsquinaSuperiorDcha,
+			EncimeraVEsquinaSuperiorIzda,
+			//Esquinas
+			EsquinaSupDchaCopas,
+			EsquinaSupIzdaCopas,
+			EsquinaSupDchaVino,
+			EsquinaSupIzdaVino,
+			EsquinaSupDchaAgua,
+			EsquinaSupIzdaAgua,
+			EsquinaSupDchaVacia,
+			EsquinaSupIzdaVacia,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,
@@ -171,10 +213,13 @@ public:
 		// images level specific
 		Arroz,
 		Aceite,
+		EncimeraMasa,
 		
 		//spritesheets
 		CircularTimer,
-		BurnedTimer
+		BurnedTimer,
+		OvenON,
+		SkilletON
 
 		// text
 		

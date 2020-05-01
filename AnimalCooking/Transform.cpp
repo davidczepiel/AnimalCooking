@@ -15,7 +15,7 @@ Transform::Transform(Vector2D pos, Vector2D vel, double width,
 		velocity_(vel), //
 		width_(width), //
 		height_(height), //
-		rotation_(0.0) //
+		rotation_(rotation) //
 {
 }
 

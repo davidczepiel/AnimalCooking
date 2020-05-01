@@ -3,14 +3,14 @@
 #include <vector>
 #include "Resources.h"
 #include <queue>
+#include "TimerViewer.h"
+
 class OrderManager;
 
 class AIClient : public Component {
 public:
 	AIClient();
-	AIClient(Uint32 deltaTimePerOrder);
-
-	inline void setDeltaTimePerOrder(Uint32 time) { deltaTimePerOrder_ = time; }
+	AIClient(Uint32 deltaTimePerOrder, TimerViewer* tv);
 
 	inline void setAvailableOrders(vector<Resources::FoodType>& lista) {
 		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
@@ -26,8 +26,7 @@ public:
 	void update() override;
 private:
 	OrderManager* orMngr_;
-	Uint32 deltaTimePerOrder_;
-	Uint32 lastOrderTime_;
+	Timer* t;
 
 	queue<Resources::FoodType> initialOrders_;
 	vector<Resources::FoodType> availableOrders_; // posibles platos en este nivel

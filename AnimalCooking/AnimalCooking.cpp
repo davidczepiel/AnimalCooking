@@ -21,7 +21,6 @@ AnimalCooking::AnimalCooking() :
 	game_(nullptr), //
 	exit_(false) {
 	initGame();
-
 }
 
 AnimalCooking::~AnimalCooking() {
@@ -30,15 +29,12 @@ AnimalCooking::~AnimalCooking() {
 
 void AnimalCooking::initGame() {
 
-	game_ = SDLGame::init("AnimalCooking", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+	game_ = SDLGame::init("AnimalCooking", 1000, 800);
 	GPadController::instance()->getPlayerGPADS();
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
 	game_->getFSM()->pushState(new MenuState(this));
 	game_->getFSM()->refresh();
-
-
-
 
 }
 
@@ -82,13 +78,16 @@ void AnimalCooking::handleInput() {
 		}
 	}
 
-	if (pauseRequest()&& dynamic_cast<PlayState*>(game_->getFSM()->currentState())!=nullptr)
+	if (pauseRequest() && dynamic_cast<PlayState*>(game_->getFSM()->currentState()) != nullptr)
+	{
+		static_cast<PlayState*>(game_->getFSM()->currentState())->pauseTimers();
 		game_->getFSM()->pushState(new PauseState(this));
+	}
 }
 
 bool AnimalCooking::pauseRequest() {
 	if (InputHandler::instance()->isKeyDown(SDLK_ESCAPE) || 
-		GPadController::instance()->playerPressed(0,SDL_CONTROLLER_BUTTON_START) || GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_START))
+		GPadController::instance()->playerPressed(0,SDL_CONTROLLER_BUTTON_START) || GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_START) || GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_START))
 		return true;
 	else 
 		return false;

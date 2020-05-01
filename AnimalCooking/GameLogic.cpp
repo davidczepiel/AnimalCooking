@@ -2,9 +2,15 @@
 #include "Ingredient.h"
 #include "FoodDictionary.h"
 
-GameLogic::GameLogic() : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
+GameLogic::GameLogic(TimerViewer* tv) : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
 foodPool(nullptr), levelTimer_(new LevelTimer())
 {
+    tv->addTimer(levelTimer_);
+}
+
+void GameLogic::init()
+{
+    colSys_ = GETCMP1_(CollisionsSystem);
 }
 
 void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
@@ -15,6 +21,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 
             Vector2D ingPos = ing->getPos();
             Resources::IngredientType ingType = ing->getType();
+            colSys_->removeCollider(ing);
             ing->destroy(type);  
             Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
             GETCMP1_(GameControl)->newFood(f, ingPos);

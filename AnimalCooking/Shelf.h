@@ -11,6 +11,7 @@
 #include "Dish.h"
 #include "Manager.h"
 #include "DishFinisher.h"
+
 class Shelf :
 	public Entity, public Interactive
 {
@@ -20,7 +21,7 @@ private:
 	Pickable* content;
 	Resources::PickableType contentType;
 public:
-	Shelf(Vector2D pos ,Pickable* c,Transport* p1, Transport* p2, EntityManager* mng);
+	Shelf(Vector2D pos ,Pickable* c,Transport* p1, Transport* p2, EntityManager* mng, Texture* texture);
 
 	void setContentPos();
 	

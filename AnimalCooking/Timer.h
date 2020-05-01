@@ -9,7 +9,7 @@ public:
 	Timer();
 	~Timer();
 	virtual void update();
-	virtual void draw() = 0;
+	virtual void draw() {}
 
 	void setTime(Uint32 t) { time_ = t; };	
 	void setTexture(Texture* t) { texture_ = t; };
@@ -25,6 +25,10 @@ public:
 
 	void timerStart();
 	void timerReset();
+	void timerPause();
+	void timerResume();
+
+	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
 
 protected:
 	SDLGame* game_;
@@ -32,6 +36,7 @@ protected:
 
 	Uint32 time_;
 	Uint32 startedTime_;
+	Uint32 pausedTime_;
 
 	bool timerStarted_;
 	bool timerEnd_;
@@ -43,10 +48,10 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) {
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
-	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)) { 
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}

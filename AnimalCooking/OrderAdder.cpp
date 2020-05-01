@@ -4,17 +4,24 @@
 #include "OrderManager.h"
 #include "AIClient.h"
 #include "Vector2D.h"
+#include "SelectorPopUpEntity.h"
+#include "Selector.h"
+#include "InteractionRect.h"
+#include "TimerViewer.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
 
-OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla)
+OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casilla, TimerViewer* tv)
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
 	em->addEntity(os);
 	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
 	interactives_.push_back(os);
+
+	os->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
+		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), os);
 
 	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla));
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casilla, general["Clients"]["repisa"]["size"]["height"].as_double() * casilla));
@@ -29,7 +36,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue nivel, jute::jValue gener
 	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casilla, general["Clients"]["pedidos"]["size"]["height"].as_double() * casilla, 
 		Vector2D(general["Clients"]["pedidos"]["margin"]["x"].as_double() * casilla, general["Clients"]["pedidos"]["margin"]["y"].as_double() * casilla));
 	
-	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000);
+	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000, tv);
 
 	//Inicializacion de los posibles pedidos en ese nivel
 	vector<Resources::FoodType> posibles;

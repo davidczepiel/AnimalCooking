@@ -17,6 +17,14 @@ class MenuState: public State
 {
 	enum SelectionState { Options, Play, Credits, Exit};
 
+public:
+	MenuState(AnimalCooking* ac);
+	~MenuState();
+
+	void leftState();
+	void rightState();
+	void selectedState();
+
 private:
 	SelectionState state;
 	SDL_Rect backgroundRect;
@@ -38,12 +46,5 @@ private:
 	void optionsMenuCallback();
 	void creditsMenuCallback();
 	void closeGame();
-public:
-	MenuState(AnimalCooking* ac);
-	~MenuState();
-
-	void leftState();
-	void rightState();
-	void selectedState();
 };
 
