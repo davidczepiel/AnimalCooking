@@ -41,9 +41,11 @@ private:
 
 	void joystickUpdate();
 	bool padNotTouched();
+	bool dpadArrosNotUsed();
 	void keyUpdate();
 	bool idle=true;
 	bool ableToPress = true;
+	bool dpadArrowsUsed = true;
 
 	void updateKeys(int id);
 };

@@ -121,22 +121,26 @@ void PlayerController::joystickUpdate()
 	else if (!ableToPress&& padNotTouched())
 		ableToPress = true;
 
-	if (GPadController::instance()->playerPressed(id_,SDL_CONTROLLER_BUTTON_DPAD_DOWN) && selector_ != nullptr)
+	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && selector_ != nullptr)
 	{
+		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr) {
 			i->action2(id_);
 			i = nullptr;
 		}
 	}
-	else if (GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_UP) && selector_ != nullptr)
+	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && selector_ != nullptr)
 	{
+		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr) {
 			i->action3(id_);
 			i = nullptr;
 		}
 	}
+	else if (dpadArrowsUsed && dpadArrosNotUsed())
+		dpadArrowsUsed = false;
 }
 
 bool PlayerController::padNotTouched() {
@@ -146,6 +150,16 @@ bool PlayerController::padNotTouched() {
 		!GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y))
 		return true;
 	else 
+		return false;
+}
+
+bool PlayerController::dpadArrosNotUsed() {
+	if (!GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_UP) &&
+		!GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_DOWN) &&
+		!GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_LEFT) &&
+		!GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+		return true;
+	else
 		return false;
 }
 
