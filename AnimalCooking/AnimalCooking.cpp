@@ -32,7 +32,7 @@ void AnimalCooking::initGame() {
 	game_ = SDLGame::init("AnimalCooking", 1000, 800);
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
-	game_->getFSM()->pushState(new MenuState(this));
+	game_->getFSM()->pushState(new MenuState /*EndState*/(this));
 	game_->getFSM()->refresh();
 
 }

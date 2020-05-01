@@ -71,6 +71,9 @@ public:
 	inline InputHandler* getInputHandler() const {
 		return InputHandler::instance();
 	}
+	inline Resources::Level getCurrentLevel()const {
+		return currentLevel;
+	}
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
@@ -95,6 +98,8 @@ public:
 	inline void setCasillaLength(const double& CasillaLength) { casillaLength = CasillaLength; }
 	inline const double& getCasillaLength() const { return casillaLength; }
 
+	void setCurrentLevel(Resources::Level level) { currentLevel = level; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -117,7 +122,7 @@ protected:
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
-
+	Resources::Level currentLevel;
 	double casillaLength;
 	Entity* timersViewer_;
 

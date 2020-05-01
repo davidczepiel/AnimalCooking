@@ -14,6 +14,8 @@ private:
 	static void goToMapState(AnimalCooking* ac);
 	static void goToLoadState(AnimalCooking* ac);
 	static void goToMenuState(AnimalCooking* ac);
+	static void resetLevel(AnimalCooking* ac);
+
 public:
 	EndState(AnimalCooking* ac);
 

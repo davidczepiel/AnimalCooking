@@ -11,6 +11,7 @@ constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de r
 
 ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
+	SDLGame::instance()->setCurrentLevel(nivel );
 	Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
 	Entity* bg = stage->addEntity();

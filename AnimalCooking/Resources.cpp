@@ -24,6 +24,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
+	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
+	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
+	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
+	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
