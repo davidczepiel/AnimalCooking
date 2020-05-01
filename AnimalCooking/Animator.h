@@ -6,8 +6,8 @@ class Animator : public Component
 	
 public:
 
-	enum States { Idle, IdleWithKnife, IdleWithMace, IdleWithGrater, IdleWithNet,
-		          Walk, WalkWithKnife, WalkWithMace, WalkWithGrater, WalkWithNet,
+	enum States { Idle, IdleWithKnife, IdleWithMace, IdleWithGrater, IdleWithNet,IdleWithDish,
+		          Walk, WalkWithKnife, WalkWithMace, WalkWithGrater, WalkWithNet,WalkWithDish,
 		          AttackWithKnife, AttackWithMace, AttackWithGrater, AttackWithNet };
 	
 	

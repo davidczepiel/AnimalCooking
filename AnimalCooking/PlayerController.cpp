@@ -217,6 +217,7 @@ void PlayerController::keyUpdate()
 		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithMace);
 		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithGrater);
 		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithNet);
+		else if( transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::IdleWithDish);
 		else animator->setCurrentState(Animator::States::Idle); 		
 	}
 }
