@@ -90,6 +90,9 @@ void MenuState::closeGame() {
 }
 
 MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play), ruedecillaAngle(0.0) {
+
+	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
+
 	cout << "Menu State" << endl;
 
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());

@@ -257,6 +257,7 @@ public:
 
 	enum AudioId : std::size_t {
 		// music
+		MenuInicio,
 		Level1,
 		Beat,
 		Cheer,

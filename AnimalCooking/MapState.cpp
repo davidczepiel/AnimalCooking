@@ -5,6 +5,7 @@
 #include "ButtonBehaviour.h"
 
  void MapState::screenLoaderCallback(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->haltMusic();
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1,ac));
 }
 void MapState::backButtonCallback(AnimalCooking* ac) {

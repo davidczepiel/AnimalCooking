@@ -225,6 +225,7 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 
 vector<Resources::MusicInfo> Resources::musics_{
 	//
+	{Basic, MenuInicio, "../AnimalCooking/resources/sounds/Menu_inicio.ogg"},
 	{AllLevels, Level1, "../AnimalCooking/resources/sounds/Ingame piano.ogg"}
 };
 
