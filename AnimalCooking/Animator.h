@@ -8,7 +8,7 @@ public:
 
 	enum States { Idle, IdleWithKnife, IdleWithMace, IdleWithGrater, IdleWithNet,
 		          Walk, WalkWithKnife, WalkWithMace, WalkWithGrater, WalkWithNet,
-		          Attack, AttackWithKnife, AttackWithMace, AttackWithGrater, AttackWithNet };
+		          AttackWithKnife, AttackWithMace, AttackWithGrater, AttackWithNet };
 	
 	
 	Animator();

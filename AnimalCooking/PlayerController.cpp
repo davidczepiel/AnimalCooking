@@ -1,5 +1,6 @@
 #include "PlayerController.h"
 #include "GameConfig.h"
+#include "Utensil.h"
 
 void PlayerController::init()
 {
@@ -8,9 +9,8 @@ void PlayerController::init()
 	selector_ = GETCMP1_(Selector);
 	attack_ = GETCMP1_(Attack);
 	animator = GETCMP1_(Animator);
-
 	animator->setCurrentState(Animator::States::Idle);
-
+	transport = GETCMP1_(Transport);
 	updateKeys(id_);
 }
 
@@ -167,7 +167,8 @@ void PlayerController::keyUpdate()
 		if (keyboard->isKeyDown(keys.attack))
 		{
 			attack_->attack();
-			animator->setCurrentState(Animator::States::Attack);
+			if(transport->getObjectTypeInHands() == Resources::PickableType::Utensil)animator->setCurrentState(Animator::States::AttackWithKnife);
+			
 		}
 
 		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
@@ -210,5 +211,12 @@ void PlayerController::keyUpdate()
 		tr_->setVelY(0);	
 	}
 
-	if(keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);	 
+	if (keyboard->keyUpEvent()) 
+	{ 
+		if (static_cast<Utensil*>(transport->getObjectInHands()) !=nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithKnife);
+		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithMace);
+		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithGrater);
+		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithNet);
+		else animator->setCurrentState(Animator::States::Idle); 		
+	}
 }

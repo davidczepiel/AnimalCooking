@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerViewer.h"
+#include "GameConfig.h"
 
 void PlayerViewer::init()
 {	
@@ -11,12 +12,30 @@ void PlayerViewer::draw()
 {
 	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),tr_->getW(),tr_->getH()};
 
-	// int(((game_->getTime() / animator->getAnimSpeed()) % 6)) --> usarlo como parametro para el metodo animate del Animator
+	// int(((game_->getTime() / animator->getAnimSpeed()) % 6)) --> usarlo como parametro 
 
-	//Aqui habra que mostrar las diferentes animaciones,de momento solo muestra la textura de cerdo
-	if (animator->getCurrentState() == Animator::States::Idle) texture_->render(dest);
-	else if (animator->getCurrentState() == Animator::States::Walk) texture_->render(dest);
-	else if (animator->getCurrentState() == Animator::States::Attack) texture_->render(dest);
+	
+	switch (animator->getCurrentState())
+	{
+	case Animator::States::Idle:
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
+        texture_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())),0);
+		break;
+
+	case Animator::States::IdleWithKnife:
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
+		texture_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		break;
+
+	case Animator::States::Walk:
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk);
+		texture_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		break;
+
+
+	default:
+		break;
+	}
 
 	
 }
