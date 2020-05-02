@@ -151,7 +151,21 @@ void PlayerController::keyUpdate()
 		
 		ir_->setDir(x, y);
 
-		if(tr_->getVel().getX()!=0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
+		//Estados de walk
+		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0) 
+		{ 
+			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::WalkWithDish);
+			else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			{
+				Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+
+				if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::WalkWithKnife);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(Animator::States::WalkWithMace);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(Animator::States::WalkWithGrater);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(Animator::States::WalkWithNet);
+			}
+			else animator->setCurrentState(Animator::States::Walk);
+		}
 
 		//--------------------Botones
 
@@ -202,22 +216,26 @@ void PlayerController::keyUpdate()
 				i->action5(id_);
 				i = nullptr;
 			}
-
 		}
-
 	}
 	else {
 		tr_->setVelX(0);
 		tr_->setVelY(0);	
 	}
 
+    //Estados de idle
 	if (keyboard->keyUpEvent()) 
-	{ 
-		if (static_cast<Utensil*>(transport->getObjectInHands()) !=nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithKnife);
-		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithMace);
-		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithGrater);
-		else if (static_cast<Utensil*>(transport->getObjectInHands()) != nullptr && static_cast<Utensil*>(transport->getObjectInHands())->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithNet);
-		else if( transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::IdleWithDish);
-		else animator->setCurrentState(Animator::States::Idle); 		
+	{ 		
+		if(transport->getObjectInHands()!=nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::IdleWithDish); 
+		else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+		{
+			Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+
+            if ( u!=nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithKnife);
+		    else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(Animator::States::IdleWithMace);
+		    else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(Animator::States::IdleWithGrater);
+		    else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(Animator::States::IdleWithNet);		
+		}
+		else animator->setCurrentState(Animator::States::Idle); 				
 	}
 }

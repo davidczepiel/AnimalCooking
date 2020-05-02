@@ -18,34 +18,41 @@ void PlayerViewer::draw()
 	switch (animator->getCurrentState())
 	{
 	case Animator::States::Idle:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-        texture_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())),0);
+        idleSpritesheet_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())),0);
 		break;
-
 	case Animator::States::IdleWithKnife:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-		texture_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		idleSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
 		break;
 	case Animator::States::IdleWithMace:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-		texture_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		idleSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
 		break;
-
 	case Animator::States::IdleWithNet:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-		texture_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		idleSpritesheet_->renderFrame(dest, 8, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
 		break;
 	case Animator::States::IdleWithGrater:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-		texture_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		idleSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
 		break;
 	case Animator::States::IdleWithDish:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle);
-		texture_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		idleSpritesheet_->renderFrame(dest, 6, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
 		break;
+
 	case Animator::States::Walk:
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk);
-		texture_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % texture_->getNumCols())), 0);
+		walkSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithKnife:
+		walkSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithMace:
+		walkSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithNet:
+		walkSpritesheet_->renderFrame(dest, 8, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithGrater:
+		walkSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithDish:
+		walkSpritesheet_->renderFrame(dest, 6, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
 		break;
 
 
