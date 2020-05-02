@@ -40,4 +40,6 @@ void EndState::goToMapState(AnimalCooking* ac) {
 void EndState::goToMenuState(AnimalCooking* ac) {
 	goToMapState(ac);
 	SDLGame::instance()->getFSM()->popState();
+	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
+
 }

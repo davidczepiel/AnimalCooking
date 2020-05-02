@@ -49,6 +49,7 @@ void PauseState::menuCallback(AnimalCooking* ac)
 	{
 		fsm->popState();
 	}
+	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 }
 
 void PauseState::configCallback(AnimalCooking* ac)
