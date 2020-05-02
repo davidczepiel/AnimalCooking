@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Timer.h"
 
 class Animator : public Component	
 {
@@ -17,15 +18,12 @@ public:
 	States getCurrentState() { return currentState; };
 	void setCurrentState(States s) { currentState = s; };
 
-	/*SDL_Rect& animate(Texture* t, int fx, int fy,int numRows=1, int numCols=1);
-
-	int getAnimSpeed() { return animSpeed; }
-	void setAnimSpeed(int s) { animSpeed = s; }*/
+	DefaultTimer getTimer() { return dt; }
 
 private:
 
 	States currentState;
 	SDL_Rect clip;
-	int animSpeed = 60;
+	DefaultTimer dt;
 };
 

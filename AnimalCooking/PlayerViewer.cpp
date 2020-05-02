@@ -12,7 +12,7 @@ void PlayerViewer::draw()
 {
 	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),tr_->getW(),tr_->getH()};
 
-	// int(((game_->getTime() / animator->getAnimSpeed()) % 6)) --> usarlo como parametro 
+	// int(((game_->getTime() / animator->getAnimSpeed()) % Nº columnas)) --> usarlo como parametro 
 
 	
 	switch (animator->getCurrentState())
@@ -55,6 +55,18 @@ void PlayerViewer::draw()
 		walkSpritesheet_->renderFrame(dest, 6, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
 		break;
 
+	case Animator::States::AttackWithKnife:
+		attackSpritesheet_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithMace:
+		attackSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithNet:
+		attackSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithGrater:
+		attackSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
 
 	default:
 		break;
