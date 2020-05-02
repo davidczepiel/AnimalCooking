@@ -30,6 +30,7 @@ void EndState::goToLoadState(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Nivel1,ac));
 }
 void EndState::goToMapState(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	FSM* fsm = SDLGame::instance()->getFSM();
 	for (int i = 0; i < 2; i++)
 	{

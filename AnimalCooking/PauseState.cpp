@@ -49,18 +49,21 @@ void PauseState::menuCallback(AnimalCooking* ac)
 	{
 		fsm->popState();
 	}
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 }
 
 void PauseState::configCallback(AnimalCooking* ac)
 {
 	cout << "Config";
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new ConfigState(ac));
 }
 
 void PauseState::resumeCallback(AnimalCooking* ac)
 {
 	cout << "Resume";
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState([]() { 
 			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers();
 			SDLGame::instance()->getAudioMngr()->resumeMusic();

@@ -6,9 +6,11 @@
 
  void MapState::screenLoaderCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->haltMusic();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(Resources::Level::Nivel1,ac));
 }
 void MapState::backButtonCallback(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
 }
 MapState::MapState(AnimalCooking* ac): State(ac) {

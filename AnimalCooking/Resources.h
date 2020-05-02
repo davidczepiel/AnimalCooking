@@ -279,6 +279,14 @@ public:
 		CookedFood,
 		IngredientSpawned,
 		OrderRecieved,
+
+		Tecla1, //Variaciones que suenan al pulsar un boton
+		Tecla2,
+		Tecla3,
+		Tecla4,
+		Tecla5,
+		Tecla6,
+
 		End_Win,
 		End_Lost,
 

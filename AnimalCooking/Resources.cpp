@@ -248,6 +248,14 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
 	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
 	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
+
+	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
+	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },
+	{Basic, Tecla3,"../AnimalCooking/resources/sounds/tecla3.ogg" },
+	{Basic, Tecla4,"../AnimalCooking/resources/sounds/tecla4.ogg" },
+	{Basic, Tecla5,"../AnimalCooking/resources/sounds/tecla5.ogg" },
+	{Basic, Tecla6,"../AnimalCooking/resources/sounds/tecla6.ogg" },
+
 	{AllLevels, End_Win,"../AnimalCooking/resources/sounds/END_WIN.ogg" },
 	{AllLevels, End_Lost,"../AnimalCooking/resources/sounds/END_LOST.ogg" }
 };

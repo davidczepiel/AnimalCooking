@@ -74,14 +74,17 @@ void MenuState::selectedState()
 }
 
 void MenuState::playMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	 SDLGame::instance()->getFSM()->pushState(new MapState(app));
 }
 
 void MenuState::optionsMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance() ->getFSM()->pushState(new ConfigState(app));
 }
 
 void MenuState::creditsMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
 }
 
