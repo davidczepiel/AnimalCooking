@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerViewer.h"
+#include "GameConfig.h"
 
 void PlayerViewer::init()
 {	
@@ -11,12 +12,65 @@ void PlayerViewer::draw()
 {
 	SDL_Rect dest = {tr_->getPos().getX(),tr_->getPos().getY(),tr_->getW(),tr_->getH()};
 
-	// int(((game_->getTime() / animator->getAnimSpeed()) % 6)) --> usarlo como parametro para el metodo animate del Animator
+	// int(((game_->getTime() / animator->getAnimSpeed()) % Nº columnas)) --> usarlo como parametro 
 
-	//Aqui habra que mostrar las diferentes animaciones,de momento solo muestra la textura de cerdo
-	if (animator->getCurrentState() == Animator::States::Idle) texture_->render(dest);
-	else if (animator->getCurrentState() == Animator::States::Walk) texture_->render(dest);
-	else if (animator->getCurrentState() == Animator::States::Attack) texture_->render(dest);
+	
+	switch (animator->getCurrentState())
+	{
+	case Animator::States::Idle:
+        idleSpritesheet_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())),0);
+		break;
+	case Animator::States::IdleWithKnife:
+		idleSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::IdleWithMace:
+		idleSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::IdleWithNet:
+		idleSpritesheet_->renderFrame(dest, 8, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::IdleWithGrater:
+		idleSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::IdleWithDish:
+		idleSpritesheet_->renderFrame(dest, 6, int(((game_->getTime() / config::ANIM_SPEED) % idleSpritesheet_->getNumCols())), 0);
+		break;
+
+	case Animator::States::Walk:
+		walkSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithKnife:
+		walkSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithMace:
+		walkSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithNet:
+		walkSpritesheet_->renderFrame(dest, 8, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithGrater:
+		walkSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::WalkWithDish:
+		walkSpritesheet_->renderFrame(dest, 6, int(((game_->getTime() / config::ANIM_SPEED) % walkSpritesheet_->getNumCols())), 0);
+		break;
+
+	case Animator::States::AttackWithKnife:
+		attackSpritesheet_->renderFrame(dest,0, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithMace:
+		attackSpritesheet_->renderFrame(dest, 2, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithNet:
+		attackSpritesheet_->renderFrame(dest, 4, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+	case Animator::States::AttackWithGrater:
+		attackSpritesheet_->renderFrame(dest, 0, int(((game_->getTime() / config::ANIM_SPEED) % attackSpritesheet_->getNumCols())), 0);
+		break;
+
+	default:
+		break;
+	}
 
 	
 }

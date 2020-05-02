@@ -1,5 +1,6 @@
 #include "PlayerController.h"
 #include "GameConfig.h"
+#include "Utensil.h"
 
 void PlayerController::init()
 {
@@ -8,9 +9,8 @@ void PlayerController::init()
 	selector_ = GETCMP1_(Selector);
 	attack_ = GETCMP1_(Attack);
 	animator = GETCMP1_(Animator);
-
 	animator->setCurrentState(Animator::States::Idle);
-
+	transport = GETCMP1_(Transport);
 	updateKeys(id_);
 }
 
@@ -151,7 +151,21 @@ void PlayerController::keyUpdate()
 		
 		ir_->setDir(x, y);
 
-		if(tr_->getVel().getX()!=0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
+		//Estados de walk
+		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0 || animator->getTimer().isTimerEnd()) 
+		{ 
+			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::WalkWithDish);
+			else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			{
+				Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+
+				if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::WalkWithKnife);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(Animator::States::WalkWithMace);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(Animator::States::WalkWithGrater);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(Animator::States::WalkWithNet);
+			}
+			else animator->setCurrentState(Animator::States::Walk);
+		}
 
 		//--------------------Botones
 
@@ -167,7 +181,16 @@ void PlayerController::keyUpdate()
 		if (keyboard->isKeyDown(keys.attack))
 		{
 			attack_->attack();
-			animator->setCurrentState(Animator::States::Attack);
+
+			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			{
+				Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+				animator->getTimer().timerStart();
+				if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::AttackWithKnife);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(Animator::States::AttackWithMace);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(Animator::States::AttackWithGrater);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(Animator::States::AttackWithNet);
+			}						
 		}
 
 		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
@@ -201,14 +224,26 @@ void PlayerController::keyUpdate()
 				i->action5(id_);
 				i = nullptr;
 			}
-
 		}
-
 	}
 	else {
 		tr_->setVelX(0);
 		tr_->setVelY(0);	
 	}
 
-	if(keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);	 
+    //Estados de idle
+	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd())
+	{ 						
+			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(Animator::States::IdleWithDish);
+			else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			{
+				Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+
+				if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(Animator::States::IdleWithKnife);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(Animator::States::IdleWithMace);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(Animator::States::IdleWithGrater);
+				else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(Animator::States::IdleWithNet);
+			}
+			else animator->setCurrentState(Animator::States::Idle);				 				
+	}
 }

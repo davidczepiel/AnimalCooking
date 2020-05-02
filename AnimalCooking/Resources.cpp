@@ -214,7 +214,10 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{Basic, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
-	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1}
+	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+    {Basic, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",10,8},
+	{Basic, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",10,4},
+	{Basic, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",6,2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

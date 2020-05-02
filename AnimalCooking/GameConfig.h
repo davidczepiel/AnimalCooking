@@ -16,7 +16,8 @@ namespace config {
 	constexpr int AI_INGREDIENT_MAX_VEL = 2;
 
 	//ANIMATOR
-	constexpr int ANIM_SPEED = 60;
+	constexpr int ANIM_SPEED = 100;
+	constexpr int ANIM_TIME = 20000;
 
 	//COOKERS
 	constexpr int SKILLET_SECONDS_TO_COOK = 10;

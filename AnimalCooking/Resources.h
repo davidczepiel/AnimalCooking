@@ -219,8 +219,10 @@ public:
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
-		SkilletON
-
+		SkilletON,
+		PigIdle,
+        PigWalk,
+		PigAttack
 		// text
 		
 	
