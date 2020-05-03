@@ -2,7 +2,7 @@
 #include "AdversityManager.h"
 
 
-HookAdversity::HookAdversity(AdversityManager* am) : Adversity(am)
+HookAdversity::HookAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam)
 {
 	tP1 = adversityMngr_->getTransformPlayer(Resources::Player::Player2);
 	tP2 = adversityMngr_->getTransformPlayer(Resources::Player::Player2);

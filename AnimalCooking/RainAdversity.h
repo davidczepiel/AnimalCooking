@@ -20,7 +20,7 @@ class RainAdversity :
 	int animationFrame;
 
 public:
-	RainAdversity(AdversityManager* am);
+	RainAdversity(AdversityManager* am, MultipleAdversityManager* mam);
 	virtual void update();
 	virtual void draw();
 	virtual void reset();

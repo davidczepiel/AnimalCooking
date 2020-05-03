@@ -14,7 +14,7 @@ class PlaneAdversity : public Adversity
 	void StartPlane();
 
 public:
-	PlaneAdversity(AdversityManager* am) : Adversity(am) { StartPlane(); }
+	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam) { StartPlane(); }
 	~PlaneAdversity() {}
 	
 	void update();
