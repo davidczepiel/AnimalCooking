@@ -45,9 +45,9 @@ void PlayerViewer::draw()
 		setIdle(dest,8,9);
 		break;
 	case Animator::States::IdleWithGrater:
-		setIdle(dest, 2, 3);
+		setIdle(dest, 11, 12);
 		break;
-	case Animator::States::IdleWithDish:
+	case Animator::States::IdleWithDishFood:
 		setIdle(dest, 6, 7);
 		break;
 
@@ -64,9 +64,9 @@ void PlayerViewer::draw()
 		setWalkOrAttack(dest, walkSpritesheet_, 8, 9);
 		break;
 	case Animator::States::WalkWithGrater:
-		setWalkOrAttack(dest, walkSpritesheet_,2,3);
+		setWalkOrAttack(dest, walkSpritesheet_,11,12);
 		break;
-	case Animator::States::WalkWithDish:
+	case Animator::States::WalkWithDishFood:
 		setWalkOrAttack(dest, walkSpritesheet_, 6, 7);
 		break;
 
@@ -80,7 +80,7 @@ void PlayerViewer::draw()
 		setWalkOrAttack(dest, attackSpritesheet_, 4, 5);
 		break;
 	case Animator::States::AttackWithGrater:
-		setWalkOrAttack(dest, attackSpritesheet_, 0, 1);
+		setWalkOrAttack(dest, attackSpritesheet_, 7, 8);
 		break;
 
 	default:

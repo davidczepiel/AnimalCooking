@@ -154,7 +154,7 @@ void PlayerController::keyUpdate()
 		if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));
 
 		//Estados de walk
-		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0 || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDish, Animator::States::WalkWithKnife, 
+		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0 || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife, 
 			                                                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater, 
 			                                                                                                          Animator::States::WalkWithNet, Animator::Walk);			
 
@@ -221,7 +221,7 @@ void PlayerController::keyUpdate()
 	}
 
     //Estados de idle
-	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDish, Animator::States::IdleWithKnife, 
+	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife, 
 		                                                                          Animator::States::IdleWithMace, Animator::States::IdleWithGrater, 
 		                                                                          Animator::States::IdleWithNet, Animator::States::Idle);
 }
@@ -229,7 +229,7 @@ void PlayerController::keyUpdate()
 
 void PlayerController::setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s)
 {
-	if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Dish) animator->setCurrentState(d);
+	if (transport->getObjectInHands() != nullptr && (transport->getObjectTypeInHands() == Resources::PickableType::Dish || transport->getObjectTypeInHands() == Resources::PickableType::Food)) animator->setCurrentState(d);
 	else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil) setUtensilState(u1, u2, u3, u4);
 	else animator->setCurrentState(s);
 }
