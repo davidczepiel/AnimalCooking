@@ -18,11 +18,11 @@ public:
 
 	inline CookerStates getCookerState() { return state_; };
 
-	inline void setEmptyTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cooker); };
-	inline void setBurnedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
-	inline void setCookingTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooking); };
-	inline void setCookedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
-	inline void setOverHeatedTexture() { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerOverHeated); };
+	virtual void setEmptyTexture() = 0;
+	virtual void setBurnedTexture() = 0;
+	virtual void setCookingTexture() = 0;
+	virtual void setCookedTexture() = 0;
+	virtual void setOverHeatedTexture() = 0;
 
 	Timer* getCookerTimer() { return timer_; };
 	Uint32 getCookingTime() { return cookingTime_; }
@@ -56,6 +56,7 @@ public:
 	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
 	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
 	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
+	virtual void setOverHeatedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 };
 
 class Skillet : public Cooker {
@@ -66,4 +67,5 @@ public:
 	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
 	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); };
 	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
+	virtual void setOverHeatedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 };

@@ -12,7 +12,7 @@ class BurnedCookerAdversity : public Adversity
 	void StartAdversity();
 
 public:
-	BurnedCookerAdversity(AdversityManager* am) : Adversity(am), cookerPool(am->getCookerPool) { StartAdversity(); }
+	BurnedCookerAdversity(AdversityManager* am) : Adversity(am), cookerPool(am->getCookerPool()) { StartAdversity(); }
 	~BurnedCookerAdversity() {}
 
 	void update();
