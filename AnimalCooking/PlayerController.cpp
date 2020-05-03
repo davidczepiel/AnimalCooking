@@ -150,8 +150,8 @@ void PlayerController::keyUpdate()
 		//else tr_->setVelX(0);
 		
 		ir_->setDir(x, y);
+		//Se establece la direccion para mostrar la animacion correspondiente
 		if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));
-		cout << animator->getDir() << endl;
 
 		//Estados de walk
 		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0 || animator->getTimer().isTimerEnd()) 
