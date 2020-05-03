@@ -20,10 +20,13 @@ public:
 
 	DefaultTimer getTimer() { return dt; }
 
+	void setDir(Vector2D v) { dir = v; }
+	Vector2D getDir() { return dir; }
+
 private:
 
 	States currentState;
-	SDL_Rect clip;
 	DefaultTimer dt;
+	Vector2D dir;
 };
 

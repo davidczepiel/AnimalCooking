@@ -17,6 +17,7 @@ private:
 	Transform* tr_ = nullptr;
 	Animator* animator = nullptr;
 
-
+	void setWalk(SDL_Rect dest,int fil1,int fil2);
+	void setIdle(SDL_Rect dest,int fil1,int fil2);
 };
 
