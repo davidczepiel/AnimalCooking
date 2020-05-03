@@ -34,7 +34,7 @@ private:
 	void initialize_levelIngredients();
 	void initialize_clients();
 	void initialize_walls();
-	//void initialize_adversities();
+	void initialize_adversities();
 
 	double casilla;
 	double offset;

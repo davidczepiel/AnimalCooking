@@ -17,7 +17,7 @@ class AdversityManager : public Component
 	bool playingAdversity;
 	
 public:
-	AdversityManager() :Component(ecs::AdversityManager) {}
+	AdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) :Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up) {}
 	void update();
 	void draw();
 	void playAdversity() { playingAdversity = true; }

@@ -1,4 +1,8 @@
 #include "AdversityManager.h"
+#include "BurnedCookerAdversity.h"
+#include "PlaneAdversity.h"
+#include "HookAdversity.h"
+#include "RainAdversity.h"
 
 void AdversityManager::update()
 {
@@ -21,6 +25,17 @@ void AdversityManager::stopAdversity()
 void AdversityManager::loadAdversity(ecs::AdversityID type)
 {
 	switch (type) {
-		//MyAdversity = new ...;
+		case ecs::AdversityID::CookersAdversity:
+			myAdversity = new BurnedCookerAdversity(this);
+		break;
+		case ecs::AdversityID::HookAdversity:
+			myAdversity = new HookAdversity(this);
+		break;
+		case ecs::AdversityID::PlaneAdversity:
+			myAdversity = new PlaneAdversity(this);
+		break;
+		case ecs::AdversityID::RainAdversity:
+			//myAdversity = new RainAdversity(this);
+		break;
 	}
 }

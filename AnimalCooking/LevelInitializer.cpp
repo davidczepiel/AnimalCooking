@@ -19,6 +19,7 @@
 #include "IngredientInitializer.h"
 #include "OrderAdder.h"
 #include "WallAdder.h"
+#include "AdversityManager.h"
 
 #include "SDLGame.h"
 
@@ -55,6 +56,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, Sc
 	initialize_clients();
 	initialize_colSystem();
 	initialize_walls();
+	initialize_adversities();
 }
 
 void LevelInitializer::initialize_players()
@@ -218,6 +220,19 @@ void LevelInitializer::initialize_clients()
 void LevelInitializer::initialize_walls()
 {
 	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casilla, offset);
+
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_adversities()
+{
+	Entity* adversityManager = emPlaystate->addEntity();
+	adversityManager->addComponent<AdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
+	GETCMP2(adversityManager, AdversityManager)->loadAdversity(ecs::AdversityID::PlaneAdversity);
+	GETCMP2(gameManager, GameControl)->getAdversityTime()->setTime(500);
+	GETCMP2(gameManager, GameControl)->getAdversityTime()->timerStart();
+	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));
+	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
 
 	sL->updateLength();
 }

@@ -5,6 +5,7 @@
 void PlaneAdversity::StartPlane() {
 	RandomNumberGenerator* rnd = SDLGame::instance()->getRandGen();
 
+	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite);
 	planeRect_ = RECT(SDLGame::instance()->getWindowWidth() / 2, SDLGame::instance()->getWindowHeight(), planeTexture_->getWidth(), planeTexture_->getHeight());
 	velocity_ = rnd->nextInt(1, 5);
 	force_ = rnd->nextInt(2, 7);
