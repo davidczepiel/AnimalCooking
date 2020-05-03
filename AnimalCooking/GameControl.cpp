@@ -7,6 +7,7 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
+	adversityTimer.timerStart();
 }
 
 

@@ -20,6 +20,7 @@ void AdversityManager::stopAdversity()
 {
 	playingAdversity = false;
 	myAdversity->reset();
+	
 }
 
 void AdversityManager::loadAdversity(ecs::AdversityID type)
@@ -33,6 +34,7 @@ void AdversityManager::loadAdversity(ecs::AdversityID type)
 		break;
 		case ecs::AdversityID::PlaneAdversity:
 			myAdversity = new PlaneAdversity(this, nullptr);
+			//myAdversity = new BurnedCookerAdversity(this);
 		break;
 		case ecs::AdversityID::RainAdversity:
 			//myAdversity = new RainAdversity(this);

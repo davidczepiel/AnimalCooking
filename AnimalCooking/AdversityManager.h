@@ -6,6 +6,7 @@
 #include "CookerPool.h"
 #include "UtensilsPool.h"
 #include "IngredientsPool.h"
+
 class AdversityManager : public Component
 {
 	Adversity* myAdversity;
@@ -17,10 +18,11 @@ class AdversityManager : public Component
 	bool playingAdversity;
 	
 public:
-	AdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) :Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up) {}
+	AdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) :Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up),playingAdversity(false), myAdversity(nullptr) {}
 	void update();
 	void draw();
-	void playAdversity() { playingAdversity = true; }
+	void playAdversity() 
+	{ playingAdversity = true; }
 	void stopAdversity();
 	void loadAdversity(ecs::AdversityID type);
 
