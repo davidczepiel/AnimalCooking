@@ -45,14 +45,18 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	//Hacer falsa barra de entregas
 	Entity* e;
-	for (int i = 0; i < general["Clients"]["repisa"]["size"]["width"].as_int(); i++) {
+	int posX = nivel["Clients"]["repisaFalsa"]["pos"]["x"].as_int();
+	int posY = nivel["Clients"]["repisaFalsa"]["pos"]["y"].as_int();
+	int size = general["Clients"]["repisa"]["size"]["width"].as_int();
+	for (int i = 0; i < size; i++) {
 		e = mngr->addEntity();
-		e->addComponent<Transform>(Vector2D(nivel["repisaFalsa"]["pos"]["x"].as_int() * casilla,
-			nivel["repisaFalsa"]["pos"]["y"].as_int()) * casilla, Vector2D(),
-			casilla, casilla);
-		if(i==0)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraConTimbre), Vector2D(casilla, casilla));
-		else e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraSinTimbre), Vector2D(casilla, casilla));
-		mngr->addToGroup(e, CASTID(general["Clients"]["Layer"].as_int()));
+		e->addComponent<Transform>(Vector2D((posX + i) * casilla, posY * casilla), Vector2D(), casilla, casilla);
+		
+		if(i==0)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraIzda), Vector2D(casilla, casilla));
+		else if(i == size-1)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraDcha), Vector2D(casilla, casilla));
+		else e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraCentro), Vector2D(casilla, casilla));
+		
+		mngr->addToGroup(e, CASTID(general["Shelf"]["Layer"].as_int()));
 	}
 
 	//Suelos
