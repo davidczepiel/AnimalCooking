@@ -20,19 +20,20 @@ void AdversityManager::stopAdversity()
 {
 	playingAdversity = false;
 	myAdversity->reset();
+	
 }
 
 void AdversityManager::loadAdversity(ecs::AdversityID type)
 {
 	switch (type) {
 		case ecs::AdversityID::CookersAdversity:
-			myAdversity = new BurnedCookerAdversity(this);
+			//myAdversity = new BurnedCookerAdversity(this);
 		break;
 		case ecs::AdversityID::HookAdversity:
-			myAdversity = new HookAdversity(this);
+			myAdversity = new HookAdversity(this,nullptr);
 		break;
 		case ecs::AdversityID::PlaneAdversity:
-			myAdversity = new PlaneAdversity(this);
+			myAdversity = new PlaneAdversity(this,nullptr);
 		break;
 		case ecs::AdversityID::RainAdversity:
 			//myAdversity = new RainAdversity(this);
