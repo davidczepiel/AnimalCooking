@@ -25,5 +25,6 @@ private:
 	Resources::Level level;
 	Entity* barraCarga_;
 	Entity* buttonGo_;
+	Entity* padNavigation_;
 	static void goToPlayState(AnimalCooking* ac);
 };

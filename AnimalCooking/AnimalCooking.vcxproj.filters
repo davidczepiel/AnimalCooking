@@ -137,6 +137,8 @@
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="TimerViewer.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
+    <ClCompile Include="MainMenuPadNavigation.cpp" />
+    <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallAdder.cpp" />
     <ClCompile Include="Door.cpp" />
@@ -292,6 +294,8 @@
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="OrderAdder.h" />
+    <ClInclude Include="MainMenuPadNavigation.h" />
+    <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallAdder.h" />
     <ClInclude Include="Door.h" />

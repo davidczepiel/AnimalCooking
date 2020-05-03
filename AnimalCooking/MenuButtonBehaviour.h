@@ -15,6 +15,8 @@ public:
 
 	void init() override;
 	void update() override;
+	void action();
+	ButtonType getButtonType() { return buttonType_; }
 private:
 	Transform* tr_;
 	MenuState* ms_;
