@@ -1,5 +1,6 @@
 #include "PlayerController.h"
 #include "GameConfig.h"
+#include "Utensil.h"
 
 void PlayerController::init()
 {
@@ -8,9 +9,8 @@ void PlayerController::init()
 	selector_ = GETCMP1_(Selector);
 	attack_ = GETCMP1_(Attack);
 	animator = GETCMP1_(Animator);
-
 	animator->setCurrentState(Animator::States::Idle);
-
+	transport = GETCMP1_(Transport);
 	updateKeys(id_);
 }
 
@@ -212,9 +212,7 @@ void PlayerController::keyUpdate()
 				i->action5(id_);
 				i = nullptr;
 			}
-
 		}
-
 	}
 	else 
     {

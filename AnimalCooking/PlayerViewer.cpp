@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerViewer.h"
+#include "GameConfig.h"
 
 void PlayerViewer::init()
 {	

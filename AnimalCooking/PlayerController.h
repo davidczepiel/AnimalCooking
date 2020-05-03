@@ -9,11 +9,11 @@
 #include "InteractionRect.h"
 #include "Selector.h"
 #include "Animator.h"
-
+#include "Transport.h"
 
 class PlayerController : public Component {
 public:
-	PlayerController(int id = 0) :Component(ecs::PlayerController), id_(id) {} 
+	PlayerController(int id = 0) :Component(ecs::PlayerController),id_(id) {} 
 	void init() override;
 	void update() override;
 private:
@@ -38,6 +38,7 @@ private:
 	InteractionRect* ir_ = nullptr;
 	Attack* attack_ = nullptr; 
 	Animator* animator = nullptr;
+	Transport* transport = nullptr;
 
 	void joystickUpdate();
 	void keyUpdate();
