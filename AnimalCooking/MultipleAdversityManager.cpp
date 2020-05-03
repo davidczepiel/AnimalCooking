@@ -10,7 +10,7 @@ MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp
 	adversities.push_back(new PlaneAdversity(nullptr, this));
 	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
 	adversities.push_back(new HookAdversity(nullptr, this));
-	adversities.push_back(new RainAdversity(nullptr, this));
+	//adversities.push_back(new RainAdversity(nullptr, this));
 
 	for (int i = 0; i < 4; ++i) activeAdversities.push_back(false);
 }

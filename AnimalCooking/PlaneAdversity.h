@@ -10,8 +10,11 @@ class PlaneAdversity : public Adversity
 	SDL_Rect planeRect_;
 	int velocity_;
 	float force_;
+	double angle;
+	Vector2D dir_;
 
 	void StartPlane();
+	Vector2D calculateDir();
 
 public:
 	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam) { StartPlane(); }

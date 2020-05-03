@@ -150,6 +150,7 @@
     <ClCompile Include="DoorRenderer.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="GameConfig.cpp" />
+    <ClCompile Include="MultipleAdversityManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -217,30 +218,6 @@
       <Filter>Header Files\Adders</Filter>
     </ClInclude>
     <ClInclude Include="FoodGiverAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodPoolAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManagerAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="IngAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelInitializer.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayersAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="ShelfAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="SinkAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="UtensilsAdder.h">
       <Filter>Header Files\Adders</Filter>
     </ClInclude>
     <ClInclude Include="AdversityManager.h" />
@@ -349,6 +326,15 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorRenderer.h" />
     <ClInclude Include="GameConfig.h" />
+    <ClInclude Include="FoodPoolAdder.h" />
+    <ClInclude Include="GameManagerAdder.h" />
+    <ClInclude Include="IngAdder.h" />
+    <ClInclude Include="LevelInitializer.h" />
+    <ClInclude Include="PlayersAdder.h" />
+    <ClInclude Include="ShelfAdder.h" />
+    <ClInclude Include="SinkAdder.h" />
+    <ClInclude Include="UtensilsAdder.h" />
+    <ClInclude Include="MultipleAdversityManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
