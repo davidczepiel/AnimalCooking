@@ -5,7 +5,7 @@
 #include "RainAdversity.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up);
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up)
 {
 	adversities.push_back(new PlaneAdversity(nullptr, this));
 	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
