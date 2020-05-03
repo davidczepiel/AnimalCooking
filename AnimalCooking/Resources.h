@@ -37,6 +37,8 @@ public:
 		MapIcon,
 		ReplayIcon,
 		NextLevelIcon,
+		Star,
+		LimitSign,
 
 
 		SliderBackground,
