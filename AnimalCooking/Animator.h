@@ -16,16 +16,14 @@ public:
 
 	States getCurrentState() { return currentState; };
 	void setCurrentState(States s) { currentState = s; };
-
-	/*SDL_Rect& animate(Texture* t, int fx, int fy,int numRows=1, int numCols=1);
-
-	int getAnimSpeed() { return animSpeed; }
-	void setAnimSpeed(int s) { animSpeed = s; }*/
+	void setDir(Vector2D v) { dir = v; }
+	Vector2D getDir() { return dir; }
+	DefaultTimer getTimer() { return dt; }
 
 private:
 
 	States currentState;
-	SDL_Rect clip;
-	int animSpeed = 60;
+	DefaultTimer dt;
+	Vector2D dir;
 };
 

@@ -15,6 +15,7 @@ private:
 	Transform* tr_ = nullptr;
 	Animator* animator = nullptr;
 
-
+	void setWalkOrAttack(SDL_Rect dest,Texture* spriteSheet,int fil1,int fil2);
+	void setIdle(SDL_Rect dest,int fil1,int fil2);
 };
 
