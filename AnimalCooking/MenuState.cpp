@@ -102,6 +102,7 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	rightButton_ = stage->addEntity();
 	leftButton_ = stage->addEntity();
 	selectionButton_ = stage->addEntity();
+	padNavigation_ = stage->addEntity();
 
 	stage->addToGroup(rightButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(leftButton_, ecs::GroupID::Layer1);
@@ -118,6 +119,11 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	selectionButton_->addComponent<Transform>(Vector2D((SDLGame::instance()->getWindowWidth() * 400) / 1920, (SDLGame::instance()->getWindowHeight() * 250) / 1080), Vector2D(0, 0), (SDLGame::instance()->getWindowWidth() * 1072.0) / 1920, (SDLGame::instance()->getWindowHeight() * 360.0) / 1080, 0);
 	selectionButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 	selectionButton_->addComponent<MenuButtonBehaviour>(this, MenuButtonBehaviour::ButtonType::SelectionButton);
+
+	MainMenuPadNavigation* m =padNavigation_->addComponent<MainMenuPadNavigation>();
+	m->setLeftArrow(leftButton_);
+	m->setSelectButton(selectionButton_);
+	m->setRightArrow(rightButton_);
 }
 
 MenuState::~MenuState()

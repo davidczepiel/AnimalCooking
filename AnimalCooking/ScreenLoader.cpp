@@ -6,6 +6,7 @@
 #include "LoadingBarViewer.h"
 #include "LevelInitializer.h"
 #include "BackGroundViewer.h"
+#include "ButtonPadNavigation.h"
 
 constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
 
@@ -32,7 +33,9 @@ ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac)
 		game_->getTextureMngr()->getTexture(Resources::Button));
 
 	buttonGo_ = stage->addEntity();
+	padNavigation_ = stage->addEntity();
 	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
+
 
 	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
@@ -42,6 +45,8 @@ ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac)
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
 	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
+	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 
 	resetResources();
 	initialize();
