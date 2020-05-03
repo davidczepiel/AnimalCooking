@@ -7,13 +7,11 @@
 
 class PlayerViewer : public Component {
 public:
-	PlayerViewer(Texture* idle,Texture* walk,Texture* attack) : Component(ecs::PlayerViewer), idleSpritesheet_(idle),walkSpritesheet_(walk),attackSpritesheet_(attack) {};
+	PlayerViewer(Texture* t) : Component(ecs::PlayerViewer), texture_(t) {};
 	void init() override;
 	void draw() override;
 private:
-	Texture* idleSpritesheet_ = nullptr;
-	Texture* walkSpritesheet_ = nullptr;
-	Texture* attackSpritesheet_ = nullptr;
+	Texture* texture_ = nullptr;
 	Transform* tr_ = nullptr;
 	Animator* animator = nullptr;
 
