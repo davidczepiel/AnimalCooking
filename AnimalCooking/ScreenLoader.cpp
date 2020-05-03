@@ -5,38 +5,48 @@
 #include "ButtonRenderer.h"
 #include "LoadingBarViewer.h"
 #include "LevelInitializer.h"
+#include "BackGroundViewer.h"
+#include "ButtonPadNavigation.h"
 
-constexpr double step_ = 1.0 / 16.0; //16 es el numero de pasos (5 de carga de recursos + 11 de carga de nivel)
+constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
 
-ScreenLoader::ScreenLoader(Resources::Level nivel) : emPlaystate(nullptr), level(nivel)
+ScreenLoader::ScreenLoader(Resources::Level nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
 	Entity* menu_ = stage->addEntity();
 	Entity* mensajes_ = stage->addEntity();
-
+	Entity* bg = stage->addEntity();
+	//-2 porque level tiene 2 valores extra al principio
+	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::level0Menu + level - 2));
+	stage->addToGroup(bg, ecs::GroupID::Layer1);
 	barraCarga_ = stage->addEntity();
 	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
 
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
-	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() / 1.2), //Pos
+	int height = 50;
+	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
-		50, //Height
+		height, //Height
 		0); //Rot
-	barraCarga_->addComponent<LoadingBarViewer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	barraCarga_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
 		game_->getTextureMngr()->getTexture(Resources::Button));
 
 	buttonGo_ = stage->addEntity();
+	padNavigation_ = stage->addEntity();
 	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
-	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() / 1.25), //Pos
+
+	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		50, //Width
-		50, //Height
+		height, //Height
 		0); //Rot
 
-	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState)->setActive(false);
+	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
 	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
+	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 
 	resetResources();
 	initialize();
@@ -144,7 +154,14 @@ void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 void ScreenLoader::updateLength()
 {
 	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(step_);
+
+	SDL_SetRenderDrawColor(SDLGame::instance()->getRenderer(), COLOR(0x00AAAAFF));
+	SDL_RenderClear(SDLGame::instance()->getRenderer());
+
 	draw();
+
+	SDL_RenderPresent(SDLGame::instance()->getRenderer());
+	SDL_Delay(10);
 }
 
 //Inicializa el nivel
@@ -155,6 +172,9 @@ void ScreenLoader::initialize()
 	LevelInitializer(emPlaystate, level, this);
 }
 
-void ScreenLoader::goToPlayState() {
-	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager()));
+void ScreenLoader::goToPlayState(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac), []() {
+			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resetTimers();
+		});
 }

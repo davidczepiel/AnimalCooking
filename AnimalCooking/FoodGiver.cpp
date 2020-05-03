@@ -16,7 +16,7 @@ void RiceGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -25,28 +25,47 @@ void RiceGiver::action1(int player) {
 }
 
 //-----------------------------
-BreadGiver::BreadGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+BreadBurgerGiver::BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
 	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 }
 
-void BreadGiver::action1(int player) {
+void BreadBurgerGiver::action1(int player) {
 	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
-		Food* f = gameControl_->newFood(Resources::FoodType::Bread, position_);
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
 
 }
 
 //-----------------------------
+BreadHotDogGiver::BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+{
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+}
+
+void BreadHotDogGiver::action1(int player) {
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr)
+	{
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		player1_->pick(f, Resources::PickableType::Food);
+	}
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
+		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		player2_->pick(f, Resources::PickableType::Food);
+	}
+
+}
+//-----------------------------
+
 DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Pan);
+	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PizzaMassT);
 }
 
 void DoughGiver::action1(int player) {
@@ -55,7 +74,7 @@ void DoughGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
@@ -74,9 +93,21 @@ void DressingGiver::action1(int player) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 		player1_->pick(f, Resources::PickableType::Food);
 	}
-	else if (player2_->getObjectInHands() == nullptr) {
+	else if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) {
 		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 		player2_->pick(f, Resources::PickableType::Food);
 	}
 
+}
+
+void FoodGiver::feedback(int player)
+{
+	bool render = false;
+	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr) render = true;
+	if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) render = true;
+
+	if (render) {
+		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
+		feedbackVisual_->render(r);
+	}
 }

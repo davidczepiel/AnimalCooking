@@ -9,9 +9,9 @@
 //{
 //}
 
-InsertExpel::InsertExpel(Transport* tr) :
+InsertExpel::InsertExpel(Transport* tr1, Transport* tr2) :
 	Component(ecs::InsertExpel),
-	transport_(tr),
+	transport1_(tr1), transport2_(tr2),
 	foodCooker_(nullptr)
 {
 }
@@ -23,11 +23,16 @@ void InsertExpel::init() {
 	foodCooker_ = GETCMP1_(FoodCooker);
 }
 
-void InsertExpel::insertFood(Cooker* cooker) {
-	if (cooker->getCookerState() == CookerStates::empty &&
-		transport_->getObjectTypeInHands() == Resources::Dish) {
+void InsertExpel::insertFood(Cooker* cooker, int player) {
 
-			Dish* dish_ = static_cast<Dish*>(transport_->getObjectInHands());
+	Transport* t;
+	if (player == 0) t = transport1_;
+	else t = transport2_;
+
+	if (cooker->getCookerState() == CookerStates::empty &&
+		t->getObjectTypeInHands() == Resources::Dish) {
+
+			Dish* dish_ = static_cast<Dish*>(t->getObjectInHands());
 			if (!dish_->getFoodVector().empty()) {
 				for (auto& i : dish_->getFoodVector()) {
 					i->setCanInteract(false);
@@ -39,17 +44,23 @@ void InsertExpel::insertFood(Cooker* cooker) {
 	}
 }
 
-void InsertExpel::extractFood(Cooker *cooker){
+void InsertExpel::extractFood(Cooker *cooker, Timer* timer, int player){
+
+	Transport* t;
+	if (player == 0) t = transport1_;
+	else t = transport2_;
+
 	if ((cooker->getCookerState() == CookerStates::cooked ||
 		cooker->getCookerState() == CookerStates::burned) &&
-		transport_->getObjectTypeInHands() == Resources::Dish) {
+		t->getObjectTypeInHands() == Resources::Dish) {
 
-			Dish* dish_ = static_cast<Dish*>(transport_->getObjectInHands());
+			Dish* dish_ = static_cast<Dish*>(t->getObjectInHands());
 			dish_->getFoodVector().insert(dish_->getFoodVector().end(), cooker->getFoods().begin(), cooker->getFoods().end());
 			for (auto& i : dish_->getFoodVector()) {
 				i->setCanInteract(false);
 			}
 			cooker->getFoods().clear();
 			cooker->setCookerState(CookerStates::empty);
+			timer->timerReset();
 	}
 }

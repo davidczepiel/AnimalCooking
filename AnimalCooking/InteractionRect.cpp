@@ -1,4 +1,11 @@
 #include "InteractionRect.h"
+#include "GameConfig.h"
+
+InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), dir_(), 
+	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaLength(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaLength()),
+	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaLength())
+{
+}
 
 void InteractionRect::init()
 {
@@ -8,12 +15,13 @@ void InteractionRect::init()
 
 void InteractionRect::draw()
 {
-	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(),size_.getY() };
+	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
 	tx_->render(d);
 }
 
 void InteractionRect::update()
 {
-	pos_.set(tr_->getPos().getX() +tr_->getW() / 2  + radius * dir_.getX() - size_.getX() / 2, 
-			 tr_->getPos().getY() + radius * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2 );
+	if (!(dir_.getX() == 0 && dir_.getY() == 0))
+		pos_.set(tr_->getPos().getX() + tr_->getW() / 2 + radius * dir_.getX() - size_.getX() / 2,
+			tr_->getPos().getY() + radius * dir_.getY() + tr_->getH() / 2 - size_.getY() / 2);
 }

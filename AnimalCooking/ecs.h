@@ -20,6 +20,9 @@ enum CmpId : CmpIdType {
 	GameLoader,
 	GameLogic,
 	GameSave,
+	CollisionsSystem,
+	FeedBack,
+	TimerViewer,
 
 	Attack, //Player
 	PlayerController,
@@ -28,6 +31,7 @@ enum CmpId : CmpIdType {
 	Transport,
 	Selector,
 	InteractionRect,
+	Animator,
 
 	DishPool,		//Dish
 	DishMotion,
@@ -52,6 +56,7 @@ enum CmpId : CmpIdType {
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
+	OrderServiceViewer,
 	SinkViewer,
 
 
@@ -60,11 +65,17 @@ enum CmpId : CmpIdType {
 	FoodCooker,
 	InsertExpel,
 
+	AIClient,
+	OrderManager,	//Clients
+	OrderViewer,
+
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
 	StaticRenderer,
 	IngredientViewer,
 	BinViewer,
+	BackGroundViewer,
+	DoorRenderer,
 
 	GameManager, //Utils
 	ScoreManager,
@@ -72,11 +83,20 @@ enum CmpId : CmpIdType {
 	SoundManager,
 	SelectorPopUp,
 	SelectorPopUpEntity,
+	Physics,
+	PhysicsPool,
 
 	ButtonBehaviour, //Buttons
 	ButtonRenderer,
 	ButtonsViewer,
 	ButtonDirector,
+	MenuButtonRenderer,
+	MenuButtonBehaviour,
+	MainMenuPadNavigation,
+	ButtonPadNavigation,
+
+	SliderBehaviour,	//Sliders
+	SliderRenderer,
 
 	LoadingBarViewer, //Bar
 	AdversityManager,
@@ -90,9 +110,10 @@ enum CmpId : CmpIdType {
 enum GroupID : Group {
 	Layer1,
 	Layer2,
-	Layer3,
-	Layer4,
-	Layer5,
+	FoodLayer,
+	FeedBackLayer,
+	PlayerLayer,
+	ui,
 	_LastGroupId_	//Identify the max number of groups
 };
 

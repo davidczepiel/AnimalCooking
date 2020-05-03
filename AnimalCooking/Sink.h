@@ -16,13 +16,10 @@ class Sink :public Entity, public Interactive
 {
 public:
 	Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng);
-	void draw() ;
-	void update();
 	virtual ~Sink();
 	virtual void action1(int player);
 private:
-	Timer* cleanTimer;
-	bool canClean;
-	int cadence;
+	size_t nTries, maxTries;
+	Uint32 lastTry;
 
 };

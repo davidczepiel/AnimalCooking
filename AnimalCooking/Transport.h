@@ -7,7 +7,7 @@ class Transport : public Component {
 public:
 	Transport();
 
-	void pick(Pickable* obj, Resources::PickableType objType);
+	void pick(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
 	void drop(bool onFloor = true);
 
 	void init() override;
@@ -21,5 +21,5 @@ private:
 	Transform* playerTransform_;
 	Resources::PickableType objType_;
 
-	void swap(Pickable* obj, Resources::PickableType objType);
+	void swap(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
 };

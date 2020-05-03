@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -164,18 +164,22 @@
     <ClInclude Include="AIAssistant.h" />
     <ClInclude Include="AIClient.h" />
     <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="Animator.h" />
     <ClInclude Include="AssistantMotion.h" />
     <ClInclude Include="AssistantViewer.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BackGroundViewer.h" />
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
+    <ClInclude Include="CollisionsSystem.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConfigState.h" />
     <ClInclude Include="Converter.h" />
@@ -192,9 +196,12 @@
     <ClInclude Include="DishStack.h" />
     <ClInclude Include="DishStackViewer.h" />
     <ClInclude Include="DishViewer.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="DoorRenderer.h" />
     <ClInclude Include="ecs.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FeedBack.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="Food.h" />
@@ -212,6 +219,7 @@
     <ClInclude Include="FoodViewer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
@@ -219,11 +227,11 @@
     <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
-    <ClInclude Include="GlobalTimer.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="HookAdversity.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="IngredientInitializer.h" />
     <ClInclude Include="IngredientMotion.h" />
     <ClInclude Include="IngredientSpawn.h" />
     <ClInclude Include="IngredientsPool.h" />
@@ -237,12 +245,19 @@
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="LevelInitializer.h" />
     <ClInclude Include="LoadingBarViewer.h" />
+    <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapState.h" />
+    <ClInclude Include="MenuButtonBehaviour.h" />
+    <ClInclude Include="MenuButtonRenderer.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
+    <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderAdder.h" />
     <ClInclude Include="OrderManager.h" />
+    <ClInclude Include="OrderService.h" />
+    <ClInclude Include="OrderServiceViewer.h" />
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pickable.h" />
@@ -274,6 +289,8 @@
     <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="SinkViewer.h" />
     <ClInclude Include="SelectorPopUpEntity.h" />
+    <ClInclude Include="SliderBehaviour.h" />
+    <ClInclude Include="SliderRenderer.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
@@ -284,8 +301,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="TimerEnd.h" />
-    <ClInclude Include="TimerPool.h" />
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
@@ -295,6 +310,8 @@
     <ClInclude Include="UtensilsPool.h" />
     <ClInclude Include="UtensilsViewer.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adversity.cpp" />
@@ -307,17 +324,21 @@
     <ClCompile Include="AIAssistant.cpp" />
     <ClCompile Include="AIClient.cpp" />
     <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AssistantMotion.cpp" />
     <ClCompile Include="AssistantViewer.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BackGroundViewer.cpp" />
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="CollisionsSystem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigState.cpp" />
     <ClCompile Include="Converter.cpp" />
@@ -334,8 +355,11 @@
     <ClCompile Include="DishStack.cpp" />
     <ClCompile Include="DishStackViewer.cpp" />
     <ClCompile Include="DishViewer.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DoorRenderer.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FeedBack.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="Food.cpp" />
@@ -351,6 +375,7 @@
     <ClCompile Include="FoodTextures.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
@@ -361,6 +386,7 @@
     <ClCompile Include="HookAdversity.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="IngredientInitializer.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
@@ -375,11 +401,18 @@
     <ClCompile Include="LevelInitializer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuPadNavigation.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="MenuButtonBehaviour.cpp" />
+    <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
+    <ClCompile Include="OrderService.cpp" />
+    <ClCompile Include="OrderServiceViewer.cpp" />
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pickable.cpp" />
@@ -410,6 +443,8 @@
     <ClCompile Include="SinkAdder.cpp" />
     <ClCompile Include="SinkViewer.cpp" />
     <ClCompile Include="SelectorPopUpEntity.cpp" />
+    <ClCompile Include="SliderBehaviour.cpp" />
+    <ClCompile Include="SliderRenderer.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
@@ -417,9 +452,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TimerEnd.cpp" />
-    <ClCompile Include="TimerPool.cpp" />
-    <ClCompile Include="TImerViewer.cpp" />
+    <ClCompile Include="TimerViewer.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />
@@ -428,6 +461,8 @@
     <ClCompile Include="UtensilsPool.cpp" />
     <ClCompile Include="UtensilsViewer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WallAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

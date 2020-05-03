@@ -6,17 +6,17 @@
 using namespace std;
 
 Texture::Texture() :
-		texture_(nullptr), renderer_(nullptr), width_(0), height_(0) {
+		texture_(nullptr), renderer_(nullptr), width_(0), height_(0), nRows_(1), nCols_(1) {
 }
 
-Texture::Texture(SDL_Renderer *renderer, const string& fileName) :
-		texture_(nullptr), width_(0), height_(0) {
+Texture::Texture(SDL_Renderer *renderer, const string& fileName, int numRows, int numCols) :
+		texture_(nullptr), width_(0), height_(0), nRows_(numRows), nCols_(numCols) {
 	loadFromImg(renderer, fileName);
 }
 
 Texture::Texture(SDL_Renderer *renderer, const string& text, const Font *font,
 		const SDL_Color& color) :
-		texture_(nullptr), width_(0), height_(0) {
+		texture_(nullptr), width_(0), height_(0), nRows_(1), nCols_(1) {
 	loadFromText(renderer, text, font, color);
 }
 
@@ -97,7 +97,45 @@ void Texture::render(const SDL_Rect &dest, double angle,
 	}
 }
 
+void Texture::render(const SDL_Rect& dest, double angle,
+	const SDL_Rect& clip, SDL_RendererFlip flip) const {
+	if (texture_) {
+		SDL_RenderCopyEx(renderer_, texture_, &clip, &dest, angle, nullptr, flip);
+	}
+}
+
 void Texture::render(const SDL_Rect &dest, double angle) const {
 	SDL_Rect clip = {0, 0, width_, height_ };
 	render(dest, angle, clip);
+}
+
+//renderiza un frame de la textura
+void Texture::renderFrame(const SDL_Rect& destRect, int row, int col, int angle, SDL_RendererFlip flip) const {
+	SDL_Rect srcRect;
+
+	int fw = width_ / nCols_;
+	int fh = height_ / nRows_;
+
+	srcRect.x = fw * col;
+	srcRect.y = fh * row;
+	srcRect.w = fw;
+	srcRect.h = fh;
+	render(destRect, angle, srcRect, flip);
+}
+void Texture::renderWithTint(const SDL_Rect& dest, Uint8 r, Uint8 g, Uint8 b)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_, r, g, b);
+		render(dest);
+		SDL_SetTextureColorMod(texture_, 255, 255, 255);
+	}
+}
+
+void Texture::renderWithTint(const SDL_Rect& dest, const SDL_Rect& clip, Uint8 r, Uint8 g, Uint8 b)
+{
+	if (texture_) {
+		SDL_SetTextureColorMod(texture_, r, g, b);
+		render(dest, clip);
+		SDL_SetTextureColorMod(texture_, 255, 255, 255);
+	}
 }

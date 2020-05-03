@@ -3,16 +3,17 @@
 #include "InteractionRect.h"
 #include "Selector.h"
 #include "Attack.h"
+#include "Animator.h"
 #include "PlayerController.h"
 #include "PlayerViewer.h"
 #include "LevelInitializer.h"
 
 PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaLength) :
-	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)
+	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), casilla(casillaLength)
 {
 	for (int i = 0; i < players.size(); ++i) {
 		players_initializeTransform(i, casillaLength);
-		players_addComponents(players[i]);
+		players_addComponents(players[i], i);
 	}
 
 	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
@@ -27,14 +28,15 @@ PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLe
 	}
 }
 
-void PlayersAdder::players_addComponents(Entity* entity)
+void PlayersAdder::players_addComponents(Entity* entity, int id)
 {
+	entity->addComponent<Animator>();
 	entity->addComponent<PlayerMotion>();
 	entity->addComponent<Selector>();
 	entity->addComponent<InteractionRect>();
 	entity->addComponent<Attack>();
 	entity->addComponent<Transport>();
-	entity->addComponent<PlayerController>();
+	entity->addComponent<PlayerController>(id);
 }
 
 void PlayersAdder::players_initializeTransform(size_t player, const double casillaLength) // VER ENTITIES

@@ -4,12 +4,13 @@
 #include "ButtonRenderer.h"
 #include "ConfigState.h"
 #include "Transform.h"
+#include "ButtonPadNavigation.h"
 
 class PauseState : public State	
 {
 
 public:
-	PauseState();
+	PauseState(AnimalCooking* ac);
 	virtual ~PauseState();
 
 private:
@@ -17,11 +18,13 @@ private:
 	Entity* resumeButton = nullptr;
 	Entity* configButton = nullptr;
 	Entity* menuButton = nullptr;
+	Entity* closeButton = nullptr;
+	Entity* padNavigation = nullptr;
 
-	static void configCallback();
-	static void menuCallback();
-	static void resumeCallback();
-
+	static void configCallback(AnimalCooking* ac);
+	static void menuCallback(AnimalCooking* ac);
+	static void resumeCallback(AnimalCooking* ac);
+	static void closeCallback(AnimalCooking* ac);
 
 
 };

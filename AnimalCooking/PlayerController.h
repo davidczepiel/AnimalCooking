@@ -8,6 +8,7 @@
 #include "KeyBoardController.h"
 #include "InteractionRect.h"
 #include "Selector.h"
+#include "Animator.h"
 
 
 class PlayerController : public Component {
@@ -22,9 +23,12 @@ private:
 		SDL_Keycode left;
 		SDL_Keycode right;
 
-		/*SDL_Keycode button1;
-		SDL_Keycode button2;
-		SDL_Keycode button3;*/
+		SDL_Keycode pickUp;
+		SDL_Keycode attack;
+		SDL_Keycode open;
+		SDL_Keycode next;
+		SDL_Keycode back;
+		SDL_Keycode finish;
 	};
 	Keys keys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
@@ -33,8 +37,15 @@ private:
 	Selector* selector_ = nullptr;
 	InteractionRect* ir_ = nullptr;
 	Attack* attack_ = nullptr; 
+	Animator* animator = nullptr;
 
 	void joystickUpdate();
+	bool padNotTouched();
+	bool dpadArrosNotUsed();
 	void keyUpdate();
-	
+	bool idle=true;
+	bool ableToPress = true;
+	bool dpadArrowsUsed = true;
+
+	void updateKeys(int id);
 };

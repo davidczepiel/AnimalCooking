@@ -12,9 +12,12 @@
 #include <assert.h>
 
 #include "InputHandler.h"
+#include "jute.h"
 
 using namespace std;
 class FSM;
+class Entity;
+
 class SDLGame {
 public:
 	virtual ~SDLGame();
@@ -84,6 +87,13 @@ public:
 	inline Uint32 getTime() {
 		return SDL_GetTicks();
 	}
+	inline jute::jValue& getJsonGeneral() { return json_general; }
+
+	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
+	inline Entity* getTimersViewer() { return timersViewer_; }
+
+	inline void setCasillaLength(const double& CasillaLength) { casillaLength = CasillaLength; }
+	inline const double& getCasillaLength() const { return casillaLength; }
 
 private:
 	SDLGame(string windowTitle_, int width, int height);
@@ -100,13 +110,16 @@ protected:
 	AudioManager *audio_;
 	RandomNumberGenerator *random_;
 	FSM* fsm_;
-
+	jute::jValue json_general;
 	SDL_Window *window_; // the window
 	SDL_Renderer *renderer_;  // the renderer
 
 	string windowTitle_; // window title
 	int width_; // window width
 	int height_; // window height
+
+	double casillaLength;
+	Entity* timersViewer_;
 
 	static unique_ptr<SDLGame> instance_;
 

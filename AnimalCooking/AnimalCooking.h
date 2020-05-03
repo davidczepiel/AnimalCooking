@@ -24,12 +24,9 @@ private:
 	void handleInput();
 	void update();
 	void render();
+	bool pauseRequest();
 
 	SDLGame* game_;
 
 	bool exit_;
-
-	const static int _WINDOW_WIDTH_ = 1080;
-	const static int _WINDOW_HEIGHT_ = 720;
-
 };

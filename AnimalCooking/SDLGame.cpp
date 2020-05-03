@@ -8,11 +8,12 @@
 
 #include "SRandBasedGenerator.h"
 #include "FSM.h"
-unique_ptr<SDLGame> SDLGame::instance_;
 
+unique_ptr<SDLGame> SDLGame::instance_;
+const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :
-		windowTitle_(windowTitle), width_(width), height_(height) {
+		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr) {
 	initSDL();
 	initResources();
 }
@@ -26,6 +27,11 @@ void SDLGame::initSDL() {
 
 	int sdlInit_ret = SDL_Init(SDL_INIT_EVERYTHING);
 	assert(sdlInit_ret == 0);
+
+	SDL_DisplayMode DM;
+	SDL_GetCurrentDisplayMode(0, &DM);
+	width_ = DM.w;
+	height_ = DM.h;
 
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
@@ -82,6 +88,10 @@ void SDLGame::initResources() {
 		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
+	for (auto& spritesheet : Resources::spritesheets_) {
+		if (spritesheet.level == Resources::Level::Basic) textures_->loadFromSprSheet(spritesheet.id, renderer_, spritesheet.fileName, spritesheet.numRows, spritesheet.numCols);
+	}
+
 	for (auto &font : Resources::fonts_) {
 		if (font.level == Resources::Level::Basic) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
@@ -99,6 +109,7 @@ void SDLGame::initResources() {
 		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
+	json_general = jute::parser::parse_file(rutaGeneral);
 }
 
 void SDLGame::closeResources() {

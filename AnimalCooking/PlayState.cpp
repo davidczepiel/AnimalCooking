@@ -2,7 +2,7 @@
 #include "FSM.h"
 #include "PauseState.h"
 #include "EndState.h"
-
+#include "Timer.h"
 /*void PlayState::handleEvent()
 {
 	InputHandler* ih = InputHandler::instance();
@@ -14,12 +14,32 @@
 	}
 }*/
 
-void PlayState::goToEndState() {
-	SDLGame::instance()->getFSM()->pushState(new EndState());
+void PlayState::pauseTimers()
+{
+	for (Timer* t : timerViewer_->getTimers()) {
+		t->timerPause();
+	}
 }
-void PlayState::goToPauseState() {
-	SDLGame::instance()->getFSM()->pushState(new PauseState());
 
+void PlayState::resumeTimers()
+{
+	for (Timer* t : timerViewer_->getTimers()) {
+		t->timerResume();
+	}
 }
+
+void PlayState::resetTimers()
+{
+	for (Timer* t : timerViewer_->getTimers()) {
+		t->timerReset();
+		if(dynamic_cast<CookerTimer*>(t) == nullptr)
+			t->timerStart();
+	}
+}
+
+void PlayState::goToEndState(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->pushState(new EndState(ac));
+}
+
 
 

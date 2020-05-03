@@ -1,12 +1,15 @@
 #include "SDL_macros.h"
 #include "ButtonBehaviour.h"
 #include "Entity.h"
+#include "AnimalCooking.h"
 
-ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback) : Component(ecs::ButtonBehaviour)
+ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback,AnimalCooking* ac) : Component(ecs::ButtonBehaviour)
 {
 	callback_ = callback;
 	ownerTransform_ = nullptr;
 	active_ = true;
+	focused_ = false;
+	ac_ = ac;
 }
 
 void ButtonBehaviour::init()
@@ -25,7 +28,13 @@ void ButtonBehaviour::update()
 		SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 
 		if (SDL_PointInRect(&mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
-			callback_(); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+			callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
 		}
 	}
+}
+
+//este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
+void ButtonBehaviour::action() {
+	callback_(ac_); 
+
 }
