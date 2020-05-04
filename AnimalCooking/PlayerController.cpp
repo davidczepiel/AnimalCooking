@@ -111,7 +111,7 @@ void PlayerController::joystickUpdate()
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 		attack_->attack();
-		animator->setCurrentState(Animator::States::Attack);
+		animator->setCurrentState(Animator::States::AttackWithKnife);
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
 		Interactive* i = selector_->getSelect();
