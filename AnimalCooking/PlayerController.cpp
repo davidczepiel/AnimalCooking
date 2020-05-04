@@ -151,12 +151,7 @@ void PlayerController::keyUpdate()
 		
 		ir_->setDir(x, y);
 		//Se establece la direccion para mostrar la animacion correspondiente
-		if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));
-
-		//Estados de walk
-		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0 || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife, 
-			                                                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater, 
-			                                                                                                          Animator::States::WalkWithNet, Animator::Walk);			
+		if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));                                                                                                       		
 
 		//--------------------Botones
 
@@ -176,6 +171,7 @@ void PlayerController::keyUpdate()
 			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
 			{
 				animator->getTimer().timerStart();
+
 				setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace, 
 					            Animator::States::AttackWithGrater, Animator::States::AttackWithNet);				
 			}						
@@ -223,7 +219,12 @@ void PlayerController::keyUpdate()
     //Estados de idle
 	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife, 
 		                                                                          Animator::States::IdleWithMace, Animator::States::IdleWithGrater, 
-		                                                                          Animator::States::IdleWithNet, Animator::States::Idle);
+	/*Estados de walk*/	                                                          Animator::States::IdleWithNet, Animator::States::Idle);
+	else if ((tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0)||animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
+			Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
+			Animator::States::WalkWithNet, Animator::Walk);
+		
+
 }
 
 
