@@ -20,6 +20,7 @@
 #include "OrderAdder.h"
 #include "WallAdder.h"
 #include "AdversityManager.h"
+#include "MultipleAdversityManager.h"
 
 #include "SDLGame.h"
 
@@ -227,11 +228,15 @@ void LevelInitializer::initialize_walls()
 void LevelInitializer::initialize_adversities()
 {
 	Entity* adversityManager = emPlaystate->addEntity();
-	adversityManager->addComponent<AdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
+	//AdversityManager de una sola adversidad
+	/*adversityManager->addComponent<AdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
 	GETCMP2(adversityManager, AdversityManager)->loadAdversity(ecs::AdversityID::RainAdversity);
 	GETCMP2(gameManager, GameControl)->getAdversityTime()->setTime(5000);
-	//GETCMP2(gameManager, GameControl)->getAdversityTime()->timerStart();
-	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));
+	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));*/
+	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
+	mam->setTimerTime(ecs::AdversityID::RainAdversity,5000);
+	mam->setTimerTime(ecs::AdversityID::HookAdversity, 7500);
+
 	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
 	
 	sL->updateLength();

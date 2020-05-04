@@ -16,13 +16,19 @@ class MultipleAdversityManager : public Component
 	IngredientsPool* ingredientsPool;
 	UtensilsPool* utensilsPool;
 	bool playingAdversity;
+	Timer rainTimer;
+	Timer planeTimer;
+	Timer hookTimer;
+	Timer burnCookerTimer;
 
 public:
 	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
 	void update();
 	void draw();
 	void playAdversity(ecs::AdversityID i) { activeAdversities[i] = true; }
-	void stopAdversity(ecs::AdversityID i) { activeAdversities[i] = false; }
+	void stopAdversity(ecs::AdversityID i);
+	void setTimerTime(ecs::AdversityID id, int time);
+	void seeTimers();
 
 	Transform* getTransformPlayer(Resources::Player player) {
 		return player == Resources::Player1 ? tP1 : tP2;

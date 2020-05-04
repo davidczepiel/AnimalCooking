@@ -7,7 +7,7 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
-	adversityTimer.timerStart();
+	//adversityTimer.timerStart();
 }
 
 
@@ -31,10 +31,10 @@ void GameControl::update()
 	}
 
 	//if (!adversityTimer.isStarted())adversityTimer.timerStart();
-	adversityTimer.update();
+	/*adversityTimer.update();
 	if (adversityTimer.isTimerEnd() && advManager != nullptr) {
 		advManager->playAdversity();
-	}
+	}*/
 }
 
 void GameControl::newIngredient() 

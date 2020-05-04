@@ -100,6 +100,7 @@ enum CmpId : CmpIdType {
 
 	LoadingBarViewer, //Bar
 	AdversityManager,
+	MultipleAdversityManager,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max
