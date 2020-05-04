@@ -111,7 +111,12 @@ void PlayerController::joystickUpdate()
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 		attack_->attack();
-		animator->setCurrentState(Animator::States::AttackWithKnife);
+		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+		{
+			animator->getTimer().timerStart();
+			setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
+				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
+		}
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
 		Interactive* i = selector_->getSelect();
