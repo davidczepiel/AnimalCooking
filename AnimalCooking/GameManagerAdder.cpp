@@ -14,11 +14,11 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 {
 	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + offset), player, ip);
 
+	gameManager->addComponent<ScoreManager>(132);
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
-	gameManager->addComponent<ScoreManager>();
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();
 	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casilla, 

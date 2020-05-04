@@ -28,8 +28,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
 	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
 	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
-{Basic,Star,"../AnimalCooking/resources/images/star.png"},
-{Basic,LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
+	{Basic,Star,"../AnimalCooking/resources/images/star.png"},
+	{Basic,YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
+	{Basic,LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
 
 
 

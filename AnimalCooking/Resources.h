@@ -38,6 +38,7 @@ public:
 		ReplayIcon,
 		NextLevelIcon,
 		Star,
+		YellowStar,
 		LimitSign,
 
 

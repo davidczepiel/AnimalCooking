@@ -3,6 +3,7 @@
 #include "SDLGame.h"
 #include "Texture.h"
 #include "Vector2D.h"
+#include "ScoreManager.h"
 
 class Timer {
 public:
@@ -48,10 +49,10 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
+	LevelTimer(ScoreManager* sc) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)),sc(sc){
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
-	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
+	LevelTimer(Uint32 lvlT,ScoreManager* sc) : Timer(),sc(sc), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
@@ -60,6 +61,7 @@ public:
 
 private:
 	Texture* outlineText_;
+	ScoreManager* sc;
 };
 
 class DefaultTimer : public Timer {

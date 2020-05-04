@@ -15,9 +15,10 @@ private:
 	static void goToLoadState(AnimalCooking* ac);
 	static void goToMenuState(AnimalCooking* ac);
 	static void resetLevel(AnimalCooking* ac);
-
+	int score;
+	int maxScore;
 public:
-	EndState(AnimalCooking* ac);
+	EndState(AnimalCooking* ac, int score,int maxScore);
 
 };
 

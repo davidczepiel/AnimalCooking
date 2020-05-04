@@ -5,7 +5,7 @@
 #include "Transform.h"
 #include "Animator.h"
 
-EndState::EndState(AnimalCooking* ac) :State(ac) {
+EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(score),maxScore(maxScore) {
 
 	//Botones
 	Entity* returnToMapButton = stage->addEntity();
@@ -55,27 +55,34 @@ EndState::EndState(AnimalCooking* ac) :State(ac) {
 	//-----------------------------------------------------------------------------------------
 
 	//Final
+	score = 133;
 	Entity* lv = stage->addEntity();
-	lv->addComponent<LevelViewer>(500, 1000, 1500, 50, 75, 95);
+	lv->addComponent<LevelViewer>(500, 1000, 1500, 50, 75, 95,(double)(score)/maxScore);
 	stage->addToGroup(lv, ecs::GroupID::ui);
 
 	Entity* Player1Idle = stage->addEntity();
 	Player1Idle->addComponent<Transform>(Vector2D(
 		SDLGame::instance()->getCasillaLength() * 2,
-		SDLGame::instance()->getWindowHeight() - SDLGame::instance()->getCasillaLength() * 2),
+		SDLGame::instance()->getWindowHeight() - SDLGame::instance()->getCasillaLength() * 5),
 		Vector2D(),
 		4 * SDLGame::instance()->getCasillaLength(),
 		4 * SDLGame::instance()->getCasillaLength(),
 		0);
 	Animator* p1Anim = Player1Idle->addComponent<Animator>();
-	Player1Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Player1));
+	Player1Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo));
 	stage->addToGroup(Player1Idle, ecs::GroupID::PlayerLayer);
-	//p1Anim->setCurrentState(Animator::States::Idle);
+	p1Anim->setCurrentState(Animator::States::Idle);
 
 	Entity* Player2Idle = stage->addEntity();
-	Player2Idle->addComponent<Transform>();
+	Player2Idle->addComponent<Transform>(Vector2D(
+		SDLGame::instance()->getCasillaLength() * 6,
+		SDLGame::instance()->getWindowHeight() - SDLGame::instance()->getCasillaLength() * 5),
+		Vector2D(),
+		4 * SDLGame::instance()->getCasillaLength(),
+		4 * SDLGame::instance()->getCasillaLength(),
+		0);
 	Animator* p2Anim = Player2Idle->addComponent<Animator>();
-	Player2Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Player2));
+	Player2Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Pollo));
 	stage->addToGroup(Player2Idle, ecs::GroupID::PlayerLayer);
 	p2Anim->setCurrentState(Animator::States::Idle);
 

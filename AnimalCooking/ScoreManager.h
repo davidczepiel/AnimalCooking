@@ -3,11 +3,12 @@
 class ScoreManager : public Component
 {
 public:
-	ScoreManager(): Component(ecs::ScoreManager), 
-		score_(0) 
+	ScoreManager(Uint32 maxScore): Component(ecs::ScoreManager), 
+		score_(0),maxScore(maxScore)
 	{}
 
 	inline Uint32 getScore() const { return score_; }
+	inline Uint32 getMaxScore() const { return maxScore; }
 	void addScore(int points) { 
 		score_ += points; if (score_ < 0) score_ = 0; }
 	void setScore(Uint32 value) {
@@ -15,5 +16,6 @@ public:
 	void resetScore() { score_ = 0; }
 private:
 	Uint32 score_;
+	Uint32 maxScore;
 };
 
