@@ -6,6 +6,7 @@
 
 void AdversityManager::update()
 {
+
 	if (myAdversity != nullptr && playingAdversity)
 		myAdversity->update();
 }
@@ -37,7 +38,7 @@ void AdversityManager::loadAdversity(ecs::AdversityID type)
 			//myAdversity = new BurnedCookerAdversity(this);
 		break;
 		case ecs::AdversityID::RainAdversity:
-			//myAdversity = new RainAdversity(this);
+			myAdversity = new RainAdversity(this,nullptr);
 		break;
 	}
 }

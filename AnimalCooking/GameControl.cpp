@@ -30,6 +30,7 @@ void GameControl::update()
 		else timer.update();
 	}
 
+	//if (!adversityTimer.isStarted())adversityTimer.timerStart();
 	adversityTimer.update();
 	if (adversityTimer.isTimerEnd() && advManager != nullptr) {
 		advManager->playAdversity();

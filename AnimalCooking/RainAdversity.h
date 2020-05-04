@@ -18,6 +18,7 @@ class RainAdversity :
 	int frameTime;
 	int lastFrame;
 	int animationFrame;
+	bool started;
 
 public:
 	RainAdversity(AdversityManager* am, MultipleAdversityManager* mam);

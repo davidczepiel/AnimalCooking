@@ -268,6 +268,7 @@
     <ClInclude Include="PlayersAdder.h" />
     <ClInclude Include="PlayerViewer.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="RainAdversity.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
@@ -424,6 +425,7 @@
     <ClCompile Include="PlayersAdder.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="RainAdversity.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />

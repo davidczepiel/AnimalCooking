@@ -132,13 +132,13 @@ void Utensil::feedback(int player)
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	dirtTimer_->setTime(dirtTimer_->getTime()+speedModifier);
+	dirtTimer_->setTime(maxTimeOnFloor_+speedModifier);
 }
 
-//void Utensil::resetDirtTimer()
-//{
-//	dirtTimer_->setTime(maxTimeOnFloor_);
-//}
+void Utensil::resetDirtTimer()
+{
+	dirtTimer_->setTime(maxTimeOnFloor_);
+}
 
 void Utensil::cleanUp() {
 	//Me deberia llamar el fregadero para decime que me limpie

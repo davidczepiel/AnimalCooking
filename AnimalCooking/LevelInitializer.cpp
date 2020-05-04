@@ -228,7 +228,7 @@ void LevelInitializer::initialize_adversities()
 {
 	Entity* adversityManager = emPlaystate->addEntity();
 	adversityManager->addComponent<AdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
-	GETCMP2(adversityManager, AdversityManager)->loadAdversity(ecs::AdversityID::PlaneAdversity);
+	GETCMP2(adversityManager, AdversityManager)->loadAdversity(ecs::AdversityID::RainAdversity);
 	GETCMP2(gameManager, GameControl)->getAdversityTime()->setTime(5000);
 	//GETCMP2(gameManager, GameControl)->getAdversityTime()->timerStart();
 	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));

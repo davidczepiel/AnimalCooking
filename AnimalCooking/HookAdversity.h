@@ -18,6 +18,7 @@ class HookAdversity :
 	bool catched;
 	bool changedPositions;
 	bool droped;
+	bool playersVisible;
 
 	//Posiciones y tamaño de los players
 	Vector2D p1OriginalPos;

@@ -151,6 +151,7 @@
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="MultipleAdversityManager.cpp" />
+    <ClCompile Include="RainAdversity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -335,6 +336,7 @@
     <ClInclude Include="SinkAdder.h" />
     <ClInclude Include="UtensilsAdder.h" />
     <ClInclude Include="MultipleAdversityManager.h" />
+    <ClInclude Include="RainAdversity.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
