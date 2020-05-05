@@ -11,7 +11,7 @@ enum IngredientState { Idle, Walking, Escaping};
 class Ingredient
 {
 public:
-	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Idle) { 
+	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Walking) { 
 		internalTimer.setTime(5000);
 		internalTimer.timerStart();
 	} //2 de prueba
@@ -69,7 +69,7 @@ class Tomato : public Ingredient
 {
 public:
 	Tomato() : Ingredient(Resources::tomato) { 
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); 
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Tomato); 
 
 	}
 	~Tomato() {}
@@ -85,14 +85,14 @@ public:
 class Lettuce : public Ingredient
 {
 public:
-	Lettuce() : Ingredient(Resources::lettuce) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Lettuce() : Ingredient(Resources::lettuce) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Lettuce); }
 	~Lettuce() {}
 };
 
 class Mushroom : public Ingredient
 {
 public:
-	Mushroom() : Ingredient(Resources::mushroom) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Mushroom() : Ingredient(Resources::mushroom) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mushroom); }
 	~Mushroom() {}
 };
 
@@ -113,35 +113,35 @@ public:
 class Meat : public Ingredient
 {
 public:
-	Meat() : Ingredient(Resources::meat) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Meat() : Ingredient(Resources::meat) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Meat); }
 	~Meat() {}
 };
 
 class Potato : public Ingredient
 {
 public:
-	Potato() : Ingredient(Resources::potato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Potato() : Ingredient(Resources::potato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Potato); }
 	~Potato() {}
 };
 
 class Onion : public Ingredient
 {
 public:
-	Onion() : Ingredient(Resources::onion) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Onion() : Ingredient(Resources::onion) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Onion); }
 	~Onion() {}
 };
 
 class Cheese : public Ingredient
 {
 public:
-	Cheese() : Ingredient(Resources::cheese) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Cheese() : Ingredient(Resources::cheese) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cheese); }
 	~Cheese() {}
 };
 
 class Clam : public Ingredient
 {
 public:
-	Clam() : Ingredient(Resources::clam) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Clam() : Ingredient(Resources::clam) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Clam); }
 	~Clam() {}
 };
 

@@ -222,10 +222,16 @@ public:
 		SkilletON,
 		PigIdle,
         PigWalk,
-		PigAttack
-		// text
-		
-	
+		PigAttack,
+		Tomato,
+		Potato,
+		Clam,
+        Cheese,
+		Meat,
+	    Lettuce,
+		Mushroom,
+		Onion
+		// text			
 	};
 
 	enum Level : std::size_t {

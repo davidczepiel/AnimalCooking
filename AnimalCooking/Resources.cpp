@@ -217,7 +217,15 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
     {Basic, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",12,8},
 	{Basic, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",12,4},
-	{Basic, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2}
+	{Basic, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2},
+    {Basic,Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
+	{Basic,Potato,"../AnimalCooking/resources/images/Ingredientes/patata.png",3,2},
+	{Basic,Clam,"../AnimalCooking/resources/images/Ingredientes/vieira.png",3,2},
+	{Basic,Cheese,"../AnimalCooking/resources/images/Ingredientes/queso.png",3,2},
+	{Basic,Meat,"../AnimalCooking/resources/images/Ingredientes/carne.png",3,2},
+	{Basic,Lettuce,"../AnimalCooking/resources/images/Ingredientes/lechuga.png",3,2},
+	{Basic,Mushroom,"../AnimalCooking/resources/images/Ingredientes/champi.png",3,2},
+	{Basic,Onion,"../AnimalCooking/resources/images/Ingredientes/cebolla.png",3,2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
