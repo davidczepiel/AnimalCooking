@@ -93,6 +93,9 @@ void PlayerController::joystickUpdate()
 		tr_->setVelY(0);
 	}
 	ir_->setDir(x, y);
+	//Se establece la direccion para mostrar la animacion correspondiente
+	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
+
 	//Botones-------------------------------
 	if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_A)) {
 		ableToPress = false;
@@ -111,6 +114,7 @@ void PlayerController::joystickUpdate()
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
 		attack_->attack();
+		//Estados de attack
 		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
 		{
 			animator->getTimer().timerStart();
@@ -147,6 +151,14 @@ void PlayerController::joystickUpdate()
 	}
 	else if (dpadArrowsUsed && dpadArrosNotUsed())
 		dpadArrowsUsed = false;
+
+	//estados de walk
+	if(Xvalue !=0 || Yvalue !=0 || animator->getTimer().isTimerEnd())setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
+		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
+	/*Estados de idle*/	                                                          Animator::States::WalkWithNet, Animator::Walk);
+	else if((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
+		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
+		                                                                                Animator::States::IdleWithNet, Animator::States::Idle);
 }
 
 bool PlayerController::padNotTouched() {
@@ -236,6 +248,7 @@ void PlayerController::keyUpdate()
 		{
 			attack_->attack();
 
+			//Estados de attack
 			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
 			{
 				animator->getTimer().timerStart();
