@@ -9,7 +9,7 @@
 #define COLLIDES(body, other) (Collisions::collides(Vector2D(body.x, body.y), body.w, body.h, Vector2D(other.x, other.y), other.w, other.h))
 
 //Devuelve el SDL_Rect de un transform
-#define GETBODY_TR(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getW(), e->getH())
+#define GETBODY_TR(e) RECT(e->getPos().getX() + e->getHitboxOffset().getX(), e->getPos().getY() + e->getHitboxOffset().getY(), e->getHitboxSize().getX(), e->getHitboxSize().getY())
 
 //Devuelve el SDL_Rect de un interactive
 #define GETBODY_INT(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getSize().getX(), e->getSize().getY())
@@ -26,12 +26,12 @@ void CollisionsSystem::update()
 {
 	//Resolvemos las colisiones si el objeto es movible
 	for (auto en : entidadesTr) {
-		if(en.second) resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getW(), en.first->getH()), en.first->getVel());
+		if(en.second) resolveCollisions(en.first->getPosReference(), en.first->getHitboxOffset(), en.first->getHitboxSize(), en.first->getVel());
 	}
 
 	for (auto en : entidadesIng) {
 		if (en.second){
-			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true); 
+			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true); 
 			
 			//Aviso al ingrediente que ha colisionado
 			//tellIngredient(en.first, cT);
@@ -46,7 +46,7 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 		//Si choca con algo, y es movible, mueve ese objeto la mitad que le corresponde
 		if (checkCollision(body, GETBODY_TR(en.first), collisions) && en.second) {
 			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
-			singleCollision(en.first->getPosReference(), Vector2D(en.first->getW(), en.first->getH()), en.first->getVel(), col);
+			singleCollision(en.first->getPosReference(), en.first->getHitboxOffset(), Vector2D(en.first->getW(), en.first->getH()), en.first->getVel(), col);
 			changeBackCol(collisions, col);
 		}
 	}
@@ -59,7 +59,7 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 		//Si choca con algo, y es movible, mueve ese objeto la mitad que le corresponde
 		if (checkCollision(body, GETBODY_ING(en.first), collisions) && en.second) {
 			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
-			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), col);
+			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), col);
 			changeBackCol(collisions, col);
 			
 			//Aviso al ingrediente que ha colisionado
@@ -101,34 +101,34 @@ bool CollisionsSystem::checkCollision(const SDL_Rect& body, const SDL_Rect& othe
 	Se vuelve a arreglar las colisiones que puedan quedar sin resolver recursivamente
 */
 
-ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng)
+ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const bool imIng)
 {
-	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX(), pos.getY(), size.getX(), size.getY()));
+	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX() + offset.getX(), pos.getY() + offset.getY(), size.getX(), size.getY()));
 	ColisionType cT = ColisionType::noColision;
 
-	cT = worldCollision(pos, size, vel, imIng);
+	cT = worldCollision(pos, offset, size, vel, imIng);
 
 	if (!collisions_.empty()) {
 		if (collisions_.size() == 1) {
-			cT = singleCollision(pos, size, vel, collisions_.front());
+			cT = singleCollision(pos, offset, size, vel, collisions_.front());
 		}
 		else if (collisions_.size() == 2) {
 			SDL_Rect col1 = collisions_.front(), col2 = collisions_.back();
 			//se prioriza el de mayor area
 			if (AREA(col1) > AREA(col2)) {
-				cT = singleCollision(pos, size, vel, col1);
+				cT = singleCollision(pos, offset, size, vel, col1);
 			}
 			else if (AREA(col1) < AREA(col2)) {
-				cT = singleCollision(pos, size, vel, col2);
+				cT = singleCollision(pos, offset, size, vel, col2);
 			}
 			else { //Ambas areas son iguales
 				if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
 					col1.h += col2.h;
-					cT = singleCollision(pos, size, vel, col1);
+					cT = singleCollision(pos, offset, size, vel, col1);
 				}
 				else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
 					col1.w += col2.w;
-					cT = singleCollision(pos, size, vel, col1);
+					cT = singleCollision(pos, offset, size, vel, col1);
 				}
 				else {
 					if (vel.getX() < 0) { //Se mueve hacia la izda
@@ -153,91 +153,91 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 
 			if (col1.x == col2.x) { //Los rectangulos estan alineados en vertical
 				col1.h += col2.h;
-				cT = singleCollision(pos, size, vel, col1);
+				cT = singleCollision(pos, offset, size, vel, col1);
 			}
 			else if (col1.y == col2.y) { //Los rectangulos estan alineados en horizontal
 				col1.w += col2.w;
-				cT = singleCollision(pos, size, vel, col1);
+				cT = singleCollision(pos, offset, size, vel, col1);
 			}
 			else {
 				if (col1.x == col3.x) { //Los rectangulos estan alineados en vertical
 					col1.h += col3.h;
-					cT = singleCollision(pos, size, vel, col1);
+					cT = singleCollision(pos, offset, size, vel, col1);
 				}
 				else if (col1.y == col3.y) { //Los rectangulos estan alineados en horizontal
 					col1.w += col3.w;
-					cT = singleCollision(pos, size, vel, col1);
+					cT = singleCollision(pos, offset, size, vel, col1);
 				}
 			}
 		}
-		resolveCollisions(pos, size, vel);	
+		resolveCollisions(pos, offset, size, vel);	
 	}
 	return cT;
 }
 
-ColisionType CollisionsSystem::worldCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng)
+ColisionType CollisionsSystem::worldCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const bool imIng)
 {
 	ColisionType cT = ColisionType::noColision;
 	//Check de colisiones con los bordes del mundo
 	if (imIng) {
 		if (pos.getX() < leftBorder)
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX() + leftBorder), size.getY()));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX() + leftBorder), size.getY()));
 		else if (pos.getX() + size.getX() > game_->getWindowWidth())
-			cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
+			cT = singleCollision(pos, offset, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
 		if (pos.getY() < 0)
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
 		else if (pos.getY() + size.getY() > game_->getWindowHeight())
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
 	}
 	else {
 		if (pos.getX() < 0)
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX()), size.getY()));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), pos.getY(), ceil(-pos.getX()), size.getY()));
 		else if (pos.getX() + size.getX() > game_->getWindowWidth())
-			cT = singleCollision(pos, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
+			cT = singleCollision(pos, offset, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
 		if (pos.getY() < 0)
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
 		else if (pos.getY() + size.getY() > game_->getWindowHeight())
-			cT = singleCollision(pos, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
 	}
 	return cT;
 }
 
-ColisionType CollisionsSystem::singleCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
+ColisionType CollisionsSystem::singleCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
 	if (col.w - col.h > flexibility) { //Colision Vertical
-		verticalCollision(pos, size, vel, col);
+		verticalCollision(pos, offset, size, vel, col);
 		return ColisionType::vertical;
 	}
 	else if (col.w - col.h < -flexibility) { //Colision horizontal
-		horizontalCollision(pos, size, vel, col);
+		horizontalCollision(pos, offset, size, vel, col);
 		return ColisionType::horizontal;
 	}
 	else { //Colision en esquina-->Check de la velocidad
 		if (abs(vel.getX()) > abs(vel.getY())) { //Movimiento horizontal
-			verticalCollision(pos, size, vel, col);
+			verticalCollision(pos, offset, size, vel, col);
 			return ColisionType::vertical;
 		}
 		else if (abs(vel.getX()) < abs(vel.getY())) { //Movimiento vertical
-			horizontalCollision(pos, size, vel, col);
+			horizontalCollision(pos, offset, size, vel, col);
 			return ColisionType::horizontal;
 		}
 		else { // El movimiento es justo hacia la esquina
-			verticalCollision(pos, size, vel, col);
-			horizontalCollision(pos, size, vel, col);
+			verticalCollision(pos, offset, size, vel, col);
+			horizontalCollision(pos, offset, size, vel, col);
 			return ColisionType::both;
 		}
 	}
 }
 
-void CollisionsSystem::verticalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
+void CollisionsSystem::verticalCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if ((int)pos.getY() < col.y) pos.setY(pos.getY() - col.h); //Hay que subirlo
+	if ((int)pos.getY() + offset.getY() < col.y) pos.setY(pos.getY() - col.h); //Hay que subirlo
 	else pos.setY(pos.getY() + col.h); // Hay que bajarlo
 }
 
-void CollisionsSystem::horizontalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
+void CollisionsSystem::horizontalCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if ((int)pos.getX() < col.x)pos.setX(pos.getX() - col.w); //Hay que moverlo a la izda
+	if ((int)pos.getX() + offset.getX() < col.x)pos.setX(pos.getX() - col.w); //Hay que moverlo a la izda
 	else pos.setX(pos.getX() + col.w); // Hay que moverlo a la dcha
 }
 
