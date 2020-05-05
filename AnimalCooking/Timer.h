@@ -49,10 +49,10 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer(ScoreManager* sc) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)),sc(sc){
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
-	LevelTimer(Uint32 lvlT,ScoreManager* sc) : Timer(),sc(sc), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	}
@@ -61,7 +61,6 @@ public:
 
 private:
 	Texture* outlineText_;
-	ScoreManager* sc;
 };
 
 class DefaultTimer : public Timer {

@@ -5,8 +5,8 @@
 #include "Transform.h"
 #include "Animator.h"
 
-EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(score),maxScore(maxScore) {
-
+EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::instance()->getMaxScore()) {
+	score=SDLGame::instance()->getScore();
 	//Botones
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(138,
@@ -15,9 +15,6 @@ EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(sc
 	int degrees = 7;
 	returnToMapButton->addComponent<ButtonBehaviour>(goToMapState, app);
 	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
-	Entity* NextLevelButton = stage->addEntity();
-	stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
-
 	Entity* ResetLevelButton = stage->addEntity();
 	stage->addToGroup(ResetLevelButton, ecs::GroupID::Layer1);
 	ResetLevelButton->addComponent<Transform>(Vector2D(
@@ -31,18 +28,22 @@ EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(sc
 	ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
 	ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
 
-	NextLevelButton->addComponent<Transform>(Vector2D
-	(SDLGame::instance()->getWindowWidth() - 2.75 * SDLGame::instance()->getCasillaLength() +
-		SDLGame::instance()->getCasillaLength() / 2,
-		SDLGame::instance()->getWindowHeight() - 3.3 * SDLGame::instance()->getCasillaLength() -
-		SDLGame::instance()->getCasillaLength() / 2 + sin(degrees)),
-		Vector2D(),
-		SDLGame::instance()->getCasillaLength() / 2,
-		SDLGame::instance()->getCasillaLength() / 2,
-		degrees);
-	NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
-	NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
-
+	int nextLevelLimit = 50;
+	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
+		Entity* NextLevelButton = stage->addEntity();
+		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
+		NextLevelButton->addComponent<Transform>(Vector2D
+		(SDLGame::instance()->getWindowWidth() - 2.75 * SDLGame::instance()->getCasillaLength() +
+			SDLGame::instance()->getCasillaLength() / 2,
+			SDLGame::instance()->getWindowHeight() - 3.3 * SDLGame::instance()->getCasillaLength() -
+			SDLGame::instance()->getCasillaLength() / 2 + sin(degrees)),
+			Vector2D(),
+			SDLGame::instance()->getCasillaLength() / 2,
+			SDLGame::instance()->getCasillaLength() / 2,
+			degrees);
+		NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
+		NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+	}
 	Entity* returnToMenuButton = stage->addEntity();
 	stage->addToGroup(returnToMenuButton, ecs::GroupID::Layer1);
 
@@ -55,9 +56,9 @@ EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(sc
 	//-----------------------------------------------------------------------------------------
 
 	//Final
-	score = 133;
+	//score = 133;
 	Entity* lv = stage->addEntity();
-	lv->addComponent<LevelViewer>(500, 1000, 1500, 50, 75, 95,(double)(score)/maxScore);
+	lv->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 75, 95,(double)(score)/maxScore);
 	stage->addToGroup(lv, ecs::GroupID::ui);
 
 	Entity* Player1Idle = stage->addEntity();
@@ -90,6 +91,8 @@ EndState::EndState(AnimalCooking* ac,int score,int maxScore) :State(ac),score(sc
 void EndState::goToLoadState(AnimalCooking* ac) {
 	goToMapState(ac);
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 1), ac));
+	SDLGame::instance()->setMaxScore(0);
+	SDLGame::instance()->setScore(0);
 }
 void EndState::goToMapState(AnimalCooking* ac) {
 	FSM* fsm = SDLGame::instance()->getFSM();
@@ -108,5 +111,6 @@ void EndState::resetLevel(AnimalCooking* ac)
 {
 	goToMapState(ac);
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(SDLGame::instance()->getCurrentLevel(), ac));
-
+	SDLGame::instance()->setMaxScore(0);
+	SDLGame::instance()->setScore(0);
 }

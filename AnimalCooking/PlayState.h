@@ -16,7 +16,7 @@ public:
 	void resumeTimers();
 
 	void resetTimers();
-	void goToEndState(AnimalCooking* ac,int score,int maxScore);
+	void goToEndState(AnimalCooking* ac);
 private:
 	TimerViewer* timerViewer_;
 };

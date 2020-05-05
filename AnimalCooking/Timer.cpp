@@ -84,7 +84,7 @@ void LevelTimer::update()
 	if (timerEnd_) {
 		timerReset();
 		PlayState* p = static_cast<PlayState*> (SDLGame::instance()->getFSM()->currentState());
-		p->goToEndState(p->getAnimalCooking(),sc->getScore(),sc->getMaxScore());
+		p->goToEndState(p->getAnimalCooking());
 		//Fin nivel
 	}
 }

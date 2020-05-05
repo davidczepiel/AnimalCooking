@@ -31,8 +31,8 @@ public:
 	//Mete un pedido lo mas a la izquierda posible
 	void addOrder(Resources::FoodType finalProduct);
 
-	//playerDidIt indica si el jugador a conseguido el pedido o no para añadir puntos al scoreManager
-	//Los puntos que se añaden = numIngs del Order * 15
+	//playerDidIt indica si el jugador a conseguido el pedido o no para aï¿½adir puntos al scoreManager
+	//Los puntos que se aï¿½aden = numIngs del Order * 15
 	bool removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 
 	//PUEDE DEVOLVER VALORES A NULLPTR

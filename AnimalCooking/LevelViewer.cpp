@@ -18,7 +18,7 @@ void LevelViewer::draw()
 					casilla), 7);
 	}
 	if (timeSpan_ >= scoreTime_)
-		Texture(SDLGame::instance()->getRenderer(), "12 points",
+		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore())+" points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
 					SDLGame::instance()->getWindowWidth() - 3.25 * casilla

@@ -3,15 +3,14 @@
 #include "FoodDictionary.h"
 
 GameLogic::GameLogic(TimerViewer* tv) : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
-foodPool(nullptr), levelTimer_(nullptr), tv(tv)
+foodPool(nullptr), levelTimer_(new LevelTimer()), tv(tv)
 {
+    tv->addTimer(levelTimer_);
 }
 
 void GameLogic::init()
 {
     colSys_ = GETCMP1_(CollisionsSystem);
-    levelTimer_ = new LevelTimer(GETCMP1_(ScoreManager));
-    tv->addTimer(levelTimer_);
 
 }
 

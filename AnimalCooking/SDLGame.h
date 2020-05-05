@@ -90,6 +90,9 @@ public:
 	inline Uint32 getTime() {
 		return SDL_GetTicks();
 	}
+	inline int getScore() { return score; }
+
+	inline int getMaxScore() { return maxScore; }
 	inline jute::jValue& getJsonGeneral() { return json_general; }
 
 	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
@@ -99,7 +102,8 @@ public:
 	inline const double& getCasillaLength() const { return casillaLength; }
 
 	void setCurrentLevel(int level) { currentLevel = level; }
-
+	void setScore(int nScore) { if(nScore>=0)score = nScore; }
+	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -123,6 +127,8 @@ protected:
 	int width_; // window width
 	int height_; // window height
 	int currentLevel;
+	int score;
+	int maxScore;
 	double casillaLength;
 	Entity* timersViewer_;
 

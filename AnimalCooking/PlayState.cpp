@@ -37,8 +37,8 @@ void PlayState::resetTimers()
 	}
 }
 
-void PlayState::goToEndState(AnimalCooking* ac,int score,int maxScore) {
-	SDLGame::instance()->getFSM()->pushState(new EndState(ac,score,maxScore));
+void PlayState::goToEndState(AnimalCooking* ac) {
+	SDLGame::instance()->getFSM()->pushState(new EndState(ac));
 }
 
 

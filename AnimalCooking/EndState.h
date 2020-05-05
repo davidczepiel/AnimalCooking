@@ -18,7 +18,7 @@ private:
 	int score;
 	int maxScore;
 public:
-	EndState(AnimalCooking* ac, int score,int maxScore);
+	EndState(AnimalCooking* ac);
 
 };
 
