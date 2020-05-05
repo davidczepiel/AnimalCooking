@@ -9,10 +9,10 @@
 #define COLLIDES(body, other) (Collisions::collides(Vector2D(body.x, body.y), body.w, body.h, Vector2D(other.x, other.y), other.w, other.h))
 
 //Devuelve el SDL_Rect de un transform
-#define GETBODY_TR(e) RECT(e->getPos().getX() + e->getHitboxOffset().getX(), e->getPos().getY() + e->getHitboxOffset().getY(), e->getHitboxSize().getX(), e->getHitboxSize().getY())
+#define GETBODY_TR(e)  RECT(e->getPos().getX() + e->getHitboxOffset().getX(), e->getPos().getY() + e->getHitboxOffset().getY(), e->getHitboxSize().getX(), e->getHitboxSize().getY())
 
 //Devuelve el SDL_Rect de un interactive
-#define GETBODY_INT(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getSize().getX(), e->getSize().getY())
+#define GETBODY_INT(e) RECT(e->getPos().getX() + e->getHitboxOffset().getX(), e->getPos().getY() + e->getHitboxOffset().getY(), e->getHitboxSize().getX(), e->getHitboxSize().getY())
 
 //Devuelve el SDL_Rect de un ingrediente
 #define GETBODY_ING(e) RECT(e->getPos().getX(), e->getPos().getY(), e->getWidth(), e->getHeight())

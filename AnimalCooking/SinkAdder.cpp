@@ -17,6 +17,8 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
 		sink->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect), GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), sink);
 
+		sink->setHitboxSize(Vector2D(sink->getSize().getX(), sink->getSize().getY()));
+
 		em->addEntity(sink);
 		em->addToGroup(sink, CASTID(jsonGeneral["Sink"]["Layer"].as_int()));
 
