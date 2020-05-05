@@ -8,33 +8,90 @@ void PlaneAdversity::StartPlane() {
 	int width = SDLGame::instance()->getWindowWidth();
 
 	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite);
-	planeRect_ = RECT(rnd->nextInt(0, width), height, planeTexture_->getWidth(), planeTexture_->getHeight());
-	double b = atan(((double)height / 2) / (double)abs(planeRect_.x + (planeTexture_->getWidth() / 2) - ((double)width / 2)));
-	dir_ = Vector2D(planeRect_.x + (planeTexture_->getWidth() / 2) - ((double)SDLGame::instance()->getWindowWidth() / 2), planeRect_.y - ((double)SDLGame::instance()->getWindowHeight() / 2)).normalize();
-	angle = b * 180 / 3.1416;
-	if (planeRect_.x + (planeTexture_->getWidth() / 2) > (height / 2)) angle *= -1;
-	velocity_ = rnd->nextInt(1, 5);
-	force_ = 1;
+
+	int n = rnd->nextInt(0, 8);
+
+	switch (n)
+	{
+	case 0:
+		planeRect_.x = 0;
+		planeRect_.y = height / 2;
+		break;
+	case 1:
+		planeRect_.x = width;
+		planeRect_.y = height / 2;
+		break;
+	case 2:
+		planeRect_.x = width / 2;
+		planeRect_.y = 0;
+		break;
+	case 3:
+		planeRect_.x = width / 2;
+		planeRect_.y = height;
+		break;
+	case 4:
+		planeRect_.x = 0;
+		planeRect_.y = 0;
+		break;
+	case 5:
+		planeRect_.x = width;
+		planeRect_.y = 0;
+		break;
+	case 6:
+		planeRect_.x = 0;
+		planeRect_.y = height;
+		break;
+	case 7:
+		planeRect_.x = width;
+		planeRect_.y = height;
+		break;
+	default:
+		break;
+	}
+
+	planeRect_.w = planeTexture_->getWidth();
+	planeRect_.h = planeTexture_->getHeight();
+
+	dir_ = dirs_[n];
+	angle_ = angles_[n];
+	velocity_ = 3;
+	force_ = 1.5;
+
+	state_ = Pasando;
+	internalTimer.setTime(10000);
+	internalTimer.timerStart();
 }
 
 void PlaneAdversity::update() {
-	planeRect_.x -= (dir_.getX() * velocity_);
-	planeRect_.y -= (dir_.getY() * velocity_);
+	internalTimer.update();
 
-	for (Ingredient* i : adversityMngr_->getIngredientsPool()->getPool()) {
-		i->setPos(i->getPos() - dir_ * force_);		//delta time ¿?
+	if (internalTimer.isTimerEnd()) {
+		if (state_ == Pasando) {
+			internalTimer.timerReset();
+			internalTimer.setTime(3000);
+			internalTimer.timerStart();
+			state_ = Empujando;
+		}
+		else {
+			multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
+			return;
+		}
+	}
+
+	planeRect_.x += (dir_.getX() * velocity_);
+	planeRect_.y += (dir_.getY() * velocity_);
+
+	if (state_ == Pasando) return;
+
+	for (Ingredient* i : multipleAdversityMngr_->getIngredientsPool()->getPool()) {
+		i->setPos(i->getPos() + dir_ * force_);		
 	}
 }
 
 void PlaneAdversity::draw() {
-	planeTexture_->render(planeRect_, angle);
+	planeTexture_->render(planeRect_, angle_);
 }
 
 void PlaneAdversity::reset() {
 	StartPlane();
-}
-
-Vector2D PlaneAdversity::calculateDir() {
-	Vector2D dir;
-	return dir;
 }
