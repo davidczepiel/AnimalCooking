@@ -52,6 +52,9 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casilla, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casilla),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casilla, general["Givers"]["size"]["height"].as_double() * casilla),
 		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), GETCMP2(gameManager, GameControl));
+
+	fg->setHitboxSize(Vector2D(fg->getSize().getX(), fg->getSize().getY()));
+
 	fg->addComponent<FoodGiverViewer>(fg);
 	fg->addComponent<SelectorPopUpEntity>(GETCMP2(players[0], InteractionRect), GETCMP2(players[1], InteractionRect),
 		GETCMP2(players[0], Selector), GETCMP2(players[1], Selector), fg);

@@ -38,6 +38,8 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 
 	dish->setSize(Vector2D(jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaLength,
 		jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaLength));
+
+	dish->setHitboxSize(Vector2D(dish->getSize().getX(), dish->getSize().getY()));
 	//Componentes extra
 	components = jsonLevel["DishStack"]["components"];
 	for (int i = 0; i < components.size(); ++i) {

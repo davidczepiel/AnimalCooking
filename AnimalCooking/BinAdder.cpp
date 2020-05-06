@@ -20,6 +20,9 @@ BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jso
 		bin->setPos(Vector2D(bins_[i]["pos"]["x"].as_double() * casillaLength,
 			bins_[i]["pos"]["y"].as_double() * casillaLength));
 
+		bin->setHitboxOffset(Vector2D(bin->getSize().getX() / 4, bin->getSize().getY() / 4));
+		bin->setHitboxSize(Vector2D(bin->getSize().getX() / 2, bin->getSize().getY() / 2));
+
 		em->addEntity(bin);
 		em->addToGroup(bin, CASTID(jsonGeneral["Bin"]["Layer"].as_int()));
 

@@ -39,12 +39,12 @@ private:
 	void changeBackCol(std::list<SDL_Rect>& collisions, const SDL_Rect& col);
 
 	bool checkCollision(const SDL_Rect& body, const SDL_Rect& other, list<SDL_Rect>& collisions);
-	ColisionType resolveCollisions(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng = false);
-	ColisionType worldCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const bool imIng);
+	ColisionType resolveCollisions(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const bool imIng = false);
+	ColisionType worldCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const bool imIng);
 
-	ColisionType singleCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
-	void verticalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
-	void horizontalCollision(Vector2D& pos, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
+	ColisionType singleCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
+	void verticalCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
+	void horizontalCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
 
 	void tellIngredient(Ingredient* en, const ColisionType& colType);
 };
