@@ -8,7 +8,7 @@
 MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up)
 {
 	adversities.push_back(new PlaneAdversity(nullptr, this));
-	adversities.push_back(new PlaneAdversity(nullptr, this));
+	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
 	adversities.push_back(new HookAdversity(nullptr, this));
 	adversities.push_back(new RainAdversity(nullptr, this));
 
@@ -29,21 +29,25 @@ void MultipleAdversityManager:: seeTimers() {
 	if (planeTimer.isTimerEnd()) {
 		planeTimer.timerReset();
 		activeAdversities.at(ecs::AdversityID::PlaneAdversity) = true;
+		adversities.at(ecs::AdversityID::PlaneAdversity)->reset();
 	}
 	hookTimer.update();
 	if (hookTimer.isTimerEnd()) {
 		hookTimer.timerReset();
 		activeAdversities.at(ecs::AdversityID::HookAdversity) = true;
+		adversities.at(ecs::AdversityID::HookAdversity)->reset();
 	}
 	rainTimer.update();
 	if (rainTimer.isTimerEnd()) {
 		rainTimer.timerReset();
 		activeAdversities.at(ecs::AdversityID::RainAdversity) = true;
+		adversities.at(ecs::AdversityID::RainAdversity)->reset();
 	}
 	burnCookerTimer.update();
 	if (burnCookerTimer.isTimerEnd()) {
 		burnCookerTimer.timerReset();
 		activeAdversities.at(ecs::AdversityID::CookersAdversity) = true;
+		adversities.at(ecs::AdversityID::CookersAdversity)->reset();
 	}
 	
 }
@@ -58,8 +62,6 @@ void MultipleAdversityManager::draw()
 void MultipleAdversityManager::stopAdversity(ecs::AdversityID i)
 {
 	 activeAdversities[i] = false;
-	 adversities.at(i)->reset();
-
 }
 
 void MultipleAdversityManager::setTimerTime(ecs::AdversityID id, int time)
