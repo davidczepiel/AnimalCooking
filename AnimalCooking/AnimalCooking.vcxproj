@@ -173,6 +173,7 @@
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
@@ -242,6 +243,7 @@
     <ClInclude Include="LevelInitializer.h" />
     <ClInclude Include="LevelViewer.h" />
     <ClInclude Include="LoadingBarViewer.h" />
+    <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuButtonBehaviour.h" />
@@ -327,6 +329,7 @@
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="CollisionsSystem.cpp" />
@@ -392,6 +395,7 @@
     <ClCompile Include="LevelViewer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuPadNavigation.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapState.cpp" />

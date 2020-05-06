@@ -20,7 +20,7 @@ void MenuButtonRenderer::draw()
 	SDL_Point mousePosition = { mousePos.getX(), mousePos.getY() };
 	SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), tr_->getW(), tr_->getH());
 
-	if (SDL_PointInRect(&mousePosition, &buttonRect)) {
+	if (SDL_PointInRect(&mousePosition, &buttonRect) || focused) {
 		texture->renderWithTint(dest, 160, 50, 0);
 	}
 	else texture->render(dest);
