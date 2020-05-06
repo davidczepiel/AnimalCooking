@@ -153,10 +153,10 @@ void PlayerController::joystickUpdate()
 		dpadArrowsUsed = false;
 
 	//estados de walk
-	if(Xvalue !=0 || Yvalue !=0 || animator->getTimer().isTimerEnd())setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
+	if((Xvalue !=0 || Yvalue !=0 || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X))setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
 		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
 	/*Estados de idle*/	                                                          Animator::States::WalkWithNet, Animator::Walk);
-	else if((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
+	else if(((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X)) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
 		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
 		                                                                                Animator::States::IdleWithNet, Animator::States::Idle);
 }
