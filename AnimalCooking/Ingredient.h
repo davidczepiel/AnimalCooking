@@ -45,6 +45,8 @@ public:
 	inline Resources::IngredientType getType() { return type_; }
 	inline Timer& getInternalTimer() { return internalTimer; }
 	inline IngredientState getIngredientState() { return state; }
+	inline void setLastVel(Vector2D v) { lastVel_ = v; }
+
 
 	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
 	void setIt(std::vector<Ingredient*>::iterator i) { it_ = i; }
@@ -52,7 +54,7 @@ public:
 	virtual void destroy(Resources::UtensilType utensilio);	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
 
 protected:
-	Vector2D size_, pos_, vel_;
+	Vector2D size_, pos_, vel_,lastVel_;
 	Texture* texture_;
 	double maxVel_; //si maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 	IngredientsPool* ingredientPool_;
