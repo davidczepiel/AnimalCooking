@@ -230,7 +230,12 @@ public:
 		Meat,
 	    Lettuce,
 		Mushroom,
-		Onion
+		Onion,
+		Fish,
+		Chicken,
+		Carrot,
+		Sausage
+
 		// text			
 	};
 

@@ -78,7 +78,7 @@ public:
 class Carrot : public Ingredient
 {
 public:
-	Carrot() : Ingredient(Resources::carrot) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Carrot() : Ingredient(Resources::carrot) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Carrot); }
 	~Carrot() {}
 };
 
@@ -99,14 +99,14 @@ public:
 class Sausage : public Ingredient
 {
 public:
-	Sausage() : Ingredient(Resources::sausage) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Sausage() : Ingredient(Resources::sausage) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sausage); }
 	~Sausage() {}
 };
 
 class Chicken : public Ingredient
 {
 public:
-	Chicken() : Ingredient(Resources::chicken) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Chicken() : Ingredient(Resources::chicken) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Chicken); }
 	~Chicken() {}
 };
 
@@ -148,7 +148,7 @@ public:
 class Fish : public Ingredient
 {
 public:
-	Fish() : Ingredient(Resources::fish) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Ingrediente); }
+	Fish() : Ingredient(Resources::fish) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fish); }
 	~Fish() {}
 };
 

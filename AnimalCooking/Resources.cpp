@@ -225,7 +225,11 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic,Meat,"../AnimalCooking/resources/images/Ingredientes/carne.png",3,2},
 	{Basic,Lettuce,"../AnimalCooking/resources/images/Ingredientes/lechuga.png",3,2},
 	{Basic,Mushroom,"../AnimalCooking/resources/images/Ingredientes/champi.png",3,2},
-	{Basic,Onion,"../AnimalCooking/resources/images/Ingredientes/cebolla.png",3,2}
+	{Basic,Onion,"../AnimalCooking/resources/images/Ingredientes/cebolla.png",3,2},
+	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
+	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
+	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

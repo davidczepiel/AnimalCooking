@@ -7,10 +7,11 @@ void Ingredient::update() {
 	pos_ = pos_ + vel_;
 }
 
-void Ingredient::render() const {
+void Ingredient::render() const 
+{
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	
-	if (state == IngredientState::Idle) texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())),1, 0);
+	if (state == IngredientState::Idle) texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 1, 0); 
 	else if (state == IngredientState::Walking || state == IngredientState::Escaping) 	
 	{ 
 		if(vel_.getX()<0) texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 0, 0,SDL_FLIP_HORIZONTAL);
