@@ -23,7 +23,7 @@ void ButtonRenderer::draw()
 		Vector2D pos = ownerTransform_->getPos();
 
 		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
-		background_->render(dest);
+		background_->render(dest,ownerTransform_->getRot());
 		if (text_ != nullptr)
 			text_->render(dest);
 	}

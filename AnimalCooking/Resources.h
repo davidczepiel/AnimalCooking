@@ -33,7 +33,15 @@ public:
 		MainMenuExitButton,
 		MainMenuCreditsButton,
 		RectangleOutline,
-		
+		HomeIcon,
+		MapIcon,
+		ReplayIcon,
+		NextLevelIcon,
+		Star,
+		YellowStar,
+		LimitSign,
+
+
 		SliderBackground,
 		SliderMovPoint,
 

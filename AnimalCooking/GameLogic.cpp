@@ -3,7 +3,7 @@
 #include "FoodDictionary.h"
 
 GameLogic::GameLogic(TimerViewer* tv) : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
-foodPool(nullptr), levelTimer_(new LevelTimer())
+foodPool(nullptr), levelTimer_(new LevelTimer()), tv(tv)
 {
     tv->addTimer(levelTimer_);
 }
@@ -11,6 +11,7 @@ foodPool(nullptr), levelTimer_(new LevelTimer())
 void GameLogic::init()
 {
     colSys_ = GETCMP1_(CollisionsSystem);
+
 }
 
 void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
