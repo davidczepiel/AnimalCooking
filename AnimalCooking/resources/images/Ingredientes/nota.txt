@@ -3,3 +3,5 @@ Segunda columna-> Animación idle. Orden: 2-1-2-3...
 
 Tamaños:
 32x32 -> Carne, cebolla, champiñon, lechuga, tomate, carne, patata, vieira.
+30x44 -> Pescado, salchicha, zanahoria.
+40x40 -> Pollo.

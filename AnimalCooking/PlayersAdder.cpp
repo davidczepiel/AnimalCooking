@@ -48,6 +48,9 @@ void PlayersAdder::players_initializeTransform(size_t player, const double casil
 
 	t->setPos(Vector2D(jsonLevel["Players"][player]["pos"]["x"].as_double() * casillaLength,
 		jsonLevel["Players"][player]["pos"]["y"].as_double() * casillaLength));
+
+	t->setHitboxOffset(int(t->getW() * 0.1), int(t->getH() / 2));
+	t->setHitboxSize(int(t->getW() * 0.8), int(t->getH() / 2));
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

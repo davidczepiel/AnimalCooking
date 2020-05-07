@@ -63,4 +63,6 @@ void InsertExpel::extractFood(Cooker *cooker, Timer* timer, int player){
 			cooker->setCookerState(CookerStates::empty);
 			timer->timerReset();
 	}
+
+	cooker->getCookerTimer()->setTexture(game_->getTextureMngr()->getTexture(Resources::CircularTimer));
 }

@@ -16,6 +16,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
+
 	em->addEntity(os);
 	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
 	interactives_.push_back(os);
@@ -25,6 +26,10 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 
 	os->setPos(Vector2D(nivel["Clients"]["repisa"]["pos"]["x"].as_double() * casilla, nivel["Clients"]["repisa"]["pos"]["y"].as_double() * casilla));
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casilla, general["Clients"]["repisa"]["size"]["height"].as_double() * casilla));
+
+	os->setHitboxOffset(Vector2D(0, os->getSize().getY() * 0.25));
+	os->setHitboxSize(Vector2D(os->getSize().getX(), os->getSize().getY() * 0.75));
+
 
 	os->addComponent<OrderServiceViewer>(os);
 
@@ -56,7 +61,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	//Inicializacion de los componentes extra de ese nivel
 	for (int c = 0; c < nivel["Clients"]["components"].size(); ++c) {
 		initializeComponent(nivel["Clients"]["components"][c].as_string(), os);
-	}	
+	}
 }
 
 constexpr unsigned int str2int(const char* str, int h = 0)

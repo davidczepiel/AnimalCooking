@@ -3,6 +3,8 @@
 Transform::Transform() :
 		Component(ecs::Transform), position_(), //
 		velocity_(), //
+		hitbox_offset_(), //
+		hitbox_size_(), //
 		width_(), //
 		height_(), //
 		rotation_() //
