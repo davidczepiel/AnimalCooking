@@ -4,6 +4,7 @@
 void LevelViewer::draw()
 {
 	timeSpan_ = SDLGame::instance()->getTime() - startedTick_;
+	int winW = SDLGame::instance()->getWindowWidth();
 
 	if (timeSpan_ >= levelTime_)
 	{
@@ -12,31 +13,37 @@ void LevelViewer::draw()
 		Texture(SDLGame::instance()->getRenderer(), lvs,
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
-					SDLGame::instance()->getWindowWidth() - 3 * casilla,
+					winW - 3 * casilla,
 					casilla * 3,
 					2 * casilla,
 					casilla), 7);
 	}
+	
 	if (timeSpan_ >= scoreTime_)
 		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore())+" points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
-					SDLGame::instance()->getWindowWidth() - 3.25 * casilla
+					winW - 3.25 * casilla
 					,
 					casilla * 4,
 					2 * casilla,
 					casilla), 7);
+	
 	if (timeSpan_ >= barTime_) {
 		int w = 10 * casilla;
 		int h = casilla;
+		
 		barBackground->render(RECT(casilla, casilla, w, h));
 		bar->render(RECT(casilla, casilla, scoreProgress_ * w, h));
+		
 		double osp = casilla + (oneStarPerc_ / 100) * w - casilla / 10;
 		double tsp = casilla + (twoStarPerc_ / 100) * w - casilla / 10;
 		double thsp = casilla + (threeStarPerc_ / 100) * w - casilla / 10;
+		
 		limitSign->render(RECT(osp, casilla, casilla / 10, casilla / 5));
 		limitSign->render(RECT(tsp, casilla, casilla / 10, casilla / 5));
 		limitSign->render(RECT(thsp, casilla, casilla / 10, casilla / 5));
+		
 		double starSize = casilla / 3;
 		//casilla - casilla / 2.5 porque está en la y casilla y casilla/2.5 es la mitad de casilla/5
 		if (scoreProgress_ * 100 >= oneStarPerc_)
