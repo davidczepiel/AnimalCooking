@@ -6,7 +6,7 @@
 class ScreenLoader : public State
 {
 public:
-	ScreenLoader(Resources::Level nivel, AnimalCooking* ac);
+	ScreenLoader(int nivel, AnimalCooking* ac);
 	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
 	void updateLength();
 	EntityManager* getEntityManager() { return emPlaystate; }
@@ -22,7 +22,7 @@ private:
 
 	EntityManager* emPlaystate;
 
-	Resources::Level level;
+	int level;
 	Entity* barraCarga_;
 	Entity* buttonGo_;
 	Entity* padNavigation_;

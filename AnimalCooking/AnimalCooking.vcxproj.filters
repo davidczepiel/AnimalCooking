@@ -145,6 +145,7 @@
     <ClCompile Include="DoorRenderer.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="GameConfig.cpp" />
+    <ClCompile Include="LevelViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -301,6 +302,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorRenderer.h" />
     <ClInclude Include="GameConfig.h" />
+    <ClInclude Include="LevelViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

@@ -3,6 +3,7 @@
 #include "SDLGame.h"
 #include "Texture.h"
 #include "Vector2D.h"
+#include "ScoreManager.h"
 
 class Timer {
 public:

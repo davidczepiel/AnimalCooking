@@ -24,6 +24,14 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
+	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
+	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
+	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
+	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
+	{Basic,Star,"../AnimalCooking/resources/images/star.png"},
+	{Basic,YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
+	{Basic,LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
+
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
@@ -111,7 +119,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,CookedClamsOrder,"../AnimalCooking/resources/images/Pedidos/vieira.png"},
 	{AllLevels,RiceAndClamsOrder,"../AnimalCooking/resources/images/Pedidos/mariscoConArroz.png"},
 
-	
+
 	//Foods-----------------------------------------------------------------
 	{AllLevels, TextureId::PoopT,"../AnimalCooking/resources/images/Foods/caca.png"},
 	{AllLevels, TextureId::SlicedTomatoT,"../AnimalCooking/resources/images/Foods/tomateCortado.png"},
@@ -194,14 +202,14 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
 		{AllLevels, MashedTomatoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
 
-		//Utensil
-		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
-		//General
-		{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
-		{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
-		{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
-		{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
-		{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
+	//Utensil
+	{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
+	//General
+	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
+	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
+	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
+	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
+	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
 
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
