@@ -204,9 +204,14 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	//Utensil
 	{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
+	{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
+	{AllLevels, RedFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/redFeedBack.png"},
+	{AllLevels, RalladorFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/ralladorFeedBack.png"},
 	//General
 	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
 	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
+	{AllLevels, VerContenidoPlato,"../AnimalCooking/resources/images/FeedBack/General/verPlato.png"},
+	{AllLevels, EntregarPedido,"../AnimalCooking/resources/images/FeedBack/General/entregarPedido.png"},
 	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
 	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
 	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},

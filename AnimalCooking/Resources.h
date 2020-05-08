@@ -211,9 +211,14 @@ public:
 
 			//Utensils
 			CuchilloFeedBack,
+			MazoFeedBack,
+			RedFeedBack,
+			RalladorFeedBack,
 			//General
 			Panel,
 			PlatoFeedBack,
+			VerContenidoPlato,
+			EntregarPedido,
 			PapeleraFeedBack,
 			Coger,
 			Dejar,
