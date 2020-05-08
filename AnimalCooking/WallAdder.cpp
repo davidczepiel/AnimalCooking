@@ -51,7 +51,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	Entity* e;
 	int posX = nivel["Clients"]["repisaFalsa"]["pos"]["x"].as_int();
 	int posY = nivel["Clients"]["repisaFalsa"]["pos"]["y"].as_int();
-	int size = general["Clients"]["repisa"]["size"]["width"].as_int();
+	int size = general["Clients"]["repisaFalsa"]["size"]["width"].as_int();
 	for (int i = 0; i < size; i++) {
 		e = mngr->addEntity();
 		e->addComponent<Transform>(Vector2D((posX + i) * casilla, posY * casilla), Vector2D(), casilla, casilla);
