@@ -6,7 +6,7 @@
 #include "Entity.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
-	timer_(new FoodTimer()),
+	timer_(new FoodTimer()),canDraw(true),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -21,7 +21,8 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	timer_(new FoodTimer()),
 	type_(type),
-	foodPool_(nullptr)
+	foodPool_(nullptr), 
+	canDraw(true)
 {
 	position_ = Vector2D();
 	size_ = Vector2D(50, 50);

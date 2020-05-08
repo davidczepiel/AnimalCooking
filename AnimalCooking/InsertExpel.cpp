@@ -36,6 +36,7 @@ void InsertExpel::insertFood(Cooker* cooker, int player) {
 			if (!dish_->getFoodVector().empty()) {
 				for (auto& i : dish_->getFoodVector()) {
 					i->setCanInteract(false);
+					i->setCanDraw(false);
 				}
 				cooker->getFoods().insert(cooker->getFoods().end(), dish_->getFoodVector().begin(), dish_->getFoodVector().end());
 				dish_->getFoodVector().clear();
@@ -58,6 +59,7 @@ void InsertExpel::extractFood(Cooker *cooker, Timer* timer, int player){
 			dish_->getFoodVector().insert(dish_->getFoodVector().end(), cooker->getFoods().begin(), cooker->getFoods().end());
 			for (auto& i : dish_->getFoodVector()) {
 				i->setCanInteract(false);
+				i->setCanDraw(true);
 			}
 			cooker->getFoods().clear();
 			cooker->setCookerState(CookerStates::empty);

@@ -45,7 +45,6 @@ void Cooker::draw()
 	if (state_ == CookerStates::cooking || state_ == CookerStates::cooked) {
 		int row = ( SDLGame::instance()->getTime() / config::COOKER_ANIM_SPEED) % texture_->getNumRows();
 		texture_->renderFrame(rect, row, 0, rotation_);
-		cout << row << endl;
 	}
 	else texture_->render(rect, rotation_);
 }

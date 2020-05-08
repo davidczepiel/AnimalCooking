@@ -36,6 +36,7 @@ void FoodCooker::update() {
 			else if (c->getCookerState() == CookerStates::cooking) {
 				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());	
 				newFood->setCanInteract(false);
+				newFood->setCanDraw(false);
 				clearFoods(c);
 				fp_->AddFood(newFood);
 				c->getFoods().push_back(newFood);
@@ -49,6 +50,7 @@ void FoodCooker::update() {
 			else {
 				Food* burnedFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
 				burnedFood->setCanInteract(false);
+				burnedFood->setCanDraw(false);
 				clearFoods(c);
 				fp_->AddFood(burnedFood);
 				c->getFoods().push_back(burnedFood);
