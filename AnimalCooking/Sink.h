@@ -21,5 +21,6 @@ public:
 private:
 	size_t nTries, maxTries;
 	Uint32 lastTry;
+	SinkViewer* sV;
 
 };

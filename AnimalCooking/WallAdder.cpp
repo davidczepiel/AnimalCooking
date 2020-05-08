@@ -14,16 +14,16 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 {
 	//Paredes
 	vector<Data> data; 
-	data.push_back(Data(Vector2D(7 * casilla, 0), //medio 1 ver
+	data.push_back(Data(Vector2D(8 * casilla, 0), //medio 1 ver
 		Vector2D(offset, 4.25 * casilla),
 		Resources::TextureId::Suelo));
-	data.push_back(Data(Vector2D(7 * casilla, 5.75 * casilla),	//Medio 2 ver
+	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla),	//Medio 2 ver
 		Vector2D(offset, 1.25 * casilla),
 		Resources::TextureId::Suelo));
-	data.push_back(Data(Vector2D(7 * casilla + offset, 7 * casilla - offset), //Aba hor
+	data.push_back(Data(Vector2D(8 * casilla + offset, 7 * casilla - offset), //Aba hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), offset),
 		Resources::TextureId::Button));
-	data.push_back(Data(Vector2D(7 * casilla + offset, 0), //Arr hor
+	data.push_back(Data(Vector2D(8 * casilla + offset, 0), //Arr hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), offset),
 		Resources::TextureId::Button));
 	for (auto& d : data) {
@@ -65,17 +65,17 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	//Suelos
 	Entity* cocina = mngr->addEntity();
-	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 7 * casilla + offset, 7 * casilla);
+	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casilla + offset, 7 * casilla);
 	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casilla, casilla));
 	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
 
 	Entity* campo = mngr->addEntity();
-	campo->addComponent<Transform>(Vector2D(7 * casilla + offset, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), 7 * casilla);
+	campo->addComponent<Transform>(Vector2D(8 * casilla + offset, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), 7 * casilla);
 	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casilla, casilla));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
 
 	//Hacer puerta
-	Door* d = new Door(Vector2D(6.5 * casilla + offset / 2, 4.25 * casilla), Vector2D(1 * casilla, 1.5 * casilla), 
+	Door* d = new Door(Vector2D(7.5 * casilla + offset / 2, 4.25 * casilla), Vector2D(1 * casilla, 1.5 * casilla), 
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panel), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
 	mngr->addToGroup(d, ecs::GroupID::FoodLayer);
