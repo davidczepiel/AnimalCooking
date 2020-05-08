@@ -19,18 +19,21 @@ void DishViewer::draw()
 		dish->render(RECT((*i)->getPos().getX(), (*i)->getPos().getY(), (*i)->getSize().getX(), (*i)->getSize().getY()));
 
 		//se renderizan los alimentos del plato		
-		//Colocamos la comida en el centro del plato y un poco m�s arriba del fondo del plato
-		//(teniendo en cuenta el �ndice la comida) y renderizamos
-        int k = 0;
-		vector<Food*> foods= (*i)->getFoodVector();
-		for (auto it =foods.begin(); it != foods.end(); it++)
-		{
-			(*it)->setPos(Vector2D((*i)->getPos().getX() + (*it)->getSize().getX() / 2,
-				(*i)->getPos().getY() - (*it)->getSize().getY() / 4 - (int64_t)((*it)->getSize().getY() * k)));
+		//Colocamos la comida formando un circulo dentro del plato
+		int k = 180;
+		vector<Food*> foods = (*i)->getFoodVector();
+		for (auto it = foods.begin(); it != foods.end(); it++)
+		{			
+			double rx = (*i)->getSize().getX() / 6 * cos((k * M_PI) / 180) + (*i)->getSize().getX() / 5;
+			double ry = (*i)->getSize().getY() / 6 * sin((k * M_PI) / 180) + (*i)->getSize().getY() / 5;
 
-			(*it)->setSize(Vector2D((*i)->getSize().getX() / 2, (*i)->getSize().getY()));
+			double x = (*i)->getPos().getX() + rx;
+			double y = (*i)->getPos().getY() + ry;
 
-			k++;
-		}		
+			(*it)->setPos(Vector2D(x, y));
+			(*it)->setSize(Vector2D((*i)->getSize().getX() / 1.8, (*i)->getSize().getY() / 1.8));
+
+			k += 360 / foods.size();
+		}
 	}
 }
