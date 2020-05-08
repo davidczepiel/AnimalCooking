@@ -49,12 +49,16 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
 	if (!lista.empty()) { //Si encuentra el producto a eliminar, elimina el pedido
 		vector<Order*>::iterator it = getFirst(lista);
+
+		scoreManager_->setMaxScore(scoreManager_->getMaxScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
+
 		if (playerDidIt) {
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
-		}
+		}	
 		else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
 			scoreManager_->addScore((*it)->getNumIngs() * -7.5);
+
 		(*it)->removeTimer();
 		delete* it;
 		*it = nullptr;

@@ -2,9 +2,9 @@
 
 void OrderServiceViewer::init()
 {
-	textLeft = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraIzda);
-	textMid = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraCentro);
-	textRight = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraDcha);
+	textLeft = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraConTimbre);
+	textMid = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraSinTimbre);
+	textRight = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BarraSinTimbre);
 	position = RECT(entity->getPos().getX(), entity->getPos().getY(), entity->getSize().getX(), entity->getSize().getY());
 }
 

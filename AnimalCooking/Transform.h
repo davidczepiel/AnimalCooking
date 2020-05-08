@@ -31,6 +31,39 @@ public:
 		position_.setY(y);
 	}
 
+	const Vector2D& getHitboxOffset() const {
+		return hitbox_offset_;
+	}
+	const Vector2D& getHitboxSize() const {
+		return hitbox_size_;
+	}
+
+	void setHitboxOffset(const Vector2D& pos) {
+		hitbox_offset_.set(pos);
+	}
+	void setHitboxOffset(double x, double y) {
+		hitbox_offset_.set(x, y);
+	}
+	void setHitboxOffsetX(double x) {
+		hitbox_offset_.setX(x);
+	}
+	void setHitboxOffsetY(double y) {
+		hitbox_offset_.setY(y);
+	}
+
+	void setHitboxSize(const Vector2D& pos) {
+		hitbox_size_.set(pos);
+	}
+	void setHitboxSize(double x, double y) {
+		hitbox_size_.set(x, y);
+	}
+	void setHitboxSizeX(double x) {
+		hitbox_size_.setX(x);
+	}
+	void setHitboxSizeY(double y) {
+		hitbox_size_.setY(y);
+	}
+
 	// rotation
 	double getRot() const {
 		return rotation_;
@@ -79,6 +112,8 @@ public:
 private:
 	Vector2D position_;
 	Vector2D velocity_;
+	Vector2D hitbox_offset_;
+	Vector2D hitbox_size_;
 	double width_;
 	double height_;
 	double rotation_;

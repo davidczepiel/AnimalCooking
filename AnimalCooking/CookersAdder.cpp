@@ -51,6 +51,8 @@ void CookersAdder::makeCooker(int type, int n) {
 	Cooker* c = new T(pos, size, general["Cookers"]["rotation"].as_int(), nullptr,
 		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), cookersPool);
 
+	c->setHitboxSize(Vector2D(c->getSize().getX(), c->getSize().getY()));
+
 	jute::jValue com = nivel["CookersPool"][type][1][n]["components"];
 	for (size_t i = 0; i < com.size(); i++)
 	{

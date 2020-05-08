@@ -24,6 +24,14 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
+	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
+	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
+	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
+	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
+	{Basic,Star,"../AnimalCooking/resources/images/star.png"},
+	{Basic,YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
+	{Basic,LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
+
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
@@ -111,7 +119,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,CookedClamsOrder,"../AnimalCooking/resources/images/Pedidos/vieira.png"},
 	{AllLevels,RiceAndClamsOrder,"../AnimalCooking/resources/images/Pedidos/mariscoConArroz.png"},
 
-	
+
 	//Foods-----------------------------------------------------------------
 	{AllLevels, TextureId::PoopT,"../AnimalCooking/resources/images/Foods/caca.png"},
 	{AllLevels, TextureId::SlicedTomatoT,"../AnimalCooking/resources/images/Foods/tomateCortado.png"},
@@ -194,14 +202,14 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
 		{AllLevels, MashedTomatoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
 
-		//Utensil
-		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
-		//General
-		{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
-		{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
-		{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
-		{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
-		{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
+	//Utensil
+	{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
+	//General
+	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
+	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
+	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
+	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
+	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
 
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
@@ -214,7 +222,25 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{Basic, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
-	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1}
+	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+    {Basic, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",12,8},
+	{Basic, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",12,4},
+	{Basic, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2},
+	{Basic, ChickenIdle, "../AnimalCooking/resources/images/Animaciones/Gallina/idle.png",12,8},
+	{Basic, ChickenWalk, "../AnimalCooking/resources/images/Animaciones/Gallina/andar.png",12,4},
+	{Basic, ChickenAttack, "../AnimalCooking/resources/images/Animaciones/Gallina/ataque.png",8,2},
+    {Basic,Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
+	{Basic,Potato,"../AnimalCooking/resources/images/Ingredientes/patata.png",3,2},
+	{Basic,Clam,"../AnimalCooking/resources/images/Ingredientes/vieira.png",3,2},
+	{Basic,Cheese,"../AnimalCooking/resources/images/Ingredientes/queso.png",3,2},
+	{Basic,Meat,"../AnimalCooking/resources/images/Ingredientes/carne.png",3,2},
+	{Basic,Lettuce,"../AnimalCooking/resources/images/Ingredientes/lechuga.png",3,2},
+	{Basic,Mushroom,"../AnimalCooking/resources/images/Ingredientes/champi.png",3,2},
+	{Basic,Onion,"../AnimalCooking/resources/images/Ingredientes/cebolla.png",3,2},
+	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
+	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
+	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

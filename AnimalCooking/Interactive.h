@@ -20,6 +20,12 @@ public:
 	Texture* getTexture() { return feedbackVisual_; }
 	~Interactive() {}
 
+	void setHitboxOffset(const Vector2D& newOffset) { hitbox_offset_ = newOffset; }
+	Vector2D getHitboxOffset() { return hitbox_offset_; }
+
+	void setHitboxSize(const Vector2D& newSize) { hitbox_size_ = newSize; }
+	Vector2D getHitboxSize() { return hitbox_size_; }
+
 	virtual void action1(int player) {};
 	virtual void action2(int player) {};
 	virtual void action3(int player) {};
@@ -42,6 +48,8 @@ protected:
 	Transport* player2_;
 	Vector2D position_;
 	Vector2D size_;
+	Vector2D hitbox_offset_;
+	Vector2D hitbox_size_;
 	double rotation_;
 };
 

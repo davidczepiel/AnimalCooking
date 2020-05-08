@@ -33,7 +33,15 @@ public:
 		MainMenuExitButton,
 		MainMenuCreditsButton,
 		RectangleOutline,
-		
+		HomeIcon,
+		MapIcon,
+		ReplayIcon,
+		NextLevelIcon,
+		Star,
+		YellowStar,
+		LimitSign,
+
+
 		SliderBackground,
 		SliderMovPoint,
 
@@ -219,11 +227,27 @@ public:
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
-		SkilletON
+		SkilletON,
+		PigIdle,
+        PigWalk,
+		PigAttack,
+		ChickenIdle,
+		ChickenWalk,
+		ChickenAttack,
+		Tomato,
+		Potato,
+		Clam,
+        Cheese,
+		Meat,
+	    Lettuce,
+		Mushroom,
+		Onion,
+		Fish,
+		Chicken,
+		Carrot,
+		Sausage
 
-		// text
-		
-	
+		// text			
 	};
 
 	enum Level : std::size_t {

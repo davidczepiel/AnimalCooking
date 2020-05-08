@@ -42,9 +42,10 @@ void Cooker::draw()
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
-	if (state_ == CookerStates::cooking) {
-		int row = (timer_->getProgress() / (17 % texture_->getNumRows()));
+	if (state_ == CookerStates::cooking || state_ == CookerStates::cooked) {
+		int row = ( SDLGame::instance()->getTime() / config::COOKER_ANIM_SPEED) % texture_->getNumRows();
 		texture_->renderFrame(rect, row, 0, rotation_);
+		cout << row << endl;
 	}
 	else texture_->render(rect, rotation_);
 }

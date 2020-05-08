@@ -55,7 +55,7 @@ public:
 	virtual void setEmptyTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
 	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
-	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
+	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
 };
 
 class Skillet : public Cooker {
@@ -65,5 +65,5 @@ public:
 	virtual void setEmptyTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF); };
 	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerBurned); };
 	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); };
-	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookerCooked); };
+	virtual void setCookedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); };
 };

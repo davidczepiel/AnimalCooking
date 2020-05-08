@@ -27,5 +27,6 @@ private:
     IngredientsPool* ingPool;
     FoodPool* foodPool;
     UtensilsPool* utensilPool;
+    TimerViewer* tv;
     LevelTimer* levelTimer_;
 };
