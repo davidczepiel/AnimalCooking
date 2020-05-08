@@ -210,7 +210,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
 	// Adversities
-	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"}
+	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
+	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 };
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{

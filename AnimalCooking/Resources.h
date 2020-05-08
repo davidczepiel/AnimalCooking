@@ -225,7 +225,8 @@ public:
 		// text
 		
 		//Adversities
-		WarningAdversity
+		WarningAdversity,
+		PlaneShadow
 	};
 
 	enum Level : std::size_t {
