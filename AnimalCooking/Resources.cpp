@@ -222,7 +222,25 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{Basic, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{Basic, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
-	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1}
+	{Basic, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+    {Basic, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",12,8},
+	{Basic, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",12,4},
+	{Basic, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2},
+	{Basic, ChickenIdle, "../AnimalCooking/resources/images/Animaciones/Gallina/idle.png",12,8},
+	{Basic, ChickenWalk, "../AnimalCooking/resources/images/Animaciones/Gallina/andar.png",12,4},
+	{Basic, ChickenAttack, "../AnimalCooking/resources/images/Animaciones/Gallina/ataque.png",8,2},
+    {Basic,Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
+	{Basic,Potato,"../AnimalCooking/resources/images/Ingredientes/patata.png",3,2},
+	{Basic,Clam,"../AnimalCooking/resources/images/Ingredientes/vieira.png",3,2},
+	{Basic,Cheese,"../AnimalCooking/resources/images/Ingredientes/queso.png",3,2},
+	{Basic,Meat,"../AnimalCooking/resources/images/Ingredientes/carne.png",3,2},
+	{Basic,Lettuce,"../AnimalCooking/resources/images/Ingredientes/lechuga.png",3,2},
+	{Basic,Mushroom,"../AnimalCooking/resources/images/Ingredientes/champi.png",3,2},
+	{Basic,Onion,"../AnimalCooking/resources/images/Ingredientes/cebolla.png",3,2},
+	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
+	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
+	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
