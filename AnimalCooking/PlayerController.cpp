@@ -168,52 +168,23 @@ void PlayerController::keyUpdate()
 	InputHandler* keyboard = InputHandler::instance();
 
 	int speed = 1;
+	int x = 0, y = 0;
+
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
-		int x = 0, y = 0;
 		if (keyboard->isKeyDown(keys.up)) {
-			tr_->setVelY(-speed); y = -1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+			movKeys.up = true;
 		}
 		else if (keyboard->isKeyDown(keys.down)) {
-			tr_->setVelY(speed); y = 1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+			movKeys.down = true;
 		}
-		//else tr_->setVelY(0);
 
 		if (keyboard->isKeyDown(keys.right)) {
-			tr_->setVelX(speed);  x = 1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+			movKeys.right = true;
 		}
 		else if (keyboard->isKeyDown(keys.left)) {
-			tr_->setVelX(-speed); x = -1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+			movKeys.left = true;
 		}
-		//else tr_->setVelX(0);
-
-		ir_->setDir(x, y);
-
-		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
 
 		//--------------------Botones
 
@@ -226,6 +197,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
+
 		if (keyboard->isKeyDown(keys.attack))
 		{
 			attack_->attack();
@@ -240,6 +212,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
+
 		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
@@ -248,6 +221,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
+
 		if (keyboard->isKeyDown(keys.open) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
@@ -256,6 +230,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
+
 		if (keyboard->isKeyDown(keys.finish) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
@@ -263,14 +238,45 @@ void PlayerController::keyUpdate()
 				i->action5(id_);
 				i = nullptr;
 			}
-
 		}
-
-	}
-	else {
-		tr_->setVelX(0);
-		tr_->setVelY(0);
 	}
 
-	if (keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);
+	if (keyboard->keyUpEvent()) {
+		if (keyboard->isKeyUp(keys.up)) {
+			movKeys.up = false;
+		}
+		if (keyboard->isKeyUp(keys.down)) {
+			movKeys.down = false;
+		}
+		if (keyboard->isKeyUp(keys.right)) {
+			movKeys.right = false;
+		}
+		if (keyboard->isKeyUp(keys.left)) {
+			movKeys.left = false;
+		}
+	}
+
+	if (movKeys.up) y = -1;
+	else if (movKeys.down) y = 1;
+	else y = 0;
+
+	if (movKeys.right) x = 1;
+	else if (movKeys.left) x = -1;
+	else x = 0;
+
+	tr_->setVelY(speed * y);
+	tr_->setVelX(speed * x);
+
+	Interactive* i = selector_->getSelect();
+	if (i != nullptr)
+	{
+		i->onMoved(id_);
+		i = nullptr;
+	}
+
+	ir_->setDir(x, y);
+	if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
+	else animator->setCurrentState(Animator::States::Idle);
+
+	
 }
