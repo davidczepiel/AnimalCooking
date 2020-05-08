@@ -8,6 +8,7 @@
 #include "IngredientsPool.h"
 class MultipleAdversityManager : public Component
 {
+	Texture* warningTexture;
 	vector<Adversity*> adversities;
 	vector<bool> activeAdversities;
 	Transform* tP1;
@@ -16,10 +17,16 @@ class MultipleAdversityManager : public Component
 	IngredientsPool* ingredientsPool;
 	UtensilsPool* utensilsPool;
 	bool playingAdversity;
-	Timer rainTimer;
-	Timer planeTimer;
-	Timer hookTimer;
-	Timer burnCookerTimer;
+	Timer rainTimer, rainWarning;
+	Timer planeTimer, planeWarning;
+	Timer hookTimer, hookWarning;
+	Timer burnCookerTimer, burnedCookerWarning;
+	Timer adversityTimer;
+	bool playingWarning, active;
+	int warningRate;
+
+	void seeTimers();
+	void seeAdversityWarning();
 
 public:
 	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
@@ -28,7 +35,6 @@ public:
 	void playAdversity(ecs::AdversityID i) { activeAdversities[i] = true; }
 	void stopAdversity(ecs::AdversityID i);
 	void setTimerTime(ecs::AdversityID id, int time);
-	void seeTimers();
 
 	Transform* getTransformPlayer(Resources::Player player) {
 		return player == Resources::Player1 ? tP1 : tP2;

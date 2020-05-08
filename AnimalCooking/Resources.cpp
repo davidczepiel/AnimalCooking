@@ -207,7 +207,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
 	{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
-	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"}
+	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+
+	// Adversities
+	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"}
 };
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{

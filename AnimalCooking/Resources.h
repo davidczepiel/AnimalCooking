@@ -220,11 +220,12 @@ public:
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
-		SkilletON
+		SkilletON,
 
 		// text
 		
-	
+		//Adversities
+		WarningAdversity
 	};
 
 	enum Level : std::size_t {
