@@ -11,7 +11,7 @@ enum IngredientState { Idle, Walking, Escaping};
 class Ingredient
 {
 public:
-	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Walking) { 
+	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0),lastVel_(0,0) ,texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Walking) { 
 		internalTimer.setTime(5000);
 		internalTimer.timerStart();
 	} //2 de prueba
