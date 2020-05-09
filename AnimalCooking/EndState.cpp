@@ -6,6 +6,7 @@
 #include "Animator.h"
 
 EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::instance()->getMaxScore()) {
+
 	score=SDLGame::instance()->getScore();
 	
 	double casilla = SDLGame::instance()->getCasillaLength();
@@ -53,7 +54,12 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 			degrees);
 		NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
 		NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
 	}
+	else {
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Lost, 0);
+	}
+		
 	Entity* returnToMenuButton = stage->addEntity();
 	stage->addToGroup(returnToMenuButton, ecs::GroupID::Layer1);
 
@@ -107,6 +113,7 @@ void EndState::goToLoadState(AnimalCooking* ac) {
 	SDLGame::instance()->setScore(0);
 }
 void EndState::goToMapState(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	FSM* fsm = SDLGame::instance()->getFSM();
 	for (int i = 0; i < 2; i++)
 	{
@@ -117,6 +124,7 @@ void EndState::goToMapState(AnimalCooking* ac) {
 void EndState::goToMenuState(AnimalCooking* ac) {
 	goToMapState(ac);
 	SDLGame::instance()->getFSM()->popState();
+	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 }
 
 void EndState::resetLevel(AnimalCooking* ac)

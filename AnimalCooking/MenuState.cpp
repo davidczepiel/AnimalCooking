@@ -74,14 +74,17 @@ void MenuState::selectedState()
 }
 
 void MenuState::playMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	 SDLGame::instance()->getFSM()->pushState(new MapState(app));
 }
 
 void MenuState::optionsMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance() ->getFSM()->pushState(new ConfigState(app));
 }
 
 void MenuState::creditsMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
 }
 
@@ -90,6 +93,9 @@ void MenuState::closeGame() {
 }
 
 MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play), ruedecillaAngle(0.0) {
+
+	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
+
 	cout << "Menu State" << endl;
 
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());

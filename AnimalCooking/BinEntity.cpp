@@ -13,6 +13,7 @@ void BinEntity::action1(int player)
 			i->Destroy();
 		}
 		static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector().clear();
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin,0);
 	}
 
 	playerTransport = nullptr;

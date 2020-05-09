@@ -67,6 +67,12 @@ void Dish::clearFoods()
 	foodPool->getPool().clear();
 }
 
+void Dish::onPick()
+{
+	inHands = true; 
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
+}
+
 void Dish::feedback()
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());

@@ -18,6 +18,7 @@ CreditsState::CreditsState(AnimalCooking* ac):State(ac) {
 
 
 void CreditsState::GoBackMenu(AnimalCooking* ac) {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
 	
 
