@@ -10,23 +10,24 @@ void PlaneAdversity::StartPlane() {
 	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow);
 
 	int n = rnd->nextInt(0, 8);
+	n = 1;
 	switch (n)
 	{
 	case 0:
 		planeRect_.x = 0 - planeRect_.w;
-		planeRect_.y = height / 2 - planeRect_.h;
+		planeRect_.y = height / 2 - planeRect_.h / 2;
 		break;
 	case 1:
 		planeRect_.x = width;
-		planeRect_.y = height / 2 - planeRect_.h;
+		planeRect_.y = height / 2 - planeRect_.y / 2;
 		break;
 	case 2:
-		planeRect_.x = width / 2 - planeRect_.w;
+		planeRect_.x = width / 2 - planeRect_.w / 2;
 		planeRect_.y = 0 - planeRect_.h;
 		break;
 	case 3:
-		planeRect_.x = width / 2;
-		planeRect_.y = height + planeRect_.h;
+		planeRect_.x = width / 2 - planeRect_.x / 2;
+		planeRect_.y = height;
 		break;
 	case 4:
 		planeRect_.x = 0 - planeRect_.w;
@@ -38,7 +39,7 @@ void PlaneAdversity::StartPlane() {
 		break;
 	case 6:
 		planeRect_.x = 0;
-		planeRect_.y = height - planeRect_.h;
+		planeRect_.y = height + planeRect_.h / 2;
 		break;
 	case 7:
 		planeRect_.x = width;
