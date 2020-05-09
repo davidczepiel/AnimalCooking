@@ -279,6 +279,7 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
 	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
 	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
+	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
 
 	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
 	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },

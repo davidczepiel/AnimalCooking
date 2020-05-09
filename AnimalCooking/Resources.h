@@ -308,6 +308,7 @@ public:
 		CookedFood,
 		IngredientSpawned,
 		OrderRecieved,
+		PlaneSound,
 
 		Tecla1, //Variaciones que suenan al pulsar un boton
 		Tecla2,

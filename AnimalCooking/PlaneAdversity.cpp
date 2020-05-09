@@ -10,7 +10,6 @@ void PlaneAdversity::StartPlane() {
 	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow);
 
 	int n = rnd->nextInt(0, 8);
-	n = 1;
 	switch (n)
 	{
 	case 0:
