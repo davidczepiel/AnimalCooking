@@ -74,7 +74,8 @@ class Knife : public Utensil
 public:
 	Knife( Transport* p1, Transport* p2);
 	~Knife() {}
-	virtual void attack(Vector2D dir) {  onHit(dir); }
+	virtual void attack(Vector2D dir) {
+		onHit(dir);	}
 
 };
 
@@ -84,7 +85,7 @@ public:
 	Mace( Transport* p1, Transport* p2);
 	~Mace() {}
 
-	virtual void attack(Vector2D dir) {  onHit(dir); }
+	virtual void attack(Vector2D dir) {  onHit(dir);	}
 
 
 };

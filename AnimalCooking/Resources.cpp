@@ -251,11 +251,38 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 
 vector<Resources::MusicInfo> Resources::musics_{
 	//
-
+	{Basic, MenuInicio, "../AnimalCooking/resources/sounds/Menu_inicio.ogg"},
+	{AllLevels, Level1, "../AnimalCooking/resources/sounds/Ingame piano.ogg"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_{
 	//
+	{AllLevels, KnifeAttack,"../AnimalCooking/resources/sounds/Cuchillo 1.wav"},
+	{AllLevels, DropDish,"../AnimalCooking/resources/sounds/Dejar Plato 1.wav"}, //
+	{AllLevels, CompleteDish,"../AnimalCooking/resources/sounds/Elaborar Plato 1.wav"},//
+	{AllLevels, Wash,"../AnimalCooking/resources/sounds/Fregar 1.wav"},
+	{AllLevels, FrySound,"../AnimalCooking/resources/sounds/Freir Loop 2.wav"},
+	{AllLevels, MaceAttack,"../AnimalCooking/resources/sounds/Golpe Mazo 1.wav"},
+	{AllLevels, MicroWave,"../AnimalCooking/resources/sounds/Microondas Beep.wav"},
+	{AllLevels, Door,"../AnimalCooking/resources/sounds/Puerta 1.wav"},
+	{AllLevels, FrySoundBurned,"../AnimalCooking/resources/sounds/Freir Quemar.wav" },
+	{AllLevels, Bin,"../AnimalCooking/resources/sounds/Basura 2.wav" },
+	{AllLevels, PickUp,"../AnimalCooking/resources/sounds/Bop nuevo 4.wav" },
+	{AllLevels, Drop,"../AnimalCooking/resources/sounds/Dejar Caer 4.wav" },
+	{AllLevels, AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
+	{AllLevels, BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
+	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
+	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
+	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
 
+	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
+	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },
+	{Basic, Tecla3,"../AnimalCooking/resources/sounds/tecla3.ogg" },
+	{Basic, Tecla4,"../AnimalCooking/resources/sounds/tecla4.ogg" },
+	{Basic, Tecla5,"../AnimalCooking/resources/sounds/tecla5.ogg" },
+	{Basic, Tecla6,"../AnimalCooking/resources/sounds/tecla6.ogg" },
+
+	{AllLevels, End_Win,"../AnimalCooking/resources/sounds/END_WIN.ogg" },
+	{AllLevels, End_Lost,"../AnimalCooking/resources/sounds/END_LOST.ogg" }
 };
 

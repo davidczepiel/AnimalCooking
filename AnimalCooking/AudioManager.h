@@ -24,6 +24,7 @@ public:
 	virtual void haltChannel(int channel = -1) = 0;
 	virtual int setChannelVolume(int volume, int channel = -1) = 0;
 	virtual int channels() = 0;
+	virtual bool isChannelPlaying(int channel) = 0;
 
 	// music
 	virtual bool loadMusic(int tag, const string& fileName) = 0;

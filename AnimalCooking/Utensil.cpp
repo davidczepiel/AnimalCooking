@@ -97,6 +97,7 @@ void Utensil::onDrop(bool onFloor) {
 		Pickable::onDrop(onFloor);
 		myState = State::floor;
 		dirtTimer_->timerStart();
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop, 0);
 	}
 	else
 		myState = State::shelf;
@@ -107,6 +108,7 @@ void Utensil::onPick() {
 	//Me cambio de estado y desactivo el timer de suciedad
 	myState = State::playerHand;
 	dirtTimer_->timerReset();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
 void Utensil::action1(int player) {
