@@ -86,7 +86,7 @@ void LevelViewer::init()
 	bar = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux);
 	star = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Star);
 	limitSign = SDLGame::instance()->getTextureMngr()->getTexture(Resources::LimitSign);
-	barBackground = SDLGame::instance()->getTextureMngr()->getTexture(Resources::LevelTimerBackground);
+	barBackground = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RectangleOutline);
 	casilla = SDLGame::instance()->getCasillaLength();
 	yellowStar = SDLGame::instance()->getTextureMngr()->getTexture(Resources::YellowStar);
 }

@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "Door.h"
 #include "SDLRenderer.h"
+#include "ImageViewer.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -79,6 +80,15 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panel), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
 	mngr->addToGroup(d, ecs::GroupID::FoodLayer);
+
+	//Hacer mantel de fondo del Score
+	Entity* ScoreBackground = mngr->addEntity();
+	mngr->addToGroup(ScoreBackground, CASTID(general["ScoreBackground"]["Layer"].as_int()));
+	ScoreBackground->addComponent<Transform>(Vector2D(general["ScoreBackground"]["pos"]["x"].as_double() * casilla,
+		general["ScoreBackground"]["pos"]["y"].as_double() * casilla),
+		Vector2D(),
+		general["ScoreBackground"]["size"]["width"].as_double() * casilla, general["ScoreBackground"]["size"]["height"].as_double() * casilla);
+	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 
 void WallAdder::maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr, const double offset)

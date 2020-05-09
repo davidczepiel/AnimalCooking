@@ -3,7 +3,9 @@
 
 vector<Resources::FontInfo> Resources::fonts_{
 	//
-	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 }
+	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 },
+	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
+	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
 };
 
 
@@ -14,6 +16,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/Boton/BotonMenu.png"},
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
+	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
+	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 	{Basic, MainMenuBackground,"../AnimalCooking/resources/images/Menu/mainmenu.png"},

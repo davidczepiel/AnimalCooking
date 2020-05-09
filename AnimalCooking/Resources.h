@@ -34,6 +34,8 @@ public:
 		MainMenuCreditsButton,
 		LevelTimerBackground,
 		LevelTimerForeground,
+		ScoreBackground,
+		RectangleOutline,
 		HomeIcon,
 		MapIcon,
 		ReplayIcon,
@@ -282,6 +284,8 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		QuarkCheese100,
+		QuarkCheese50
 	};
 
 	struct FontInfo {

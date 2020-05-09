@@ -8,7 +8,7 @@ using Group = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
-	
+	ImageViewer,
 
 	GPadController, //Controls
 	KeyBoardController,
