@@ -12,7 +12,9 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	texture_(nullptr)
 {	
 	position_ = position;
-	size_ = Vector2D(64, 64);
+
+	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
@@ -24,7 +26,8 @@ Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	foodPool_(nullptr)
 {
 	position_ = Vector2D();
-	size_ = Vector2D(50, 50);
+	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
