@@ -66,15 +66,14 @@ void Timer::timerResume()
 }
 void LevelTimer::draw()
 {
-	double widthMultiplier = (game_->getTime() - startedTime_) / double(time_);
-
-	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(),
-		size_.getX() * widthMultiplier, size_.getY());
-
-	texture_->render(rect);
-
-	rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	outlineText_->render(rect);
+
+	double percent = (game_->getTime() - startedTime_) / double(time_);
+
+	rect = RECT(pos_.getX(), pos_.getY(), size_.getX() * (1-percent), size_.getY());
+	SDL_Rect clip = RECT(0, 0, texture_->getWidth() * (1 - percent), texture_->getHeight());
+	texture_->render(rect, 0, clip);
 }
 
 void LevelTimer::update()
