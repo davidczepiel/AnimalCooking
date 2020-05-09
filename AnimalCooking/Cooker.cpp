@@ -85,6 +85,24 @@ void Cooker::feedback(int player)
 	}
 }
 
+void Cooker::sound()
+{
+	if (SDL_GetTicks() - lastTimeSound_ > 2000) {
+		lastTimeSound_ = SDL_GetTicks();
+		//Miro qu� tipo de cooker soy y reprocuzco un sonido u otro dependiendo de si he quemado algo o no 
+		switch (cookerType_) {
+		case Resources::Cookers::Skillet:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
+			break;
+		case Resources::Cookers::Oven:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
+			break;
+		}
+	}
+}
+
 Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2, Entity* e) : Cooker(pos, size, rot, text,t1,t2,e)
 {
 	cookingTime_ = config::SKILLET_SECONDS_TO_COOK * 1000;

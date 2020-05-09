@@ -64,7 +64,15 @@ void Dish::clearFoods()
 	foodPool->getPool().clear();
 }
 
+
+void Dish::onPick()
+{
+	inHands = true; 
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
+}
+
 void Dish::feedback(int player)
+
 {
 	setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
 	if (this->getIsViewingContent())

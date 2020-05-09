@@ -22,6 +22,7 @@ public:
     void setLevelTimer(Uint32 time, Vector2D pos, Vector2D size);
 
 private:
+    void playHit(Resources::UtensilType type);
     CollisionsSystem* colSys_;
     IngredientsPool* ingPool;
     FoodPool* foodPool;

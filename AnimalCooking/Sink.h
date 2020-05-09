@@ -23,4 +23,5 @@ private:
 	Uint32 lastTry;
 	SinkViewer* sV;
 
+	int channel;
 };

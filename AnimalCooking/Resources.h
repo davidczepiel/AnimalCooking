@@ -236,11 +236,27 @@ public:
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
-		SkilletON
+		SkilletON,
+		PigIdle,
+        PigWalk,
+		PigAttack,
+		ChickenIdle,
+		ChickenWalk,
+		ChickenAttack,
+		Tomato,
+		Potato,
+		Clam,
+        Cheese,
+		Meat,
+	    Lettuce,
+		Mushroom,
+		Onion,
+		Fish,
+		Chicken,
+		Carrot,
+		Sausage
 
-		// text
-		
-	
+		// text			
 	};
 
 	enum Level : std::size_t {
@@ -274,9 +290,38 @@ public:
 
 	enum AudioId : std::size_t {
 		// music
+		MenuInicio,
+		Level1,
 		Beat,
 		Cheer,
 		Boooo,
+		DropDish,
+		CompleteDish,
+		Wash,
+		FrySound,
+		FrySoundBurned,
+		MicroWave,
+		Door,
+		Bin,
+		PickUp,
+		Drop,
+		KnifeAttack,
+		MaceAttack,
+		AttackMiss,
+		BurnedBeep,
+		CookedFood,
+		IngredientSpawned,
+		OrderRecieved,
+
+		Tecla1, //Variaciones que suenan al pulsar un boton
+		Tecla2,
+		Tecla3,
+		Tecla4,
+		Tecla5,
+		Tecla6,
+
+		End_Win,
+		End_Lost,
 
 		// sound effects
 		Wall_Hit,

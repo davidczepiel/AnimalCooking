@@ -54,15 +54,19 @@ void Timer::timerReset() {
 
 void Timer::timerPause()
 {
-	pausedTime_ = SDLGame::instance()->getTime() - startedTime_;
-	timerStarted_ = false;
+	if (timerStarted_) {
+		pausedTime_ = SDLGame::instance()->getTime() - startedTime_;
+		timerStarted_ = false;
+	}
 }
 
 void Timer::timerResume()
 {
-	startedTime_ = SDLGame::instance()->getTime() - pausedTime_;
-	pausedTime_ = 0;
-	timerStarted_ = true;
+	if (pausedTime_ != 0) {
+		startedTime_ = SDLGame::instance()->getTime() - pausedTime_;
+		pausedTime_ = 0;
+		timerStarted_ = true;
+	}
 }
 void LevelTimer::draw()
 {

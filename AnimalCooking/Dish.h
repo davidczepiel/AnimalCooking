@@ -31,9 +31,9 @@ class Dish : public Pickable
 	inline bool isEmpty() { return foods_.empty(); }
 
 	virtual void onDrop(bool onFloor) { inHands = false; }
-	virtual void onPick() { inHands = true; }
-	virtual void feedback(int);
+	virtual void feedback(int id);
 
+	virtual void onPick();
 	inline void setInHands(bool b) { inHands = b; }
 	inline bool getInHands() { return inHands; }
 	inline void setIsViewingContent(bool value) { isViewingContent = value; }
