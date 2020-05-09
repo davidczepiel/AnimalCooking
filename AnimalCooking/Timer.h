@@ -3,6 +3,7 @@
 #include "SDLGame.h"
 #include "Texture.h"
 #include "Vector2D.h"
+#include "ScoreManager.h"
 
 class Timer {
 public:
@@ -28,7 +29,9 @@ public:
 	void timerPause();
 	void timerResume();
 
+	//De 0 a 1
 	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
+	int getElapsedMs() { return game_->getTime() - startedTime_; }
 
 protected:
 	SDLGame* game_;
@@ -81,12 +84,4 @@ public:
 	CookerTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CircularTimer); size_ = Vector2D(50, 50); }
 	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; texture_ = game_->getTextureMngr()->getTexture(Resources::CircularTimer); size_ = Vector2D(50, 50); }
 	void draw();
-
-	void update() {
-		Timer::update();
-		if (timerEnd_) {
-			//Cocinar ingredientes
-		}
-	}
-
 };

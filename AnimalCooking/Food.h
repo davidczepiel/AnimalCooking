@@ -73,9 +73,11 @@ class SlicedLettuce : public Food
 public:
 	SlicedLettuce(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedLettuce, p1, p2) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedLettuceT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedLettuceFeedBack);
 	}
 	SlicedLettuce() : Food(Resources::FoodType::SlicedLettuce) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedLettuceFeedBack);
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedLettuceT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedLettuceFeedBack);
 	}
 };
 class SlicedOnion : public Food

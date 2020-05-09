@@ -12,13 +12,13 @@
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset, TimerViewer* tv)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 6 * casilla + offset), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 7 * casilla + offset), player, ip);
 
+	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip);
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
-	gameManager->addComponent<ScoreManager>();
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();
 	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casilla, 

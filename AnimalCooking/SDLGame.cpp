@@ -12,7 +12,8 @@
 unique_ptr<SDLGame> SDLGame::instance_;
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
-SDLGame::SDLGame(string windowTitle, int width, int height) :
+
+SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),score(0),maxScore(0),
 		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr) {
 	initSDL();
 	initResources();

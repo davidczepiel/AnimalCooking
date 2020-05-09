@@ -1,12 +1,16 @@
 #pragma once
 #include "Component.h"
+#include "Timer.h"
 
 class Animator : public Component	
 {
 	
 public:
 
-	enum States {Idle, Walk, Attack};
+	enum States { Idle, IdleWithKnife, IdleWithMace, IdleWithGrater, IdleWithNet,IdleWithDishFood,
+		          Walk, WalkWithKnife, WalkWithMace, WalkWithGrater, WalkWithNet,WalkWithDishFood,
+		          AttackWithKnife, AttackWithMace, AttackWithGrater, AttackWithNet };
+	
 	
 	Animator();
 	~Animator() { }
@@ -14,15 +18,15 @@ public:
 	States getCurrentState() { return currentState; };
 	void setCurrentState(States s) { currentState = s; };
 
-	SDL_Rect& animate(Texture* t, int fx, int fy,int numRows=1, int numCols=1);
+	DefaultTimer getTimer() { return dt; }
 
-	int getAnimSpeed() { return animSpeed; }
-	void setAnimSpeed(int s) { animSpeed = s; }
+	void setDir(Vector2D v) { dir = v; }
+	Vector2D getDir() { return dir; }
 
 private:
 
 	States currentState;
-	SDL_Rect clip;
-	int animSpeed = 60;
+	DefaultTimer dt;
+	Vector2D dir;
 };
 

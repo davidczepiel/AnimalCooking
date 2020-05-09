@@ -29,6 +29,7 @@ public:
 	void changeDirtySpeed(int speedModifier);
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 	void resetDirtTimer();
+	Resources::UtensilType getUtensilType() { return myType; }
 
 protected:
 	//Estado

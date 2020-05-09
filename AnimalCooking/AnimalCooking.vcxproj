@@ -244,6 +244,7 @@
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="LevelInitializer.h" />
+    <ClInclude Include="LevelViewer.h" />
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
@@ -401,6 +402,7 @@
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="LevelInitializer.cpp" />
+    <ClCompile Include="LevelViewer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuPadNavigation.cpp" />

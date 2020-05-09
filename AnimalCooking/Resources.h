@@ -33,7 +33,15 @@ public:
 		MainMenuExitButton,
 		MainMenuCreditsButton,
 		RectangleOutline,
-		
+		HomeIcon,
+		MapIcon,
+		ReplayIcon,
+		NextLevelIcon,
+		Star,
+		YellowStar,
+		LimitSign,
+
+
 		SliderBackground,
 		SliderMovPoint,
 
@@ -221,9 +229,27 @@ public:
 		BurnedTimer,
 		OvenON,
 		SkilletON,
+		PigIdle,
+        PigWalk,
+		PigAttack,
+		ChickenIdle,
+		ChickenWalk,
+		ChickenAttack,
+		Tomato,
+		Potato,
+		Clam,
+        Cheese,
+		Meat,
+	    Lettuce,
+		Mushroom,
+		Onion,
+		Fish,
+		Chicken,
+		Carrot,
+		Sausage,
 
 		// text
-		
+
 		//Adversities
 		WarningAdversity,
 		PlaneShadow

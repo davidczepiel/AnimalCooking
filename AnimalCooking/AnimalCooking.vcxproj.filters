@@ -152,6 +152,7 @@
     <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="MultipleAdversityManager.cpp" />
     <ClCompile Include="RainAdversity.cpp" />
+    <ClCompile Include="LevelViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -337,6 +338,7 @@
     <ClInclude Include="UtensilsAdder.h" />
     <ClInclude Include="MultipleAdversityManager.h" />
     <ClInclude Include="RainAdversity.h" />
+    <ClInclude Include="LevelViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

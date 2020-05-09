@@ -29,7 +29,7 @@
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 
 
-LevelInitializer::LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
+LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
 	string ruta_ = rutaNivel + std::to_string(level - 1) + ".cfg";
 

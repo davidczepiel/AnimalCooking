@@ -14,7 +14,7 @@ class TimerViewer;
 class LevelInitializer
 {
 public:
-	LevelInitializer(EntityManager* em, Resources::Level level, ScreenLoader* sL);
+	LevelInitializer(EntityManager* em, int level ,ScreenLoader* sL);
 private:
 
 	void initialize_players();
