@@ -17,6 +17,8 @@ private:
 
 	static void backButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
+	static void resButtonCallback2(AnimalCooking* ac);
+	static void resButtonCallback3(AnimalCooking* ac);
 	Entity* backButton_;
 };
 

@@ -45,6 +45,8 @@ void SDLGame::initSDL() {
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer_ != nullptr);
 
+	SDL_RenderSetLogicalSize(renderer_, width_, height_);
+
 	// Clear screen (background color).
 	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 0, 100, 100,
 			255);  // Dark grey.

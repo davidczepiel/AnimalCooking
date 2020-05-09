@@ -107,8 +107,6 @@ public:
 
 	void changeWindowSize(int w, int h) {
 		SDL_SetWindowSize(SDLGame::instance()->getWindow(), w, h);
-		width_ = w;
-		height_ = h;
 	}
 
 private:
