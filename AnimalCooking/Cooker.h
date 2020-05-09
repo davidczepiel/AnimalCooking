@@ -15,7 +15,6 @@ public:
 	virtual void draw();
 
 	void setCookerState(CookerStates s);
-
 	inline CookerStates getCookerState() { return state_; };
 
 	virtual void setEmptyTexture() = 0;
@@ -31,6 +30,7 @@ public:
 	inline int getCookerType() { return (int) cookerType_; };
 	void action1(int player)override;
 	void feedback(int player) override;
+	void sound();
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2,Entity* e);
@@ -43,6 +43,7 @@ protected:
 
 	CookerTimer* timer_;
 	Uint32 cookingTime_;
+	Uint32 lastTimeSound_;
 
 	vector<Food*> foods_;
 	Resources::Cookers cookerType_;

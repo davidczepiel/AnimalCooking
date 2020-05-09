@@ -52,6 +52,7 @@ void GameControl::newIngredient()
     ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), y));
 	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned,0);
 	colSys_->addCollider(ing);
 	ing = nullptr;
 }
@@ -138,7 +139,7 @@ Resources::IngredientType GameControl::chooseIng()
 
 void GameControl::newFood(Food* f, Vector2D pos) {
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
 	newIngredient(); //al matar un ingrediente aparece otro
@@ -170,7 +171,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	return f;
 }
 

@@ -65,12 +65,21 @@ void Food::draw(SDL_Rect r)
 	texture_->render(r);
 }
 
-void Food::onDrop(bool onFloor)
+void Food::onDrop(bool onfloor)
 {
-	if (onFloor) {
-		Pickable::onDrop(onFloor);
+	if (onfloor) {
+		Pickable::onDrop(onfloor);
 		timer_->timerStart();
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
 	}
+}
+
+void Food::onFloor()
+{
+	//El gameControl llamaba al m�todo onDrop pero siempre con true, se necesita hacer est� distinci�n
+	//porque sino el gameControl al generar una comida desencadena que se reproduzca el sonido de dejar caer cuando no deber�a
+	Pickable::onDrop(true);
+	timer_->timerStart();
 }
 
 void Food::action1(int player)
@@ -91,6 +100,7 @@ void Food::feedback()
 
 void Food::onPick() {
 	timer_->timerReset();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
 
