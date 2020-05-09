@@ -226,6 +226,7 @@
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
+    <ClInclude Include="ImageViewer.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientInitializer.h" />
@@ -377,6 +378,7 @@
     <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="ImageViewer.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />

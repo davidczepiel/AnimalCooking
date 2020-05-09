@@ -8,11 +8,8 @@ public:
 	void init() override;
 	void draw() override;
 	void SetPos(Vector2D pos) { pos_ = pos; }
-	void SetSize(int digitWidth, int height) { digitWidth_ = digitWidth; height_ = height; }
 private:
 	ScoreManager* scoreManager_;
 	Vector2D pos_;
-	int digitWidth_;
-	int height_;
 };
 

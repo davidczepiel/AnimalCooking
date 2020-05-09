@@ -23,6 +23,7 @@ MapState::MapState(AnimalCooking* ac): State(ac) {
 	stage->addToGroup(padNavigation_, ecs::GroupID::Layer1);
 
 	screenLoaderButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 0), Vector2D(0, 0), 200.0, 100, 0);
+
 	screenLoaderButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 	screenLoaderButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
 

@@ -19,8 +19,9 @@ void ScoreViewer::draw()
 	}
 	digits ++;
 
-	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), digitWidth_ * digits, height_);
-	Texture score = Texture(game_->getRenderer(),"Score: " + to_string(scoreManager_->getScore()), (game_->getFontMngr()->getFont(Resources::ARIAL12)),
-		{ COLOR(0x1111aaff) });
+	
+	Texture score = Texture(game_->getRenderer(),to_string(scoreManager_->getScore()), (game_->getFontMngr()->getFont(Resources::QuarkCheese100)),
+		{ COLOR(0x000000ff) });
+	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), score.getWidth(), score.getHeight());
 	score.render(destRect);
 }
