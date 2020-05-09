@@ -9,15 +9,14 @@
 class ConfigState :
 	public State
 {
+public:
+	ConfigState(AnimalCooking* ac);
+
+private:
 	SDLGame* game_;
 
 	static void backButtonCallback(AnimalCooking* ac);
+	static void resButtonCallback(AnimalCooking* ac);
 	Entity* backButton_;
-
-public:
-	
-	ConfigState(AnimalCooking* ac);
-
-
 };
 

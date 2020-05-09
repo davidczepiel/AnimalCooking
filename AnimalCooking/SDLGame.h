@@ -104,6 +104,13 @@ public:
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
+
+	void changeWindowSize(int w, int h) {
+		SDL_SetWindowSize(SDLGame::instance()->getWindow(), w, h);
+		width_ = w;
+		height_ = h;
+	}
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
