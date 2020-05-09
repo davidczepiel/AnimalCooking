@@ -23,9 +23,9 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	data.push_back(Data(Vector2D(8 * casilla + offset, 7 * casilla - offset), //Aba hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), offset),
 		Resources::TextureId::Button));
-	data.push_back(Data(Vector2D(8 * casilla + offset, 0), //Arr hor
-		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), offset),
-		Resources::TextureId::Button));
+	data.push_back(Data(Vector2D(8 * casilla + offset,0), //Arr hor
+		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casilla + offset), offset),
+		Resources::TextureId::Muro));
 	for (auto& d : data) {
 		maker(d, casilla, colSys_, mngr, offset);
 	}

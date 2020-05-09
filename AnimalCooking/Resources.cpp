@@ -44,6 +44,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
+	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
 	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/Cocina/pickable/cuchilloSucio.png"},

@@ -56,6 +56,7 @@ public:
 		CookerBurned,
 		CookerCooked,
 		Platera,
+		Muro,
 		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
