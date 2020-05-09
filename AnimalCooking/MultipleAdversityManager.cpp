@@ -80,6 +80,7 @@ void MultipleAdversityManager:: seeTimers() {
 	if (planeTimer.isTimerEnd()) {
 		planeTimer.timerReset();
 		activeAdversities.at(ecs::AdversityID::PlaneAdversity) = true;
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::PlaneSound, 0, -1);
 		adversities.at(ecs::AdversityID::PlaneAdversity)->reset();
 		playingWarning = false;
 		active = false;
