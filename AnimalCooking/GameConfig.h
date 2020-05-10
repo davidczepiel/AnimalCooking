@@ -108,7 +108,14 @@ namespace config {
 			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT = SDLK_g;
 			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER = SDLK_j;
 		};
+		struct Volume {
+			Uint8 music_ = 64;
+			Uint8 sounds_ = 64;
+		};
 
+		Player1 player1;
+		Player2 player2;
+		Volume volume;
 	};
 }
 

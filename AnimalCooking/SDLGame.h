@@ -13,6 +13,7 @@
 
 #include "InputHandler.h"
 #include "jute.h"
+#include "GameConfig.h"
 
 using namespace std;
 class FSM;
@@ -112,6 +113,8 @@ public:
 		SDL_SetWindowSize(window_, w, h);
 	}
 
+	config::Options& getOptions() { return options_; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -139,6 +142,8 @@ protected:
 	int maxScore;
 	double casillaLength;
 	Entity* timersViewer_;
+
+	config::Options options_;
 
 	static unique_ptr<SDLGame> instance_;
 

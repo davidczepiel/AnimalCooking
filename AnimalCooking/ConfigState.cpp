@@ -2,8 +2,9 @@
 #include "SDL_macros.h"
 #include "MenuState.h"
 #include "SDL.h"
+#include "SliderRenderer.h"
 
-ConfigState::ConfigState(AnimalCooking* ac) :  State(ac)
+ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	cout << "Config State" << endl;
 	game_ = SDLGame::instance();
@@ -24,6 +25,37 @@ ConfigState::ConfigState(AnimalCooking* ac) :  State(ac)
 	resButton2->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	resButton2->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::Button));
+
+	Entity *sliderMusic = stage->addEntity();
+	stage->addToGroup(sliderMusic, ecs::GroupID::ui);
+	Transform* t = sliderMusic->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - game_->getWindowWidth() / 10,
+		5 * game_->getWindowHeight() / 10),
+		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 10, 0);
+	sliderMusic_ = sliderMusic->addComponent<SliderBehaviour>();
+	sliderMusic->addComponent<SliderRenderer>();
+	sliderMusic_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (SDLGame::instance()->getOptions().volume.music_ / 128.0);
+
+	Entity* sliderSound = stage->addEntity();
+	stage->addToGroup(sliderSound, ecs::GroupID::ui);
+	t = sliderSound->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - game_->getWindowWidth() / 10,
+		6 * game_->getWindowHeight() / 10),
+		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 10, 0);
+	sliderSound_ = sliderSound->addComponent<SliderBehaviour>();
+	sliderSound->addComponent<SliderRenderer>();
+	sliderSound_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (SDLGame::instance()->getOptions().volume.sounds_ / 128.0);
+}
+
+void ConfigState::update()
+{
+	State::update();
+	double musicValue = sliderMusic_->getValue(), soundValue = sliderSound_->getValue();
+	if (musicLastValue_ != musicValue) 
+		SDLGame::instance()->getAudioMngr()->setMusicVolume(SDLGame::instance()->getOptions().volume.music_ = Uint8(musicValue * 128));
+	else if (soundLastValue != soundValue) 
+		SDLGame::instance()->getAudioMngr()->setChannelVolume(SDLGame::instance()->getOptions().volume.sounds_ = Uint8(soundValue * 128));
+	
+	musicLastValue_ = musicValue;
+	soundLastValue = soundValue;
 }
 
 void ConfigState::backButtonCallback(AnimalCooking* ac)

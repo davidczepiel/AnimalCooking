@@ -13,12 +13,12 @@ protected:
 	float value;
 
 public:
-	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false) {}
+	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false), value(0.5) {}
 
 	void init() override;
 	void update() override;
 
-	inline const SDL_Rect* getMovePointRect() { return &rectMovePoint; }
+	inline SDL_Rect* getMovePointRect() { return &rectMovePoint; }
 	inline float getValue() { return value; }
 };
 
