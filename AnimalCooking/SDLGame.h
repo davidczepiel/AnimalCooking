@@ -77,12 +77,15 @@ public:
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
-		if (flags && SDL_WINDOW_FULLSCREEN) {
+		if (flags & SDL_WINDOW_FULLSCREEN) {
+			SDL_SetWindowSize(window_, width_, height_ - 60);
 			SDL_SetWindowFullscreen(window_, 0);
-		} else {
+			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
+		}
+		else {
+			SDL_SetWindowSize(window_, width_, height_);
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 		}
-
 	}
 
 	inline FSM* getFSM() { return fsm_; }
@@ -106,7 +109,7 @@ public:
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
 
 	void changeWindowSize(int w, int h) {
-		SDL_SetWindowSize(SDLGame::instance()->getWindow(), w, h);
+		SDL_SetWindowSize(window_, w, h);
 	}
 
 private:
