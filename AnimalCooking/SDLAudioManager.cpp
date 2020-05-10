@@ -100,6 +100,11 @@ int SDLAudioManager::channels() {
 	return channels_;
 }
 
+bool SDLAudioManager::isChannelPlaying(int channel)
+{
+	return Mix_Playing(channel);
+}
+
 bool SDLAudioManager::loadMusic(int tag, const string &fileName) {
 	if (!initialized_)
 		return false;

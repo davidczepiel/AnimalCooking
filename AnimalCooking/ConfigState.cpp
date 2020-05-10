@@ -44,6 +44,7 @@ ConfigState::ConfigState(AnimalCooking* ac) :  State(ac)
 
 void ConfigState::backButtonCallback(AnimalCooking* ac)
 {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
 	if(SDLGame::instance()->getFSM()->getStackSize() < 3)
 		SDLGame::instance()->getFSM()->changeState(new MenuState(ac));

@@ -30,10 +30,12 @@ void FoodCooker::clearFoods(Cooker* c) {
 void FoodCooker::update() {
 	for (auto& c : pool_->getPool()) {
 		if (c->getCookerState() == CookerStates::cooking || c->getCookerState() == CookerStates::cooked) {
+			c->sound();
 			if (!c->getCookerTimer()->isTimerEnd()) {
 				c->getCookerTimer()->update();
 			}
 			else if (c->getCookerState() == CookerStates::cooking) {
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CookedFood, 0);
 				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());	
 				newFood->setCanInteract(false);
 				clearFoods(c);
@@ -47,6 +49,7 @@ void FoodCooker::update() {
 				c->getCookerTimer()->setTexture(game_->getTextureMngr()->getTexture(Resources::BurnedTimer));
 			}
 			else {
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::BurnedBeep,0);
 				Food* burnedFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
 				burnedFood->setCanInteract(false);
 				clearFoods(c);

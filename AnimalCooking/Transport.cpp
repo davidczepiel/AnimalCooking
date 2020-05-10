@@ -15,7 +15,7 @@ void Transport::pick(Pickable* obj, Resources::PickableType objType, bool inFloo
 		objInHands_ = obj;
 		objType_ = objType;
 	}
-	else swap(obj, objType,inFloor);
+	else swap(obj, objType, inFloor);
 	if (objInHands_ != nullptr)
 		objInHands_->onPick();
 }
@@ -62,7 +62,7 @@ void Transport::update()
 		if ((angle > (-22.5) && angle <= 22.5)) { //Derecha
 			objPos = Vector2D(centerX + offsetX, centerY);
 		}
-		else if((angle > 22.5 && angle <= 67.5)) { //Arriba a la derecha
+		else if ((angle > 22.5 && angle <= 67.5)) { //Arriba a la derecha
 			objPos = Vector2D(centerX + offsetX, centerY - offsetY);
 		}
 		else if ((angle > 67.5 && angle <= 112.5)) { //Arriba
