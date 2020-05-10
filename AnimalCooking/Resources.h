@@ -331,6 +331,7 @@ public:
 	enum FontId : std::size_t {
 		ARIAL12,
 		QuarkCheese100,
+		QuarkCheese70,
 		QuarkCheese50
 	};
 
