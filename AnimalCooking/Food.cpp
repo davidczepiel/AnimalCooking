@@ -12,7 +12,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	texture_(nullptr)
 {	
 	position_ = position;
-	size_ = Vector2D(64, 64);
+	size_ = Vector2D(SDLGame::instance()->getCasillaX()/2, SDLGame::instance()->getCasillaY()/2);
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
@@ -25,7 +25,7 @@ Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	canDraw(true)
 {
 	position_ = Vector2D();
-	size_ = Vector2D(50, 50);
+	size_ = Vector2D(SDLGame::instance()->getCasillaX() / 2, SDLGame::instance()->getCasillaY() / 2);
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
