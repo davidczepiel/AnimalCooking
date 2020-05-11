@@ -84,17 +84,16 @@ namespace config {
 	struct Options
 	{
 		Options() {
-			KeyboardKeys k = players_keys[1];
-			k.UP = SDLK_UP;
-			k.DOWN = SDLK_DOWN;
-			k.LEFT = SDLK_LEFT;
-			k.RIGHT = SDLK_RIGHT;
-			k.PICKUP = SDLK_b;
-			k.ATTACK = SDLK_n;
-			k.OPEN = SDLK_v;
-			k.PREVIOUS = SDLK_c;
-			k.NEXT = SDLK_g;
-			k.FINISHER = SDLK_j;
+			players_keys[1].UP = SDLK_UP;
+			players_keys[1].DOWN = SDLK_DOWN;
+			players_keys[1].LEFT = SDLK_LEFT;
+			players_keys[1].RIGHT = SDLK_RIGHT;
+			players_keys[1].PICKUP = SDLK_b;
+			players_keys[1].ATTACK = SDLK_n;
+			players_keys[1].OPEN = SDLK_v;
+			players_keys[1].PREVIOUS = SDLK_c;
+			players_keys[1].NEXT = SDLK_g;
+			players_keys[1].FINISHER = SDLK_j;
 		}
 
 		struct KeyboardKeys {

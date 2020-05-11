@@ -7,6 +7,7 @@ public:
 		gPad_keyToChange(change){}
 
 	virtual void update();
+	virtual void draw();
 private:
 	SDL_GameControllerButton& gPad_keyToChange;
 };

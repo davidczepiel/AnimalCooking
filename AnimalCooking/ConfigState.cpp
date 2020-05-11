@@ -16,6 +16,7 @@ ConfigState::ConfigState(AnimalCooking* ac) :  State(ac),
 	cout << "Config State" << endl;
 	initButtons();
 	initSliders();
+	initKeyModifiers();
 }
 
 void ConfigState::update()

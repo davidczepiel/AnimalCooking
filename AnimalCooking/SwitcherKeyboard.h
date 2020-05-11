@@ -1,5 +1,6 @@
 #pragma once
 #include "KeySwitcher.h"
+
 class SwitcherKeyboard : public KeySwitcher
 {
 public: 
@@ -7,6 +8,7 @@ public:
 		keyToChange_(change) {}
 
 	virtual void update();
+	virtual void draw();
 private:
 	SDL_Keycode& keyToChange_;
 };
