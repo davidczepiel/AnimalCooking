@@ -90,7 +90,7 @@ void ConfigState::initKeyModifiers()
 		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(0)) {
-		e->addComponent<GpadKeySwitcher>(0);
+		e->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
 		e->addComponent<GpadKeySwitcherViewer>();
 	}
 	else {
@@ -105,7 +105,7 @@ void ConfigState::initKeyModifiers()
 		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(1)) {
-		e->addComponent<GpadKeySwitcher>(1);
+		e->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
 		e->addComponent<GpadKeySwitcherViewer>();
 	}
 	else {

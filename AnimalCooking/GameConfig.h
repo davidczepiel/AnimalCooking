@@ -84,16 +84,16 @@ namespace config {
 	struct Options
 	{
 		Options() {
-			players_keys[1].UP = SDLK_UP;
-			players_keys[1].DOWN = SDLK_DOWN;
-			players_keys[1].LEFT = SDLK_LEFT;
-			players_keys[1].RIGHT = SDLK_RIGHT;
-			players_keys[1].PICKUP = SDLK_b;
-			players_keys[1].ATTACK = SDLK_n;
-			players_keys[1].OPEN = SDLK_v;
-			players_keys[1].PREVIOUS = SDLK_c;
-			players_keys[1].NEXT = SDLK_g;
-			players_keys[1].FINISHER = SDLK_j;
+			players_keyboardKeys[1].UP = SDLK_UP;
+			players_keyboardKeys[1].DOWN = SDLK_DOWN;
+			players_keyboardKeys[1].LEFT = SDLK_LEFT;
+			players_keyboardKeys[1].RIGHT = SDLK_RIGHT;
+			players_keyboardKeys[1].PICKUP = SDLK_b;
+			players_keyboardKeys[1].ATTACK = SDLK_n;
+			players_keyboardKeys[1].OPEN = SDLK_v;
+			players_keyboardKeys[1].PREVIOUS = SDLK_c;
+			players_keyboardKeys[1].NEXT = SDLK_g;
+			players_keyboardKeys[1].FINISHER = SDLK_j;
 		}
 
 		struct KeyboardKeys {
@@ -109,13 +109,23 @@ namespace config {
 			SDL_Keycode NEXT = SDLK_e;
 			SDL_Keycode FINISHER = SDLK_r;
 		};
+		struct GPadButtons {
+			//PlayerController 1
+			SDL_GameControllerButton PICKUP = SDL_CONTROLLER_BUTTON_A;
+			SDL_GameControllerButton ATTACK = SDL_CONTROLLER_BUTTON_X;
+			SDL_GameControllerButton OPEN = SDL_CONTROLLER_BUTTON_B;
+			SDL_GameControllerButton PREVIOUS = SDL_CONTROLLER_BUTTON_DPAD_LEFT;
+			SDL_GameControllerButton NEXT = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
+			SDL_GameControllerButton FINISHER = SDL_CONTROLLER_BUTTON_Y;
+		};
 
 		struct Volume {
 			Uint8 music_ = 64;
 			Uint8 sounds_ = 64;
 		};
 
-		std::array<KeyboardKeys, 2> players_keys;
+		std::array<KeyboardKeys, 2> players_keyboardKeys;
+		std::array<GPadButtons, 2> players_gPadButtons;
 		Volume volume;
 	};
 }

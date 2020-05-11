@@ -61,22 +61,21 @@ void PlayerController::joystickUpdate()
 	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
 
 	//Botones-------------------------------
-	if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_A)) {
+	if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.PICKUP)) {
 		ableToPress = false;
-		cout << id_ + " ha pulsado A" << endl;
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr) {
 			i->action1(id_);
 			i = nullptr;
 		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_B)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.OPEN)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action4(id_);
 		i = nullptr;
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.ATTACK) && selector_ != nullptr) {
 		attack_->attack();
 		//Estados de attack
 		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
@@ -86,7 +85,7 @@ void PlayerController::joystickUpdate()
 				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.FINISHER)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action5(id_);
@@ -95,7 +94,7 @@ void PlayerController::joystickUpdate()
 	else if (!ableToPress&& padNotTouched())
 		ableToPress = true;
 
-	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && selector_ != nullptr)
+	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.PREVIOUS) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
@@ -104,7 +103,7 @@ void PlayerController::joystickUpdate()
 			i = nullptr;
 		}
 	}
-	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && selector_ != nullptr)
+	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.NEXT) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();

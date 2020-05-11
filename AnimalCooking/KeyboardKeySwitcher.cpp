@@ -4,7 +4,7 @@
 
 void KeyboardKeySwitcher::init()
 {
-	config::Options::KeyboardKeys& keys = SDLGame::instance()->getOptions().players_keys[player_];
+	config::Options::KeyboardKeys& keys = SDLGame::instance()->getOptions().players_keyboardKeys[player_];
 	Transform* t = GETCMP1_(Transform);
 	switchers_.reserve(6);
 	switchers_.emplace_back(new SwitcherKeyboard(Vector2D(t->getPos().getX(), t->getPos().getY() + t->getH() / 7), Vector2D(), keys.ATTACK, "Attack"));
