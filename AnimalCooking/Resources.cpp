@@ -5,6 +5,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 	//
 	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 },
 	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
+	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
 	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
 };
 
