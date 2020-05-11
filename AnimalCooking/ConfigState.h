@@ -13,6 +13,10 @@ public:
 	ConfigState(AnimalCooking* ac);
 	virtual void update();
 private:
+	void initButtons();
+	void initSliders();
+	void initKeyModifiers();
+
 	SDLGame* game_;
 	double musicLastValue_, soundLastValue;
 	static void backButtonCallback(AnimalCooking* ac);

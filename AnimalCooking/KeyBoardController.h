@@ -69,6 +69,8 @@ public:
 	inline int getMouseButtonState(MOUSEBUTTON b) {
 		return mbState_[b];
 	}
+
+	inline const SDL_Keycode& getLastKeyPressed() const { return lastKeyPressed_; }
 private:
 	KeyBoardController();
 	void clearState();
@@ -76,6 +78,7 @@ private:
 	inline void onKeyDown(SDL_Event& event) {
 		isKeyDownEvent_ = true;
 		// kbState_ = SDL_GetKeyboardState(0);
+		lastKeyPressed_ = event.key.keysym.sym;
 	}
 	inline void onKeyUp(SDL_Event& event) {
 		isKeyUpEvent_ = true;
@@ -105,6 +108,8 @@ private:
 	bool isKeyDownEvent_;
 	bool isMouseMotionEvent_;
 	bool isMouseButtonEvent_;
+
+	SDL_Keycode lastKeyPressed_;
 
 	Vector2D mousePos_;
 	std::array<bool, 3> mbState_;

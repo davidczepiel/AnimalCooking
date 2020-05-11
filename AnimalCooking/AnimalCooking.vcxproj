@@ -226,6 +226,8 @@
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
+    <ClInclude Include="GpadKeySwitcher.h" />
+    <ClInclude Include="GpadKeySwitcherViewer.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientInitializer.h" />
@@ -240,6 +242,9 @@
     <ClInclude Include="Interactive.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
+    <ClInclude Include="KeyboardKeySwitcher.h" />
+    <ClInclude Include="KeyboardKeySwitcherViewer.h" />
+    <ClInclude Include="KeySwitcher.h" />
     <ClInclude Include="LevelInitializer.h" />
     <ClInclude Include="LevelViewer.h" />
     <ClInclude Include="LoadingBarViewer.h" />
@@ -292,6 +297,8 @@
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StaticRenderer.h" />
+    <ClInclude Include="SwitcherGPad.h" />
+    <ClInclude Include="SwitcherKeyboard.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextSpeechBubble.h" />
     <ClInclude Include="TextSpeechBubbleViewer.h" />
@@ -377,6 +384,8 @@
     <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="GpadKeySwitcher.cpp" />
+    <ClCompile Include="GpadKeySwitcherViewer.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />
@@ -391,6 +400,9 @@
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
+    <ClCompile Include="KeyboardKeySwitcher.cpp" />
+    <ClCompile Include="KeyboardKeySwitcherViewer.cpp" />
+    <ClCompile Include="KeySwitcher.cpp" />
     <ClCompile Include="LevelInitializer.cpp" />
     <ClCompile Include="LevelViewer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
@@ -442,6 +454,8 @@
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StaticRenderer.cpp" />
+    <ClCompile Include="SwitcherGPad.cpp" />
+    <ClCompile Include="SwitcherKeyboard.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />

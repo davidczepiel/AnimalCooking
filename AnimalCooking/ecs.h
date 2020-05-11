@@ -102,6 +102,11 @@ enum CmpId : CmpIdType {
 
 	levelViewer,//UI
 
+	KeyboardKeySwitcher, //Config
+	KeyboardKeySwitcherViewer,
+	GpadKeySwitcher,
+	GpadKeySwitcherViewer,
+
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of components
