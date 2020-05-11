@@ -112,9 +112,13 @@ enum GroupID : Group {
 	Layer1,
 	Layer2,
 	FoodLayer,
+	PlayerLayerAux1,
 	FeedBackLayer,
-	PlayerLayer,
+	PlayerLayer1,
 	ui,
+
+
+
 	_LastGroupId_	//Identify the max number of groups
 };
 

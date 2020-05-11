@@ -64,7 +64,9 @@ void LevelInitializer::initialize_players()
 		emPlaystate->addToGroup(players[i], CASTID(jsonGeneral["Players"]["Layer"].as_int()));
 	}
 
-	PlayersAdder(players, jsonLevel, jsonGeneral, casilla);
+	/*emPlaystate->addToGroup(players[0], CASTID(jsonGeneral["Players"]["Layer"].as_int()));*/
+
+	PlayersAdder(players, jsonLevel, jsonGeneral, casilla,emPlaystate);
 
 	sL->updateLength();
 }
