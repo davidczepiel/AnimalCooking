@@ -60,6 +60,11 @@ public:
 		CookerCooked,
 		Platera,
 		Muro,
+		Valla,
+		VallaFinal,
+		VallaInicio,
+		Collider,
+		VallaAbajo,
 		//Utensilios
 		Cuchillo,
 		CuchilloSucio,

@@ -114,6 +114,7 @@ enum GroupID : Group {
 	FoodLayer,
 	FeedBackLayer,
 	PlayerLayer,
+	Valla,
 	ui,
 	_LastGroupId_	//Identify the max number of groups
 };

@@ -16,20 +16,38 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//Paredes
 	vector<Data> data; 
 	data.push_back(Data(Vector2D(8 * casilla, 0), //medio 1 ver
-		Vector2D(offset, 4.25 * casilla),
-		Resources::TextureId::Suelo));
-	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla),	//Medio 2 ver
-		Vector2D(offset, 1.25 * casilla),
-		Resources::TextureId::Suelo));
+		Vector2D(64, 3.75 * casilla),
+		Resources::TextureId::Valla));
+	data.push_back(Data(Vector2D(8 * casilla, 3.75*casilla), //fin medio 1
+		Vector2D(64, casilla),
+		Resources::TextureId::VallaFinal));
+	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla), //incio medio 2
+		Vector2D(64, casilla),
+		Resources::TextureId::VallaInicio));
+	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla + casilla),	//Medio 2 ver
+		Vector2D(44, 0.25*casilla),
+		Resources::TextureId::Collider));
 	data.push_back(Data(Vector2D(8 * casilla + offset, 7 * casilla - offset), //Aba hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casilla + offset), offset),
-		Resources::TextureId::Button));
-	data.push_back(Data(Vector2D(8 * casilla + offset,0), //Arr hor
-		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casilla + offset), offset),
+		Resources::TextureId::Collider));
+	data.push_back(Data(Vector2D(8 * casilla + offset -10 ,0), //Arr hor
+		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casilla + offset) + 10, offset),
 		Resources::TextureId::Muro));
-	for (auto& d : data) {
-		maker(d, casilla, colSys_, mngr, offset);
-	}
+
+	
+	maker(data[5], casilla, colSys_, mngr, offset); //Valla arriba
+	maker(data[0], casilla, colSys_, mngr, 64); //Valla medio 1
+	maker(data[1], casilla, colSys_, mngr, 64); //Final valla medio 1
+	maker(data[2], casilla, colSys_, mngr, 64); //Inicio valla medio 2
+	maker(data[3], casilla, colSys_, mngr, 64); //Valla medio 2
+	maker(data[4], casilla, colSys_, mngr, 64); //Abajo valla
+
+	//Hacer falsa valla
+	Entity* valla = mngr->addEntity();
+	valla->addComponent<Transform>(Vector2D(8 * casilla , 7 * casilla - 100),
+								   Vector2D(),	1000, 100);
+	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
+	mngr->addToGroup(valla, ecs::Valla);
 
 	//Hacer esquinas
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
