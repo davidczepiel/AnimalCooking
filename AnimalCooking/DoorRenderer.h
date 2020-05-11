@@ -6,8 +6,7 @@
 
 enum State : size_t {
 	Closed,
-	OpenedLeft,
-	OpenedRight
+	Open
 };
 
 class DoorRenderer : public Component

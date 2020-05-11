@@ -14,6 +14,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	std::array<Entity*, 2>& players, const double casilla, const double offset)
 {
 	//Paredes
+
 	vector<Data> data; 
 	data.push_back(Data(Vector2D(8 * casilla, 0), //medio 1 ver
 		Vector2D(64, 3.75 * casilla),
@@ -40,7 +41,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	maker(data[1], casilla, colSys_, mngr, 64); //Final valla medio 1
 	maker(data[2], casilla, colSys_, mngr, 64); //Inicio valla medio 2
 	maker(data[3], casilla, colSys_, mngr, 64); //Valla medio 2
-	maker(data[4], casilla, colSys_, mngr, 64); //Abajo valla
+	maker(data[4], casilla, colSys_, mngr, 64); //Abajo valla*/
 
 	//Hacer falsa valla
 	Entity* valla = mngr->addEntity();
@@ -95,9 +96,9 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	//Hacer puerta
 	Door* d = new Door(Vector2D(7.5 * casilla + offset / 2, 4.25 * casilla), Vector2D(1 * casilla, 1.5 * casilla), 
-		SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panel), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
+		SDLGame::instance()->getTextureMngr()->getTexture(Resources::Puerta), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
-	mngr->addToGroup(d, ecs::GroupID::FoodLayer);
+	mngr->addToGroup(d, ecs::GroupID::FeedBackLayer);
 
 	//Hacer mantel de fondo del Score
 	Entity* ScoreBackground = mngr->addEntity();

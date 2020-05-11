@@ -56,6 +56,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, VallaInicio,"../AnimalCooking/resources/images/Cocina/vallainicio.png"},
 	{AllLevels, Collider,"../AnimalCooking/resources/images/Cocina/vacio.png"},
 	{AllLevels, VallaAbajo,"../AnimalCooking/resources/images/Cocina/vallaAbajo.png"},
+	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
 	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/Cocina/pickable/cuchilloSucio.png"},
@@ -257,7 +258,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
 	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
-	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
+	{Basic,Puerta,"../AnimalCooking/resources/images/Cocina/puerta.png",1,4}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

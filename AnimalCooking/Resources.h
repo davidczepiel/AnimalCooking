@@ -259,7 +259,8 @@ public:
 		Fish,
 		Chicken,
 		Carrot,
-		Sausage
+		Sausage,
+		Puerta,
 
 		// text			
 	};
