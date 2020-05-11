@@ -77,4 +77,3 @@ bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
 		return false;
 }
 
-

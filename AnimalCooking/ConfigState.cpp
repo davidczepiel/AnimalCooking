@@ -10,6 +10,8 @@
 #include "KeyboardKeySwitcher.h"
 #include "KeyboardKeySwitcherViewer.h"
 
+#include "ButtonPadNavigation.h"
+
 ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), 
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
