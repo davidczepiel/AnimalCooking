@@ -228,16 +228,16 @@ void PlayerController::keyUpdate()
 		}
 	}
 	if (keyboard->keyUpEvent()) {
-		if (keyboard->isKeyUp(keys.up)) {
+		if (keyboard->isKeyUp(keys.UP)) {
 			movKeys.up = false;
 		}
-		if (keyboard->isKeyUp(keys.down)) {
+		if (keyboard->isKeyUp(keys.DOWN)) {
 			movKeys.down = false;
 		}
-		if (keyboard->isKeyUp(keys.right)) {
+		if (keyboard->isKeyUp(keys.RIGHT)) {
 			movKeys.right = false;
 		}
-		if (keyboard->isKeyUp(keys.left)) {
+		if (keyboard->isKeyUp(keys.LEFT)) {
 			movKeys.left = false;
 		}
 	}

@@ -17,7 +17,13 @@ public:
 	void init() override;
 	void update() override;
 private:
-
+	struct MovementKeys {
+		bool up;
+		bool down;
+		bool left;
+		bool right;
+	};
+	MovementKeys movKeys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
 
 	config::Options::KeyboardKeys& keys;

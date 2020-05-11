@@ -15,12 +15,13 @@ public:
 
 	inline void setBackGroundTexture(Texture* t) { backGround_ = t; }
 protected:
-	KeySwitcher(const Vector2D& pos, const Vector2D& size) :
-		playerIsChoosing_(false),
+	KeySwitcher(const Vector2D& pos, const Vector2D& size, const string& name) :
+		playerIsChoosing_(false), name_(name),
 		pos_(pos), size_(size), backGround_(nullptr) {}
 
 	bool playerIsChoosing_;
 
+	string name_;
 	Vector2D pos_, size_;
 	Texture* backGround_;
 };

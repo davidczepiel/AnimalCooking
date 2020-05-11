@@ -12,9 +12,12 @@ void SwitcherKeyboard::update()
 
 	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 		playerIsChoosing_ = (SDL_PointInRect(&mousePosition, &rect));
+		if(playerIsChoosing_) 
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	}
 
 	if (playerIsChoosing_ && ih->keyDownEvent()) {
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDL_Keycode keyHitted = ih->getLastKeyPressed();
 		if (keyToChange_ != keyHitted) {
 			keyToChange_ = keyHitted;
@@ -26,7 +29,9 @@ void SwitcherKeyboard::update()
 void SwitcherKeyboard::draw()
 {
 	backGround_->render(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()));
-	Texture c = Texture(SDLGame::instance()->getRenderer(), string(SDL_GetKeyName(keyToChange_)), 
+	Texture c = Texture(SDLGame::instance()->getRenderer(), name_ + "  :  " + string(SDL_GetKeyName(keyToChange_)), 
 						SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), { COLOR(0x000000ff) });
-	c.render(RECT(pos_.getX() + size_.getX() / 2, pos_.getY(), c.getWidth() * size_.getY() / c.getHeight() , size_.getY()));
+	Vector2D s = Vector2D(c.getWidth() * (size_.getY() - 20) / c.getHeight(), size_.getY() - 20);
+
+	c.render(RECT(pos_.getX() + size_.getX() / 2 - s.getX() / 2, pos_.getY() + 10, s.getX(), s.getY()));
 }

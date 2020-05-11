@@ -15,6 +15,7 @@ public:
 	void update() override;
 
 	const vector<SwitcherKeyboard*>& getSwitchers() const { return switchers_; }
+	const int& getPlayer() const { return player_; }
 private:
 	vector<SwitcherKeyboard*> switchers_;
 	int player_;
