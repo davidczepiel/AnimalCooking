@@ -10,6 +10,8 @@ void DishViewer::init()
 	dish = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Plato);
 	dp = GETCMP1_(DishPool);
 }
+
+
 void DishViewer::draw() 
 {
 	vector<Dish*> ls = dp->getDishes();

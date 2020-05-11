@@ -5,31 +5,32 @@
 void PlayerViewer::init()
 {	
 	tr_ = GETCMP1_(Transform);
-	animator = GETCMP1_(Animator);
-	tp = p->getComponent<Transport>(ecs::Transport);
+	animator = GETCMP1_(Animator);		
 }
 
 void PlayerViewer::update()
 {
-	if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() > 0)
+	if (tp != nullptr) 
 	{
-		//std::swap(em->getGroups()[ecs::GroupID::PlayerLayer1].at(0), em->getGroups()[ecs::GroupID::PlayerLayer1].at(1));
-		if (em->getGroups()[ecs::GroupID::PlayerLayer1].size() > 0) 
-		{			
-			em->getGroups()[ecs::GroupID::PlayerLayer1].remove(p);
-			em->getGroups()[ecs::GroupID::PlayerLayerAux1].push_back(p);
-		}
-	}
-	else if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() < 0)
-	{
-		if (em->getGroups()[ecs::GroupID::PlayerLayerAux1].size() > 0) 
+		//Si el player tiene un plato o una comida
+		if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() > 0)
 		{
-			em->getGroups()[ecs::GroupID::PlayerLayerAux1].remove(p);
-			em->getGroups()[ecs::GroupID::PlayerLayer1].push_back(p);
+			if (em->getGroups()[ecs::GroupID::PlayerLayer].size() > 0)
+			{
+				em->getGroups()[ecs::GroupID::PlayerLayer].remove(p);
+				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(p);
+			}
+		}
+		else if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() < 0)
+		{
+			if (em->getGroups()[ecs::GroupID::PlayerLayerAux].size() > 0)
+			{
+				em->getGroups()[ecs::GroupID::PlayerLayerAux].remove(p);
+				em->getGroups()[ecs::GroupID::PlayerLayer].push_back(p);
+			}
 		}
 	}
 }
-
 
 void PlayerViewer::setIdle(SDL_Rect dest,int fil1,int fil2)
 {	

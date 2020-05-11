@@ -64,8 +64,6 @@ void LevelInitializer::initialize_players()
 		emPlaystate->addToGroup(players[i], CASTID(jsonGeneral["Players"]["Layer"].as_int()));
 	}
 
-	/*emPlaystate->addToGroup(players[0], CASTID(jsonGeneral["Players"]["Layer"].as_int()));*/
-
 	PlayersAdder(players, jsonLevel, jsonGeneral, casilla,emPlaystate);
 
 	sL->updateLength();
@@ -86,7 +84,6 @@ void LevelInitializer::initialize_foodPool()
 	//EntityFoodPool----------------------------------------
 	foodPool = emPlaystate->addEntity();
 	emPlaystate->addToGroup(foodPool, CASTID(jsonGeneral["Foods"]["Layer"].as_int()));
-
 	FoodPoolAdder(foodPool, jsonLevel, jsonGeneral, players);
 	sL->updateLength();
 }
@@ -195,8 +192,8 @@ void LevelInitializer::initialize_feedback()
 {
 	Entity* feedbackEntity = emPlaystate->addEntity();
 	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
-	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
-
+	//emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
+	emPlaystate->addToGroup(feedbackEntity, ecs::GroupID::ui);
 	sL->updateLength();
 }
 

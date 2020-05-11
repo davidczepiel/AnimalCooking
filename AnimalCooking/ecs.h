@@ -111,12 +111,11 @@ enum CmpId : CmpIdType {
 enum GroupID : Group {
 	Layer1,
 	Layer2,
-	FoodLayer,
-	PlayerLayerAux1,
+	PlayerLayerAux,
 	FeedBackLayer,
-	PlayerLayer1,
+	FoodLayer,
+	PlayerLayer,
 	ui,
-
 
 
 	_LastGroupId_	//Identify the max number of groups

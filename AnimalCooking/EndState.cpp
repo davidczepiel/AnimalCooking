@@ -89,7 +89,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		0);
 	Animator* p1Anim = Player1Idle->addComponent<Animator>();
 	Player1Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigAttack));
-	stage->addToGroup(Player1Idle, ecs::GroupID::PlayerLayer1);
+	stage->addToGroup(Player1Idle, ecs::GroupID::PlayerLayer);
 	p1Anim->setCurrentState(Animator::States::Idle);
 
 	Entity* Player2Idle = stage->addEntity();
@@ -102,7 +102,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		0);
 	Animator* p2Anim = Player2Idle->addComponent<Animator>();
 	Player2Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenAttack));
-	stage->addToGroup(Player2Idle, ecs::GroupID::PlayerLayer1);
+	stage->addToGroup(Player2Idle, ecs::GroupID::PlayerLayer);
 	p2Anim->setCurrentState(Animator::States::Idle);
 
 }
