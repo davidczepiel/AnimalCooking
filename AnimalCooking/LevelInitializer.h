@@ -35,8 +35,10 @@ private:
 	void initialize_clients();
 	void initialize_walls();
 
-	double casilla;
-	double offset;
+	double casillaX;
+	double casillaY;
+	double offsetX;
+	double offsetY;
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;

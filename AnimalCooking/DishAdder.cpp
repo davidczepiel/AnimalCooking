@@ -9,7 +9,7 @@
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 
 DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, 
-	std::array<Entity*, 2>& player,FoodPool* fp ,const double casillaLength) : 
+	std::array<Entity*, 2>& player,FoodPool* fp , const double casillaX, const double casillaY) :
 	em(em)
 {
 	//DishPool
@@ -25,19 +25,19 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 	}
 
 	//DishStack
-	DishStack* dish = new DishStack(Vector2D(jsonLevel["DishStack"]["pos"]["x"].as_double() * casillaLength,
-		jsonLevel["DishStack"]["pos"]["y"].as_double() * casillaLength),
+	DishStack* dish = new DishStack(Vector2D(jsonLevel["DishStack"]["pos"]["x"].as_double() * casillaX,
+		jsonLevel["DishStack"]["pos"]["y"].as_double() * casillaY),
 		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp,fp);
 	em->addEntity(dish);
 	em->addToGroup(dish, CASTID(jsonGeneral["DishStack"]["Layer"].as_int()));
 
-	dish->setDishSize(Vector2D(jsonGeneral["Dish"]["size"]["width"].as_double() * casillaLength, jsonGeneral["Dish"]["size"]["height"].as_double() * casillaLength));
+	dish->setDishSize(Vector2D(jsonGeneral["Dish"]["size"]["width"].as_double() * casillaX, jsonGeneral["Dish"]["size"]["height"].as_double() * casillaY));
 
 	dish->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect),
 		GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), dish);
 
-	dish->setSize(Vector2D(jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaLength,
-		jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaLength));
+	dish->setSize(Vector2D(jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaX,
+		jsonGeneral["DishStack"]["size"]["width"].as_double() * casillaY));
 
 	dish->setHitboxSize(Vector2D(dish->getSize().getX(), dish->getSize().getY()));
 	//Componentes extra

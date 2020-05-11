@@ -98,8 +98,12 @@ public:
 	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
 	inline Entity* getTimersViewer() { return timersViewer_; }
 
-	inline void setCasillaLength(const double& CasillaLength) { casillaLength = CasillaLength; }
-	inline const double& getCasillaLength() const { return casillaLength; }
+	inline void setCasillaY(const double& CasillaLength) { casillaY = CasillaLength; }
+	inline const double& getCasillaY() const { return casillaY; }
+
+	inline void setCasillaX(const double& CasillaLength) { casillaX = CasillaLength; }
+	inline const double& getCasillaX() const { return casillaX; }
+
 
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
@@ -129,7 +133,8 @@ protected:
 	int currentLevel;
 	int score;
 	int maxScore;
-	double casillaLength;
+	double casillaX;
+	double casillaY;
 	Entity* timersViewer_;
 
 	static unique_ptr<SDLGame> instance_;

@@ -35,14 +35,14 @@ void GameControl::newIngredient()
 	Ingredient* ing = newIngType(chooseIng());  
 
 	jute::jValue& jsonGeneral = game_->getJsonGeneral();
-	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(),
-		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(),
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
 
 	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
-	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaLength();
+	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaY();
 
     ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
-    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), y));
+    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
 	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
 	colSys_->addCollider(ing);

@@ -33,7 +33,8 @@ void SDLGame::initSDL() {
 	SDL_GetCurrentDisplayMode(0, &DM);
 	width_ = DM.w;
 	height_ = DM.h;
-
+	//width_ = 1080;
+	//height_ = 720;
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,

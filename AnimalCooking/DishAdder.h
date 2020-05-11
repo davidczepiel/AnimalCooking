@@ -9,7 +9,7 @@ class Interactive;
 class DishAdder
 {
 public:
-	DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, FoodPool* fp, const double casilla);
+	DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, FoodPool* fp, const double casillaX, const double casillaY);
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 
 private:

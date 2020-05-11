@@ -6,7 +6,7 @@ class LevelViewer :
 public:
 	LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarPerc, int twoStarPerc, int threeStarPerc,
 		double scorePercentage) :
-		Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casilla(0), scoreProgress_(0)
+		Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casillaX(0),casillaY(0), scoreProgress_(0)
 		,barBackground(nullptr),yellowStar(nullptr),timeSpan_(0),
 		startedTick_(SDLGame::instance()->getTime()),
 		levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
@@ -33,6 +33,8 @@ private:
 	Texture* limitSign;
 	Texture* star;
 	Texture* yellowStar;
-	double casilla;
+	double casillaX;
+	double casillaY;
+
 };
 

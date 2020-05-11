@@ -3,7 +3,8 @@
 #include "GameConfig.h"
 
 AIIngredient::AIIngredient(IngredientsPool* ip, Transform* t1, Transform* t2) :
-	Component(ecs::AIIngredient), ip_(ip), t1_(t1), t2_(t2), range(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaLength()) 
+	Component(ecs::AIIngredient), ip_(ip), t1_(t1), t2_(t2), rangeX(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaX()),
+	rangeY(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaY())
 {
 }
 
@@ -24,11 +25,11 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 	timer.update();
 
 	//Primero se mira si algun player esta en rango y se calcula la direccion de huida
-	if (distance1 < range) {
+	if (distance1 < rangeX && distance1 < rangeY) {
 		i->setState(Escaping);
 		vel = Vector2D((i->getPos() - t1_->getPos()).normalize() * i->getMaxVel());
 	}
-	else if (distance2 < range) {
+	else if (distance2 < rangeX && distance2>rangeY) {
 		i->setState(Escaping);
 		vel = vel + Vector2D((i->getPos() - t2_->getPos()).normalize() * i->getMaxVel());
 	}
@@ -48,13 +49,13 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 		timer.timerStart();
 	}
 	else if (state == IngredientState::Escaping) {
-		if (distance1 > range && distance2 > range) {	//fuera de rango los dos players
+		if (distance1 > rangeX && distance1 > rangeY && distance2 > rangeX && distance2 > rangeY) {	//fuera de rango los dos players
 			i->setState(Idle);
 			timer.timerReset();
 			timer.setTime(SDLGame::instance()->getRandGen()->nextInt(config::AI_INGREDIENT_MIN_TIME_IDLE, config::AI_INGREDIENT_MAX_TIME_IDLE));
 			timer.timerStart();
 		}
-		else {	//alguno está en rango
+		else {	//alguno estï¿½ en rango
 			i->setVel(vel);
 		}
 	}

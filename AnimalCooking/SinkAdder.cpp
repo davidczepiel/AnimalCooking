@@ -4,17 +4,17 @@
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength) : em(em)
+SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaX, const double casillaY) : em(em)
 {
 	jute::jValue sinks_ = jsonLevel["Sink"]["entities"];
 	jute::jValue components = jsonLevel["Sink"]["components"];
 
 	for (int i = 0; i < sinks_.size(); ++i) {
-		Sink* sink = new Sink(Vector2D(sinks_[i]["pos"]["x"].as_double() * casillaLength, sinks_[i]["pos"]["y"].as_double() * casillaLength),
+		Sink* sink = new Sink(Vector2D(sinks_[i]["pos"]["x"].as_double() * casillaX, sinks_[i]["pos"]["y"].as_double() * casillaY),
 			GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
 
-		sink->setSize(Vector2D(jsonGeneral["Sink"]["size"]["width"].as_double() * casillaLength,
-			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
+		sink->setSize(Vector2D(jsonGeneral["Sink"]["size"]["width"].as_double() * casillaX,
+			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaY));
 		sink->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect), GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), sink);
 
 		sink->setHitboxSize(Vector2D(sink->getSize().getX(), sink->getSize().getY()));
