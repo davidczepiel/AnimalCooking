@@ -99,6 +99,8 @@ enum CmpId : CmpIdType {
 	SliderRenderer,
 
 	LoadingBarViewer, //Bar
+	AdversityManager,
+	MultipleAdversityManager,
 
 	levelViewer,//UI
 
@@ -116,9 +118,16 @@ enum GroupID : Group {
 	FoodLayer,
 	PlayerLayer,
 	ui,
-
-
+	topLayer,
+	
 	_LastGroupId_	//Identify the max number of groups
+};
+
+enum AdversityID  {
+	PlaneAdversity,
+	CookersAdversity,
+	HookAdversity,
+	RainAdversity
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;

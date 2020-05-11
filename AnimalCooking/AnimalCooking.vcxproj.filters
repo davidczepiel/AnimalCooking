@@ -68,6 +68,11 @@
     <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="IngredientViewer.cpp" />
+    <ClCompile Include="AdversityManager.cpp" />
+    <ClCompile Include="Adversity.cpp" />
+    <ClCompile Include="HookAdversity.cpp" />
+    <ClCompile Include="PlaneAdversity.cpp" />
+    <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="OrderService.cpp" />
     <ClCompile Include="OrderServiceViewer.cpp" />
     <ClCompile Include="InOutFood.cpp" />
@@ -145,6 +150,8 @@
     <ClCompile Include="DoorRenderer.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="GameConfig.cpp" />
+    <ClCompile Include="MultipleAdversityManager.cpp" />
+    <ClCompile Include="RainAdversity.cpp" />
     <ClCompile Include="LevelViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +207,25 @@
     <ClInclude Include="FoodGiver.h" />
     <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
+    <ClInclude Include="FoodConfig.h">
+      <Filter>Header Files\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="BinAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="CookersAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="DishAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiverAdder.h">
+      <Filter>Header Files\Adders</Filter>
+    </ClInclude>
+    <ClInclude Include="AdversityManager.h" />
+    <ClInclude Include="HookAdversity.h" />
+    <ClInclude Include="PlaneAdversity.h" />
+    <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderService.h" />
     <ClInclude Include="OrderServiceViewer.h" />
@@ -302,6 +328,16 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorRenderer.h" />
     <ClInclude Include="GameConfig.h" />
+    <ClInclude Include="FoodPoolAdder.h" />
+    <ClInclude Include="GameManagerAdder.h" />
+    <ClInclude Include="IngAdder.h" />
+    <ClInclude Include="LevelInitializer.h" />
+    <ClInclude Include="PlayersAdder.h" />
+    <ClInclude Include="ShelfAdder.h" />
+    <ClInclude Include="SinkAdder.h" />
+    <ClInclude Include="UtensilsAdder.h" />
+    <ClInclude Include="MultipleAdversityManager.h" />
+    <ClInclude Include="RainAdversity.h" />
     <ClInclude Include="LevelViewer.h" />
   </ItemGroup>
   <ItemGroup>

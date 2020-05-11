@@ -10,7 +10,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 
 
 vector<Resources::ImageInfo> Resources::images_{
-	//
+	//	
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/Boton/BotonMenu.png"},
 	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
@@ -43,6 +43,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
+	{ Basic, CookerOverHeated,"../AnimalCooking/resources/images/sartenoverheated.png" },
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
@@ -214,7 +215,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
 	{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
-	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"}
+	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+
+	// Adversities
+	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
+	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 };
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
@@ -274,6 +279,7 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
 	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
 	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
+	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
 
 	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
 	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },

@@ -55,6 +55,7 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
+		CookerOverHeated,
 		Platera,
 		//Utensilios
 		Cuchillo,
@@ -245,9 +246,13 @@ public:
 		Fish,
 		Chicken,
 		Carrot,
-		Sausage
+		Sausage,
 
-		// text			
+		// text
+
+		//Adversities
+		WarningAdversity,
+		PlaneShadow
 	};
 
 	enum Level : std::size_t {
@@ -303,6 +308,7 @@ public:
 		CookedFood,
 		IngredientSpawned,
 		OrderRecieved,
+		PlaneSound,
 
 		Tecla1, //Variaciones que suenan al pulsar un boton
 		Tecla2,
