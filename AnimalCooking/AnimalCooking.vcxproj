@@ -157,6 +157,7 @@
     <ClInclude Include="Adversity.h" />
     <ClInclude Include="AdversityEffect.h" />
     <ClInclude Include="AdversityLoader.h" />
+    <ClInclude Include="AdversityManager.h" />
     <ClInclude Include="AdversityMotion.h" />
     <ClInclude Include="AdversitySpawn.h" />
     <ClInclude Include="AdversityViewer.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
+    <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
@@ -227,6 +229,7 @@
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="ImageViewer.h" />
+    <ClInclude Include="HookAdversity.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientInitializer.h" />
@@ -250,6 +253,7 @@
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="MenuButtonRenderer.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="MultipleAdversityManager.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
@@ -260,11 +264,13 @@
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pickable.h" />
+    <ClInclude Include="PlaneAdversity.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
     <ClInclude Include="PlayersAdder.h" />
     <ClInclude Include="PlayerViewer.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="RainAdversity.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Resources.h" />
@@ -312,8 +318,10 @@
     <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Adversity.cpp" />
     <ClCompile Include="AdversityEffect.cpp" />
     <ClCompile Include="AdversityLoader.cpp" />
+    <ClCompile Include="AdversityManager.cpp" />
     <ClCompile Include="AdversityMotion.cpp" />
     <ClCompile Include="AdversitySpawn.cpp" />
     <ClCompile Include="AdversityViewer.cpp" />
@@ -329,6 +337,7 @@
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
+    <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
@@ -379,6 +388,7 @@
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
     <ClCompile Include="ImageViewer.cpp" />
+    <ClCompile Include="HookAdversity.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />
@@ -404,6 +414,7 @@
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="MultipleAdversityManager.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />
@@ -412,11 +423,13 @@
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pickable.cpp" />
+    <ClCompile Include="PlaneAdversity.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
     <ClCompile Include="PlayersAdder.cpp" />
     <ClCompile Include="PlayerViewer.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="RainAdversity.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="ScoreManager.cpp" />

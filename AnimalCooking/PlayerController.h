@@ -30,7 +30,14 @@ private:
 		SDL_Keycode back;
 		SDL_Keycode finish;
 	};
+	struct MovementKeys {
+		bool up;
+		bool down;
+		bool left;
+		bool right;
+	};
 	Keys keys;
+	MovementKeys movKeys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
 
 	Transform* tr_ = nullptr;

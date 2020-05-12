@@ -13,7 +13,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 
 
 vector<Resources::ImageInfo> Resources::images_{
-	//
+	//	
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/Boton/BotonMenu.png"},
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
@@ -49,6 +49,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
+	{ Basic, CookerOverHeated,"../AnimalCooking/resources/images/sartenoverheated.png" },
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -98,14 +99,14 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraAbajoSinMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoSinIzq.png"},
 	{AllLevels,EncimeraHorizConMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizCon.png"},
 	{AllLevels,EncimeraHorizSinMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizSin.png"},
-	{AllLevels,EncimeraVertConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertCon1.png"},
-	{AllLevels,EncimeraVertConMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertCon2.png"},
-	{AllLevels,EncimeraVertSinMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin1.png"},
-	{AllLevels,EncimeraVertSinMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin2.png"},
+	{AllLevels,EncimeraVertConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertCon.png"},
+	{AllLevels,EncimeraVertConMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertCon.png"},
+	{AllLevels,EncimeraVertSinMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin.png"},
+	{AllLevels,EncimeraVertSinMantelIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin.png"},
 	{AllLevels,EncimeraVEsquinaInferiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior2.png"},
 	{AllLevels,EncimeraVEsquinaInferiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
-	{AllLevels,EncimeraVEsquinaSuperiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior2.png"},
+	{AllLevels,EncimeraVEsquinaSuperiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
 	{AllLevels,EsquinaSupIzdaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-2.png"},
@@ -232,7 +233,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
 	{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
-	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"}
+	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+
+	// Adversities
+	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
+	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 };
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
@@ -293,6 +298,7 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
 	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
 	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
+	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
 
 	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
 	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },
