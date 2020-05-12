@@ -76,17 +76,20 @@ void ButtonPadNavigation::action() {
 void ButtonPadNavigation::horizontalMove(double xValue)
 {
 	if (focushing && focus.posibleFocus) {
-		SliderBehaviour* s = GETCMP2(focus.e, SliderBehaviour);
-		if (s != nullptr) s->move(xValue); //Si estoy en un slider
-		else { //Si estoy en la caja negra
+		GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
+		if (s != nullptr) {
 			if (xValue < 0) {
 				if (focus.left != nullptr) {
 					changeFocus(focus.left);
+					GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
+					if (s != nullptr) s->setFocushed(0);
 				}
 			}
 			else {
 				if (focus.right != nullptr) {
 					changeFocus(focus.right);
+					GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
+					if (s != nullptr) s->setFocushed(0);
 				}
 			}
 		}
@@ -103,8 +106,8 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 			}
 		}
 	}
+	
 }
-
 void ButtonPadNavigation::verticalMove(double yValue)
 {
 	if (focus.posibleFocus) {
@@ -113,6 +116,7 @@ void ButtonPadNavigation::verticalMove(double yValue)
 			if (s->onTop()) {
 				if (yValue < 0) {
 					changeFocus(focus.up);
+					s->setFocushed(-1);
 					focushing = false;
 				}
 				else focushing = true;
@@ -124,6 +128,8 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
 				changeFocus(focus.down);
+				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
+				if (s != nullptr) s->setFocushed(0);
 			}
 		}
 		else if (yValue < 0) {

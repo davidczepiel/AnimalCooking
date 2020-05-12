@@ -7,7 +7,7 @@ class GpadKeySwitcher : public Component
 {
 public:
 	GpadKeySwitcher(int player, int buttonWidth, int buttonHeight) : Component(ecs::GpadKeySwitcher), 
-		focus(0), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight) {}
+		focus(-1), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight) {}
 	~GpadKeySwitcher() {
 		for (SwitcherGPad* s : switchers_)
 			delete s;
