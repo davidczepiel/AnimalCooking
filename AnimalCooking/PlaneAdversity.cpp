@@ -3,6 +3,7 @@
 #include "Ingredient.h"
 
 void PlaneAdversity::StartPlane() {
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(&internalTimer);
 	RandomNumberGenerator* rnd = SDLGame::instance()->getRandGen();
 	int height = SDLGame::instance()->getWindowHeight();
 	int width = SDLGame::instance()->getWindowWidth();
@@ -84,7 +85,10 @@ void PlaneAdversity::update() {
 
 	if (state_ == Pasando) return;
 
-	if (isPlaneOut()) multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
+	if (isPlaneOut()) {
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(&internalTimer);
+		multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
+	}
 
 	for (Ingredient* i : multipleAdversityMngr_->getIngredientsPool()->getPool()) {
 		i->setPos(i->getPos() + dir_ * force_);		

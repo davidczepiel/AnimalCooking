@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
+#include "TimerViewer.h"
 
 class PlaneAdversity : public Adversity
 {
