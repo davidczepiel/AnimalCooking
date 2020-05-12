@@ -24,7 +24,7 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
-	int height = 50;
+	int height = 80;
 	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
@@ -40,12 +40,13 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 
 	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
-		50, //Width
+		80, //Width
 		height, //Height
 		0); //Rot
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
-	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	jugarText = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0x000000ff) });
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 

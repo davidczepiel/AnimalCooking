@@ -160,6 +160,7 @@
     <ClCompile Include="KeySwitcher.cpp" />
     <ClCompile Include="SwitcherKeyboard.cpp" />
     <ClCompile Include="SwitcherGPad.cpp" />
+    <ClCompile Include="ImageViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -353,6 +354,7 @@
     <ClInclude Include="KeySwitcher.h" />
     <ClInclude Include="SwitcherKeyboard.h" />
     <ClInclude Include="SwitcherGPad.h" />
+    <ClInclude Include="ImageViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
