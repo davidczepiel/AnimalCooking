@@ -12,7 +12,7 @@
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset, TimerViewer* tv)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 7 * casilla + offset), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 8 * casilla + offset), player, ip);
 
 	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);

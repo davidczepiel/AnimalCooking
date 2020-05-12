@@ -25,7 +25,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla), //incio medio 2
 		Vector2D(64, casilla),
 		Resources::TextureId::VallaInicio));
-	data.push_back(Data(Vector2D(8 * casilla, 5.75 * casilla + casilla),	//Medio 2 ver
+	data.push_back(Data(Vector2D(8 * casilla, 6.75 * casilla ),	//Medio 2 ver
 		Vector2D(44, 0.25*casilla),
 		Resources::TextureId::Collider));
 	data.push_back(Data(Vector2D(8 * casilla + offset, 7 * casilla - offset), //Aba hor
