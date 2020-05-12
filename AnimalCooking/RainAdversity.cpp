@@ -4,24 +4,24 @@
 
 RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam) :Adversity(am, mam)
 {
-	rainTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cerdo);
+	rainTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
 	if (adversityMngr_ != nullptr)
 		utensilsPool = &adversityMngr_->getUtensilsPool()->getPool();
 	else
 		utensilsPool = &multipleAdversityMngr_->getUtensilsPool()->getPool();
 
-	drawingArea.x = SDLGame::instance()->getWindowWidth() / 2;
+	drawingArea.x = SDLGame::instance()->getCasillaLength() *8;
 	drawingArea.y = 0;
 	drawingArea.w = drawingArea.x;
-	drawingArea.h = SDLGame::instance()->getWindowHeight();
+	drawingArea.h = SDLGame::instance()->getCasillaLength()*7;
 	clipArea.x = 0;
 	clipArea.y = 0;
-	clipArea.w = 128;
-	clipArea.h = 128;
+	clipArea.w = 202;
+	clipArea.h = 149;
 	dirtSpeedUp = -4000;
-	rainTimer.setTime(5000);
+	rainTimer.setTime(10000);
 	lastFrame = 0;
-	frameTime = 50;
+	frameTime = 75;
 	started = false;
 }
 
@@ -47,13 +47,13 @@ void RainAdversity::update()
 		else
 			multipleAdversityMngr_->stopAdversity(ecs::AdversityID::RainAdversity);
 	}
-	//if (SDL_GetTicks() - lastFrame >= frameTime) {
-	//	lastFrame = SDL_GetTicks();
-	//	animationFrame++;
-	//	if (animationFrame > 3)
-	//		animationFrame = 0;
-	//	clipArea.x = animationFrame * clipArea.w;
-	//}
+	if (SDL_GetTicks() - lastFrame >= frameTime) {
+		lastFrame = SDL_GetTicks();
+		animationFrame++;
+		if (animationFrame > 3)
+			animationFrame = 0;
+		clipArea.x = animationFrame * clipArea.w;
+	}
 }
 
 void RainAdversity::draw()

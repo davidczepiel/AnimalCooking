@@ -252,7 +252,9 @@ public:
 
 		//Adversities
 		WarningAdversity,
-		PlaneShadow
+		PlaneShadow,
+		RainAdversity
+
 	};
 
 	enum Level : std::size_t {
