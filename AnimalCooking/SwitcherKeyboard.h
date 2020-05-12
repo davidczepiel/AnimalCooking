@@ -1,5 +1,7 @@
 #pragma once
 #include "KeySwitcher.h"
+#include "SDL_macros.h"
+#include "SDLGame.h"
 
 class SwitcherKeyboard : public KeySwitcher
 {

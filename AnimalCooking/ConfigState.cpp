@@ -42,19 +42,21 @@ void ConfigState::initButtons()
 	salir->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
-		game_->getTextureMngr()->getTexture(Resources::Button));
-	
+	ButtonBehaviour* bb = salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+		game_->getTextureMngr()->getTexture(Resources::Back));
+	bb->setButtonRenderer(br);
+
 	//Toggle Window / Fullscreen
 	res = stage->addEntity();
 	stage->addToGroup(res, ecs::GroupID::ui);
 	res->addComponent<Transform>(
 		Vector2D((game_->getWindowWidth() / 3) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	res->addComponent<ButtonBehaviour>(resButtonCallback, app);
-	res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
-		game_->getTextureMngr()->getTexture(Resources::Button));
+	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
+	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
+	bb->setButtonRenderer(br);
 }
 
 void ConfigState::initSliders()
@@ -108,7 +110,6 @@ void ConfigState::initKeyModifiers()
 		changeP1->addComponent<KeyboardKeySwitcherViewer>();
 	}
 	
-
 	//Player2 Right
 	changeP2 = stage->addEntity();
 	stage->addToGroup(changeP2, ecs::GroupID::ui);
@@ -129,7 +130,7 @@ void ConfigState::initKeyModifiers()
 		changeP2->addComponent<KeyboardKeySwitcherViewer>();
 	}
 
-	if (!insertPadNav) {
+	if (!insertPadNav && bp) {
 		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
 		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
 	}
@@ -144,5 +145,6 @@ void ConfigState::backButtonCallback(AnimalCooking* ac)
 
 void ConfigState::resButtonCallback(AnimalCooking* ac)
 {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->toggleFullScreen();
 }

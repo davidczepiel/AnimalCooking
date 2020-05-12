@@ -18,29 +18,34 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 	int buttonWidth = 180;
 	resumeButton = stage->addEntity();
 	resumeButton->addComponent<Transform>(Vector2D(x-(buttonWidth/2), y-(buttonHeight/2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
-	resumeButton->addComponent<ButtonBehaviour>(resumeCallback, app);
+	ButtonBehaviour* bb = resumeButton->addComponent<ButtonBehaviour>(resumeCallback, app);
 	resumeText_ = new Texture(game_->getRenderer(), "Resume", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	resumeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), resumeText_);
+	ButtonRenderer* br = resumeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), resumeText_);
+	bb->setButtonRenderer(br);
 	stage->addToGroup(resumeButton, ecs::GroupID::Layer1);
+
 	configButton = stage->addEntity();
 	configButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 2*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
-	configButton->addComponent<ButtonBehaviour>(configCallback, app);
+	bb = configButton->addComponent<ButtonBehaviour>(configCallback, app);
 	optionsText_ = new Texture(game_->getRenderer(), "Options", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	configButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), optionsText_);
+	br =configButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), optionsText_);
+	bb->setButtonRenderer(br);
 	stage->addToGroup(configButton, ecs::GroupID::Layer1);
 
 	menuButton = stage->addEntity();
 	menuButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 3*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
-	menuButton->addComponent<ButtonBehaviour>(menuCallback, app);
+	bb = menuButton->addComponent<ButtonBehaviour>(menuCallback, app);
 	menuText_ = new Texture(game_->getRenderer(), "Menu", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	menuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), menuText_);
+	br = menuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), menuText_);
+	bb->setButtonRenderer(br);
 	stage->addToGroup(menuButton, ecs::GroupID::Layer1);
 
 	closeButton = stage->addEntity();
 	closeButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 4*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
-	closeButton->addComponent<ButtonBehaviour>(closeCallback, app);
+	bb = closeButton->addComponent<ButtonBehaviour>(closeCallback, app);
 	closeText_ = new Texture(game_->getRenderer(), "Exit", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	closeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), closeText_);
+	br = closeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), closeText_);
+	bb->setButtonRenderer(br);
 	stage->addToGroup(closeButton, ecs::GroupID::Layer1);
 
 	padNavigation = stage->addEntity();

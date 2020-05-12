@@ -7,8 +7,9 @@ CreditsState::CreditsState(AnimalCooking* ac):State(ac) {
 	cout << "Credits";
 	Entity* returnToMenuState = stage->addEntity();
 	returnToMenuState->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, SDLGame::instance()->getWindowHeight()/ 4),Vector2D(0,0),100,50,0);
-	returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
-	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
+	ButtonBehaviour* bb = returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
+	ButtonRenderer* br = returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
+	bb->setButtonRenderer(br);
 	//Se pondr�an los 
 
 	//Entity* nombre = stage->addEntity();

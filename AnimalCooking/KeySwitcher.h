@@ -17,12 +17,13 @@ public:
 protected:
 	KeySwitcher(const Vector2D& pos, const Vector2D& size, const string& name) :
 		playerIsChoosing_(false), name_(name),
-		pos_(pos), size_(size), backGround_(nullptr) {}
-
+		pos_(pos), size_(size), backGround_(nullptr), timeClicked_(), timeClickedCD_(70), col(1) {}
 	bool playerIsChoosing_;
 
 	string name_;
 	Vector2D pos_, size_;
 	Texture* backGround_;
+	Uint32 timeClicked_, timeClickedCD_;
+	size_t col;
 };
 

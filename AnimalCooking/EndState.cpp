@@ -24,9 +24,10 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		64, 
 		0);
 	stage->addToGroup(returnToMapButton, ecs::GroupID::Layer1);
-	returnToMapButton->addComponent<ButtonBehaviour>(goToMapState, app);
-	returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
-	
+	ButtonBehaviour* bb = returnToMapButton->addComponent<ButtonBehaviour>(goToMapState, app);
+	ButtonRenderer* br = returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
+	bb->setButtonRenderer(br);
+
 	Entity* ResetLevelButton = stage->addEntity();
 	stage->addToGroup(ResetLevelButton, ecs::GroupID::Layer1);
 	ResetLevelButton->addComponent<Transform>(Vector2D(
@@ -37,8 +38,9 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		casilla / 2,
 		casilla / 2,
 		degrees);
-	ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
-	ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
+	bb = ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
+	br = ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
+	bb->setButtonRenderer(br);
 
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
 		Entity* NextLevelButton = stage->addEntity();
@@ -52,8 +54,9 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 			casilla / 2,
 			casilla / 2,
 			degrees);
-		NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
-		NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+		bb = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
+		br = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+		bb->setButtonRenderer(br);
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
 	}
 	else {
@@ -69,9 +72,10 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		64, 
 		64, 
 		0);
-	returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
+	bb = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
 
-	returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	bb->setButtonRenderer(br);
 	//-----------------------------------------------------------------------------------------
 
 	//Final

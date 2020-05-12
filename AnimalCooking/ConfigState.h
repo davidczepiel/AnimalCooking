@@ -20,7 +20,7 @@ private:
 	static void backButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
 
-	Entity* salir, * res, * sliderTop, * sliderBot, *changeP1, *changeP2, *bpNav;
+	Entity* salir, * res, * sliderTop, * sliderBot, *changeP1, *changeP2;
 
 
 	SDLGame* game_;
