@@ -259,7 +259,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
-	{Basic,Puerta,"../AnimalCooking/resources/images/Cocina/puerta.png",1,4}
+	{Basic,Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

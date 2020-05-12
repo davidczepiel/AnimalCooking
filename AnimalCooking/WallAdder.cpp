@@ -95,7 +95,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
 
 	//Hacer puerta
-	Door* d = new Door(Vector2D(7.5 * casilla + offset / 2, 4.25 * casilla), Vector2D(1 * casilla, 1.5 * casilla), 
+	Door* d = new Door(Vector2D(7.55 * casilla + offset / 2, 4.37 * casilla), Vector2D(1 * casilla, 1.4 * casilla), 
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::Puerta), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
 	mngr->addToGroup(d, ecs::GroupID::FeedBackLayer);
