@@ -33,6 +33,11 @@ Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
+void Food::setInCooker(bool b)
+{
+	inCooker = b;
+}
+
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
 {
 	foodPool_ = foodPool;
@@ -60,7 +65,7 @@ void Food::update()
 void Food::draw()
 {
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	texture_->render(destRect);
+	if(!inCooker)texture_->render(destRect);
 }
 
 void Food::draw(SDL_Rect r)
