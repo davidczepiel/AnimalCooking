@@ -8,6 +8,7 @@ void SwitcherGPad::update()
 	GPadController* gpad = GPadController::instance();
 	if (gpad->isAnyButtonJustPressed() && gpad->playerPressed(player_, SDL_CONTROLLER_BUTTON_A)) {
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+		cout << "player choosing" << endl;
 		playerIsChoosing_ = true;
 	}
 

@@ -103,8 +103,8 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 			}
 		}
 	}
-	
 }
+
 void ButtonPadNavigation::verticalMove(double yValue)
 {
 	if (focus.posibleFocus) {

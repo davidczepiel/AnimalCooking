@@ -24,3 +24,12 @@ void GpadKeySwitcher::update()
 {
 	if(focus >= 0) switchers_[focus]->update();
 }
+
+void GpadKeySwitcher::addFocushed(const int& delta)
+{
+	if (focus < 0) focus++;
+	if (!switchers_[focus]->getPlayerIsChoosing()) 
+		focus = (focus + delta) % 6;
+	else cout << "cant move, im choosing" << endl;
+	cout << "focus: " << focus << endl;
+}

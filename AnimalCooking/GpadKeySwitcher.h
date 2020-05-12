@@ -7,7 +7,7 @@ class GpadKeySwitcher : public Component
 {
 public:
 	GpadKeySwitcher(int player, int buttonWidth, int buttonHeight) : Component(ecs::GpadKeySwitcher), 
-		focus(-1), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight) {}
+		focus(0), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight) {}
 	~GpadKeySwitcher() {
 		for (SwitcherGPad* s : switchers_)
 			delete s;
@@ -19,8 +19,8 @@ public:
 	const int& getPlayer() const { return player_; }
 
 	//Adds delta to focus and then it modules by 6
-	void addFocushed(const int& delta) { focus = focus + delta; cout << "focus: " << focus << endl;}
-	void setFocushed(const int& delta) { focus = delta; cout << "Focushed" << endl;}
+	void addFocushed(const int& delta);
+	void setFocushed(const int& delta) { focus = delta; }
 	inline const bool& onTop() { return focus == 0; }
 private:
 	int focus;
