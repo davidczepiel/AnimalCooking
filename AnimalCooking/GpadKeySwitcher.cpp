@@ -1,6 +1,8 @@
 #include "GpadKeySwitcher.h"
 #include "Entity.h"
 #include "Transform.h"
+#include "GPadController.h"
+#include "ConfigState.h"
 
 void GpadKeySwitcher::init()
 {
@@ -20,6 +22,5 @@ void GpadKeySwitcher::init()
 
 void GpadKeySwitcher::update()
 {
-	if (focus != -1) 
-		switchers_[focus]->update();
+	if(focus >= 0) switchers_[focus]->update();
 }

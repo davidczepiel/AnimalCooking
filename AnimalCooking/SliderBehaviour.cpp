@@ -23,7 +23,7 @@ void SliderBehaviour::update()
 	else if (active && ih->mouseButtonUpEvent())
 		active = false;
 
-	if (active){
+	if (active && !padNavEnable){
 		if (mousePosition.x >= transform->getPos().getX() && mousePosition.x <= transform->getPos().getX() + transform->getW()) 
 			rectMovePoint.x = mousePosition.x;
 		else if(mousePosition.x < transform->getPos().getX())

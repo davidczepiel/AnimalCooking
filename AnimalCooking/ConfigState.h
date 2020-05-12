@@ -17,11 +17,14 @@ private:
 	void initSliders();
 	void initKeyModifiers();
 
-	SDLGame* game_;
-	double musicLastValue_, soundLastValue;
 	static void backButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
-	Entity* backButton_;
+
+	Entity* salir, * res, * sliderTop, * sliderBot, *changeP1, *changeP2, *bpNav;
+
+
+	SDLGame* game_;
+	double musicLastValue_, soundLastValue;
 	SliderBehaviour* sliderMusic_, *sliderSound_;
 };
 

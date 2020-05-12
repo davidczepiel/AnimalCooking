@@ -10,7 +10,7 @@ class ButtonPadNavigation :
 {
 public:
 	ButtonPadNavigation();
-	void AddButton(Entity* e,Entity* up, Entity* down, Entity* left, Entity* right);
+	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);
 	void update() override;
 private:
 	void changeFocus(Entity* e);
@@ -25,11 +25,12 @@ private:
 		Entity* down;
 		Entity* left;
 		Entity* right;
+		bool posibleFocus;
 	};
 	button focus;
 	bool xAxisMoved;
 	bool aButtonPressed;
 	vector<button> buttons;
-
+	bool focushing;
 };
 

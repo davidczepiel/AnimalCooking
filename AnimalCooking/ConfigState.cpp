@@ -37,46 +37,46 @@ void ConfigState::update()
 void ConfigState::initButtons()
 {
 	//Back button
-	backButton_ = stage->addEntity();
-	stage->addToGroup(backButton_, ecs::GroupID::ui);
-	backButton_->addComponent<Transform>(
+	salir = stage->addEntity();
+	stage->addToGroup(salir, ecs::GroupID::ui);
+	salir->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	backButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	backButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::Button));
 	
 	//Toggle Window / Fullscreen
-	Entity* resButton = stage->addEntity();
-	stage->addToGroup(resButton, ecs::GroupID::ui);
-	resButton->addComponent<Transform>(
+	res = stage->addEntity();
+	stage->addToGroup(res, ecs::GroupID::ui);
+	res->addComponent<Transform>(
 		Vector2D((game_->getWindowWidth() / 3) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	resButton->addComponent<ButtonBehaviour>(resButtonCallback, app);
-	resButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	res->addComponent<ButtonBehaviour>(resButtonCallback, app);
+	res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::Button));
 }
 
 void ConfigState::initSliders()
 {
 	//Slider for Music
-	Entity* sliderMusic = stage->addEntity();
-	stage->addToGroup(sliderMusic, ecs::GroupID::ui);
-	Transform* t = sliderMusic->addComponent<Transform>(
+	sliderTop = stage->addEntity();
+	stage->addToGroup(sliderTop, ecs::GroupID::ui);
+	Transform* t = sliderTop->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	sliderMusic_ = sliderMusic->addComponent<SliderBehaviour>();
-	sliderMusic->addComponent<SliderRenderer>();
+	sliderMusic_ = sliderTop->addComponent<SliderBehaviour>();
+	sliderTop->addComponent<SliderRenderer>();
 	sliderMusic_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.music_ / 128.0);
 
 	//Slider for Sound Effects
-	Entity* sliderSound = stage->addEntity();
-	stage->addToGroup(sliderSound, ecs::GroupID::ui);
-	t = sliderSound->addComponent<Transform>(
+	sliderBot = stage->addEntity();
+	stage->addToGroup(sliderBot, ecs::GroupID::ui);
+	t = sliderBot->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
-	sliderSound_ = sliderSound->addComponent<SliderBehaviour>();
-	sliderSound->addComponent<SliderRenderer>();
+	sliderSound_ = sliderBot->addComponent<SliderBehaviour>();
+	sliderBot->addComponent<SliderRenderer>();
 	sliderSound_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.sounds_ / 128.0);
 
 }
@@ -85,35 +85,55 @@ void ConfigState::initKeyModifiers()
 {
 	GPadController* gpCont = GPadController::instance();
 
+	bool insertPadNav = false;
+	ButtonPadNavigation* bp = nullptr;
 	//Player1 Left
-	Entity* e = stage->addEntity();
-	stage->addToGroup(e, ecs::GroupID::ui);
-	e->addComponent<Transform>(
+	changeP1 = stage->addEntity();
+	stage->addToGroup(changeP1, ecs::GroupID::ui);
+	changeP1->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(0)) {
-		e->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		e->addComponent<GpadKeySwitcherViewer>();
+		changeP1->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP1->addComponent<GpadKeySwitcherViewer>();
+		
+		Entity* e = stage->addEntity();
+		bp = e->addComponent<ButtonPadNavigation>();
+		bp->AddButton(salir, nullptr, res, nullptr, sliderTop);
+		bp->AddButton(res, salir, changeP1, nullptr, sliderBot);
+		bp->AddButton(sliderTop, nullptr, sliderBot, salir, nullptr, true);
 	}
 	else {
-		e->addComponent<KeyboardKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		e->addComponent<KeyboardKeySwitcherViewer>();
+		changeP1->addComponent<KeyboardKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP1->addComponent<KeyboardKeySwitcherViewer>();
 	}
+	
 
 	//Player2 Right
-	e = stage->addEntity();
-	stage->addToGroup(e, ecs::GroupID::ui);
-	e->addComponent<Transform>(
+	changeP2 = stage->addEntity();
+	stage->addToGroup(changeP2, ecs::GroupID::ui);
+	changeP2->addComponent<Transform>(
 		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(1)) {
-		e->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		e->addComponent<GpadKeySwitcherViewer>();
+		changeP2->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP2->addComponent<GpadKeySwitcherViewer>();
+
+		bp->AddButton(sliderBot, sliderTop, changeP2, res, nullptr, true);
+		bp->AddButton(changeP1, res, nullptr, nullptr, changeP2, true);
+		bp->AddButton(changeP2, sliderBot, nullptr, changeP1, nullptr, true);
+		insertPadNav = true;
 	}
 	else {
-		e->addComponent<KeyboardKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		e->addComponent<KeyboardKeySwitcherViewer>();
+		changeP2->addComponent<KeyboardKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP2->addComponent<KeyboardKeySwitcherViewer>();
 	}
+
+	if (!insertPadNav) {
+		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
+		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
+	}
+	
 }
 
 void ConfigState::backButtonCallback(AnimalCooking* ac)

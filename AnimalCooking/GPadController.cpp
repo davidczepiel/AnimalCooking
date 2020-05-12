@@ -10,7 +10,7 @@ GPadController::GPadController()
 	player2_ = nullptr;
 }
 
-void GPadController::update(SDL_Event& event) {
+void GPadController::update(SDL_Event& event) {	
 	//Si se ha añadido un mando se lo asigno al player que le falte
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
@@ -20,10 +20,15 @@ void GPadController::update(SDL_Event& event) {
 			player2_ = SDL_GameControllerOpen(1);
 		}
 	}
-	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual teno y cual no
+	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual tengo y cual no
 	else if (event.type == SDL_CONTROLLERDEVICEREMOVED) {
 		player1_ = SDL_GameControllerOpen(0);
 		player2_ = SDL_GameControllerOpen(1);
+	}		
+
+	if (event.cbutton.type == SDL_CONTROLLERBUTTONDOWN) {
+		lastButtonPressed_.first = true;
+		lastButtonPressed_.second = (SDL_GameControllerButton)event.cbutton.button;
 	}
 }
 
@@ -76,4 +81,3 @@ bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
 	else
 		return false;
 }
-

@@ -18,10 +18,10 @@ public:
 	const vector<SwitcherGPad*>& getSwitchers() const { return switchers_; }
 	const int& getPlayer() const { return player_; }
 
-	//-1 sets it to unFocushed, 0 to 6 set it to focus 
-	//USE -1 OR 0
-	void setFocushed(const int& Focus) { focus = Focus; }
-
+	//Adds delta to focus and then it modules by 6
+	void addFocushed(const int& delta) { focus = focus + delta; cout << "focus: " << focus << endl;}
+	void setFocushed(const int& delta) { focus = delta; cout << "Focushed" << endl;}
+	inline const bool& onTop() { return focus == 0; }
 private:
 	int focus;
 	vector<SwitcherGPad*> switchers_;

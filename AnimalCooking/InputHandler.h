@@ -86,12 +86,6 @@ public:
 	//   Available online via https://biblioteca.ucm.es/
 	//
 
-	inline bool buttonDownEvent() {
-		return isKeyDownEvent_;
-	}
-
-	inline const SDL_GameControllerButton& getLastButtonPressed(Uint32 id) const { return lastButtonPressed_[id]; }
-
 private:
 	InputHandler();
 
@@ -99,10 +93,6 @@ private:
 		isKeyDownEvent_ = true;
 		// kbState_ = SDL_GetKeyboardState(0);
 		lastKeyPressed_ = event.key.keysym.sym;
-	}
-	inline void onButtonDown(SDL_Event& event) {
-		isButtonDownEvent_ = true;
-		lastButtonPressed_[event.cbutton.which] = SDL_GameControllerButton(event.cbutton.button);
 	}
 	inline void onKeyUp(SDL_Event &event) {
 		isKeyUpEvent_ = true;
@@ -139,7 +129,6 @@ private:
 	const Uint8 *kbState_;
 	bool isKeyUpEvent_;
 	bool isKeyDownEvent_;
-	bool isButtonDownEvent_;
 	bool isMouseMotionEvent_;
 	bool isMouseButtonEvent_;
 	bool isMouseButtonUpEvent_;
@@ -148,6 +137,5 @@ private:
 	std::array<bool, 3> mbState_;
 
 	SDL_Keycode lastKeyPressed_;
-	std::array<SDL_GameControllerButton, 2> lastButtonPressed_;
 };
 
