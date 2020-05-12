@@ -60,28 +60,33 @@ void Transport::update()
 		Vector2D objOffset = objInHands_->getSize() / 2;
 
 		if ((angle > (-22.5) && angle <= 22.5)) { //Derecha
-			objPos = Vector2D(centerX + offsetX, centerY + offsetY/2);
+			objPos = Vector2D(centerX + offsetX, centerY + offsetY/3);
 		}
 		else if((angle > 22.5 && angle <= 67.5)) { //Arriba a la derecha
-			objPos = Vector2D(centerX + offsetX, centerY - offsetY/3);
+			objPos = Vector2D(centerX + offsetX/2, centerY);
 		}
 		else if ((angle > 67.5 && angle <= 112.5)) { //Arriba
-			objPos = Vector2D(centerX, centerY - offsetY/2);
+			objPos = Vector2D(centerX, centerY);
 		}
 		else if ((angle > 112.5 && angle <= 157.5)) { //Arriba a la izquierda
-			objPos = Vector2D(centerX - offsetX, centerY - offsetY/3);
+			objPos = Vector2D(centerX - offsetX/2, centerY);
 		}
 		else if ((angle > 157.5 || angle <= (-157.5))) { //izquierda
-			objPos = Vector2D(centerX - offsetX, centerY + offsetY/2);
+			objPos = Vector2D(centerX - offsetX, centerY + offsetY/3);
 		}
 		else if ((angle > (-157.5) && angle <= (-112.5))) { //Abajo a la izquierda
-			objPos = Vector2D(centerX - offsetX, centerY + offsetY);
+			if (objType_ == Resources::Dish) objPos = Vector2D(centerX - offsetX / 2, centerY + offsetY);
+			else objPos = Vector2D(centerX - offsetX/2, centerY + offsetY/2);
 		}
 		else if ((angle > (-112.5) && angle <= (-67.5))) { //Abajo
-			objPos = Vector2D(centerX, centerY + offsetY);
+
+			if(objType_== Resources::Dish) objPos = Vector2D(centerX + offsetX / 4, centerY + offsetY);
+			else objPos = Vector2D(centerX + offsetX/4, centerY + (offsetY - objOffset.getY()));
+			
 		}
 		else if ((angle > (-67.5) && angle <= (-22.5))) { //abajo a la derecha
-			objPos = Vector2D(centerX + offsetX, centerY + offsetY);
+			if (objType_ == Resources::Dish)  objPos = Vector2D(centerX + offsetX / 2, centerY + offsetY);
+			else objPos = Vector2D(centerX + offsetX/2, centerY + offsetY/2);
 		}
 
 		objInHands_->setPos(objPos - objOffset);
