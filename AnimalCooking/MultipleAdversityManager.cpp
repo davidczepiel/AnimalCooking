@@ -44,8 +44,8 @@ void MultipleAdversityManager::seeAdversityWarning() {
 		adversityTimer.setTime(warningRate);
 		adversityTimer.timerStart();
 	}
-	rainTimer.update();
-	if (rainTimer.isTimerEnd()) {
+	rainWarning.update();
+	if (rainWarning.isTimerEnd()) {
 		rainWarning.timerReset();
 		playingWarning = true;
 		adversityTimer.timerReset();
