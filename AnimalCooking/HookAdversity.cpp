@@ -13,29 +13,29 @@ HookAdversity::HookAdversity(AdversityManager* am, MultipleAdversityManager* mam
 		tP1 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player1);
 		tP2 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player2);
 	}
-	hookTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	hookTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::HookAdversity);
 	clipArea.x = 0;
 	clipArea.y = 0;
-	clipArea.w = 128;
+	clipArea.w = 63;
 	clipArea.h = 128;
 	//clipArea.w /= 5;
 
 	drawingAreaHook1.x = 0;
 	drawingAreaHook1.y = 0;
 	drawingAreaHook1.w = 128;
-	drawingAreaHook1.h = 128;
+	drawingAreaHook1.h = 128*6;
 	drawingAreaHook2.x = 0;
 	drawingAreaHook2.y = 0;
 	drawingAreaHook2.w = 128;
-	drawingAreaHook2.h = 128;
+	drawingAreaHook2.h = 128*6;
 
 	catched = false;
 	changedPositions = false;
 	droped = false;
 	playersVisible = true;
 
-	hook1Vel = tP1->getPos().getY() / 2000;
-	hook2Vel = tP2->getPos().getY() / 2000;
+	hook1Vel = tP1->getPos().getY() / 10;
+	hook2Vel = tP2->getPos().getY() / 10;
 	lastTick = 0;
 	lastFrame = 0;
 	frameTime = 50;
@@ -63,42 +63,32 @@ void HookAdversity::update()
 		//impido que los players se muevan mientras dure la adversidad
 		tP1->setVel(Vector2D(0, 0));
 		tP2->setVel(Vector2D(0, 0));
-		int advancedTicks = SDL_GetTicks() - lastTick;
-		if (!catched) GoingDown(advancedTicks); //Bajo a por ellos
-		else if (catched && !changedPositions) GoingUp(advancedTicks); // "Les saco de pantalla"
-		else if (catched && changedPositions && !droped) GoingDown(advancedTicks); //les dejo en la posición del otro
-		else if (catched && changedPositions && droped) GoingUp(advancedTicks); //saco los ganchos de pantalla
+		if (!catched) GoingDown(); //Bajo a por ellos
+		else if (catched && !changedPositions) GoingUp(); // "Les saco de pantalla"
+		else if (catched && changedPositions && !droped) GoingDown(); //les dejo en la posición del otro
+		else if (catched && changedPositions && droped) GoingUp(); //saco los ganchos de pantalla
 	}
 }
 
 //Muevo los ganchos cada uno a una velocidad concreta para que entren y salgan de pantalla
 //a la vez y en una dirección concreta si me interesa bajar los ganchos o subirlos
-void HookAdversity::Move(bool down, int advancedTicks) {
+void HookAdversity::Move(bool down) {
 	if (down) {
 		if (drawingAreaHook1.y + drawingAreaHook1.h < p1OriginalPos.getY() + playerSize.getY())
-			drawingAreaHook1.y += (advancedTicks * hook1Vel);
+			drawingAreaHook1.y += ( hook1Vel);
 		if (drawingAreaHook2.y + drawingAreaHook2.h < p2OriginalPos.getY() + playerSize.getY())
-			drawingAreaHook2.y += (advancedTicks * hook2Vel);
+			drawingAreaHook2.y += ( hook2Vel);
 	}
 	else {
 		if (drawingAreaHook1.y + drawingAreaHook1.h > 0)
-			drawingAreaHook1.y -= (advancedTicks * hook1Vel);
+			drawingAreaHook1.y -= ( hook1Vel);
 		if (drawingAreaHook2.y + drawingAreaHook2.h > 0)
-			drawingAreaHook2.y -= (advancedTicks * hook2Vel);
+			drawingAreaHook2.y -= ( hook2Vel);
 	}
 }
 
-
-//Este método estaba pensado para mover a los player con los ganchos, pero por el sistema de colisiones y las animaciones se ha hecho de 
-//otra forma
-//void HookAdversity::SetContentPos(Transform* contentHook1, Transform* contentHook2) {
-//	contentHook1->setPos(Vector2D(contentHook1->getPos().getX(), drawingAreaHook1.y + drawingAreaHook1.h - contentHook1->getH()));
-//	contentHook2->setPos(Vector2D(contentHook2->getPos().getX(), drawingAreaHook2.y + drawingAreaHook2.h - contentHook2->getH()));
-//}
-
-
 //Subida de los ganchos
-void HookAdversity::GoingUp(int advancedTicks) {
+void HookAdversity::GoingUp() {
 //muevo los ganchos hasta que salgan de pantalla 
 	if (drawingAreaHook1.y + drawingAreaHook1.h <= 0 && drawingAreaHook2.y + drawingAreaHook2.h <= 0) {
 		//intercambio de posiciones si es la primera ez que subo los ganchos
@@ -117,23 +107,14 @@ void HookAdversity::GoingUp(int advancedTicks) {
 		}
 	}
 	else
-		Move(false, advancedTicks);
+		Move(false);
 }
 
-void HookAdversity::GoingDown(int advancedTicks) {
+void HookAdversity::GoingDown( ) {
 	//Si los ganchos no llegaron a los players los muevo
 	//Si llegaron reproduzco una animacion
 	if (drawingAreaHook1.y + drawingAreaHook1.h >= p1OriginalPos.getY() + playerSize.getY() && drawingAreaHook2.y + drawingAreaHook2.h >= p2OriginalPos.getY() + playerSize.getY()) {
-		/*if (SDL_GetTicks() - lastFrame > frameTime) {
-			lastFrame = SDL_GetTicks();
-			animationFrame--;
-			if (animationFrame >= 0)
-				clipArea.x = animationFrame * clipArea.w;
-			else {
-				animationFrame = 0;
-				droped = true;
-			}
-		}*/
+
 		//Si es la primera vez que bajo hago invisibles a los players
 		if (!catched) {
 			catched = true;
@@ -148,7 +129,7 @@ void HookAdversity::GoingDown(int advancedTicks) {
 		}
 	}
 	else
-		Move(true, advancedTicks);
+		Move(true);
 }
 
 

@@ -220,6 +220,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
 	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 	{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
+	{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
+
 
 };
 

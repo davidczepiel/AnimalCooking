@@ -253,7 +253,8 @@ public:
 		//Adversities
 		WarningAdversity,
 		PlaneShadow,
-		RainAdversity
+		RainAdversity,
+		HookAdversity
 
 	};
 
