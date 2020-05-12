@@ -23,6 +23,7 @@ namespace config {
 	constexpr int SKILLET_SECONDS_TO_COOK = 10;
 	constexpr int OVEN_SECONDS_TO_COOK = 15;
 	constexpr int COOKER_ANIM_SPEED = 150;
+	constexpr int COOKER_ANIM_OVERHEATED = 150;
 
 	//DISHES
 	constexpr int DISH_MAX_INGR = 5;

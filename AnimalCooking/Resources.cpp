@@ -43,7 +43,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
-	{ Basic, CookerOverHeated,"../AnimalCooking/resources/images/sartenoverheated.png" },
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
@@ -245,7 +244,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
 	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
-	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
+	{Basic,FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

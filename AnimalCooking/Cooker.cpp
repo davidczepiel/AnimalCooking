@@ -6,7 +6,7 @@
 #include "GameConfig.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
-	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr)
+	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr), fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated))
 {
 	setPos(pos);
 	setSize(size);
@@ -34,7 +34,7 @@ void Cooker::setCookerState(CookerStates s) {
 		case CookerStates::cooking: setCookingTexture(); break;
 		case CookerStates::cooked:  setCookedTexture(); break;
 		case CookerStates::burned:  setBurnedTexture(); break;
-		case CookerStates::overheated: setOverHeatedTexture(); break;
+		case CookerStates::overheated: setEmptyTexture(); break;
 	}
 	state_ = s; 
 };
@@ -46,7 +46,11 @@ void Cooker::draw()
 	if (state_ == CookerStates::cooking || state_ == CookerStates::cooked) {
 		int row = ( SDLGame::instance()->getTime() / config::COOKER_ANIM_SPEED) % texture_->getNumRows();
 		texture_->renderFrame(rect, row, 0, rotation_);
-		cout << row << endl;
+	}
+	else if (state_ == CookerStates::overheated) {
+		texture_->render(rect, rotation_);
+		int col = (SDLGame::instance()->getTime() / config::COOKER_ANIM_OVERHEATED) % fireTexture_->getNumCols();
+		fireTexture_->renderFrame(rect, 0, col, rotation_);
 	}
 	else texture_->render(rect, rotation_);
 }

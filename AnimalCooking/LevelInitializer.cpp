@@ -236,8 +236,8 @@ void LevelInitializer::initialize_adversities()
 	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), GETCMP2(cookerPool, CookerPool), GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
 	//mam->setTimerTime(ecs::AdversityID::RainAdversity,3000);
 	//mam->setTimerTime(ecs::AdversityID::HookAdversity, 11000);
-	mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 5000);
-	//mam->setTimerTime(ecs::AdversityID::CookersAdversity, 9000);
+	//mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 5000);
+	mam->setTimerTime(ecs::AdversityID::CookersAdversity, 5000);
 
 	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
 	

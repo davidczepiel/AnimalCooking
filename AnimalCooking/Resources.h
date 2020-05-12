@@ -55,7 +55,6 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
-		CookerOverHeated,
 		Platera,
 		//Utensilios
 		Cuchillo,
@@ -247,6 +246,7 @@ public:
 		Chicken,
 		Carrot,
 		Sausage,
+		FireOverHeated,
 
 		// text
 
