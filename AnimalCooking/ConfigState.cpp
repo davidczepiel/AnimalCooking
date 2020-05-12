@@ -130,6 +130,7 @@ void ConfigState::initKeyModifiers()
 		changeP2->addComponent<KeyboardKeySwitcherViewer>();
 	}
 
+	if (bp != nullptr) GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
 	if (!insertPadNav && bp) {
 		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
 		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);

@@ -95,6 +95,8 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 		}
 	}
 	else {
+		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+		if (b) b->setFocusByController(false);
 		if (xValue < 0) {
 			if (focus.left != nullptr) {
 				changeFocus(focus.left);
@@ -125,6 +127,8 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 	}
 	else {
+		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+		if (b) b->setFocusByController(false);
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
 				changeFocus(focus.down);
@@ -146,4 +150,6 @@ void ButtonPadNavigation::changeFocus(Entity* e) {
 	while (i < buttons.size() && buttons.at(i).e != e)
 		i++;
 	focus = buttons.at(i);
+	ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+	if (b) b->setFocusByController(true);
 }
