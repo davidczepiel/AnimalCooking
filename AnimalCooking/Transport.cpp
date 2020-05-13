@@ -60,7 +60,8 @@ void Transport::update()
 		Vector2D objOffset = objInHands_->getSize() / 2;
 
 		if ((angle > (-22.5) && angle <= 22.5)) { //Derecha
-			objPos = Vector2D(centerX + offsetX, centerY + offsetY/3);
+			if(objType_ == Resources::PickableType::Dish) objPos = Vector2D(centerX + offsetX/3, centerY + offsetY / 2 + offsetY/4);
+			else objPos = Vector2D(centerX + offsetX/2, centerY + offsetY/2);
 		}
 		else if((angle > 22.5 && angle <= 67.5)) { //Arriba a la derecha
 			objPos = Vector2D(centerX + offsetX/2, centerY);
@@ -72,21 +73,21 @@ void Transport::update()
 			objPos = Vector2D(centerX - offsetX/2, centerY);
 		}
 		else if ((angle > 157.5 || angle <= (-157.5))) { //izquierda
-			objPos = Vector2D(centerX - offsetX, centerY + offsetY/3);
+			if(objType_== Resources::PickableType::Dish)  objPos = Vector2D(centerX - offsetX/3, centerY + offsetY / 2 + offsetY/4);
+			else objPos = Vector2D(centerX - offsetX/2, centerY + offsetY/2);
 		}
 		else if ((angle > (-157.5) && angle <= (-112.5))) { //Abajo a la izquierda
-			if (objType_ == Resources::Dish) objPos = Vector2D(centerX - offsetX / 2, centerY + offsetY);
-			else objPos = Vector2D(centerX - offsetX/2, centerY + offsetY/2);
+			if (objType_ == Resources::PickableType::Dish) objPos = Vector2D(centerX - offsetX / 2, centerY + offsetY);
+			else objPos = Vector2D(centerX - offsetX/2, centerY + offsetY/2 + objOffset.getY()/2);
 		}
 		else if ((angle > (-112.5) && angle <= (-67.5))) { //Abajo
 
-			if(objType_== Resources::Dish) objPos = Vector2D(centerX + offsetX / 4, centerY + offsetY);
-			else objPos = Vector2D(centerX + offsetX/4, centerY + (offsetY - objOffset.getY()));
-			
+			if(objType_== Resources::PickableType::Dish) objPos = Vector2D(centerX + offsetX / 4, centerY + offsetY);
+			else objPos = Vector2D(centerX + offsetX/4, centerY + (offsetY - objOffset.getY()));			
 		}
 		else if ((angle > (-67.5) && angle <= (-22.5))) { //abajo a la derecha
-			if (objType_ == Resources::Dish)  objPos = Vector2D(centerX + offsetX / 2, centerY + offsetY);
-			else objPos = Vector2D(centerX + offsetX/2, centerY + offsetY/2);
+			if (objType_ == Resources::PickableType::Dish)  objPos = Vector2D(centerX + offsetX / 2, centerY + offsetY);
+			else objPos = Vector2D(centerX + offsetX/2, centerY + offsetY/2 + objOffset.getY()/2);
 		}
 
 		objInHands_->setPos(objPos - objOffset);

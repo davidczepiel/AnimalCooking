@@ -9,24 +9,31 @@ void PlayerViewer::init()
 }
 
 void PlayerViewer::update()
-{
-	if (tp != nullptr) 
+{	
+	if (player != nullptr && em != nullptr)
 	{
-		//Si el player tiene un plato o una comida
-		if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() > 0)
+		if (animator->getDir().getY() > 0)
 		{
 			if (em->getGroups()[ecs::GroupID::PlayerLayer].size() > 0)
 			{
-				em->getGroups()[ecs::GroupID::PlayerLayer].remove(p);
-				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(p);
+				em->getGroups()[ecs::GroupID::PlayerLayer].remove(player);
+				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(player);
 			}
 		}
-		else if ((tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) && animator->getDir().getY() < 0)
+		else if (animator->getDir().getY() < 0)
 		{
 			if (em->getGroups()[ecs::GroupID::PlayerLayerAux].size() > 0)
 			{
-				em->getGroups()[ecs::GroupID::PlayerLayerAux].remove(p);
-				em->getGroups()[ecs::GroupID::PlayerLayer].push_back(p);
+				em->getGroups()[ecs::GroupID::PlayerLayerAux].remove(player);
+				em->getGroups()[ecs::GroupID::PlayerLayer].push_back(player);
+			}
+		}
+		else
+		{
+			if (em->getGroups()[ecs::GroupID::PlayerLayer].size() > 0)
+			{
+				em->getGroups()[ecs::GroupID::PlayerLayer].remove(player);
+				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(player);
 			}
 		}
 	}

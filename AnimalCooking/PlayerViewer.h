@@ -4,11 +4,10 @@
 #include "Transform.h"
 #include "Entity.h"
 #include "Animator.h"
-#include "Transport.h"
 
 class PlayerViewer : public Component {
 public:
-	PlayerViewer(Texture* idle, Texture* walk, Texture* attack, EntityManager* em_, Entity* p_) : Component(ecs::PlayerViewer), idleSpritesheet_(idle), walkSpritesheet_(walk), attackSpritesheet_(attack), em(em_), p(p_) { tp = p->getComponent<Transport>(ecs::Transport);  }
+	PlayerViewer(Texture* idle, Texture* walk, Texture* attack, EntityManager* em_, Entity* p_) : Component(ecs::PlayerViewer), idleSpritesheet_(idle), walkSpritesheet_(walk), attackSpritesheet_(attack), em(em_), player(p_) {};
 	PlayerViewer(Texture* idle, Texture* walk, Texture* attack) : Component(ecs::PlayerViewer), idleSpritesheet_(idle), walkSpritesheet_(walk), attackSpritesheet_(attack) {};
 	void init() override;
 	void update()override;
@@ -19,10 +18,8 @@ private:
 	Texture* attackSpritesheet_ = nullptr;
 	Transform* tr_ = nullptr;
 	Animator* animator = nullptr;
-	Transport* tp = nullptr;
 	EntityManager* em = nullptr;
-	Entity* p = nullptr;
-
+	Entity* player = nullptr;
 
 	void setWalkOrAttack(SDL_Rect dest,Texture* spriteSheet,int fil1,int fil2);
 	void setIdle(SDL_Rect dest,int fil1,int fil2);
