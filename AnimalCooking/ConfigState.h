@@ -11,6 +11,10 @@ class ConfigState :
 {
 public:
 	ConfigState(AnimalCooking* ac);
+	~ConfigState() {
+		delete textSliderMusic;
+		delete textSliderSound;
+	}
 	virtual void update();
 private:
 	void initButtons();
@@ -20,6 +24,7 @@ private:
 	static void backButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
 
+	Texture* textSliderMusic, * textSliderSound;
 	Entity* salir, * res, * sliderTop, * sliderBot, *changeP1, *changeP2;
 
 

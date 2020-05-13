@@ -11,8 +11,9 @@
 #include "KeyboardKeySwitcherViewer.h"
 
 #include "ButtonPadNavigation.h"
+#include "ImageViewer.h"
 
-ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), 
+ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	cout << "Config State" << endl;
@@ -81,6 +82,22 @@ void ConfigState::initSliders()
 	sliderBot->addComponent<SliderRenderer>();
 	sliderSound_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.sounds_ / 128.0);
 
+	textSliderMusic = new Texture(game_->getRenderer(), "Music Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0x000000ff) });
+	textSliderSound = new Texture(game_->getRenderer(), "Sound Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0x000000ff) });
+
+	Entity* sliderText1 = stage->addEntity();
+	stage->addToGroup(sliderText1, ecs::GroupID::ui);
+	sliderText1->addComponent<Transform>(
+		Vector2D(game_->getWindowWidth() * 2 / 3 + game_->getWindowWidth() / 8, game_->getWindowHeight() / 16),
+		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
+	sliderText1->addComponent<ImageViewer>(textSliderMusic);
+
+	Entity* sliderText2 = stage->addEntity();
+	stage->addToGroup(sliderText2, ecs::GroupID::ui);
+	sliderText2->addComponent<Transform>(
+		Vector2D(game_->getWindowWidth() * 2 / 3 + game_->getWindowWidth() / 8, 3 * game_->getWindowHeight() / 16),
+		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
+	sliderText2->addComponent<ImageViewer>(textSliderSound);
 }
 
 void ConfigState::initKeyModifiers()
