@@ -3,7 +3,6 @@
 #include "Ingredient.h"
 
 void PlaneAdversity::StartPlane() {
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(&internalTimer);
 	RandomNumberGenerator* rnd = SDLGame::instance()->getRandGen();
 	int height = SDLGame::instance()->getWindowHeight();
 	int width = SDLGame::instance()->getWindowWidth();
@@ -58,9 +57,10 @@ void PlaneAdversity::StartPlane() {
 	force_ = 1.5;
 
 	state_ = Pasando;
-	internalTimer.timerReset();
-	internalTimer.setTime(8500);
-	internalTimer.timerStart();
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	internalTimer->timerReset();
+	internalTimer->setTime(8500);
+	internalTimer->timerStart();
 }
 
 bool PlaneAdversity::isPlaneOut()
@@ -70,12 +70,12 @@ bool PlaneAdversity::isPlaneOut()
 }
 
 void PlaneAdversity::update() {
-	internalTimer.update();
+	internalTimer->update();
 
-	if (internalTimer.isTimerEnd() && state_ == Pasando) {
-		internalTimer.timerReset();
-		internalTimer.setTime(7000);
-		internalTimer.timerStart();
+	if (internalTimer->isTimerEnd() && state_ == Pasando) {
+		internalTimer->timerReset();
+		internalTimer->setTime(7000);
+		internalTimer->timerStart();
 		velocity_ = 3;
 		state_ = Empujando;
 	}
@@ -85,10 +85,7 @@ void PlaneAdversity::update() {
 
 	if (state_ == Pasando) return;
 
-	if (isPlaneOut()) {
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(&internalTimer);
-		multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
-	}
+	if (isPlaneOut()) multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
 
 	for (Ingredient* i : multipleAdversityMngr_->getIngredientsPool()->getPool()) {
 		i->setPos(i->getPos() + dir_ * force_);		

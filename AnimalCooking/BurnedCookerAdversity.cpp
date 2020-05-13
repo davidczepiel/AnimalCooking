@@ -3,10 +3,10 @@
 #include "TimerViewer.h"
 
 void BurnedCookerAdversity::StartAdversity() {
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(&internalTimer);
-	internalTimer.timerReset();
-	internalTimer.setTime(5000);
-	internalTimer.timerStart();
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	internalTimer->timerReset();
+	internalTimer->setTime(5000);
+	internalTimer->timerStart();
 
 	int rnd = SDLGame::instance()->getRandGen()->nextInt(0,cookerPool->getPool().size());
 	int i = (rnd + 1) % cookerPool->getPool().size();
@@ -21,14 +21,13 @@ void BurnedCookerAdversity::StartAdversity() {
 	}
 
 	if (targetCooker == nullptr) {
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(&internalTimer);
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
 	}
 }
 
 void BurnedCookerAdversity::update() {
-	internalTimer.update();
-	if (internalTimer.isTimerEnd() && targetCooker != nullptr) {
+	internalTimer->update();
+	if (internalTimer->isTimerEnd() && targetCooker != nullptr) {
 		targetCooker->setCookerState(CookerStates::empty);
 		targetCooker = nullptr;
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
