@@ -34,13 +34,12 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jsonGeneral = SDLGame::instance()->getJsonGeneral();
 	
-	casillaX = SDLGame::instance()->getWindowWidth() / 16;
-	casillaY = SDLGame::instance()->getWindowHeight() / 9;
+	casillaX = SDLGame::instance()->getCasillaX();
+	casillaY = SDLGame::instance()->getCasillaY();
 	
 	offsetX = casillaX * 0.2;
 	offsetY = casillaY * 0.2;
-	SDLGame::instance()->setCasillaX(casillaX);
-	SDLGame::instance()->setCasillaY(casillaY);
+	
 
 
 	initialize_players();
