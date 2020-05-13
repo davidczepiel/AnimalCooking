@@ -49,21 +49,37 @@ void ButtonPadNavigation::update() {
 }
 
 void ButtonPadNavigation::horizontalInput() {
-	if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
-		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
-		horizontalMove(-1);
-	else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
-		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
-		horizontalMove(1);
+	if (playerToListen == 2) {
+		if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) ||
+			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+			horizontalMove(-1);
+		else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) ||
+			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+			horizontalMove(1);
+	}
+	else {
+		if(GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+			horizontalMove(-1);
+		else if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+			horizontalMove(1);
+	}
 }
 
 void ButtonPadNavigation::verticalInput() {
-	if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
-		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP))
-		verticalMove(-1);
-	else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||
-		GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
-		verticalMove(1);
+	if (playerToListen == 2) {
+		if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_UP) ||
+			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP))
+			verticalMove(-1);
+		else if (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_DOWN) ||
+			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+			verticalMove(1);
+	}
+	else {
+		if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_UP))
+			verticalMove(-1);
+		else if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+			verticalMove(1);
+	}
 }
 
 void ButtonPadNavigation::action() {
