@@ -41,5 +41,6 @@ MapState::MapState(AnimalCooking* ac): State(ac) {
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(screenLoaderButton_,nullptr,backButton_,nullptr,nullptr);
 	b->AddButton(backButton_, screenLoaderButton_, nullptr, nullptr, nullptr);
-	GETCMP2(screenLoaderButton_, ButtonBehaviour)->setFocusByController(true);
+	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
+		GETCMP2(screenLoaderButton_, ButtonBehaviour)->setFocusByController(true);
 }
