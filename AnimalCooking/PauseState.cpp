@@ -9,8 +9,8 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 
 	SDLGame* game_ = SDLGame::instance();
 
-	SDLGame::instance()->getAudioMngr()->pauseMusic();
-	SDLGame::instance()->getAudioMngr()->pauseChannel(-1);
+	game_->getAudioMngr()->pauseMusic();
+	game_->getAudioMngr()->pauseChannel(-1);
 
 	int x = SDLGame::instance()->getWindowWidth()/2;
 	int y = SDLGame::instance()->getWindowHeight()/5;
