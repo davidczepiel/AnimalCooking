@@ -26,6 +26,9 @@ private:
 	static void resumeCallback(AnimalCooking* ac);
 	static void closeCallback(AnimalCooking* ac);
 
-
+	Texture* resumeText_;
+	Texture* optionsText_;
+	Texture* menuText_;
+	Texture* closeText_;
 };
 

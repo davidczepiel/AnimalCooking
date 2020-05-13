@@ -228,6 +228,7 @@
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
+    <ClInclude Include="ImageViewer.h" />
     <ClInclude Include="HookAdversity.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
@@ -386,6 +387,7 @@
     <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
+    <ClCompile Include="ImageViewer.cpp" />
     <ClCompile Include="HookAdversity.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />

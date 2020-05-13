@@ -8,7 +8,7 @@ using Group = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
-	
+	ImageViewer,
 
 	GPadController, //Controls
 	KeyBoardController,
@@ -116,6 +116,7 @@ enum GroupID : Group {
 	FoodLayer,
 	FeedBackLayer,
 	PlayerLayer,
+	Valla,
 	ui,
 	topLayer,
 	_LastGroupId_	//Identify the max number of groups

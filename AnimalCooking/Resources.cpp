@@ -3,7 +3,10 @@
 
 vector<Resources::FontInfo> Resources::fonts_{
 	//
-	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 }
+	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 },
+	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
+	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
+	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
 };
 
 
@@ -12,6 +15,9 @@ vector<Resources::FontInfo> Resources::fonts_{
 vector<Resources::ImageInfo> Resources::images_{
 	//	
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/Boton/BotonMenu.png"},
+	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
+	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
+	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
 	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
@@ -45,6 +51,13 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
 	{ Basic, CookerOverHeated,"../AnimalCooking/resources/images/sartenoverheated.png" },
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
+	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
+	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
+	{AllLevels, VallaFinal,"../AnimalCooking/resources/images/Cocina/vallaFinal.png"},
+	{AllLevels, VallaInicio,"../AnimalCooking/resources/images/Cocina/vallainicio.png"},
+	{AllLevels, Collider,"../AnimalCooking/resources/images/Cocina/vacio.png"},
+	{AllLevels, VallaAbajo,"../AnimalCooking/resources/images/Cocina/vallaAbajo.png"},
+	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
 	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/Cocina/pickable/cuchilloSucio.png"},
@@ -205,9 +218,14 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	//Utensil
 	{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
+	{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
+	{AllLevels, RedFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/redFeedBack.png"},
+	{AllLevels, RalladorFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/ralladorFeedBack.png"},
 	//General
 	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
 	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
+	{AllLevels, VerContenidoPlato,"../AnimalCooking/resources/images/FeedBack/General/verPlato.png"},
+	{AllLevels, EntregarPedido,"../AnimalCooking/resources/images/FeedBack/General/entregarPedido.png"},
 	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
 	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
 	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
@@ -245,7 +263,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic,Fish,"../AnimalCooking/resources/images/Ingredientes/pescado.png",3,2},
 	{Basic,Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{Basic,Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
-	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2}
+	{Basic,Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
+	{Basic,Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

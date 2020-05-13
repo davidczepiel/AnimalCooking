@@ -13,7 +13,7 @@ protected:
 
 	Resources::FoodType type_;
 	Texture* texture_;
-
+	bool dead = false;
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
@@ -38,7 +38,7 @@ public:
 	virtual void draw(SDL_Rect r);
 
 	virtual void action1(int player);
-	virtual void feedback();
+	virtual void feedback(int player);
 	virtual void onDrop(bool onFloor);
 	void onFloor();
 	virtual void onPick();

@@ -40,6 +40,7 @@ void Food::Destroy()
 {
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
 	foodPool_->RemoveFood(iterator_);
+	dead = true;
 }
 
 void Food::update()
@@ -47,7 +48,7 @@ void Food::update()
 	Pickable::update();
 
 	if (timer_->isTimerEnd()) {
-		foodPool_->RemoveFood(iterator_);
+		Destroy();
 	}
 	else {
 		timer_->update();
@@ -92,10 +93,12 @@ void Food::action1(int player)
 	}
 }
 
-void Food::feedback()
+void Food::feedback(int player)
 {
-	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	feedbackVisual_->render(destRect);
+	if (!dead && feedbackVisual_ != nullptr) {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		feedbackVisual_->render(destRect);
+	}
 }
 
 void Food::onPick() {
