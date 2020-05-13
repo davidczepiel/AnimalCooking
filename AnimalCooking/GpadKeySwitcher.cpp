@@ -22,6 +22,15 @@ void GpadKeySwitcher::init()
 
 void GpadKeySwitcher::update()
 {
+	if (navEnabled) {
+		GPadController* gpad = GPadController::instance();
+		if (gpad->isAnyButtonJustPressed()) {
+			if (gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) focus++;
+			else if (gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_UP)) focus--;
+			if (focus < 0) focus = 0;
+			else if (focus > 6) focus = 6;
+		}
+	}
 	if(focus >= 0) switchers_[focus]->update();
 }
 
@@ -30,6 +39,4 @@ void GpadKeySwitcher::addFocushed(const int& delta)
 	if (focus < 0) focus++;
 	if (!switchers_[focus]->getPlayerIsChoosing()) 
 		focus = (focus + delta) % 6;
-	else cout << "cant move, im choosing" << endl;
-	cout << "focus: " << focus << endl;
 }

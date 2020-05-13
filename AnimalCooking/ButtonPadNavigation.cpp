@@ -3,7 +3,7 @@
 #include "SliderBehaviour.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
-	xAxisMoved(false), aButtonPressed(true), focushing(false)
+	xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
 {
 }
 
@@ -27,15 +27,23 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 
 void ButtonPadNavigation::update() {
 	GPadController* gpad = GPadController::instance();
-	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
-
-		horizontalInput();
-		verticalInput();
-
-		//Si cualquiera de ellos está pulsando la A
-		if (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || 
-			gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A)) {
-			action();
+	if (playerToListen == 2) { //Si escucha a ambos
+		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+			horizontalInput();
+			verticalInput();
+			//Si cualquiera de ellos está pulsando la A
+			if (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
+				gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A)) {
+				action();
+			}
+		}
+	}
+	else {
+		if (gpad->playerControllerConnected(playerToListen) && gpad->isAnyButtonJustPressed()) {
+			horizontalInput();
+			verticalInput();
+			if (gpad->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_A)) 
+				action();
 		}
 	}
 }
@@ -108,8 +116,8 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 			}
 		}
 	}
-	
 }
+
 void ButtonPadNavigation::verticalMove(double yValue)
 {
 	if (focus.posibleFocus) {
@@ -124,6 +132,13 @@ void ButtonPadNavigation::verticalMove(double yValue)
 				else focushing = true;
 			}
 			s->addFocushed(yValue);
+		}
+		else {
+			SliderBehaviour* b = GETCMP2(focus.e, SliderBehaviour);
+			if (b != nullptr) {
+				if (yValue > 0 && focus.down) changeFocus(focus.down);
+				else if (yValue < 0 && focus.up) changeFocus(focus.up);
+			}
 		}
 	}
 	else {

@@ -7,20 +7,20 @@ void SwitcherGPad::update()
 {
 	col = 0;
 	GPadController* gpad = GPadController::instance();
-	if (gpad->isAnyButtonJustPressed() && gpad->playerPressed(player_, SDL_CONTROLLER_BUTTON_A)) {
+	bool inSameFrame = false;
+	if (!playerIsChoosing_ && gpad->isAnyButtonJustPressed() && gpad->playerPressed(player_, SDL_CONTROLLER_BUTTON_A)) {
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
-		cout << "player choosing" << endl;
 		playerIsChoosing_ = true;
+		inSameFrame = true;
 	}
 
-	if (playerIsChoosing_ && gpad->isAnyButtonJustPressed()) {
+	if (!inSameFrame && playerIsChoosing_ && gpad->isAnyButtonJustPressed()) {
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDL_GameControllerButton buttonHitted = gpad->buttonJustPressed();
-		if (gPad_keyToChange != buttonHitted) {
-			gPad_keyToChange = buttonHitted;
-			playerIsChoosing_ = false;
-		}
+		if (gPad_keyToChange != buttonHitted) gPad_keyToChange = buttonHitted;
+		playerIsChoosing_ = false;
 	}
+
 }
 
 void SwitcherGPad::draw()

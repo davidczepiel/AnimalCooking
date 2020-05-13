@@ -87,8 +87,6 @@ void ConfigState::initKeyModifiers()
 {
 	GPadController* gpCont = GPadController::instance();
 
-	bool insertPadNav = false;
-	ButtonPadNavigation* bp = nullptr;
 	//Player1 Left
 	changeP1 = stage->addEntity();
 	stage->addToGroup(changeP1, ecs::GroupID::ui);
@@ -96,14 +94,18 @@ void ConfigState::initKeyModifiers()
 		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(0)) {
-		changeP1->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP1->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16, false);
 		changeP1->addComponent<GpadKeySwitcherViewer>();
 		
 		Entity* e = stage->addEntity();
-		bp = e->addComponent<ButtonPadNavigation>();
+		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
+		bp->onlyListenTo(0);
 		bp->AddButton(salir, nullptr, res, nullptr, sliderTop);
 		bp->AddButton(res, salir, changeP1, nullptr, sliderBot);
 		bp->AddButton(sliderTop, nullptr, sliderBot, salir, nullptr, true);
+		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
+		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
+		GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
 	}
 	else {
 		changeP1->addComponent<KeyboardKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
@@ -117,25 +119,13 @@ void ConfigState::initKeyModifiers()
 		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
 	if (gpCont->playerControllerConnected(1)) {
-		changeP2->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
+		changeP2->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16, true);
 		changeP2->addComponent<GpadKeySwitcherViewer>();
-
-		bp->AddButton(sliderBot, sliderTop, changeP2, res, nullptr, true);
-		bp->AddButton(changeP1, res, nullptr, nullptr, changeP2, true);
-		bp->AddButton(changeP2, sliderBot, nullptr, changeP1, nullptr, true);
-		insertPadNav = true;
 	}
 	else {
 		changeP2->addComponent<KeyboardKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
 		changeP2->addComponent<KeyboardKeySwitcherViewer>();
 	}
-
-	if (bp != nullptr) GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
-	if (!insertPadNav && bp) {
-		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
-		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
-	}
-	
 }
 
 void ConfigState::backButtonCallback(AnimalCooking* ac)
