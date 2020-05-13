@@ -27,15 +27,20 @@ MapState::MapState(AnimalCooking* ac): State(ac) {
 
 	screenLoaderButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 0), Vector2D(0, 0), 200.0, 100, 0);
 	jugarText = new Texture(game_->getRenderer(), "Play", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)),{ COLOR(0x000000ff) });
-	screenLoaderButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
-	screenLoaderButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+	
+	ButtonBehaviour* bb = screenLoaderButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+	ButtonRenderer* br = screenLoaderButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
+	bb->setButtonRenderer(br);
 
 	backButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2, (game_->getWindowHeight() / 3) * 1), Vector2D(0, 0), 200.0, 100, 0);
 	volverText = new Texture(game_->getRenderer(), "Return", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	backButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), volverText);
-	backButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	bb = backButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	br = backButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), volverText);
+	bb->setButtonRenderer(br);
 
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(screenLoaderButton_,nullptr,backButton_,nullptr,nullptr);
 	b->AddButton(backButton_, screenLoaderButton_, nullptr, nullptr, nullptr);
+	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
+		GETCMP2(screenLoaderButton_, ButtonBehaviour)->setFocusByController(true);
 }

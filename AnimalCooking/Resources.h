@@ -22,7 +22,6 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
-		Button,
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -239,6 +238,7 @@ public:
 		EncimeraMasa,
 		
 		//spritesheets
+		Button,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
@@ -264,6 +264,10 @@ public:
 		Puerta,
 
 		// text
+		Back,
+		ToggleFullscreen,
+		MusicVolume,
+		SoundVolume,
 
 		//Adversities
 		WarningAdversity,

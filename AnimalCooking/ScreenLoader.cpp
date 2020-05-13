@@ -8,7 +8,7 @@
 #include "BackGroundViewer.h"
 #include "ButtonPadNavigation.h"
 
-constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
+constexpr double step_ = 1.0 / 24.0; //24 es el numero de pasos (6 de carga de recursos + 18 de carga de nivel)
 
 ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
@@ -64,6 +64,7 @@ void ScreenLoader::resetResources()
 	SDL_Renderer* renderer_ = SDLGame::instance()->getRenderer();
 
 	loadTextures(renderer_);
+	loadSpriteSheets(renderer_);
 	loadFonts();
 	loadMessagges(renderer_);
 	loadSounds();
@@ -82,6 +83,22 @@ void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
 		}
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (textures_->getTexture(image.id) == nullptr) textures_->loadFromImg(image.id, renderer_, image.fileName);
+	}
+
+	updateLength();
+}
+
+void ScreenLoader::loadSpriteSheets(SDL_Renderer* renderer_)
+{
+	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
+	for (auto& spr : Resources::spritesheets_) {
+		//Si la imagen no pertenece al nivel y esta cargada en memoria, se elimina
+		if (spr.level != Resources::Level::Basic && spr.level != Resources::Level::AllLevels && spr.level != level &&
+			textures_->getTexture(spr.id) != nullptr) {
+			textures_->destroyTexture(spr.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (textures_->getTexture(spr.id) == nullptr) textures_->loadFromSprSheet(spr.id, renderer_, spr.fileName, spr.numRows, spr.numCols);
 	}
 
 	updateLength();

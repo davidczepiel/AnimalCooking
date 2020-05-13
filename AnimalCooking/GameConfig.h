@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include <array>
 
 namespace config {
 	//AI CLIENT
@@ -82,33 +83,50 @@ namespace config {
 
 	struct Options
 	{
-		struct Player1 {
+		Options() {
+			players_keyboardKeys[1].UP = SDLK_UP;
+			players_keyboardKeys[1].DOWN = SDLK_DOWN;
+			players_keyboardKeys[1].LEFT = SDLK_LEFT;
+			players_keyboardKeys[1].RIGHT = SDLK_RIGHT;
+			players_keyboardKeys[1].PICKUP = SDLK_b;
+			players_keyboardKeys[1].ATTACK = SDLK_n;
+			players_keyboardKeys[1].OPEN = SDLK_v;
+			players_keyboardKeys[1].PREVIOUS = SDLK_c;
+			players_keyboardKeys[1].NEXT = SDLK_g;
+			players_keyboardKeys[1].FINISHER = SDLK_j;
+		}
+
+		struct KeyboardKeys {
 			//PlayerController 1
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_UP = SDLK_w;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_DOWN = SDLK_s;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_LEFT = SDLK_a;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_RIGHT = SDLK_d;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PICKUP = SDLK_k;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_ATTACK = SDLK_p;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_OPEN = SDLK_f;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PREVIOUS = SDLK_q;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_NEXT = SDLK_e;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_FINISHER = SDLK_r;
+			SDL_Keycode UP = SDLK_w;
+			SDL_Keycode DOWN = SDLK_s;
+			SDL_Keycode LEFT = SDLK_a;
+			SDL_Keycode RIGHT = SDLK_d;
+			SDL_Keycode PICKUP = SDLK_k;
+			SDL_Keycode ATTACK = SDLK_p;
+			SDL_Keycode OPEN = SDLK_f;
+			SDL_Keycode PREVIOUS = SDLK_q;
+			SDL_Keycode NEXT = SDLK_e;
+			SDL_Keycode FINISHER = SDLK_r;
 		};
-		struct Player2 {
-			//PlayerController 2
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_UP = SDLK_UP;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_DOWN = SDLK_DOWN;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_LEFT = SDLK_LEFT;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_RIGHT = SDLK_RIGHT;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PICKUP = SDLK_b;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_ATTACK = SDLK_n;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_OPEN = SDLK_v;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PREVIOUS = SDLK_c;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT = SDLK_g;
-			SDL_Keycode PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER = SDLK_j;
+		struct GPadButtons {
+			//PlayerController 1
+			SDL_GameControllerButton PICKUP = SDL_CONTROLLER_BUTTON_A;
+			SDL_GameControllerButton ATTACK = SDL_CONTROLLER_BUTTON_X;
+			SDL_GameControllerButton OPEN = SDL_CONTROLLER_BUTTON_B;
+			SDL_GameControllerButton PREVIOUS = SDL_CONTROLLER_BUTTON_DPAD_LEFT;
+			SDL_GameControllerButton NEXT = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
+			SDL_GameControllerButton FINISHER = SDL_CONTROLLER_BUTTON_Y;
 		};
 
+		struct Volume {
+			Uint8 music_ = 64;
+			Uint8 sounds_ = 64;
+		};
+
+		std::array<KeyboardKeys, 2> players_keyboardKeys;
+		std::array<GPadButtons, 2> players_gPadButtons;
+		Volume volume;
 	};
 }
 

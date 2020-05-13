@@ -16,6 +16,7 @@ public:
 private:
 
 	void loadTextures(SDL_Renderer* renderer_);
+	void loadSpriteSheets(SDL_Renderer* renderer_);
 	void loadFonts();
 	void loadMessagges(SDL_Renderer* renderer_);
 	void loadSounds();

@@ -13,6 +13,7 @@
 
 #include "InputHandler.h"
 #include "jute.h"
+#include "GameConfig.h"
 
 using namespace std;
 class FSM;
@@ -77,12 +78,15 @@ public:
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
-		if (flags && SDL_WINDOW_FULLSCREEN) {
+		if (flags & SDL_WINDOW_FULLSCREEN) {
+			SDL_SetWindowSize(window_, width_, height_ - 60);
 			SDL_SetWindowFullscreen(window_, 0);
-		} else {
+			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
+		}
+		else {
+			SDL_SetWindowSize(window_, width_, height_);
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 		}
-
 	}
 
 	inline FSM* getFSM() { return fsm_; }
@@ -104,6 +108,13 @@ public:
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
+
+	void changeWindowSize(int w, int h) {
+		SDL_SetWindowSize(window_, w, h);
+	}
+
+	config::Options& getOptions() { return options_; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -131,6 +142,8 @@ protected:
 	int maxScore;
 	double casillaLength;
 	Entity* timersViewer_;
+
+	config::Options options_;
 
 	static unique_ptr<SDLGame> instance_;
 
