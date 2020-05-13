@@ -56,7 +56,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, VallaInicio,"../AnimalCooking/resources/images/Cocina/vallainicio.png"},
 	{AllLevels, Collider,"../AnimalCooking/resources/images/Cocina/vacio.png"},
 	{AllLevels, VallaAbajo,"../AnimalCooking/resources/images/Cocina/vallaAbajo.png"},
-	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta.png"},
 	//Utensilios
 	{AllLevels, Cuchillo,"../AnimalCooking/resources/images/Cocina/pickable/cuchillo.png"},
 	{AllLevels, CuchilloSucio,"../AnimalCooking/resources/images/Cocina/pickable/cuchilloSucio.png"},

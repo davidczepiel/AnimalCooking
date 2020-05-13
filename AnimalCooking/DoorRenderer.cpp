@@ -23,13 +23,11 @@ void DoorRenderer::draw()
 		t->renderFrame(dest, 0, 0, 0);
 	}
 	else {
-		t->renderFrame(dest,0, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % t->getNumCols())), 0);
+		t->renderFrame(dest, 0, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % t->getNumCols())), 0);
 	}
 }
 
 State DoorRenderer::checkCollision(){
-
-
 	if (Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), players[0]->getPos(), players[0]->getW(), players[0]->getH()) ||
 		Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), players[1]->getPos(), players[1]->getW(), players[1]->getH())) {
 		return State::Open;
