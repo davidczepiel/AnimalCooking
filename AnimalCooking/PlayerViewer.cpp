@@ -80,6 +80,18 @@ void PlayerViewer::draw()
 	case Animator::States::IdleWithDishFood:
 		setIdle(dest, 6, 7);
 		break;
+	case Animator::States::IdleWithDirtyKnife:
+		setIdle(dest, 14, 15);
+		break;
+	case Animator::States::IdleWithDirtyMace:
+		setIdle(dest, 16, 17);
+		break;
+	case Animator::States::IdleWithDirtyNet:
+		setIdle(dest, 18, 19);
+		break;
+	case Animator::States::IdleWithDirtyGrater:
+		setIdle(dest, 12, 13);
+		break;
 
 	case Animator::States::Walk:
 		setWalkOrAttack(dest, walkSpritesheet_,0, 1);		
@@ -98,6 +110,18 @@ void PlayerViewer::draw()
 		break;
 	case Animator::States::WalkWithDishFood:
 		setWalkOrAttack(dest, walkSpritesheet_, 6, 7);
+		break;
+	case Animator::States::WalkWithDirtyKnife:
+		setWalkOrAttack(dest, walkSpritesheet_, 14, 15);
+		break;
+	case Animator::States::WalkWithDirtyMace:
+		setWalkOrAttack(dest, walkSpritesheet_, 16, 17);
+		break;
+	case Animator::States::WalkWithDirtyNet:
+		setWalkOrAttack(dest, walkSpritesheet_, 18, 19);
+		break;
+	case Animator::States::WalkWithDirtyGrater:
+		setWalkOrAttack(dest, walkSpritesheet_, 12, 13);
 		break;
 
 	case Animator::States::AttackWithKnife:

@@ -58,5 +58,5 @@ private:
 	void updateKeys(int id);
 
 	void setUtensilState(Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4);
-	void setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s);
+	void setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s, Animator::States u5, Animator::States u6, Animator::States u7, Animator::States u8);
 };
