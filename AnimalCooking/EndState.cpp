@@ -28,6 +28,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	ButtonRenderer* br = returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
 	bb->setButtonRenderer(br);
 
+
 	Entity* ResetLevelButton = stage->addEntity();
 	stage->addToGroup(ResetLevelButton, ecs::GroupID::Layer1);
 	ResetLevelButton->addComponent<Transform>(Vector2D(

@@ -10,6 +10,7 @@ CreditsState::CreditsState(AnimalCooking* ac):State(ac) {
 	ButtonBehaviour* bb = returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
 	ButtonRenderer* br = returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
 	bb->setButtonRenderer(br);
+	GETCMP2(returnToMenuState, ButtonBehaviour)->setFocusByController(true);
 	//Se pondr�an los 
 
 	//Entity* nombre = stage->addEntity();
