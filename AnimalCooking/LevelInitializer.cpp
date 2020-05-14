@@ -195,8 +195,7 @@ void LevelInitializer::initialize_feedback()
 {
 	Entity* feedbackEntity = emPlaystate->addEntity();
 	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
-	//emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
-	emPlaystate->addToGroup(feedbackEntity, ecs::GroupID::ui);
+	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));	
 	sL->updateLength();
 }
 
