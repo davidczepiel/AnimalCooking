@@ -36,16 +36,16 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Resources::TextureId::Muro));
 
 	
-	maker(data[5], casilla, colSys_, mngr, offset); //Valla arriba
-	maker(data[0], casilla, colSys_, mngr, 64); //Valla medio 1
-	maker(data[1], casilla, colSys_, mngr, 64); //Final valla medio 1
-	maker(data[2], casilla, colSys_, mngr, 64); //Inicio valla medio 2
-	maker(data[3], casilla, colSys_, mngr, 64); //Valla medio 2
-	maker(data[4], casilla, colSys_, mngr, 64); //Abajo valla*/
+	maker(data[5], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba
+	maker(data[0], casillaX, casillaY, colSys_, mngr, 64, 64); //Valla medio 1
+	maker(data[1], casillaX, casillaY, colSys_, mngr, 64, 64); //Final valla medio 1
+	maker(data[2], casillaX, casillaY, colSys_, mngr, 64, 64); //Inicio valla medio 2
+	maker(data[3], casillaX, casillaY, colSys_, mngr, 64, 64); //Valla medio 2
+	maker(data[4], casillaX, casillaY, colSys_, mngr, 64, 64); //Abajo valla*/
 
 	//Hacer falsa valla
 	Entity* valla = mngr->addEntity();
-	valla->addComponent<Transform>(Vector2D(8 * casilla , 7 * casilla - 100),
+	valla->addComponent<Transform>(Vector2D(8 * casillaX , 7 * casillaY - 100),
 								   Vector2D(),	1000, 100);
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
 	mngr->addToGroup(valla, ecs::Valla);
@@ -85,7 +85,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	//Suelos
 	Entity* cocina = mngr->addEntity();
-	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offset, 7 * casillaY);
+	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 7 * casillaY);
 	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casillaX, casillaY));
 	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
 
@@ -103,10 +103,10 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//Hacer mantel de fondo del Score
 	Entity* ScoreBackground = mngr->addEntity();
 	mngr->addToGroup(ScoreBackground, CASTID(general["ScoreBackground"]["Layer"].as_int()));
-	ScoreBackground->addComponent<Transform>(Vector2D(general["ScoreBackground"]["pos"]["x"].as_double() * casilla,
-		general["ScoreBackground"]["pos"]["y"].as_double() * casilla),
+	ScoreBackground->addComponent<Transform>(Vector2D(general["ScoreBackground"]["pos"]["x"].as_double() * casillaX,
+		general["ScoreBackground"]["pos"]["y"].as_double() * casillaY),
 		Vector2D(),
-		general["ScoreBackground"]["size"]["width"].as_double() * casilla, general["ScoreBackground"]["size"]["height"].as_double() * casilla);
+		general["ScoreBackground"]["size"]["width"].as_double() * casillaX, general["ScoreBackground"]["size"]["height"].as_double() * casillaY);
 	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 

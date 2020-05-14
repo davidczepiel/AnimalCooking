@@ -74,8 +74,7 @@ void Dish::onPick()
 void Dish::feedback(int player)
 
 {
-	setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
-	if (this->getIsViewingContent())
+	if (isViewingContent)
 	{
 		vector<Food*> foods = this->getFoodVector();
 

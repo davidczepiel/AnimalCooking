@@ -21,12 +21,10 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 	glogic->setIngredientPool(ip);
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();
-	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casillaX, 
-						SDLGame::instance()->getWindowHeight() - jsonGeneral["Score"]["pos"]["y"].as_double() * casillaY));
-	sv->SetSize(jsonGeneral["Score"]["size"]["digitWidth"].as_int(), jsonGeneral["Score"]["size"]["height"].as_int());
+	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casillaX, jsonGeneral["Score"]["pos"]["y"].as_double() * casillaY));
 
 	glogic->setLevelTimer(jsonLevel["LevelTimer"]["Time"].as_int() * 1000,
-		Vector2D(jsonGeneral["LevelTimer"]["pos"]["x"].as_double() * casillaX, SDLGame::instance()->getWindowHeight() - jsonGeneral["LevelTimer"]["pos"]["y"].as_double() * casillaY),
+		Vector2D(jsonGeneral["LevelTimer"]["pos"]["x"].as_double() * casillaX, jsonGeneral["LevelTimer"]["pos"]["y"].as_double() * casillaY),
 		Vector2D(jsonGeneral["LevelTimer"]["size"]["width"].as_double() * casillaX, jsonGeneral["LevelTimer"]["size"]["height"].as_double() * casillaY));
 
 	jute::jValue components = jsonLevel["GameManager"]["components"];
