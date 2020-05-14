@@ -8,34 +8,64 @@ void PlayerViewer::init()
 	animator = GETCMP1_(Animator);		
 }
 
+
+void PlayerViewer::swapLayer(ecs::GroupID id1, ecs::GroupID id2)
+{
+	bool esta = false;
+	for (auto it = em->getGroups()[id1].begin(); it != em->getGroups()[id1].end(); ++it)
+	{
+		if (it == std::find(em->getGroups()[id1].begin(), em->getGroups()[id1].end(), player))
+		{
+			esta = true;
+		}
+	}
+
+	if (em->getGroups()[id2].size() > 0 && !esta)
+	{
+		em->getGroups()[id2].remove(player);
+		em->getGroups()[id1].push_back(player);
+	}
+}
+
+
 void PlayerViewer::update()
 {	
-	if (player != nullptr && em != nullptr)
-	{
-		if (animator->getDir().getY() > 0)
+	if (player != nullptr && em != nullptr && tp != nullptr)
+	{				
+		if (tr_->getPos().getX() > SDLGame::instance()->getWindowWidth() / 2 - 150)
 		{
-			if (em->getGroups()[ecs::GroupID::PlayerLayer].size() > 0)
+			if(tp->getObjectTypeInHands() == Resources::PickableType::Dish || tp->getObjectTypeInHands() == Resources::PickableType::Food) 
 			{
-				em->getGroups()[ecs::GroupID::PlayerLayer].remove(player);
-				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(player);
+				if (animator->getDir().getY() > 0)
+				{
+					swapLayer(ecs::GroupID::PlayerLayerAux, ecs::GroupID::PlayerLayer);
+				}
+				else if (animator->getDir().getY() < 0)
+				{
+					swapLayer(ecs::GroupID::PlayerLayer, ecs::GroupID::PlayerLayerAux);
+				}
+				else
+				{
+					swapLayer(ecs::GroupID::PlayerLayerAux, ecs::GroupID::PlayerLayer);
+				}
 			}
-		}
-		else if (animator->getDir().getY() < 0)
-		{
-			if (em->getGroups()[ecs::GroupID::PlayerLayerAux].size() > 0)
-			{
-				em->getGroups()[ecs::GroupID::PlayerLayerAux].remove(player);
-				em->getGroups()[ecs::GroupID::PlayerLayer].push_back(player);
-			}
+			else swapLayer(ecs::GroupID::PlayerLayer, ecs::GroupID::PlayerLayerAux);			
 		}
 		else
 		{
-			if (em->getGroups()[ecs::GroupID::PlayerLayer].size() > 0)
-			{
-				em->getGroups()[ecs::GroupID::PlayerLayer].remove(player);
-				em->getGroups()[ecs::GroupID::PlayerLayerAux].push_back(player);
+			if (animator->getDir().getY() > 0)
+			{				
+				swapLayer(ecs::GroupID::PlayerLayerAux, ecs::GroupID::PlayerLayer);
 			}
-		}
+			else if (animator->getDir().getY() < 0)
+			{			
+				swapLayer(ecs::GroupID::PlayerLayer, ecs::GroupID::PlayerLayerAux);
+			}
+			else
+			{
+				swapLayer(ecs::GroupID::PlayerLayerAux, ecs::GroupID::PlayerLayer);				
+			}
+		}					
 	}
 }
 
