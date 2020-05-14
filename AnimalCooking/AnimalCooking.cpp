@@ -68,6 +68,7 @@ void AnimalCooking::handleInput() {
 
 	SDL_Event event;
 	InputHandler::instance()->clearState();
+	GPadController::instance()->setIsAnyButtonJustPressed();
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_QUIT)
@@ -77,7 +78,6 @@ void AnimalCooking::handleInput() {
 			GPadController::instance()->update(event);
 		}
 	}
-
 	if (pauseRequest() && dynamic_cast<PlayState*>(game_->getFSM()->currentState()) != nullptr)
 	{
 		static_cast<PlayState*>(game_->getFSM()->currentState())->pauseTimers();

@@ -3,10 +3,11 @@
 #include "GameConfig.h"
 
 GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip) : Component(ecs::GameControl), 
-	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true)
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true), advManager(nullptr)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
+	//adversityTimer.timerStart();
 }
 
 
@@ -28,6 +29,12 @@ void GameControl::update()
 		}
 		else timer.update();
 	}
+
+	//if (!adversityTimer.isStarted())adversityTimer.timerStart();
+	/*adversityTimer.update();
+	if (adversityTimer.isTimerEnd() && advManager != nullptr) {
+		advManager->playAdversity();
+	}*/
 }
 
 void GameControl::newIngredient() 
@@ -45,6 +52,7 @@ void GameControl::newIngredient()
     ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
 	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned,0);
 	colSys_->addCollider(ing);
 	ing = nullptr;
 }
@@ -131,7 +139,7 @@ Resources::IngredientType GameControl::chooseIng()
 
 void GameControl::newFood(Food* f, Vector2D pos) {
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
 	newIngredient(); //al matar un ingrediente aparece otro
@@ -163,7 +171,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-	f->onDrop(true);
+	f->onFloor();
 	return f;
 }
 

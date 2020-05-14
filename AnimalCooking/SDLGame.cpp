@@ -14,7 +14,7 @@ const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),score(0),maxScore(0),
-		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr) {
+		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_() {
 	initSDL();
 	initResources();
 }
@@ -38,13 +38,17 @@ void SDLGame::initSDL() {
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, width_, height_ - 60, SDL_WINDOW_SHOWN);
 	assert(window_ != nullptr);
 
 	// Create the renderer
 	renderer_ = SDL_CreateRenderer(window_, -1,
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer_ != nullptr);
+
+	SDL_RenderSetLogicalSize(renderer_, width_, height_);
+
+	SDL_SetWindowResizable(window_, SDL_TRUE);
 
 	// Clear screen (background color).
 	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 0, 100, 100,
@@ -56,7 +60,6 @@ void SDLGame::initSDL() {
 
 	// hide cursor by default
 	//SDL_ShowCursor(0);
-
 }
 
 void SDLGame::closeSDL() {

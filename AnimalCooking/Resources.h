@@ -22,7 +22,6 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
-		Button,
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -32,6 +31,9 @@ public:
 		MainMenuConfigButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+		LevelTimerBackground,
+		LevelTimerForeground,
+		ScoreBackground,
 		RectangleOutline,
 		HomeIcon,
 		MapIcon,
@@ -55,7 +57,14 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
+		CookerOverHeated,
 		Platera,
+		Muro,
+		Valla,
+		VallaFinal,
+		VallaInicio,
+		Collider,
+		VallaAbajo,
 		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
@@ -211,9 +220,14 @@ public:
 
 			//Utensils
 			CuchilloFeedBack,
+			MazoFeedBack,
+			RedFeedBack,
+			RalladorFeedBack,
 			//General
 			Panel,
 			PlatoFeedBack,
+			VerContenidoPlato,
+			EntregarPedido,
 			PapeleraFeedBack,
 			Coger,
 			Dejar,
@@ -224,14 +238,40 @@ public:
 		EncimeraMasa,
 		
 		//spritesheets
+		Button,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
-		SkilletON
+		SkilletON,
+		PigIdle,
+        PigWalk,
+		PigAttack,
+		ChickenIdle,
+		ChickenWalk,
+		ChickenAttack,
+		Tomato,
+		Potato,
+		Clam,
+        Cheese,
+		Meat,
+	    Lettuce,
+		Mushroom,
+		Onion,
+		Fish,
+		Chicken,
+		Carrot,
+		Sausage,
+		Puerta,
 
 		// text
-		
-	
+		Back,
+		ToggleFullscreen,
+		MusicVolume,
+		SoundVolume,
+
+		//Adversities
+		WarningAdversity,
+		PlaneShadow
 	};
 
 	enum Level : std::size_t {
@@ -265,9 +305,39 @@ public:
 
 	enum AudioId : std::size_t {
 		// music
+		MenuInicio,
+		Level1,
 		Beat,
 		Cheer,
 		Boooo,
+		DropDish,
+		CompleteDish,
+		Wash,
+		FrySound,
+		FrySoundBurned,
+		MicroWave,
+		Door,
+		Bin,
+		PickUp,
+		Drop,
+		KnifeAttack,
+		MaceAttack,
+		AttackMiss,
+		BurnedBeep,
+		CookedFood,
+		IngredientSpawned,
+		OrderRecieved,
+		PlaneSound,
+
+		Tecla1, //Variaciones que suenan al pulsar un boton
+		Tecla2,
+		Tecla3,
+		Tecla4,
+		Tecla5,
+		Tecla6,
+
+		End_Win,
+		End_Lost,
 
 		// sound effects
 		Wall_Hit,
@@ -276,6 +346,9 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		QuarkCheese100,
+		QuarkCheese70,
+		QuarkCheese50
 	};
 
 	struct FontInfo {

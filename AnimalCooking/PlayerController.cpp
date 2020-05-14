@@ -1,5 +1,6 @@
 #include "PlayerController.h"
 #include "GameConfig.h"
+#include "Utensil.h"
 
 void PlayerController::init()
 {
@@ -9,43 +10,7 @@ void PlayerController::init()
 	attack_ = GETCMP1_(Attack);
 	animator = GETCMP1_(Animator);
 	animator->setCurrentState(Animator::States::Idle);
-
-	updateKeys(id_);
-}
-
-
-void PlayerController::updateKeys(int id_)
-{
-	if (id_ == 0) {
-		config::Options::Player1 k;
-		keys = {
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_UP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_DOWN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_LEFT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_RIGHT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PICKUP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_ATTACK,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_OPEN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PREVIOUS,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_NEXT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_FINISHER
-		};
-	} else {
-		config::Options::Player2 k;
-		keys = {
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_UP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_DOWN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_LEFT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_RIGHT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PICKUP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_ATTACK,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_OPEN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PREVIOUS,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER
-		};
-	}
-	
+	transport = GETCMP1_(Transport);
 }
 
 
@@ -92,27 +57,35 @@ void PlayerController::joystickUpdate()
 		tr_->setVelY(0);
 	}
 	ir_->setDir(x, y);
+	//Se establece la direccion para mostrar la animacion correspondiente
+	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
+
 	//Botones-------------------------------
-	if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_A)) {
+	if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.PICKUP)) {
 		ableToPress = false;
-		cout << id_ + " ha pulsado A" << endl;
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr) {
 			i->action1(id_);
 			i = nullptr;
 		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_B)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.OPEN)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action4(id_);
 		i = nullptr;
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.ATTACK) && selector_ != nullptr) {
 		attack_->attack();
-		animator->setCurrentState(Animator::States::Attack);
+		//Estados de attack
+		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+		{
+			animator->getTimer().timerStart();
+			setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
+				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
+		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.FINISHER)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action5(id_);
@@ -121,7 +94,7 @@ void PlayerController::joystickUpdate()
 	else if (!ableToPress&& padNotTouched())
 		ableToPress = true;
 
-	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && selector_ != nullptr)
+	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.PREVIOUS) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
@@ -130,7 +103,7 @@ void PlayerController::joystickUpdate()
 			i = nullptr;
 		}
 	}
-	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && selector_ != nullptr)
+	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.NEXT) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
@@ -141,6 +114,14 @@ void PlayerController::joystickUpdate()
 	}
 	else if (dpadArrowsUsed && dpadArrosNotUsed())
 		dpadArrowsUsed = false;
+
+	//estados de walk
+	if((Xvalue !=0 || Yvalue !=0 || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X))setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
+		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
+	/*Estados de idle*/	                                                          Animator::States::WalkWithNet, Animator::Walk);
+	else if(((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X)) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
+		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
+		                                                                                Animator::States::IdleWithNet, Animator::States::Idle);
 }
 
 bool PlayerController::padNotTouched() {
@@ -167,57 +148,28 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
-	int speed = 1;
+	double speed = 0.4;
+	int x = 0, y = 0;
+
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
-		int x = 0, y = 0;
-		if (keyboard->isKeyDown(keys.up)) {
-			tr_->setVelY(-speed); y = -1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+		if (keyboard->isKeyDown(keys.UP)) {
+			movKeys.up = true;
 		}
-		else if (keyboard->isKeyDown(keys.down)) {
-			tr_->setVelY(speed); y = 1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+		else if (keyboard->isKeyDown(keys.DOWN)) {
+			movKeys.down = true;
 		}
-		//else tr_->setVelY(0);
 
-		if (keyboard->isKeyDown(keys.right)) {
-			tr_->setVelX(speed);  x = 1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+		if (keyboard->isKeyDown(keys.RIGHT)) {
+			movKeys.right = true;
 		}
-		else if (keyboard->isKeyDown(keys.left)) {
-			tr_->setVelX(-speed); x = -1;
-			Interactive* i = selector_->getSelect();
-			if (i != nullptr)
-			{
-				i->onMoved(id_);
-				i = nullptr;
-			}
+		else if (keyboard->isKeyDown(keys.LEFT)) {
+			movKeys.left = true;
 		}
-		//else tr_->setVelX(0);
-
-		ir_->setDir(x, y);
-
-		if (tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0)animator->setCurrentState(Animator::States::Walk);
 
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(keys.pickUp) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PICKUP) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
@@ -226,13 +178,22 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.attack))
+
+		if (keyboard->isKeyDown(keys.ATTACK))
 		{
 			attack_->attack();
-			animator->setCurrentState(Animator::States::Attack);
+
+			//Estados de attack
+			if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
+			{
+				animator->getTimer().timerStart();
+
+				setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
+					Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
+			}
 		}
 
-		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -240,7 +201,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -248,7 +209,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.open) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.OPEN) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -256,21 +217,77 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.finish) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.FINISHER) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
 				i->action5(id_);
 				i = nullptr;
 			}
-
 		}
-
 	}
-	else {
-		tr_->setVelX(0);
-		tr_->setVelY(0);
+	if (keyboard->keyUpEvent()) {
+		if (keyboard->isKeyUp(keys.UP)) {
+			movKeys.up = false;
+		}
+		if (keyboard->isKeyUp(keys.DOWN)) {
+			movKeys.down = false;
+		}
+		if (keyboard->isKeyUp(keys.RIGHT)) {
+			movKeys.right = false;
+		}
+		if (keyboard->isKeyUp(keys.LEFT)) {
+			movKeys.left = false;
+		}
 	}
 
-	if (keyboard->keyUpEvent())animator->setCurrentState(Animator::States::Idle);
+	if (movKeys.up) y = -1;
+	else if (movKeys.down) y = 1;
+	else y = 0;
+
+	if (movKeys.right) x = 1;
+	else if (movKeys.left) x = -1;
+	else x = 0;
+
+	tr_->setVelY(speed * y);
+	tr_->setVelX(speed * x);
+
+	Interactive* i = selector_->getSelect();
+	if (i != nullptr)
+	{
+		i->onMoved(id_);
+		i = nullptr;
+	}
+
+	ir_->setDir(x, y);
+
+	//Se establece la direccion para mostrar la animacion correspondiente
+	if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));                                                                                                       		
+
+	//Estados de idle
+	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
+		Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
+		Animator::States::IdleWithNet, Animator::States::Idle);
+
+	//Estados de walk
+	if ((tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
+		Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
+		Animator::States::WalkWithNet, Animator::Walk);
+}
+
+void PlayerController::setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s)
+{
+	if (transport->getObjectInHands() != nullptr && (transport->getObjectTypeInHands() == Resources::PickableType::Dish || transport->getObjectTypeInHands() == Resources::PickableType::Food)) animator->setCurrentState(d);
+	else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil) setUtensilState(u1, u2, u3, u4);
+	else animator->setCurrentState(s);
+}
+
+void PlayerController::setUtensilState(Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4)
+{
+	Utensil* u = static_cast<Utensil*>(transport->getObjectInHands());
+
+	if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(u1);
+	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(u2);
+	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(u3);
+	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(u4);
 }

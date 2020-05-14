@@ -34,6 +34,7 @@ private:
 	void initialize_levelIngredients();
 	void initialize_clients();
 	void initialize_walls();
+	void initialize_adversities();
 
 	double casillaX;
 	double casillaY;
@@ -45,6 +46,7 @@ private:
 	Entity* utensil;
 	Entity* foodPool;
 	Entity* gameManager;
+	Entity* cookerPool;
 	std::vector<Interactive*> interactives_;
 
 	ScreenLoader* sL;

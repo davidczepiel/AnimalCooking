@@ -10,8 +10,9 @@ class ButtonPadNavigation :
 {
 public:
 	ButtonPadNavigation();
-	void AddButton(Entity* e,Entity* up, Entity* down, Entity* left, Entity* right);
+	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);
 	void update() override;
+	void onlyListenTo(int player) { playerToListen = player; }
 private:
 	void changeFocus(Entity* e);
 	void action();
@@ -25,11 +26,13 @@ private:
 		Entity* down;
 		Entity* left;
 		Entity* right;
+		bool posibleFocus;
 	};
 	button focus;
 	bool xAxisMoved;
 	bool aButtonPressed;
 	vector<button> buttons;
-
+	bool focushing;
+	int playerToListen;
 };
 

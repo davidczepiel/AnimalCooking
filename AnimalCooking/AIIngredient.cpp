@@ -28,15 +28,18 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 	if (distance1 < rangeX && distance1 < rangeY) {
 		i->setState(Escaping);
 		vel = Vector2D((i->getPos() - t1_->getPos()).normalize() * i->getMaxVel());
+		i->setLastVel(vel);
 	}
 	else if (distance2 < rangeX && distance2>rangeY) {
 		i->setState(Escaping);
 		vel = vel + Vector2D((i->getPos() - t2_->getPos()).normalize() * i->getMaxVel());
+		i->setLastVel(vel);
 	}
 
 	if (state == IngredientState::Idle && timer.isTimerEnd()) {
 		i->setState(Walking);
 		i->setVel(calculateNewVel(i));
+		i->setLastVel(calculateNewVel(i));
 		timer.timerReset();
 		timer.setTime(SDLGame::instance()->getRandGen()->nextInt(config::AI_INGREDIENT_MIN_TIME_WALKING, config::AI_INGREDIENT_MAX_TIME_WALKING));
 		timer.timerStart();
@@ -57,6 +60,7 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 		}
 		else {	//alguno est� en rango
 			i->setVel(vel);
+			i->setLastVel(vel);
 		}
 	}
 }

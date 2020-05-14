@@ -34,6 +34,7 @@ void Cooker::setCookerState(CookerStates s) {
 		case CookerStates::cooking: setCookingTexture(); break;
 		case CookerStates::cooked:  setCookedTexture(); break;
 		case CookerStates::burned:  setBurnedTexture(); break;
+		case CookerStates::overheated: setOverHeatedTexture(); break;
 	}
 	state_ = s; 
 };
@@ -80,6 +81,24 @@ void Cooker::feedback(int player)
 
 			SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
 			foods_[i]->draw(r);
+		}
+	}
+}
+
+void Cooker::sound()
+{
+	if (SDL_GetTicks() - lastTimeSound_ > 2000) {
+		lastTimeSound_ = SDL_GetTicks();
+		//Miro qu� tipo de cooker soy y reprocuzco un sonido u otro dependiendo de si he quemado algo o no 
+		switch (cookerType_) {
+		case Resources::Cookers::Skillet:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
+			break;
+		case Resources::Cookers::Oven:
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
+			break;
 		}
 	}
 }

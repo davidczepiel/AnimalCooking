@@ -15,8 +15,8 @@ void InteractionRect::init()
 
 void InteractionRect::draw()
 {
-	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
-	tx_->render(d);
+	/*SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
+	tx_->render(d);*/
 }
 
 void InteractionRect::update()

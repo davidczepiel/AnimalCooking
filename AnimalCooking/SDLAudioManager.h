@@ -25,6 +25,7 @@ public:
 	void haltChannel(int channel) override;
 	int setChannelVolume(int volume, int channel) override;
 	int channels() override;
+	bool isChannelPlaying(int channel) override;
 
 	// music
 	bool loadMusic(int tag, const string &fileName) override;

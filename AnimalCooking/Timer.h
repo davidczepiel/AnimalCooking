@@ -51,12 +51,12 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
-		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
+		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
 	}
-	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::RectangleOutline)){
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
 		time_ = lvlT;
-		texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux);
+		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
 	}
 	void draw();
 	void update();

@@ -42,6 +42,7 @@ void Utensil::update() {
 				dirty_ = true;
 				myDirt_ = maxDirt_;
 				dirtTimer_->timerReset();
+				//resetDirtTimer();
 			}
 		}
 	}
@@ -98,6 +99,7 @@ void Utensil::onDrop(bool onFloor) {
 		Pickable::onDrop(onFloor);
 		myState = State::floor;
 		dirtTimer_->timerStart();
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop, 0);
 	}
 	else
 		myState = State::shelf;
@@ -108,6 +110,7 @@ void Utensil::onPick() {
 	//Me cambio de estado y desactivo el timer de suciedad
 	myState = State::playerHand;
 	dirtTimer_->timerReset();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
 void Utensil::action1(int player) {
@@ -132,8 +135,12 @@ void Utensil::feedback(int player)
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	//Este método es parte de las adversidades, hay que ver
-	//cómo se administra esto, como se le quita tiempo al timer de ensuciarse
+	dirtTimer_->setTime(maxTimeOnFloor_+speedModifier);
+}
+
+void Utensil::resetDirtTimer()
+{
+	dirtTimer_->setTime(maxTimeOnFloor_);
 }
 
 void Utensil::cleanUp() {
@@ -165,7 +172,7 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazaSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazoFeedBack);
 	myType = Resources::UtensilType::Mace;
 	rangeX_ = config::MACE_RANGE * SDLGame::instance()->getCasillaX();
 	rangeY_ = config::MACE_RANGE * SDLGame::instance()->getCasillaY();
@@ -178,7 +185,7 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorFeedBack);
 	myType = Resources::UtensilType::Grater;
 	rangeX_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaX();
 	rangeY_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaY();
@@ -191,7 +198,7 @@ Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Red);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedFeedBack);
 	myType = Resources::UtensilType::Net;
 	rangeX_ = config::NET_RANGE * SDLGame::instance()->getCasillaX();
 	rangeY_ = config::NET_RANGE * SDLGame::instance()->getCasillaY();

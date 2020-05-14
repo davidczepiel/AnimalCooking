@@ -41,6 +41,7 @@ void Food::Destroy()
 {
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer_);
 	foodPool_->RemoveFood(iterator_);
+	dead = true;
 }
 
 void Food::update()
@@ -48,7 +49,7 @@ void Food::update()
 	Pickable::update();
 
 	if (timer_->isTimerEnd()) {
-		foodPool_->RemoveFood(iterator_);
+		Destroy();
 	}
 	else {
 		timer_->update();
@@ -66,12 +67,21 @@ void Food::draw(SDL_Rect r)
 	texture_->render(r);
 }
 
-void Food::onDrop(bool onFloor)
+void Food::onDrop(bool onfloor)
 {
-	if (onFloor) {
-		Pickable::onDrop(onFloor);
+	if (onfloor) {
+		Pickable::onDrop(onfloor);
 		timer_->timerStart();
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
 	}
+}
+
+void Food::onFloor()
+{
+	//El gameControl llamaba al m�todo onDrop pero siempre con true, se necesita hacer est� distinci�n
+	//porque sino el gameControl al generar una comida desencadena que se reproduzca el sonido de dejar caer cuando no deber�a
+	Pickable::onDrop(true);
+	timer_->timerStart();
 }
 
 void Food::action1(int player)
@@ -84,14 +94,17 @@ void Food::action1(int player)
 	}
 }
 
-void Food::feedback()
+void Food::feedback(int player)
 {
-	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	feedbackVisual_->render(destRect);
+	if (!dead && feedbackVisual_ != nullptr) {
+		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+		feedbackVisual_->render(destRect);
+	}
 }
 
 void Food::onPick() {
 	timer_->timerReset();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
 
