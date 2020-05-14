@@ -6,6 +6,7 @@ struct levelInfo {
 	string name = "";
 	unsigned int stars = 0;
 	string lore = "";
+	SDL_Rect house;
 	Vector2D housePosition = Vector2D();
 	Vector2D buttonPosition = Vector2D();
 };
@@ -13,19 +14,26 @@ struct levelInfo {
 class MapState :public State{
 public:
 	MapState(AnimalCooking* ac);
-	~MapState() { delete jugarText; delete volverText; }
+	~MapState() { delete playButtonTexture; delete returnButtonTexture; }
 	static void screenLoaderCallback(AnimalCooking* ac);
-	static void backButtonCallback(AnimalCooking* ac);
-	void setLevelInfo(struct levelInfo lvl);
+	static void backButtonCallback(AnimalCooking* ac);	
+	void draw() override;
+	void update() override;
+
+	void addUnlockedLevelsInfo(struct levelInfo lvl);
+	void fillUnlockedLevelsInfo(vector<levelInfo>* totalUnlockedLevelsInfo);
 private:
 	SDLGame* game_;
 
 	vector<levelInfo>* unlockedLevelsInfo;
 
-	Texture* jugarText;
-	Texture* volverText;
-	Texture* background;
+	Texture* backgroundTexture;
+	Texture* housesBackgroundTexture; 
 	Texture* houseButtonTexture;
+	Texture* houseButtonOverTexture;
+	Texture* playButtonTexture;
+	Texture* returnButtonTexture;	
+	Texture* infoBoxTexture;
 
 	int unlockedLevels;
 	int maxLevels;	

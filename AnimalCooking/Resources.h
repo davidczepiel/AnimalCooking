@@ -41,8 +41,14 @@ public:
 		NextLevelIcon,
 		Star,
 		YellowStar,
-		LimitSign,
-
+		LimitSign,		
+		MapStateBackground,
+		MapStateHousesBackground,
+		MapStateHouseButton,
+		MapStateHouseButtonOver,
+		MapStateInfoBox,
+		MapStatePlayButton,
+		MapStateReturnButton,
 
 		SliderBackground,
 		SliderMovPoint,

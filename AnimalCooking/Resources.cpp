@@ -37,7 +37,14 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
 	{Basic, LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
 
-
+	//MapState
+	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateHouseButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateHouseButtonOver, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStatePlayButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Adversities/plane.png" },
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
@@ -235,7 +242,7 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	// Adversities
 	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
-	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
+	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"}	
 };
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
