@@ -17,6 +17,7 @@ private:
 	static void resetLevel(AnimalCooking* ac);
 	int score;
 	int maxScore;
+	bool getNewLevel = false;
 public:
 	EndState(AnimalCooking* ac);
 

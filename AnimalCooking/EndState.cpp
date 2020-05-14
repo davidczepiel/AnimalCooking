@@ -44,6 +44,11 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	bb->setButtonRenderer(br);
 
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
+
+		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel()) {
+			SDLGame::instance()->addCurrentUnlockLevel();
+		}
+
 		Entity* NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
@@ -112,7 +117,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 
 }
 void EndState::goToLoadState(AnimalCooking* ac) {
-	goToMapState(ac);
+	goToMapState(ac);	
 	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 1), ac));
 	SDLGame::instance()->setMaxScore(0);
 	SDLGame::instance()->setScore(0);

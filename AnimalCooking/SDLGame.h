@@ -72,8 +72,21 @@ public:
 	inline InputHandler* getInputHandler() const {
 		return InputHandler::instance();
 	}
+
 	inline int getCurrentLevel()const {
 		return currentLevel;
+	}
+
+	inline int getCurrenUnlockLevel() const {
+		return unlockedLevels;
+	}
+
+	inline void setCurrentUnlockLevel(int a) {
+		unlockedLevels = a;
+	}
+
+	inline void addCurrentUnlockLevel() {
+		unlockedLevels++;
 	}
 
 	inline void toggleFullScreen() {
@@ -138,6 +151,7 @@ protected:
 	int width_; // window width
 	int height_; // window height
 	int currentLevel;
+	int unlockedLevels;
 	int score;
 	int maxScore;
 	double casillaLength;
