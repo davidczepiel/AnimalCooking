@@ -10,7 +10,7 @@ public:
 	~InteractionRect(){}
 
 	void init() override;
-	void draw() override;
+	/*void draw() override;*/
 	void update() override;
 
 	void setDir	(double x, double y) { dir_.set(Vector2D(x, y)); }
@@ -24,7 +24,7 @@ private:
 	Vector2D pos_;
 	Vector2D dir_;
 	Vector2D size_;
-	Texture* tx_;
+	/*Texture* tx_;*/
 	Transform* tr_;
 };
 

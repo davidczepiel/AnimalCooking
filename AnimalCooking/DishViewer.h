@@ -5,7 +5,6 @@
 #include "Entity.h"
 #include "Transform.h"
 #include "SDL_macros.h"
-#include <list>
 
 class DishViewer : public Component
 {
@@ -15,9 +14,9 @@ public:
 	void draw()override;
 	void init() override;
 
-
 private:
 	Texture* dish = nullptr; //textura plato vacio
 	DishPool* dp = nullptr;
+	
 };
 
