@@ -18,9 +18,9 @@ void LevelViewer::draw()
 					2 * casillaX,
 					casillaY), 7);
 	}
-	
+
 	if (timeSpan_ >= scoreTime_)
-		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore())+" points",
+		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore()) + " points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
 					winW - 3.25 * casillaX
@@ -28,22 +28,22 @@ void LevelViewer::draw()
 					casillaY * 4,
 					2 * casillaX,
 					casillaY), 7);
-	
+
 	if (timeSpan_ >= barTime_) {
 		int w = 10 * casillaX;
 		int h = casillaY;
-		
+
 		barBackground->render(RECT(casillaX, casillaY, w, h));
-		bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h));
-		
+		//bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h));
+		bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w, h));
 		double osp = casillaX + (oneStarPerc_ / 100) * w - casillaX / 10;
 		double tsp = casillaX + (twoStarPerc_ / 100) * w - casillaX / 10;
 		double thsp = casillaX + (threeStarPerc_ / 100) * w - casillaX / 10;
-		
+
 		limitSign->render(RECT(osp, casillaY, casillaX / 10, casillaY / 5));
 		limitSign->render(RECT(tsp, casillaY, casillaX / 10, casillaY / 5));
 		limitSign->render(RECT(thsp, casillaY, casillaX / 10, casillaY / 5));
-		
+
 		double starSizeX = casillaX / 3;
 		double starSizeY = casillaY / 3;
 		//casilla - casilla / 2.5 porque está en la y casilla y casilla/2.5 es la mitad de casilla/5
@@ -51,9 +51,9 @@ void LevelViewer::draw()
 			yellowStar->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		else
 			star->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
-		
+
 		//dos estrellas
-		if (scoreProgress_ * 100 >= twoStarPerc_){
+		if (scoreProgress_ * 100 >= twoStarPerc_) {
 			yellowStar->render(RECT(tsp - starSizeX, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			yellowStar->render(RECT(tsp, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 
@@ -63,7 +63,7 @@ void LevelViewer::draw()
 			star->render(RECT(tsp - starSizeX, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			star->render(RECT(tsp, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		}
-		
+
 		//tres estrellas
 		if (scoreProgress_ * 100 >= threeStarPerc_) {
 			yellowStar->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));

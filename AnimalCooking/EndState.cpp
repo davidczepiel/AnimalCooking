@@ -15,6 +15,8 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	int degrees = 7;
 	int nextLevelLimit = 50;
 	
+	//score = 133;
+	//maxScore = 150;
 	//Botones
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(138,
