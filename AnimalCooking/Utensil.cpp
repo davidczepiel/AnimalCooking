@@ -133,7 +133,7 @@ void Utensil::action1(int player) {
 void Utensil::feedback(int player)
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	feedbackVisual_->render(rect);
+	if(myState != State::playerHand)feedbackVisual_->render(rect);
 }
 
 
