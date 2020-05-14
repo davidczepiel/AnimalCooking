@@ -11,42 +11,6 @@ void PlayerController::init()
 	animator = GETCMP1_(Animator);
 	animator->setCurrentState(Animator::States::Idle);
 	transport = GETCMP1_(Transport);
-	updateKeys(id_);
-}
-
-
-void PlayerController::updateKeys(int id_)
-{
-	if (id_ == 0) {
-		config::Options::Player1 k;
-		keys = {
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_UP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_DOWN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_LEFT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_RIGHT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PICKUP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_ATTACK,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_OPEN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_PREVIOUS,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_NEXT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER1_KEYCODE_FINISHER
-		};
-	} else {
-		config::Options::Player2 k;
-		keys = {
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_UP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_DOWN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_LEFT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_RIGHT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PICKUP,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_ATTACK,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_OPEN,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_PREVIOUS,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_NEXT,
-			k.PLAYERCONTROLLER_KEYBOARD_PLAYER2_KEYCODE_FINISHER
-		};
-	}
-	
 }
 
 
@@ -97,22 +61,21 @@ void PlayerController::joystickUpdate()
 	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
 
 	//Botones-------------------------------
-	if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_A)) {
+	if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.PICKUP)) {
 		ableToPress = false;
-		cout << id_ + " ha pulsado A" << endl;
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr) {
 			i->action1(id_);
 			i = nullptr;
 		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_B)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.OPEN)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action4(id_);
 		i = nullptr;
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X) && selector_ != nullptr) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.ATTACK) && selector_ != nullptr) {
 		attack_->attack();
 		//Estados de attack
 		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
@@ -122,7 +85,7 @@ void PlayerController::joystickUpdate()
 				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 		}
 	}
-	else if (ableToPress && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_Y)) {
+	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.FINISHER)) {
 		Interactive* i = selector_->getSelect();
 		if (i != nullptr)
 			i->action5(id_);
@@ -131,7 +94,7 @@ void PlayerController::joystickUpdate()
 	else if (!ableToPress&& padNotTouched())
 		ableToPress = true;
 
-	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_LEFT) && selector_ != nullptr)
+	if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.PREVIOUS) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
@@ -140,7 +103,7 @@ void PlayerController::joystickUpdate()
 			i = nullptr;
 		}
 	}
-	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) && selector_ != nullptr)
+	else if (!dpadArrowsUsed && GPadController::instance()->playerPressed(id_, buttons.NEXT) && selector_ != nullptr)
 	{
 		dpadArrowsUsed = true;
 		Interactive* i = selector_->getSelect();
@@ -192,23 +155,23 @@ void PlayerController::keyUpdate()
 
 	if (keyboard->keyDownEvent()) {
 		//--------------------Movimiento
-		if (keyboard->isKeyDown(keys.up)) {
+		if (keyboard->isKeyDown(keys.UP)) {
 			movKeys.up = true;
 		}
-		else if (keyboard->isKeyDown(keys.down)) {
+		else if (keyboard->isKeyDown(keys.DOWN)) {
 			movKeys.down = true;
 		}
 
-		if (keyboard->isKeyDown(keys.right)) {
+		if (keyboard->isKeyDown(keys.RIGHT)) {
 			movKeys.right = true;
 		}
-		else if (keyboard->isKeyDown(keys.left)) {
+		else if (keyboard->isKeyDown(keys.LEFT)) {
 			movKeys.left = true;
 		}
 
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(keys.pickUp) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PICKUP) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
@@ -218,7 +181,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 
-		if (keyboard->isKeyDown(keys.attack))
+		if (keyboard->isKeyDown(keys.ATTACK))
 		{
 			attack_->attack();
 
@@ -233,7 +196,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 
-		if (keyboard->isKeyDown(keys.next) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -241,8 +204,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-
-		if (keyboard->isKeyDown(keys.back) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -250,8 +212,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-
-		if (keyboard->isKeyDown(keys.open) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.OPEN) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -259,8 +220,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-
-		if (keyboard->isKeyDown(keys.finish) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.FINISHER) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -270,16 +230,16 @@ void PlayerController::keyUpdate()
 		}
 	}
 	if (keyboard->keyUpEvent()) {
-		if (keyboard->isKeyUp(keys.up)) {
+		if (keyboard->isKeyUp(keys.UP)) {
 			movKeys.up = false;
 		}
-		if (keyboard->isKeyUp(keys.down)) {
+		if (keyboard->isKeyUp(keys.DOWN)) {
 			movKeys.down = false;
 		}
-		if (keyboard->isKeyUp(keys.right)) {
+		if (keyboard->isKeyUp(keys.RIGHT)) {
 			movKeys.right = false;
 		}
-		if (keyboard->isKeyUp(keys.left)) {
+		if (keyboard->isKeyUp(keys.LEFT)) {
 			movKeys.left = false;
 		}
 	}

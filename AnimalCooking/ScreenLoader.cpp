@@ -8,7 +8,7 @@
 #include "BackGroundViewer.h"
 #include "ButtonPadNavigation.h"
 
-constexpr double step_ = 1.0 / 22.0; //18 es el numero de pasos (5 de carga de recursos + 15 de carga de nivel)
+constexpr double step_ = 1.0 / 24.0; //24 es el numero de pasos (6 de carga de recursos + 18 de carga de nivel)
 
 ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
@@ -24,7 +24,7 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
-	int height = 50;
+	int height = 80;
 	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
@@ -40,12 +40,13 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 
 	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
-		50, //Width
+		80, //Width
 		height, //Height
 		0); //Rot
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
-	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	jugarText = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0x000000ff) });
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 
@@ -63,6 +64,7 @@ void ScreenLoader::resetResources()
 	SDL_Renderer* renderer_ = SDLGame::instance()->getRenderer();
 
 	loadTextures(renderer_);
+	loadSpriteSheets(renderer_);
 	loadFonts();
 	loadMessagges(renderer_);
 	loadSounds();
@@ -81,6 +83,22 @@ void ScreenLoader::loadTextures(SDL_Renderer* renderer_)
 		}
 		//Si pertenece al nivel y no esta cargada, se carga
 		else if (textures_->getTexture(image.id) == nullptr) textures_->loadFromImg(image.id, renderer_, image.fileName);
+	}
+
+	updateLength();
+}
+
+void ScreenLoader::loadSpriteSheets(SDL_Renderer* renderer_)
+{
+	TexturesManager* textures_ = SDLGame::instance()->getTextureMngr();
+	for (auto& spr : Resources::spritesheets_) {
+		//Si la imagen no pertenece al nivel y esta cargada en memoria, se elimina
+		if (spr.level != Resources::Level::Basic && spr.level != Resources::Level::AllLevels && spr.level != level &&
+			textures_->getTexture(spr.id) != nullptr) {
+			textures_->destroyTexture(spr.id);
+		}
+		//Si pertenece al nivel y no esta cargada, se carga
+		else if (textures_->getTexture(spr.id) == nullptr) textures_->loadFromSprSheet(spr.id, renderer_, spr.fileName, spr.numRows, spr.numCols);
 	}
 
 	updateLength();

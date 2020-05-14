@@ -2,14 +2,17 @@
 #include "ButtonBehaviour.h"
 #include "Entity.h"
 #include "AnimalCooking.h"
+#include "ButtonRenderer.h"
 
 ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback,AnimalCooking* ac) : Component(ecs::ButtonBehaviour)
 {
 	callback_ = callback;
 	ownerTransform_ = nullptr;
 	active_ = true;
-	focused_ = false;
+	focusedByMouse_ = false;
+	focusedByController_ = false;
 	ac_ = ac;
+	bRenderer_ = nullptr;
 }
 
 void ButtonBehaviour::init()
@@ -27,14 +30,18 @@ void ButtonBehaviour::update()
 		SDL_Point mousePosition = { mousePos.getX(), mousePos.getY() };
 		SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 
-		if (SDL_PointInRect(&mousePosition, &buttonRect) && ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
-			callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+		if (SDL_PointInRect(&mousePosition, &buttonRect)) {
+			focusedByMouse_ = true;
+			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
+				callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
+				if(bRenderer_) bRenderer_->clicked();
+			}
 		}
+		else focusedByMouse_ = false;
 	}
 }
 
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviour::action() {
 	callback_(ac_); 
-
 }
