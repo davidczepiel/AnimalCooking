@@ -16,8 +16,10 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
-MapState::MapState(AnimalCooking* ac): State(ac) {
+MapState::MapState(AnimalCooking* ac): State(ac), unlockedLevels(0), maxLevels(0) {
 	game_ = SDLGame::instance();
+	unlockedLevels = game_->getCurrenUnlockLevel();
+	maxLevels = game_->getMaxLevels();
 	cout << "Map State" << endl;
 
 	Entity* screenLoaderButton_ = stage->addEntity();

@@ -89,6 +89,14 @@ public:
 		unlockedLevels++;
 	}
 
+	inline int getMaxLevels() {
+		return maxLevels;
+	}
+
+	inline void setMaxLevels(int a) {
+		maxLevels = a;
+	}
+
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
 		if (flags & SDL_WINDOW_FULLSCREEN) {
@@ -152,6 +160,7 @@ protected:
 	int height_; // window height
 	int currentLevel;
 	int unlockedLevels;
+	int maxLevels;
 	int score;
 	int maxScore;
 	double casillaLength;
