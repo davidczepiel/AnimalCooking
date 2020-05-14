@@ -115,6 +115,6 @@ void WallAdder::maker(const Data& d, const double casillaX, const double casilla
 	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX,casillaY,offsetX,mngr);
 
 	mngr->addEntity(w);
-	mngr->addToGroup(w, ecs::GroupID::FoodLayer);
+	mngr->addToGroup(w, ecs::GroupID::Layer2);
 	colSys_->addCollider(GETCMP2(w, Transform), false);
 }

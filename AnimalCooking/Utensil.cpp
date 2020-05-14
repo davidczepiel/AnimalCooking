@@ -82,14 +82,18 @@ void Utensil::onHit(Vector2D dir) {
 
 void Utensil::render()const {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	if (!dirty_ && !attacking_)
-		cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
-	else if (!dirty_ && attacking_) {
-		attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
-	}
-	else
-		dirtyTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
 
+	//Si no esta en las manos del jugador,es decir en el suelo o en repsias,se renderiza
+	if (myState != State::playerHand)
+	{	
+		if (!dirty_ && !attacking_)
+			cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
+		else if (!dirty_ && attacking_) {
+			attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
+		}
+		else
+			dirtyTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
+	}
 }
 
 

@@ -26,6 +26,9 @@ Food* Dish::takeFood()
 	if (!foods_.empty()) 
 	{
 		Food* aux = *currentFood.base();
+		//Se vuelve a establecer el size tras salir del plato
+		jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength()));
 		foods_.erase(currentFood.base());
 		if (!foods_.empty())
 			currentFood = ++(foods_.rbegin());

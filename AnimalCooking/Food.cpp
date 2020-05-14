@@ -12,7 +12,9 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	texture_(nullptr)
 {	
 	position_ = position;
-	size_ = Vector2D(SDLGame::instance()->getCasillaX()/2, SDLGame::instance()->getCasillaY()/2);
+
+	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
@@ -25,10 +27,16 @@ Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	canDraw(true)
 {
 	position_ = Vector2D();
-	size_ = Vector2D(SDLGame::instance()->getCasillaX() / 2, SDLGame::instance()->getCasillaY() / 2);
+	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
+}
+
+void Food::setInCooker(bool b)
+{
+	inCooker = b;
 }
 
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
@@ -59,7 +67,7 @@ void Food::update()
 void Food::draw()
 {
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	texture_->render(destRect);
+	if(!inCooker)texture_->render(destRect);
 }
 
 void Food::draw(SDL_Rect r)

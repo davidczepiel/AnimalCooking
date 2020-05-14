@@ -5,7 +5,7 @@
 class PlayersAdder
 {
 public:
-	PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaX, const double casillaY);
+	PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaX, const double casillaY, EntityManager* em);
 private:
 
 	std::array<Entity*, 2> players{};

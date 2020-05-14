@@ -105,11 +105,13 @@ void PlayerController::joystickUpdate()
 
 	//estados de walk
 	if((Xvalue !=0 || Yvalue !=0 || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X))setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
-		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
-	/*Estados de idle*/	                                                          Animator::States::WalkWithNet, Animator::Walk);
+		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater, Animator::States::WalkWithNet, Animator::States::Walk,	        	                                                                 
+		                                                                          Animator::States::WalkWithDirtyKnife,Animator::States::WalkWithDirtyMace,Animator::States::WalkWithDirtyGrater,Animator::States::WalkWithDirtyNet);
+
+
 	else if(((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X)) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
-		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
-		                                                                                Animator::States::IdleWithNet, Animator::States::Idle);
+		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,Animator::States::IdleWithNet, Animator::States::Idle,		                                                                                 
+		                                                                                Animator::States::IdleWithDirtyKnife, Animator::States::IdleWithDirtyMace, Animator::States::IdleWithDirtyGrater, Animator::States::IdleWithDirtyNet);
 }
 
 bool PlayerController::padNotTouched() {
@@ -176,6 +178,7 @@ void PlayerController::keyUpdate()
 			{
 				animator->getTimer().timerStart();
 
+				if(!static_cast<Utensil*>(transport->getObjectInHands())->isDirty())
 				setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
 					Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 			}
@@ -248,18 +251,24 @@ void PlayerController::keyUpdate()
 	//Estados de idle
 	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
 		Animator::States::IdleWithMace, Animator::States::IdleWithGrater,
-		Animator::States::IdleWithNet, Animator::States::Idle);
+		Animator::States::IdleWithNet, Animator::States::Idle, 
+		Animator::States::IdleWithDirtyKnife, Animator::States::IdleWithDirtyMace, Animator::States::IdleWithDirtyGrater, Animator::States::IdleWithDirtyNet);
 
 	//Estados de walk
 	if ((tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
 		Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
-		Animator::States::WalkWithNet, Animator::Walk);
+		Animator::States::WalkWithNet, Animator::Walk, 
+		Animator::States::WalkWithDirtyKnife, Animator::States::WalkWithDirtyMace, Animator::States::WalkWithDirtyGrater, Animator::States::WalkWithDirtyNet);
 }
 
-void PlayerController::setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s)
+void PlayerController::setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s, Animator::States u5, Animator::States u6, Animator::States u7, Animator::States u8)
 {
 	if (transport->getObjectInHands() != nullptr && (transport->getObjectTypeInHands() == Resources::PickableType::Dish || transport->getObjectTypeInHands() == Resources::PickableType::Food)) animator->setCurrentState(d);
-	else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil) setUtensilState(u1, u2, u3, u4);
+	else if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil) 
+	{ 
+		if (static_cast<Utensil*>(transport->getObjectInHands())->isDirty()) setUtensilState(u5, u6, u7, u8);
+		else setUtensilState(u1, u2, u3, u4); 
+	}
 	else animator->setCurrentState(s);
 }
 
@@ -270,5 +279,5 @@ void PlayerController::setUtensilState(Animator::States u1, Animator::States u2,
 	if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Knife) animator->setCurrentState(u1);
 	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Mace) animator->setCurrentState(u2);
 	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Grater) animator->setCurrentState(u3);
-	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(u4);
+	else if (u != nullptr && u->getUtensilType() == Resources::UtensilType::Net) animator->setCurrentState(u4);		
 }

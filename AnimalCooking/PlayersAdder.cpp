@@ -8,16 +8,16 @@
 #include "PlayerViewer.h"
 #include "LevelInitializer.h"
 
-PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaX, const double casillaY) :
-	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), casillaX(casillaX),casillaY(casillaY)
+PlayersAdder::PlayersAdder(std::array<Entity*, 2>& players, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, const double casillaX, const double casillaY, EntityManager* em) :
+	players(players), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), casillaX(casillaX), casillaY(casillaY)
 {
 	for (int i = 0; i < players.size(); ++i) {
 		players_initializeTransform(i, casillaX,casillaY);
 		players_addComponents(players[i], i);
 	}
 
-	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigAttack));
-	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenAttack));
+	players[0]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigAttack),em,players[0]);
+	players[1]->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenAttack),em,players[1]);
 
 	//Componentes extras
 	for (int i = 0; i < players.size(); ++i) {

@@ -22,6 +22,7 @@ protected:
 public:
 	virtual ~Food() { timer_ = nullptr; }
 
+	void setInCooker(bool b);
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
