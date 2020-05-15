@@ -10,14 +10,14 @@ InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), di
 void InteractionRect::init()
 {
 	tr_ = GETCMP1_(Transform);
-	tx_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux);
+	/*tx_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux);*/
 }
 
-void InteractionRect::draw()
-{
-	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
-	tx_->render(d);
-}
+//void InteractionRect::draw()
+//{
+//	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
+//	tx_->render(d);
+//}
 
 void InteractionRect::update()
 {

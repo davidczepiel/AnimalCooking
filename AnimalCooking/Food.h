@@ -13,14 +13,18 @@ protected:
 
 	Resources::FoodType type_;
 	Texture* texture_;
-
+	bool dead = false;
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
 	FoodTimer* timer_;
+
+	bool inCooker = false;
+
 public:
 	virtual ~Food() { timer_ = nullptr; }
 
+	void setInCooker(bool b);
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
@@ -38,7 +42,7 @@ public:
 	virtual void draw(SDL_Rect r);
 
 	virtual void action1(int player);
-	virtual void feedback();
+	virtual void feedback(int player);
 	virtual void onDrop(bool onFloor);
 	void onFloor();
 	virtual void onPick();

@@ -26,6 +26,9 @@ Food* Dish::takeFood()
 	if (!foods_.empty()) 
 	{
 		Food* aux = *currentFood.base();
+		//Se vuelve a establecer el size tras salir del plato
+		jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
+		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength()));
 		foods_.erase(currentFood.base());
 		if (!foods_.empty())
 			currentFood = ++(foods_.rbegin());
@@ -64,14 +67,45 @@ void Dish::clearFoods()
 	foodPool->getPool().clear();
 }
 
+
 void Dish::onPick()
 {
 	inHands = true; 
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
-void Dish::feedback()
+void Dish::feedback(int player)
+
 {
-	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	feedbackVisual_->render(rect);
+	setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
+	if (this->getIsViewingContent())
+	{
+		vector<Food*> foods = this->getFoodVector();
+
+		int ofset = 55;
+		int offsetInside = 15;
+		int rows = ceil(foods.size() / 2.0);
+		if (rows == 0) rows = 1;
+
+		int w = 140 / 2 - offsetInside * 2;
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
+		feedbackVisual_->render(rect);
+		rect.x += offsetInside;
+		rect.y += offsetInside;
+
+		for (int i = 0; i < foods.size(); ++i) {
+			SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
+			//Cojo la comida seleccionada y muestro su feedback
+			Food* currentFood = *(--this->getCurrentFood());
+			if (foods[i] == currentFood)currentFood->getTexture()->render(r);
+			//Se dibuja la comida seleccionada
+			foods[i]->draw(r);
+		}
+	}
+	else {
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::VerContenidoPlato);
+		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 200, 32);
+		feedbackVisual_->render(r);
+	}
 }

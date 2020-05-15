@@ -109,36 +109,8 @@ void Shelf::action5(int id)
 
 void Shelf::feedback(int player)
 {
-	if (contentType == Resources::PickableType::Dish)
-	{
-		Dish* d = static_cast<Dish*>(content);
-		setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
-		if (d->getIsViewingContent())
-		{
-			vector<Food*> foods = d->getFoodVector();
-
-			int ofset = 55;
-			int offsetInside = 15;
-			int rows = ceil(foods.size() / 2.0);
-			if (rows == 0) rows = 1;
-
-			int w = 140 / 2 - offsetInside * 2;
-			SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
-			feedbackVisual_->render(rect);
-			rect.x += offsetInside;
-			rect.y += offsetInside;
-
-			for (int i = 0; i < foods.size(); ++i) {
-
-				SDL_Rect r = { rect.x + w * (i % 2), rect.y + w * (i / 2), w, w };
-				//Cojo la comida seleccionada y muestro su feedback
-				Food* currentFood = *(--d->getCurrentFood());
-				if(foods[i]==currentFood)currentFood->getTexture()->render(r);		
-				//Se dibuja la comida seleccionada
-				foods[i]->draw(r);
-			}
-		}		
-	}
+	if(content!=nullptr)
+		content->feedback(player);
 }
 
 void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {

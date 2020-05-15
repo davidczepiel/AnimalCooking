@@ -28,4 +28,5 @@ public:
 	void changeState(State* s);
 	void changeState(State* s, std::function<void()> f);
 	void refresh();
+	inline const size_t getStackSize() const { return statesStack.size(); }
 };
