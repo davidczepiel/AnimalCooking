@@ -38,7 +38,7 @@ void FoodCooker::update() {
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CookedFood, 0);
 				Food* newFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());	
 				newFood->setCanInteract(false);
-				newFood->setInCooker(true);
+				newFood->setCanDraw(false);
 				clearFoods(c);
 				fp_->AddFood(newFood);
 				c->getFoods().push_back(newFood);
@@ -53,7 +53,7 @@ void FoodCooker::update() {
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::BurnedBeep,0);
 				Food* burnedFood = FoodDictionary::instance()->getResult(c->getCookerType(), c->getFoods());
 				burnedFood->setCanInteract(false);
-				burnedFood->setInCooker(true);
+				burnedFood->setCanDraw(false);
 				clearFoods(c);
 				fp_->AddFood(burnedFood);
 				c->getFoods().push_back(burnedFood);

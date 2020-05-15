@@ -36,8 +36,10 @@ private:
 	void initialize_walls();
 	void initialize_adversities();
 
-	double casilla;
-	double offset;
+	double casillaX;
+	double casillaY;
+	double offsetX;
+	double offsetY;
 
 	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;

@@ -13,68 +13,69 @@ void LevelViewer::draw()
 		Texture(SDLGame::instance()->getRenderer(), lvs,
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
-					winW - 3 * casilla,
-					casilla * 3,
-					2 * casilla,
-					casilla), 7);
+					winW - 3 * casillaX,
+					casillaY * 3,
+					2 * casillaX,
+					casillaY), 7);
 	}
-	
+
 	if (timeSpan_ >= scoreTime_)
-		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore())+" points",
+		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore()) + " points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
-					winW - 3.25 * casilla
+					winW - 3.25 * casillaX
 					,
-					casilla * 4,
-					2 * casilla,
-					casilla), 7);
-	
+					casillaY * 4,
+					2 * casillaX,
+					casillaY), 7);
+
 	if (timeSpan_ >= barTime_) {
-		int w = 10 * casilla;
-		int h = casilla;
-		
-		barBackground->render(RECT(casilla, casilla, w, h));
-		bar->render(RECT(casilla, casilla, scoreProgress_ * w, h));
-		
-		double osp = casilla + (oneStarPerc_ / 100) * w - casilla / 10;
-		double tsp = casilla + (twoStarPerc_ / 100) * w - casilla / 10;
-		double thsp = casilla + (threeStarPerc_ / 100) * w - casilla / 10;
-		
-		limitSign->render(RECT(osp, casilla, casilla / 10, casilla / 5));
-		limitSign->render(RECT(tsp, casilla, casilla / 10, casilla / 5));
-		limitSign->render(RECT(thsp, casilla, casilla / 10, casilla / 5));
-		
-		double starSize = casilla / 3;
+		int w = 10 * casillaX;
+		int h = casillaY;
+
+		barBackground->render(RECT(casillaX, casillaY, w, h));
+		//bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h));
+		bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w, h));
+		double osp = casillaX + (oneStarPerc_ / 100) * w - casillaX / 10;
+		double tsp = casillaX + (twoStarPerc_ / 100) * w - casillaX / 10;
+		double thsp = casillaX + (threeStarPerc_ / 100) * w - casillaX / 10;
+
+		limitSign->render(RECT(osp, casillaY, casillaX / 10, casillaY / 5));
+		limitSign->render(RECT(tsp, casillaY, casillaX / 10, casillaY / 5));
+		limitSign->render(RECT(thsp, casillaY, casillaX / 10, casillaY / 5));
+
+		double starSizeX = casillaX / 3;
+		double starSizeY = casillaY / 3;
 		//casilla - casilla / 2.5 porque está en la y casilla y casilla/2.5 es la mitad de casilla/5
 		if (scoreProgress_ * 100 >= oneStarPerc_)
-			yellowStar->render(RECT(osp - starSize / 2, casilla - casilla / 2.5, starSize, starSize));
+			yellowStar->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		else
-			star->render(RECT(osp - starSize / 2, casilla - casilla / 2.5, starSize, starSize));
-		
+			star->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+
 		//dos estrellas
-		if (scoreProgress_ * 100 >= twoStarPerc_){
-			yellowStar->render(RECT(tsp - starSize, casilla - casilla / 2.5, starSize, starSize));
-			yellowStar->render(RECT(tsp, casilla - casilla / 2.5, starSize, starSize));
+		if (scoreProgress_ * 100 >= twoStarPerc_) {
+			yellowStar->render(RECT(tsp - starSizeX, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(tsp, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 
 		}
 		else
 		{
-			star->render(RECT(tsp - starSize, casilla - casilla / 2.5, starSize, starSize));
-			star->render(RECT(tsp, casilla - casilla / 2.5, starSize, starSize));
+			star->render(RECT(tsp - starSizeX, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(tsp, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		}
-		
+
 		//tres estrellas
 		if (scoreProgress_ * 100 >= threeStarPerc_) {
-			yellowStar->render(RECT(thsp - 3 * starSize / 2, casilla - casilla / 2.5, starSize, starSize));
-			yellowStar->render(RECT(thsp - starSize / 2, casilla - casilla / 2.5, starSize, starSize));
-			yellowStar->render(RECT(thsp + starSize / 2, casilla - casilla / 2.5, starSize, starSize));
+			yellowStar->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 
 		}
 		else
 		{
-			star->render(RECT(thsp - 3 * starSize / 2, casilla - casilla / 2.5, starSize, starSize));
-			star->render(RECT(thsp - starSize / 2, casilla - casilla / 2.5, starSize, starSize));
-			star->render(RECT(thsp + starSize / 2, casilla - casilla / 2.5, starSize, starSize));
+			star->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		}
 
 	}
@@ -87,7 +88,8 @@ void LevelViewer::init()
 	star = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Star);
 	limitSign = SDLGame::instance()->getTextureMngr()->getTexture(Resources::LimitSign);
 	barBackground = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RectangleOutline);
-	casilla = SDLGame::instance()->getCasillaLength();
+	casillaX = SDLGame::instance()->getCasillaX();
+	casillaY = SDLGame::instance()->getCasillaY();
 	yellowStar = SDLGame::instance()->getTextureMngr()->getTexture(Resources::YellowStar);
 }
 

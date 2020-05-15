@@ -15,7 +15,7 @@ class GameManagerAdder
 {
 public:
 	GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, 
-		std::array<Entity*, 2>& player, UtensilsPool* pool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset, TimerViewer* tv);
+		std::array<Entity*, 2>& player, UtensilsPool* pool_, FoodPool* fp, IngredientsPool* ip, int casillaX,int casillaY, const double offsetX, const double offsetY, TimerViewer* tv);
 	
 private:
 	void initializeComponent(const string& component, Entity* entity);

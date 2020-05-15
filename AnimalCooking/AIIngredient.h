@@ -9,7 +9,8 @@ private:
 	IngredientsPool* ip_;
 	Transform* t1_;
 	Transform* t2_;
-	double range;
+	double rangeX;
+	double rangeY;
 public:
 	AIIngredient(IngredientsPool* ip, Transform* t1, Transform* t2);
 	~AIIngredient() {}

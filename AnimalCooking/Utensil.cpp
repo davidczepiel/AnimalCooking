@@ -11,7 +11,8 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
 	dirtTimer_ = new DefaultTimer();
 	dirtTimer_->setTime(maxTimeOnFloor_);
-	range_ = 100;
+	rangeX_ = 100;
+	rangeY_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
 	attackRate_ = 1000;
@@ -69,8 +70,8 @@ void Utensil::onHit(Vector2D dir) {
 			//Preparo la posici�n de donde realizo el ataque
 			Vector2D velNormalizada = speed_.normalize();
 			SDL_Rect ataque;
-			ataque.x = position_.getX() + (velNormalizada.getX() * range_);
-			ataque.y = position_.getY() + (velNormalizada.getY() * range_);
+			ataque.x = position_.getX() + (velNormalizada.getX() * rangeX_);
+			ataque.y = position_.getY() + (velNormalizada.getY() * rangeY_);
 			ataque.w = attackHitBoxWidth_;
 			ataque.h = attackHitBoxHeight_;
 			gameLogic->hitIngredient(ataque, myType);
@@ -132,7 +133,7 @@ void Utensil::action1(int player) {
 void Utensil::feedback(int player)
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	feedbackVisual_->render(rect);
+	if(myState != State::playerHand)feedbackVisual_->render(rect);
 }
 
 
@@ -164,9 +165,10 @@ Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
 	myType = Resources::UtensilType::Knife;
-	range_ = config::KNIFE_RANGE * SDLGame::instance()->getCasillaLength();
-	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
-	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
+	rangeX_ = config::KNIFE_RANGE * SDLGame::instance()->getCasillaX();
+	rangeY_ = config::KNIFE_RANGE * SDLGame::instance()->getCasillaY();
+	attackHitBoxWidth_ = config::KNIFE_HITBOX_WIDTH * SDLGame::instance()->getCasillaX();
+	attackHitBoxHeight_ = config::KNIFE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaY();
 }
 
 
@@ -176,9 +178,10 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazoFeedBack);
 	myType = Resources::UtensilType::Mace;
-	range_ = config::MACE_RANGE * SDLGame::instance()->getCasillaLength();
-	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
-	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
+	rangeX_ = config::MACE_RANGE * SDLGame::instance()->getCasillaX();
+	rangeY_ = config::MACE_RANGE * SDLGame::instance()->getCasillaY();
+	attackHitBoxWidth_ = config::MACE_HITBOX_WIDTH * SDLGame::instance()->getCasillaX();
+	attackHitBoxHeight_ = config::MACE_HITBOX_HEIGHT * SDLGame::instance()->getCasillaY();
 }
 
 
@@ -188,9 +191,10 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorFeedBack);
 	myType = Resources::UtensilType::Grater;
-	range_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaLength();
-	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
-	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
+	rangeX_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaX();
+	rangeY_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaY();
+	attackHitBoxWidth_ = config::GRATER_HITBOX_WIDTH * SDLGame::instance()->getCasillaX();
+	attackHitBoxHeight_ = config::GRATER_HITBOX_HEIGHT * SDLGame::instance()->getCasillaY();
 }
 
 
@@ -200,7 +204,8 @@ Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedFeedBack);
 	myType = Resources::UtensilType::Net;
-	range_ = config::NET_RANGE * SDLGame::instance()->getCasillaLength();
-	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * SDLGame::instance()->getCasillaLength();
-	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * SDLGame::instance()->getCasillaLength();
+	rangeX_ = config::NET_RANGE * SDLGame::instance()->getCasillaX();
+	rangeY_ = config::NET_RANGE * SDLGame::instance()->getCasillaY();
+	attackHitBoxWidth_ = config::NET_HITBOX_WIDTH * SDLGame::instance()->getCasillaX();
+	attackHitBoxHeight_ = config::NET_HITBOX_HEIGHT * SDLGame::instance()->getCasillaY();
 }

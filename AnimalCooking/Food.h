@@ -18,13 +18,10 @@ protected:
 	std::vector<Food*>::iterator iterator_;
 
 	FoodTimer* timer_;
-
-	bool inCooker = false;
-
+	bool canDraw;
 public:
 	virtual ~Food() { timer_ = nullptr; }
 
-	void setInCooker(bool b);
 	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
 	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
 	void Destroy();
@@ -36,6 +33,8 @@ public:
 	}
 
 	Resources::FoodType getType() { return type_; }
+	inline bool getCanDraw() { return canDraw; }
+	void setCanDraw(bool value) { canDraw = value; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw();

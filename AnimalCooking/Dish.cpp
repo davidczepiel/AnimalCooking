@@ -28,7 +28,7 @@ Food* Dish::takeFood()
 		Food* aux = *currentFood.base();
 		//Se vuelve a establecer el size tras salir del plato
 		jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
-		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength()));
+		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY()));
 		foods_.erase(currentFood.base());
 		if (!foods_.empty())
 			currentFood = ++(foods_.rbegin());
@@ -77,8 +77,7 @@ void Dish::onPick()
 void Dish::feedback(int player)
 
 {
-	setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel));
-	if (this->getIsViewingContent())
+	if (isViewingContent)
 	{
 		vector<Food*> foods = this->getFoodVector();
 

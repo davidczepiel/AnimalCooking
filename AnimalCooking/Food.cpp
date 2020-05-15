@@ -6,7 +6,7 @@
 #include "Entity.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
-	timer_(new FoodTimer()),
+	timer_(new FoodTimer()),canDraw(true),
 	type_(type),
 	foodPool_(nullptr),
 	texture_(nullptr)
@@ -14,7 +14,7 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 	position_ = position;
 
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
-	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
@@ -23,19 +23,15 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	timer_(new FoodTimer()),
 	type_(type),
-	foodPool_(nullptr)
+	foodPool_(nullptr), 
+	canDraw(true)
 {
 	position_ = Vector2D();
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
-	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaLength(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaLength());
+	size_ = Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
 	speed_ = Vector2D();
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
-}
-
-void Food::setInCooker(bool b)
-{
-	inCooker = b;
 }
 
 void Food::setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it)
@@ -66,7 +62,7 @@ void Food::update()
 void Food::draw()
 {
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	if(!inCooker)texture_->render(destRect);
+	texture_->render(destRect);
 }
 
 void Food::draw(SDL_Rect r)

@@ -2,8 +2,8 @@
 #include "GameConfig.h"
 
 InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), dir_(), 
-	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaLength(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaLength()),
-	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaLength())
+	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaX(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaY()),
+	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaY())
 {
 }
 

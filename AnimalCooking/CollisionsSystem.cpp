@@ -204,11 +204,11 @@ ColisionType CollisionsSystem::worldCollision(Vector2D& pos, const Vector2D& off
 
 ColisionType CollisionsSystem::singleCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col)
 {
-	if (col.w - col.h > flexibility) { //Colision Vertical
+	if (col.w - col.h > flexibilityY) { //Colision Vertical
 		verticalCollision(pos, offset, size, vel, col);
 		return ColisionType::vertical;
 	}
-	else if (col.w - col.h < -flexibility) { //Colision horizontal
+	else if (col.w - col.h < -flexibilityX) { //Colision horizontal
 		horizontalCollision(pos, offset, size, vel, col);
 		return ColisionType::horizontal;
 	}

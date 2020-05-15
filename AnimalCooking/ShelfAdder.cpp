@@ -9,8 +9,8 @@
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casilla) :
-	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaLength(casilla)
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casillaX, const double casillaY) :
+	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaX(casillaX),casillaY(casillaY)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
 	jute::jValue components = jsonLevel["Shelfs"]["components"];
@@ -36,8 +36,8 @@ template <typename T>
 Utensil* ShelfAdder::makeUtensil(std::array<Entity*, 2>& player, UtensilsPool* pool_)
 {
 	Utensil* u = new T(GIVETRANSPORT);
-	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaLength,
-		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaLength));
+	u->setSize(Vector2D(jsonGeneral["Utensils"]["size"]["width"].as_double() * casillaX,
+		jsonGeneral["Utensils"]["size"]["height"].as_double() * casillaY));
 	timers_.push_back(u->getTimer());
 	return pool_->addUtensil(u);
 }
@@ -72,7 +72,7 @@ Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::arr
 
 Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
-	Vector2D pos = Vector2D(jsonShelf["pos"]["x"].as_double() * casillaLength, jsonShelf["pos"]["y"].as_double() * casillaLength);
+	Vector2D pos = Vector2D(jsonShelf["pos"]["x"].as_double() * casillaX, jsonShelf["pos"]["y"].as_double() * casillaY);
 	int t = 0;
 	if (jsonShelf["texture"].as_string() == "top") {
 		t = Resources::TextureId::EncimeraHorizConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2);
@@ -103,8 +103,8 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	}
 	Shelf* shelf = new Shelf(pos, u, GIVETRANSPORT, emPlayState, SDLGame::instance()->getTextureMngr()->getTexture(t));
 
-	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaLength,
-		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaLength));
+	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaX,
+		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaY));
 
 	shelf->setHitboxSize(Vector2D(shelf->getSize().getX(), shelf->getSize().getY()));
 

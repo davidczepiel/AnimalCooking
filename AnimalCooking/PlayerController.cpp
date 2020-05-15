@@ -31,12 +31,6 @@ void PlayerController::joystickUpdate()
 	{
 		x = Xvalue;
 		tr_->setVelX(x);
-		Interactive* i = selector_->getSelect();
-		if (i != nullptr)
-		{
-			i->onMoved(id_);
-			i = nullptr;
-		}
 	}
 	else {
 		tr_->setVelX(0);
@@ -46,12 +40,6 @@ void PlayerController::joystickUpdate()
 	{
 		y = Yvalue;
 		tr_->setVelY(Yvalue);
-		Interactive* i = selector_->getSelect();
-		if (i != nullptr)
-		{
-			i->onMoved(id_);
-			i = nullptr;
-		}
 	}
 	else {
 		tr_->setVelY(0);
@@ -254,13 +242,6 @@ void PlayerController::keyUpdate()
 
 	tr_->setVelY(speed * y);
 	tr_->setVelX(speed * x);
-
-	Interactive* i = selector_->getSelect();
-	if (i != nullptr)
-	{
-		i->onMoved(id_);
-		i = nullptr;
-	}
 
 	ir_->setDir(x, y);
 

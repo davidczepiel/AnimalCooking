@@ -19,8 +19,8 @@ struct Data {
 class WallAdder
 {
 public:
-	WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, std::array<Entity*, 2>& players, const double casilla, const double offset);
+	WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, std::array<Entity*, 2>& players, const double casillaX, const double casillaY, const double offsetX, const double offsetY);
 private:
-	void maker(const Data& d, const double casilla, CollisionsSystem* colSys_, EntityManager* mngr, const double offset);
+	void maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY);
 };
 
