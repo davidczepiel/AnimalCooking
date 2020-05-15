@@ -113,8 +113,8 @@ void Texture::render(const SDL_Rect &dest, double angle) const {
 void Texture::renderFrame(const SDL_Rect& destRect, int row, int col, int angle, SDL_RendererFlip flip) const {
 	SDL_Rect srcRect;
 
-	double fw = width_ / (double)nCols_;
-	double fh = height_ / (double)nRows_;
+	int fw = width_ / nCols_;
+	int fh = height_ / nRows_;
 
 	srcRect.x = fw * col;
 	srcRect.y = fh * row;
