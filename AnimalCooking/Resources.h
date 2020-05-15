@@ -57,7 +57,6 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
-		CookerOverHeated,
 		Platera,
 		Muro,
 		Valla,
@@ -262,6 +261,7 @@ public:
 		Carrot,
 		Sausage,
 		Puerta,
+		FireOverHeated,
 
 		// text
 		Back,
@@ -271,7 +271,10 @@ public:
 
 		//Adversities
 		WarningAdversity,
-		PlaneShadow
+		PlaneShadow,
+		RainAdversity,
+		HookAdversity
+
 	};
 
 	enum Level : std::size_t {

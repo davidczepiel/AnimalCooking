@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "UtensilsPool.h"
 #include "Collisions.h"
+#include "SDL_macros.h"
 class RainAdversity :
 	public Adversity
 {
@@ -14,7 +15,7 @@ class RainAdversity :
 	SDL_Rect clipArea;
 	vector<Utensil*>* utensilsPool;
 	double dirtSpeedUp;
-	Timer rainTimer;
+	Timer* rainTimer;
 	int frameTime;
 	int lastFrame;
 	int animationFrame;
