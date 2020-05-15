@@ -70,7 +70,7 @@ void Cooker::action1(int player)
 
 void Cooker::feedback(int player)
 {
-	if (state_ != CookerStates::empty) {
+	if (state_ != CookerStates::empty && state_ != CookerStates::overheated) {
 		int ofset = 60;
 		int offsetInside = 15;
 		int rows = ceil(foods_.size() / 2.0);

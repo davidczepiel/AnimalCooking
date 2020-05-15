@@ -12,10 +12,10 @@ RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam
 		utensilsPool = &multipleAdversityMngr_->getUtensilsPool()->getPool();
 
 	rainTimer = new Timer();
-	drawingArea.x = SDLGame::instance()->getCasillaLength() *8;
+	drawingArea.x = SDLGame::instance()->getCasillaX() *8;
 	drawingArea.y = 0;
 	drawingArea.w = drawingArea.x;
-	drawingArea.h = SDLGame::instance()->getCasillaLength()*7;
+	drawingArea.h = SDLGame::instance()->getCasillaY()*7;
 	clipArea.x = 0;
 	clipArea.y = 0;
 	clipArea.w = 202;
