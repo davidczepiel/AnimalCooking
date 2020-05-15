@@ -57,9 +57,10 @@ void PlaneAdversity::StartPlane() {
 	force_ = 1.5;
 
 	state_ = Pasando;
-	internalTimer.timerReset();
-	internalTimer.setTime(8500);
-	internalTimer.timerStart();
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	internalTimer->timerReset();
+	internalTimer->setTime(8500);
+	internalTimer->timerStart();
 }
 
 bool PlaneAdversity::isPlaneOut()
@@ -69,12 +70,12 @@ bool PlaneAdversity::isPlaneOut()
 }
 
 void PlaneAdversity::update() {
-	internalTimer.update();
+	internalTimer->update();
 
-	if (internalTimer.isTimerEnd() && state_ == Pasando) {
-		internalTimer.timerReset();
-		internalTimer.setTime(7000);
-		internalTimer.timerStart();
+	if (internalTimer->isTimerEnd() && state_ == Pasando) {
+		internalTimer->timerReset();
+		internalTimer->setTime(7000);
+		internalTimer->timerStart();
 		velocity_ = 3;
 		state_ = Empujando;
 	}

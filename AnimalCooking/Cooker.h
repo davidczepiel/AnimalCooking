@@ -38,6 +38,7 @@ protected:
 	void initTimer();
 
 	Texture* texture_;
+	Texture* fireTexture_;
 	Entity* entity_;
 	CookerStates state_;
 

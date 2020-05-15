@@ -17,11 +17,15 @@ class MultipleAdversityManager : public Component
 	IngredientsPool* ingredientsPool;
 	UtensilsPool* utensilsPool;
 	bool playingAdversity;
-	Timer rainTimer, rainWarning;
-	Timer planeTimer, planeWarning;
-	Timer hookTimer, hookWarning;
-	Timer burnCookerTimer, burnedCookerWarning;
-	Timer adversityTimer;
+	AdversityTimer* rainTimer;
+	AdversityTimer* rainWarning;
+	AdversityTimer* planeTimer;
+	AdversityTimer* planeWarning;
+	AdversityTimer* hookTimer;
+	AdversityTimer* hookWarning;
+	AdversityTimer* burnCookerTimer;
+	AdversityTimer* burnedCookerWarning;
+	AdversityTimer* adversityTimer;
 	bool playingWarning, active;
 	int warningRate;
 
