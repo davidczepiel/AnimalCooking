@@ -235,7 +235,7 @@ void LevelInitializer::initialize_adversities()
 	//mam->setTimerTime(ecs::AdversityID::RainAdversity,2000);
 	//mam->setTimerTime(ecs::AdversityID::HookAdversity, 7000);
 	//mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 5000);
-	//mam->setTimerTime(ecs::AdversityID::CookersAdversity, 15000);
+	mam->setTimerTime(ecs::AdversityID::CookersAdversity, 5000);
 
 	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
 	
