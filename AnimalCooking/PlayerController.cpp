@@ -25,12 +25,15 @@ void PlayerController::joystickUpdate()
 	GPadController* gpad = GPadController::instance();
 	//if (gpad->joysticksInitialised()) {
 	double x = 0, y = 0;	//interactive
+	double speed = 0.4;
+
 	//Axis------------------------
 	double Xvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
 	if (Xvalue > 0 || Xvalue < 0)
 	{
 		x = Xvalue;
-		tr_->setVelX(x);
+		tr_->setVelX(x*speed);
+		cout << x<<endl;
 	}
 	else {
 		tr_->setVelX(0);
@@ -39,7 +42,7 @@ void PlayerController::joystickUpdate()
 	if (Yvalue > 0 || Yvalue < 0)
 	{
 		y = Yvalue;
-		tr_->setVelY(Yvalue);
+		tr_->setVelY(Yvalue*speed);
 	}
 	else {
 		tr_->setVelY(0);

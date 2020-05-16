@@ -73,6 +73,7 @@ vector<Order*>& OrderManager::getOrders()
 	return currentOrders_;
 }
 
+
 vector<Order*>::iterator OrderManager::getFreePos()
 {
 	return find(currentOrders_.begin(), currentOrders_.end(), nullptr);
@@ -96,4 +97,13 @@ vector<Order*>::iterator OrderManager::getFirst(const list<vector<Order*>::itera
 		if (*it != nullptr && (*it)->getAnger() > (*first)->getAnger()) first = it;
 	}
 	return first;
+}
+
+bool OrderManager::someOneWantsThis(Resources::FoodType finalProduct) {
+
+	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
+	if (!lista.empty())
+		return true;
+	else 
+		return false;
 }
