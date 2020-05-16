@@ -6,8 +6,7 @@
 #include "FSM.h"
 #include "Transform.h"
 #include "Vector2D.h"
-class EndState :
-	public State
+class EndState : public State
 {
 private:
 	//Cuando se cambie el callback por std::function se quita el static (y quizá el sdlGame)
@@ -15,8 +14,14 @@ private:
 	static void goToLoadState(AnimalCooking* ac);
 	static void goToMenuState(AnimalCooking* ac);
 	static void resetLevel(AnimalCooking* ac);
+
+	void createButtons();
+	void createPlayers();
+	void draw() override;
+
 	int score;
 	int maxScore;
+	Texture* background = nullptr;
 public:
 	EndState(AnimalCooking* ac);
 

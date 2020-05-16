@@ -14,12 +14,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 
 vector<Resources::ImageInfo> Resources::images_{
 	//	
-	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
-	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
-	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
-	{Basic, RectangleOutline,"../AnimalCooking/resources/images/rectOutline.png"},
-	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
-	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
+	//----->Menu<--------------
 	{Basic, MainMenuBackground,"../AnimalCooking/resources/images/Menu/mainmenu.png"},
 	{Basic, MainMenuRuedecilla,"../AnimalCooking/resources/images/Menu/Boton/boton.png"},
 	{Basic, MainMenuRuedecillaShadow,"../AnimalCooking/resources/images/Menu/Boton/sombraboton.png"},
@@ -29,14 +24,25 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
-	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
-	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
-	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
-	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
-	{Basic, Star,"../AnimalCooking/resources/images/star.png"},
-	{Basic, YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
-	{Basic, LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
 
+	//----->InGame<--------------
+	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
+	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
+	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
+	
+	//----->EndState<---------
+	{Basic, BackgroundEndState,"../AnimalCooking/resources/images/EndState/background.png"},
+	{Basic, TicketEndState,"../AnimalCooking/resources/images/EndState/ticket.png"},
+	{Basic, BarBackgroundEndState,"../AnimalCooking/resources/images/EndState/barraSin.png"},
+	{Basic, BarEndState,"../AnimalCooking/resources/images/EndState/barraCon.png"},
+	{Basic, Star,"../AnimalCooking/resources/images/EndState/star.png"},
+	{Basic, YellowStar,"../AnimalCooking/resources/images/EndState/YellowStar.png"},
+	{Basic, LimitSign,"../AnimalCooking/resources/images/EndState/Indicador.png"},
+
+	//---->Config<---------
+	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
+	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
+	{Basic, ConfigBackground,"../AnimalCooking/resources/images/Menu/config.png"},
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
@@ -45,9 +51,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
 	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
 	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
-	{AllLevels, CookerCooking,"../AnimalCooking/resources/images/sartencocinando.png"},
 	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
-	{AllLevels, CookerCooked,"../AnimalCooking/resources/images/sartencooked.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -69,11 +73,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
 	{AllLevels, Ingrediente,"../AnimalCooking/resources/images/ingrediente.png"},
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
-	{AllLevels, Pedido,"../AnimalCooking/resources/images/pedido.png"},
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
-	//Personajes
-	{AllLevels, Cerdo,"../AnimalCooking/resources/images/personaje.png"},
-	{AllLevels, Pollo,"../AnimalCooking/resources/images/personaje2.png"},
 	{AllLevels, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
 	//Barra entregas
 	{AllLevels, BarraDcha,"../AnimalCooking/resources/images/Cocina/barra/barraDcha.png"},
@@ -82,11 +82,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, BarraConTimbre,"../AnimalCooking/resources/images/Cocina/barra/barraCocinaCon.png"},
 	{AllLevels, BarraSinTimbre,"../AnimalCooking/resources/images/Cocina/barra/barraCocinaSin.png"},
 	//Menu
-	{Basic,level0Menu,"../AnimalCooking/resources/images/level0Menu.png"},
-	{Basic,level1Menu,"../AnimalCooking/resources/images/level1Menu.png"},
-	{Basic,level2Menu,"../AnimalCooking/resources/images/level2Menu.png"},
-	{Basic,level3Menu,"../AnimalCooking/resources/images/level3Menu.png"},
-	{Basic,level4Menu,"../AnimalCooking/resources/images/level4Menu.png"},
+	{Basic,level0Menu,"../AnimalCooking/resources/images/ScreenLoader/level0Menu.png"},
+	{Basic,level1Menu,"../AnimalCooking/resources/images/ScreenLoader/level1Menu.png"},
+	{Basic,level2Menu,"../AnimalCooking/resources/images/ScreenLoader/level2Menu.png"},
+	{Basic,level3Menu,"../AnimalCooking/resources/images/ScreenLoader/level3Menu.png"},
+	{Basic,level4Menu,"../AnimalCooking/resources/images/ScreenLoader/level4Menu.png"},
 	//Encimera
 	{AllLevels,EncimeraAbajoConMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoCon.png"},
 	{AllLevels,EncimeraAbajoConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoConDcha.png"},
@@ -243,7 +243,14 @@ vector<Resources::ImageInfo> Resources::images_{
 
 vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	//
+	//Botones
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/botones.png", 1, 3},
+	{Basic, ButtonConfig,"../AnimalCooking/resources/images/Menu/botonesConfig.png", 1, 3},
+	{Basic, ReplayIcon,"../AnimalCooking/resources/images/EndState/ReplayProvisional.png", 1, 3},
+	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/EndState/PlayProvisional.png",1,3},
+	{Basic, HomeIcon,"../AnimalCooking/resources/images/EndState/HomeProvisional.png",1,3},
+	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
+	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
@@ -271,8 +278,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
-	{Basic, TextureId::Back, "Return", COLOR(0x8811ffff), FontId::QuarkCheese100},
-	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0x8811ffff), FontId::QuarkCheese100},
+	{Basic, TextureId::Back, "Return", COLOR(0x3D0000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0x3D0000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100}
 };
