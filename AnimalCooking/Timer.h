@@ -32,6 +32,7 @@ public:
 	//De 0 a 1
 	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
 	int getElapsedMs() { return game_->getTime() - startedTime_; }
+	Texture* getTexture() { return texture_; }
 
 protected:
 	SDLGame* game_;
@@ -53,10 +54,12 @@ class LevelTimer : public Timer {
 public:
 	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
 	}
 	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
 	}
 	void draw();
 	void update();

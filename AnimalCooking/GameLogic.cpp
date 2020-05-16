@@ -53,9 +53,8 @@ void GameLogic::playHit(Resources::UtensilType type) {
 	}
 }
 
-void GameLogic::setLevelTimer(Uint32 time, Vector2D pos, Vector2D size)
+void GameLogic::setLevelTimer(Uint32 time, Vector2D pos)
 {
     levelTimer_->setTime(time); 
     levelTimer_->setPos(pos);
-    levelTimer_->setSize(size);
 }
