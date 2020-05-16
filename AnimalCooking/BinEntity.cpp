@@ -11,7 +11,8 @@ void BinEntity::action1(int player)
 
 		if (playerTransport->getObjectTypeInHands() == Resources::Food) {
 			static_cast<Food*>(playerTransport->getObjectInHands())->Destroy();
-			playerTransport->throwedToBin();
+			playerTransport->setObjectTypeInHands(Resources::PickableType::none);
+			playerTransport->setObjectInHands(nullptr);
 		}
 		else if (playerTransport->getObjectTypeInHands() == Resources::Dish) {
 			for (auto& i : static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector()) {
