@@ -9,6 +9,7 @@ public:
 
 	void pick(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
 	void drop(bool onFloor = true);
+	void throwedToBin() { objType_ = Resources::none; }
 
 	void init() override;
 	void update() override;
