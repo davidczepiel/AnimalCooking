@@ -33,6 +33,7 @@ void ButtonBehaviour::update()
 		if (SDL_PointInRect(&mousePosition, &buttonRect)) {
 			focusedByMouse_ = true;
 			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
+				if (bRenderer_) bRenderer_->clicked();
 				callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
 			}
 		}
