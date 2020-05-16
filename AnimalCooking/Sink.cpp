@@ -43,6 +43,9 @@ void Sink::action1(int iDp) {
 
 void Sink::feedback(int iDp)
 {
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
+
 	Transport* player;
 	if (iDp == 0) player = player1_;
 	else player = player2_;

@@ -266,6 +266,7 @@ public:
 		// text
 		Back,
 		ToggleFullscreen,
+		ToggleHelper,
 		MusicVolume,
 		SoundVolume,
 		PickUpText,

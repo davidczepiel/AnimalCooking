@@ -3,18 +3,18 @@
 #include "Transform.h"
 #include "ButtonBehaviour.h"
 
-
+class ButtonChangeOnClick;
 class ButtonRenderer : public Component
 {
 public:
 	ButtonRenderer(Texture* background, Texture* text);
 	void init() override;
 	void draw() override;
-	void clicked() { clickedTime_ = game_->getTime(); }
+	void clicked();
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
-
+	ButtonChangeOnClick* buttonOnClick_;
 	Texture* background_;
 	Texture* text_;
 

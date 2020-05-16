@@ -274,6 +274,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic, TextureId::Back, "Return", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0x8811ffff), FontId::QuarkCheese100},
+	{Basic, TextureId::ToggleHelper, "Toggle key reminder", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::PickUpText, "Pick up : ", COLOR(0x000000ff), FontId::QuarkCheese100},

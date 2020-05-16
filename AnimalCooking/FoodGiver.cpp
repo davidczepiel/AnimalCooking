@@ -103,6 +103,9 @@ void DressingGiver::action1(int player) {
 
 void FoodGiver::feedback(int player)
 {
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
+
 	bool render = false;
 	if (player == Resources::Player::Player1 && player1_->getObjectInHands() == nullptr) render = true;
 	if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) render = true;

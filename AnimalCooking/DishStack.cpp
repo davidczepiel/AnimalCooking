@@ -66,6 +66,9 @@ void DishStack::action1(int id)
 
 void DishStack::feedback(int id)
 {
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
+
 	if (id == Resources::Player::Player1)
 	{
 		if (player1_->getObjectInHands() == nullptr || player1_->getObjectTypeInHands() == Resources::PickableType::Food) {	

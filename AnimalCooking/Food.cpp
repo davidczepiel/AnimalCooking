@@ -107,7 +107,7 @@ void Food::feedback(int player)
 	if (!dead && feedbackVisual_ != nullptr) {
 		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 		feedbackVisual_->render(destRect);
-		if (showHelp) {
+		if (showHelp && SDLGame::instance()->getOptions().showKeyToPress) {
 			if (GPadController::instance()->playerControllerConnected(player))
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else

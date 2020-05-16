@@ -102,7 +102,7 @@ void Dish::feedback(int player)
 			foods[i]->draw(r);
 		}
 	}
-	else if(getFoodVector().size() > 0) {
+	else if(SDLGame::instance()->getOptions().showKeyToPress && getFoodVector().size() > 0) {
 		if (getFoodVector().size() > 3) {
 			if (GPadController::instance()->playerControllerConnected(player))
 				SDLGame::instance()->renderFeedBack(position_, "Finish Dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].FINISHER));

@@ -71,7 +71,7 @@ void Cooker::action1(int player)
 
 void Cooker::feedback(int player)
 {
-	if (state_ != CookerStates::overheated) {
+	if (SDLGame::instance()->getOptions().showKeyToPress && state_ != CookerStates::overheated) {
 		if (state_ == CookerStates::empty) {
 			if (GPadController::instance()->playerControllerConnected(player))
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -60), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));

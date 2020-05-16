@@ -50,6 +50,9 @@ bool OrderService::canService(int id) {
 }
 void OrderService::feedback(int id)
 {
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
+
 	Transport* player;
 	if (id == 0) player = player1_;
 	else player = player2_;

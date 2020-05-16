@@ -135,10 +135,12 @@ void Utensil::feedback(int player)
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	if (myState != State::playerHand) {
-		if (GPadController::instance()->playerControllerConnected(player))
-			SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
-		else
-			SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		if (SDLGame::instance()->getOptions().showKeyToPress) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		}	
 		feedbackVisual_->render(rect);
 	}
 }

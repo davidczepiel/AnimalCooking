@@ -12,6 +12,7 @@
 
 #include "ButtonPadNavigation.h"
 #include "ImageViewer.h"
+#include "ButtonChangeOnClick.h"
 
 ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
@@ -41,7 +42,7 @@ void ConfigState::initButtons()
 	salir = stage->addEntity();
 	stage->addToGroup(salir, ecs::GroupID::ui);
 	salir->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	ButtonBehaviour* bb = salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
 	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
@@ -52,12 +53,25 @@ void ConfigState::initButtons()
 	res = stage->addEntity();
 	stage->addToGroup(res, ecs::GroupID::ui);
 	res->addComponent<Transform>(
-		Vector2D((game_->getWindowWidth() / 3) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
+		Vector2D((game_->getWindowWidth() / 5) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
 	bb->setButtonRenderer(br);
+
+	//Helper button
+	helper = stage->addEntity();
+	stage->addToGroup(helper, ecs::GroupID::ui);
+	helper->addComponent<Transform>(
+		Vector2D(game_->getWindowWidth() * 2 / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
+		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
+	helper->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getOptions().showKeyToPress);
+	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+		game_->getTextureMngr()->getTexture(Resources::ToggleHelper));
+	bb->setButtonRenderer(br);
+	
 }
 
 void ConfigState::initSliders()
@@ -66,7 +80,7 @@ void ConfigState::initSliders()
 	sliderTop = stage->addEntity();
 	stage->addToGroup(sliderTop, ecs::GroupID::ui);
 	Transform* t = sliderTop->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 3 / 5 - game_->getWindowWidth() / 20, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	sliderMusic_ = sliderTop->addComponent<SliderBehaviour>();
 	sliderTop->addComponent<SliderRenderer>();
@@ -76,7 +90,7 @@ void ConfigState::initSliders()
 	sliderBot = stage->addEntity();
 	stage->addToGroup(sliderBot, ecs::GroupID::ui);
 	t = sliderBot->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 3 / 5 - game_->getWindowWidth() / 20, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	sliderSound_ = sliderBot->addComponent<SliderBehaviour>();
 	sliderBot->addComponent<SliderRenderer>();
@@ -88,14 +102,14 @@ void ConfigState::initSliders()
 	Entity* sliderText1 = stage->addEntity();
 	stage->addToGroup(sliderText1, ecs::GroupID::ui);
 	sliderText1->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 3 + game_->getWindowWidth() / 8, game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 4 / 5, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
 	sliderText1->addComponent<ImageViewer>(textSliderMusic);
 
 	Entity* sliderText2 = stage->addEntity();
 	stage->addToGroup(sliderText2, ecs::GroupID::ui);
 	sliderText2->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 3 + game_->getWindowWidth() / 8, 3 * game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 4 / 5, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
 	sliderText2->addComponent<ImageViewer>(textSliderSound);
 }
@@ -117,8 +131,9 @@ void ConfigState::initKeyModifiers()
 		Entity* e = stage->addEntity();
 		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
 		bp->onlyListenTo(0);
-		bp->AddButton(salir, nullptr, res, nullptr, sliderTop);
+		bp->AddButton(salir, nullptr, res, nullptr, helper);
 		bp->AddButton(res, salir, changeP1, nullptr, sliderBot);
+		bp->AddButton(helper, nullptr, changeP1, salir, sliderTop);
 		bp->AddButton(sliderTop, nullptr, sliderBot, salir, nullptr, true);
 		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
 		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
@@ -149,6 +164,12 @@ void ConfigState::backButtonCallback(AnimalCooking* ac)
 {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
+}
+
+void ConfigState::helperButtonCallback(AnimalCooking* ac)
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getOptions().showKeyToPress = !SDLGame::instance()->getOptions().showKeyToPress;
 }
 
 void ConfigState::resButtonCallback(AnimalCooking* ac)
