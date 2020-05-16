@@ -47,9 +47,9 @@ void Transport::init()
 
 void Transport::update()
 {
-	if (objInHands_ != nullptr /*&& !(playerTransform_->getVel().getX() == 0 && playerTransform_->getVel().getY() == 0)*/) {
+	if (objInHands_ != nullptr && !(playerTransform_->getVel().getX() == 0 && playerTransform_->getVel().getY() == 0)) {
 
-		float angle = -((atan2(dir.getY(), dir.getX()) * 180) / M_PI);
+		float angle = -((atan2(playerTransform_->getVel().getY(), playerTransform_->getVel().getX()) * 180) / M_PI);
 		int centerX = playerTransform_->getPos().getX() + playerTransform_->getW() / 2;
 		int centerY = playerTransform_->getPos().getY() + playerTransform_->getH() / 2;
 

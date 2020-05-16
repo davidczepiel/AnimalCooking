@@ -10,6 +10,7 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
 	dirtTimer_ = new DefaultTimer();
+	//static_cast<UtensilTimer*>(dirtTimer_)->dirtTimerSize(Vector2D(60, 10));
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	rangeX_ = 100;
 	rangeY_ = 100;
@@ -103,6 +104,7 @@ void Utensil::onDrop(bool onFloor) {
 		Pickable::onDrop(onFloor);
 		myState = State::floor;
 		dirtTimer_->timerStart();
+		dirtTimer_->setPos(Vector2D(position_.getX(),position_.getY()-50));
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop, 0);
 	}
 	else

@@ -33,7 +33,6 @@ void PlayerController::joystickUpdate()
 	{
 		x = Xvalue;
 		tr_->setVelX(x*speed);
-		cout << x<<endl;
 	}
 	else {
 		tr_->setVelX(0);

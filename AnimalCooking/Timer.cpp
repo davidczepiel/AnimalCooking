@@ -26,6 +26,11 @@ void Timer::update() {
 	}
 }
 
+void Timer::setPos(Vector2D p)
+{
+	 pos_ = p; 
+}
+
 void DefaultTimer::draw() {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 	texture_->render(rect);
@@ -34,7 +39,25 @@ void DefaultTimer::draw() {
 void DefaultTimer::update()
 {
 	Timer::update();
-	size_.setX((game_->getTime() - startedTime_) / 100);
+	size_.setX(((game_->getTime() - startedTime_) / 100));
+}
+
+void UtensilTimer::draw() {
+
+	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+	texture_->render(rect);
+}
+
+void UtensilTimer::update()
+{
+	Timer::update();
+	size_.setX(((game_->getTime() - startedTime_) / time_)*initSize.getX());
+}
+
+void UtensilTimer::dirtTimerSize(Vector2D s)
+{
+	initSize = s;
+	setSize(s);
 }
 
 

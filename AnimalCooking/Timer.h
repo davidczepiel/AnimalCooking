@@ -14,7 +14,7 @@ public:
 
 	void setTime(Uint32 t) { time_ = t; };	
 	void setTexture(Texture* t) { texture_ = t; };
-	void setPos(Vector2D p) { pos_ = p; };
+	void setPos(Vector2D p);
 	void setSize(Vector2D s) { size_ = s; };
 	inline Vector2D getSize() { return size_; }
 	void setRot(double r) { rot_ = r; };
@@ -74,6 +74,16 @@ public:
 	DefaultTimer( Uint32 time ) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
 	void draw();
 	void update();
+};
+
+class UtensilTimer : public Timer {
+public:
+	UtensilTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	UtensilTimer(Uint32 time) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	virtual void draw();
+	virtual void update();
+	void dirtTimerSize(Vector2D s);
+	Vector2D initSize;
 };
 
 class FoodTimer : public Timer {
