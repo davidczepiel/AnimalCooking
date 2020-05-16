@@ -87,13 +87,13 @@ void Dish::feedback(int player)
 	{
 		vector<Food*> foods = this->getFoodVector();
 
-		int ofset = 55;
+		int ofset = 40;
 		int offsetInside = 15;
 		int rows = ceil(foods.size() / 2.0);
 		if (rows == 0) rows = 1;
 
 		int w = 140 / 2 - offsetInside * 2;
-		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 120, rows * w + offsetInside * 2);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 		feedbackVisual_->render(rect);
 		rect.x += offsetInside;
