@@ -58,13 +58,19 @@ void Dish::firstFood()
 
 void Dish::clearFoods()
 {	
+	//Elimino de la foodPool las food que tiene el plato
+	for (auto& f : foods_)
+	{
+		foodPool->RemoveFood(std::find(foodPool->getPool().begin(), foodPool->getPool().end(),f));
+	}
+
 	auto it = foods_.begin();
+	//Elimino las food del plato
 	while (it != foods_.end()) {
 		delete* it;		
 		++it;
 	}
 	foods_.clear();
-	foodPool->getPool().clear();
 }
 
 
