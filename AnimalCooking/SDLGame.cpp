@@ -39,7 +39,7 @@ void SDLGame::initSDL() {
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, width_ - 48, height_ - 27, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, width_, height_ - 40, SDL_WINDOW_SHOWN);
 	assert(window_ != nullptr);
 
 	// Create the renderer

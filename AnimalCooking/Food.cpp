@@ -4,12 +4,14 @@
 #include "FSM.h"
 #include "TimerViewer.h"
 #include "Entity.h"
+#include "GPadController.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
 	timer_(new FoodTimer()),canDraw(true),
 	type_(type),
 	foodPool_(nullptr),
-	texture_(nullptr)
+	texture_(nullptr), 
+	showHelp(true)
 {	
 	position_ = position;
 
@@ -24,7 +26,8 @@ Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
 	timer_(new FoodTimer()),
 	type_(type),
 	foodPool_(nullptr), 
-	canDraw(true)
+	canDraw(true), 
+	showHelp(true)
 {
 	position_ = Vector2D();
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
@@ -76,6 +79,7 @@ void Food::onDrop(bool onfloor)
 		Pickable::onDrop(onfloor);
 		timer_->timerStart();
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
+				showHelp = true;
 	}
 }
 
@@ -95,6 +99,7 @@ void Food::action1(int player)
 	else {
 		player2_->pick(this, Resources::PickableType::Food);
 	}
+	showHelp = false;
 }
 
 void Food::feedback(int player)
@@ -102,6 +107,12 @@ void Food::feedback(int player)
 	if (!dead && feedbackVisual_ != nullptr) {
 		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 		feedbackVisual_->render(destRect);
+		if (showHelp) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		}	
 	}
 }
 

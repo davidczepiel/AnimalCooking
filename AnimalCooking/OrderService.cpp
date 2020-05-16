@@ -1,9 +1,10 @@
 #include "OrderService.h"
+#include "GPadController.h"
 
 OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng): 
 	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr)
 {
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::EntregarPedido);
+	feedbackVisual_ = nullptr;
 }
 
 void OrderService::action1(int id)
@@ -21,10 +22,6 @@ void OrderService::action1(int id)
 		finalProduct->clearFoods();
 		delete finalProduct; //Llamo a la destructora del dish, la cual por si misma se elimina y se saca de la dishPool
 	}
-		
-
-	
-
 }
 
 bool OrderService::canService(int id) {
@@ -53,8 +50,13 @@ bool OrderService::canService(int id) {
 }
 void OrderService::feedback(int id)
 {
-	if (canService(id)) {
-		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
-		feedbackVisual_->render(r);
+	Transport* player;
+	if (id == 0) player = player1_;
+	else player = player2_;
+	if (player->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player->getObjectInHands())->getFoodVector().size() == 1) {
+		if (GPadController::instance()->playerControllerConnected(id))
+			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP));
+		else
+			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));
 	}
 }

@@ -76,7 +76,6 @@ void Dish::onPick()
 }
 
 void Dish::feedback(int player)
-
 {
 	if (isViewingContent)
 	{
@@ -103,10 +102,18 @@ void Dish::feedback(int player)
 			foods[i]->draw(r);
 		}
 	}
-	else {
-		if (GPadController::instance()->playerControllerConnected(player))
-			SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].OPEN));
-		else
-			SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].OPEN));
+	else if(getFoodVector().size() > 0) {
+		if (getFoodVector().size() > 3) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Finish Dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].FINISHER));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Finish Dish", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].FINISHER));
+		}
+		else {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].OPEN));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].OPEN));
+		}
 	}
 }

@@ -19,6 +19,7 @@ protected:
 
 	FoodTimer* timer_;
 	bool canDraw;
+	bool showHelp;
 public:
 	virtual ~Food() { timer_ = nullptr; }
 
