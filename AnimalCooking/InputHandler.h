@@ -77,6 +77,9 @@ public:
 		return mbState_[b];
 	}
 
+	inline const SDL_Keycode& getLastKeyPressed() const { return lastKeyPressed_; }
+	
+
 	// Joystick
 	// see:
 	//   Chapter 4 of 'SDL Game Development' book
@@ -89,6 +92,7 @@ private:
 	inline void onKeyDown(SDL_Event &event) {
 		isKeyDownEvent_ = true;
 		// kbState_ = SDL_GetKeyboardState(0);
+		lastKeyPressed_ = event.key.keysym.sym;
 	}
 	inline void onKeyUp(SDL_Event &event) {
 		isKeyUpEvent_ = true;
@@ -131,5 +135,7 @@ private:
 
 	Vector2D mousePos_;
 	std::array<bool, 3> mbState_;
+
+	SDL_Keycode lastKeyPressed_;
 };
 

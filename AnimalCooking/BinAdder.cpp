@@ -6,7 +6,7 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 
-BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaLength) : em(em)
+BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, const double casillaX, const double casillaY) : em(em)
 {
 	jute::jValue bins_ = jsonLevel["Bin"]["entities"];
 	jute::jValue components = jsonLevel["Bin"]["components"];
@@ -14,11 +14,11 @@ BinAdder::BinAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jso
 	for (int i = 0; i < bins_.size(); ++i) {
 		BinEntity* bin = new BinEntity(em, GIVETRANSPORT);
 
-		bin->setSize(Vector2D(jsonGeneral["Bin"]["size"]["width"].as_double() * casillaLength,
-			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaLength));
+		bin->setSize(Vector2D(jsonGeneral["Bin"]["size"]["width"].as_double() * casillaX,
+			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaY));
 
-		bin->setPos(Vector2D(bins_[i]["pos"]["x"].as_double() * casillaLength,
-			bins_[i]["pos"]["y"].as_double() * casillaLength));
+		bin->setPos(Vector2D(bins_[i]["pos"]["x"].as_double() * casillaX,
+			bins_[i]["pos"]["y"].as_double() * casillaY));
 
 		bin->setHitboxOffset(Vector2D(bin->getSize().getX() / 4, bin->getSize().getY() / 4));
 		bin->setHitboxSize(Vector2D(bin->getSize().getX() / 2, bin->getSize().getY() / 2));

@@ -2,22 +2,22 @@
 #include "GameConfig.h"
 
 InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), dir_(), 
-	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaLength(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaLength()),
-	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaLength())
+	size_(config::INTERACTION_RECT_SIZE_X * SDLGame::instance()->getCasillaX(), config::INTERACTION_RECT_SIZE_Y * SDLGame::instance()->getCasillaY()),
+	radius(config::INTERACTION_RECT_RADIUS * SDLGame::instance()->getCasillaY())
 {
 }
 
 void InteractionRect::init()
 {
 	tr_ = GETCMP1_(Transform);
-	tx_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux);
+	/*tx_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuadradoAux);*/
 }
 
-void InteractionRect::draw()
-{
-	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
-	tx_->render(d);
-}
+//void InteractionRect::draw()
+//{
+//	SDL_Rect d = { pos_.getX(), pos_.getY(), size_.getX(), size_.getY() };
+//	tx_->render(d);
+//}
 
 void InteractionRect::update()
 {

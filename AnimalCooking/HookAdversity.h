@@ -35,10 +35,10 @@ class HookAdversity :
 	int lastTick;
 	int speed;
 
-	void GoingUp(int advancedTicks);
-	void GoingDown(int advancedTicks);
+	void GoingUp();
+	void GoingDown();
 	void Start();
-	void Move(bool down, int advancedTicks);
+	void Move(bool down);
 	void SetContentPos(Transform* contentHook1, Transform* contentHook2);
 public:
 	HookAdversity(AdversityManager* am, MultipleAdversityManager* mam);

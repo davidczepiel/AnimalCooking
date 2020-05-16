@@ -28,17 +28,18 @@ public:
 
 	void update(SDL_Event& event);
 
+	void setIsAnyButtonJustPressed() { lastButtonPressed_.first = false; }
+	const bool& isAnyButtonJustPressed() { return lastButtonPressed_.first; }
+	const SDL_GameControllerButton& buttonJustPressed() { return lastButtonPressed_.second; }
+
 private:
 	static unique_ptr<GPadController> instance_;
 
 	GPadController();
 	//--------------Variables-------------------------
 	//Jostick
+	std::pair<bool, SDL_GameControllerButton> lastButtonPressed_;
+	bool lastButtonIsBeingPressed = false;
 	static const int m_joystickDeadZone = 10000;
-
-
-
-
-
 };
 

@@ -13,11 +13,12 @@ protected:
 
 	Resources::FoodType type_;
 	Texture* texture_;
-
+	bool dead = false;
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
 	FoodTimer* timer_;
+	bool canDraw;
 public:
 	virtual ~Food() { timer_ = nullptr; }
 
@@ -32,13 +33,15 @@ public:
 	}
 
 	Resources::FoodType getType() { return type_; }
+	inline bool getCanDraw() { return canDraw; }
+	void setCanDraw(bool value) { canDraw = value; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw();
 	virtual void draw(SDL_Rect r);
 
 	virtual void action1(int player);
-	virtual void feedback();
+	virtual void feedback(int player);
 	virtual void onDrop(bool onFloor);
 	void onFloor();
 	virtual void onPick();

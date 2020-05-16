@@ -153,7 +153,14 @@
     <ClCompile Include="MultipleAdversityManager.cpp" />
     <ClCompile Include="RainAdversity.cpp" />
     <ClCompile Include="LevelViewer.cpp" />
-    <ClCompile Include="CreditsViewer.cpp" />
+    <ClCompile Include="KeyboardKeySwitcher.cpp" />
+    <ClCompile Include="KeyboardKeySwitcherViewer.cpp" />
+    <ClCompile Include="GpadKeySwitcher.cpp" />
+    <ClCompile Include="GpadKeySwitcherViewer.cpp" />
+    <ClCompile Include="KeySwitcher.cpp" />
+    <ClCompile Include="SwitcherKeyboard.cpp" />
+    <ClCompile Include="SwitcherGPad.cpp" />
+    <ClCompile Include="ImageViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -340,7 +347,14 @@
     <ClInclude Include="MultipleAdversityManager.h" />
     <ClInclude Include="RainAdversity.h" />
     <ClInclude Include="LevelViewer.h" />
-    <ClInclude Include="CreditsViewer.h" />
+    <ClInclude Include="KeyboardKeySwitcher.h" />
+    <ClInclude Include="KeyboardKeySwitcherViewer.h" />
+    <ClInclude Include="GpadKeySwitcher.h" />
+    <ClInclude Include="GpadKeySwitcherViewer.h" />
+    <ClInclude Include="KeySwitcher.h" />
+    <ClInclude Include="SwitcherKeyboard.h" />
+    <ClInclude Include="SwitcherGPad.h" />
+    <ClInclude Include="ImageViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

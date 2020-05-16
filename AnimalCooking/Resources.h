@@ -22,7 +22,6 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
-		Button,
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -32,6 +31,9 @@ public:
 		MainMenuConfigButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+		LevelTimerBackground,
+		LevelTimerForeground,
+		ScoreBackground,
 		RectangleOutline,
 		HomeIcon,
 		MapIcon,
@@ -56,8 +58,13 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
-		CookerOverHeated,
 		Platera,
+		Muro,
+		Valla,
+		VallaFinal,
+		VallaInicio,
+		Collider,
+		VallaAbajo,
 		//Utensilios
 		Cuchillo,
 		CuchilloSucio,
@@ -213,9 +220,14 @@ public:
 
 			//Utensils
 			CuchilloFeedBack,
+			MazoFeedBack,
+			RedFeedBack,
+			RalladorFeedBack,
 			//General
 			Panel,
 			PlatoFeedBack,
+			VerContenidoPlato,
+			EntregarPedido,
 			PapeleraFeedBack,
 			Coger,
 			Dejar,
@@ -226,6 +238,7 @@ public:
 		EncimeraMasa,
 		
 		//spritesheets
+		Button,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
@@ -248,6 +261,8 @@ public:
 		Chicken,
 		Carrot,
 		Sausage,
+		Puerta,
+		FireOverHeated,
 
 		// text
 			AntonioJesus,
@@ -260,9 +275,17 @@ public:
 			Pablo,
 			Sandra,
 			Tatiana,
+		Back,
+		ToggleFullscreen,
+		MusicVolume,
+		SoundVolume,
+
 		//Adversities
 		WarningAdversity,
-		PlaneShadow
+		PlaneShadow,
+		RainAdversity,
+		HookAdversity
+
 	};
 
 	enum Level : std::size_t {
@@ -338,6 +361,9 @@ public:
 	enum FontId : std::size_t {
 		ARIAL12,
 		ARIAL40,
+		QuarkCheese100,
+		QuarkCheese70,
+		QuarkCheese50
 	};
 
 	struct FontInfo {

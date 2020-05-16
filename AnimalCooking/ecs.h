@@ -8,7 +8,7 @@ using Group = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
-	
+	ImageViewer,
 
 	GPadController, //Controls
 	KeyBoardController,
@@ -105,6 +105,11 @@ enum CmpId : CmpIdType {
 	levelViewer,//UI
 	CreditsViewer,
 
+	KeyboardKeySwitcher, //Config
+	KeyboardKeySwitcherViewer,
+	GpadKeySwitcher,
+	GpadKeySwitcherViewer,
+
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of components
@@ -114,11 +119,14 @@ enum CmpId : CmpIdType {
 enum GroupID : Group {
 	Layer1,
 	Layer2,
-	FoodLayer,
+	PlayerLayerAux,
 	FeedBackLayer,
+	FoodLayer,
 	PlayerLayer,
+	Valla,
 	ui,
 	topLayer,
+	
 	_LastGroupId_	//Identify the max number of groups
 };
 

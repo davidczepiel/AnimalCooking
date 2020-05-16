@@ -35,10 +35,14 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jsonGeneral = SDLGame::instance()->getJsonGeneral();
+	
+	casillaX = SDLGame::instance()->getCasillaX();
+	casillaY = SDLGame::instance()->getCasillaY();
+	
+	offsetX = casillaX * 0.2;
+	offsetY = casillaY * 0.2;
+	
 
-	casilla = SDLGame::instance()->getWindowHeight() / 9;
-	offset = casilla * 0.2;
-	SDLGame::instance()->setCasillaLength(casilla);
 
 	initialize_players();
 	initialize_ingredientsPool();
@@ -67,7 +71,7 @@ void LevelInitializer::initialize_players()
 		emPlaystate->addToGroup(players[i], CASTID(jsonGeneral["Players"]["Layer"].as_int()));
 	}
 
-	PlayersAdder(players, jsonLevel, jsonGeneral, casilla);
+	PlayersAdder(players, jsonLevel, jsonGeneral, casillaX, casillaY, emPlaystate);
 
 	sL->updateLength();
 }
@@ -87,7 +91,6 @@ void LevelInitializer::initialize_foodPool()
 	//EntityFoodPool----------------------------------------
 	foodPool = emPlaystate->addEntity();
 	emPlaystate->addToGroup(foodPool, CASTID(jsonGeneral["Foods"]["Layer"].as_int()));
-
 	FoodPoolAdder(foodPool, jsonLevel, jsonGeneral, players);
 	sL->updateLength();
 }
@@ -107,7 +110,7 @@ void LevelInitializer::initialize_cookersPool()
 	cookerPool = emPlaystate->addEntity();
 	emPlaystate->addToGroup(cookerPool, CASTID(jsonGeneral["Cookers"]["Layer"].as_int()));
 
-	CookersAdder(cookerPool, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
+	CookersAdder(cookerPool, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), GETCMP2(cookerPool, CookerPool)->getPool().begin(), GETCMP2(cookerPool, CookerPool)->getPool().end());
 
@@ -127,7 +130,7 @@ void LevelInitializer::initialize_timerViewer()
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casilla);
+	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -136,7 +139,7 @@ void LevelInitializer::initialize_shelfs()
 
 void LevelInitializer::initialize_sinks()
 {
-	SinkAdder sa = SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	SinkAdder sa = SinkAdder(emPlaystate, jsonLevel, jsonGeneral, players, casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -145,7 +148,7 @@ void LevelInitializer::initialize_sinks()
 
 void LevelInitializer::initialize_bin()
 {
-	BinAdder ba = BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casilla);
+	BinAdder ba = BinAdder(emPlaystate, jsonLevel, jsonGeneral, players, casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), ba.getInteractives().begin(), ba.getInteractives().end());
 
@@ -154,7 +157,7 @@ void LevelInitializer::initialize_bin()
 
 void LevelInitializer::initialize_dishes()
 {
-	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casilla);
+	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
@@ -165,7 +168,7 @@ void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager, emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casilla, offset, tv_);
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casillaX,casillaY, offsetX,offsetY, tv_);
 
 	emPlaystate->addToGroup(gameManager, CASTID(jsonGeneral["LevelTimer"]["Layer"].as_int()));
 
@@ -174,7 +177,7 @@ void LevelInitializer::initialize_gameManager()
 
 void LevelInitializer::initialize_foodGivers()
 {
-	FoodGiverAdder fa = FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla);
+	FoodGiverAdder fa = FoodGiverAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY);
 
 	interactives_.insert(interactives_.end(), fa.getInteractives().begin(), fa.getInteractives().end());
 
@@ -196,8 +199,7 @@ void LevelInitializer::initialize_feedback()
 {
 	Entity* feedbackEntity = emPlaystate->addEntity();
 	feedbackEntity->addComponent<FeedBack>(players.at(0)->getComponent<Selector>(ecs::Selector), players.at(1)->getComponent<Selector>(ecs::Selector));
-	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));
-
+	emPlaystate->addToGroup(feedbackEntity, CASTID(jsonGeneral["FeedBack"]["Layer"].as_int()));	
 	sL->updateLength();
 }
 
@@ -211,7 +213,7 @@ void LevelInitializer::initialize_levelIngredients()
 
 void LevelInitializer::initialize_clients()
 {
-	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casilla, tv_);
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY, tv_);
 
 	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 
@@ -220,7 +222,7 @@ void LevelInitializer::initialize_clients()
 
 void LevelInitializer::initialize_walls()
 {
-	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casilla, offset);
+	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY);
 
 	sL->updateLength();
 }
@@ -234,10 +236,10 @@ void LevelInitializer::initialize_adversities()
 	GETCMP2(gameManager, GameControl)->getAdversityTime()->setTime(5000);
 	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));*/
 	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), GETCMP2(cookerPool, CookerPool), GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
-	//mam->setTimerTime(ecs::AdversityID::RainAdversity,3000);
-	//mam->setTimerTime(ecs::AdversityID::HookAdversity, 11000);
-	mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 5000);
-	//mam->setTimerTime(ecs::AdversityID::CookersAdversity, 9000);
+	//mam->setTimerTime(ecs::AdversityID::RainAdversity,2000);
+	//mam->setTimerTime(ecs::AdversityID::HookAdversity, 7000);
+	//mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 5000);
+	mam->setTimerTime(ecs::AdversityID::CookersAdversity, 5000);
 
 	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
 	
