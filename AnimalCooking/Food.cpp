@@ -51,11 +51,9 @@ void Food::update()
 {
 	Pickable::update();
 
+	timer_->update();
 	if (timer_->isTimerEnd()) {
 		Destroy();
-	}
-	else {
-		timer_->update();
 	}
 }
 
