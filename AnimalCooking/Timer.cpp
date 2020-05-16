@@ -75,8 +75,11 @@ void LevelTimer::draw()
 
 	double percent = (game_->getTime() - startedTime_) / double(time_);
 
-	rect = RECT(pos_.getX(), pos_.getY(), size_.getX() * (1-percent), size_.getY());
-	SDL_Rect clip = RECT(0, 0, texture_->getWidth() * (1 - percent), texture_->getHeight());
+	rect.x = pos_.getX(); rect.y = pos_.getY(); rect.w = size_.getX() * (1 - percent); rect.h = size_.getY();
+
+	SDL_Rect clip = SDL_Rect();
+	clip.x = 0; clip.y = 0; clip.w = rect.w; clip.h = rect.h;
+
 	texture_->render(rect, 0, clip);
 }
 

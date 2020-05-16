@@ -4,16 +4,23 @@ void BinEntity::action1(int player)
 {
 	Transport* playerTransport;
 
-	player == Resources::Player1 ? playerTransport = player1_ : playerTransport = player2_;	//Se asigna el player correspondiente
+	playerTransport = player == Resources::Player1 ? player1_ : player2_;	//Se asigna el player correspondiente
 
-	if (playerTransport->getObjectInHands() != nullptr && playerTransport->getObjectTypeInHands() == Resources::Dish) {
+	if (playerTransport->getObjectInHands() != nullptr) {
 		//Limpiar el plato
 
-		for (auto& i : static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector()) {
-			i->Destroy();
+		if (playerTransport->getObjectTypeInHands() == Resources::Food) {
+			static_cast<Food*>(playerTransport->getObjectInHands())->Destroy();
+			playerTransport->setObjectTypeInHands(Resources::PickableType::none);
+			playerTransport->setObjectInHands(nullptr);
 		}
-		static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector().clear();
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin,0);
+		else if (playerTransport->getObjectTypeInHands() == Resources::Dish) {
+			for (auto& i : static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector()) {
+				i->Destroy();
+			}
+			static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector().clear();
+		}
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin, 0);
 	}
 
 	playerTransport = nullptr;

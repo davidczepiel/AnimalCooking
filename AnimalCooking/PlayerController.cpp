@@ -249,7 +249,7 @@ void PlayerController::keyUpdate()
 	ir_->setDir(x, y);
 
 	//Se establece la direccion para mostrar la animacion correspondiente
-	if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));                                                                                                       		
+	if (!(x == 0 && y == 0)) { animator->setDir(Vector2D(x, y)); transport->setDir(Vector2D(x, y)); }
 
 	//Estados de idle
 	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
