@@ -40,6 +40,7 @@ public:
 		Star,
 		YellowStar,
 		LimitSign,
+		LogoTenByTen,
 
 
 		SliderBackground,
@@ -249,7 +250,16 @@ public:
 		Sausage,
 
 		// text
-
+			AntonioJesus,
+			Daniel,
+			David,
+			Felipe,
+			Javier,
+			Marco,
+			Nicolas,
+			Pablo,
+			Sandra,
+			Tatiana,
 		//Adversities
 		WarningAdversity,
 		PlaneShadow
@@ -327,6 +337,7 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL40,
 	};
 
 	struct FontInfo {

@@ -1,25 +1,34 @@
 #include "CreditsState.h"
+#include "CreditsViewer.h"
 
 
 
 
-CreditsState::CreditsState(AnimalCooking* ac):State(ac) {
-	cout << "Credits";
+CreditsState::CreditsState(AnimalCooking* ac) :State(ac) {
+	double casillaX = SDLGame::instance()->getCasillaLength();
+	double casillaY = SDLGame::instance()->getCasillaLength();
+
 	Entity* returnToMenuState = stage->addEntity();
-	returnToMenuState->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth() / 2, SDLGame::instance()->getWindowHeight()/ 4),Vector2D(0,0),100,50,0);
+	stage->addToGroup(returnToMenuState, ecs::GroupID::ui);
+	returnToMenuState->addComponent<Transform>(Vector2D(
+		0.1 * casillaX,
+		casillaY * 7.9),
+		Vector2D(0, 0),
+		casillaX,
+		casillaY,
+		0);
 	returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
-	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button),nullptr);
-	//Se pondr�an los 
+	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
 
-	//Entity* nombre = stage->addEntity();
-	//nombre->addComponent<Transform>(Vector2D(SDLGame::instance()->getWindowWidth()/2, SDLGame::instance()->getWindowHeight()*3/4),Vector2D(0,-10),300,100,0);
-	//nombre->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton), SDLGame::instance()->getTextureMngr()->getTexture(Resources::Boton));
+	Entity* nombres = stage->addEntity();
+	stage->addToGroup(nombres, ecs::GroupID::ui);
+	nombres->addComponent<CreditsViewer>();
 }
 
 
 void CreditsState::GoBackMenu(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
-	
+
 
 }

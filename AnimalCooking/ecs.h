@@ -103,6 +103,7 @@ enum CmpId : CmpIdType {
 	MultipleAdversityManager,
 
 	levelViewer,//UI
+	CreditsViewer,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max
