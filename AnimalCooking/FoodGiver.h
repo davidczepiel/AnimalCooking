@@ -12,7 +12,7 @@ protected:
 
 	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl)
 		: Interactive(p1, p2,nullptr), gameControl_(gameControl) {
-		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		feedbackVisual_ = nullptr;
 		position_ = pos;
 		size_ = size;
 	}

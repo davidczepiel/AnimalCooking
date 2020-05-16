@@ -119,6 +119,8 @@ public:
 
 	config::Options& getOptions() { return options_; }
 
+	void renderFeedBack(const Vector2D& pos, const string& msg, const string& key);
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 

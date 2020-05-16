@@ -8,6 +8,7 @@
 
 #include "SRandBasedGenerator.h"
 #include "FSM.h"
+#include "SDL_macros.h"
 
 unique_ptr<SDLGame> SDLGame::instance_;
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
@@ -38,7 +39,7 @@ void SDLGame::initSDL() {
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, width_, height_ - 60, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, width_ - 48, height_ - 27, SDL_WINDOW_SHOWN);
 	assert(window_ != nullptr);
 
 	// Create the renderer
@@ -57,6 +58,8 @@ void SDLGame::initSDL() {
 	int sdlRenderClear_ret = SDL_RenderClear(renderer_);
 	assert(sdlRenderClear_ret != -1);
 	SDL_RenderPresent(renderer_);
+
+	toggleFullScreen();
 
 	// hide cursor by default
 	//SDL_ShowCursor(0);
@@ -123,4 +126,44 @@ void SDLGame::closeResources() {
 	delete random_;
 	delete audio_;
 	delete fsm_;
+}
+
+
+void SDLGame::renderFeedBack(const Vector2D& position, const string& msg, const string& key)
+{
+	Vector2D pos = Vector2D(position.getX() + 50, position.getY() + 50);
+
+	Texture name = Texture(SDLGame::instance()->getRenderer(), msg + ": ",
+		SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese50), { COLOR(0x000000ff) });
+
+	Resources::FontId fuente = Resources::FontId::QuarkCheese50;
+	//if (key.length() == 1) fuente = Resources::FontId::ARIAL50;
+
+	Texture keyText = Texture(SDLGame::instance()->getRenderer(), key,
+		SDLGame::instance()->getFontMngr()->getFont(fuente), { COLOR(0x000000ff) });
+
+	//FONDO
+	Texture* borde = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BordeTeclaFeedBack);
+	Texture* relleno = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RellenoTeclaFeedBack);
+	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight()));
+	pos.setX(pos.getX() + borde->getWidth());
+	double startingPosRelleno = pos.getX();
+	double lengthRelleno = 0;
+	const int& repeticiones = (msg.length() + key.length()) / 4;
+	for (int i = 0; i < repeticiones; ++i) {
+		relleno->render(RECT(pos.getX(), pos.getY(), relleno->getWidth(), relleno->getHeight()));
+		pos.setX(pos.getX() + relleno->getWidth());
+		lengthRelleno = pos.getX() - startingPosRelleno;
+	}
+	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight()), 0.0,
+		RECT(0, 0, borde->getWidth(), borde->getHeight()), SDL_FLIP_HORIZONTAL);
+
+	//Texto
+	name.render(RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2,
+		pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
+		name.getWidth() * name.getHeight() / double(name.getHeight()), name.getHeight()));
+
+	keyText.render(RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2 + name.getWidth(),
+		pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
+		keyText.getWidth() * keyText.getHeight() / double(name.getHeight()), name.getHeight()));
 }

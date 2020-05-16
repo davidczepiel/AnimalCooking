@@ -1,5 +1,6 @@
 #include "FoodGiver.h"
 #include "Food.h"
+#include "GPadController.h"
 
 
 
@@ -107,7 +108,9 @@ void FoodGiver::feedback(int player)
 	if (player == Resources::Player::Player2 && player2_->getObjectInHands() == nullptr) render = true;
 
 	if (render) {
-		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
-		feedbackVisual_->render(r);
+		if (GPadController::instance()->playerControllerConnected(player))
+			SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+		else
+			SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 	}
 }

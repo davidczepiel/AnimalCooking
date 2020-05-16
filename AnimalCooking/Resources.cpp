@@ -4,6 +4,7 @@
 vector<Resources::FontInfo> Resources::fonts_{
 	//
 	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 },
+	{Basic, ARIAL50, "../AnimalCooking/resources/fonts/ARIAL.ttf", 50 },
 	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
 	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
 	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
@@ -224,8 +225,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, VerContenidoPlato,"../AnimalCooking/resources/images/FeedBack/General/verPlato.png"},
 	{AllLevels, EntregarPedido,"../AnimalCooking/resources/images/FeedBack/General/entregarPedido.png"},
 	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
-	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
-	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
+	{AllLevels, BordeTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaBorde.png"},
+	{AllLevels, RellenoTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaRelleno.png"},
 
 	// images level specific
 	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
@@ -274,7 +275,13 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic, TextureId::Back, "Return", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0x8811ffff), FontId::QuarkCheese100},
 	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
-	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100}
+	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
+	{Basic, TextureId::PickUpText, "Pick up : ", COLOR(0x000000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::AttackText, "Attack : ", COLOR(0x000000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::OpenText, "Open : ", COLOR(0x000000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::FinishText, "Finish Dish : ", COLOR(0x000000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::NextText, "Next Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100},
+	{Basic, TextureId::PreviousText, "Previous Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100}
 };
 
 

@@ -1,6 +1,7 @@
 #include "DishStack.h"
 #include "DishStackViewer.h"
 #include "GameConfig.h"
+#include "GPadController.h"
 
 DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : 
 	Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_,nullptr), maxDishes(maxDishes_), dishPool(dp),foodPool(fp), dishSize_()
@@ -65,22 +66,35 @@ void DishStack::action1(int id)
 
 void DishStack::feedback(int id)
 {
-	SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 128, 32);
-
 	if (id == Resources::Player::Player1)
 	{
-		if (player1_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
-		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player1_->getObjectInHands())->isEmpty()) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
-		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Food) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		if (player1_->getObjectInHands() == nullptr || player1_->getObjectTypeInHands() == Resources::PickableType::Food) {	
+			if (GPadController::instance()->playerControllerConnected(id))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[0].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[0].PICKUP));
+		}
+		else if (player1_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player1_->getObjectInHands())->isEmpty()) {
+			if (GPadController::instance()->playerControllerConnected(id))
+				SDLGame::instance()->renderFeedBack(position_, "Leave it", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[0].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Leave it", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[0].PICKUP));
+		}
 	}
 	else
 	{
-		if (player2_->getObjectInHands() == nullptr) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
-		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player2_->getObjectInHands())->isEmpty()) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dejar);
-		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Food) feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Coger);
+		if (player2_->getObjectInHands() == nullptr || player2_->getObjectTypeInHands() == Resources::PickableType::Food) {
+			if (GPadController::instance()->playerControllerConnected(id))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[1].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[1].PICKUP));
+		}
+		else if (player2_->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player2_->getObjectInHands())->isEmpty()) {
+			if (GPadController::instance()->playerControllerConnected(id))
+				SDLGame::instance()->renderFeedBack(position_, "Leave it", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[1].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Leave it", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[1].PICKUP));
+		}
 	}
-
-	if(feedbackVisual_ !=nullptr) feedbackVisual_->render(r);
-	feedbackVisual_ = nullptr;
-	
 }
+

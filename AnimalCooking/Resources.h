@@ -228,8 +228,8 @@ public:
 			VerContenidoPlato,
 			EntregarPedido,
 			PapeleraFeedBack,
-			Coger,
-			Dejar,
+			BordeTeclaFeedBack,
+			RellenoTeclaFeedBack,
 
 		// images level specific
 		Arroz,
@@ -268,6 +268,13 @@ public:
 		ToggleFullscreen,
 		MusicVolume,
 		SoundVolume,
+		PickUpText,
+		AttackText,
+		OpenText,
+		FinishText,
+		NextText,
+		PreviousText,
+
 
 		//Adversities
 		WarningAdversity,
@@ -349,6 +356,7 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL50,
 		QuarkCheese100,
 		QuarkCheese70,
 		QuarkCheese50
