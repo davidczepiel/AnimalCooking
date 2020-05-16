@@ -184,7 +184,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 
-		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -192,7 +192,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
