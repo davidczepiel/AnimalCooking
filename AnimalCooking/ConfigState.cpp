@@ -53,9 +53,10 @@ void ConfigState::initButtons()
 	res = stage->addEntity();
 	stage->addToGroup(res, ecs::GroupID::ui);
 	res->addComponent<Transform>(
-		Vector2D((game_->getWindowWidth() / 5) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
+		Vector2D((game_->getWindowWidth() * 2 / 5) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
+	res->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getIfFullscreen());
 	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
 		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
 	bb->setButtonRenderer(br);
@@ -131,11 +132,11 @@ void ConfigState::initKeyModifiers()
 		Entity* e = stage->addEntity();
 		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
 		bp->onlyListenTo(0);
-		bp->AddButton(salir, nullptr, res, nullptr, helper);
-		bp->AddButton(res, salir, changeP1, nullptr, sliderBot);
-		bp->AddButton(helper, nullptr, changeP1, salir, sliderTop);
-		bp->AddButton(sliderTop, nullptr, sliderBot, salir, nullptr, true);
-		bp->AddButton(sliderBot, sliderTop, changeP1, res, nullptr, true);
+		bp->AddButton(salir, nullptr, changeP1, sliderTop, helper);
+		bp->AddButton(res, helper, changeP1, sliderBot, sliderBot);
+		bp->AddButton(helper, nullptr, res, salir, sliderTop);
+		bp->AddButton(sliderTop, nullptr, sliderBot, helper, salir, true);
+		bp->AddButton(sliderBot, sliderTop, changeP1, res, res, true);
 		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
 		GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
 	}

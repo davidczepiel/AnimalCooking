@@ -34,7 +34,6 @@ void ButtonBehaviour::update()
 			focusedByMouse_ = true;
 			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 				callback_(ac_); //Como la FSM esta en AnimalCooking necesito acceso a la instancia de animalcooking 
-				if(bRenderer_) bRenderer_->clicked();
 			}
 		}
 		else focusedByMouse_ = false;
@@ -43,5 +42,6 @@ void ButtonBehaviour::update()
 
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviour::action() {
+	if (bRenderer_) bRenderer_->clicked();
 	callback_(ac_); 
 }

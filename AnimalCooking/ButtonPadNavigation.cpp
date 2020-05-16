@@ -159,9 +159,9 @@ void ButtonPadNavigation::verticalMove(double yValue)
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		if (b) b->setFocusByController(false);
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
+				if (b) b->setFocusByController(false);
 				changeFocus(focus.down);
 				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
 				if (s != nullptr) s->setFocushed(0);
@@ -169,6 +169,7 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 		else if (yValue < 0) {
 			if (focus.up != nullptr) {
+				if (b) b->setFocusByController(false);
 				changeFocus(focus.up);
 			}
 		}
