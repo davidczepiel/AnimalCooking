@@ -12,4 +12,5 @@ void Selector::update()
 			select_ = nullptr;
 		}
 	}
+	else interationArea = 0;
 }
