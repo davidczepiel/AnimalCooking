@@ -5,8 +5,8 @@
 
 
 CreditsState::CreditsState(AnimalCooking* ac) :State(ac) {
-	double casillaX = SDLGame::instance()->getCasillaLength();
-	double casillaY = SDLGame::instance()->getCasillaLength();
+	double casillaX = SDLGame::instance()->getCasillaX();
+	double casillaY = SDLGame::instance()->getCasillaY();
 
 	Entity* returnToMenuState = stage->addEntity();
 	stage->addToGroup(returnToMenuState, ecs::GroupID::ui);
@@ -18,7 +18,8 @@ CreditsState::CreditsState(AnimalCooking* ac) :State(ac) {
 		casillaY,
 		0);
 	returnToMenuState->addComponent<ButtonBehaviour>(GoBackMenu, app);
-	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	//Aquí debería ir el botón de la casa, pero no sé cómo se pone :P
+	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), nullptr);
 
 	Entity* nombres = stage->addEntity();
 	stage->addToGroup(nombres, ecs::GroupID::ui);

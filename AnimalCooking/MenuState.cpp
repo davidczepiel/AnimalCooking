@@ -97,9 +97,7 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 
 	cout << "Menu State" << endl;
-	double casilla = SDLGame::instance()->getWindowHeight() / 9;
-	SDLGame::instance()->setCasillaLength(casilla);
-
+	
 
 	double casillaX = SDLGame::instance()->getWindowWidth() / 16;
 	double casillaY = SDLGame::instance()->getWindowHeight() / 9;
