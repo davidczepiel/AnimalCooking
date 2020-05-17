@@ -128,12 +128,9 @@ void SDLGame::closeResources() {
 	delete fsm_;
 }
 
-
 void SDLGame::renderFeedBack(const Vector2D& position, const string& msg, const string& key)
 {
-	Vector2D pos = Vector2D(position.getX() + 50, position.getY() + 50);
-
-	Texture name = Texture(SDLGame::instance()->getRenderer(), msg + ": ",
+	Texture name = Texture(SDLGame::instance()->getRenderer(), msg + " ",
 		SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese50), { COLOR(0x000000ff) });
 
 	Resources::FontId fuente = Resources::FontId::QuarkCheese50;
@@ -142,28 +139,51 @@ void SDLGame::renderFeedBack(const Vector2D& position, const string& msg, const 
 	Texture keyText = Texture(SDLGame::instance()->getRenderer(), key,
 		SDLGame::instance()->getFontMngr()->getFont(fuente), { COLOR(0x000000ff) });
 
+	//Ancho | alto del fondo
+	int repeticiones;
+	double height = 1;
+	if (key.length() > 3) {
+		const string& s = (msg.length() < key.length()) ? msg : key;
+		repeticiones = s.length() / 3;
+		height = 2;
+	}
+	else repeticiones = (msg.length() + key.length()) / 4;
+
+	Vector2D pos = Vector2D(position.getX() + 50, position.getY() + height * 25);
+
 	//FONDO
 	Texture* borde = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BordeTeclaFeedBack);
 	Texture* relleno = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RellenoTeclaFeedBack);
-	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight()));
+	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight() * height));
 	pos.setX(pos.getX() + borde->getWidth());
 	double startingPosRelleno = pos.getX();
 	double lengthRelleno = 0;
-	const int& repeticiones = (msg.length() + key.length()) / 4;
 	for (int i = 0; i < repeticiones; ++i) {
-		relleno->render(RECT(pos.getX(), pos.getY(), relleno->getWidth(), relleno->getHeight()));
+		relleno->render(RECT(pos.getX(), pos.getY(), relleno->getWidth(), relleno->getHeight() * height));
 		pos.setX(pos.getX() + relleno->getWidth());
 		lengthRelleno = pos.getX() - startingPosRelleno;
 	}
-	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight()), 0.0,
+	borde->render(RECT(pos.getX(), pos.getY(), borde->getWidth(), borde->getHeight() * height), 0.0,
 		RECT(0, 0, borde->getWidth(), borde->getHeight()), SDL_FLIP_HORIZONTAL);
 
-	//Texto
-	name.render(RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2,
-		pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
-		name.getWidth() * name.getHeight() / double(name.getHeight()), name.getHeight()));
-
-	keyText.render(RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2 + name.getWidth(),
-		pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
-		keyText.getWidth() * keyText.getHeight() / double(name.getHeight()), name.getHeight()));
+	SDL_Rect nameRect, keyRect;
+	if (height == 1) { //En una fila
+		nameRect = RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2,
+			pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
+			name.getWidth() * name.getHeight() / double(name.getHeight()), name.getHeight());
+		keyRect = RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() + keyText.getWidth()) / 2 + name.getWidth(),
+			pos.getY() + borde->getHeight() / 2 - name.getHeight() / 2,
+			keyText.getWidth() * keyText.getHeight() / double(name.getHeight()), name.getHeight());
+	}
+	else { //En dos filas
+		double textHeight = 0.8 * name.getHeight() + 0.8 * keyText.getHeight();
+		nameRect = RECT(startingPosRelleno + lengthRelleno / 2 - (name.getWidth() / 2),
+			pos.getY() + borde->getHeight() * height / 2 - textHeight / 2,
+			name.getWidth() * 0.8 * name.getHeight() / double(0.8 * name.getHeight()), 0.8 * name.getHeight());
+		keyRect = RECT(startingPosRelleno + lengthRelleno / 2 - (keyText.getWidth() / 2),
+			pos.getY() + borde->getHeight() * height / 2 - textHeight / 2 + 0.9 * name.getHeight(),
+			keyText.getWidth() * 0.8 * keyText.getHeight() / double(0.8 * keyText.getHeight()), 0.8 * keyText.getHeight());
+	}
+	name.render(nameRect);
+	keyText.render(keyRect);
 }
