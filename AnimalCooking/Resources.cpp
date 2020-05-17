@@ -38,7 +38,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
 
 	//MapState
-	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/paisaje.jpg" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateHouseButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateHouseButtonOver, "../AnimalCooking/resources/images/Adversities/plane.png" },

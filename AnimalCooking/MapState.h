@@ -38,4 +38,5 @@ private:
 
 	int unlockedLevels;
 	int maxLevels;	
+	vector<levelInfo> levels;
 };
