@@ -46,10 +46,11 @@ void PlayerController::joystickUpdate()
 	else {
 		tr_->setVelY(0);
 	}
+
 	ir_->setDir(x, y);
 	//Se establece la direccion para mostrar la animacion correspondiente
-	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
-
+	if (!(x == 0 && y == 0)) { animator->setDir(Vector2D(x, y)); transport->setDir(Vector2D(x, y)); }
+	
 	//Botones-------------------------------
 	if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.PICKUP)) {
 		ableToPress = false;
@@ -72,7 +73,7 @@ void PlayerController::joystickUpdate()
 		{
 			animator->getTimer().timerStart();
 			setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
-				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
+				            Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 		}
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.FINISHER)) {
@@ -110,7 +111,7 @@ void PlayerController::joystickUpdate()
 		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater, Animator::States::WalkWithNet, Animator::States::Walk,	        	                                                                 
 		                                                                          Animator::States::WalkWithDirtyKnife,Animator::States::WalkWithDirtyMace,Animator::States::WalkWithDirtyGrater,Animator::States::WalkWithDirtyNet);
 
-
+	//Estados de idle
 	else if(((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X)) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
 		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,Animator::States::IdleWithNet, Animator::States::Idle,		                                                                                 
 		                                                                                Animator::States::IdleWithDirtyKnife, Animator::States::IdleWithDirtyMace, Animator::States::IdleWithDirtyGrater, Animator::States::IdleWithDirtyNet);
@@ -244,9 +245,9 @@ void PlayerController::keyUpdate()
 
 	tr_->setVelY(speed * y);
 	tr_->setVelX(speed * x);
+	
 
 	ir_->setDir(x, y);
-
 	//Se establece la direccion para mostrar la animacion correspondiente
 	if (!(x == 0 && y == 0)) { animator->setDir(Vector2D(x, y)); transport->setDir(Vector2D(x, y)); }
 
