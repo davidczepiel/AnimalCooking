@@ -78,12 +78,13 @@ public:
 
 class UtensilTimer : public Timer {
 public:
-	UtensilTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
-	UtensilTimer(Uint32 time) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	UtensilTimer();
+	UtensilTimer(Uint32 time);
 	virtual void draw();
 	virtual void update();
-	void dirtTimerSize(Vector2D s);
-	Vector2D initSize;
+private:
+	Texture* outlineText_;
+	SDL_Rect clip;
 };
 
 class FoodTimer : public Timer {

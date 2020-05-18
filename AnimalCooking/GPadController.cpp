@@ -15,15 +15,23 @@ void GPadController::update(SDL_Event& event) {
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
 			player1_ = SDL_GameControllerOpen(0);
+			//SI los 2 players tienen mando el cursor no se debería de ver
+			if (player1_ != nullptr && player2_ != nullptr)
+				SDL_ShowCursor(0);
 		}
 		else if(player2_ == nullptr){
 			player2_ = SDL_GameControllerOpen(1);
+			//SI los 2 players tienen mando el cursor no se debería de ver
+			if(player1_ != nullptr && player2_ != nullptr)
+			SDL_ShowCursor(0);  
 		}
 	}
 	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual tengo y cual no
 	else if (event.type == SDL_CONTROLLERDEVICEREMOVED) {
 		player1_ = SDL_GameControllerOpen(0);
 		player2_ = SDL_GameControllerOpen(1);
+		//Significa que solo un player tiene mando y el cursor deberia de verse
+		SDL_ShowCursor(1);
 	}		
 
 	if (event.cbutton.type == SDL_CONTROLLERBUTTONDOWN) {
@@ -49,6 +57,10 @@ bool GPadController::playerControllerConnected(int id) {
 void GPadController::getPlayerGPADS() {
 	player1_ = SDL_GameControllerOpen(0);
 	player2_ = SDL_GameControllerOpen(1);
+
+	//SI los 2 players tienen mando el cursor no se debería de ver
+	if (player1_ != nullptr && player2_ != nullptr)
+		SDL_ShowCursor(0);
 }
 
 

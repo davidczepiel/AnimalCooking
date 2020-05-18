@@ -9,8 +9,8 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
-	dirtTimer_ = new DefaultTimer();
-	//static_cast<UtensilTimer*>(dirtTimer_)->dirtTimerSize(Vector2D(60, 10));
+	dirtTimer_ = new UtensilTimer();
+	dirtTimer_->setSize(Vector2D(100, 30));
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	rangeX_ = 100;
 	rangeY_ = 100;
@@ -46,6 +46,8 @@ void Utensil::update() {
 				//resetDirtTimer();
 			}
 		}
+		else
+		dirtTimer_->timerReset();
 	}
 	else
 	{

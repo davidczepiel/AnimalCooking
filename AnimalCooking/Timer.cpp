@@ -2,15 +2,15 @@
 #include "SDL_macros.h"
 #include "FSM.h";
 #include "PlayState.h"
-Timer::Timer(): 
+Timer::Timer() :
 	game_(SDLGame::instance()),
 	texture_(nullptr),
 	time_(0),
-	startedTime_(0),  
-	timerEnd_(false), 
+	startedTime_(0),
+	timerEnd_(false),
 	timerStarted_(false),
-	pos_(), 
-	size_(Vector2D(0, 5)), 
+	pos_(),
+	size_(Vector2D(0, 5)),
 	rot_(0)
 {
 }
@@ -28,7 +28,7 @@ void Timer::update() {
 
 void Timer::setPos(Vector2D p)
 {
-	 pos_ = p; 
+	pos_ = p;
 }
 
 void DefaultTimer::draw() {
@@ -42,23 +42,41 @@ void DefaultTimer::update()
 	size_.setX(((game_->getTime() - startedTime_) / 100));
 }
 
-void UtensilTimer::draw() {
+UtensilTimer::UtensilTimer(): Timer() {
+	texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+	outlineText_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground);
+	clip.x = 0;
+	clip.y = 0;
+	clip.w = texture_->getWidth(); 
+	clip.h= texture_->getHeight();
+}
 
-	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
-	texture_->render(rect);
+UtensilTimer::UtensilTimer(Uint32 time) : Timer()
+{
+	texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+	outlineText_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground);
+	clip.x = 0;
+	clip.y = 0;
+	clip.w = texture_->getWidth();
+	clip.h = texture_->getHeight();
+}
+
+void UtensilTimer::draw() {
+	if (timerStarted_) {
+		SDL_Rect r =RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+		outlineText_->render(r);
+		double percent = (game_->getTime() - startedTime_) / double(time_);
+		SDL_Rect clipRect = RECT(clip.x, clip.y, clip.w*percent, clip.h);
+		r.w = size_.getX() * percent;
+		texture_->render(r,0,clipRect);
+	}
 }
 
 void UtensilTimer::update()
 {
 	Timer::update();
-	size_.setX(((game_->getTime() - startedTime_) / time_)*initSize.getX());
 }
 
-void UtensilTimer::dirtTimerSize(Vector2D s)
-{
-	initSize = s;
-	setSize(s);
-}
 
 
 void Timer::timerStart() {
@@ -66,7 +84,7 @@ void Timer::timerStart() {
 		timerStarted_ = true;
 		startedTime_ = game_->getTime();
 		timerEnd_ = false;
-	} 
+	}
 }
 
 void Timer::timerReset() {
@@ -96,7 +114,10 @@ void LevelTimer::draw()
 
 	double percent = (game_->getTime() - startedTime_) / double(time_);
 
-	rect.x = pos_.getX(); rect.y = pos_.getY(); rect.w = size_.getX() * (1 - percent); rect.h = size_.getY();
+	rect.x = pos_.getX();
+	rect.y = pos_.getY(); 
+	rect.w = size_.getX() * (1 - percent);
+	rect.h = size_.getY();
 
 	SDL_Rect clip = SDL_Rect();
 	clip.x = 0; clip.y = 0; clip.w = rect.w; clip.h = rect.h;
