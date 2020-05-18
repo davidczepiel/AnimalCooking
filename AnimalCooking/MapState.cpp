@@ -49,6 +49,10 @@ void MapState::init() {
 	playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
 	playButton_->addComponent<ButtonBehaviour>();
 
+	returnButton_->addComponent<Transform>(Vector2D(0, 0));
+	returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
+	returnButton_->addComponent<ButtonBehaviour>();
+
 	for (int x = 0; x < levelsInfo_.size(); x++) {
 		//Entity* level 
 		//levelsEntityList_
