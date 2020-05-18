@@ -4,16 +4,13 @@ MapConfig::MapConfig()
 {
 	fill();
 }
-/*string name = "";
-	string lore = "";	
-	SDL_Rect houseBox = SDL_Rect();
-	Vector2D housePosition = Vector2D();
-	Vector2D buttonPosition = Vector2D();
-	unsigned int stars = 0;
-	bool unlocked = false;
-	*/
+
 void MapConfig::fill()
 {
+
+	//Inicializar el fichero de partida
+
+
 	levelInfo auxiliar;
 
 	  /////////////////////////////////////
@@ -30,6 +27,7 @@ void MapConfig::fill()
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
 
+	levelsRecipes.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 2		//////
@@ -45,6 +43,7 @@ void MapConfig::fill()
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
 
+	levelsRecipes.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 3		//////
@@ -60,6 +59,8 @@ void MapConfig::fill()
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
 
+	levelsRecipes.push_back(auxiliar);
+
 	  /////////////////////////////////////
 	 ///////		 LEVEL 4		//////
 	/////////////////////////////////////
@@ -73,6 +74,8 @@ void MapConfig::fill()
 	auxiliar.housePosition = Vector2D(15, 15);
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
+
+	levelsRecipes.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 5		//////
@@ -88,11 +91,13 @@ void MapConfig::fill()
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
 
+	levelsRecipes.push_back(auxiliar);
+
 	  /////////////////////////////////////
 	 ///////		 LEVEL N		//////
 	/////////////////////////////////////
 
-	auxiliar.name = "";
+	/*auxiliar.name = "";
 	auxiliar.lore = "";
 	auxiliar.houseBox.x = 10;
 	auxiliar.houseBox.y = 10;
@@ -101,4 +106,6 @@ void MapConfig::fill()
 	auxiliar.housePosition = Vector2D(15, 15);
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;
+
+	levelsRecipes.push_back(auxiliar);*/
 }

@@ -30,6 +30,11 @@ MapState::MapState(AnimalCooking* ac):
 		playButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
 		returnButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
+		//Mapconfig
+		MapConfig mapCFG;
+
+
+
 
 		//OldButtons
 		Entity* screenLoaderButton_ = stage->addEntity();
