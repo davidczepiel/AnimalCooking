@@ -2,6 +2,7 @@
 #include "State.h"
 #include "MapConfig.h"
 #include <vector>
+#include "NameAsker.h"
 
 
 class MapState :public State{

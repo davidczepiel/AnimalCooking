@@ -260,6 +260,7 @@
     <ClInclude Include="MenuButtonRenderer.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="MultipleAdversityManager.h" />
+    <ClInclude Include="NameAsker.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
@@ -429,6 +430,7 @@
     <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MultipleAdversityManager.cpp" />
+    <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />

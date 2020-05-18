@@ -36,6 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 void MapState::draw()
 {
 	backgroundTexture->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	State::draw();
 }
 
 void MapState::update()
@@ -44,7 +45,10 @@ void MapState::update()
 }
 
 void MapState::askName() {
-	//Añadir entidades para introducir nombre
+	//Aï¿½adir entidades para introducir nombre
+	Entity* nameAsker = stage->addEntity();
+	nameAsker->addComponent<NameAsker>();
+	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
 	
 }
 

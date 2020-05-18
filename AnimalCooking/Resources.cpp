@@ -45,6 +45,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStatePlayButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},

@@ -80,9 +80,9 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamecontrol.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gameconfig.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fsm.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menubuttonrenderer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menubuttonbehaviour.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mapstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mapconfig.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\manager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mainmenupadnavigation.obj
@@ -100,8 +100,6 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\insertexpel.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inputhandler.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inoutfood.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoremanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\resources.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\rainadversity.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playstate.obj
@@ -118,10 +116,10 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ordermanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderadder.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\order.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\nameasker.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\multipleadversitymanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menustate.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderrenderer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderbehaviour.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menubuttonrenderer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\selectorpopupentity.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sinkviewer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sinkadder.obj
@@ -140,8 +138,8 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\screenloader.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoreviewer.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\walladder.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\wall.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoremanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\resources.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vector2d.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilspool.obj
@@ -160,7 +158,10 @@ c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\state.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\soundmanager.obj
-c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mapconfig.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderbehaviour.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\walladder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\wall.obj
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.exe
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.ilk
 c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.pdb

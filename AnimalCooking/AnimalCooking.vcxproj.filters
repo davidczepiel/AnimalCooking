@@ -162,6 +162,7 @@
     <ClCompile Include="SwitcherGPad.cpp" />
     <ClCompile Include="ImageViewer.cpp" />
     <ClCompile Include="MapConfig.cpp" />
+    <ClCompile Include="NameAsker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -357,6 +358,7 @@
     <ClInclude Include="SwitcherGPad.h" />
     <ClInclude Include="ImageViewer.h" />
     <ClInclude Include="MapConfig.h" />
+    <ClInclude Include="NameAsker.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

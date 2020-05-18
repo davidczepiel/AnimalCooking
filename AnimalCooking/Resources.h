@@ -41,7 +41,9 @@ public:
 		NextLevelIcon,
 		Star,
 		YellowStar,
-		LimitSign,		
+		LimitSign,
+		//MapState
+		NameAsker,
 		MapStateBackground,
 		MapStateHousesBackground,
 		MapStateHouseButton,
@@ -237,7 +239,7 @@ public:
 			PapeleraFeedBack,
 			Coger,
 			Dejar,
-
+		
 		// images level specific
 		Arroz,
 		Aceite,
