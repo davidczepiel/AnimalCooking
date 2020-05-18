@@ -296,7 +296,7 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 
-	{Basic, TextureId::Back, "Return", COLOR(0x8811ffff), FontId::QuarkCheese100},
+	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleHelper, "Toggle key reminder", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},

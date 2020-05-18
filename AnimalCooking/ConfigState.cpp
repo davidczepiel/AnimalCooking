@@ -76,7 +76,7 @@ void ConfigState::initButtons()
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
 	helper->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getOptions().showKeyToPress);
-	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::ToggleHelper));
 	bb->setButtonRenderer(br);
 	
