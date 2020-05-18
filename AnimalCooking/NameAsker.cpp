@@ -9,6 +9,6 @@ void NameAsker::init()
 {
 	bg = SDLGame::instance()->getTextureMngr()->getTexture(Resources::NameAsker);
 	button = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button);
-	casillaX = SDLGame::instance()->getCasillaLength();
-	casillaY = SDLGame::instance()->getCasillaLength();
+	casillaX = SDLGame::instance()->getCasillaX();
+	casillaY = SDLGame::instance()->getCasillaY();
 }

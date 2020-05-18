@@ -8,7 +8,7 @@
 class MapState :public State{
 public:
 	MapState(AnimalCooking* ac);
-	~MapState() {}
+	~MapState();
 	static void screenLoaderCallback(AnimalCooking* ac);
 	static void backButtonCallback(AnimalCooking* ac);	
 	void draw() override;
