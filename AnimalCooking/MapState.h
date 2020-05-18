@@ -27,7 +27,8 @@ private:
 	Texture* playButtonTexture;
 	Texture* returnButtonTexture;	
 	Texture* infoBoxTexture;
+
+	string playerName;
 	int unlockedLevels;
-	int maxLevels;	
-	vector<levelInfo> levels;
+	int maxLevels;		
 };
