@@ -4,6 +4,7 @@
 #include "InsertExpel.h"
 #include "TimerViewer.h"
 #include "GameConfig.h"
+#include "GPadController.h"
 
 Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
 	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr), fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated))
@@ -70,6 +71,21 @@ void Cooker::action1(int player)
 
 void Cooker::feedback(int player)
 {
+	if (SDLGame::instance()->getOptions().showKeyToPress && state_ != CookerStates::overheated) {
+		if (state_ == CookerStates::empty) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -60), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -60), "Start Cooking", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		}
+		else if(state_ != CookerStates::cooking){
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -60), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -60), "Take dish", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+
+		}
+	}
 	if (state_ != CookerStates::empty && state_ != CookerStates::overheated) {
 		int ofset = 60;
 		int offsetInside = 15;

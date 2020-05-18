@@ -22,10 +22,11 @@ private:
 	void initKeyModifiers();
 
 	static void backButtonCallback(AnimalCooking* ac);
+	static void helperButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
 
 	Texture* textSliderMusic, * textSliderSound;
-	Entity* salir, * res, * sliderTop, * sliderBot, *changeP1, *changeP2;
+	Entity* salir, * helper, * res, * sliderTop, * sliderBot, * changeP1, * changeP2;
 
 
 	SDLGame* game_;
