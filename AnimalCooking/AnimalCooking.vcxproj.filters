@@ -161,6 +161,7 @@
     <ClCompile Include="SwitcherKeyboard.cpp" />
     <ClCompile Include="SwitcherGPad.cpp" />
     <ClCompile Include="ImageViewer.cpp" />
+    <ClCompile Include="MapConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -355,6 +356,7 @@
     <ClInclude Include="SwitcherKeyboard.h" />
     <ClInclude Include="SwitcherGPad.h" />
     <ClInclude Include="ImageViewer.h" />
+    <ClInclude Include="MapConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
