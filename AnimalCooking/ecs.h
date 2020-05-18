@@ -103,6 +103,7 @@ enum CmpId : CmpIdType {
 	MultipleAdversityManager,
 
 	levelViewer,//UI
+	CreditsViewer,
 
 	KeyboardKeySwitcher, //Config
 	KeyboardKeySwitcherViewer,
