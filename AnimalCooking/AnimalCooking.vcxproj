@@ -254,6 +254,7 @@
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="MapConfig.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="MenuButtonRenderer.h" />
@@ -422,6 +423,7 @@
     <ClCompile Include="MainMenuPadNavigation.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />
