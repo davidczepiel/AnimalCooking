@@ -19,16 +19,16 @@ struct levelInfo {
 
 class MapConfig {
 public: 
-	MapConfig();
+	MapConfig(string fileN);
 	~MapConfig() {};
 
 	void save(string filename);
-	void load(string filename);
+	void load();
 
-	const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes; }
+	const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes_; }
 
 private:
-	void fill(string filename);
-	vector <levelInfo> levelsRecipes;
-
+	void fill();
+	vector <levelInfo> levelsRecipes_;
+	string fileName_ = "";
 };

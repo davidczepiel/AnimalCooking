@@ -12,7 +12,8 @@ public:
 	static void backButtonCallback(AnimalCooking* ac);	
 	void draw() override;
 	void update() override;
-
+	void askName();
+	void loadGame();
 private:
 	SDLGame* game_;
 

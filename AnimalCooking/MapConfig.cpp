@@ -1,14 +1,12 @@
 #include "MapConfig.h"
 
-MapConfig::MapConfig()
+MapConfig::MapConfig(string fileN): fileName_(fileN), levelsRecipes_()
 {
 	fill();
 }
 
-void MapConfig::fill(string filename)
+void MapConfig::fill()
 {
-
-
 	levelInfo auxiliar;
 
 	  /////////////////////////////////////
@@ -23,7 +21,7 @@ void MapConfig::fill(string filename)
 	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
-	levelsRecipes.push_back(auxiliar);
+	levelsRecipes_.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 2		//////
@@ -37,7 +35,7 @@ void MapConfig::fill(string filename)
 	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
-	levelsRecipes.push_back(auxiliar);
+	levelsRecipes_.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 3		//////
@@ -51,7 +49,7 @@ void MapConfig::fill(string filename)
 	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
-	levelsRecipes.push_back(auxiliar);
+	levelsRecipes_.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 4		//////
@@ -65,7 +63,7 @@ void MapConfig::fill(string filename)
 	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
-	levelsRecipes.push_back(auxiliar);
+	levelsRecipes_.push_back(auxiliar);
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL 5		//////
@@ -79,8 +77,10 @@ void MapConfig::fill(string filename)
 	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
-	levelsRecipes.push_back(auxiliar);
-	load(filename);
+	levelsRecipes_.push_back(auxiliar);
+
+	//Cargar resto de datos
+	load();
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL N		//////
@@ -98,24 +98,26 @@ void MapConfig::fill(string filename)
 
 	levelsRecipes.push_back(auxiliar);*/
 }
-void MapConfig::load(string filename)
+
+void MapConfig::load()
 {
-	if (!levelsRecipes.empty())
-		levelsRecipes.clear();
-	stringstream file(filename);
-	file << "../AnimalCooking/resources/" << filename << ".txt";
-	fstream partidaGuardada(file.str().c_str(), std::ios::in);
-	int i = 0;
-	while (!partidaGuardada.eof())
+	if (!levelsRecipes_.empty()) {
+		stringstream file(fileName_);
+		file << "../AnimalCooking/resources/" << fileName_ << ".txt";
+		fstream partidaGuardada(file.str().c_str(), std::ios::in);
+		int i = 0;
 
-	{
-		partidaGuardada >> levelsRecipes.at(i).level;
-		partidaGuardada >> levelsRecipes.at(i).stars;
-		partidaGuardada >> levelsRecipes.at(i).unlocked;
-		i++;
+		if (!partidaGuardada.fail()) {
+			while (!partidaGuardada.eof())
+			{
+				partidaGuardada >> levelsRecipes_.at(i).level;
+				partidaGuardada >> levelsRecipes_.at(i).stars;
+				partidaGuardada >> levelsRecipes_.at(i).unlocked;
+				i++;
+			}			
+		}	
+		partidaGuardada.close();
 	}
-	partidaGuardada.close();
-
 }
 
 void MapConfig::save(string filename)
@@ -124,7 +126,7 @@ void MapConfig::save(string filename)
 	file << "../AnimalCooking/resources/" << filename << ".txt";
 	fstream partidaGuardada(file.str().c_str(), ios::out);
 	int i = 0;
-	for (levelInfo lI : levelsRecipes) {
+	for (levelInfo lI : levelsRecipes_) {
 		partidaGuardada << i << " " << lI.stars << " " << lI.unlocked << endl;
 		cout << i << " " << lI.stars << " " << lI.unlocked << endl;
 		i++;
