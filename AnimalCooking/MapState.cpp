@@ -4,50 +4,68 @@
 #include "ButtonRenderer.h"
 #include "ButtonBehaviour.h"
 #include "ButtonPadNavigation.h"
+#include "MapInfoBox.h"
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
-	unlockedLevels(0),
-	maxLevels(0),
-	backgroundTexture(nullptr),
-	housesBackgroundTexture(nullptr),
-	houseButtonTexture(nullptr),
-	houseButtonOverTexture(nullptr),
-	playButtonTexture(nullptr),
-	returnButtonTexture(nullptr),
-	infoBoxTexture(nullptr),
-	levelsInfo(),
-	playerName("Player"){
+	maxLevels_(0),
+	currentLevel_(0),
+	lastLevel_(0),
+	bgText_(nullptr),
+	housesBackgroundText_(nullptr),
+	playButtonText_(nullptr),
+	returnButtonText_(nullptr),
+	levelsInfo_(),
+	playerName_("Player"){
 
 		game_ = SDLGame::instance();
-		unlockedLevels = game_->getCurrenUnlockLevel();
-		maxLevels = game_->getMaxLevels();
+		maxLevels_ = game_->getMaxLevels();
 		
-		backgroundTexture = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
-		housesBackgroundTexture = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
-		houseButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStateHouseButton);
-		houseButtonOverTexture = game_->getTextureMngr()->getTexture(Resources::MapStateHouseButtonOver);
-		infoBoxTexture = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
-		playButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
-		returnButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
+		//Background textures
+		bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
+		housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
+		//Play and return buttons textures
+		playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
+		returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
 		askName();
+		init();
 }
 
 MapState::~MapState() {
-	MapConfig mapCFG(playerName);
-	mapCFG.save();
+	/*MapConfig mapCFG(playerName);
+	mapCFG.save();*/
+}
+
+void MapState::init() {
+	playButton_ = stage->addEntity();
+	returnButton_ = stage->addEntity();
+	padNavigation_ = stage->addEntity();
+
+	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
+	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);
+
+	playButton_->addComponent<Transform>(Vector2D(0,0));
+	playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
+	playButton_->addComponent<ButtonBehaviour>();
+
+	for (int x = 0; x < levelsInfo_.size(); x++) {
+		//Entity* level 
+		//levelsEntityList_
+	}	
 }
 
 void MapState::draw()
 {
-	backgroundTexture->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	State::draw();
 }
 
 void MapState::update()
 {
-	
+	if (currentLevel_ != lastLevel_) {
+		//currentLevelInfo = levelsInfo[currentLevel_];		
+	}
 }
 
 void MapState::askName() {
@@ -63,7 +81,7 @@ void MapState::loadGame() {
 	//Esto al final cuando ya se tenga el nombre del jugador -> test
 	//Mapconfig
 	MapConfig mapCFG("test");
-	levelsInfo = mapCFG.getLevelInfoRecipes();
+	levelsInfo_ = mapCFG.getLevelInfoRecipes();
 
 	//Borrado de entidades
 }

@@ -33,8 +33,8 @@ void AnimalCooking::initGame() {
 	GPadController::instance()->getPlayerGPADS();
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
-	game_->getFSM()->pushState(new MenuState /*EndState*/(this));
-	//game_->getFSM()->pushState(new MapState /*EndState*/(this));
+	//game_->getFSM()->pushState(new MenuState /*EndState*/(this));
+	game_->getFSM()->pushState(new MapState (this));
 	game_->getFSM()->refresh();
 
 }
