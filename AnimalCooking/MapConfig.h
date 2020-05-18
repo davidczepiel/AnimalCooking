@@ -5,11 +5,11 @@
 
 struct levelInfo {
 	string name = "";
-	unsigned int stars = 0;
-	string lore = "";
+	string lore = "";	
 	SDL_Rect houseBox = SDL_Rect();
 	Vector2D housePosition = Vector2D();
 	Vector2D buttonPosition = Vector2D();
+	unsigned int stars = 0;
 	bool unlocked = false;
 };
 
