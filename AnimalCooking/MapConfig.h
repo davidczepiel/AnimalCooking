@@ -2,8 +2,12 @@
 #include "Vector2D.h"
 #include "SDL_rect.h"
 #include <vector>
+#include <sstream>
+#include <iostream>
+#include <fstream>
 
 struct levelInfo {
+	int level = -1;
 	string name = "";
 	string lore = "";	
 	SDL_Rect houseBox = SDL_Rect();
@@ -24,7 +28,7 @@ public:
 	const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes; }
 
 private:
-	void fill();
+	void fill(string filename);
 	vector <levelInfo> levelsRecipes;
 
 };
