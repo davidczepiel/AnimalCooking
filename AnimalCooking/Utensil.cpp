@@ -4,6 +4,7 @@
 #include "GameLogic.h"
 #include <math.h> 
 #include "TimerViewer.h"
+#include "GPadController.h"
 
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
@@ -133,7 +134,15 @@ void Utensil::action1(int player) {
 void Utensil::feedback(int player)
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
-	if(myState != State::playerHand)feedbackVisual_->render(rect);
+	if (myState != State::playerHand) {
+		if (SDLGame::instance()->getOptions().showKeyToPress) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		}	
+		feedbackVisual_->render(rect);
+	}
 }
 
 
