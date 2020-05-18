@@ -16,7 +16,8 @@ MapState::MapState(AnimalCooking* ac) :
 	playButtonTexture(nullptr),
 	returnButtonTexture(nullptr),
 	infoBoxTexture(nullptr),
-	levelsInfo() {
+	levelsInfo(),
+	playerName("Player"){
 
 		game_ = SDLGame::instance();
 		unlockedLevels = game_->getCurrenUnlockLevel();
@@ -31,6 +32,11 @@ MapState::MapState(AnimalCooking* ac) :
 		returnButtonTexture = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
 		askName();
+}
+
+MapState::~MapState() {
+	MapConfig mapCFG(playerName);
+	mapCFG.save();
 }
 
 void MapState::draw()

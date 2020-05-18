@@ -120,10 +120,10 @@ void MapConfig::load()
 	}
 }
 
-void MapConfig::save(string filename)
+void MapConfig::save()
 {
-	stringstream file(filename);
-	file << "../AnimalCooking/resources/" << filename << ".txt";
+	stringstream file(fileName_);
+	file << "../AnimalCooking/resources/" << fileName_ << ".txt";
 	fstream partidaGuardada(file.str().c_str(), ios::out);
 	int i = 0;
 	for (levelInfo lI : levelsRecipes_) {

@@ -22,7 +22,7 @@ public:
 	MapConfig(string fileN);
 	~MapConfig() {};
 
-	void save(string filename);
+	void save();
 	void load();
 
 	const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes_; }
