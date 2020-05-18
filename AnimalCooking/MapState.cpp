@@ -5,14 +5,14 @@
 #include "ButtonBehaviour.h"
 #include "ButtonPadNavigation.h"
 
-MapState::MapState(AnimalCooking* ac): 
-	State(ac), 
-	unlockedLevels(0), 
-	maxLevels(0), 
+MapState::MapState(AnimalCooking* ac) :
+	State(ac),
+	unlockedLevels(0),
+	maxLevels(0),
 	backgroundTexture(nullptr),
 	housesBackgroundTexture(nullptr),
-	houseButtonTexture(nullptr), 
-	houseButtonOverTexture(nullptr), 
+	houseButtonTexture(nullptr),
+	houseButtonOverTexture(nullptr),
 	playButtonTexture(nullptr),
 	returnButtonTexture(nullptr),
 	infoBoxTexture(nullptr),
@@ -62,7 +62,6 @@ MapState::MapState(AnimalCooking* ac):
 		b->AddButton(backButton_, screenLoaderButton_, nullptr, nullptr, nullptr);
 		if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
 			GETCMP2(screenLoaderButton_, ButtonBehaviour)->setFocusByController(true);
-	game_->toggleFullScreen();
 }
 
 void MapState::draw()
@@ -86,6 +85,41 @@ void MapState::addUnlockedLevelsInfo(levelInfo lvl)
 void MapState::fillUnlockedLevelsInfo(vector<levelInfo>* totalUnlockedLevelsInfo)
 {
 	unlockedLevelsInfo = totalUnlockedLevelsInfo;
+}
+
+void MapState::load(string filename)
+{
+	if (!unlockedLevelsInfo->empty())
+		unlockedLevelsInfo->clear();
+	stringstream file(filename);
+	file << "../AnimalCooking/resources/" << filename << ".txt";
+	fstream partidaGuardada(file.str().c_str(), std::ios::in);
+	int i = 0;
+	while (!partidaGuardada.eof() || i < maxLevels)
+
+	{
+		unlockedLevelsInfo->push_back({});
+		partidaGuardada >> unlockedLevelsInfo->at(i).level;
+		partidaGuardada >> unlockedLevelsInfo->at(i).stars;
+		partidaGuardada >> unlockedLevelsInfo->at(i).unlocked;
+		i++;
+	}
+	partidaGuardada.close();
+
+}
+
+void MapState::save(string filename)
+{
+	stringstream file(filename);
+	file << "../AnimalCooking/resources/" << filename << ".txt";
+	fstream partidaGuardada(file.str().c_str(), ios::out);
+	int i = 0;
+	for (levelInfo lI : (*unlockedLevelsInfo)) {
+		partidaGuardada << i << " " << lI.stars << " " << lI.unlocked << endl;
+		cout << i << " " << lI.stars << " " << lI.unlocked << endl;
+		i++;
+	}
+	partidaGuardada.close();
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {

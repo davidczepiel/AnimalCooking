@@ -18,9 +18,13 @@ public:
 	MapConfig();
 	~MapConfig() {};
 
+	void save(string filename);
+	void load(string filename);
+
 	const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes; }
 
 private:
 	void fill();
 	vector <levelInfo> levelsRecipes;
+
 };
