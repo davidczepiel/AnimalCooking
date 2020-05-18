@@ -53,6 +53,8 @@ public:
 		SliderBackground,
 		SliderMovPoint,
 		ConfigBackground,
+		//---->Creditos<-----
+		LogoTenByTen,
 
 		// images all
 		Repisa,
@@ -266,6 +268,16 @@ public:
 		FireOverHeated,
 
 		// text
+			AntonioJesus,
+			Daniel,
+			David,
+			Felipe,
+			Javier,
+			Marco,
+			Nicolas,
+			Pablo,
+			Sandra,
+			Tatiana,
 		Back,
 		ToggleFullscreen,
 		MusicVolume,
@@ -351,6 +363,7 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL40,
 		QuarkCheese100,
 		QuarkCheese70,
 		QuarkCheese50

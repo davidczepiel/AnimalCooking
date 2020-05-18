@@ -1,170 +1,179 @@
-d:\github\animalcooking\animalcooking\x64\debug\vc142.pdb
-d:\github\animalcooking\animalcooking\x64\debug\vc142.idb
-d:\github\animalcooking\animalcooking\x64\debug\burnedcookeradversity.obj
-d:\github\animalcooking\animalcooking\x64\debug\binviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\binentity.obj
-d:\github\animalcooking\animalcooking\x64\debug\binadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\backgroundviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\audiomanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\attack.obj
-d:\github\animalcooking\animalcooking\x64\debug\assistantviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\assistantmotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\animator.obj
-d:\github\animalcooking\animalcooking\x64\debug\aiingredient.obj
-d:\github\animalcooking\animalcooking\x64\debug\aiclient.obj
-d:\github\animalcooking\animalcooking\x64\debug\aiassistant.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversityviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversityspawn.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversitymotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversitymanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversityloader.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversityeffect.obj
-d:\github\animalcooking\animalcooking\x64\debug\adversity.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishstackviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishstack.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishpool.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishmotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishfinisher.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\dish.obj
-d:\github\animalcooking\animalcooking\x64\debug\creditsstate.obj
-d:\github\animalcooking\animalcooking\x64\debug\cookerviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\cookersadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\cookerpool.obj
-d:\github\animalcooking\animalcooking\x64\debug\cooker.obj
-d:\github\animalcooking\animalcooking\x64\debug\converter.obj
-d:\github\animalcooking\animalcooking\x64\debug\configstate.obj
-d:\github\animalcooking\animalcooking\x64\debug\component.obj
-d:\github\animalcooking\animalcooking\x64\debug\collisionssystem.obj
-d:\github\animalcooking\animalcooking\x64\debug\collisions.obj
-d:\github\animalcooking\animalcooking\x64\debug\buttonrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\buttonpadnavigation.obj
-d:\github\animalcooking\animalcooking\x64\debug\buttonbehaviour.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodtextures.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodpooladder.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodpool.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodmotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodgiverviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodgiveradder.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodgiver.obj
-d:\github\animalcooking\animalcooking\x64\debug\fooddictionary.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodcooker.obj
-d:\github\animalcooking\animalcooking\x64\debug\foodconfig.obj
-d:\github\animalcooking\animalcooking\x64\debug\food.obj
-d:\github\animalcooking\animalcooking\x64\debug\fontsmanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\font.obj
-d:\github\animalcooking\animalcooking\x64\debug\feedback.obj
-d:\github\animalcooking\animalcooking\x64\debug\entity.obj
-d:\github\animalcooking\animalcooking\x64\debug\endstate.obj
-d:\github\animalcooking\animalcooking\x64\debug\doorrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\door.obj
-d:\github\animalcooking\animalcooking\x64\debug\dishviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\insertexpel.obj
-d:\github\animalcooking\animalcooking\x64\debug\inputhandler.obj
-d:\github\animalcooking\animalcooking\x64\debug\inoutfood.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredientviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredientspool.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredientspawn.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredientmotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredientinitializer.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingredient.obj
-d:\github\animalcooking\animalcooking\x64\debug\ingadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\hookadversity.obj
-d:\github\animalcooking\animalcooking\x64\debug\gpadcontroller.obj
-d:\github\animalcooking\animalcooking\x64\debug\gamesave.obj
-d:\github\animalcooking\animalcooking\x64\debug\gamemanageradder.obj
-d:\github\animalcooking\animalcooking\x64\debug\gamemanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\gamelogic.obj
-d:\github\animalcooking\animalcooking\x64\debug\gameloader.obj
-d:\github\animalcooking\animalcooking\x64\debug\gamecontrol.obj
-d:\github\animalcooking\animalcooking\x64\debug\gameconfig.obj
-d:\github\animalcooking\animalcooking\x64\debug\fsm.obj
-d:\github\animalcooking\animalcooking\x64\debug\orderservice.obj
-d:\github\animalcooking\animalcooking\x64\debug\ordermanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\orderadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\order.obj
-d:\github\animalcooking\animalcooking\x64\debug\multipleadversitymanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\menustate.obj
-d:\github\animalcooking\animalcooking\x64\debug\menubuttonrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\menubuttonbehaviour.obj
-d:\github\animalcooking\animalcooking\x64\debug\mapstate.obj
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.obj
-d:\github\animalcooking\animalcooking\x64\debug\manager.obj
-d:\github\animalcooking\animalcooking\x64\debug\mainmenupadnavigation.obj
-d:\github\animalcooking\animalcooking\x64\debug\main.obj
-d:\github\animalcooking\animalcooking\x64\debug\loadingbarviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\levelviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\levelinitializer.obj
-d:\github\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
-d:\github\animalcooking\animalcooking\x64\debug\jute.obj
-d:\github\animalcooking\animalcooking\x64\debug\interactive.obj
-d:\github\animalcooking\animalcooking\x64\debug\interactionrect.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdlrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdlgame.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\screenloader.obj
-d:\github\animalcooking\animalcooking\x64\debug\scoreviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\scoremanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\resources.obj
-d:\github\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
-d:\github\animalcooking\animalcooking\x64\debug\rainadversity.obj
-d:\github\animalcooking\animalcooking\x64\debug\playstate.obj
-d:\github\animalcooking\animalcooking\x64\debug\playerviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\playersadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\playermotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\playercontroller.obj
-d:\github\animalcooking\animalcooking\x64\debug\planeadversity.obj
-d:\github\animalcooking\animalcooking\x64\debug\pickable.obj
-d:\github\animalcooking\animalcooking\x64\debug\pausestate.obj
-d:\github\animalcooking\animalcooking\x64\debug\orderviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\orderserviceviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\texturesmanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\texture.obj
-d:\github\animalcooking\animalcooking\x64\debug\staticrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\state.obj
-d:\github\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
-d:\github\animalcooking\animalcooking\x64\debug\soundmanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\sliderrenderer.obj
-d:\github\animalcooking\animalcooking\x64\debug\sliderbehaviour.obj
-d:\github\animalcooking\animalcooking\x64\debug\selectorpopupentity.obj
-d:\github\animalcooking\animalcooking\x64\debug\sinkviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\sinkadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\sink.obj
-d:\github\animalcooking\animalcooking\x64\debug\shelfviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\shelfadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\shelf.obj
-d:\github\animalcooking\animalcooking\x64\debug\selectorpopup.obj
-d:\github\animalcooking\animalcooking\x64\debug\selector.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdl_macros.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdltexturesmanager.obj
-d:\github\animalcooking\animalcooking\x64\debug\sdlrendererframe.obj
-d:\github\animalcooking\animalcooking\x64\debug\walladder.obj
-d:\github\animalcooking\animalcooking\x64\debug\wall.obj
-d:\github\animalcooking\animalcooking\x64\debug\vector2d.obj
-d:\github\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\utensilspool.obj
-d:\github\animalcooking\animalcooking\x64\debug\utensilsmotion.obj
-d:\github\animalcooking\animalcooking\x64\debug\utensilsadder.obj
-d:\github\animalcooking\animalcooking\x64\debug\utensil.obj
-d:\github\animalcooking\animalcooking\x64\debug\transport.obj
-d:\github\animalcooking\animalcooking\x64\debug\transform.obj
-d:\github\animalcooking\animalcooking\x64\debug\timerviewer.obj
-d:\github\animalcooking\animalcooking\x64\debug\timer.obj
-d:\github\animalcooking\animalcooking\animalcooking.exe
-d:\github\animalcooking\animalcooking\animalcooking.ilk
-d:\github\animalcooking\animalcooking\animalcooking.pdb
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.res
-d:\github\animalcooking\\animalcooking\animalcooking.pdb
-d:\github\animalcooking\\animalcooking\animalcooking.exe
-d:\github\animalcooking\\animalcooking\animalcooking.ilk
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.command.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.read.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.write.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.command.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.read.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.write.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.command.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.read.1.tlog
-d:\github\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.write.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vc142.pdb
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vc142.idb
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\burnedcookeradversity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\binviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\binentity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\binadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\backgroundviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\audiomanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\attack.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\assistantviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\assistantmotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animator.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiingredient.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiclient.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\aiassistant.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityspawn.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversitymotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversitymanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityloader.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversityeffect.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\adversity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishstack.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishpool.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishmotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishfinisher.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dish.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cookerviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cookersadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cookerpool.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\cooker.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\converter.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\configstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\component.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\collisionssystem.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\collisions.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\buttonrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\buttonpadnavigation.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\buttonbehaviour.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodtextures.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodpooladder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodpool.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodmotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodgiverviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodgiveradder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodgiver.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fooddictionary.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodcooker.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodconfig.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\food.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fontsmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\font.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\feedback.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\entity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\endstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\doorrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\door.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\dishstackviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientspool.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientspawn.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientmotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientinitializer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredient.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\imageviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\hookadversity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gpadkeyswitcherviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gpadkeyswitcher.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gpadcontroller.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamesave.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamemanageradder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamemanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamelogic.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gameloader.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gamecontrol.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\gameconfig.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\fsm.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\foodviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menubuttonbehaviour.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mapstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\manager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\mainmenupadnavigation.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\main.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\loadingbarviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\levelviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\levelinitializer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\keyswitcher.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\keyboardkeyswitcherviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\keyboardkeyswitcher.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\keyboardcontroller.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\jute.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\interactive.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\interactionrect.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\insertexpel.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inputhandler.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\inoutfood.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ingredientviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\randomnumbergenerator.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\rainadversity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playerviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playersadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playermotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\playercontroller.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\planeadversity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\pickable.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\pausestate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderserviceviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderservice.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\ordermanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\orderadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\order.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\multipleadversitymanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menubuttonrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderbehaviour.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\selectorpopupentity.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sinkviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sinkadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sink.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\shelfviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\shelfadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\shelf.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\selectorpopup.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\selector.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdl_macros.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdltexturesmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrendererframe.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlgame.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlfontsmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sdlaudiomanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\screenloader.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoreviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\scoremanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\wall.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\vector2d.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilspool.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsmotion.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensilsadder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\utensil.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\transport.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\transform.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\timerviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\timer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\texturesmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\texture.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\switcherkeyboard.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\switchergpad.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\staticrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\state.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\srandbasedgenerator.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\soundmanager.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\sliderrenderer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\walladder.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\creditsviewer.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\creditsstate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\menustate.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\resources.obj
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.exe
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.ilk
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\animalcooking.pdb
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.res
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.pdb
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.exe
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\\animalcooking\animalcooking.ilk
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.command.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.read.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\cl.write.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.command.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.read.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\link.write.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.command.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.read.1.tlog
+c:\users\madar\desktop\uni\2º v\proyecto2\animalcooking\animalcooking\x64\debug\animalcooking.tlog\rc.write.1.tlog

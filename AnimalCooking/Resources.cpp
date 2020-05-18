@@ -4,6 +4,7 @@
 vector<Resources::FontInfo> Resources::fonts_{
 	//
 	{Basic, ARIAL12, "../AnimalCooking/resources/fonts/ARIAL.ttf", 12 },
+	{Basic, ARIAL40, "../AnimalCooking/resources/fonts/ARIAL.ttf", 40 },
 	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
 	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
 	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
@@ -25,6 +26,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
+
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
@@ -43,6 +45,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 	{Basic, ConfigBackground,"../AnimalCooking/resources/images/Menu/config.png"},
+
+	//CreditState-----------
+	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
@@ -227,10 +232,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Coger,"../AnimalCooking/resources/images/FeedBack/General/coger.png"},
 	{AllLevels, Dejar,"../AnimalCooking/resources/images/FeedBack/General/dejar.png"},
 
-	// images level specific
-	{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
-	{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
-	{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+		// images level specific
+		{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
+		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
+		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
 	// Adversities
 	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
@@ -281,7 +286,18 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic, TextureId::Back, "Return", COLOR(0x3D0000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0x3D0000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
-	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100}
+	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
+	{Basic,AntonioJesus,"Antonio Jesus Guerra Garduno",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Daniel,"Daniel Gonzalez Sellan",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,David,"David Czepiel",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Felipe,"Felipe Cuadra Plaza",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Javier,"Javier Cruz Lopez de Ochoa",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Marco,"Marco Ivan Merino Hernandez",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Nicolas,"Nicolas Fernandez Descalzo",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50}
+
 };
 
 
