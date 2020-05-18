@@ -189,6 +189,7 @@
     <ClInclude Include="CookersAdder.h" />
     <ClInclude Include="CookerViewer.h" />
     <ClInclude Include="CreditsState.h" />
+    <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="Dish.h" />
     <ClInclude Include="DishAdder.h" />
     <ClInclude Include="DishFinisher.h" />
@@ -360,6 +361,7 @@
     <ClCompile Include="CookersAdder.cpp" />
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
+    <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="Dish.cpp" />
     <ClCompile Include="DishAdder.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
