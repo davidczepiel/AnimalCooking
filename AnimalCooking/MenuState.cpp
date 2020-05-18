@@ -97,6 +97,12 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 
 	cout << "Menu State" << endl;
+	
+
+	double casillaX = SDLGame::instance()->getWindowWidth() / 16;
+	double casillaY = SDLGame::instance()->getWindowHeight() / 9;
+	SDLGame::instance()->setCasillaX(casillaX);
+	SDLGame::instance()->setCasillaY(casillaY);
 
 	backgroundRect = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
 	ruedecillaRect = RECT((SDLGame::instance()->getWindowWidth() * 850) / 1920, (SDLGame::instance()->getWindowHeight() * 923) / 1080, (SDLGame::instance()->getWindowWidth() * 192) / 1920, (SDLGame::instance()->getWindowWidth() * 195) / 1920);
@@ -126,7 +132,7 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	selectionButton_->addComponent<MenuButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 	selectionButton_->addComponent<MenuButtonBehaviour>(this, MenuButtonBehaviour::ButtonType::SelectionButton);
 
-	MainMenuPadNavigation* m =padNavigation_->addComponent<MainMenuPadNavigation>();
+	MainMenuPadNavigation* m = padNavigation_->addComponent<MainMenuPadNavigation>();
 	m->setLeftArrow(leftButton_);
 	m->setSelectButton(selectionButton_);
 	m->setRightArrow(rightButton_);

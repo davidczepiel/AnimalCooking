@@ -85,7 +85,7 @@ void Shelf::action4(int id)
 	}
 }
 //Desactiva el selector si nos movemos
-void Shelf::onMoved(int id) {
+void Shelf::onCollisionExit(int id) {
 
 	if (contentType == Resources::PickableType::Dish)
 	{

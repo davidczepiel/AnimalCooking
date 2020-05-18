@@ -6,6 +6,6 @@
 class Wall : public Entity
 {
 public:
-	Wall(Vector2D pos, Vector2D size, Texture* texture, double casilla, double thickness, EntityManager* mn);
+	Wall(Vector2D pos, Vector2D size, Texture* texture, double casillaX, const double casillaY, double thickness, EntityManager* mn);
 };
 

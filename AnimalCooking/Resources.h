@@ -51,6 +51,8 @@ public:
 		MapStateInfoBox,
 		MapStatePlayButton,
 		MapStateReturnButton,
+		LogoTenByTen,
+
 
 		SliderBackground,
 		SliderMovPoint,
@@ -65,7 +67,6 @@ public:
 		CookerCooking,
 		CookerBurned,
 		CookerCooked,
-		CookerOverHeated,
 		Platera,
 		Muro,
 		Valla,
@@ -270,8 +271,19 @@ public:
 		Carrot,
 		Sausage,
 		Puerta,
+		FireOverHeated,
 
 		// text
+			AntonioJesus,
+			Daniel,
+			David,
+			Felipe,
+			Javier,
+			Marco,
+			Nicolas,
+			Pablo,
+			Sandra,
+			Tatiana,
 		Back,
 		ToggleFullscreen,
 		MusicVolume,
@@ -279,7 +291,10 @@ public:
 
 		//Adversities
 		WarningAdversity,
-		PlaneShadow
+		PlaneShadow,
+		RainAdversity,
+		HookAdversity
+
 	};
 
 	enum Level : std::size_t {
@@ -354,6 +369,7 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL40,
 		QuarkCheese100,
 		QuarkCheese70,
 		QuarkCheese50

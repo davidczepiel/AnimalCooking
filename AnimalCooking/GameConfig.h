@@ -24,6 +24,7 @@ namespace config {
 	constexpr int SKILLET_SECONDS_TO_COOK = 10;
 	constexpr int OVEN_SECONDS_TO_COOK = 15;
 	constexpr int COOKER_ANIM_SPEED = 150;
+	constexpr int COOKER_ANIM_OVERHEATED = 150;
 
 	//DISHES
 	constexpr int DISH_MAX_INGR = 5;
@@ -80,6 +81,9 @@ namespace config {
 	constexpr int SINK_MIN_TRIES = 3;
 	constexpr int SINK_MAX_TRIES = 6;
 	constexpr int SINK_CADENCE = 333;
+
+	//CREDITS
+	constexpr double PIXELS_TO_MOVE = 1;
 
 	struct Options
 	{

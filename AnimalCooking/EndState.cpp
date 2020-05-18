@@ -9,12 +9,15 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 
 	score=SDLGame::instance()->getScore();
 	
-	double casilla = SDLGame::instance()->getCasillaLength();
+	double casillaX = SDLGame::instance()->getCasillaX();
+	double casillaY = SDLGame::instance()->getCasillaY();
 	int winHeight = SDLGame::instance()->getWindowHeight();
 	int winWidth = SDLGame::instance()->getWindowWidth();
 	int degrees = 7;
 	int nextLevelLimit = 50;
 	
+	//score = 133;
+	//maxScore = 150;
 	//Botones
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(138,
@@ -32,12 +35,12 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	Entity* ResetLevelButton = stage->addEntity();
 	stage->addToGroup(ResetLevelButton, ecs::GroupID::Layer1);
 	ResetLevelButton->addComponent<Transform>(Vector2D(
-		winWidth - 3.75 * casilla +
-		casilla / 2,
-		5 * casilla - sin(degrees)),
+		winWidth - 3.75 * casillaX +
+		casillaX / 2,
+		5 * casillaY - sin(degrees)),
 		Vector2D(),
-		casilla / 2,
-		casilla / 2,
+		casillaX / 2,
+		casillaY / 2,
 		degrees);
 	bb = ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
 	br = ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
@@ -52,13 +55,13 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		Entity* NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
-		(winWidth - 2.75 * casilla +
-			casilla / 2,
-			winHeight - 3.3 * casilla -
-			casilla / 2 + sin(degrees)),
+		(winWidth - 2.75 * casillaX +
+			casillaX / 2,
+			winHeight - 3.3 * casillaY -
+			casillaY / 2 + sin(degrees)),
 			Vector2D(),
-			casilla / 2,
-			casilla / 2,
+			casillaX / 2,
+			casillaY / 2,
 			degrees);
 		bb = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
 		br = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
@@ -91,11 +94,11 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 
 	Entity* Player1Idle = stage->addEntity();
 	Player1Idle->addComponent<Transform>(Vector2D(
-		casilla * 2,
-		winHeight - casilla * 5),
+		casillaX * 2,
+		winHeight - casillaY * 5),
 		Vector2D(),
-		4 * casilla,
-		4 * casilla,
+		4 * casillaX,
+		4 * casillaY,
 		0);
 	Animator* p1Anim = Player1Idle->addComponent<Animator>();
 	Player1Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigAttack));
@@ -104,11 +107,11 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 
 	Entity* Player2Idle = stage->addEntity();
 	Player2Idle->addComponent<Transform>(Vector2D(
-		casilla * 6,
-		winHeight - casilla * 5),
+		casillaX * 6,
+		winHeight - casillaY * 5),
 		Vector2D(),
-		4 * casilla,
-		4 * casilla,
+		4 * casillaX,
+		4 * casillaY,
 		0);
 	Animator* p2Anim = Player2Idle->addComponent<Animator>();
 	Player2Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenAttack));

@@ -103,6 +103,7 @@ enum CmpId : CmpIdType {
 	MultipleAdversityManager,
 
 	levelViewer,//UI
+	CreditsViewer,
 
 	KeyboardKeySwitcher, //Config
 	KeyboardKeySwitcherViewer,
@@ -120,12 +121,14 @@ enum CmpId : CmpIdType {
 enum GroupID : Group {
 	Layer1,
 	Layer2,
-	FoodLayer,
+	PlayerLayerAux,
 	FeedBackLayer,
+	FoodLayer,
 	PlayerLayer,
 	Valla,
 	ui,
 	topLayer,
+	
 	_LastGroupId_	//Identify the max number of groups
 };
 

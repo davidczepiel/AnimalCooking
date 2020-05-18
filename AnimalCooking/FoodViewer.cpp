@@ -12,6 +12,7 @@ void FoodViewer::draw()
 {
 	std::vector<Food*> fp = foodPool_->getPool();
 	for (auto& f : fp) {
+	if(f->getCanDraw())
 		f->draw();
 	}
 }

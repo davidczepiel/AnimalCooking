@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
+#include "TimerViewer.h"
 
 class PlaneAdversity : public Adversity
 {
@@ -17,13 +18,13 @@ class PlaneAdversity : public Adversity
 	vector<double> angles_{90.0, -90.0, 180, 0, 135, 225, 45, -45 };
 	Vector2D dir_;
 	double angle_;
-	Timer internalTimer;
+	Timer* internalTimer;
 	state state_;
 
 	void StartPlane();
 	bool isPlaneOut();
 public:
-	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam) { StartPlane(); }
+	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam), internalTimer(new Timer()) { }
 	~PlaneAdversity() {}
 	
 	void update();

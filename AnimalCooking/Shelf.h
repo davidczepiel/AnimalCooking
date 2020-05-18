@@ -26,13 +26,13 @@ public:
 	void setContentPos();
 	
 	void Swap(Transport* player, Resources::PickableType onPlayerHands);
-	virtual void action1(int id);
-	virtual void action2(int id);
-	virtual void action3(int id);
-	virtual void action4(int id);
-	virtual void action5(int id);
-	virtual void feedback(int player);
-	void onMoved(int id);
+	virtual void action1(int id) override;
+	virtual void action2(int id) override;
+	virtual void action3(int id) override;
+	virtual void action4(int id) override;
+	virtual void action5(int id) override;
+	virtual void feedback(int player) override;
+	void onCollisionExit(int id) override;
 	Pickable* getContent() { return content; }
 };
 

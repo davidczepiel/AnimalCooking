@@ -10,9 +10,9 @@
 #include "TimerViewer.h"
 
 GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
-	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casilla, const double offset, TimerViewer* tv)
+	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casillaX,int casillaY, const double offsetX, const double offsetY, TimerViewer* tv)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casilla, 8 * casilla + offset), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casillaX ,casillaY, 8 * casillaY + offsetY), player, ip);
 
 	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
@@ -21,12 +21,11 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::
 	glogic->setIngredientPool(ip);
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();
-	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casilla, 
-						jsonGeneral["Score"]["pos"]["y"].as_double() * casilla));
+	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casillaX, jsonGeneral["Score"]["pos"]["y"].as_double() * casillaY));
 
 	glogic->setLevelTimer(jsonLevel["LevelTimer"]["Time"].as_int() * 1000,
-		Vector2D(jsonGeneral["LevelTimer"]["pos"]["x"].as_double() * casilla, jsonGeneral["LevelTimer"]["pos"]["y"].as_double() * casilla),
-		Vector2D(jsonGeneral["LevelTimer"]["size"]["width"].as_double() * casilla, jsonGeneral["LevelTimer"]["size"]["height"].as_double() * casilla));
+		Vector2D(jsonGeneral["LevelTimer"]["pos"]["x"].as_double() * casillaX, jsonGeneral["LevelTimer"]["pos"]["y"].as_double() * casillaY),
+		Vector2D(jsonGeneral["LevelTimer"]["size"]["width"].as_double() * casillaX, jsonGeneral["LevelTimer"]["size"]["height"].as_double() * casillaY));
 
 	jute::jValue components = jsonLevel["GameManager"]["components"];
 	for (int c = 0; c < components.size(); ++c) {

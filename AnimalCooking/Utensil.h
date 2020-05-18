@@ -30,6 +30,7 @@ public:
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 	void resetDirtTimer();
 	Resources::UtensilType getUtensilType() { return myType; }
+	bool isDirty() { return dirty_; }
 
 protected:
 	//Estado
@@ -46,7 +47,8 @@ protected:
 	int maxTimeOnFloor_;
 
 	//Ataque
-	int range_;
+	int rangeX_;
+	int rangeY_;
 	int attackHitBoxWidth_;
 	int attackHitBoxHeight_;
 	int attackRate_;

@@ -32,7 +32,7 @@ public:
 	virtual void action4(int player) {};
 	virtual void action5(int player) {};
 	virtual void feedback(int player) {};
-	virtual void onMoved(int player) {};
+	virtual void onCollisionExit(int player) {};
 
 	void setTransports(Transport* transportP1, Transport* transportP2) {
 		player1_ = transportP1;

@@ -85,3 +85,8 @@ public:
 	CookerTimer(Uint32 ckT) : Timer() { time_ = ckT; texture_ = game_->getTextureMngr()->getTexture(Resources::CircularTimer); size_ = Vector2D(50, 50); }
 	void draw();
 };
+
+class AdversityTimer : public Timer {
+public:
+	AdversityTimer() : Timer() {}
+};

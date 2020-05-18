@@ -1,10 +1,12 @@
 #include "BurnedCookerAdversity.h"
 #include "Cooker.h"
+#include "TimerViewer.h"
 
 void BurnedCookerAdversity::StartAdversity() {
-	internalTimer.timerReset();
-	internalTimer.setTime(5000);
-	internalTimer.timerStart();
+	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	internalTimer->timerReset();
+	internalTimer->setTime(5000);
+	internalTimer->timerStart();
 
 	int rnd = SDLGame::instance()->getRandGen()->nextInt(0,cookerPool->getPool().size());
 	int i = (rnd + 1) % cookerPool->getPool().size();
@@ -12,18 +14,20 @@ void BurnedCookerAdversity::StartAdversity() {
 	while (i != rnd) {
 		if (cookerPool->getPool()[rnd]->getCookerState() == CookerStates::empty) {	//Se elige un cooker que no tenga nada dentro para quemarlo
 			targetCooker = cookerPool->getPool()[rnd];
-			targetCooker->setCookerState(CookerStates::burned);
+			targetCooker->setCookerState(CookerStates::overheated);
 			break;
 		}
 		else i = (i + 1) % cookerPool->getPool().size();
 	}
 
-	if (targetCooker == nullptr) multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
+	if (targetCooker == nullptr) {
+		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
+	}
 }
 
 void BurnedCookerAdversity::update() {
-	internalTimer.update();
-	if (internalTimer.isTimerEnd() && targetCooker != nullptr) {
+	internalTimer->update();
+	if (internalTimer->isTimerEnd() && targetCooker != nullptr) {
 		targetCooker->setCookerState(CookerStates::empty);
 		targetCooker = nullptr;
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
