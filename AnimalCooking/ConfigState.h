@@ -16,6 +16,7 @@ public:
 		delete textSliderSound;
 	}
 	virtual void update();
+	virtual void draw();
 private:
 	void initButtons();
 	void initSliders();

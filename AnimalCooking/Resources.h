@@ -22,6 +22,7 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
+		////----->Menu<---------
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -31,10 +32,15 @@ public:
 		MainMenuConfigButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,
 		ScoreBackground,
-		RectangleOutline,
+		//----->EndState<---------
+		BackgroundEndState,
+		TicketEndState,
+		BarBackgroundEndState,
+		BarEndState,
 		HomeIcon,
 		MapIcon,
 		ReplayIcon,
@@ -42,11 +48,13 @@ public:
 		Star,
 		YellowStar,
 		LimitSign,
-		LogoTenByTen,
-
-
+		//---->Config<---------
+		ButtonConfig,
 		SliderBackground,
 		SliderMovPoint,
+		ConfigBackground,
+		//---->Creditos<-----
+		LogoTenByTen,
 
 		// images all
 		Repisa,
@@ -55,9 +63,7 @@ public:
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
-		CookerCooking,
 		CookerBurned,
-		CookerCooked,
 		Platera,
 		Muro,
 		Valla,
@@ -78,10 +84,7 @@ public:
 		FregaderoON,
 		Ingrediente,
 		Panera,
-		Pedido,
 		Papelera,
-		Cerdo,
-		Pollo,
 		CuadradoAux,
 		//Barra de entregas
 		BarraDcha,

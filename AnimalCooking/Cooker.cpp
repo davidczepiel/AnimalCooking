@@ -33,7 +33,6 @@ void Cooker::setCookerState(CookerStates s) {
 	switch (s) {
 		case CookerStates::empty:  setEmptyTexture(); break;
 		case CookerStates::cooking: setCookingTexture(); break;
-		case CookerStates::cooked:  setCookedTexture(); break;
 		case CookerStates::burned:  setBurnedTexture(); break;
 		case CookerStates::overheated: setEmptyTexture(); break;
 	}

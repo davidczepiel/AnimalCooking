@@ -36,6 +36,13 @@ void ConfigState::update()
 	soundLastValue = soundValue;
 }
 
+void ConfigState::draw()
+{
+	SDL_Rect d = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
+	SDLGame::instance()->getTextureMngr()->getTexture(Resources::ConfigBackground)->render(d);
+	State::draw();
+}
+
 void ConfigState::initButtons()
 {
 	//Back button
@@ -45,7 +52,7 @@ void ConfigState::initButtons()
 		Vector2D(game_->getWindowWidth() / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	ButtonBehaviour* bb = salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::Back));
 	bb->setButtonRenderer(br);
 
@@ -57,7 +64,7 @@ void ConfigState::initButtons()
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	res->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getIfFullscreen());
-	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
 	bb->setButtonRenderer(br);
 
@@ -69,7 +76,7 @@ void ConfigState::initButtons()
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
 	helper->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getOptions().showKeyToPress);
-	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button),
+	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::ToggleHelper));
 	bb->setButtonRenderer(br);
 	
@@ -97,8 +104,8 @@ void ConfigState::initSliders()
 	sliderBot->addComponent<SliderRenderer>();
 	sliderSound_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.sounds_ / 128.0);
 
-	textSliderMusic = new Texture(game_->getRenderer(), "Music Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0x000000ff) });
-	textSliderSound = new Texture(game_->getRenderer(), "Sound Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0x000000ff) });
+	textSliderMusic = new Texture(game_->getRenderer(), "Music Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0xFFFFFFff) });
+	textSliderSound = new Texture(game_->getRenderer(), "Sound Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0xFFFFFFff) });
 
 	Entity* sliderText1 = stage->addEntity();
 	stage->addToGroup(sliderText1, ecs::GroupID::ui);
