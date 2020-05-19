@@ -7,19 +7,19 @@
 #include "SDL_macros.h"
 #include "ButtonPadNavigation.h"
 
-EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::instance()->getMaxScore()) {
+EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::instance()->getMaxScore()) {
 
-	score=SDLGame::instance()->getScore();
+	score = SDLGame::instance()->getScore();
 
-	background= SDLGame::instance()->getTextureMngr()->getTexture(Resources::BackgroundEndState);
+	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BackgroundEndState);
 
 	double casillaX = SDLGame::instance()->getCasillaX();
 	double casillaY = SDLGame::instance()->getCasillaY();
 	int winHeight = SDLGame::instance()->getWindowHeight();
 	int winWidth = SDLGame::instance()->getWindowWidth();
 	int degrees = 7;
-	int nextLevelLimit = 50;
-	
+	int nextLevelLimit = 45;
+
 	/*score = 120;
 	maxScore = 150;*/
 
@@ -27,7 +27,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	//createPlayers();
 	//Creamos la barra de carga con el texto
 	Entity* lv = stage->addEntity();
-	lv->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 75, 95,(double)(score)/maxScore);
+	lv->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 85, (double)(score) / maxScore);
 	stage->addToGroup(lv, ecs::GroupID::ui);
 
 
@@ -70,6 +70,8 @@ void EndState::createButtons()
 	int nextLevelLimit = 50;
 	int degrees = 7;
 
+	//Entity* buttonPadNavigation = stage->addEntity();
+	//ButtonPadNavigation* padNav = buttonPadNavigation->addComponent<ButtonPadNavigation>();
 	//------------------>Volver al MapState<---------------------
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(138,
@@ -100,8 +102,9 @@ void EndState::createButtons()
 
 	//------------------>Siguiente nivel<---------------------
 	//Si el score es el suficiente para pasar al siguiente nivel
-		Entity* NextLevelButton = nullptr;
+	Entity* NextLevelButton = nullptr;
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
+		//padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 		NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
@@ -137,14 +140,13 @@ void EndState::createButtons()
 	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
 	bb->setButtonRenderer(br);
 	//------------------>Navegación por mando<---------------------
-	Entity* buttonPadNavigation = stage->addEntity();
-	ButtonPadNavigation* padNav =buttonPadNavigation->addComponent<ButtonPadNavigation>();
-	padNav->AddButton(NextLevelButton,nullptr,returnToMapButton,ResetLevelButton,nullptr);                   //NextLevel
-	padNav->AddButton(ResetLevelButton,nullptr,returnToMapButton,returnToMapButton,NextLevelButton);         //RestartLevel
-	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
-	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
-	//if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
+	//padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
+	//padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
+	//padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
+	//if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton!= nullptr)
 	//	GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
+	//else if((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton == nullptr)
+	//	GETCMP2(ResetLevelButton, ButtonBehaviour)->setFocusByController(true);
 
 }
 

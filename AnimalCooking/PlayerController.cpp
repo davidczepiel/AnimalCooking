@@ -25,7 +25,7 @@ void PlayerController::joystickUpdate()
 	GPadController* gpad = GPadController::instance();
 	//if (gpad->joysticksInitialised()) {
 	double x = 0, y = 0;	//interactive
-	double speed = 0.4;
+	double speed = 0.6;
 
 	//Axis------------------------
 	double Xvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);

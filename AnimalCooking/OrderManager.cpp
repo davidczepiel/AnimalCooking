@@ -56,8 +56,8 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
 		}	
-		else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
-			scoreManager_->addScore((*it)->getNumIngs() * -7.5);
+		//else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
+		//	scoreManager_->addScore((*it)->getNumIngs() * -1.5);
 
 		(*it)->removeTimer();
 		delete* it;
