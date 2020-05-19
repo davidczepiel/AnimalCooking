@@ -22,6 +22,7 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
+		////----->Menu<---------
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -31,10 +32,15 @@ public:
 		MainMenuConfigButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,
 		ScoreBackground,
-		RectangleOutline,
+		//----->EndState<---------
+		BackgroundEndState,
+		TicketEndState,
+		BarBackgroundEndState,
+		BarEndState,
 		HomeIcon,
 		MapIcon,
 		ReplayIcon,
@@ -42,10 +48,13 @@ public:
 		Star,
 		YellowStar,
 		LimitSign,
-
-
+		//---->Config<---------
+		ButtonConfig,
 		SliderBackground,
 		SliderMovPoint,
+		ConfigBackground,
+		//---->Creditos<-----
+		LogoTenByTen,
 
 		// images all
 		Repisa,
@@ -54,9 +63,7 @@ public:
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
-		CookerCooking,
 		CookerBurned,
-		CookerCooked,
 		Platera,
 		Muro,
 		Valla,
@@ -77,10 +84,7 @@ public:
 		FregaderoON,
 		Ingrediente,
 		Panera,
-		Pedido,
 		Papelera,
-		Cerdo,
-		Pollo,
 		CuadradoAux,
 		//Barra de entregas
 		BarraDcha,
@@ -228,8 +232,8 @@ public:
 			VerContenidoPlato,
 			EntregarPedido,
 			PapeleraFeedBack,
-			Coger,
-			Dejar,
+			BordeTeclaFeedBack,
+			RellenoTeclaFeedBack,
 
 		// images level specific
 		Arroz,
@@ -264,10 +268,28 @@ public:
 		FireOverHeated,
 
 		// text
+			AntonioJesus,
+			Daniel,
+			David,
+			Felipe,
+			Javier,
+			Marco,
+			Nicolas,
+			Pablo,
+			Sandra,
+			Tatiana,
 		Back,
 		ToggleFullscreen,
+		ToggleHelper,
 		MusicVolume,
 		SoundVolume,
+		PickUpText,
+		AttackText,
+		OpenText,
+		FinishText,
+		NextText,
+		PreviousText,
+
 
 		//Adversities
 		WarningAdversity,
@@ -349,6 +371,8 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL50,
+		ARIAL40,
 		QuarkCheese100,
 		QuarkCheese70,
 		QuarkCheese50

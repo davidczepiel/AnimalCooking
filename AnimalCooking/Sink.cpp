@@ -40,3 +40,20 @@ void Sink::action1(int iDp) {
 		sV->setOnAction(false);
 	}
 }
+
+void Sink::feedback(int iDp)
+{
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
+
+	Transport* player;
+	if (iDp == 0) player = player1_;
+	else player = player2_;
+	if (player->getObjectTypeInHands() == Resources::PickableType::Utensil && static_cast<Utensil*>(player->getObjectInHands())->isDirty()) {
+		if (GPadController::instance()->playerControllerConnected(iDp))
+			SDLGame::instance()->renderFeedBack(position_, "Clean it", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[iDp].PICKUP));
+		else
+			SDLGame::instance()->renderFeedBack(position_, "Clean it", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[iDp].PICKUP));
+
+	}
+}

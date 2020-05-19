@@ -1,9 +1,10 @@
 #include "OrderService.h"
+#include "GPadController.h"
 
 OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng) :
 	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr)
 {
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::EntregarPedido);
+	feedbackVisual_ = nullptr;
 }
 
 void OrderService::action1(int id)
@@ -28,7 +29,6 @@ void OrderService::action1(int id)
 			delete finalProduct; //Llamo a la destructora del dish, la cual por si misma se elimina y se saca de la dishPool
 		}
 	}
-
 }
 
 bool OrderService::canService(int id) {
@@ -43,7 +43,7 @@ bool OrderService::canService(int id) {
 	if (player->getObjectTypeInHands() == Resources::PickableType::Dish) {
 		Dish* finalProduct = static_cast<Dish*>(player->getObjectInHands());
 		vector<Food*>* foods = &finalProduct->getFoodVector();
-		//El plato debe tener 1 solo elemento dentro, porque si no sé que no está terminado
+		//El plato debe tener 1 solo elemento dentro, porque si no sï¿½ que no estï¿½ terminado
 		if (foods->size() == 1)
 		{
 			return true;
@@ -55,23 +55,17 @@ bool OrderService::canService(int id) {
 
 void OrderService::feedback(int id)
 {
-	//Obtengo el transport del jugador que me interesa
-	Transport* player;
-	if (id == 0)
-		player = player1_;
-	else
-		player = player2_;
+	if (!SDLGame::instance()->getOptions().showKeyToPress)
+		return;
 
-	//Si el player tiene en la mano un plato con un solo elemento
-	if (canService(id)) {
-		Dish* finalProduct = static_cast<Dish*>(player->getObjectInHands());
-		vector<Food*>* foods = &finalProduct->getFoodVector();
-		Resources::FoodType type = foods->at(0)->getType();
-		//Pregunto al orderManager si a alquien lo ha pedido, si lo ha hecho dibujo el feedback
-		if (orderMngr->someOneWantsThis(type)) {
-			SDL_Rect r = RECT(position_.getX() -100, position_.getY() , 128, 32);
-			feedbackVisual_->render(r);
-		}
+	Transport* player;
+	if (id == 0) player = player1_;
+	else player = player2_;
+	if (player->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player->getObjectInHands())->getFoodVector().size() == 1) {
+		if (GPadController::instance()->playerControllerConnected(id))
+			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP));
+		else
+			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));
 	}
 
 

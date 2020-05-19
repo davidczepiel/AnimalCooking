@@ -82,10 +82,12 @@ public:
 			SDL_SetWindowSize(window_, width_, height_ - 60);
 			SDL_SetWindowFullscreen(window_, 0);
 			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
+			imFullscreen = false;
 		}
 		else {
 			SDL_SetWindowSize(window_, width_, height_);
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
+			imFullscreen = true;
 		}
 	}
 
@@ -119,6 +121,9 @@ public:
 
 	config::Options& getOptions() { return options_; }
 
+	void renderFeedBack(const Vector2D& pos, const string& msg, const string& key);
+	inline const bool& getIfFullscreen() const { return imFullscreen; }
+
 private:
 	SDLGame(string windowTitle_, int width, int height);
 
@@ -149,7 +154,7 @@ protected:
 	Entity* timersViewer_;
 
 	config::Options options_;
-
+	bool imFullscreen;
 	static unique_ptr<SDLGame> instance_;
 
 };

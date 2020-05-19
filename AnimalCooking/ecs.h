@@ -94,6 +94,7 @@ enum CmpId : CmpIdType {
 	MenuButtonBehaviour,
 	MainMenuPadNavigation,
 	ButtonPadNavigation,
+	ButtonChangeOnClick,
 
 	SliderBehaviour,	//Sliders
 	SliderRenderer,
@@ -103,6 +104,7 @@ enum CmpId : CmpIdType {
 	MultipleAdversityManager,
 
 	levelViewer,//UI
+	CreditsViewer,
 
 	KeyboardKeySwitcher, //Config
 	KeyboardKeySwitcherViewer,

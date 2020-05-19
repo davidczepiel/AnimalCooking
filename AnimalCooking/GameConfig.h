@@ -82,6 +82,9 @@ namespace config {
 	constexpr int SINK_MAX_TRIES = 6;
 	constexpr int SINK_CADENCE = 333;
 
+	//CREDITS
+	constexpr double PIXELS_TO_MOVE = 1;
+
 	struct Options
 	{
 		Options() {
@@ -128,6 +131,8 @@ namespace config {
 		std::array<KeyboardKeys, 2> players_keyboardKeys;
 		std::array<GPadButtons, 2> players_gPadButtons;
 		Volume volume;
+
+		bool showKeyToPress = true;
 	};
 }
 
