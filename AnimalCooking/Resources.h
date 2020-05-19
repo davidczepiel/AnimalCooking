@@ -35,6 +35,8 @@ public:
 		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,
+		UtensilTimerBackground,
+		UtensilTimerForeground,
 		ScoreBackground,
 		//----->EndState<---------
 		BackgroundEndState,

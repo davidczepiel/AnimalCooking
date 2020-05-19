@@ -31,6 +31,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
+	{Basic, UtensilTimerBackground,"../AnimalCooking/resources/images/gotaSinCarga.png"},
+	{Basic, UtensilTimerForeground,"../AnimalCooking/resources/images/gotaCarga.png"},
 	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
 	
 	//----->EndState<---------
