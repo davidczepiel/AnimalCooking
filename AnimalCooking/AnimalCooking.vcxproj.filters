@@ -162,6 +162,8 @@
     <ClCompile Include="SwitcherGPad.cpp" />
     <ClCompile Include="ImageViewer.cpp" />
     <ClCompile Include="ButtonChangeOnClick.cpp" />
+    <ClCompile Include="CreditsViewer.cpp" />
+    <ClCompile Include="AdversityAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -357,6 +359,8 @@
     <ClInclude Include="SwitcherGPad.h" />
     <ClInclude Include="ImageViewer.h" />
     <ClInclude Include="ButtonChangeOnClick.h" />
+    <ClInclude Include="CreditsViewer.h" />
+    <ClInclude Include="AdversityAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

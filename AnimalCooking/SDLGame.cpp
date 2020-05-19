@@ -59,7 +59,7 @@ void SDLGame::initSDL() {
 	assert(sdlRenderClear_ret != -1);
 	SDL_RenderPresent(renderer_);
 
-	toggleFullScreen();
+	//toggleFullScreen();
 
 	// hide cursor by default
 	//SDL_ShowCursor(0);
