@@ -1,5 +1,6 @@
 #include "DishMotion.h"
 #include "Entity.h"
+#include "Dish.h"
 
 DishMotion::DishMotion() :Component(ecs::DishMotion)
 {

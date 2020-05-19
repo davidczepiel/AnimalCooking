@@ -8,13 +8,15 @@
 #include "Selector.h"
 #include "InteractionRect.h"
 #include "TimerViewer.h"
+#include "DishPool.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
 
-OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general, std::array<Entity*, 2>& player, Entity* gameManager, const double casillaX, const double casillaY, TimerViewer* tv)
+OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& general,
+	std::array<Entity*, 2>& player, Entity* gameManager, const double casillaX, const double casillaY, TimerViewer* tv, DishPool* dp)
 {
-	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
+	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em, dp);
 
 
 	em->addEntity(os);

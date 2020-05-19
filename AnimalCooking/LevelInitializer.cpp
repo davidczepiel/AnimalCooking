@@ -159,7 +159,7 @@ void LevelInitializer::initialize_bin()
 void LevelInitializer::initialize_dishes()
 {
 	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casillaX,casillaY);
-
+	dp = da.getDishPool();
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
 	sL->updateLength();
@@ -214,7 +214,7 @@ void LevelInitializer::initialize_levelIngredients()
 
 void LevelInitializer::initialize_clients()
 {
-	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY, tv_);
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY, tv_, dp);
 
 	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 

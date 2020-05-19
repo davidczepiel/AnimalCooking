@@ -1,8 +1,8 @@
 #include "OrderService.h"
 #include "GPadController.h"
 
-OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng) :
-	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr)
+OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng, DishPool* dp) :
+	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr), dp(dp)
 {
 	feedbackVisual_ = nullptr;
 }
@@ -26,7 +26,8 @@ void OrderService::action1(int id)
 			Dish* finalProduct = static_cast<Dish*>(player->getObjectInHands());
 			player->drop(false);
 			finalProduct->clearFoods();
-			delete finalProduct; //Llamo a la destructora del dish, la cual por si misma se elimina y se saca de la dishPool
+
+			dp->removeDish(finalProduct);
 		}
 	}
 }
@@ -42,9 +43,8 @@ bool OrderService::canService(int id) {
 	//Pregunto si tiene un plato porque solo puedo trabajar con eso
 	if (player->getObjectTypeInHands() == Resources::PickableType::Dish) {
 		Dish* finalProduct = static_cast<Dish*>(player->getObjectInHands());
-		vector<Food*>* foods = &finalProduct->getFoodVector();
 		//El plato debe tener 1 solo elemento dentro, porque si no s� que no est� terminado
-		if (foods->size() == 1)
+		if (finalProduct->getFoodVector().size() == 1)
 		{
 			return true;
 		}

@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include "Timer.h"
+#include "DishPool.h"
 class EntityManager;
 class Entity;
 class ScreenLoader;
@@ -51,6 +52,7 @@ private:
 
 	ScreenLoader* sL;
 	TimerViewer* tv_;
+	DishPool* dp;
 
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;
