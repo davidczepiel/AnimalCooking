@@ -30,7 +30,7 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 		vel = Vector2D((i->getPos() - t1_->getPos()).normalize() * i->getMaxVel());
 		i->setLastVel(vel);
 	}
-	else if (distance2 < rangeX && distance2>rangeY) {
+	else if (distance2 < rangeX && distance2 < rangeY) {
 		i->setState(Escaping);
 		vel = vel + Vector2D((i->getPos() - t2_->getPos()).normalize() * i->getMaxVel());
 		i->setLastVel(vel);
