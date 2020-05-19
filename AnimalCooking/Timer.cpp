@@ -53,8 +53,8 @@ UtensilTimer::UtensilTimer(): Timer() {
 
 UtensilTimer::UtensilTimer(Uint32 time) : Timer()
 {
-	texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
-	outlineText_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground);
+	texture_ = game_->getTextureMngr()->getTexture(Resources::UtensilTimerForeground);
+	outlineText_ = game_->getTextureMngr()->getTexture(Resources::UtensilTimerBackground);
 	clip.x = 0;
 	clip.y = 0;
 	clip.w = texture_->getWidth();

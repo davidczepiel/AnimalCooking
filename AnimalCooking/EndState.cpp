@@ -20,8 +20,8 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	int degrees = 7;
 	int nextLevelLimit = 50;
 	
-	score = 120;
-	maxScore = 150;
+	/*score = 120;
+	maxScore = 150;*/
 
 	createButtons();
 	//createPlayers();

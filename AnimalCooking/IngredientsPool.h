@@ -10,7 +10,7 @@ class IngredientsPool : public Component
 {
 public:
 	IngredientsPool() : Component(ecs::IngredientsPool) {
-		ingredients_.reserve(10);
+		ingredients_.reserve(20);
 	}
 	~IngredientsPool();
 

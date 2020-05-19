@@ -153,8 +153,8 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedPotatoFeedBack);
 	}
 	SlicedPotato() : Food(Resources::FoodType::SlicedPotato) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedCheeseT);
-		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedCheeseFeedBack);
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedPotatoT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedPotatoFeedBack);
 	}
 };
 class SlicedSausage : public Food
