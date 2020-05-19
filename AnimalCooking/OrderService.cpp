@@ -61,11 +61,22 @@ void OrderService::feedback(int id)
 	Transport* player;
 	if (id == 0) player = player1_;
 	else player = player2_;
-	if (player->getObjectTypeInHands() == Resources::PickableType::Dish && static_cast<Dish*>(player->getObjectInHands())->getFoodVector().size() == 1) {
-		if (GPadController::instance()->playerControllerConnected(id))
-			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP));
-		else
-			SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));
+
+	if (player->getObjectTypeInHands() == Resources::PickableType::Dish) {
+
+		Dish* finalProduct = static_cast<Dish*>(player->getObjectInHands());
+		vector<Food*> foods = finalProduct->getFoodVector();
+		Resources::FoodType type = foods.at(0)->getType();
+
+		if (orderMngr->someOneWantsThis(type) && foods.size()==1) {
+
+			if (GPadController::instance()->playerControllerConnected(id))
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", 
+					SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP));
+			else
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order", 
+					SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));
+		}
 	}
 
 
