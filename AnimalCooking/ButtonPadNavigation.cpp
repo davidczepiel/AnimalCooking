@@ -3,7 +3,7 @@
 #include "SliderBehaviour.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
-	xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
+xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
 {
 }
 
@@ -42,7 +42,7 @@ void ButtonPadNavigation::update() {
 		if (gpad->playerControllerConnected(playerToListen) && gpad->isAnyButtonJustPressed()) {
 			horizontalInput();
 			verticalInput();
-			if (gpad->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_A)) 
+			if (gpad->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_A))
 				action();
 		}
 	}
@@ -58,7 +58,7 @@ void ButtonPadNavigation::horizontalInput() {
 			horizontalMove(1);
 	}
 	else {
-		if(GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+		if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
 			horizontalMove(-1);
 		else if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
 			horizontalMove(1);
@@ -83,13 +83,13 @@ void ButtonPadNavigation::verticalInput() {
 }
 
 void ButtonPadNavigation::action() {
-	
+
 	if (focus.posibleFocus) {
 		SliderBehaviour* s = GETCMP2(focus.e, SliderBehaviour);
 		if (s != nullptr) {
-			focushing = !focushing;	
+			focushing = !focushing;
 			s->setPadNavEnable(focushing); //Si estoy en un slider
-		}	
+		}
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
@@ -120,14 +120,15 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		if (b) b->setFocusByController(false);
 		if (xValue < 0) {
 			if (focus.left != nullptr) {
+				if (b) b->setFocusByController(false);
 				changeFocus(focus.left);
 			}
 		}
 		else {
 			if (focus.right != nullptr) {
+				if (b) b->setFocusByController(false);
 				changeFocus(focus.right);
 			}
 		}

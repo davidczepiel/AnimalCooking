@@ -4,6 +4,8 @@
 #include "PlayerViewer.h"
 #include "Transform.h"
 #include "Animator.h"
+#include "SDL_macros.h"
+#include "ButtonPadNavigation.h"
 
 EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::instance()->getMaxScore()) {
 
@@ -98,8 +100,9 @@ void EndState::createButtons()
 
 	//------------------>Siguiente nivel<---------------------
 	//Si el score es el suficiente para pasar al siguiente nivel
+		Entity* NextLevelButton = nullptr;
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
-		Entity* NextLevelButton = stage->addEntity();
+		NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
 		(winWidth - 2.5 * casillaX +
@@ -133,6 +136,16 @@ void EndState::createButtons()
 	bb = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
 	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
 	bb->setButtonRenderer(br);
+	//------------------>Navegación por mando<---------------------
+	Entity* buttonPadNavigation = stage->addEntity();
+	ButtonPadNavigation* padNav =buttonPadNavigation->addComponent<ButtonPadNavigation>();
+	padNav->AddButton(NextLevelButton,nullptr,returnToMapButton,ResetLevelButton,nullptr);                   //NextLevel
+	padNav->AddButton(ResetLevelButton,nullptr,returnToMapButton,returnToMapButton,NextLevelButton);         //RestartLevel
+	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
+	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
+	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
+		GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
+
 }
 
 void EndState::createPlayers()
