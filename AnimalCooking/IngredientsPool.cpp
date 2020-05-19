@@ -14,6 +14,8 @@ void IngredientsPool::addIngredient(Ingredient* i)
 	std::vector<Ingredient*>::iterator it = ingredients_.end();
 	--it;
 	i->setInVector(it, this);
+	//cout <<"ADD    "<<"Size: "<< ingredients_.size()<< "Capacity: "<< ingredients_.capacity() <<endl;
+
 }
 
 void IngredientsPool::clearIngredients()
@@ -31,4 +33,6 @@ void IngredientsPool::deleteIngredient(vector<Ingredient*>::iterator it) {
 	i->setIt(it);
 	iter_swap(it, --ingredients_.end());
 	ingredients_.pop_back();
+	//cout <<"DELETE        "<< "Size: " << ingredients_.size() << "Capacity: " << ingredients_.capacity() << endl;
+
 }

@@ -143,8 +143,8 @@ void EndState::createButtons()
 	padNav->AddButton(ResetLevelButton,nullptr,returnToMapButton,returnToMapButton,NextLevelButton);         //RestartLevel
 	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
 	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
-	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
-		GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
+	//if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
+	//	GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
 
 }
 
