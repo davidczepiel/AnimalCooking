@@ -20,6 +20,9 @@ MapState::MapState(AnimalCooking* ac) :
 
 		game_ = SDLGame::instance();
 		maxLevels_ = game_->getMaxLevels();
+			casillaX = game_->getCasillaX();
+	casillaY = game_->getCasillaY();
+
 		
 		//Background textures
 		bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
@@ -45,13 +48,13 @@ void MapState::init() {
 	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);
 
-	playButton_->addComponent<Transform>(Vector2D(0,0));
-	playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
-	playButton_->addComponent<ButtonBehaviour>();
+	//playButton_->addComponent<Transform>(Vector2D(0,0));
+	//playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
+	//playButton_->addComponent<ButtonBehaviour>();
 
-	returnButton_->addComponent<Transform>(Vector2D(0, 0));
-	returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
-	returnButton_->addComponent<ButtonBehaviour>();
+	//returnButton_->addComponent<Transform>(Vector2D(0, 0));
+	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
+	//returnButton_->addComponent<ButtonBehaviour>();
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
 		//Entity* level 
@@ -67,6 +70,7 @@ void MapState::draw()
 
 void MapState::update()
 {
+	State::update();
 	if (currentLevel_ != lastLevel_) {
 		//currentLevelInfo = levelsInfo[currentLevel_];		
 	}
@@ -74,10 +78,20 @@ void MapState::update()
 
 void MapState::askName() {
 	//A�adir entidades para introducir nombre
+	Entity* inputButton = stage->addEntity();
+	inputButton->addComponent<Transform>(
+		Vector2D(3 * casillaX, 5 * casillaY),
+		Vector2D(),
+		2 * casillaX,
+		casillaY,
+		0
+		);
+	//inputButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button));
+	//inputButton->addComponent<ButtonBehaviour>(, app);
 	Entity* nameAsker = stage->addEntity();
 	nameAsker->addComponent<NameAsker>();
 	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
-	
+
 }
 
 void MapState::loadGame() {

@@ -26,7 +26,7 @@ private:
 	Entity* returnButton_;
 	Entity* padNavigation_;
 
-	vector<levelInfo> levelsInfo_;	//Total de información de cada nivel incluido en el mapstate
+	vector<levelInfo> levelsInfo_;	//Total de informaciï¿½n de cada nivel incluido en el mapstate
 
 	Texture* bgText_;
 	Texture* housesBackgroundText_; 
@@ -36,5 +36,7 @@ private:
 	string playerName_;
 	int currentLevel_;
 	int lastLevel_;
-	int maxLevels_;		
+	int maxLevels_;	
+	double casillaX;
+	double casillaY;	
 };
