@@ -22,10 +22,9 @@ void DishViewer::draw()
 
 		//se renderizan los alimentos del plato		
 		//Colocamos la comida formando un circulo dentro del plato
+		//Si solo hay una comida se coloca en el centro
 		int k = 180;
-		vector<Food*>& foods = (i)->getFoodVector();
-		if (foods.size() > 10)
-			int i = 0;
+		vector<Food*>& foods = (i)->getFoodVector();		
 		
 		for (auto &it : (i)->getFoodVector())
 		{								
@@ -47,7 +46,6 @@ void DishViewer::draw()
 			}
 
 			k += 360 / foods.size();
-		}
-				
+		}				
 	}
 }
