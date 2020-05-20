@@ -25,8 +25,10 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
-	returnButtonText_(nullptr),
-	infoBox_(nullptr),
+	returnButtonText_(nullptr), 
+	maxLevels_(0),
+	currentLevel_(0),
+	lastLevel_(0),
 	playerName_("Player") {
 
 	game_ = SDLGame::instance();
