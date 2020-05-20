@@ -44,7 +44,7 @@ void NameAsker::update()
 				nameStream.str(aux);
 				nameStream.seekp(0, nameStream.end);
 			}
-			else if (keycode == SDLK_RETURN && nameStream.str().size() > 0)
+			else if (keycode == SDLK_RETURN && nameStream.str().size() > 1)
 			{
 				MapState* mapState = static_cast<MapState*>(game_->getFSM()->currentState());
 				active = false;

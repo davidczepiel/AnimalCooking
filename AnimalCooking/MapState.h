@@ -6,7 +6,6 @@
 #include "MapInfoBoxViewer.h"
 
 class MapLevel;
-class MapPool;
 
 class MapState :public State{
 public:

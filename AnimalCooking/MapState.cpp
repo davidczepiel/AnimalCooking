@@ -17,28 +17,28 @@ MapState::MapState(AnimalCooking* ac) :
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	returnButtonText_(nullptr),
-	playerName_("Player"){
+	playerName_("Player") {
 
-		game_ = SDLGame::instance();
-		maxLevels_ = game_->getMaxLevels();
-		casillaX = game_->getCasillaX();
-		casillaY = game_->getCasillaY();
-		
-		//Background textures
-		bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
-		housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
-		//Play and return buttons textures
-		playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
-		returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
+	game_ = SDLGame::instance();
+	maxLevels_ = game_->getMaxLevels();
+	casillaX = game_->getCasillaX();
+	casillaY = game_->getCasillaY();
 
-		//Recogertexturabotones
+	//Background textures
+	bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
+	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
+	//Play and return buttons textures
+	playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
+	returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
-		//MapPool
-		Entity* pool = stage->addEntity();
-		pool->addComponent<MapPool>();
+	//Recogertexturabotones
 
-		askName();
-		init();
+	//MapPool
+	Entity* pool = stage->addEntity();
+	pool->addComponent<MapLevelPool>();
+
+	askName();
+	init();
 }
 
 MapState::~MapState() {
@@ -64,7 +64,7 @@ void MapState::init() {
 	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
 	//returnButton_->addComponent<ButtonBehaviour>();
 
-	
+
 }
 
 void MapState::draw()
@@ -92,14 +92,27 @@ void MapState::loadGame() {
 	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
 
 
-	for (int x = 0; x < levelsInfo_.size(); x++) {
-		Entity* level = stage->addEntity();
-		level->addComponent<ButtonBehaviour>();
-		level->addComponent<ButtonRenderer>();
-		level->addComponent<MapLevel>();
-		//levelsEntityList_
-	}
+	//for (int x = 0; x < levelsInfo_.size(); x++) {
+	//	Entity* level = stage->addEntity();
+	//	level->addComponent<ButtonBehaviour>();
+	//	level->addComponent<ButtonRenderer>();
+	//	level->addComponent<MapLevel>();
+	//	//levelsEntityList_
+	//}
+
 	infoBox_ = stage->addEntity();
+	//playButton_ = stage->addEntity();
+	//playButton_->addComponent<Transform>(
+	//	Vector2D(3 * casillaX, 1.5 * casillaY),
+	//	Vector2D(),
+	//	3 * casillaX,
+	//	1.5 * casillaY,
+	//	0
+	//	);
+	//playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback,app);
+	//playButton_->addComponent<ButtonRenderer>(playButtonText_,nullptr);
+	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
+	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
 	infoBox_->addComponent<MapInfoBoxViewer>();
 }
 
