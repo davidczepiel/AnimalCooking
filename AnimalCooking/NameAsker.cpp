@@ -54,3 +54,12 @@ void NameAsker::update()
 		}
 	}
 }
+
+inline void NameAsker::setActive(bool a)
+{
+	active = a;
+	if (active) {
+		nameStream.clear();
+		nameStream << ' ';
+	}
+}

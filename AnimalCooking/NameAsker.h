@@ -11,6 +11,7 @@ public:
 	virtual void init()override;
 	virtual void update()override;
 
+	inline void setActive(bool a);
 private:
 	Texture* bg;
 	stringstream nameStream;
