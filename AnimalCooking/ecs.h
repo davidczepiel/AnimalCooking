@@ -87,6 +87,7 @@ enum CmpId : CmpIdType {
 	PhysicsPool,
 
 	ButtonBehaviour, //Buttons
+	ButtonBehaviourNC,
 	ButtonRenderer,
 	ButtonsViewer,
 	ButtonDirector,
@@ -115,7 +116,6 @@ enum CmpId : CmpIdType {
 	MapInfoBoxViewer,
 	MapLevel,
 	MapLevelPool,
-
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

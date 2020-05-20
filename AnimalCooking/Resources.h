@@ -51,6 +51,7 @@ public:
 		MapStateInfoBox,
 		MapStatePlayButton,
 		MapStateReturnButton,
+		MapRestaurantButton,
 		LogoTenByTen,
 
 

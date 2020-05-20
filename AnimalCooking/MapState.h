@@ -4,9 +4,7 @@
 #include <vector>
 #include "NameAsker.h"
 #include "MapInfoBoxViewer.h"
-
-class MapLevel;
-class MapPool;
+#include "ButtonPadNavigation.h"
 
 class MapState :public State{
 public:
@@ -21,15 +19,19 @@ public:
 	void init();
 	void askName();
 	void loadGame();
+	void saveGame();
 
 private:
+	void configPadNavigation();
+
 	SDLGame* game_;	
+	Entity* selectedMapLevelButton_;
 	Entity* infoBox_;
+	Entity* mapPoolEntity_;
 	Entity* playButton_;
 	Entity* returnButton_;
-	Entity* padNavigation_;
-
-	vector<MapLevel>* mapPool_;		//Estructura para representar la información en pantalla
+	vector <Entity*> mapButtonsPool_;
+	ButtonPadNavigation* padNavigation_;
 
 	Texture* bgText_;
 	Texture* housesBackgroundText_; 

@@ -3,9 +3,7 @@
 #include "SDL_macros.h"
 #include "FSM.h"
 #include "ButtonRenderer.h"
-#include "ButtonBehaviour.h"
-#include "ButtonPadNavigation.h"
-#include "MapLevelPool.h"
+#include "ButtonBehaviourNC.h"
 #include "MapConfig.h"
 
 MapState::MapState(AnimalCooking* ac) :
@@ -13,6 +11,7 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
+	selectedMapLevelButton_(nullptr),
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
@@ -31,27 +30,19 @@ MapState::MapState(AnimalCooking* ac) :
 		playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
 		returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
-		//Recogertexturabotones
-
-		//MapPool
-		Entity* pool = stage->addEntity();
-		pool->addComponent<MapPool>();
-
+		//Recogertexturabotones	
 		askName();
 		init();
 }
 
 MapState::~MapState() {
-	MapConfig mapCFG(playerName_);
-	mapCFG.save();
+	
 }
 
-void MapState::init() {
-	//mapPool_ = GETCMP1_(MapLevelPool)->getMapPool();
+void MapState::init() {	
 
 	playButton_ = stage->addEntity();
 	returnButton_ = stage->addEntity();
-	padNavigation_ = stage->addEntity();
 
 	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
 	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);
@@ -64,7 +55,8 @@ void MapState::init() {
 	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
 	//returnButton_->addComponent<ButtonBehaviour>();
 
-	
+	Entity* pad = stage->addEntity();
+	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
 }
 
 void MapState::draw()
@@ -75,10 +67,7 @@ void MapState::draw()
 
 void MapState::update()
 {
-	State::update();
-	if (currentLevel_ != lastLevel_) {
-		//currentLevelInfo = levelsInfo[currentLevel_];		
-	}
+	State::update();	
 }
 
 void MapState::askName() {
@@ -89,18 +78,23 @@ void MapState::askName() {
 
 void MapState::loadGame() {
 	MapConfig mapCFG(playerName_);
-	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
+	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();	
 
+	infoBox_ = stage->addEntity();
+	infoBox_->addComponent<MapInfoBoxViewer>();
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
 		Entity* level = stage->addEntity();
-		level->addComponent<ButtonBehaviour>();
-		level->addComponent<ButtonRenderer>();
-		level->addComponent<MapLevel>();
-		//levelsEntityList_
-	}
-	infoBox_ = stage->addEntity();
-	infoBox_->addComponent<MapInfoBoxViewer>();
+		level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+		level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+		mapButtonsPool_.push_back(level);
+	}	
+}
+
+void MapState::saveGame()
+{
+	MapConfig mapCFG(playerName_);
+	mapCFG.save();
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
@@ -114,8 +108,11 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
-//ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
-//b->AddButton(screenLoaderButton_,nullptr,backButton_,nullptr,nullptr);
-//b->AddButton(backButton_, screenLoaderButton_, nullptr, nullptr, nullptr);
-//if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
-//	GETCMP2(screenLoaderButton_, ButtonBehaviour)->setFocusByController(true);
+void MapState::configPadNavigation()
+{
+	padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
+	padNavigation_->AddButton(mapButtonsPool_.at(1), nullptr, mapButtonsPool_.at(0), nullptr, mapButtonsPool_.at(2));
+	padNavigation_->AddButton(mapButtonsPool_.at(2), nullptr, nullptr, mapButtonsPool_.at(1), mapButtonsPool_.at(3));
+	padNavigation_->AddButton(mapButtonsPool_.at(3), nullptr, nullptr, mapButtonsPool_.at(2), mapButtonsPool_.at(4));
+	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);
+}

@@ -175,6 +175,7 @@
     <ClInclude Include="BinViewer.h" />
     <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
+    <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
@@ -258,8 +259,6 @@
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapConfig.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
-    <ClInclude Include="MapLevel.h" />
-    <ClInclude Include="MapLevelPool.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="MenuButtonRenderer.h" />
@@ -353,6 +352,7 @@
     <ClCompile Include="BinViewer.cpp" />
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
+    <ClCompile Include="ButtonBehaviourNC.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="ChooseState.cpp" />
@@ -433,8 +433,6 @@
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
-    <ClCompile Include="MapLevel.cpp" />
-    <ClCompile Include="MapLevelPool.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />
