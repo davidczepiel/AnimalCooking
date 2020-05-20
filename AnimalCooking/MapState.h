@@ -1,6 +1,5 @@
 #pragma once
 #include "State.h"
-#include "MapConfig.h"
 #include <vector>
 #include "NameAsker.h"
 
@@ -28,8 +27,7 @@ private:
 	Entity* returnButton_;
 	Entity* padNavigation_;
 
-	vector<levelInfo> levelsInfo_;	//Total de informaci�n de cada nivel incluido en el mapstate
-	vector<MapLevel>* mapPool_;
+	vector<MapLevel>* mapPool_;		//Estructura para representar la información en pantalla
 
 	Texture* bgText_;
 	Texture* housesBackgroundText_; 

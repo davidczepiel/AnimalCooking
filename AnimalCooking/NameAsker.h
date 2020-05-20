@@ -4,17 +4,13 @@
 #include "SDL_macros.h"
 #include"MapState.h"
 #include "FSM.h"
-class NameAsker :
-	public Component
-{
+class NameAsker :public Component{
 public:
-	NameAsker() : Component(ecs::nameAsker), active(true), bg(nullptr), casillaX(0),casillaY(0),nameStream(" ") {
-		ih = SDLGame::instance()->getInputHandler();
-	}
-	//virtual ~NameAsker(){ static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->setPlayerName(name); }
+	NameAsker();
 	virtual void draw()override;
 	virtual void init()override;
 	virtual void update()override;
+
 private:
 	Texture* bg;
 	stringstream nameStream;

@@ -26,8 +26,10 @@ public:
 
 	void update() override;
 	vector<MapLevel*>& getMapPool() { return mapPool_; };
+	
 
 private:
 	vector<MapLevel*> mapPool_;
+	//vector <Entity*> levelsEntityList_;
 };
 

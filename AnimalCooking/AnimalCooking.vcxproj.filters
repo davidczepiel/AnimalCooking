@@ -166,8 +166,8 @@
     <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="MapLevelPool.cpp" />
     <ClCompile Include="MapLevel.cpp" />
-    <ClCompile Include="MapLevelViewer.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
+    <ClCompile Include="ChooseState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -367,8 +367,8 @@
     <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="MapLevelPool.h" />
     <ClInclude Include="MapLevel.h" />
-    <ClInclude Include="MapLevelViewer.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
+    <ClInclude Include="ChooseState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

@@ -1,16 +1,11 @@
-#include "Texture.h"
+#include "Component.h"
+#include "MapConfig.h"
 
-enum class MapLevelState { unselected, selected };
-
-class MapLevel{
+class MapLevel: public Component{
 public:
-	MapLevel();
+	MapLevel(levelInfo lvl);
 	~MapLevel();
-	void setMapLevelState(MapLevelState ms) { mapState_ = ms; }
 
 private:
-	MapLevelState mapState_;
-	Texture* unselectedText_;
-	Texture* selectedText_;
-
+	levelInfo info_;
 };

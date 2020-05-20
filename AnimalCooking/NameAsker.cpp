@@ -1,5 +1,9 @@
 #include "NameAsker.h"
 
+NameAsker::NameAsker(): Component(ecs::nameAsker), active(true), bg(nullptr), casillaX(0), casillaY(0), nameStream(" ") {
+	ih = SDLGame::instance()->getInputHandler();
+}
+
 void NameAsker::draw()
 {
 	if (active) {

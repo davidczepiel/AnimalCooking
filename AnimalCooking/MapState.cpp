@@ -7,6 +7,7 @@
 #include "ButtonBehaviour.h"
 #include "ButtonPadNavigation.h"
 #include "MapLevelPool.h"
+#include "MapConfig.h"
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
@@ -17,7 +18,6 @@ MapState::MapState(AnimalCooking* ac) :
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	returnButtonText_(nullptr),
-	levelsInfo_(),
 	playerName_("Player"){
 
 		game_ = SDLGame::instance();
@@ -31,6 +31,9 @@ MapState::MapState(AnimalCooking* ac) :
 		//Play and return buttons textures
 		playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
 		returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
+
+		//Recogertexturabotones
+
 
 		askName();
 		init();
@@ -59,10 +62,7 @@ void MapState::init() {
 	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
 	//returnButton_->addComponent<ButtonBehaviour>();
 
-	for (int x = 0; x < levelsInfo_.size(); x++) {
-		//Entity* level 
-		//levelsEntityList_
-	}	
+	
 }
 
 void MapState::draw()
@@ -87,7 +87,16 @@ void MapState::askName() {
 
 void MapState::loadGame() {
 	MapConfig mapCFG(playerName_);
-	levelsInfo_ = mapCFG.getLevelInfoRecipes();
+	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
+
+
+	for (int x = 0; x < levelsInfo_.size(); x++) {
+		Entity* level = stage->addEntity();
+		level->addComponent<ButtonBehaviour>();
+		level->addComponent<ButtonRenderer>();
+		level->addComponent<MapLevel>();
+		//levelsEntityList_
+	}
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {

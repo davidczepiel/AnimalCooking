@@ -23,4 +23,5 @@ void MapInfoBoxViewer::init()
 
 void MapInfoBoxViewer::draw()
 {
+
 }
