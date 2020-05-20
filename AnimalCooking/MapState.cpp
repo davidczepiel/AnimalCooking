@@ -1,7 +1,6 @@
 #include "MapState.h"
 #include "ScreenLoader.h"
 #include "SDL_macros.h"
-#include "Entity.h"
 #include "FSM.h"
 #include "ButtonRenderer.h"
 #include "ButtonBehaviour.h"
@@ -34,6 +33,9 @@ MapState::MapState(AnimalCooking* ac) :
 
 		//Recogertexturabotones
 
+		//MapPool
+		Entity* pool = stage->addEntity();
+		pool->addComponent<MapPool>();
 
 		askName();
 		init();

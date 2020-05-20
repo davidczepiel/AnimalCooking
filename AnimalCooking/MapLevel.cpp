@@ -1,6 +1,6 @@
 #include "MapLevel.h"
 
-MapLevel::MapLevel(): Component(ecs::MapLevel){
+MapLevel::MapLevel(levelInfo lvl): Component(ecs::MapLevel), info_(lvl){
 }
 
 MapLevel::~MapLevel() {

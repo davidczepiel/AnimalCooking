@@ -1,9 +1,11 @@
 #pragma once
 #include "State.h"
+#include "Entity.h"
 #include <vector>
 #include "NameAsker.h"
 
 class MapLevel;
+class MapPool;
 
 class MapState :public State{
 public:
@@ -20,8 +22,7 @@ public:
 	void loadGame();
 
 private:
-	SDLGame* game_;
-	vector <Entity*> levelsEntityList_;		//Referencias a todos los niveles incluidos en el mapstate para actualizar infobox y para saber cual hay que lanzar cuando se de a jugar
+	SDLGame* game_;	
 	Entity* infoBox_;
 	Entity* playButton_;
 	Entity* returnButton_;
