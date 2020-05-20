@@ -42,8 +42,10 @@ void NameAsker::update()
 			}
 			else if (keycode == SDLK_RETURN && nameStream.str().size() > 0)
 			{
-				static_cast<MapState*>(game_->getFSM()->currentState())->setName(nameStream.str());
+				MapState* mapState = static_cast<MapState*>(game_->getFSM()->currentState());
 				active = false;
+				mapState->setName(nameStream.str());
+				mapState->loadGame();
 			}
 		}
 	}

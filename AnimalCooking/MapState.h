@@ -4,6 +4,7 @@
 #include <vector>
 #include "NameAsker.h"
 
+class MapLevel;
 
 class MapState :public State{
 public:
@@ -28,6 +29,7 @@ private:
 	Entity* padNavigation_;
 
 	vector<levelInfo> levelsInfo_;	//Total de informaci�n de cada nivel incluido en el mapstate
+	vector<MapLevel>* mapPool_;
 
 	Texture* bgText_;
 	Texture* housesBackgroundText_; 

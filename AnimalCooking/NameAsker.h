@@ -21,8 +21,6 @@ private:
 	double casillaX;
 	double casillaY;
 	InputHandler* ih;
-	bool active;
-
-	
+	bool active;	
 };
 
