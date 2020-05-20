@@ -15,7 +15,8 @@ public:
 	void draw() override;
 	void update() override;
 	inline void setName(string n) { playerName_ = n; }
-
+	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
+	inline int getCurrentLevel() { return currentLevel_; }
 	void init();
 	void askName();
 	void loadGame();
@@ -41,4 +42,5 @@ private:
 	int maxLevels_;	
 	double casillaX;
 	double casillaY;	
+	bool hasToBreak = false;
 };

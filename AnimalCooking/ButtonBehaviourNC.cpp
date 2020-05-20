@@ -45,4 +45,5 @@ void ButtonBehaviourNC::update()
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviourNC::action() {
 	infoBox_->getComponent<MapInfoBoxViewer>(ecs::MapInfoBoxViewer)->setCurrentInfoLevel(mapInfo_);
+	static_cast<MapState*>(game_->getFSM()->currentState())->setCurrentLevel(mapInfo_.level);
 }

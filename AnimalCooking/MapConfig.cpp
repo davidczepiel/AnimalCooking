@@ -83,7 +83,7 @@ void MapConfig::load()
 		fstream partidaGuardada(file.str().c_str(), std::ios::in);
 		int i = 0;
 
-		if (!partidaGuardada.fail()) {
+		if (partidaGuardada.is_open()) {
 			while (!partidaGuardada.eof())
 			{
 				partidaGuardada >> levelsRecipes_.at(i).level;
