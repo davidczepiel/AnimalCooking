@@ -4,7 +4,6 @@
 #include "ButtonRenderer.h"
 #include "ButtonBehaviour.h"
 #include "ButtonPadNavigation.h"
-#include "MapInfoBox.h"
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
@@ -20,9 +19,8 @@ MapState::MapState(AnimalCooking* ac) :
 
 		game_ = SDLGame::instance();
 		maxLevels_ = game_->getMaxLevels();
-			casillaX = game_->getCasillaX();
-	casillaY = game_->getCasillaY();
-
+		casillaX = game_->getCasillaX();
+		casillaY = game_->getCasillaY();
 		
 		//Background textures
 		bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);

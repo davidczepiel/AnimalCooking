@@ -256,9 +256,10 @@
     <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapConfig.h" />
-    <ClInclude Include="MapInfoBox.h" />
+    <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="MapLevel.h" />
     <ClInclude Include="MapLevelPool.h" />
+    <ClInclude Include="MapLevelViewer.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="MenuButtonRenderer.h" />
@@ -430,8 +431,10 @@
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
     <ClCompile Include="MapConfig.cpp" />
-    <ClCompile Include="MapInfoBox.cpp" />
+    <ClCompile Include="MapInfoBoxViewer.cpp" />
+    <ClCompile Include="MapLevel.cpp" />
     <ClCompile Include="MapLevelPool.cpp" />
+    <ClCompile Include="MapLevelViewer.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />

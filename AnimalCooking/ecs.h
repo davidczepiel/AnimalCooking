@@ -112,7 +112,9 @@ enum CmpId : CmpIdType {
 	
 	nameAsker,//MapState
 	MapInfoBox,
+	MapInfoBoxViewer,
 	MapLevelPool,
+	MapLevelViewer,
 
 
 	//

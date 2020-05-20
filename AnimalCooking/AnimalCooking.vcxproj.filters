@@ -164,8 +164,10 @@
     <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="CreditsViewer.cpp" />
-    <ClCompile Include="MapInfoBox.cpp" />
     <ClCompile Include="MapLevelPool.cpp" />
+    <ClCompile Include="MapLevel.cpp" />
+    <ClCompile Include="MapLevelViewer.cpp" />
+    <ClCompile Include="MapInfoBoxViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -363,9 +365,10 @@
     <ClInclude Include="MapConfig.h" />
     <ClInclude Include="NameAsker.h" />
     <ClInclude Include="CreditsViewer.h" />
-    <ClInclude Include="MapInfoBox.h" />
     <ClInclude Include="MapLevelPool.h" />
     <ClInclude Include="MapLevel.h" />
+    <ClInclude Include="MapLevelViewer.h" />
+    <ClInclude Include="MapInfoBoxViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
