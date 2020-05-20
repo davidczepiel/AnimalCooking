@@ -43,7 +43,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casillaX, general["Clients"]["pedidos"]["size"]["height"].as_double() * casillaY, 
 		Vector2D(general["Clients"]["pedidos"]["margin"]["x"].as_double() * casillaX, general["Clients"]["pedidos"]["margin"]["y"].as_double() * casillaY));
 	
-	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000, tv);
+	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000, nivel["Clients"]["pedidos"]["segundosPrimerPedido"].as_double() * 1000, tv);
 
 	//Inicializacion de los posibles pedidos en ese nivel
 	vector<Resources::FoodType> posibles;

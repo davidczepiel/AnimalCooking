@@ -3,15 +3,17 @@
 #include "OrderManager.h"
 #include "GameConfig.h"
 
-AIClient::AIClient() : AIClient(45, nullptr)
+AIClient::AIClient() : AIClient(45, 45, nullptr)
 {
 }
 
-AIClient::AIClient(Uint32 deltaTimePerOrder, TimerViewer* tv) : Component(ecs::AIClient),
+AIClient::AIClient(Uint32 deltaTimePerOrder, Uint32 deltaTimeFirstOrder, TimerViewer* tv) : Component(ecs::AIClient),
 	orMngr_(nullptr), availableOrders_(), initialOrders_()
 {
 	t = new Timer();
-	t->setTime(deltaTimePerOrder);
+	t->setTime(deltaTimeFirstOrder);
+	deltaTimePerOrder_ = deltaTimePerOrder;
+	firstOrder_ = true;
 
 	tv->addTimer(t);
 }
@@ -37,7 +39,11 @@ void AIClient::update()
 void AIClient::checkNewOrder()
 {
 	if (t->isTimerEnd()) {
-		if (!initialOrders_.empty()) { //Primero saco los pedidos en cierto orden, si quedan
+		if (!initialOrders_.empty()) { //Primero saco los pedidos en cierto orden, si quedan		
+			if (firstOrder_) {
+				t->setTime(deltaTimePerOrder_);
+				firstOrder_ = false;
+			}			
 			orMngr_->addOrder(initialOrders_.front());
 			initialOrders_.pop();
 		}
