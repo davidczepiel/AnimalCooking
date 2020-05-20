@@ -70,8 +70,8 @@ void EndState::createButtons()
 	int nextLevelLimit = 50;
 	int degrees = 7;
 
-	//Entity* buttonPadNavigation = stage->addEntity();
-	//ButtonPadNavigation* padNav = buttonPadNavigation->addComponent<ButtonPadNavigation>();
+	Entity* buttonPadNavigation = stage->addEntity();
+	ButtonPadNavigation* padNav = buttonPadNavigation->addComponent<ButtonPadNavigation>();
 	//------------------>Volver al MapState<---------------------
 	Entity* returnToMapButton = stage->addEntity();
 	returnToMapButton->addComponent<Transform>(Vector2D(138,
@@ -104,7 +104,6 @@ void EndState::createButtons()
 	//Si el score es el suficiente para pasar al siguiente nivel
 	Entity* NextLevelButton = nullptr;
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
-		//padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 		NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
@@ -140,13 +139,16 @@ void EndState::createButtons()
 	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
 	bb->setButtonRenderer(br);
 	//------------------>Navegación por mando<---------------------
-	//padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
-	//padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
-	//padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
-	//if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton!= nullptr)
-	//	GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
-	//else if((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton == nullptr)
-	//	GETCMP2(ResetLevelButton, ButtonBehaviour)->setFocusByController(true);
+	padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
+	padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
+	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
+	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
+
+	//Pongo a focus uno u otro dependiendo de la puntación del player
+	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton!= nullptr)
+		GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
+	else if((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton == nullptr)
+		GETCMP2(ResetLevelButton, ButtonBehaviour)->setFocusByController(true);
 
 }
 

@@ -21,11 +21,11 @@ private:
 	void horizontalMove(double xValue);
 	void verticalMove(double yValue);
 	struct button {
-		Entity* e;
-		Entity* up;
-		Entity* down;
-		Entity* left;
-		Entity* right;
+		Entity* e=nullptr;
+		Entity* up=nullptr;
+		Entity* down=nullptr;
+		Entity* left=nullptr;
+		Entity* right=nullptr;
 		bool posibleFocus;
 	};
 	button focus;
