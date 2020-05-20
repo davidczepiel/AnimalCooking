@@ -13,6 +13,7 @@ public:
 	static void backButtonCallback(AnimalCooking* ac);	
 	void draw() override;
 	void update() override;
+	inline void setName(string n) { playerName_ = n; }
 
 	void init();
 	void askName();

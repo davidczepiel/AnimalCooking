@@ -84,6 +84,8 @@ namespace config {
 
 	//CREDITS
 	constexpr double PIXELS_TO_MOVE = 1;
+	//MAP STATE
+	constexpr int FONT_SIZE = 70;
 
 	struct Options
 	{

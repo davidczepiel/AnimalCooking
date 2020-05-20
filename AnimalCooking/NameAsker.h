@@ -8,7 +8,7 @@ class NameAsker :
 	public Component
 {
 public:
-	NameAsker() : Component(ecs::nameAsker), bg(nullptr), casillaX(0),casillaY(0),name(" "),nameStream(name) {
+	NameAsker() : Component(ecs::nameAsker), active(true), bg(nullptr), casillaX(0),casillaY(0),nameStream(" ") {
 		ih = SDLGame::instance()->getInputHandler();
 	}
 	//virtual ~NameAsker(){ static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->setPlayerName(name); }
@@ -17,11 +17,12 @@ public:
 	virtual void update()override;
 private:
 	Texture* bg;
-	string name;
 	stringstream nameStream;
 	double casillaX;
 	double casillaY;
 	InputHandler* ih;
+	bool active;
+
 	
 };
 

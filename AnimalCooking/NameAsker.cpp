@@ -2,16 +2,20 @@
 
 void NameAsker::draw()
 {
-	bg->render(RECT(casillaX, casillaY, 14 * casillaX, 7 * casillaY));
-
-	Texture(SDLGame::instance()->getRenderer(), nameStream.str(),
+	if (active) {
+		bg->render(RECT(casillaX, casillaY, 14 * casillaX, 7 * casillaY));
+		/////////////////////////////////////////////////////////////////////////////////////////////
+		///   Si queremos cambiar el tamaño de la fuente hay que hacerlo también en gameConfig    ///
+		/////////////////////////////////////////////////////////////////////////////////////////////
+		Texture t(SDLGame::instance()->getRenderer(), nameStream.str(),
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese70), hex2sdlcolor(
-				"#FFFFFFFF")).render(RECT(
-					3 * casillaX,
-					casillaY * 3,
-					2 * casillaX,
-					casillaY),0);
-
+				"#FFFFFFFF"));
+		t.render(RECT(
+			2 * casillaX,
+			casillaY * 3,
+			t.getWidth(),
+			t.getHeight()), 0);
+	}
 }
 
 void NameAsker::init()
@@ -23,11 +27,24 @@ void NameAsker::init()
 
 void NameAsker::update()
 {
-	SDL_Keycode keycode = ih->getLastKeyPressed();
-	if (ih->isKeyDown(keycode)) {
-		char key = keycode;
-		if ((key >= 'a' && key <= 'z') || key==' ')
-			nameStream << key;
-		cout << nameStream.str() << endl;
+	if (active) {
+		SDL_Keycode keycode = ih->getLastKeyPressed();
+		if (ih->isKeyDown(keycode)) {
+			char key = keycode;
+			if (((key >= 'a' && key <= 'z') || key == ' ') && nameStream.str().size() < game_->getWindowWidth() / (config::FONT_SIZE / 2))
+				nameStream << key;
+			else if (keycode == SDLK_BACKSPACE && nameStream.str().size() > 0) {
+
+				string aux = nameStream.str();
+				aux.pop_back();
+				nameStream.str(aux);
+				nameStream.seekp(0, nameStream.end);
+			}
+			else if (keycode == SDLK_RETURN && nameStream.str().size() > 0)
+			{
+				static_cast<MapState*>(game_->getFSM()->currentState())->setName(nameStream.str());
+				active = false;
+			}
+		}
 	}
 }
