@@ -6,16 +6,29 @@
 #include "ButtonBehaviourNC.h"
 #include "MapConfig.h"
 
+Entity* infoBox_;
+Entity* playButton_;
+Entity* returnButton_;
+vector <Entity*> mapButtonsPool_;
+ButtonPadNavigation* padNavigation_;
+
+
+
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
-	maxLevels_(0),
-	currentLevel_(0),
-	lastLevel_(0),
+	infoBox_(nullptr),
+	playButton_(nullptr),
+	returnButton_(nullptr),
+	mapButtonsPool_(),
+	padNavigation_(nullptr),
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	returnButtonText_(nullptr),
-	playerName_("Player"){
+	playerName_("Player"),
+	currentLevel_(0),
+	lastLevel_(0),
+	maxLevels_(0){
 
 		game_ = SDLGame::instance();
 		maxLevels_ = game_->getMaxLevels();
@@ -30,43 +43,11 @@ MapState::MapState(AnimalCooking* ac) :
 		returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
 
 		//Recogertexturabotones	
-		askName();
-		init();
+		askName();		
 }
 
 MapState::~MapState() {
 	
-}
-
-void MapState::init() {	
-
-	/*playButton_ = stage->addEntity();
-	returnButton_ = stage->addEntity();
-
-	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
-	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);*/
-
-	//playButton_->addComponent<Transform>(Vector2D(0,0));
-	//playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
-	//playButton_->addComponent<ButtonBehaviour>();
-
-	//returnButton_->addComponent<Transform>(Vector2D(0, 0));
-	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
-	//returnButton_->addComponent<ButtonBehaviour>();
-
-	Entity* pad = stage->addEntity();
-	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
-}
-
-void MapState::draw()
-{
-	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
-	State::draw();
-}
-
-void MapState::update()
-{
-	State::update();	
 }
 
 void MapState::askName() {
@@ -100,21 +81,54 @@ void MapState::loadGame() {
 		level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
 		mapButtonsPool_.push_back(level);
 	}	
+	//init();
+}
+
+
+void MapState::init() {
+
+	/*playButton_ = stage->addEntity();
+	returnButton_ = stage->addEntity();
+
+	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
+	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);*/
+
+	//playButton_->addComponent<Transform>(Vector2D(0,0));
+	//playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));
+	//playButton_->addComponent<ButtonBehaviour>();
+
+	//returnButton_->addComponent<Transform>(Vector2D(0, 0));
+	//returnButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStateReturnButton));
+	//returnButton_->addComponent<ButtonBehaviour>();
+
+	/*Entity* pad = stage->addEntity();
+	padNavigation_ = pad->addComponent<ButtonPadNavigation>();*/
+}
+
+void MapState::draw()
+{
+	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	State::draw();
+}
+
+void MapState::update()
+{
+	State::update();
 }
 
 void MapState::saveGame()
 {
-	MapConfig mapCFG(playerName_);
-	mapCFG.save();
+	/*MapConfig mapCFG(playerName_);
+	mapCFG.save();*/
 }
 
 void MapState::configPadNavigation()
 {
-	padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
+	/*padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
 	padNavigation_->AddButton(mapButtonsPool_.at(1), nullptr, mapButtonsPool_.at(0), nullptr, mapButtonsPool_.at(2));
 	padNavigation_->AddButton(mapButtonsPool_.at(2), nullptr, nullptr, mapButtonsPool_.at(1), mapButtonsPool_.at(3));
 	padNavigation_->AddButton(mapButtonsPool_.at(3), nullptr, nullptr, mapButtonsPool_.at(2), mapButtonsPool_.at(4));
-	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);
+	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);*/
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
