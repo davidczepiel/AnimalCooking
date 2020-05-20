@@ -7,11 +7,21 @@
 #include "MapConfig.h"
 #include "ButtonPadNavigation.h"
 
+Entity* infoBox_;
+Entity* playButton_;
+Entity* returnButton_;
+vector <Entity*> mapButtonsPool_;
+ButtonPadNavigation* padNavigation_;
+
+
+
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
-	maxLevels_(0),
-	currentLevel_(0),
-	lastLevel_(0),
+	infoBox_(nullptr),
+	playButton_(nullptr),
+	returnButton_(nullptr),
+	mapButtonsPool_(),
+	padNavigation_(nullptr),
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
@@ -105,17 +115,17 @@ void MapState::loadGame() {
 
 void MapState::saveGame()
 {
-	MapConfig mapCFG(playerName_);
-	mapCFG.save();
+	/*MapConfig mapCFG(playerName_);
+	mapCFG.save();*/
 }
 
 void MapState::configPadNavigation()
 {
-	padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
+	/*padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
 	padNavigation_->AddButton(mapButtonsPool_.at(1), nullptr, mapButtonsPool_.at(0), nullptr, mapButtonsPool_.at(2));
 	padNavigation_->AddButton(mapButtonsPool_.at(2), nullptr, nullptr, mapButtonsPool_.at(1), mapButtonsPool_.at(3));
 	padNavigation_->AddButton(mapButtonsPool_.at(3), nullptr, nullptr, mapButtonsPool_.at(2), mapButtonsPool_.at(4));
-	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);
+	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);*/
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
