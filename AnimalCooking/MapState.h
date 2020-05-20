@@ -2,6 +2,7 @@
 #include "State.h"
 #include <vector>
 #include "NameAsker.h"
+#include "MapInfoBoxViewer.h"
 
 class MapLevel;
 

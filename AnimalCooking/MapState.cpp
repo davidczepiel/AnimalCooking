@@ -97,6 +97,8 @@ void MapState::loadGame() {
 		level->addComponent<MapLevel>();
 		//levelsEntityList_
 	}
+	infoBox_ = stage->addEntity();
+	infoBox_->addComponent<MapInfoBoxViewer>();
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {

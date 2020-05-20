@@ -1,9 +1,10 @@
 #pragma once
 #include "Component.h"
 #include "MapConfig.h"
+#include "SDL_macros.h"
 class MapInfoBoxViewer :public Component{
 public:
-	MapInfoBoxViewer(double cX, double cY);
+	MapInfoBoxViewer();
 	~MapInfoBoxViewer();
 	void init() override;
 	void draw() override;
