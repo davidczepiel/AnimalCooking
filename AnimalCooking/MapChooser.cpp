@@ -4,6 +4,7 @@ MapChooser::MapChooser() :
 	Component(ecs::nameAsker), 
 	active_(true), 
 	bgText_(nullptr), 
+	buttonTexture_(nullptr),
 	casillaX_(0), 
 	casillaY_(0){
 }

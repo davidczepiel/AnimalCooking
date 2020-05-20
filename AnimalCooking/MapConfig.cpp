@@ -1,6 +1,10 @@
 #include "MapConfig.h"
 
-MapConfig::MapConfig(string fileN): fileName_(fileN), levelsRecipes_()
+MapConfig::MapConfig(string fileN) : fileName_(fileN), levelsRecipes_(), newGame_(false)
+{
+}
+
+MapConfig::MapConfig(string fileN, bool newGame): fileName_(fileN), levelsRecipes_(), newGame_(newGame)
 {
 	fill();
 }
@@ -60,7 +64,18 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 
 	//Cargar resto de datos
-	load();
+	if(!newGame_) load();
+	else {
+		int numberOfLevel = 0;
+
+		for (levelInfo lvl : levelsRecipes_) {
+			lvl.level = numberOfLevel;
+			lvl.stars = 0;
+			lvl.unlocked = false;
+			numberOfLevel++;
+		}
+		levelsRecipes_.at(0).unlocked = true; //If new game = unlock lvl 1
+	}
 
 	  /////////////////////////////////////
 	 ///////		 LEVEL N		//////

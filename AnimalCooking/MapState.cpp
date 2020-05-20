@@ -102,10 +102,13 @@ void MapState::askName() {
 	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
 }
 
-void MapState::loadGame() {
+void MapState::setState() {
 	hasToBreak = true;
-	MapConfig mapCFG(playerName_);
-	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
+	vector<levelInfo> levelsInfo_;
+
+	MapConfig mapCFG(playerName_, isNewGame_);
+	levelsInfo_ = mapCFG.getLevelInfoRecipes();
+	
 
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
@@ -140,11 +143,12 @@ void MapState::saveGame()
 
 void MapState::newGameCallback(AnimalCooking* ac)
 {
+	static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->isNewGame();
 }
 
 void MapState::loadGameCallback(AnimalCooking* ac)
 {
-
+	static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->isNotNewGame();
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {

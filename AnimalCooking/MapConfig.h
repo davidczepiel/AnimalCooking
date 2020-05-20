@@ -18,6 +18,7 @@ struct levelInfo {
 class MapConfig {
 public: 
 	MapConfig(string fileN);
+	MapConfig(string fileN, bool isNewGame);
 	~MapConfig() {};
 
 	void save();
@@ -30,4 +31,5 @@ private:
 	void fill();
 	vector <levelInfo> levelsRecipes_;
 	string fileName_ = "";
+	bool newGame_;
 };

@@ -49,7 +49,7 @@ void NameAsker::update()
 				MapState* mapState = static_cast<MapState*>(game_->getFSM()->currentState());
 				active = false;
 				mapState->setName(nameStream.str());
-				mapState->loadGame();
+				mapState->setState();
 			}
 		}
 	}
