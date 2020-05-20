@@ -11,7 +11,6 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
-	selectedMapLevelButton_(nullptr),
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
@@ -41,11 +40,11 @@ MapState::~MapState() {
 
 void MapState::init() {	
 
-	playButton_ = stage->addEntity();
+	/*playButton_ = stage->addEntity();
 	returnButton_ = stage->addEntity();
 
 	stage->addToGroup(playButton_, ecs::GroupID::Layer1);
-	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);
+	stage->addToGroup(returnButton_, ecs::GroupID::Layer1);*/
 
 	//playButton_->addComponent<Transform>(Vector2D(0,0));
 	//playButton_->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapStatePlayButton));

@@ -23,11 +23,8 @@ public:
 
 private:
 	void configPadNavigation();
-
 	SDLGame* game_;	
-	Entity* selectedMapLevelButton_;
 	Entity* infoBox_;
-	Entity* mapPoolEntity_;
 	Entity* playButton_;
 	Entity* returnButton_;
 	vector <Entity*> mapButtonsPool_;

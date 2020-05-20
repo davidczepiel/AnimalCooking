@@ -17,12 +17,10 @@ MapInfoBoxViewer::~MapInfoBoxViewer()
 void MapInfoBoxViewer::init()
 {
 	boxText_ = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
-
 	gotStar_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
 	notGotStar_ = game_->getTextureMngr()->getTexture(Resources::Star);
 	casillaX_ = game_->getCasillaX();
-	casillaY_ = game_->getCasillaY();
-	
+	casillaY_ = game_->getCasillaY();	
 }
 
 void MapInfoBoxViewer::draw()
@@ -55,7 +53,4 @@ void MapInfoBoxViewer::draw()
 	default:
 		break;
 	}
-
-	
-
 }
