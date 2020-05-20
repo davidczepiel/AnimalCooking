@@ -5,6 +5,7 @@
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
 xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
 {
+	focus.e = nullptr;
 }
 
 
@@ -19,8 +20,9 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 	newButton.posibleFocus = posibleFocus;
 
 	buttons.push_back(newButton);
-	if (buttons.size() == 1)
-		focus = buttons.at(0);
+	//Meto el botón que me llegue en caso de que el focus siga siendo nullptr porque si no peta
+	if (focus.e==nullptr)
+		focus = buttons.at(buttons.size()-1);
 }
 
 
