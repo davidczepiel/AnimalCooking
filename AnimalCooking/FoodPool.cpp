@@ -25,9 +25,7 @@ void FoodPool::AddFood(Food* food)
 	if (food != nullptr) {
 		foods_.emplace_back(food);
 		food->setFoodPool(this, --foods_.end());
-	}
-	cout << "ADD    " << "Size: " << foods_.size() << "Capacity: " << foods_.capacity() << endl;
-
+	}	
 }
 
 void FoodPool::RemoveFood(std::vector<Food*>::iterator it)
@@ -35,7 +33,5 @@ void FoodPool::RemoveFood(std::vector<Food*>::iterator it)
 	Food* i = *--foods_.end();
 	i->setIt(it);
 	iter_swap(it, --foods_.end());
-	foods_.pop_back();
-	cout << "REMOVE    " << "Size: " << foods_.size() << "Capacity: " << foods_.capacity() << endl;
-
+	foods_.pop_back();	
 }

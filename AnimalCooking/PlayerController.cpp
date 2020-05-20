@@ -260,7 +260,7 @@ void PlayerController::keyUpdate()
 	//Estados de walk
 	if ((tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
 		Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
-		Animator::States::WalkWithNet, Animator::Walk, 
+		Animator::States::WalkWithNet, Animator::States::Walk, 
 		Animator::States::WalkWithDirtyKnife, Animator::States::WalkWithDirtyMace, Animator::States::WalkWithDirtyGrater, Animator::States::WalkWithDirtyNet);
 }
 

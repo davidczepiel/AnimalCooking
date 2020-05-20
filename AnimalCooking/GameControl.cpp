@@ -171,7 +171,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
-	f->onFloor();
+	//f->onFloor();
 	return f;
 }
 
