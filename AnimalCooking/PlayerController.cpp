@@ -30,22 +30,20 @@ void PlayerController::joystickUpdate()
 	//Axis------------------------
 	double Xvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
 	if (Xvalue > 0 || Xvalue < 0)
-	{
 		x = Xvalue;
-		tr_->setVelX(x*speed);
-	}
-	else {
-		tr_->setVelX(0);
-	}
+	else 
+		x = 0;
+
 	double Yvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY);
 	if (Yvalue > 0 || Yvalue < 0)
-	{
 		y = Yvalue;
-		tr_->setVelY(Yvalue*speed);
-	}
-	else {
-		tr_->setVelY(0);
-	}
+	else 
+		y = 0;
+
+	Vector2D vel(x, y);
+	vel = vel.normalize();
+	tr_->setVelY(speed * vel.getY());
+	tr_->setVelX(speed * vel.getX());
 
 	ir_->setDir(x, y);
 	//Se establece la direccion para mostrar la animacion correspondiente
@@ -141,7 +139,7 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
-	double speed = 0.4;
+	double speed = 0.6;
 	int x = 0, y = 0;
 
 	if (keyboard->keyDownEvent()) {
@@ -243,8 +241,11 @@ void PlayerController::keyUpdate()
 	else if (movKeys.left) x = -1;
 	else x = 0;
 
-	tr_->setVelY(speed * y);
-	tr_->setVelX(speed * x);
+	Vector2D vel(x, y);
+	vel = vel.normalize();
+
+	tr_->setVelY(speed * vel.getY());
+	tr_->setVelX(speed * vel.getX());
 	
 
 	ir_->setDir(x, y);
