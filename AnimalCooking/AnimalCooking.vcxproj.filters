@@ -165,8 +165,8 @@
     <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
-    <ClCompile Include="ChooseState.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
+    <ClCompile Include="MapChooser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -365,8 +365,8 @@
     <ClInclude Include="NameAsker.h" />
     <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
-    <ClInclude Include="ChooseState.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
+    <ClInclude Include="MapChooser.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

@@ -114,6 +114,7 @@ enum CmpId : CmpIdType {
 	nameAsker,//MapState
 	MapInfoBox,
 	MapInfoBoxViewer,
+	MapChooser,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

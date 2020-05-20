@@ -43,6 +43,9 @@ public:
 		YellowStar,
 		LimitSign,
 		//MapState
+		MapChooserPannel,
+		MapNewGameButton,
+		MapLoadGameButton,
 		NameAsker,
 		MapStateBackground,
 		MapStateHousesBackground,

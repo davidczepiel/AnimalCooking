@@ -48,6 +48,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
+	{ Basic, MapChooserPannel, "../AnimalCooking/resources/images/provisional/pannel.png" },
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
@@ -295,8 +296,9 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Nicolas,"Nicolas Fernandez Descalzo",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50}
-
+	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50}
 };
 
 
