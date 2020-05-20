@@ -15,10 +15,6 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -29,10 +25,6 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -43,10 +35,6 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -57,10 +45,6 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -71,10 +55,6 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -88,10 +68,6 @@ void MapConfig::fill()
 
 	/*auxiliar.name = "";
 	auxiliar.lore = "";
-	auxiliar.houseBox.x = 10;
-	auxiliar.houseBox.y = 10;
-	auxiliar.houseBox.w = 10;
-	auxiliar.houseBox.h = 10;
 	auxiliar.housePosition = Vector2D(15, 15);
 	auxiliar.stars = 0;
 	auxiliar.unlocked = false;

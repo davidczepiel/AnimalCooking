@@ -81,6 +81,18 @@ void MapState::loadGame() {
 	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();	
 
 	infoBox_ = stage->addEntity();
+	//playButton_ = stage->addEntity();
+	//playButton_->addComponent<Transform>(
+	//	Vector2D(3 * casillaX, 1.5 * casillaY),
+	//	Vector2D(),
+	//	3 * casillaX,
+	//	1.5 * casillaY,
+	//	0
+	//	);
+	//playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback,app);
+	//playButton_->addComponent<ButtonRenderer>(playButtonText_,nullptr);
+	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
+	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
 	infoBox_->addComponent<MapInfoBoxViewer>();
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
@@ -97,6 +109,15 @@ void MapState::saveGame()
 	mapCFG.save();
 }
 
+void MapState::configPadNavigation()
+{
+	padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
+	padNavigation_->AddButton(mapButtonsPool_.at(1), nullptr, mapButtonsPool_.at(0), nullptr, mapButtonsPool_.at(2));
+	padNavigation_->AddButton(mapButtonsPool_.at(2), nullptr, nullptr, mapButtonsPool_.at(1), mapButtonsPool_.at(3));
+	padNavigation_->AddButton(mapButtonsPool_.at(3), nullptr, nullptr, mapButtonsPool_.at(2), mapButtonsPool_.at(4));
+	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);
+}
+
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->haltMusic();
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
@@ -108,11 +129,3 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
-void MapState::configPadNavigation()
-{
-	padNavigation_->AddButton(mapButtonsPool_.at(0), mapButtonsPool_.at(1), nullptr, nullptr, mapButtonsPool_.at(2));
-	padNavigation_->AddButton(mapButtonsPool_.at(1), nullptr, mapButtonsPool_.at(0), nullptr, mapButtonsPool_.at(2));
-	padNavigation_->AddButton(mapButtonsPool_.at(2), nullptr, nullptr, mapButtonsPool_.at(1), mapButtonsPool_.at(3));
-	padNavigation_->AddButton(mapButtonsPool_.at(3), nullptr, nullptr, mapButtonsPool_.at(2), mapButtonsPool_.at(4));
-	padNavigation_->AddButton(mapButtonsPool_.at(4), nullptr, nullptr, mapButtonsPool_.at(2), nullptr);
-}

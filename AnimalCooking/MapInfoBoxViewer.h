@@ -16,7 +16,6 @@ private:
 	Texture* boxText_;
 	Texture* gotStar_;
 	Texture* notGotStar_;
-
 	double casillaX_;
 	double casillaY_;
 };
