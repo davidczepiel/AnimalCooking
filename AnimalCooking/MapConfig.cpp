@@ -1,10 +1,11 @@
 #include "MapConfig.h"
+#include "MapState.h"
 
 MapConfig::MapConfig(string fileN) : fileName_(fileN), levelsRecipes_(), newGame_(false)
 {
 }
 
-MapConfig::MapConfig(string fileN, bool newGame): fileName_(fileN), levelsRecipes_(), newGame_(newGame)
+MapConfig::MapConfig(string fileN, bool newGame) : fileName_(fileN), levelsRecipes_(), newGame_(newGame)
 {
 	fill();
 }
@@ -13,9 +14,9 @@ void MapConfig::fill()
 {
 	levelInfo auxiliar;
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL 1		//////
 	/////////////////////////////////////
+   ///////		 LEVEL 1		//////
+  /////////////////////////////////////
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
@@ -23,9 +24,9 @@ void MapConfig::fill()
 
 	levelsRecipes_.push_back(auxiliar);
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL 2		//////
 	/////////////////////////////////////
+   ///////		 LEVEL 2		//////
+  /////////////////////////////////////
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
@@ -33,9 +34,9 @@ void MapConfig::fill()
 
 	levelsRecipes_.push_back(auxiliar);
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL 3		//////
 	/////////////////////////////////////
+   ///////		 LEVEL 3		//////
+  /////////////////////////////////////
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
@@ -43,9 +44,9 @@ void MapConfig::fill()
 
 	levelsRecipes_.push_back(auxiliar);
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL 4		//////
 	/////////////////////////////////////
+   ///////		 LEVEL 4		//////
+  /////////////////////////////////////
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
@@ -53,9 +54,9 @@ void MapConfig::fill()
 
 	levelsRecipes_.push_back(auxiliar);
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL 5		//////
 	/////////////////////////////////////
+   ///////		 LEVEL 5		//////
+  /////////////////////////////////////
 
 	auxiliar.name = "";
 	auxiliar.lore = "";
@@ -64,7 +65,7 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 
 	//Cargar resto de datos
-	if(!newGame_) load();
+	if (!newGame_) load();
 	else {
 		int numberOfLevel = 0;
 
@@ -77,17 +78,17 @@ void MapConfig::fill()
 		levelsRecipes_.at(0).unlocked = true; //If new game = unlock lvl 1
 	}
 
-	  /////////////////////////////////////
-	 ///////		 LEVEL N		//////
 	/////////////////////////////////////
+   ///////		 LEVEL N		//////
+  /////////////////////////////////////
 
-	/*auxiliar.name = "";
-	auxiliar.lore = "";
-	auxiliar.housePosition = Vector2D(15, 15);
-	auxiliar.stars = 0;
-	auxiliar.unlocked = false;
+  /*auxiliar.name = "";
+  auxiliar.lore = "";
+  auxiliar.housePosition = Vector2D(15, 15);
+  auxiliar.stars = 0;
+  auxiliar.unlocked = false;
 
-	levelsRecipes.push_back(auxiliar);*/
+  levelsRecipes.push_back(auxiliar);*/
 }
 
 void MapConfig::load()
@@ -98,15 +99,19 @@ void MapConfig::load()
 		fstream partidaGuardada(file.str().c_str(), std::ios::in);
 		int i = 0;
 
-		if (partidaGuardada.is_open()) {
+
+		if (!partidaGuardada.is_open())
+			static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->activateNameAsker();
+		else {
 			while (!partidaGuardada.eof())
 			{
 				partidaGuardada >> levelsRecipes_.at(i).level;
 				partidaGuardada >> levelsRecipes_.at(i).stars;
 				partidaGuardada >> levelsRecipes_.at(i).unlocked;
 				i++;
-			}			
-		}	
+			}
+		}
+
 		partidaGuardada.close();
 	}
 }

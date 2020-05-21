@@ -18,7 +18,7 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
-	returnButtonText_(nullptr), 
+	returnButtonText_(nullptr),
 	chooser(nullptr),
 	maxLevels_(0),
 	currentLevel_(0),
@@ -75,9 +75,9 @@ void MapState::chooseOption() {
 }
 
 void MapState::init() {
-	
 
-	
+
+
 }
 
 void MapState::draw()
@@ -98,39 +98,52 @@ void MapState::update()
 
 
 void MapState::askName() {
-	Entity* nameAsker = stage->addEntity();
+	nameAsker = stage->addEntity();
 	nameAsker->addComponent<NameAsker>();
 	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
 }
 
-void MapState::setState() {
+void MapState::setState(bool firstTime) {
 	hasToBreak = true;
+	if (firstTime) {
+		infoBox_ = stage->addEntity();
+		playButton_ = stage->addEntity();
+		playButton_->addComponent<Transform>(
+			Vector2D(3 * casillaX, 1.5 * casillaY),
+			Vector2D(),
+			3 * casillaX,
+			1.5 * casillaY,
+			0);
+
+		playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+		playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
+		stage->addToGroup(playButton_, ecs::GroupID::topLayer);
+		stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
+		infoBox_->addComponent<MapInfoBoxViewer>();
+	}
+	else {
+		GETCMP2(playButton_, ButtonBehaviour)->setActive(true);
+		GETCMP2(playButton_, ButtonRenderer)->setActive(true);
+		GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
+	}
 	vector<levelInfo> levelsInfo_;
 
 	MapConfig mapCFG(playerName_, isNewGame_);
 	levelsInfo_ = mapCFG.getLevelInfoRecipes();
-	
 
-	infoBox_ = stage->addEntity();
-	playButton_ = stage->addEntity();
-	playButton_->addComponent<Transform>(
-		Vector2D(3 * casillaX, 1.5 * casillaY),
-		Vector2D(),
-		3 * casillaX,
-		1.5 * casillaY,
-		0);
-
-	playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
-	playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
-	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
-	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
-	infoBox_->addComponent<MapInfoBoxViewer>();
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
-		Entity* level = stage->addEntity();
-		level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
-		level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
-		levelButtonsPool_.push_back(level);
+		if (firstTime) {
+			Entity* level = stage->addEntity();
+			level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+			level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+			levelButtonsPool_.push_back(level);
+		}
+		else {
+			GETCMP2(levelButtonsPool_.at(x), ButtonRenderer)->setActive(true);
+			GETCMP2(levelButtonsPool_.at(x), ButtonBehaviourNC)->setActive(true);
+
+		}
 	}
 	configPadNavigation();
 }
@@ -148,8 +161,23 @@ void MapState::hideChooseButtons()
 	GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
 	GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(chooser, MapChooser)->setActive(false);
-	
-	
+
+
+}
+
+void MapState::activateNameAsker()
+{
+	if (playButton_ != nullptr && infoBox_ != nullptr) {
+		GETCMP2(playButton_, ButtonBehaviour)->setActive(false);
+		GETCMP2(playButton_, ButtonRenderer)->setActive(false);
+		GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
+		for (Entity* e:levelButtonsPool_)
+		{
+			GETCMP2(e, ButtonBehaviourNC)->setActive(false);
+			GETCMP2(e, ButtonRenderer)->setActive(false);
+		}
+	}
+	GETCMP2(nameAsker, NameAsker)->setActive(true);
 }
 
 
@@ -182,7 +210,7 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
-void MapState::configPadNavigation(){
+void MapState::configPadNavigation() {
 	Entity* pad = stage->addEntity();
 	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
 

@@ -8,9 +8,10 @@ public:
 	~MapInfoBoxViewer();
 	void init() override;
 	void draw() override;
+	
 
 	inline void setCurrentInfoLevel(levelInfo info) { info_ = info; }
-
+	inline void setActive(bool b) { active = b; }
 private:
 	levelInfo info_;
 	Texture* boxText_;
@@ -18,5 +19,6 @@ private:
 	Texture* notGotStar_;
 	double casillaX_;
 	double casillaY_;
+	bool active;
 };
 

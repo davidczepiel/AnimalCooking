@@ -1,6 +1,6 @@
 #include "NameAsker.h"
 
-NameAsker::NameAsker(): Component(ecs::nameAsker), active(true), bg(nullptr), casillaX(0), casillaY(0), nameStream(" ") {
+NameAsker::NameAsker(): Component(ecs::NameAsker), active(true),firstTime(true), bg(nullptr), casillaX(0), casillaY(0), nameStream(" ") {
 	ih = SDLGame::instance()->getInputHandler();
 }
 
@@ -49,17 +49,18 @@ void NameAsker::update()
 				MapState* mapState = static_cast<MapState*>(game_->getFSM()->currentState());
 				active = false;
 				mapState->setName(nameStream.str());
-				mapState->setState();
+				mapState->setState(firstTime);
 			}
 		}
 	}
 }
 
-inline void NameAsker::setActive(bool a)
+ void NameAsker::setActive(bool a)
 {
 	active = a;
 	if (active) {
 		nameStream.clear();
-		nameStream << ' ';
+		nameStream.str(" ");
+		firstTime = false;
 	}
 }

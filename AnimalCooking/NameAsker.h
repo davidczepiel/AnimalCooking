@@ -11,7 +11,7 @@ public:
 	virtual void init()override;
 	virtual void update()override;
 
-	inline void setActive(bool a);
+	void setActive(bool a);
 private:
 	Texture* bg;
 	stringstream nameStream;
@@ -19,5 +19,6 @@ private:
 	double casillaY;
 	InputHandler* ih;
 	bool active;	
+	bool firstTime;
 };
 

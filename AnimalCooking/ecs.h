@@ -111,7 +111,7 @@ enum CmpId : CmpIdType {
 	GpadKeySwitcher,
 	GpadKeySwitcherViewer,
 	
-	nameAsker,//MapState
+	NameAsker,//MapState
 	MapInfoBox,
 	MapInfoBoxViewer,
 	MapChooser,
