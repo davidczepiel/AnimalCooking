@@ -176,6 +176,7 @@
     <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonChangeOnClick.h" />
+    <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="checkML.h" />
@@ -256,11 +257,15 @@
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="MapChooser.h" />
+    <ClInclude Include="MapConfig.h" />
+    <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="MapState.h" />
     <ClInclude Include="MenuButtonBehaviour.h" />
     <ClInclude Include="MenuButtonRenderer.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="MultipleAdversityManager.h" />
+    <ClInclude Include="NameAsker.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
@@ -349,6 +354,7 @@
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonChangeOnClick.cpp" />
+    <ClCompile Include="ButtonBehaviourNC.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="Collisions.cpp" />
@@ -426,11 +432,15 @@
     <ClCompile Include="MainMenuPadNavigation.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
+    <ClCompile Include="MapChooser.cpp" />
+    <ClCompile Include="MapConfig.cpp" />
+    <ClCompile Include="MapInfoBoxViewer.cpp" />
     <ClCompile Include="MapState.cpp" />
     <ClCompile Include="MenuButtonBehaviour.cpp" />
     <ClCompile Include="MenuButtonRenderer.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="MultipleAdversityManager.cpp" />
+    <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
     <ClCompile Include="OrderManager.cpp" />

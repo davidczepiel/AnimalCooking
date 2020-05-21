@@ -50,6 +50,22 @@ public:
 		LimitSign,
 		//---->Config<---------
 		ButtonConfig,
+		//MapState
+		MapChooserPannel,
+		MapNewGameButton,
+		MapLoadGameButton,
+		NameAsker,
+		MapStateBackground,
+		MapStateHousesBackground,
+		MapStateHouseButton,
+		MapStateHouseButtonOver,
+		MapStateInfoBox,
+		MapStatePlayButton,
+		MapStateReturnButton,
+		MapRestaurantButton,
+		LogoTenByTen,
+
+
 		SliderBackground,
 		SliderMovPoint,
 		ConfigBackground,
@@ -235,6 +251,9 @@ public:
 			BordeTeclaFeedBack,
 			RellenoTeclaFeedBack,
 
+			Coger,
+			Dejar,
+		
 		// images level specific
 		Arroz,
 		Aceite,

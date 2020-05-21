@@ -1,15 +1,60 @@
 #pragma once
 #include "State.h"
-class MapState :public State
-{
-private:
-	SDLGame* game_;
+#include "Entity.h"
+#include <vector>
+#include "NameAsker.h"
+#include "MapInfoBoxViewer.h"
+#include "ButtonPadNavigation.h"
 
-	Texture* jugarText;
-	Texture* volverText;
+class MapState :public State{
 public:
 	MapState(AnimalCooking* ac);
-	~MapState() { delete jugarText; delete volverText; }
+	~MapState();
 	static void screenLoaderCallback(AnimalCooking* ac);
-	static void backButtonCallback(AnimalCooking* ac);
+	static void backButtonCallback(AnimalCooking* ac);	
+	static void newGameCallback(AnimalCooking* ac);
+	static void loadGameCallback(AnimalCooking* ac);
+
+	void draw() override;
+	void update() override;
+
+	void chooseOption();
+	void askName();
+	void init();
+	void setState();
+	void saveGame();
+
+	inline void setName(string n) { playerName_ = n; }
+	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
+	inline int getCurrentLevel() { return currentLevel_; }
+
+	inline void isNewGame() { isNewGame_ = true; }
+	inline void isNotNewGame() { isNewGame_ = false; }
+
+private:
+	void configPadNavigation();
+
+	SDLGame* game_;	
+	Entity* newGameButton_;
+	Entity* loadGameButton_;
+	Entity* infoBox_;
+	Entity* playButton_;
+	Entity* returnButton_;
+	vector <Entity*> levelButtonsPool_;
+	ButtonPadNavigation* padNavigation_;
+
+	Texture* bgText_;
+	Texture* housesBackgroundText_; 
+	Texture* playButtonText_;
+	Texture* returnButtonText_;	
+
+	std::string playerName_;
+	int currentLevel_;
+	int lastLevel_;
+	int maxLevels_;	
+	double casillaX;
+	double casillaY;	
+	bool hasToBreak = false;
+	bool isNewGame_ = true;
+	bool gameStarted = false;
 };

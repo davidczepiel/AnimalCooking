@@ -1,6 +1,7 @@
 #include "ButtonPadNavigation.h"
 #include "GpadKeySwitcher.h"
 #include "SliderBehaviour.h"
+#include "ButtonBehaviourNC.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
 	xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
@@ -93,7 +94,11 @@ void ButtonPadNavigation::action() {
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		b->action();
+		if(b!=nullptr) b->action();
+		else {
+			ButtonBehaviourNC* bNC = GETCMP2(focus.e, ButtonBehaviourNC);
+			bNC->action();
+		}
 	}
 }
 

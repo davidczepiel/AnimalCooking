@@ -13,8 +13,7 @@
 unique_ptr<SDLGame> SDLGame::instance_;
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
-
-SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),score(0),maxScore(0),
+SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0), unlockedLevels(0), maxLevels(0), score(0),maxScore(0),
 		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen() {
 	initSDL();
 	initResources();
@@ -34,8 +33,9 @@ void SDLGame::initSDL() {
 	SDL_GetCurrentDisplayMode(0, &DM);
 	width_ = DM.w;
 	height_ = DM.h;
-	//width_ = 1080;
 	//height_ = 720;
+	//width_ = 1080;
+
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
 	SDL_WINDOWPOS_UNDEFINED,

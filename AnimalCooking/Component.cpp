@@ -2,7 +2,7 @@
 
 Component::Component(ecs::CmpId id) :
 		entity_(nullptr), //
-		game_(nullptr), //
+		game_(SDLGame::instance()), //
 		id_(id) //
 {
 }

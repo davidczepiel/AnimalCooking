@@ -48,8 +48,25 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, ConfigBackground,"../AnimalCooking/resources/images/Menu/config.png"},
 
 	//CreditState-----------
+	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
+	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
+	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
+	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
+	{Basic, Star,"../AnimalCooking/resources/images/star.png"},
+	{Basic, YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
+	{Basic, LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
+	//MapState
+	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/paisaje.jpg" },
+	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateHouseButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateHouseButtonOver, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStatePlayButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
+	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
+	{ Basic, MapChooserPannel, "../AnimalCooking/resources/images/provisional/pannel.png" },
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
@@ -280,7 +297,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
-	{Basic,FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3}
+	{Basic,FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
+	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/provisional/NameAskerBG.png",1,1 }	//Mapstate
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
@@ -307,6 +325,8 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic, TextureId::FinishText, "Finish Dish : ", COLOR(0x000000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::NextText, "Next Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::PreviousText, "Previous Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100}
+	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50}
 };
 
 
