@@ -62,28 +62,28 @@ void ConfigState::savePlayer(ofstream& f, Uint8 player, const config::Options& o
 	<< (Sint32)o.players_keyboardKeys[player].OPEN << " " << (Sint32)o.players_keyboardKeys[player].PREVIOUS << " "
 	<< (Sint32)o.players_keyboardKeys[player].NEXT << " " << (Sint32)o.players_keyboardKeys[player].FINISHER << " " << endl;
 
-	f << (Uint8)o.players_gPadButtons[player].PICKUP << " " << (Uint8)o.players_gPadButtons[player].ATTACK << " "
-	<< (Uint8)o.players_gPadButtons[player].OPEN << " " << (Uint8)o.players_gPadButtons[player].PREVIOUS << " "
-	<< (Uint8)o.players_gPadButtons[player].NEXT << " " << (Uint8)o.players_gPadButtons[player].FINISHER << " " << endl;
+	f << (Sint32)o.players_gPadButtons[player].PICKUP << " " << (Sint32)o.players_gPadButtons[player].ATTACK << " "
+	<< (Sint32)o.players_gPadButtons[player].OPEN << " " << (Sint32)o.players_gPadButtons[player].PREVIOUS << " "
+	<< (Sint32)o.players_gPadButtons[player].NEXT << " " << (Sint32)o.players_gPadButtons[player].FINISHER << " " << endl;
 }
 
 void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
 {
-	Sint32 aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].PICKUP = (SDL_Keycode)aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].ATTACK = (SDL_Keycode)aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].OPEN = (SDL_Keycode)aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].PREVIOUS = (SDL_Keycode)aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].NEXT = (SDL_Keycode)aux1;
-	f >> aux1; if (!f.fail()) o.players_keyboardKeys[player].FINISHER = (SDL_Keycode)aux1;
+	Sint32 aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PICKUP = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].ATTACK = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].OPEN = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PREVIOUS = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].NEXT = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].FINISHER = (SDL_Keycode)aux;
 
-	Uint8 aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux2;
-	f >> aux2; if(!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux2;
+	aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
 }
 
 
