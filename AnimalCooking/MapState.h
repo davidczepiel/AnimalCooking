@@ -23,6 +23,7 @@ public:
 	void init();
 	void setState();
 	void saveGame();
+	void hideChooseButtons();
 
 	inline void setName(string n) { playerName_ = n; }
 	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
@@ -40,6 +41,7 @@ private:
 	Entity* infoBox_;
 	Entity* playButton_;
 	Entity* returnButton_;
+	Entity* chooser;
 	vector <Entity*> levelButtonsPool_;
 	ButtonPadNavigation* padNavigation_;
 

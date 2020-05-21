@@ -1,7 +1,7 @@
 #include "MapChooser.h"
 
 MapChooser::MapChooser() : 
-	Component(ecs::nameAsker), 
+	Component(ecs::MapChooser), 
 	active_(true), 
 	bgText_(nullptr), 
 	buttonTexture_(nullptr),

@@ -2,7 +2,7 @@
 #include "ButtonRenderer.h"
 #include "Entity.h"
 
-ButtonRenderer::ButtonRenderer(Texture* background, Texture* text): Component(ecs::ButtonRenderer)
+ButtonRenderer::ButtonRenderer(Texture* background, Texture* text) : Component(ecs::ButtonRenderer), active(true)
 {
 	background_ = background;
 	text_ = text;
@@ -22,22 +22,23 @@ void ButtonRenderer::init()
 
 void ButtonRenderer::draw()
 {
-	ButtonState state_ = ButtonState::Unfocushed;
+	if (active) {
+		ButtonState state_ = ButtonState::Unfocushed;
 
-	if (game_->getTime() - clickedTime_ < clickedTimeCD_)
-		state_ = ButtonState::Cliked;
-	else if (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse())
-		state_ = ButtonState::Focushed;
-	
-	Vector2D pos = ownerTransform_->getPos();
+		if (game_->getTime() - clickedTime_ < clickedTimeCD_)
+			state_ = ButtonState::Cliked;
+		else if (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse())
+			state_ = ButtonState::Focushed;
 
-	SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
-	background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
-		
-	if (text_ != nullptr)
-	{
-		Vector2D s = Vector2D(text_->getWidth() * (ownerTransform_->getH() - 10) / text_->getHeight(), ownerTransform_->getH() - 10);
-		text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()));
+		Vector2D pos = ownerTransform_->getPos();
+
+		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+		background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
+
+		if (text_ != nullptr)
+		{
+			Vector2D s = Vector2D(text_->getWidth() * (ownerTransform_->getH() - 10) / text_->getHeight(), ownerTransform_->getH() - 10);
+			text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()));
+		}
 	}
 }
-

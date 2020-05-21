@@ -11,6 +11,7 @@ public:
 	void init() override;
 	void draw() override;
 	void clicked() { clickedTime_ = game_->getTime(); }
+	inline void setActive(bool val) { active = val; }
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
@@ -19,6 +20,7 @@ private:
 	Texture* text_;
 
 	Uint32 clickedTime_, clickedTimeCD_;
+	bool active;
 
 	enum ButtonState : size_t {
 		Focushed,
