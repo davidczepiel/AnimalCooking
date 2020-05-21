@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "ButtonChangeOnClick.h"
 
-ButtonRenderer::ButtonRenderer(Texture* background, Texture* text): Component(ecs::ButtonRenderer)
+ButtonRenderer::ButtonRenderer(Texture* background, Texture* text) : Component(ecs::ButtonRenderer), active(true)
 {
 	background_ = background;
 	text_ = text;
@@ -25,27 +25,29 @@ void ButtonRenderer::init()
 
 void ButtonRenderer::draw()
 {
-	ButtonState state_ = ButtonState::Unfocushed;
+	if(active){
+		ButtonState state_ = ButtonState::Unfocushed;
 
-	if (game_->getTime() - clickedTime_ < clickedTimeCD_)
-		state_ = ButtonState::Cliked;
-	else if (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse())
-		state_ = ButtonState::Focushed;
-	
-	Vector2D pos = ownerTransform_->getPos();
-
-	SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
-	background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
+		if (game_->getTime() - clickedTime_ < clickedTimeCD_)
+			state_ = ButtonState::Cliked;
+		else if (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse())
+			state_ = ButtonState::Focushed;
 		
-	if (text_ != nullptr)
-	{
-		Vector2D s = Vector2D(text_->getWidth() * (ownerTransform_->getH() - 10) / text_->getHeight(), ownerTransform_->getH() - 10);
-		if (buttonOnClick_ != nullptr) {
-			size_t i = buttonOnClick_->getState(); //0 es de-activado
-			text_->renderWithTint(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()), (1 - i) * 200, i * 100, (1 - i) * 51);
+		Vector2D pos = ownerTransform_->getPos();
+
+		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+		background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
+			
+		if (text_ != nullptr)
+		{
+			Vector2D s = Vector2D(text_->getWidth() * (ownerTransform_->getH() - 10) / text_->getHeight(), ownerTransform_->getH() - 10);
+			if (buttonOnClick_ != nullptr) {
+				size_t i = buttonOnClick_->getState(); //0 es de-activado
+				text_->renderWithTint(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()), (1 - i) * 200, i * 100, (1 - i) * 51);
+			}
+			else text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()));
 		}
-		else text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()));
-	}
+	}	
 }
 
 void ButtonRenderer::clicked()

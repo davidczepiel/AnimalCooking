@@ -19,6 +19,7 @@ MapState::MapState(AnimalCooking* ac) :
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	returnButtonText_(nullptr), 
+	chooser(nullptr),
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
@@ -46,7 +47,7 @@ MapState::~MapState() {
 }
 
 void MapState::chooseOption() {
-	Entity* chooser = stage->addEntity();
+	chooser = stage->addEntity();
 	chooser->addComponent<MapChooser>();
 	stage->addToGroup(chooser, ecs::GroupID::topLayer);
 
@@ -140,15 +141,33 @@ void MapState::saveGame()
 	mapCFG.save();
 }
 
+void MapState::hideChooseButtons()
+{
+	GETCMP2(newGameButton_, ButtonBehaviour)->setActive(false);
+	GETCMP2(newGameButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
+	GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(chooser, MapChooser)->setActive(false);
+	
+	
+}
+
 
 void MapState::newGameCallback(AnimalCooking* ac)
 {
-	static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->isNewGame();
+	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	ms->isNewGame();
+	ms->hideChooseButtons();
+	ms->askName();
+	ms->hasToBreak = true;
 }
 
 void MapState::loadGameCallback(AnimalCooking* ac)
 {
-	static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->isNotNewGame();
+	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	ms->isNotNewGame();
+	ms->hideChooseButtons();
+	ms->askName();
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
