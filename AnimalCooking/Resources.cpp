@@ -27,7 +27,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
-
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
@@ -47,16 +46,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
 	{Basic, ConfigBackground,"../AnimalCooking/resources/images/Menu/config.png"},
 
-	//CreditState-----------
-	{Basic, HomeIcon,"../AnimalCooking/resources/images/HomeProvisional.png"},
-	{Basic, MapIcon,"../AnimalCooking/resources/images/MapProvisional.png"},
-	{Basic, ReplayIcon,"../AnimalCooking/resources/images/ReplayProvisional.png"},
-	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/PlayProvisional.png"},
-	{Basic, Star,"../AnimalCooking/resources/images/star.png"},
-	{Basic, YellowStar,"../AnimalCooking/resources/images/YellowStar.png"},
-	{Basic, LimitSign,"../AnimalCooking/resources/images/Indicador.png"},
-	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
-
 	//MapState
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/paisaje.jpg" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
@@ -67,6 +56,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
 	{ Basic, MapChooserPannel, "../AnimalCooking/resources/images/provisional/pannel.png" },
+
+	//---->Creditos<-----
+	{Basic, LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
@@ -324,7 +316,7 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic, TextureId::OpenText, "Open : ", COLOR(0x000000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::FinishText, "Finish Dish : ", COLOR(0x000000ff), FontId::QuarkCheese100},
 	{Basic, TextureId::NextText, "Next Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::PreviousText, "Previous Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100}
+	{Basic, TextureId::PreviousText, "Previous Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100},
 	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50}
 };

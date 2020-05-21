@@ -30,12 +30,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 
 
 }
-void EndState::goToLoadState(AnimalCooking* ac) {
-	goToMapState(ac);
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 1), ac));
-	SDLGame::instance()->setMaxScore(0);
-	SDLGame::instance()->setScore(0);
-}
+
 void EndState::goToMapState(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	FSM* fsm = SDLGame::instance()->getFSM();

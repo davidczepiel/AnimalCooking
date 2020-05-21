@@ -41,15 +41,15 @@ public:
 		TicketEndState,
 		BarBackgroundEndState,
 		BarEndState,
-		HomeIcon,
-		MapIcon,
-		ReplayIcon,
-		NextLevelIcon,
 		Star,
 		YellowStar,
 		LimitSign,
+
 		//---->Config<---------
-		ButtonConfig,
+		SliderBackground,
+		SliderMovPoint,
+		ConfigBackground,
+
 		//MapState
 		MapChooserPannel,
 		MapNewGameButton,
@@ -63,12 +63,7 @@ public:
 		MapStatePlayButton,
 		MapStateReturnButton,
 		MapRestaurantButton,
-		LogoTenByTen,
 
-
-		SliderBackground,
-		SliderMovPoint,
-		ConfigBackground,
 		//---->Creditos<-----
 		LogoTenByTen,
 
@@ -250,9 +245,6 @@ public:
 			PapeleraFeedBack,
 			BordeTeclaFeedBack,
 			RellenoTeclaFeedBack,
-
-			Coger,
-			Dejar,
 		
 		// images level specific
 		Arroz,
@@ -261,6 +253,11 @@ public:
 		
 		//spritesheets
 		Button,
+		ButtonConfig,
+		HomeIcon,
+		MapIcon,
+		ReplayIcon,
+		NextLevelIcon,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
