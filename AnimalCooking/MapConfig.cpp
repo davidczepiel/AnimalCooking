@@ -117,6 +117,10 @@ void MapConfig::load()
 void MapConfig::save()
 {
 	int unlocked_levels = SDLGame::instance()->getCurrenUnlockLevel();
+	map<int, int>stars = SDLGame::instance()->getUnlockedStars();
+	for (auto it = stars.begin(); it != stars.end(); it++) {
+		levelsRecipes_.at((*it).first).stars = (*it).second;
+	}
 	for (int i = 0; i < unlocked_levels; i++)
 	{
 		levelsRecipes_.at(i).unlocked = true;
@@ -127,7 +131,6 @@ void MapConfig::save()
 	int i = 0;
 	for (levelInfo lI : levelsRecipes_) {
 		partidaGuardada << i << " " << lI.stars << " " << lI.unlocked << endl;
-		cout << i << " " << lI.stars << " " << lI.unlocked << endl;
 		i++;
 	}
 	partidaGuardada.close();
@@ -138,7 +141,7 @@ void MapConfig::save()
 		while (!profiles.eof() && !found) {
 			string cadena;
 			profiles >> cadena;
-			if(!profiles.fail())
+			if (!profiles.fail())
 				found = (cadena == fileName_);
 		}
 	}
@@ -148,7 +151,7 @@ void MapConfig::save()
 		if (profiles.is_open())
 			profiles << fileName_ << endl;
 		profiles.close();
-	}	
+	}
 }
 
 const vector<string>& MapConfig::getProfiles()

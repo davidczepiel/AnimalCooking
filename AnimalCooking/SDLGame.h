@@ -135,8 +135,7 @@ public:
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
 	void addStarsPerLevel(int stars, int level);
-	//const vector<Stars>& getStarsPerLevel{ return unlockedStarsPerLevel; }
-
+	inline const map<int, int>& getUnlockedStars() { return unlockedStarsPerLevel; }
 		
 	
 
