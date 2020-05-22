@@ -13,6 +13,14 @@ unique_ptr<SDLGame> SDLGame::instance_;
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 
+void SDLGame::addStarsPerLevel(int stars, int level)
+{
+	auto it = unlockedStarsPerLevel.find(level);
+	if (it ==unlockedStarsPerLevel.end() ^(*it).);
+	unlockedStarsPerLevel.insert(level, stars);
+	
+}
+
 SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0), unlockedLevels(0), maxLevels(0), score(0),maxScore(0),
 		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_() {
 	initSDL();

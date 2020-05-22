@@ -256,7 +256,6 @@
     <ClInclude Include="LoadingBarViewer.h" />
     <ClInclude Include="MainMenuPadNavigation.h" />
     <ClInclude Include="Manager.h" />
-    <ClInclude Include="MapChooser.h" />
     <ClInclude Include="MapConfig.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="MapState.h" />
@@ -430,7 +429,6 @@
     <ClCompile Include="MainMenuPadNavigation.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="AnimalCooking.cpp" />
-    <ClCompile Include="MapChooser.cpp" />
     <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
     <ClCompile Include="MapState.cpp" />

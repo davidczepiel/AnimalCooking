@@ -21,14 +21,13 @@ public:
 	void chooseOption();
 	void askName();
 	void init();
-	void setState(bool firstTime);
+	void setState();
 	void saveGame();
 	void hideChooseButtons();
 
-	inline void setName(string n) { playerName_ = n; }
+	inline void setName(string n){ playerName_ = n; }
 	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
 	inline int getCurrentLevel() { return currentLevel_; }
-	void activateNameAsker();
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
 

@@ -6,7 +6,6 @@
 #include "ButtonBehaviourNC.h"
 #include "MapConfig.h"
 #include "ButtonPadNavigation.h"
-#include "MapChooser.h"
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
@@ -36,7 +35,6 @@ MapState::MapState(AnimalCooking* ac) :
 	//Play and return buttons textures
 	playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
 	returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
-
 	chooseOption();
 	//init();
 	//askName();
@@ -48,7 +46,6 @@ MapState::~MapState() {
 
 void MapState::chooseOption() {
 	chooser = stage->addEntity();
-	chooser->addComponent<MapChooser>();
 	stage->addToGroup(chooser, ecs::GroupID::topLayer);
 
 	newGameButton_ = stage->addEntity();
@@ -59,7 +56,7 @@ void MapState::chooseOption() {
 		1.5 * casillaY,
 		0);
 	newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
-	newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapChooserPannel), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
+	newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 	stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
 
 	loadGameButton_ = stage->addEntity();
@@ -70,7 +67,7 @@ void MapState::chooseOption() {
 		1.5 * casillaY,
 		0);
 	loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
-	loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapChooserPannel), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
+	loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
 	stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
 }
 
@@ -103,29 +100,22 @@ void MapState::askName() {
 	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
 }
 
-void MapState::setState(bool firstTime) {
+void MapState::setState() {
 	hasToBreak = true;
-	if (firstTime) {
-		infoBox_ = stage->addEntity();
-		playButton_ = stage->addEntity();
-		playButton_->addComponent<Transform>(
-			Vector2D(3 * casillaX, 1.5 * casillaY),
-			Vector2D(),
-			3 * casillaX,
-			1.5 * casillaY,
-			0);
+	infoBox_ = stage->addEntity();
+	playButton_ = stage->addEntity();
+	playButton_->addComponent<Transform>(
+		Vector2D(3 * casillaX, 1.5 * casillaY),
+		Vector2D(),
+		3 * casillaX,
+		1.5 * casillaY,
+		0);
 
-		playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
-		playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
-		stage->addToGroup(playButton_, ecs::GroupID::topLayer);
-		stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
-		infoBox_->addComponent<MapInfoBoxViewer>();
-	}
-	else {
-		GETCMP2(playButton_, ButtonBehaviour)->setActive(true);
-		GETCMP2(playButton_, ButtonRenderer)->setActive(true);
-		GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
-	}
+	playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+	playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
+	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
+	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
+	infoBox_->addComponent<MapInfoBoxViewer>();
 	vector<levelInfo> levelsInfo_;
 
 	MapConfig mapCFG(playerName_, isNewGame_);
@@ -133,17 +123,10 @@ void MapState::setState(bool firstTime) {
 
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
-		if (firstTime) {
-			Entity* level = stage->addEntity();
-			level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
-			level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
-			levelButtonsPool_.push_back(level);
-		}
-		else {
-			GETCMP2(levelButtonsPool_.at(x), ButtonRenderer)->setActive(true);
-			GETCMP2(levelButtonsPool_.at(x), ButtonBehaviourNC)->setActive(true);
-
-		}
+		Entity* level = stage->addEntity();
+		level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+		level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+		levelButtonsPool_.push_back(level);
 	}
 	configPadNavigation();
 }
@@ -160,25 +143,11 @@ void MapState::hideChooseButtons()
 	GETCMP2(newGameButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
 	GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
-	GETCMP2(chooser, MapChooser)->setActive(false);
 
 
 }
 
-void MapState::activateNameAsker()
-{
-	if (playButton_ != nullptr && infoBox_ != nullptr) {
-		GETCMP2(playButton_, ButtonBehaviour)->setActive(false);
-		GETCMP2(playButton_, ButtonRenderer)->setActive(false);
-		GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
-		for (Entity* e:levelButtonsPool_)
-		{
-			GETCMP2(e, ButtonBehaviourNC)->setActive(false);
-			GETCMP2(e, ButtonRenderer)->setActive(false);
-		}
-	}
-	GETCMP2(nameAsker, NameAsker)->setActive(true);
-}
+
 
 
 void MapState::newGameCallback(AnimalCooking* ac)

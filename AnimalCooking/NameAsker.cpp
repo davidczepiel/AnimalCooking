@@ -1,6 +1,6 @@
 #include "NameAsker.h"
 
-NameAsker::NameAsker(): Component(ecs::NameAsker), active(true),firstTime(true), bg(nullptr), casillaX(0), casillaY(0), nameStream(" ") {
+NameAsker::NameAsker() : Component(ecs::NameAsker), active(true), bg(nullptr), casillaX(0), casillaY(0), nameStream(" ") {
 	ih = SDLGame::instance()->getInputHandler();
 }
 
@@ -37,30 +37,31 @@ void NameAsker::update()
 			char key = keycode;
 			if (((key >= 'a' && key <= 'z') || key == ' ') && nameStream.str().size() < game_->getWindowWidth() / (config::FONT_SIZE / 2))
 				nameStream << key;
-			else if (keycode == SDLK_BACKSPACE && nameStream.str().size() > 0) {
-
-				string aux = nameStream.str();
-				aux.pop_back();
-				nameStream.str(aux);
-				nameStream.seekp(0, nameStream.end);
+			else if (keycode == SDLK_BACKSPACE) {
+				if (nameStream.str().size() > 1) {
+					string aux = nameStream.str();
+					aux.pop_back();
+					nameStream.str(aux);
+					nameStream.seekp(0, nameStream.end);
+				}
+				else nameStream.str(" ");
 			}
 			else if (keycode == SDLK_RETURN && nameStream.str().size() > 1)
 			{
 				MapState* mapState = static_cast<MapState*>(game_->getFSM()->currentState());
 				active = false;
 				mapState->setName(nameStream.str());
-				mapState->setState(firstTime);
+				mapState->setState();
 			}
 		}
 	}
 }
 
- void NameAsker::setActive(bool a)
+void NameAsker::setActive(bool a)
 {
 	active = a;
 	if (active) {
 		nameStream.clear();
 		nameStream.str(" ");
-		firstTime = false;
 	}
 }

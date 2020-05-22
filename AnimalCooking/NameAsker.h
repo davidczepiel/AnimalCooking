@@ -19,6 +19,5 @@ private:
 	double casillaY;
 	InputHandler* ih;
 	bool active;	
-	bool firstTime;
 };
 

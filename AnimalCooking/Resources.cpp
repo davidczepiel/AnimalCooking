@@ -40,7 +40,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
 	//MapState
-	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/paisaje.jpg" },
+	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateHouseButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateHouseButtonOver, "../AnimalCooking/resources/images/Adversities/plane.png" },
@@ -48,7 +48,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
-	{ Basic, MapChooserPannel, "../AnimalCooking/resources/images/provisional/pannel.png" },
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
