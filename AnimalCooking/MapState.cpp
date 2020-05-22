@@ -42,6 +42,7 @@ MapState::MapState(AnimalCooking* ac) :
 }
 
 MapState::~MapState() {
+	saveGame();
 
 }
 

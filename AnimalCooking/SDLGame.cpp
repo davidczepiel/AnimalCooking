@@ -15,14 +15,14 @@ const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 
 void SDLGame::addStarsPerLevel(int stars, int level)
 {
-	//auto it = unlockedStarsPerLevel.find(level);
-	//if (it ==unlockedStarsPerLevel.end() ^(*it).);
-	//unlockedStarsPerLevel.insert(level, stars);
-	
+	auto it = unlockedStarsPerLevel.find(level);
+	if (it == unlockedStarsPerLevel.end() ^ (*it).second > stars)
+		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
+
 }
 
-SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0), unlockedLevels(0), maxLevels(0), score(0),maxScore(0),
-		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_() {
+SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0), unlockedLevels(0), maxLevels(0), score(0), maxScore(0),
+windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_() {
 	initSDL();
 	initResources();
 }
@@ -46,13 +46,13 @@ void SDLGame::initSDL() {
 
 	// Create window
 	window_ = SDL_CreateWindow(windowTitle_.c_str(),
-	SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED, width_, height_ - 60, SDL_WINDOW_SHOWN);
+		SDL_WINDOWPOS_UNDEFINED,
+		SDL_WINDOWPOS_UNDEFINED, width_, height_ - 60, SDL_WINDOW_SHOWN);
 	assert(window_ != nullptr);
 
 	// Create the renderer
 	renderer_ = SDL_CreateRenderer(window_, -1,
-			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer_ != nullptr);
 
 	SDL_RenderSetLogicalSize(renderer_, width_, height_);
@@ -61,7 +61,7 @@ void SDLGame::initSDL() {
 
 	// Clear screen (background color).
 	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 0, 100, 100,
-			255);  // Dark grey.
+		255);  // Dark grey.
 	assert(sdlSetDrawColor_ret != -1);
 	int sdlRenderClear_ret = SDL_RenderClear(renderer_);
 	assert(sdlRenderClear_ret != -1);
@@ -98,28 +98,28 @@ void SDLGame::initResources() {
 	audio_ = new SDLAudioManager();
 	audio_->init();
 
-	for (auto &image : Resources::images_) {
-		if(image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
+	for (auto& image : Resources::images_) {
+		if (image.level == Resources::Level::Basic) textures_->loadFromImg(image.id, renderer_, image.fileName);
 	}
 
 	for (auto& spritesheet : Resources::spritesheets_) {
 		if (spritesheet.level == Resources::Level::Basic) textures_->loadFromSprSheet(spritesheet.id, renderer_, spritesheet.fileName, spritesheet.numRows, spritesheet.numCols);
 	}
 
-	for (auto &font : Resources::fonts_) {
+	for (auto& font : Resources::fonts_) {
 		if (font.level == Resources::Level::Basic) fonts_->loadFont(font.id, font.fileName, font.size);
 	}
 
-	for (auto &txtmsg : Resources::messages_) {
+	for (auto& txtmsg : Resources::messages_) {
 		if (txtmsg.level == Resources::Level::Basic) textures_->loadFromText(txtmsg.id, renderer_, txtmsg.msg,
-				fonts_->getFont(txtmsg.fontId), txtmsg.color);
+			fonts_->getFont(txtmsg.fontId), txtmsg.color);
 	}
 
-	for (auto &sound : Resources::sounds_) {
+	for (auto& sound : Resources::sounds_) {
 		if (sound.level == Resources::Level::Basic) audio_->loadSound(sound.id, sound.fileName);
 	}
 
-	for (auto &music : Resources::musics_) {
+	for (auto& music : Resources::musics_) {
 		if (music.level == Resources::Level::Basic) audio_->loadMusic(music.id, music.fileName);
 	}
 
