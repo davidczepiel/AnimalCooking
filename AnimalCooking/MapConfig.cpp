@@ -128,4 +128,37 @@ void MapConfig::save()
 		i++;
 	}
 	partidaGuardada.close();
+
+	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	bool found = false;
+	if (profiles.is_open()) {
+		while (!profiles.eof() && !found) {
+			string cadena;
+			profiles >> cadena;
+			if(!profiles.fail())
+				found = (cadena == fileName_);
+		}
+	}
+	profiles.close();
+	if (!found) {
+		ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
+		if (profiles.is_open())
+			profiles << fileName_ << endl;
+		profiles.close();
+	}	
+}
+
+const vector<string>& MapConfig::getProfiles()
+{
+	vector<string> p;
+	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	if (profiles.is_open()) {
+		while (!profiles.eof()) {
+			string cadena;
+			profiles >> cadena;
+			if (!profiles.fail())
+				p.push_back(cadena);
+		}
+	}
+	return p;
 }
