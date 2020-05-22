@@ -27,7 +27,7 @@ void ButtonRenderer::draw()
 
 		if (game_->getTime() - clickedTime_ < clickedTimeCD_)
 			state_ = ButtonState::Cliked;
-		else if (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse())
+		else if (buttonBehaviour_ != nullptr && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()))
 			state_ = ButtonState::Focushed;
 
 		Vector2D pos = ownerTransform_->getPos();

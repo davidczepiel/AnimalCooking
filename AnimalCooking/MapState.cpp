@@ -23,7 +23,7 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
-	playerName_("Player") {
+	playerName_("") {
 
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
@@ -43,7 +43,9 @@ MapState::MapState(AnimalCooking* ac) :
 
 MapState::~MapState() {
 	saveGame();
-
+	for (auto t : profileTextures) {
+		delete t; t = nullptr;
+	}
 }
 
 void MapState::chooseOption() {
@@ -104,67 +106,92 @@ void MapState::askName() {
 void MapState::askProfile()
 {
 	MapConfig mapCFG(playerName_);
-	vector<string>& profiles = mapCFG.getProfiles();
+	vector<string> profiles = mapCFG.getProfiles();
 	if (profiles.size() > 5) { // En dos columnas
 		for (int i = 0; i < profiles.size(); ++i) {
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
 			double posX = 0.75 * casillaX;
-			double posY = (0.875 * casillaY) + 1.5 * casillaY * i;
+			double posY = (0.875 * casillaY) + (1.5 * casillaY * i / 2);
 			if (i % 2 == 1) {
-				posX = game_->getWindowWidth() - posX - 7.25 * casillaX;
-				posY = posY - 1.5 * casillaY;
+				posX = game_->getWindowWidth() - posX - 6.25 * casillaX;
+				posY = posY - (0.75 * casillaY);
 			}
+			profileTextures.push_back(new Texture(game_->getRenderer(), profiles[i], 
+				game_->getFontMngr()->getFont(Resources::QuarkCheese100), hex2sdlcolor("#FFFFFFFF")));
 			profileAskers.back()->addComponent<Transform>(
 				Vector2D(posX, posY),
 				Vector2D(),
-				6 * casillaX, 
+				5 * casillaX, 
 				1.25 * casillaY, 
 				0);
 			profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
 			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
 			profileAskers.back()->addComponent<Transform>(
-				Vector2D(posX + 6 * casillaX, posY),
+				Vector2D(posX + 5 * casillaX, posY),
 				Vector2D(),
 				1.25 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(false);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
 			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
 	}
 	else { // Una columna
 		for (int i = 0; i < profiles.size(); ++i) {
+			profileTextures.push_back(new Texture(game_->getRenderer(), profiles[i],
+				game_->getFontMngr()->getFont(Resources::QuarkCheese100), hex2sdlcolor("#FFFFFFFF")));
+
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
 			profileAskers.back()->addComponent<Transform>(
-				Vector2D(game_->getWindowWidth() - 4.625 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(game_->getWindowWidth() / 2 - 4.625 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
 				Vector2D(),
 				8 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(true); 
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
 			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
 			profileAskers.back()->addComponent<Transform>(
-				Vector2D(game_->getWindowWidth() + 3.375 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(game_->getWindowWidth() / 2 + 3.375 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
 				Vector2D(),
 				1.25 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(false);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
 			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
 	}
 }
 
+void MapState::removeProfile(const string& name)
+{
+	for (int i = 1; i < profileAskers.size(); i+=2) {
+		if (GETCMP2(profileAskers[i], ButtonBehaviourNC)->getName() == name) {
+			MapConfig mapCFG(name);
+			mapCFG.removeProfile();
+			GETCMP2(profileAskers[i], ButtonBehaviourNC)->setActive(false);
+			GETCMP2(profileAskers[i], ButtonRenderer)->setActive(false);
+			GETCMP2(profileAskers[i - 1], ButtonBehaviourNC)->setActive(false);
+			GETCMP2(profileAskers[i - 1], ButtonRenderer)->setActive(false);
+		}
+	}
+}
+
 void MapState::setState() {
 	hasToBreak = true;
+	if (!profileAskers.empty())
+		for (auto en : profileAskers) {
+		GETCMP2(en, ButtonBehaviourNC)->setActive(false); 
+		GETCMP2(en, ButtonRenderer)->setActive(false);
+	}
+
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(

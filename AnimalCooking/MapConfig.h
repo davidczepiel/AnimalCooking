@@ -24,9 +24,11 @@ public:
 	void save();
 	void load();
 
+	void removeProfile();
+
 	inline const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes_; }
 	inline const int getMaxLevels() { return levelsRecipes_.size(); }
-	vector<string>& getProfiles();
+	vector<string> getProfiles();
 
 private:
 	void fill();

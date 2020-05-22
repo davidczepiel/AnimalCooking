@@ -32,6 +32,7 @@ public:
 	inline void isNotNewGame() { isNewGame_ = false; }
 
 	void askProfile();
+	void removeProfile(const string& name);
 
 private:
 	void configPadNavigation();
@@ -45,6 +46,7 @@ private:
 	Entity* chooser;
 	Entity* nameAsker;
 	vector <Entity*> profileAskers;
+	vector <Texture*> profileTextures;
 	vector <Entity*> levelButtonsPool_;
 	ButtonPadNavigation* padNavigation_;
 

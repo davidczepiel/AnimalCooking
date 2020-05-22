@@ -18,15 +18,16 @@ ButtonBehaviourNC::ButtonBehaviourNC(Entity* infoBox, levelInfo info) :
 {
 }
 
-ButtonBehaviourNC::ButtonBehaviourNC(bool profilechooser) : 
+ButtonBehaviourNC::ButtonBehaviourNC(bool profilechooser, const string& name) : 
 	Component(ecs::ButtonBehaviourNC),
 	infoBox_(),
 	ownerTransform_(nullptr),
-	active_(false),
+	active_(true),
 	focusedByController_(nullptr),
 	focusedByMouse_(nullptr),
 	bRenderer_(nullptr),
-	mapInfo_()
+	mapInfo_(),
+	name_(name)
 {
 	action_ = profilechooser ? 1 : 2;
 }
@@ -59,15 +60,17 @@ void ButtonBehaviourNC::update()
 
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviourNC::action() {
-	if (action_ == 0) {
+	if (action_ == 0) { //En el mapa
 		infoBox_->getComponent<MapInfoBoxViewer>(ecs::MapInfoBoxViewer)->setCurrentInfoLevel(mapInfo_);
 		static_cast<MapState*>(game_->getFSM()->currentState())->setCurrentLevel(mapInfo_.level);
 	}
-	else if (action_ == 1) {
-
+	else if (action_ == 1) { //Meterse en el mapa 
+		MapState* mp = static_cast<MapState*>(game_->getFSM()->currentState());
+		mp->setName(name_);
+		mp->setState();
 	}
-	else {
-
+	else { //Eliminar el perfil
+		static_cast<MapState*>(game_->getFSM()->currentState())->removeProfile(name_);
 	}
 }
 

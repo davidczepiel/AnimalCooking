@@ -114,8 +114,33 @@ void MapConfig::load()
 	}
 }
 
+void MapConfig::removeProfile()
+{
+	remove(string("../AnimalCooking/resources/" + fileName_ + ".txt").c_str());
+
+	stringstream file("");
+
+	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	if (profiles.is_open()) {
+		while (!profiles.eof()) {
+			string cadena;
+			std::getline(profiles, cadena);
+			if (!profiles.fail() && cadena != fileName_) {
+				file << cadena << endl;
+			}		
+		}
+	}
+	profiles.close();
+	remove(string("../AnimalCooking/resources/profiles.txt").c_str());
+	ofstream p("../AnimalCooking/resources/profiles.txt", ios::beg);
+	p << file.str();
+	p.close();
+}
+
 void MapConfig::save()
 {
+	if (fileName_.empty())
+		return;
 	int unlocked_levels = SDLGame::instance()->getCurrenUnlockLevel();
 	map<int, int>stars = SDLGame::instance()->getUnlockedStars();
 	for (auto it = stars.begin(); it != stars.end(); it++) {
@@ -140,7 +165,7 @@ void MapConfig::save()
 	if (profiles.is_open()) {
 		while (!profiles.eof() && !found) {
 			string cadena;
-			profiles >> cadena;
+			std::getline(profiles, cadena);
 			if (!profiles.fail())
 				found = (cadena == fileName_);
 		}
@@ -154,14 +179,14 @@ void MapConfig::save()
 	}
 }
 
-vector<string>& MapConfig::getProfiles()
+vector<string> MapConfig::getProfiles()
 {
 	vector<string> p;
 	ifstream profiles("../AnimalCooking/resources/profiles.txt");
 	if (profiles.is_open()) {
 		while (!profiles.eof()) {
 			string cadena;
-			profiles >> cadena;
+			std::getline(profiles, cadena);
 			if (!profiles.fail())
 				p.push_back(cadena);
 		}
