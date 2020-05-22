@@ -1,6 +1,7 @@
 #include "SDL_macros.h"
 #include "ButtonRenderer.h"
 #include "Entity.h"
+#include "ButtonBehaviourNC.h"
 
 ButtonRenderer::ButtonRenderer(Texture* background, Texture* text) : Component(ecs::ButtonRenderer), active(true)
 {
@@ -9,6 +10,7 @@ ButtonRenderer::ButtonRenderer(Texture* background, Texture* text) : Component(e
 
 	ownerTransform_ = nullptr;
 	buttonBehaviour_ = nullptr;
+	buttonBehaviourNC_ = nullptr;
 
 	clickedTime_ = 0;
 	clickedTimeCD_ = 70;
@@ -18,6 +20,7 @@ void ButtonRenderer::init()
 {
 	ownerTransform_ = GETCMP1_(Transform);
 	buttonBehaviour_ = GETCMP1_(ButtonBehaviour);
+	buttonBehaviourNC_ = GETCMP1_(ButtonBehaviourNC);
 }
 
 void ButtonRenderer::draw()
@@ -27,7 +30,8 @@ void ButtonRenderer::draw()
 
 		if (game_->getTime() - clickedTime_ < clickedTimeCD_)
 			state_ = ButtonState::Cliked;
-		else if (buttonBehaviour_ != nullptr && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()))
+		else if (buttonBehaviour_ && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()) || 
+			buttonBehaviourNC_ && (buttonBehaviourNC_->getFocusByController() || buttonBehaviourNC_->getFocusByMouse()))
 			state_ = ButtonState::Focushed;
 
 		Vector2D pos = ownerTransform_->getPos();

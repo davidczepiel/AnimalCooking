@@ -45,9 +45,11 @@ private:
 	Entity* returnButton_;
 	Entity* chooser;
 	Entity* nameAsker;
+	Entity* exit;
 	vector <Entity*> profileAskers;
 	vector <Texture*> profileTextures;
 	vector <Entity*> levelButtonsPool_;
+	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
 
 	Texture* bgText_;

@@ -3,7 +3,7 @@
 #include "Transform.h"
 #include "ButtonBehaviour.h"
 
-
+class ButtonBehaviourNC;
 class ButtonRenderer : public Component
 {
 public:
@@ -15,6 +15,7 @@ public:
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
+	ButtonBehaviourNC* buttonBehaviourNC_;
 
 	Texture* background_;
 	Texture* text_;

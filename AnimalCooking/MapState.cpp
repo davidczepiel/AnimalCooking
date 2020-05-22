@@ -52,27 +52,64 @@ void MapState::chooseOption() {
 	chooser = stage->addEntity();
 	stage->addToGroup(chooser, ecs::GroupID::topLayer);
 
-	newGameButton_ = stage->addEntity();
-	newGameButton_->addComponent<Transform>(
-		Vector2D(5 * casillaX, 2.5 * casillaY),
-		Vector2D(),
-		6 * casillaX,
-		1.5 * casillaY,
-		0);
-	newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
-	newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
-	stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
+	MapConfig mapCFG(playerName_);
+	if (mapCFG.getProfiles().size() < 10) {
+		newGameButton_ = stage->addEntity();
+		newGameButton_->addComponent<Transform>(
+			Vector2D(5 * casillaX, 2.5 * casillaY),
+			Vector2D(),
+			6 * casillaX,
+			1.5 * casillaY,
+			0);
+		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
+		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
+		bb->setButtonRenderer(br);
+		stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
+	} else newGameButton_ = nullptr;
+	if (mapCFG.getProfiles().size() > 0) {
+		loadGameButton_ = stage->addEntity();
+		loadGameButton_->addComponent<Transform>(
+			Vector2D(5 * casillaX, 4.5 * casillaY),
+			Vector2D(),
+			6 * casillaX,
+			1.5 * casillaY,
+			0);
+		ButtonBehaviour* bb = loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
+		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
+		bb->setButtonRenderer(br);
+		stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
+	} else loadGameButton_ = nullptr;
 
-	loadGameButton_ = stage->addEntity();
-	loadGameButton_->addComponent<Transform>(
-		Vector2D(5 * casillaX, 4.5 * casillaY),
+	exit = stage->addEntity();
+	exit->addComponent<Transform>(
+		Vector2D(10, 10),
 		Vector2D(),
-		6 * casillaX,
+		2 * casillaX,
 		1.5 * casillaY,
 		0);
-	loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
-	loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
-	stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
+	ButtonBehaviour* bb = exit->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	bb->setButtonRenderer(br);
+	stage->addToGroup(exit, ecs::GroupID::topLayer);
+
+	pad = stage->addEntity();
+	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
+
+	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
+		if (newGameButton_ && loadGameButton_) {
+			padNavigation_->AddButton(newGameButton_, exit, loadGameButton_, exit, nullptr);
+			padNavigation_->AddButton(loadGameButton_, newGameButton_, nullptr, exit, nullptr);
+			padNavigation_->AddButton(exit, nullptr, newGameButton_, nullptr, newGameButton_);
+		}
+		else if (!loadGameButton_) {
+			padNavigation_->AddButton(newGameButton_, exit, nullptr, exit, nullptr);
+			padNavigation_->AddButton(exit, nullptr, newGameButton_, nullptr, newGameButton_);
+		}
+		else {
+			padNavigation_->AddButton(loadGameButton_, exit, nullptr, exit, nullptr);
+			padNavigation_->AddButton(exit, nullptr, loadGameButton_, nullptr, loadGameButton_);
+		}
+	}
 }
 
 void MapState::init() {
@@ -124,8 +161,9 @@ void MapState::askProfile()
 				5 * casillaX, 
 				1.25 * casillaY, 
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonBehaviourNC* bb =  profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
 			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
@@ -135,8 +173,9 @@ void MapState::askProfile()
 				1.25 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
 	}
@@ -152,8 +191,9 @@ void MapState::askProfile()
 				8 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
 			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
@@ -163,8 +203,9 @@ void MapState::askProfile()
 				1.25 * casillaX,
 				1.25 * casillaY,
 				0);
-			profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
 	}
@@ -188,9 +229,11 @@ void MapState::setState() {
 	hasToBreak = true;
 	if (!profileAskers.empty())
 		for (auto en : profileAskers) {
-		GETCMP2(en, ButtonBehaviourNC)->setActive(false); 
-		GETCMP2(en, ButtonRenderer)->setActive(false);
+			GETCMP2(en, ButtonBehaviourNC)->setActive(false); 
+			GETCMP2(en, ButtonRenderer)->setActive(false);
 	}
+	GETCMP2(exit, ButtonBehaviour)->setActive(false);
+	GETCMP2(exit, ButtonRenderer)->setActive(false);
 
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
@@ -201,8 +244,9 @@ void MapState::setState() {
 		1.5 * casillaY,
 		0);
 
-	playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
-	playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
+	ButtonBehaviour* bb = playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+	ButtonRenderer* br = playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
+	bb->setButtonRenderer(br);
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
 	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
 	infoBox_->addComponent<MapInfoBoxViewer>();
@@ -214,8 +258,9 @@ void MapState::setState() {
 
 	for (int x = 0; x < levelsInfo_.size(); x++) {
 		Entity* level = stage->addEntity();
-		level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
-		level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+		ButtonBehaviourNC* bb = level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+		br = level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+		bb->setButtonRenderer(br);
 		levelButtonsPool_.push_back(level);
 	}
 	configPadNavigation();
@@ -229,10 +274,14 @@ void MapState::saveGame()
 
 void MapState::hideChooseButtons()
 {
-	GETCMP2(newGameButton_, ButtonBehaviour)->setActive(false);
-	GETCMP2(newGameButton_, ButtonRenderer)->setActive(false);
-	GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
-	GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
+	if (newGameButton_) {
+		GETCMP2(newGameButton_, ButtonBehaviour)->setActive(false);
+		GETCMP2(newGameButton_, ButtonRenderer)->setActive(false);
+	}
+	if (loadGameButton_) {
+		GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
+		GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
+	}
 }
 
 void MapState::newGameCallback(AnimalCooking* ac)
@@ -267,12 +316,12 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 
 
 void MapState::configPadNavigation() {
-	Entity* pad = stage->addEntity();
-	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
-
-	padNavigation_->AddButton(levelButtonsPool_.at(0), levelButtonsPool_.at(1), nullptr, nullptr, levelButtonsPool_.at(2));
-	padNavigation_->AddButton(levelButtonsPool_.at(1), nullptr, levelButtonsPool_.at(0), nullptr, levelButtonsPool_.at(2));
-	padNavigation_->AddButton(levelButtonsPool_.at(2), nullptr, nullptr, levelButtonsPool_.at(1), levelButtonsPool_.at(3));
-	padNavigation_->AddButton(levelButtonsPool_.at(3), nullptr, nullptr, levelButtonsPool_.at(2), levelButtonsPool_.at(4));
-	padNavigation_->AddButton(levelButtonsPool_.at(4), nullptr, nullptr, levelButtonsPool_.at(2), nullptr);
+	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
+		padNavigation_ = pad->addComponent<ButtonPadNavigation>();
+		padNavigation_->AddButton(levelButtonsPool_.at(0), levelButtonsPool_.at(1), nullptr, nullptr, levelButtonsPool_.at(2));
+		padNavigation_->AddButton(levelButtonsPool_.at(1), nullptr, levelButtonsPool_.at(0), nullptr, levelButtonsPool_.at(2));
+		padNavigation_->AddButton(levelButtonsPool_.at(2), nullptr, nullptr, levelButtonsPool_.at(1), levelButtonsPool_.at(3));
+		padNavigation_->AddButton(levelButtonsPool_.at(3), nullptr, nullptr, levelButtonsPool_.at(2), levelButtonsPool_.at(4));
+		padNavigation_->AddButton(levelButtonsPool_.at(4), nullptr, nullptr, levelButtonsPool_.at(2), nullptr);
+	}
 }

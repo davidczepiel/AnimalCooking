@@ -13,10 +13,10 @@ void NameAsker::draw()
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		Texture t(SDLGame::instance()->getRenderer(), nameStream.str(),
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese70), hex2sdlcolor(
-				"#FFFFFFFF"));
+				"#000000FF"));
 		t.render(RECT(
-			2 * casillaX,
-			casillaY * 4,
+			8 * casillaX - t.getWidth()/2,
+			4.4 * casillaY,
 			t.getWidth(),
 			t.getHeight()), 0);
 	}
