@@ -21,6 +21,7 @@ class Entity;
 
 class SDLGame {
 public:
+
 	virtual ~SDLGame();
 
 	SDLGame(SDLGame&) = delete;
@@ -133,6 +134,11 @@ public:
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
+	void addStarsPerLevel(int stars, int level);
+	//const vector<Stars>& getStarsPerLevel{ return unlockedStarsPerLevel; }
+
+		
+	
 
 	void changeWindowSize(int w, int h) {
 		SDL_SetWindowSize(window_, w, h);
@@ -170,7 +176,9 @@ protected:
 	double casillaX;
 	double casillaY;
 	Entity* timersViewer_;
-
+	
+	//key = level, value = stars
+	map<int,int>unlockedStarsPerLevel;
 	config::Options options_;
 
 	static unique_ptr<SDLGame> instance_;

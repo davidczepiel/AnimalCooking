@@ -100,9 +100,7 @@ void MapConfig::load()
 		int i = 0;
 
 
-		if (!partidaGuardada.is_open())
-			static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->activateNameAsker();
-		else {
+		if (partidaGuardada.is_open())
 			while (!partidaGuardada.eof())
 			{
 				partidaGuardada >> levelsRecipes_.at(i).level;
@@ -110,7 +108,7 @@ void MapConfig::load()
 				partidaGuardada >> levelsRecipes_.at(i).unlocked;
 				i++;
 			}
-		}
+
 
 		partidaGuardada.close();
 	}
@@ -118,6 +116,11 @@ void MapConfig::load()
 
 void MapConfig::save()
 {
+	int unlocked_levels = SDLGame::instance()->getCurrenUnlockLevel();
+	for (int i = 0; i < unlocked_levels; i++)
+	{
+		levelsRecipes_.at(i).unlocked = true;
+	}
 	stringstream file(fileName_);
 	file << "../AnimalCooking/resources/" << fileName_ << ".txt";
 	fstream partidaGuardada(file.str().c_str(), ios::out);
