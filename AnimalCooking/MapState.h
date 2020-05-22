@@ -37,6 +37,8 @@ public:
 private:
 	void configPadNavigation();
 
+	void placeHousesAndButtons();
+
 	SDLGame* game_;	
 	Entity* newGameButton_;
 	Entity* loadGameButton_;

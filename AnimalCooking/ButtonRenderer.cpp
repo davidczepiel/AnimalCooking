@@ -42,7 +42,10 @@ void ButtonRenderer::draw()
 		if (text_ != nullptr)
 		{
 			Vector2D s = Vector2D(text_->getWidth() * (ownerTransform_->getH() - 10) / text_->getHeight(), ownerTransform_->getH() - 10);
-			text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()));
+			if (s.getX() > ownerTransform_->getW() - 100) {
+				s = Vector2D(ownerTransform_->getW() - 100, text_->getHeight());
+			}
+			text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()));
 		}
 	}
 }

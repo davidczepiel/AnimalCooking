@@ -55,7 +55,7 @@ void SDLGame::initSDL() {
 		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer_ != nullptr);
 
-	SDL_RenderSetLogicalSize(renderer_, width_, height_);
+	SDL_RenderSetLogicalSize(renderer_, 1920, 1080);
 
 	SDL_SetWindowResizable(window_, SDL_TRUE);
 

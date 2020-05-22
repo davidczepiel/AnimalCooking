@@ -17,6 +17,7 @@ private:
 	stringstream nameStream;
 	double casillaX;
 	double casillaY;
+	double nameWidth_;
 	InputHandler* ih;
 	bool active;	
 };

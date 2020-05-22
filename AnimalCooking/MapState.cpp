@@ -119,6 +119,7 @@ void MapState::init() {
 void MapState::draw()
 {
 	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	housesBackgroundText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	State::draw();
 }
 
@@ -148,10 +149,10 @@ void MapState::askProfile()
 		for (int i = 0; i < profiles.size(); ++i) {
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
 			double posX = 0.75 * casillaX;
-			double posY = (0.875 * casillaY) + (1.5 * casillaY * i / 2);
+			double posY = (2 * casillaY) + (1.25 * casillaY * i / 2);
 			if (i % 2 == 1) {
 				posX = game_->getWindowWidth() - posX - 6.25 * casillaX;
-				posY = posY - (0.75 * casillaY);
+				posY = posY - (0.625 * casillaY);
 			}
 			profileTextures.push_back(new Texture(game_->getRenderer(), profiles[i], 
 				game_->getFontMngr()->getFont(Resources::QuarkCheese100), hex2sdlcolor("#FFFFFFFF")));
@@ -159,7 +160,7 @@ void MapState::askProfile()
 				Vector2D(posX, posY),
 				Vector2D(),
 				5 * casillaX, 
-				1.25 * casillaY, 
+				1.1 * casillaY, 
 				0);
 			ButtonBehaviourNC* bb =  profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
@@ -170,8 +171,8 @@ void MapState::askProfile()
 			profileAskers.back()->addComponent<Transform>(
 				Vector2D(posX + 5 * casillaX, posY),
 				Vector2D(),
-				1.25 * casillaX,
-				1.25 * casillaY,
+				1.1 * casillaX,
+				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
 			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
@@ -186,10 +187,10 @@ void MapState::askProfile()
 
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
 			profileAskers.back()->addComponent<Transform>(
-				Vector2D(game_->getWindowWidth() / 2 - 4.625 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(game_->getWindowWidth() / 2 - 4.450 * casillaX, (2 * casillaY) + 1.25 * casillaY * i),
 				Vector2D(),
 				8 * casillaX,
-				1.25 * casillaY,
+				1.1 * casillaY,
 				0);
 			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
@@ -198,10 +199,10 @@ void MapState::askProfile()
 
 			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
 			profileAskers.back()->addComponent<Transform>(
-				Vector2D(game_->getWindowWidth() / 2 + 3.375 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(game_->getWindowWidth() / 2 + 3.375 * casillaX, (2 * casillaY) + 1.25 * casillaY * i),
 				Vector2D(),
-				1.25 * casillaX,
-				1.25 * casillaY,
+				1.1 * casillaX,
+				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
 			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
@@ -250,21 +251,35 @@ void MapState::setState() {
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
 	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
 	infoBox_->addComponent<MapInfoBoxViewer>();
-	vector<levelInfo> levelsInfo_;
+	
+	placeHousesAndButtons();
 
-	MapConfig mapCFG(playerName_, isNewGame_);
-	levelsInfo_ = mapCFG.getLevelInfoRecipes();
-
-
-	for (int x = 0; x < levelsInfo_.size(); x++) {
-		Entity* level = stage->addEntity();
-		ButtonBehaviourNC* bb = level->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
-		br = level->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
-		bb->setButtonRenderer(br);
-		levelButtonsPool_.push_back(level);
-	}
 	configPadNavigation();
 }
+
+
+void MapState::placeHousesAndButtons()
+{
+	MapConfig mapCFG(playerName_, isNewGame_);
+	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
+
+	vector<Transform> transforms_;
+	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
+	transforms_.push_back(Transform(Vector2D(594, 590), Vector2D(), 40, 20));
+	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
+	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
+	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
+
+	for (int x = 0; x < levelsInfo_.size(); x++) {
+		levelButtonsPool_.push_back(stage->addEntity());
+		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
+		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+		ButtonRenderer* br = levelButtonsPool_.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
+		bb->setButtonRenderer(br);
+		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
+	}
+}
+
 
 void MapState::saveGame()
 {
