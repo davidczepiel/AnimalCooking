@@ -31,6 +31,8 @@ public:
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
 
+	void askProfile();
+
 private:
 	void configPadNavigation();
 
@@ -42,6 +44,7 @@ private:
 	Entity* returnButton_;
 	Entity* chooser;
 	Entity* nameAsker;
+	vector <Entity*> profileAskers;
 	vector <Entity*> levelButtonsPool_;
 	ButtonPadNavigation* padNavigation_;
 

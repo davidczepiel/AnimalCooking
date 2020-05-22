@@ -19,6 +19,7 @@ MapState::MapState(AnimalCooking* ac) :
 	playButtonText_(nullptr),
 	returnButtonText_(nullptr),
 	chooser(nullptr),
+	profileAskers(),
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
@@ -73,8 +74,6 @@ void MapState::chooseOption() {
 
 void MapState::init() {
 
-
-
 }
 
 void MapState::draw()
@@ -98,6 +97,69 @@ void MapState::askName() {
 	nameAsker = stage->addEntity();
 	nameAsker->addComponent<NameAsker>();
 	stage->addToGroup(nameAsker, ecs::GroupID::topLayer);
+}
+
+
+void MapState::askProfile()
+{
+	MapConfig mapCFG(playerName_);
+	vector<string>& profiles = mapCFG.getProfiles();
+	if (profiles.size() > 5) { // En dos columnas
+		for (int i = 0; i < profiles.size(); ++i) {
+			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
+			double posX = 0.75 * casillaX;
+			double posY = (0.875 * casillaY) + 1.5 * casillaY * i;
+			if (i % 2 == 1) {
+				posX = game_->getWindowWidth() - posX - 7.25 * casillaX;
+				posY = posY - 1.5 * casillaY;
+			}
+			profileAskers.back()->addComponent<Transform>(
+				Vector2D(posX, posY),
+				Vector2D(),
+				6 * casillaX, 
+				1.25 * casillaY, 
+				0);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
+
+			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
+			profileAskers.back()->addComponent<Transform>(
+				Vector2D(posX + 6 * casillaX, posY),
+				Vector2D(),
+				1.25 * casillaX,
+				1.25 * casillaY,
+				0);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(false);
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
+		}
+	}
+	else { // Una columna
+		for (int i = 0; i < profiles.size(); ++i) {
+			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
+			profileAskers.back()->addComponent<Transform>(
+				Vector2D(game_->getWindowWidth() - 4.625 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(),
+				8 * casillaX,
+				1.25 * casillaY,
+				0);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(true); 
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
+
+			profileAskers.push_back(stage->addEntity()); // Boton de eliminar ese perfil
+			profileAskers.back()->addComponent<Transform>(
+				Vector2D(game_->getWindowWidth() + 3.375 * casillaX, (0.875 * casillaY) + 1.5 * casillaY * i),
+				Vector2D(),
+				1.25 * casillaX,
+				1.25 * casillaY,
+				0);
+			profileAskers.back()->addComponent<ButtonBehaviourNC>(false);
+			profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
+		}
+	}
 }
 
 void MapState::setState() {
@@ -143,12 +205,7 @@ void MapState::hideChooseButtons()
 	GETCMP2(newGameButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(loadGameButton_, ButtonBehaviour)->setActive(false);
 	GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
-
-
 }
-
-
-
 
 void MapState::newGameCallback(AnimalCooking* ac)
 {
@@ -164,7 +221,8 @@ void MapState::loadGameCallback(AnimalCooking* ac)
 	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	ms->isNotNewGame();
 	ms->hideChooseButtons();
-	ms->askName();
+	ms->askProfile();
+	ms->hasToBreak = true;
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
@@ -178,6 +236,7 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
 }
+
 
 void MapState::configPadNavigation() {
 	Entity* pad = stage->addEntity();

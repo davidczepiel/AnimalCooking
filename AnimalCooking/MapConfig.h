@@ -26,7 +26,7 @@ public:
 
 	inline const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes_; }
 	inline const int getMaxLevels() { return levelsRecipes_.size(); }
-	const vector<string>& getProfiles();
+	vector<string>& getProfiles();
 
 private:
 	void fill();

@@ -151,7 +151,7 @@ void MapConfig::save()
 	}	
 }
 
-const vector<string>& MapConfig::getProfiles()
+vector<string>& MapConfig::getProfiles()
 {
 	vector<string> p;
 	ifstream profiles("../AnimalCooking/resources/profiles.txt");

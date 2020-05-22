@@ -9,7 +9,7 @@ class AnimalCooking;
 class ButtonBehaviourNC : public Component{
 public:
 	ButtonBehaviourNC(Entity * infoBox, levelInfo info);
-
+	ButtonBehaviourNC(bool profilechooser);
 	void setButtonRenderer(ButtonRenderer* bR) { bRenderer_ = bR; }
 
 	void init() override;
@@ -26,6 +26,7 @@ private:
 	Entity* infoBox_;
 	bool active_;
 	bool focusedByMouse_, focusedByController_;
+	int action_;
 	Transform* ownerTransform_;
 	AnimalCooking* ac_;
 	ButtonRenderer* bRenderer_;
