@@ -13,7 +13,7 @@
 class GameControl : public Component
 {
 public:
-    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip);
+    GameControl(Transport* p1, Transport* p2,UtensilsPool* u, FoodPool* fp,IngredientsPool* ip, int levelMaxIngredients);
     ~GameControl() {}
 
     void init() override;
@@ -42,4 +42,6 @@ private:
 	vector<Resources::IngredientType> levelIngType;
     bool justStarted;
     int maxIngr;
+
+    int indexType;
 };

@@ -31,7 +31,6 @@ namespace config {
 
 	//INGREDIENTS
 	constexpr int ING_STARTING_DELTA_TIME = 500;
-	constexpr int ING_MAX_IN_SCENE = 8;
 
 	//PauseState
 	constexpr double PAUSESTATE_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla

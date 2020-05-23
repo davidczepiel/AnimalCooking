@@ -2,8 +2,8 @@
 #include "Ingredient.h"  
 #include "GameConfig.h"
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip) : Component(ecs::GameControl), 
-	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true), advManager(nullptr)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int levelMaxIngredients) : Component(ecs::GameControl),
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true), advManager(nullptr), indexType(0), maxIngr(levelMaxIngredients)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
@@ -22,7 +22,11 @@ void GameControl::update()
 		//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
 		if (timer.isTimerEnd())
 		{
-			if (config::ING_MAX_IN_SCENE > ingPool_->getPool().size()) newIngredient();
+			if (maxIngr > ingPool_->getPool().size()) {
+				if (indexType < levelIngType.size()) newIngredient(levelIngType[indexType]);
+				else newIngredient(chooseIng());
+				indexType++;
+			}
 			else justStarted = false;
 			timer.timerReset();
 			timer.timerStart();
