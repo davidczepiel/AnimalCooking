@@ -42,10 +42,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	//MapState
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
-	{ Basic, MapStateHouseButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
-	{ Basic, MapStateHouseButtonOver, "../AnimalCooking/resources/images/Adversities/plane.png" },
-	{ Basic, MapStatePlayButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
-	{ Basic, MapStateReturnButton, "../AnimalCooking/resources/images/Adversities/plane.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
 
@@ -277,8 +273,9 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
-	{Basic,FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
-	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 }	//Mapstate
+	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
+	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
+	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

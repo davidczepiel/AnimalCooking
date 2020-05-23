@@ -18,7 +18,6 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_(nullptr),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
-	returnButtonText_(nullptr),
 	chooser(nullptr),
 	profileAskers(),
 	maxLevels_(0),
@@ -35,8 +34,7 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
 	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
 	//Play and return buttons textures
-	playButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton);
-	returnButtonText_ = game_->getTextureMngr()->getTexture(Resources::MapStateReturnButton);
+	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#000000ff"));
 	chooseOption();
 	//init();
 	//askName();
@@ -46,6 +44,7 @@ MapState::~MapState() {
 	for (auto t : profileTextures) {
 		delete t; t = nullptr;
 	}
+	delete playButtonText_; playButtonText_ = nullptr;
 }
 
 void MapState::chooseOption() {
@@ -293,18 +292,30 @@ void MapState::setState() {
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
-		Vector2D(3 * casillaX +60, 1.5 * casillaY +40),
+		Vector2D(4 * casillaX, 2.3 * casillaY ),
 		Vector2D(),
-		3 * casillaX,
-		1.5 * casillaY,
+		2 * casillaX,
+		0.75 * casillaY,
 		0);
 
-	ButtonBehaviour* bb = playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
-	ButtonRenderer* br = playButton_->addComponent<ButtonRenderer>(playButtonText_, nullptr);
-	bb->setButtonRenderer(br);
+	playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
+	playButton_->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton), playButtonText_, 0);
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
-	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
+	stage->addToGroup(infoBox_, ecs::GroupID::ui);
 	infoBox_->addComponent<MapInfoBoxViewer>();
+
+	//Exit button
+	returnButton_ = stage->addEntity();
+	returnButton_->addComponent<Transform>(
+		Vector2D(1550, 965),
+		Vector2D(),
+		0.6 * casillaX,
+		0.6 * casillaY,
+		0);
+	ButtonBehaviour* bb = returnButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
+	ButtonRenderer* br = returnButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	bb->setButtonRenderer(br);
+	stage->addToGroup(returnButton_, ecs::GroupID::topLayer);
 
 	placeHousesAndButtons();
 

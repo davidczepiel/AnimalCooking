@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "ButtonBehaviourNC.h"
 
-ButtonRendererHouse::ButtonRendererHouse(Texture* background, Texture* text, int level) : Component(ecs::ButtonRenderer), active(true), level(level)
+ButtonRendererHouse::ButtonRendererHouse(Texture* background, Texture* text, int level) : Component(ecs::ButtonRendererHouse), active(true), level(level)
 {
 	background_ = background;
 	text_ = text;

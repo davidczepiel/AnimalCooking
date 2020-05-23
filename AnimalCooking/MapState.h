@@ -5,6 +5,7 @@
 #include "NameAsker.h"
 #include "MapInfoBoxViewer.h"
 #include "ButtonPadNavigation.h"
+#include "ButtonRendererHouse.h"
 
 class MapState :public State {
 public:
@@ -26,7 +27,10 @@ public:
 	void prepareNavPadFewProfiles(bool many);
 
 	inline void setName(const string& n) { playerName_ = n; game_->setName(n); }
-	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
+	inline void setCurrentLevel(int nl) {
+		currentLevel_ = nl;
+		GETCMP2(playButton_, ButtonRendererHouse)->setLevel(nl);
+	}
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
@@ -59,7 +63,6 @@ private:
 	Texture* bgText_;
 	Texture* housesBackgroundText_;
 	Texture* playButtonText_;
-	Texture* returnButtonText_;
 
 	std::string playerName_;
 	int currentLevel_;
