@@ -12,6 +12,7 @@ public:
 	void draw() override;
 	void clicked() { clickedTime_ = game_->getTime(); }
 	inline void setActive(bool val) { active = val; }
+	inline void setLevel(int l) { level = l; }
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;

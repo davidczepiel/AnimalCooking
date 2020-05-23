@@ -81,7 +81,7 @@ void MapConfig::fill()
 		int numberOfLevel = 0;
 
 		stringstream file(fileName_);
-		file << "../AnimalCooking/resources/" << fileName_ << ".txt";
+		file << "../AnimalCooking/resources/saves/" << fileName_ << ".txt";
 		fstream partidaGuardada(file.str().c_str(), ios::out);
 
 		levelsRecipes_[0].level = numberOfLevel;
@@ -118,7 +118,7 @@ void MapConfig::load()
 {
 	if (!levelsRecipes_.empty()) {
 		stringstream file(fileName_);
-		file << "../AnimalCooking/resources/" << fileName_ << ".txt";
+		file << "../AnimalCooking/resources/saves/" << fileName_ << ".txt";
 		fstream partidaGuardada(file.str().c_str(), std::ios::in);
 		int i = 0;
 
@@ -138,11 +138,11 @@ void MapConfig::load()
 
 void MapConfig::removeProfile()
 {
-	remove(string("../AnimalCooking/resources/" + fileName_ + ".txt").c_str());
+	remove(string("../AnimalCooking/resources/saves/" + fileName_ + ".txt").c_str());
 
 	stringstream file("");
 
-	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	ifstream profiles("../AnimalCooking/resources/saves/profiles.txt");
 	if (profiles.is_open()) {
 		while (!profiles.eof()) {
 			string cadena;
@@ -153,8 +153,8 @@ void MapConfig::removeProfile()
 		}
 	}
 	profiles.close();
-	remove(string("../AnimalCooking/resources/profiles.txt").c_str());
-	ofstream p("../AnimalCooking/resources/profiles.txt", ios::beg);
+	remove(string("../AnimalCooking/resources/saves/profiles.txt").c_str());
+	ofstream p("../AnimalCooking/resources/saves/profiles.txt", ios::beg);
 	p << file.str();
 	p.close();
 }
@@ -174,7 +174,7 @@ void MapConfig::save()
 		levelsRecipes_.at(i).unlocked = true;
 	}
 	stringstream file(fileName_);
-	file << "../AnimalCooking/resources/" << fileName_ << ".txt";
+	file << "../AnimalCooking/resources/saves/" << fileName_ << ".txt";
 	fstream partidaGuardada(file.str().c_str(), ios::out);
 	int i = 0;
 	for (levelInfo lI : levelsRecipes_) {
@@ -194,7 +194,7 @@ void MapConfig::saveNewProfile(const string& newProfile)
 	if (it != perfiles.end())
 		return;
 
-	ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
+	ofstream profiles("../AnimalCooking/resources/saves/profiles.txt", ios::app);
 	if (profiles.is_open()) profiles << newProfile << endl;
 	profiles.close();
 }
@@ -202,7 +202,7 @@ void MapConfig::saveNewProfile(const string& newProfile)
 vector<string> MapConfig::getProfiles()
 {
 	vector<string> p;
-	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	ifstream profiles("../AnimalCooking/resources/saves/profiles.txt");
 	if (profiles.is_open()) {
 		while (!profiles.eof()) {
 			string cadena;
