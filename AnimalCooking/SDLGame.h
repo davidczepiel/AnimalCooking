@@ -110,6 +110,8 @@ public:
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 		}
 	}
+	inline void setName(string& nName) { name = nName; }
+	inline const string& getName() { return name; }
 
 	inline FSM* getFSM() { return fsm_; }
 
@@ -175,6 +177,7 @@ protected:
 	double casillaX;
 	double casillaY;
 	Entity* timersViewer_;
+	string name;
 	
 	//key = level, value = stars
 	map<int,int>unlockedStarsPerLevel;

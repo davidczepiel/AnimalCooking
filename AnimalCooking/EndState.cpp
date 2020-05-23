@@ -4,6 +4,7 @@
 #include "PlayerViewer.h"
 #include "Transform.h"
 #include "Animator.h"
+#include "MapConfig.h"
 
 EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::instance()->getMaxScore()) {
 
@@ -50,6 +51,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel()) {
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
+		
 
 		Entity* NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);

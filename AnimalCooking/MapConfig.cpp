@@ -5,7 +5,8 @@ MapConfig::MapConfig(string fileN) : fileName_(fileN), levelsRecipes_(), newGame
 {
 }
 
-MapConfig::MapConfig(string fileN, bool newGame) : fileName_(fileN), levelsRecipes_(), newGame_(newGame)
+MapConfig::MapConfig(string fileN, bool newGame) : 
+	fileName_(fileN), levelsRecipes_(), newGame_(newGame)
 {
 	fill();
 }
@@ -141,12 +142,13 @@ void MapConfig::removeProfile()
 
 void MapConfig::save()
 {
-	if (fileName_.empty())
-		return;
+	fileName_ = SDLGame::instance()->getName();
 	int unlocked_levels = SDLGame::instance()->getCurrenUnlockLevel();
 	map<int, int>stars = SDLGame::instance()->getUnlockedStars();
-	for (auto it = stars.begin(); it != stars.end(); it++) {
-		levelsRecipes_.at((*it).first).stars = (*it).second;
+	load();
+	for (auto it : stars) {
+		levelsRecipes_.at(it.first).stars = it.second;
+
 	}
 	for (int i = 0; i < unlocked_levels; i++)
 	{
@@ -162,23 +164,7 @@ void MapConfig::save()
 	}
 	partidaGuardada.close();
 
-	ifstream profiles("../AnimalCooking/resources/profiles.txt");
-	bool found = false;
-	if (profiles.is_open()) {
-		while (!profiles.eof() && !found) {
-			string cadena;
-			std::getline(profiles, cadena);
-			if (!profiles.fail())
-				found = (cadena == fileName_);
-		}
-	}
-	profiles.close();
-	if (!found) {
-		ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
-		if (profiles.is_open())
-			profiles << fileName_ << endl;
-		profiles.close();
-	}
+
 }
 
 void MapConfig::saveNewProfile(const string& newProfile)

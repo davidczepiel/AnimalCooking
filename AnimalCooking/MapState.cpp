@@ -23,9 +23,8 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
-	playerName_(""),
-	mapCFG("") {
-
+	playerName_("")
+{
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
 	casillaX = game_->getCasillaX();
@@ -43,7 +42,6 @@ MapState::MapState(AnimalCooking* ac) :
 }
 
 MapState::~MapState() {
-	saveGame();
 	for (auto t : profileTextures) {
 		delete t; t = nullptr;
 	}
@@ -146,7 +144,7 @@ void MapState::askName() {
 
 void MapState::askProfile()
 {
-	MapConfig mapCFG(playerName_);
+	MapConfig mapCFG = (playerName_);
 	vector<string> profiles = mapCFG.getProfiles();
 	if (profiles.size() > 5) { // En dos columnas
 		for (int i = 0; i < profiles.size(); ++i) {
@@ -195,7 +193,7 @@ void MapState::askProfile()
 				8 * casillaX,
 				1.1 * casillaY,
 				0);
-			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, playerName_);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
@@ -266,8 +264,8 @@ void MapState::setState() {
 
 void MapState::placeHousesAndButtons()
 {
-	mapCFG = MapConfig(playerName_, isNewGame_);
-	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
+	MapConfig mapCFG(playerName_, isNewGame_);
+	 levelinfos_ = mapCFG.getLevelInfoRecipes();
 
 	vector<Transform> transforms_;
 	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
@@ -276,10 +274,10 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
 
-	for (int x = 0; x < levelsInfo_.size(); x++) {
+	for (int x = 0; x < levelinfos_.size(); x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
 		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
-		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelsInfo_[x]);
+		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_[x]);
 		ButtonRenderer* br = levelButtonsPool_.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
 		bb->setButtonRenderer(br);
 		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
