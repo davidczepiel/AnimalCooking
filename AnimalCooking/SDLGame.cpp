@@ -16,7 +16,9 @@ const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 void SDLGame::addStarsPerLevel(int stars, int level)
 {
 	auto it = unlockedStarsPerLevel.find(level);
-	if (it == unlockedStarsPerLevel.end() ^ (*it).second > stars)
+	if (it == unlockedStarsPerLevel.end())
+		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
+	else if ((*it).second > stars)
 		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
 
 }

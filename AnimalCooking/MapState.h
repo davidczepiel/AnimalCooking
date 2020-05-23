@@ -6,12 +6,12 @@
 #include "MapInfoBoxViewer.h"
 #include "ButtonPadNavigation.h"
 
-class MapState :public State{
+class MapState :public State {
 public:
 	MapState(AnimalCooking* ac);
 	~MapState();
 	static void screenLoaderCallback(AnimalCooking* ac);
-	static void backButtonCallback(AnimalCooking* ac);	
+	static void backButtonCallback(AnimalCooking* ac);
 	static void newGameCallback(AnimalCooking* ac);
 	static void loadGameCallback(AnimalCooking* ac);
 
@@ -25,12 +25,12 @@ public:
 	void saveGame();
 	void hideChooseButtons();
 
-	inline void setName(string n){ playerName_ = n; }
+	inline void setName(string n) { playerName_ = n; }
 	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
-	inline bool isCurrentLevelUnlocked() { return mapCFG.getLevelInfoRecipes().at(currentLevel_).unlocked; }
+	inline bool isCurrentLevelUnlocked() { return levelinfos_.at(currentLevel_).unlocked; }
 
 	void askProfile();
 	void removeProfile(const string& name);
@@ -40,7 +40,7 @@ private:
 
 	void placeHousesAndButtons();
 
-	SDLGame* game_;	
+	SDLGame* game_;
 	Entity* newGameButton_;
 	Entity* loadGameButton_;
 	Entity* infoBox_;
@@ -52,21 +52,21 @@ private:
 	vector <Entity*> profileAskers;
 	vector <Texture*> profileTextures;
 	vector <Entity*> levelButtonsPool_;
+	vector<levelInfo> levelinfos_;
 	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
 
 	Texture* bgText_;
-	Texture* housesBackgroundText_; 
+	Texture* housesBackgroundText_;
 	Texture* playButtonText_;
-	Texture* returnButtonText_;	
+	Texture* returnButtonText_;
 
 	std::string playerName_;
-	MapConfig mapCFG;
 	int currentLevel_;
 	int lastLevel_;
-	int maxLevels_;	
+	int maxLevels_;
 	double casillaX;
-	double casillaY;	
+	double casillaY;
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;

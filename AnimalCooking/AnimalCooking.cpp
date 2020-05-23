@@ -62,6 +62,7 @@ void AnimalCooking::start() {
 
 void AnimalCooking::stop() {
 	exit_ = true;
+	
 }
 
 void AnimalCooking::handleInput() {
