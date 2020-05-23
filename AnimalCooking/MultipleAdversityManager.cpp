@@ -5,7 +5,8 @@
 #include "RainAdversity.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100)
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), 
+	tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true)
 {
 	adversities.push_back(new PlaneAdversity(nullptr, this));
 	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
@@ -38,6 +39,12 @@ MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp
 
 void MultipleAdversityManager::update()
 {
+	if (justStarted) {
+		startAdvesities();
+		justStarted = false;
+		return;
+	}
+
 	seeTimers();
 	seeAdversityWarning();
 
@@ -103,6 +110,10 @@ void MultipleAdversityManager:: seeTimers() {
 		adversities.at(ecs::AdversityID::PlaneAdversity)->reset();
 		playingWarning = false;
 		active = false;
+		if (!planeQueue.empty()) {
+			setTimerTime(ecs::AdversityID::PlaneAdversity, planeQueue.front());
+			planeQueue.pop();
+		}
 	}
 
 	hookTimer->update();
@@ -113,6 +124,10 @@ void MultipleAdversityManager:: seeTimers() {
 		adversities.at(ecs::AdversityID::HookAdversity)->reset();
 		playingWarning = false;
 		active = false;
+		if (!hookQueue.empty()) {
+			setTimerTime(ecs::AdversityID::HookAdversity, hookQueue.front());
+			hookQueue.pop();
+		}
 	}
 
 	rainTimer->update();
@@ -123,6 +138,10 @@ void MultipleAdversityManager:: seeTimers() {
 		adversities.at(ecs::AdversityID::RainAdversity)->reset();
 		playingWarning = false;
 		active = false;
+		if (!rainQueue.empty()) {
+			setTimerTime(ecs::AdversityID::RainAdversity, rainQueue.front());
+			rainQueue.pop();
+		}
 	}
 
 	burnCookerTimer->update();
@@ -133,6 +152,10 @@ void MultipleAdversityManager:: seeTimers() {
 		adversities.at(ecs::AdversityID::CookersAdversity)->reset();
 		playingWarning = false;
 		active = false;
+		if (!cookerQueue.empty()) {
+			setTimerTime(ecs::AdversityID::CookersAdversity, cookerQueue.front());
+			cookerQueue.pop();
+		}
 	}
 	
 }
@@ -145,6 +168,14 @@ void MultipleAdversityManager::draw()
 	if (active) warningTexture->render(RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight()));
 }
 
+void MultipleAdversityManager::startAdvesities()
+{
+	if (!planeQueue.empty()) { setTimerTime(ecs::AdversityID::PlaneAdversity, planeQueue.front()); planeQueue.pop(); }
+	if (!rainQueue.empty()) { setTimerTime(ecs::AdversityID::RainAdversity, rainQueue.front()); rainQueue.pop(); }
+	if (!cookerQueue.empty()) { setTimerTime(ecs::AdversityID::CookersAdversity, cookerQueue.front()); cookerQueue.pop(); }
+	if (!hookQueue.empty()) { setTimerTime(ecs::AdversityID::HookAdversity, hookQueue.front()); hookQueue.pop(); }
+}
+
 void MultipleAdversityManager::stopAdversity(ecs::AdversityID i)
 {
 	 activeAdversities[i] = false;
@@ -154,28 +185,57 @@ void MultipleAdversityManager::setTimerTime(ecs::AdversityID id, int time)
 {
 	switch (id) {
 	case ecs::AdversityID::RainAdversity:
+		rainWarning->timerReset();
 		rainWarning->setTime(time);
 		rainWarning->timerStart();
+		rainTimer->timerReset();
 		rainTimer->setTime(time + 2000);
 		rainTimer->timerStart();
 		break;
 	case ecs::AdversityID::HookAdversity:
+		hookWarning->timerReset();
 		hookWarning->setTime(time);
 		hookWarning->timerStart();
+		hookTimer->timerReset();
 		hookTimer->setTime(time + 2000);
 		hookTimer->timerStart();
 		break;
 	case ecs::AdversityID::PlaneAdversity:
+		planeWarning->timerReset();
 		planeWarning->setTime(time);
 		planeWarning->timerStart();
+		planeTimer->timerReset();
 		planeTimer->setTime(time + 2000);
 		planeTimer->timerStart();
 		break;
 	case ecs::AdversityID::CookersAdversity:
+		burnCookerTimer->timerReset();
 		burnedCookerWarning->setTime(time);
 		burnedCookerWarning->timerStart();
+		burnCookerTimer->timerReset();
 		burnCookerTimer->setTime(time + 2000);
 		burnCookerTimer->timerStart();
+		break;
+	}
+}
+
+void MultipleAdversityManager::addAdversityToQueue(ecs::AdversityID type, int time)
+{
+	switch (type)
+	{
+	case ecs::AdversityID::PlaneAdversity:
+		planeQueue.push(time);
+		break;
+	case ecs::AdversityID::RainAdversity:
+		rainQueue.push(time);
+		break;
+	case ecs::AdversityID::HookAdversity:
+		hookQueue.push(time);
+		break;
+	case ecs::AdversityID::CookersAdversity:
+		cookerQueue.push(time);
+		break;
+	default:
 		break;
 	}
 }

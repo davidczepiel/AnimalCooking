@@ -57,7 +57,10 @@ void PlaneAdversity::StartPlane() {
 	force_ = 1.5;
 
 	state_ = Pasando;
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	if (!alreadyInitialized) {
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+		alreadyInitialized = true;
+	}
 	internalTimer->timerReset();
 	internalTimer->setTime(8500);
 	internalTimer->timerStart();

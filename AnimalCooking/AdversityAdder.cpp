@@ -17,16 +17,16 @@ AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::ar
 		int tiempo = nivel["Adversities"][i]["Tiempo"].as_int();
 
 		if (nivel["Adversities"][i]["Tipo"].as_string() == "Avion"){
-			mam->setTimerTime(ecs::AdversityID::PlaneAdversity, tiempo);
+			mam->addAdversityToQueue(ecs::AdversityID::PlaneAdversity, tiempo);
 		}
 		else if (nivel["Adversities"][i]["Tipo"].as_string() == "Lluvia") {
-			mam->setTimerTime(ecs::AdversityID::RainAdversity, tiempo);
+			mam->addAdversityToQueue(ecs::AdversityID::RainAdversity, tiempo);
 		}
 		else if (nivel["Adversities"][i]["Tipo"].as_string() == "Gancho") {
-			mam->setTimerTime(ecs::AdversityID::HookAdversity, tiempo);
+			mam->addAdversityToQueue(ecs::AdversityID::HookAdversity, tiempo);
 		}
 		else if (nivel["Adversities"][i]["Tipo"].as_string() == "Fuego") {
-			mam->setTimerTime(ecs::AdversityID::CookersAdversity, tiempo);
+			mam->addAdversityToQueue(ecs::AdversityID::CookersAdversity, tiempo);
 		}
 	}
 
