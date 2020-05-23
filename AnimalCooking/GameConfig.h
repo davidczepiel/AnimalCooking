@@ -22,7 +22,7 @@ namespace config {
 
 	//COOKERS
 	constexpr int SKILLET_SECONDS_TO_COOK = 10;
-	constexpr int OVEN_SECONDS_TO_COOK = 15;
+	constexpr int OVEN_SECONDS_TO_COOK = 10;
 	constexpr int COOKER_ANIM_SPEED = 150;
 	constexpr int COOKER_ANIM_OVERHEATED = 150;
 
@@ -63,7 +63,7 @@ namespace config {
 	constexpr double KNIFE_RANGE = 0.8;
 	constexpr double KNIFE_HITBOX_WIDTH = 0.8;
 	constexpr double KNIFE_HITBOX_HEIGHT = 0.5;
-	constexpr int MAX_TIME_ON_FLOOR = 20;
+	constexpr int MAX_TIME_ON_FLOOR = 25;
 
 	constexpr double MACE_RANGE = 0.8;
 	constexpr double MACE_HITBOX_WIDTH = 0.8;
