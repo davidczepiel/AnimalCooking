@@ -334,11 +334,14 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 
 void MapState::configPadNavigation() {
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
-		padNavigation_ = pad->addComponent<ButtonPadNavigation>();
-		padNavigation_->AddButton(levelButtonsPool_.at(0), levelButtonsPool_.at(1), nullptr, nullptr, levelButtonsPool_.at(2));
-		padNavigation_->AddButton(levelButtonsPool_.at(1), nullptr, levelButtonsPool_.at(0), nullptr, levelButtonsPool_.at(2));
+		
+		padNavigation_ = GETCMP2(pad, ButtonPadNavigation);
+		padNavigation_->resetNavigation();
+		padNavigation_->AddButton(levelButtonsPool_.at(0), nullptr, nullptr, nullptr, levelButtonsPool_.at(1));
+		padNavigation_->AddButton(levelButtonsPool_.at(1), nullptr, nullptr, levelButtonsPool_.at(0), levelButtonsPool_.at(2));
 		padNavigation_->AddButton(levelButtonsPool_.at(2), nullptr, nullptr, levelButtonsPool_.at(1), levelButtonsPool_.at(3));
 		padNavigation_->AddButton(levelButtonsPool_.at(3), nullptr, nullptr, levelButtonsPool_.at(2), levelButtonsPool_.at(4));
 		padNavigation_->AddButton(levelButtonsPool_.at(4), nullptr, nullptr, levelButtonsPool_.at(2), nullptr);
+
 	}
 }
