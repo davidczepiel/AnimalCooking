@@ -19,8 +19,9 @@ public:
     void init() override;
 	void update() override;
     void newIngredient();
+    void newIngredient(Resources::IngredientType ing);
     Food* newFood(Resources::FoodType type, Vector2D pos);
-    void newFood(Food* f, Vector2D pos);
+    void newFood(Food* f, Vector2D pos, Resources::IngredientType ingType);
 	vector<Resources::IngredientType>& getLevelIngType() { return levelIngType; }
     inline Timer* getAdversityTime() { return &adversityTimer; }
     inline void setAdvMngr(AdversityManager* am) { advManager = am; }

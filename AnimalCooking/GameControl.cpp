@@ -57,6 +57,25 @@ void GameControl::newIngredient()
 	ing = nullptr;
 }
 
+void GameControl::newIngredient(Resources::IngredientType i) {
+	Ingredient* ing = newIngType(i);
+
+	jute::jValue& jsonGeneral = game_->getJsonGeneral();
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(),
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
+
+	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
+	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaY();
+
+	ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
+	ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
+	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
+	ingPool_->addIngredient(ing);
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
+	colSys_->addCollider(ing);
+	ing = nullptr;
+}
+
 Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 
 	Ingredient* i = nullptr;
@@ -137,12 +156,12 @@ Resources::IngredientType GameControl::chooseIng()
 	return lista[game_->getRandGen()->nextInt(0, lista.size())];
 }
 
-void GameControl::newFood(Food* f, Vector2D pos) {
+void GameControl::newFood(Food* f, Vector2D pos, Resources::IngredientType ingType) {
 	foodPool->AddFood(f);
 	f->onFloor();
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
-	newIngredient(); //al matar un ingrediente aparece otro
+	newIngredient(ingType); //al matar un ingrediente aparece otro
 }
 
 Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 
