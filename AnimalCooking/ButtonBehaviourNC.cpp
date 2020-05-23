@@ -9,7 +9,7 @@ ButtonBehaviourNC::ButtonBehaviourNC(Entity* infoBox, levelInfo info) :
 	Component(ecs::ButtonBehaviourNC),
 	infoBox_(infoBox),
 	ownerTransform_(nullptr),
-	active_(false),
+	active_(true),
 	focusedByController_(nullptr),
 	focusedByMouse_(nullptr),
 	bRenderer_(nullptr),

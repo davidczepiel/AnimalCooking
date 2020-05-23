@@ -69,11 +69,13 @@ void MapConfig::fill()
 	else {
 		int numberOfLevel = 0;
 
-		for (levelInfo lvl : levelsRecipes_) {
-			lvl.level = numberOfLevel;
-			lvl.stars = 0;
-			lvl.unlocked = false;
+		for (int i = 0; i < levelsRecipes_.size(); i++)
+		{
+			levelsRecipes_[i].level = numberOfLevel;
+			levelsRecipes_[i].stars = 0;
+			levelsRecipes_[i].unlocked = false;
 			numberOfLevel++;
+
 		}
 		levelsRecipes_.at(0).unlocked = true; //If new game = unlock lvl 1
 	}

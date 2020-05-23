@@ -23,7 +23,8 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_(0),
 	currentLevel_(0),
 	lastLevel_(0),
-	playerName_("") {
+	playerName_(""),
+	mapCFG("") {
 
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
@@ -65,7 +66,8 @@ void MapState::chooseOption() {
 		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
-	} else newGameButton_ = nullptr;
+	}
+	else newGameButton_ = nullptr;
 	if (mapCFG.getProfiles().size() > 0) {
 		loadGameButton_ = stage->addEntity();
 		loadGameButton_->addComponent<Transform>(
@@ -78,7 +80,8 @@ void MapState::chooseOption() {
 		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
-	} else loadGameButton_ = nullptr;
+	}
+	else loadGameButton_ = nullptr;
 
 	exit = stage->addEntity();
 	exit->addComponent<Transform>(
@@ -154,15 +157,15 @@ void MapState::askProfile()
 				posX = game_->getWindowWidth() - posX - 6.25 * casillaX;
 				posY = posY - (0.625 * casillaY);
 			}
-			profileTextures.push_back(new Texture(game_->getRenderer(), profiles[i], 
+			profileTextures.push_back(new Texture(game_->getRenderer(), profiles[i],
 				game_->getFontMngr()->getFont(Resources::QuarkCheese100), hex2sdlcolor("#FFFFFFFF")));
 			profileAskers.back()->addComponent<Transform>(
 				Vector2D(posX, posY),
 				Vector2D(),
-				5 * casillaX, 
-				1.1 * casillaY, 
+				5 * casillaX,
+				1.1 * casillaY,
 				0);
-			ButtonBehaviourNC* bb =  profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
@@ -214,7 +217,7 @@ void MapState::askProfile()
 
 void MapState::removeProfile(const string& name)
 {
-	for (int i = 1; i < profileAskers.size(); i+=2) {
+	for (int i = 1; i < profileAskers.size(); i += 2) {
 		if (GETCMP2(profileAskers[i], ButtonBehaviourNC)->getName() == name) {
 			MapConfig mapCFG(name);
 			mapCFG.removeProfile();
@@ -230,9 +233,9 @@ void MapState::setState() {
 	hasToBreak = true;
 	if (!profileAskers.empty())
 		for (auto en : profileAskers) {
-			GETCMP2(en, ButtonBehaviourNC)->setActive(false); 
+			GETCMP2(en, ButtonBehaviourNC)->setActive(false);
 			GETCMP2(en, ButtonRenderer)->setActive(false);
-	}
+		}
 	GETCMP2(exit, ButtonBehaviour)->setActive(false);
 	GETCMP2(exit, ButtonRenderer)->setActive(false);
 
@@ -251,7 +254,7 @@ void MapState::setState() {
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
 	stage->addToGroup(infoBox_, ecs::GroupID::topLayer);
 	infoBox_->addComponent<MapInfoBoxViewer>();
-	
+
 	placeHousesAndButtons();
 
 	configPadNavigation();
@@ -260,7 +263,7 @@ void MapState::setState() {
 
 void MapState::placeHousesAndButtons()
 {
-	MapConfig mapCFG(playerName_, isNewGame_);
+	mapCFG = MapConfig(playerName_, isNewGame_);
 	vector<levelInfo> levelsInfo_ = mapCFG.getLevelInfoRecipes();
 
 	vector<Transform> transforms_;
@@ -320,8 +323,10 @@ void MapState::loadGameCallback(AnimalCooking* ac)
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->haltMusic();
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
-	int cl = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState())->getCurrentLevel();
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(cl + 2, ac));
+	MapState* mp = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	int cl = mp->getCurrentLevel();
+	if (mp->isCurrentLevelUnlocked())
+		SDLGame::instance()->getFSM()->pushState(new ScreenLoader(cl + 2, ac));
 }
 
 void MapState::backButtonCallback(AnimalCooking* ac) {

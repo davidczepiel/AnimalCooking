@@ -30,6 +30,7 @@ public:
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
+	inline bool isCurrentLevelUnlocked() { return mapCFG.getLevelInfoRecipes().at(currentLevel_).unlocked; }
 
 	void askProfile();
 	void removeProfile(const string& name);
@@ -60,6 +61,7 @@ private:
 	Texture* returnButtonText_;	
 
 	std::string playerName_;
+	MapConfig mapCFG;
 	int currentLevel_;
 	int lastLevel_;
 	int maxLevels_;	
