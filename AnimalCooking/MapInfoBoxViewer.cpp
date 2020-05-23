@@ -28,7 +28,7 @@ void MapInfoBoxViewer::draw()
 	if (active) {
 		boxText_->render(RECT(40, 40, casillaX_ * 6, 3 * casillaY_));
 		info_.lore;
-		Texture lore = Texture(game_->getRenderer(), info_.lore, game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
+		//Texture lore = Texture(game_->getRenderer(), info_.lore, game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
 		//lore.render()
 		switch (info_.stars)
 		{

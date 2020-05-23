@@ -2,9 +2,10 @@
 #include "GpadKeySwitcher.h"
 #include "SliderBehaviour.h"
 #include "ButtonBehaviourNC.h"
+#include "ButtonBehaviour.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
-	xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
+xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
 {
 }
 
@@ -20,8 +21,19 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 	newButton.posibleFocus = posibleFocus;
 
 	buttons.push_back(newButton);
-	if (buttons.size() == 1)
+	if (buttons.size() == 1) {
+		//Si el el primer boton en añadirse le digo que esta en el foco
+		if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1))) {
+			ButtonBehaviour* b = GETCMP2(buttons.at(0).e, ButtonBehaviour);
+			if (b != nullptr) b->setFocusByController(true);
+			else {
+				ButtonBehaviourNC* b = GETCMP2(buttons.at(0).e, ButtonBehaviourNC);
+				if (b != nullptr)
+					b->setFocusByController(true);
+			}
+		}
 		focus = buttons.at(0);
+	}
 }
 
 
@@ -43,7 +55,7 @@ void ButtonPadNavigation::update() {
 		if (gpad->playerControllerConnected(playerToListen) && gpad->isAnyButtonJustPressed()) {
 			horizontalInput();
 			verticalInput();
-			if (gpad->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_A)) 
+			if (gpad->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_A))
 				action();
 		}
 	}
@@ -59,7 +71,7 @@ void ButtonPadNavigation::horizontalInput() {
 			horizontalMove(1);
 	}
 	else {
-		if(GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+		if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
 			horizontalMove(-1);
 		else if (GPadController::instance()->playerPressed(playerToListen, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
 			horizontalMove(1);
@@ -84,17 +96,17 @@ void ButtonPadNavigation::verticalInput() {
 }
 
 void ButtonPadNavigation::action() {
-	
+
 	if (focus.posibleFocus) {
 		SliderBehaviour* s = GETCMP2(focus.e, SliderBehaviour);
 		if (s != nullptr) {
-			focushing = !focushing;	
+			focushing = !focushing;
 			s->setPadNavEnable(focushing); //Si estoy en un slider
-		}	
+		}
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		if(b!=nullptr) b->action();
+		if (b != nullptr) b->action();
 		else {
 			ButtonBehaviourNC* bNC = GETCMP2(focus.e, ButtonBehaviourNC);
 			bNC->action();
@@ -124,15 +136,16 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 		}
 	}
 	else {
-		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		if (b) b->setFocusByController(false);
+
 		if (xValue < 0) {
 			if (focus.left != nullptr) {
+				stopFocusButton(focus);
 				changeFocus(focus.left);
 			}
 		}
 		else {
 			if (focus.right != nullptr) {
+				stopFocusButton(focus);
 				changeFocus(focus.right);
 			}
 		}
@@ -163,10 +176,10 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 	}
 	else {
-		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		if (b) b->setFocusByController(false);
+
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
+				stopFocusButton(focus);
 				changeFocus(focus.down);
 				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
 				if (s != nullptr) s->setFocushed(0);
@@ -174,8 +187,31 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 		else if (yValue < 0) {
 			if (focus.up != nullptr) {
+				stopFocusButton(focus);
 				changeFocus(focus.up);
 			}
+		}
+	}
+}
+
+void ButtonPadNavigation::resetNavigation()
+{
+	buttons.clear();
+	focus.e = nullptr;
+	focus.up = nullptr;
+	focus.down = nullptr;
+	focus.right = nullptr;
+	focus.left = nullptr;
+}
+
+void ButtonPadNavigation::stopFocusButton(button b)
+{
+	if (b.e != nullptr) {
+		ButtonBehaviour* bh = GETCMP2(focus.e, ButtonBehaviour);
+		if (bh) bh->setFocusByController(false);
+		else {
+			ButtonBehaviourNC* bh = GETCMP2(focus.e, ButtonBehaviourNC);
+			if (bh) bh->setFocusByController(false);
 		}
 	}
 }
@@ -183,9 +219,16 @@ void ButtonPadNavigation::verticalMove(double yValue)
 
 void ButtonPadNavigation::changeFocus(Entity* e) {
 	int i = 0;
+	//Tengo que encontrar el struct con la misma entidad para más tarde poder seguyir navegando
 	while (i < buttons.size() && buttons.at(i).e != e)
 		i++;
 	focus = buttons.at(i);
 	ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
 	if (b) b->setFocusByController(true);
+	else {
+		ButtonBehaviourNC* nc = GETCMP2(focus.e, ButtonBehaviourNC);
+		if (nc) nc->setFocusByController(true);
+	}
+
+
 }
