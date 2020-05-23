@@ -18,9 +18,6 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	int winWidth = SDLGame::instance()->getWindowWidth();
 	int degrees = 7;
 	int nextLevelLimit = 50;
-	
-	score = 120;
-	maxScore = 150;
 
 	createButtons();
 	//createPlayers();
@@ -33,7 +30,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 }
 void EndState::goToLoadState(AnimalCooking* ac) {
 	goToMapState(ac);
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 1), ac));
+	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 3), ac));
 	SDLGame::instance()->setMaxScore(0);
 	SDLGame::instance()->setScore(0);
 }
@@ -44,7 +41,6 @@ void EndState::goToMapState(AnimalCooking* ac) {
 	{
 		fsm->popState();
 	}
-
 }
 void EndState::goToMenuState(AnimalCooking* ac) {
 	goToMapState(ac);
@@ -55,7 +51,7 @@ void EndState::goToMenuState(AnimalCooking* ac) {
 void EndState::resetLevel(AnimalCooking* ac)
 {
 	goToMapState(ac);
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(SDLGame::instance()->getCurrentLevel(), ac));
+	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(SDLGame::instance()->getCurrentLevel() + 2, ac));
 	SDLGame::instance()->setMaxScore(0);
 	SDLGame::instance()->setScore(0);
 }
@@ -136,7 +132,7 @@ void EndState::createButtons()
 		64,
 		0);
 	bb = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
-	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIconEndState), nullptr);
 	bb->setButtonRenderer(br);
 	//-----------------------------------------------------------------------------------------
 
@@ -171,12 +167,6 @@ void EndState::createButtons()
 	stage->addToGroup(Player2Idle, ecs::GroupID::PlayerLayer);
 	p2Anim->setCurrentState(Animator::States::Idle);
 
-}
-void EndState::goToLoadState(AnimalCooking* ac) {
-	goToMapState(ac);	
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 1), ac));
-	SDLGame::instance()->setMaxScore(0);
-	SDLGame::instance()->setScore(0);
 }
 
 void EndState::createPlayers()

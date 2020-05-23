@@ -188,7 +188,7 @@ void ScreenLoader::initialize()
 {
 	emPlaystate = new EntityManager(SDLGame::instance());
 
-	LevelInitializer(emPlaystate, level, this);
+	LevelInitializer(emPlaystate, level - 1, this);
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {

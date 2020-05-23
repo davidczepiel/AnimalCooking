@@ -3,7 +3,8 @@
 #include "Entity.h"
 #include "ButtonBehaviourNC.h"
 
-ButtonRendererHouse::ButtonRendererHouse(Texture* background, Texture* text, int level) : Component(ecs::ButtonRendererHouse), active(true), level(level)
+ButtonRendererHouse::ButtonRendererHouse(Texture* background, Texture* text, levelInfo* info) : 
+	Component(ecs::ButtonRendererHouse), active(true), info(info)
 {
 	background_ = background;
 	text_ = text;
@@ -26,9 +27,8 @@ void ButtonRendererHouse::init()
 void ButtonRendererHouse::draw()
 {
 	if (active) {
-		MapConfig mpCFG(game_->getName(), false);
 		ButtonState state_ = ButtonState::Locked;
-		if (mpCFG.getLevelInfoRecipes().at(level).unlocked) {
+		if (info->unlocked) {
 			state_ = ButtonState::Unfocushed;		
 			if (buttonBehaviour_ && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()) ||
 				buttonBehaviourNC_ && (buttonBehaviourNC_->getFocusByController() || buttonBehaviourNC_->getFocusByMouse()))

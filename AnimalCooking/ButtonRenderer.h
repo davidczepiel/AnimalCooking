@@ -12,12 +12,11 @@ public:
 	void init() override;
 	void draw() override;
 	inline void setActive(bool val) { active = val; }
+	void clicked();
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
 	ButtonBehaviourNC* buttonBehaviourNC_;
-
-	void clicked();
 
 	ButtonChangeOnClick* buttonOnClick_;
 	

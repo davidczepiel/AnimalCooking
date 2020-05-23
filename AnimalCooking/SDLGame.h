@@ -14,6 +14,7 @@
 #include "InputHandler.h"
 #include "jute.h"
 #include "GameConfig.h"
+#include "MapConfig.h"
 
 using namespace std;
 class FSM;
@@ -140,9 +141,9 @@ public:
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
 	void addStarsPerLevel(int stars, int level);
 	inline const map<int, int>& getUnlockedStars() { return unlockedStarsPerLevel; }
-		
-	
-
+	inline vector<levelInfo*>* getLevelInfos() { return &levelInfos_; };
+	void setLevelInfos(const vector<levelInfo> infos);
+	void removeLevelInfos();
 	void changeWindowSize(int w, int h) {
 		SDL_SetWindowSize(window_, w, h);
 	}
@@ -186,6 +187,7 @@ protected:
 	
 	//key = level, value = stars
 	map<int,int>unlockedStarsPerLevel;
+	vector<levelInfo*> levelInfos_;
 	config::Options options_;
 	bool imFullscreen;
 	static unique_ptr<SDLGame> instance_;

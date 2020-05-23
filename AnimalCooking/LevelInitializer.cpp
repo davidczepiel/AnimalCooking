@@ -31,7 +31,7 @@ const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 
 LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
-	string ruta_ = rutaNivel + std::to_string(level - 1) + ".cfg";
+	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
 	jsonGeneral = SDLGame::instance()->getJsonGeneral();

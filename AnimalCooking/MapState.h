@@ -29,12 +29,12 @@ public:
 	inline void setName(const string& n) { playerName_ = n; game_->setName(n); }
 	inline void setCurrentLevel(int nl) {
 		currentLevel_ = nl;
-		GETCMP2(playButton_, ButtonRendererHouse)->setLevel(nl);
+		GETCMP2(playButton_, ButtonRendererHouse)->setLevel(levelinfos_->at(nl));
 	}
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
-	inline bool isCurrentLevelUnlocked() { return levelinfos_.at(currentLevel_).unlocked; }
+	inline bool isCurrentLevelUnlocked() { return levelinfos_->at(currentLevel_)->unlocked; }
 
 	void askProfile();
 	void removeProfile(const string& name);
@@ -56,7 +56,7 @@ private:
 	vector <Entity*> profileAskers;
 	vector <Texture*> profileTextures;
 	vector <Entity*> levelButtonsPool_;
-	vector<levelInfo> levelinfos_;
+	vector<levelInfo*>* levelinfos_;
 	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
 

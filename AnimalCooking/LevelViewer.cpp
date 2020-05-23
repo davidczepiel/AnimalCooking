@@ -10,11 +10,11 @@ LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarP
 	if (scorePercentage_ > 1.0)
 		scorePercentage_ = 1.0;
 	int stars = 0;
-	if (scorePercentage_ >= threeStarPerc_)
+	if (scorePercentage_ * 100 >= threeStarPerc_)
 		stars = 3;
-	else if (scorePercentage_ >= twoStarPerc_)
+	else if (scorePercentage_ * 100 >= twoStarPerc_)
 		stars = 2;
-	else if (scorePercentage_ >= oneStarPerc_)
+	else if (scorePercentage_ * 100 >= oneStarPerc_)
 		stars = 1;
 	SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
 }
@@ -30,9 +30,9 @@ void LevelViewer::draw()
 		string lvs = "level " + std::to_string(lv);
 		Texture(SDLGame::instance()->getRenderer(), lvs,
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
-				"#FFFFFFFF")).render(RECT(
-					winW - 3 * casillaX,
-					casillaY * 3,
+				"#000000FF")).render(RECT(
+					winW - 2.7 * casillaX,
+					casillaY * 0.7,
 					2 * casillaX,
 					casillaY), 7);
 	}
@@ -40,10 +40,9 @@ void LevelViewer::draw()
 	if (timeSpan_ >= scoreTime_)
 		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore()) + " points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
-				"#FFFFFFFF")).render(RECT(
-					winW - 3.25 * casillaX
-					,
-					casillaY * 4,
+				"#000000FF")).render(RECT(
+					winW - 2.7 * casillaX,
+					casillaY * 1.7,
 					2 * casillaX,
 					casillaY), 7);
 

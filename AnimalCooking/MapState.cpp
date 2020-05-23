@@ -29,15 +29,13 @@ MapState::MapState(AnimalCooking* ac) :
 	maxLevels_ = game_->getMaxLevels();
 	casillaX = game_->getCasillaX();
 	casillaY = game_->getCasillaY();
-
 	//Background textures
 	bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
 	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#000000ff"));
 	chooseOption();
-	//init();
-	//askName();
+	
 }
 
 MapState::~MapState() {
@@ -45,6 +43,7 @@ MapState::~MapState() {
 		delete t; t = nullptr;
 	}
 	delete playButtonText_; playButtonText_ = nullptr;
+	game_->removeLevelInfos();
 }
 
 void MapState::chooseOption() {
@@ -294,6 +293,10 @@ void MapState::setState() {
 	GETCMP2(exit, ButtonBehaviour)->setActive(false);
 	GETCMP2(exit, ButtonRenderer)->setActive(false);
 
+	MapConfig mapCFG(playerName_, isNewGame_);
+	game_->setLevelInfos(mapCFG.getLevelInfoRecipes());
+	levelinfos_ = game_->getLevelInfos();
+
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
@@ -304,7 +307,7 @@ void MapState::setState() {
 		0);
 
 	playButton_->addComponent<ButtonBehaviour>(screenLoaderCallback, app);
-	playButton_->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton), playButtonText_, 0);
+	playButton_->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton), playButtonText_, game_->getLevelInfos()->at(0));
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
 	stage->addToGroup(infoBox_, ecs::GroupID::ui);
 	infoBox_->addComponent<MapInfoBoxViewer>();
@@ -318,7 +321,7 @@ void MapState::setState() {
 		0.6 * casillaY,
 		0);
 	ButtonBehaviour* bb = returnButton_->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = returnButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
+	ButtonRenderer* br = returnButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::HomeIconMapState), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(returnButton_, ecs::GroupID::topLayer);
 
@@ -333,11 +336,8 @@ void MapState::setState() {
 
 void MapState::placeHousesAndButtons()
 {
-	MapConfig mapCFG(playerName_, isNewGame_);
-	levelinfos_ = mapCFG.getLevelInfoRecipes();
-
 	MapInfoBoxViewer* mInfo = GETCMP2(infoBox_, MapInfoBoxViewer);
-	mInfo->setCurrentInfoLevel(levelinfos_[0]);
+	mInfo->setCurrentInfoLevel(levelinfos_->at(0));
 
 	vector<Transform> transforms_;
 	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
@@ -346,11 +346,11 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
 
-	for (int x = 0; x < levelinfos_.size(); x++) {
+	for (int x = 0; x < levelinfos_->size(); x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
 		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
-		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_[x]);
-		ButtonRendererHouse* br = levelButtonsPool_.back()->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr, x);
+		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_->at(x));
+		ButtonRendererHouse* br = levelButtonsPool_.back()->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr, levelinfos_->at(x));
 		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
 	}
 }
@@ -400,22 +400,19 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
-
 void MapState::configPadNavigation() {
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 
 		padNavigation_ = GETCMP2(pad, ButtonPadNavigation);
 		padNavigation_->resetNavigation();
-		MapConfig mapCFG(playerName_, isNewGame_);
-		levelinfos_ = mapCFG.getLevelInfoRecipes();
 
 		int i = 0;
-		while (i < levelinfos_.size() && levelinfos_.at(i).unlocked) {
+		while (i < levelinfos_->size() && levelinfos_->at(i)->unlocked) {
 			Entity* behind = nullptr;
 			Entity* forward = nullptr;
-			if (i > 0 && levelinfos_.at(i - 1).unlocked)
+			if (i > 0 && levelinfos_->at(i - 1)->unlocked)
 				behind = levelButtonsPool_.at(i - 1);
-			if (i < levelinfos_.size() - 1 && levelinfos_.at(i + 1).unlocked)
+			if (i < levelinfos_->size() - 1 && levelinfos_->at(i + 1)->unlocked)
 				forward = levelButtonsPool_.at(i + 1);
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;

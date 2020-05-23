@@ -8,7 +8,7 @@ class AnimalCooking;
 
 class ButtonBehaviourNC : public Component{
 public:
-	ButtonBehaviourNC(Entity * infoBox, levelInfo info);
+	ButtonBehaviourNC(Entity * infoBox, levelInfo* info);
 	ButtonBehaviourNC(bool profilechooser, const string& name = "");
 	void setButtonRenderer(ButtonRenderer* bR) { bRenderer_ = bR; }
 
@@ -24,7 +24,7 @@ public:
 	inline const string& getName() const { return name_; }
 
 private:
-	levelInfo mapInfo_;
+	levelInfo* mapInfo_;
 	Entity* infoBox_;
 	bool active_;
 	bool focusedByMouse_, focusedByController_;

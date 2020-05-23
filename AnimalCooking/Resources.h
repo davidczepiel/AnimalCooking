@@ -41,8 +41,6 @@ public:
 		TicketEndState,
 		BarBackgroundEndState,
 		BarEndState,
-		HomeIcon,
-		MapIcon,
 		ReplayIcon,
 		NextLevelIcon,
 		Star,
@@ -53,11 +51,9 @@ public:
 		MapStateBackground,
 		MapStateHousesBackground,
 		MapStateInfoBox,
-		LogoTenByTen,
 
 
 		//---->Config<---------
-		ButtonConfig,
 		SliderBackground,
 		SliderMovPoint,
 		ConfigBackground,
@@ -250,9 +246,13 @@ public:
 		
 		//spritesheets
 		Button,
+		ButtonConfig,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
+		HomeIconEndState,
+		HomeIconMapState,
+		MapIcon,
 		SkilletON,
 		PigIdle,
         PigWalk,

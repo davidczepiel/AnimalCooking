@@ -22,6 +22,24 @@ void SDLGame::addStarsPerLevel(int stars, int level)
 		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
 		MapConfig mpCFG(SDLGame::instance()->getName(), level);
 		mpCFG.save();
+		levelInfos_.at(level)->stars = stars;
+		if(stars > 0 && level + 1 < levelInfos_.size()) levelInfos_.at(level + 1)->unlocked = true;
+	}
+}
+
+void SDLGame::setLevelInfos(const vector<levelInfo> infos)
+{
+	for (int i = 0; i < infos.size(); ++i) 
+		levelInfos_.push_back(new levelInfo(infos.at(i)));
+}
+
+void SDLGame::removeLevelInfos()
+{
+	if (!levelInfos_.empty()) {
+		for (auto l : levelInfos_) {
+			delete l;
+		}
+		levelInfos_.clear();
 	}
 }
 
@@ -34,6 +52,11 @@ SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),sco
 SDLGame::~SDLGame() {
 	closeResources();
 	closeSDL();
+	if (!levelInfos_.empty()) {
+		for (auto l : levelInfos_) {
+			delete l;
+		}
+	}
 }
 
 void SDLGame::initSDL() {
@@ -71,7 +94,7 @@ void SDLGame::initSDL() {
 	assert(sdlRenderClear_ret != -1);
 	SDL_RenderPresent(renderer_);
 
-	toggleFullScreen();
+	//toggleFullScreen();
 
 	// hide cursor by default
 	//SDL_ShowCursor(0);
