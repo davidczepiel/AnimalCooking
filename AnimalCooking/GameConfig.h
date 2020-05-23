@@ -133,6 +133,8 @@ namespace config {
 		std::array<KeyboardKeys, 2> players_keyboardKeys;
 		std::array<GPadButtons, 2> players_gPadButtons;
 		Volume volume;
+
+		bool showKeyToPress = true;
 	};
 }
 

@@ -167,6 +167,7 @@
     <ClCompile Include="MapInfoBoxViewer.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
     <ClCompile Include="ButtonRendererHouse.cpp" />
+    <ClCompile Include="ButtonChangeOnClick.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -367,6 +368,7 @@
     <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonRendererHouse.h" />
+    <ClInclude Include="ButtonChangeOnClick.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

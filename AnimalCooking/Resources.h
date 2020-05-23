@@ -22,6 +22,7 @@ public:
 
 	enum TextureId : std::size_t {
 		// images basic
+		////----->Menu<---------
 		MainMenuBackground,
 		MainMenuRuedecilla,
 		MainMenuRuedecillaShadow,
@@ -31,10 +32,15 @@ public:
 		MainMenuConfigButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,
 		ScoreBackground,
-		RectangleOutline,
+		//----->EndState<---------
+		BackgroundEndState,
+		TicketEndState,
+		BarBackgroundEndState,
+		BarEndState,
 		HomeIcon,
 		MapIcon,
 		ReplayIcon,
@@ -50,8 +56,13 @@ public:
 		LogoTenByTen,
 
 
+		//---->Config<---------
+		ButtonConfig,
 		SliderBackground,
 		SliderMovPoint,
+		ConfigBackground,
+		//---->Creditos<-----
+		LogoTenByTen,
 
 		// images all
 		Repisa,
@@ -60,9 +71,7 @@ public:
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
-		CookerCooking,
 		CookerBurned,
-		CookerCooked,
 		Platera,
 		Muro,
 		Valla,
@@ -83,10 +92,7 @@ public:
 		FregaderoON,
 		Ingrediente,
 		Panera,
-		Pedido,
 		Papelera,
-		Cerdo,
-		Pollo,
 		CuadradoAux,
 		//Barra de entregas
 		BarraDcha,
@@ -234,9 +240,9 @@ public:
 			VerContenidoPlato,
 			EntregarPedido,
 			PapeleraFeedBack,
-			Coger,
-			Dejar,
-		
+			BordeTeclaFeedBack,
+			RellenoTeclaFeedBack,
+
 		// images level specific
 		Arroz,
 		Aceite,
@@ -274,8 +280,16 @@ public:
 		// text
 		Back,
 		ToggleFullscreen,
+		ToggleHelper,
 		MusicVolume,
 		SoundVolume,
+		PickUpText,
+		AttackText,
+		OpenText,
+		FinishText,
+		NextText,
+		PreviousText,
+
 
 		AntonioJesus,
 		Daniel,
@@ -370,6 +384,7 @@ public:
 
 	enum FontId : std::size_t {
 		ARIAL12,
+		ARIAL50,
 		ARIAL40,
 		QuarkCheese100,
 		QuarkCheese70,

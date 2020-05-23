@@ -1,5 +1,6 @@
 #include "Dish.h"
 #include "DishStack.h"
+#include "GPadController.h"
 
 
 Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2, nullptr),
@@ -75,7 +76,6 @@ void Dish::onPick()
 }
 
 void Dish::feedback(int player)
-
 {
 	if (isViewingContent)
 	{
@@ -102,9 +102,18 @@ void Dish::feedback(int player)
 			foods[i]->draw(r);
 		}
 	}
-	else {
-		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::VerContenidoPlato);
-		SDL_Rect r = RECT(position_.getX() + 50, position_.getY() + 50, 200, 32);
-		feedbackVisual_->render(r);
+	else if(SDLGame::instance()->getOptions().showKeyToPress && getFoodVector().size() > 0) {
+		if (getFoodVector().size() > 3) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Finish Dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].FINISHER));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Finish Dish", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].FINISHER));
+		}
+		else {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].OPEN));
+			else
+				SDLGame::instance()->renderFeedBack(position_, "View Content", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].OPEN));
+		}
 	}
 }

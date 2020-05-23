@@ -22,7 +22,7 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 
 	buttons.push_back(newButton);
 	if (buttons.size() == 1) {
-		//Si el el primer boton en añadirse le digo que esta en el foco
+		//Si el el primer boton en aï¿½adirse le digo que esta en el foco
 		if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1))) {
 			ButtonBehaviour* b = GETCMP2(buttons.at(0).e, ButtonBehaviour);
 			if (b != nullptr) b->setFocusByController(true);
@@ -44,7 +44,7 @@ void ButtonPadNavigation::update() {
 		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 			horizontalInput();
 			verticalInput();
-			//Si cualquiera de ellos está pulsando la A
+			//Si cualquiera de ellos estï¿½ pulsando la A
 			if (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
 				gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A)) {
 				action();
@@ -219,7 +219,7 @@ void ButtonPadNavigation::stopFocusButton(button b)
 
 void ButtonPadNavigation::changeFocus(Entity* e) {
 	int i = 0;
-	//Tengo que encontrar el struct con la misma entidad para más tarde poder seguyir navegando
+	//Tengo que encontrar el struct con la misma entidad para mï¿½s tarde poder seguyir navegando
 	while (i < buttons.size() && buttons.at(i).e != e)
 		i++;
 	focus = buttons.at(i);

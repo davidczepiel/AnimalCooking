@@ -103,7 +103,7 @@ void AnimalCooking::update() {
 }
 
 void AnimalCooking::render() {
-	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
+	SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00000000));
 	SDL_RenderClear(game_->getRenderer());
 
 

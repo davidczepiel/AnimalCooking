@@ -38,12 +38,12 @@ class Dish : public Pickable
 	inline bool getInHands() { return inHands; }
 	inline void setIsViewingContent(bool value) { isViewingContent = value; }
 	inline bool getIsViewingContent() { return isViewingContent; }
-	  void addFinalFood(Food* f) { 
-		  addFood(f);
-		  foodPool->AddFood(f);
-	  }
+	void addFinalFood(Food* f) { 
+		addFood(f);
+		foodPool->AddFood(f);
+	}
 
-	  inline vector<Food*>::reverse_iterator getCurrentFood() { return currentFood; }
+	inline vector<Food*>::reverse_iterator getCurrentFood() { return currentFood; }
 
  private:
 	 vector<Food*>::reverse_iterator currentFood;

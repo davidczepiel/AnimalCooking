@@ -31,7 +31,7 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 		height, //Height
 		0); //Rot
 	barraCarga_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
-		game_->getTextureMngr()->getTexture(Resources::Button));
+		game_->getTextureMngr()->getTexture(Resources::BarEndState));
 
 	buttonGo_ = stage->addEntity();
 	padNavigation_ = stage->addEntity();

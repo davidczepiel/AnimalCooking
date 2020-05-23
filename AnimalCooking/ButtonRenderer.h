@@ -4,19 +4,23 @@
 #include "ButtonBehaviour.h"
 
 class ButtonBehaviourNC;
+class ButtonChangeOnClick;
 class ButtonRenderer : public Component
 {
 public:
 	ButtonRenderer(Texture* background, Texture* text);
 	void init() override;
 	void draw() override;
-	void clicked() { clickedTime_ = game_->getTime(); }
 	inline void setActive(bool val) { active = val; }
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
 	ButtonBehaviourNC* buttonBehaviourNC_;
 
+	void clicked();
+
+	ButtonChangeOnClick* buttonOnClick_;
+	
 	Texture* background_;
 	Texture* text_;
 
