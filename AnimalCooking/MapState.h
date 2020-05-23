@@ -23,6 +23,7 @@ public:
 	void init();
 	void setState();
 	void hideChooseButtons();
+	void prepareNavPadFewProfiles(bool many);
 
 	inline void setName(const string& n) { playerName_ = n; game_->setName(n); }
 	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }

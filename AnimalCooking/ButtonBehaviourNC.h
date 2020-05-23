@@ -16,7 +16,7 @@ public:
 	void update() override; 
 	const bool& getFocusByMouse() { return focusedByMouse_; }
 	const bool& getFocusByController() { return focusedByController_; }
-	void setFocusByController(bool f) { focusedByController_ = f; }
+	void setFocusByController(bool f);
 	void action();
 	inline bool isActive() { return active_; }
 	inline void setActive(bool active) { active_ = active; }

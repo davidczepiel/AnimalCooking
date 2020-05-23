@@ -133,6 +133,11 @@ void MapState::update()
 		else break;
 	}
 	hasToBreak = false;
+	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
+		if (playButton_ != nullptr && (GPadController::instance()->playerPressed(0,SDL_CONTROLLER_BUTTON_A) || GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
+			GETCMP2(playButton_, ButtonBehaviour)->action();
+		}
+	}
 }
 
 
@@ -147,6 +152,7 @@ void MapState::askProfile()
 {
 	MapConfig mapCFG = (playerName_);
 	vector<string> profiles = mapCFG.getProfiles();
+	padNavigation_->resetNavigation();
 	if (profiles.size() > 5) { // En dos columnas
 		for (int i = 0; i < profiles.size(); ++i) {
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
@@ -181,6 +187,7 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
+		prepareNavPadFewProfiles(true);
 	}
 	else { // Una columna
 		for (int i = 0; i < profiles.size(); ++i) {
@@ -211,8 +218,53 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
+		prepareNavPadFewProfiles(false);
 	}
 }
+
+
+void MapState::prepareNavPadFewProfiles(bool muchos)
+{
+	padNavigation_->AddButton(exit,nullptr,profileAskers.at(0),nullptr,profileAskers.at(0));
+	int jump;
+	if (muchos) jump = 4;
+	else jump = 2;
+	//Bucle para meter la navegación de cada botón
+	Entity* up;
+	Entity* down;
+	Entity* left;
+	Entity* right;
+	for (int i = 0; i < profileAskers.size(); i++) {
+		int indice = i;
+		//Arriba
+		indice = i - jump;
+		if (indice < 0) up = exit;
+		else up = profileAskers.at(indice);
+		indice = i;
+
+		//Abajo
+		indice = i + jump;
+		if (indice > profileAskers.size()-1) down = exit;
+		else down = profileAskers.at(indice);
+		indice = i;
+
+		//Izquierda
+		indice = i - 1;
+		if (indice <0) left = exit;
+		else left = profileAskers.at(indice);
+		indice = i;
+
+		//Derecha
+		indice = i + 1;
+		if (indice >profileAskers.size()-1) right = exit;
+		else right = profileAskers.at(indice);
+		indice = i;
+
+		padNavigation_->AddButton(profileAskers.at(i),up,down,left,right);
+	}
+}
+
+
 
 void MapState::removeProfile(const string& name)
 {
@@ -298,6 +350,7 @@ void MapState::hideChooseButtons()
 		GETCMP2(loadGameButton_, ButtonRenderer)->setActive(false);
 	}
 }
+
 
 void MapState::newGameCallback(AnimalCooking* ac)
 {

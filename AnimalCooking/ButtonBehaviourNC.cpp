@@ -20,7 +20,7 @@ ButtonBehaviourNC::ButtonBehaviourNC(Entity* infoBox, levelInfo info) :
 
 ButtonBehaviourNC::ButtonBehaviourNC(bool profilechooser, const string& name) : 
 	Component(ecs::ButtonBehaviourNC),
-	infoBox_(),
+	infoBox_(nullptr),
 	ownerTransform_(nullptr),
 	active_(true),
 	focusedByController_(nullptr),
@@ -58,11 +58,20 @@ void ButtonBehaviourNC::update()
 	}
 }
 
+void ButtonBehaviourNC::setFocusByController(bool f)
+{
+	focusedByController_ = f;
+	if (focusedByController_ && infoBox_!= nullptr) {
+		infoBox_->getComponent<MapInfoBoxViewer>(ecs::MapInfoBoxViewer)->setCurrentInfoLevel(mapInfo_);
+		static_cast<MapState*>(game_->getFSM()->currentState())->setCurrentLevel(mapInfo_.level);
+	}
+}
+
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviourNC::action() {
 	if (action_ == 0) { //En el mapa
-		infoBox_->getComponent<MapInfoBoxViewer>(ecs::MapInfoBoxViewer)->setCurrentInfoLevel(mapInfo_);
-		static_cast<MapState*>(game_->getFSM()->currentState())->setCurrentLevel(mapInfo_.level);
+		//infoBox_->getComponent<MapInfoBoxViewer>(ecs::MapInfoBoxViewer)->setCurrentInfoLevel(mapInfo_);
+		//static_cast<MapState*>(game_->getFSM()->currentState())->setCurrentLevel(mapInfo_.level);
 	}
 	else if (action_ == 1) { //Meterse en el mapa 
 		MapState* mp = static_cast<MapState*>(game_->getFSM()->currentState());
