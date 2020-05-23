@@ -26,10 +26,23 @@ void MapInfoBoxViewer::init()
 void MapInfoBoxViewer::draw()
 {
 	if (active) {
-		boxText_->render(RECT(40, 40, casillaX_ * 6, 3 * casillaY_));
+		double heightCasillas = 3;
+		//height casillas/6 porque es heightcasillas/2 (para que todo ocupe la mitad) /3(para que sean 3 líneas)
+		double lineaHeight = heightCasillas / 6;
+		boxText_->render(RECT(40, 40, casillaX_ * 6, heightCasillas * casillaY_));
 		info_.lore;
-		Texture lore = Texture(game_->getRenderer(), info_.lore, game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
-		lore.render(RECT(60, 60, casillaX_ * 6 - 20, 1.4 * casillaY_));
+		Texture loreLinea0 = Texture(game_->getRenderer(), info_.lore[0], game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
+		loreLinea0.render(RECT(60, 60, casillaX_ * 6 - 20, lineaHeight * casillaY_));
+		Texture loreLinea1 = Texture(game_->getRenderer(), info_.lore[1], game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
+		loreLinea1.render(RECT(60, 60 + casillaY_ * lineaHeight, casillaX_ * 6 - 20, lineaHeight * casillaY_));
+		Texture loreLinea2 = Texture(game_->getRenderer(), info_.lore[2], game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
+		loreLinea2.render(RECT(60, 60 + casillaY_ * 2*lineaHeight, casillaX_ * 6 - 20, lineaHeight * casillaY_));
+		/*for (int i = 0; i < info_.lore->size(); i++)
+		{
+			Texture loreLineai = Texture(game_->getRenderer(), info_.lore[i], game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
+			loreLineai.render(RECT(60, 60 + i*casillaY_ * lineaHeight, casillaX_ * 6 - 20, lineaHeight * casillaY_));
+
+		}*/
 		switch (info_.stars)
 		{
 		case 0:

@@ -20,7 +20,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "lore";
+	auxiliar.lore[0] = "nuestros amigos el cerdo y el pollo acaban de ";
+	auxiliar.lore[1] = "iniciar su aventura por los restaurantes.";
+	auxiliar.lore[2] = "Y los montes de por ahí son mu bonicos";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -30,7 +32,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "lore";
+	auxiliar.lore[0] = "lore";
+	auxiliar.lore[1] = "lore";
+	auxiliar.lore[2] = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -40,7 +44,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "lore";
+	auxiliar.lore[0] = "lore";
+	auxiliar.lore[1] = "lore";
+	auxiliar.lore[2] = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -50,7 +56,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "lore";
+	auxiliar.lore[0] = "lore";
+	auxiliar.lore[1] = "lore";
+	auxiliar.lore[2] = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -60,7 +68,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "lore";
+	auxiliar.lore[0] = " ";
+	auxiliar.lore[1] = " ";
+	auxiliar.lore[2] = " ";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);

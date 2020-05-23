@@ -241,7 +241,7 @@ void MapState::setState() {
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
-		Vector2D(3 * casillaX, 1.5 * casillaY),
+		Vector2D(3 * casillaX +60, 1.5 * casillaY +40),
 		Vector2D(),
 		3 * casillaX,
 		1.5 * casillaY,
