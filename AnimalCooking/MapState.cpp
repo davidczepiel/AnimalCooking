@@ -268,6 +268,9 @@ void MapState::placeHousesAndButtons()
 	MapConfig mapCFG(playerName_, isNewGame_);
 	levelinfos_ = mapCFG.getLevelInfoRecipes();
 
+	MapInfoBoxViewer* mInfo = GETCMP2(infoBox_, MapInfoBoxViewer);
+	mInfo->setCurrentInfoLevel(levelinfos_[0]);
+
 	vector<Transform> transforms_;
 	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
 	transforms_.push_back(Transform(Vector2D(594, 590), Vector2D(), 40, 20));

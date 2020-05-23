@@ -20,7 +20,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "";
+	auxiliar.lore = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -30,7 +30,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "";
+	auxiliar.lore = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -40,7 +40,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "";
+	auxiliar.lore = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -50,7 +50,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "";
+	auxiliar.lore = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -60,7 +60,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore = "";
+	auxiliar.lore = "lore";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);

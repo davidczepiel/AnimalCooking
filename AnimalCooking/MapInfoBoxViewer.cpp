@@ -29,28 +29,28 @@ void MapInfoBoxViewer::draw()
 		boxText_->render(RECT(40, 40, casillaX_ * 6, 3 * casillaY_));
 		info_.lore;
 		Texture lore = Texture(game_->getRenderer(), info_.lore, game_->getFontMngr()->getFont(Resources::QuarkCheese50), hex2sdlcolor("#000000FF"));
-		//lore.render()
+		lore.render(RECT(60, 60, casillaX_ * 6 - 20, 1.4 * casillaY_));
 		switch (info_.stars)
 		{
 		case 0:
-			notGotStar_->render(RECT(40, 1.5 * casillaY_, casillaX_, casillaY_));
-			notGotStar_->render(RECT(40 + 1.1 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
-			notGotStar_->render(RECT(40 + 2.2 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
 			break;
 		case 1:
-			gotStar_->render(RECT(40 , 1.5 * casillaY_, casillaX_, casillaY_));
-			notGotStar_->render(RECT(40 + 1.1* casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
-			notGotStar_->render(RECT(40 + 2.2 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60 + 1.1* casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
 			break;
 		case 2:
-			gotStar_->render(RECT(40, 1.5 * casillaY_, casillaX_, casillaY_));
-			gotStar_->render(RECT(40 + 1.1 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
-			notGotStar_->render(RECT(40 + 2.2 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
 			break;
 		case 3:
-			gotStar_->render(RECT(40, 1.5 * casillaY_, casillaX_, casillaY_));
-			gotStar_->render(RECT(40 + 1.1 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
-			gotStar_->render(RECT(40 + 2.2 * casillaX_, 1.5 * casillaY_, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
 
 			break;
 		default:
