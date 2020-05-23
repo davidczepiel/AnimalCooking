@@ -22,6 +22,7 @@ public:
 	~MapConfig() {};
 
 	void save();
+	void saveNewProfile(const string& newProfile);
 	void load();
 
 	void removeProfile();

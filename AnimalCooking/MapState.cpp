@@ -258,6 +258,9 @@ void MapState::setState() {
 	placeHousesAndButtons();
 
 	configPadNavigation();
+
+	MapConfig mpCFG();
+	mpCFG.saveNewProfile(playerName_);
 }
 
 

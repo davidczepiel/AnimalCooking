@@ -25,7 +25,7 @@ public:
 	void saveGame();
 	void hideChooseButtons();
 
-	inline void setName(string n){ playerName_ = n; }
+	inline void setName(string n) { playerName_ = n; game_->setName(n); }
 	inline void setCurrentLevel(int nl) { currentLevel_ = nl; }
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }

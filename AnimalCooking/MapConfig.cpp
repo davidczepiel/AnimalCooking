@@ -181,6 +181,30 @@ void MapConfig::save()
 	}
 }
 
+void MapConfig::saveNewProfile(const string& newProfile)
+{
+	const vector<string>& profiles = getProfiles();
+	std::find(profiles.begin(), profiles.end(), newProfile);
+
+	ifstream profiles("../AnimalCooking/resources/profiles.txt");
+	bool found = false;
+	if (profiles.is_open()) {
+		while (!profiles.eof() && !found) {
+			string cadena;
+			std::getline(profiles, cadena);
+			if (!profiles.fail())
+				found = (cadena == fileName_);
+		}
+	}
+	profiles.close();
+	if (!found) {
+		ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
+		if (profiles.is_open())
+			profiles << fileName_ << endl;
+		profiles.close();
+	}
+}
+
 vector<string> MapConfig::getProfiles()
 {
 	vector<string> p;
