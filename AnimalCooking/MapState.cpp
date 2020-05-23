@@ -132,11 +132,16 @@ void MapState::update()
 		else break;
 	}
 	hasToBreak = false;
-	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
-		if (playButton_ != nullptr && (GPadController::instance()->playerPressed(0,SDL_CONTROLLER_BUTTON_A) || GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
+	GPadController* gpad = GPadController::instance();
+	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->buttonJustPressed()) {
+		if (playButton_ != nullptr &&  (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
 			GETCMP2(playButton_, ButtonBehaviour)->action();
 		}
+		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+			backButtonCallback(getAnimalCooking());
+		}
 	}
+
 }
 
 
@@ -224,7 +229,7 @@ void MapState::askProfile()
 
 void MapState::prepareNavPadFewProfiles(bool muchos)
 {
-	padNavigation_->AddButton(exit,nullptr,profileAskers.at(0),nullptr,profileAskers.at(0));
+	padNavigation_->AddButton(exit, nullptr, profileAskers.at(0), nullptr, profileAskers.at(0));
 	int jump;
 	if (muchos) jump = 4;
 	else jump = 2;
@@ -243,23 +248,23 @@ void MapState::prepareNavPadFewProfiles(bool muchos)
 
 		//Abajo
 		indice = i + jump;
-		if (indice > profileAskers.size()-1) down = exit;
+		if (indice > profileAskers.size() - 1) down = exit;
 		else down = profileAskers.at(indice);
 		indice = i;
 
 		//Izquierda
 		indice = i - 1;
-		if (indice <0) left = exit;
+		if (indice < 0) left = exit;
 		else left = profileAskers.at(indice);
 		indice = i;
 
 		//Derecha
 		indice = i + 1;
-		if (indice >profileAskers.size()-1) right = exit;
+		if (indice > profileAskers.size() - 1) right = exit;
 		else right = profileAskers.at(indice);
 		indice = i;
 
-		padNavigation_->AddButton(profileAskers.at(i),up,down,left,right);
+		padNavigation_->AddButton(profileAskers.at(i), up, down, left, right);
 	}
 }
 
@@ -292,7 +297,7 @@ void MapState::setState() {
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
-		Vector2D(4 * casillaX, 2.3 * casillaY ),
+		Vector2D(4 * casillaX, 2.3 * casillaY),
 		Vector2D(),
 		2 * casillaX,
 		0.75 * casillaY,
@@ -398,14 +403,22 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 
 void MapState::configPadNavigation() {
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
-		
+
 		padNavigation_ = GETCMP2(pad, ButtonPadNavigation);
 		padNavigation_->resetNavigation();
-		padNavigation_->AddButton(levelButtonsPool_.at(0), nullptr, nullptr, nullptr, levelButtonsPool_.at(1));
-		padNavigation_->AddButton(levelButtonsPool_.at(1), nullptr, nullptr, levelButtonsPool_.at(0), levelButtonsPool_.at(2));
-		padNavigation_->AddButton(levelButtonsPool_.at(2), nullptr, nullptr, levelButtonsPool_.at(1), levelButtonsPool_.at(3));
-		padNavigation_->AddButton(levelButtonsPool_.at(3), nullptr, nullptr, levelButtonsPool_.at(2), levelButtonsPool_.at(4));
-		padNavigation_->AddButton(levelButtonsPool_.at(4), nullptr, nullptr, levelButtonsPool_.at(2), nullptr);
+		MapConfig mapCFG(playerName_, isNewGame_);
+		levelinfos_ = mapCFG.getLevelInfoRecipes();
 
+		int i = 0;
+		while (i < levelinfos_.size() && levelinfos_.at(i).unlocked) {
+			Entity* behind = nullptr;
+			Entity* forward = nullptr;
+			if (i > 0 && levelinfos_.at(i - 1).unlocked)
+				behind = levelButtonsPool_.at(i - 1);
+			if (i < levelinfos_.size() - 1 && levelinfos_.at(i + 1).unlocked)
+				forward = levelButtonsPool_.at(i + 1);
+			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
+			i++;
+		}
 	}
 }
