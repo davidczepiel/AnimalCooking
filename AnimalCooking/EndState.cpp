@@ -47,11 +47,9 @@ EndState::EndState(AnimalCooking* ac) :State(ac),score(0),maxScore(SDLGame::inst
 	br = ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
 	bb->setButtonRenderer(br);
 	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
-
 		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel()) {
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
-		
 
 		Entity* NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);

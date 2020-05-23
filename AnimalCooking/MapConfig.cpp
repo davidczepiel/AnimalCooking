@@ -70,15 +70,25 @@ void MapConfig::fill()
 	else {
 		int numberOfLevel = 0;
 
-		for (int i = 0; i < levelsRecipes_.size(); i++)
+		stringstream file(fileName_);
+		file << "../AnimalCooking/resources/" << fileName_ << ".txt";
+		fstream partidaGuardada(file.str().c_str(), ios::out);
+
+		levelsRecipes_[0].level = numberOfLevel;
+		levelsRecipes_[0].stars = 0;
+		levelsRecipes_.at(0).unlocked = true;
+		partidaGuardada << numberOfLevel << " " << levelsRecipes_[0].stars << " " << levelsRecipes_[0].unlocked << endl;
+		numberOfLevel++;
+		for (int i = 1; i < levelsRecipes_.size(); i++)
 		{
 			levelsRecipes_[i].level = numberOfLevel;
 			levelsRecipes_[i].stars = 0;
 			levelsRecipes_[i].unlocked = false;
+			partidaGuardada << numberOfLevel << " " << levelsRecipes_[i].stars << " " << levelsRecipes_[i].unlocked << endl;
 			numberOfLevel++;
-
 		}
-		levelsRecipes_.at(0).unlocked = true; //If new game = unlock lvl 1
+		 //If new game = unlock lvl 1
+		partidaGuardada.close();
 	}
 
 	/////////////////////////////////////
@@ -102,17 +112,16 @@ void MapConfig::load()
 		fstream partidaGuardada(file.str().c_str(), std::ios::in);
 		int i = 0;
 
-
 		if (partidaGuardada.is_open())
 			while (!partidaGuardada.eof())
 			{
 				partidaGuardada >> levelsRecipes_.at(i).level;
 				partidaGuardada >> levelsRecipes_.at(i).stars;
-				partidaGuardada >> levelsRecipes_.at(i).unlocked;
+				partidaGuardada >> levelsRecipes_.at(i).unlocked;			
 				i++;
+				if (i == levelsRecipes_.size())
+					break;
 			}
-
-
 		partidaGuardada.close();
 	}
 }
@@ -163,32 +172,21 @@ void MapConfig::save()
 		i++;
 	}
 	partidaGuardada.close();
-
-
 }
 
 void MapConfig::saveNewProfile(const string& newProfile)
 {
-	const vector<string>& profiles = getProfiles();
-	std::find(profiles.begin(), profiles.end(), newProfile);
+	if (newProfile.empty())
+		return;
 
-	ifstream profiles("../AnimalCooking/resources/profiles.txt");
-	bool found = false;
-	if (profiles.is_open()) {
-		while (!profiles.eof() && !found) {
-			string cadena;
-			std::getline(profiles, cadena);
-			if (!profiles.fail())
-				found = (cadena == fileName_);
-		}
-	}
+	const vector<string>& perfiles = getProfiles();
+	auto it = std::find(perfiles.begin(), perfiles.end(), newProfile);
+	if (it != perfiles.end())
+		return;
+
+	ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
+	if (profiles.is_open()) profiles << newProfile << endl;
 	profiles.close();
-	if (!found) {
-		ofstream profiles("../AnimalCooking/resources/profiles.txt", ios::app);
-		if (profiles.is_open())
-			profiles << fileName_ << endl;
-		profiles.close();
-	}
 }
 
 vector<string> MapConfig::getProfiles()

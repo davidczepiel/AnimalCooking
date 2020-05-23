@@ -3,6 +3,7 @@
 #include "SDL_macros.h"
 #include "FSM.h"
 #include "ButtonRenderer.h"
+#include "ButtonRendererHouse.h"
 #include "ButtonBehaviourNC.h"
 #include "MapConfig.h"
 #include "ButtonPadNavigation.h"
@@ -163,7 +164,7 @@ void MapState::askProfile()
 				5 * casillaX,
 				1.1 * casillaY,
 				0);
-			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true);
+			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
@@ -193,7 +194,7 @@ void MapState::askProfile()
 				8 * casillaX,
 				1.1 * casillaY,
 				0);
-			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, playerName_);
+			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
 			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
@@ -257,7 +258,7 @@ void MapState::setState() {
 
 	configPadNavigation();
 
-	MapConfig mpCFG();
+	MapConfig mpCFG;
 	mpCFG.saveNewProfile(playerName_);
 }
 
@@ -265,7 +266,7 @@ void MapState::setState() {
 void MapState::placeHousesAndButtons()
 {
 	MapConfig mapCFG(playerName_, isNewGame_);
-	 levelinfos_ = mapCFG.getLevelInfoRecipes();
+	levelinfos_ = mapCFG.getLevelInfoRecipes();
 
 	vector<Transform> transforms_;
 	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
@@ -278,17 +279,9 @@ void MapState::placeHousesAndButtons()
 		levelButtonsPool_.push_back(stage->addEntity());
 		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
 		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_[x]);
-		ButtonRenderer* br = levelButtonsPool_.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr);
-		bb->setButtonRenderer(br);
+		ButtonRendererHouse* br = levelButtonsPool_.back()->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr, x);
 		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
 	}
-}
-
-
-void MapState::saveGame()
-{
-	MapConfig mapCFG(playerName_);
-	mapCFG.save();
 }
 
 void MapState::hideChooseButtons()

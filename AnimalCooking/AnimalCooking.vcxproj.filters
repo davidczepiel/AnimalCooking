@@ -166,6 +166,7 @@
     <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
+    <ClCompile Include="ButtonRendererHouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -365,6 +366,7 @@
     <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
+    <ClInclude Include="ButtonRendererHouse.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

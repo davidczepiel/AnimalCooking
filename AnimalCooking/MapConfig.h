@@ -19,6 +19,7 @@ class MapConfig {
 public: 
 	MapConfig(string fileN);
 	MapConfig(string fileN, bool isNewGame);
+	MapConfig() {};
 	~MapConfig() {};
 
 	void save();

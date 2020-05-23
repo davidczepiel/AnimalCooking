@@ -2,8 +2,7 @@
 #include "SDL_macros.h"
 #include<string>
 LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarPerc, int twoStarPerc, int threeStarPerc, double scorePercentage)
-	:
-	Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casillaX(0), casillaY(0), scoreProgress_(0)
+	: Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casillaX(0), casillaY(0), scoreProgress_(0)
 	, barBackground(nullptr), yellowStar(nullptr), timeSpan_(0),
 	startedTick_(SDLGame::instance()->getTime()),
 	levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
@@ -27,10 +26,10 @@ void LevelViewer::draw()
 
 	if (timeSpan_ >= levelTime_)
 	{
-		int lv = SDLGame::instance()->getCurrentLevel() - 1;
+		int lv = SDLGame::instance()->getCurrentLevel() + 1;
 		string lvs = "level " + std::to_string(lv);
 		Texture(SDLGame::instance()->getRenderer(), lvs,
-			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
+			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
 					winW - 3 * casillaX,
 					casillaY * 3,
@@ -40,7 +39,7 @@ void LevelViewer::draw()
 
 	if (timeSpan_ >= scoreTime_)
 		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore()) + " points",
-			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL12), hex2sdlcolor(
+			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
 				"#FFFFFFFF")).render(RECT(
 					winW - 3.25 * casillaX
 					,

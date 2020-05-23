@@ -8,6 +8,7 @@
 
 #include "SRandBasedGenerator.h"
 #include "FSM.h"
+#include "MapConfig.h"
 
 unique_ptr<SDLGame> SDLGame::instance_;
 const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
@@ -16,11 +17,11 @@ const string rutaGeneral = "../AnimalCooking/resources/cfg/general.cfg";
 void SDLGame::addStarsPerLevel(int stars, int level)
 {
 	auto it = unlockedStarsPerLevel.find(level);
-	if (it == unlockedStarsPerLevel.end())
+	if (it == unlockedStarsPerLevel.end() || (*it).second > stars) {
 		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
-	else if ((*it).second > stars)
-		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
-
+		MapConfig mpCFG(SDLGame::instance()->getName(), level);
+		mpCFG.save();
+	}
 }
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0), unlockedLevels(0), maxLevels(0), score(0), maxScore(0),

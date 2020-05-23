@@ -178,6 +178,7 @@
     <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
+    <ClInclude Include="ButtonRendererHouse.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="CollisionsSystem.h" />
@@ -354,6 +355,7 @@
     <ClCompile Include="ButtonBehaviourNC.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
+    <ClCompile Include="ButtonRendererHouse.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="CollisionsSystem.cpp" />
     <ClCompile Include="Component.cpp" />

@@ -110,7 +110,7 @@ public:
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 		}
 	}
-	inline void setName(string& nName) { name = nName; }
+	inline void setName(const string& nName) { name = nName; }
 	inline const string& getName() { return name; }
 
 	inline FSM* getFSM() { return fsm_; }
