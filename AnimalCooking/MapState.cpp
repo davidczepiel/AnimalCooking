@@ -241,7 +241,7 @@ void MapState::setState() {
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
-		Vector2D(3 * casillaX, 1.5 * casillaY),
+		Vector2D(3 * casillaX +60, 1.5 * casillaY +40),
 		Vector2D(),
 		3 * casillaX,
 		1.5 * casillaY,
@@ -267,6 +267,9 @@ void MapState::placeHousesAndButtons()
 {
 	MapConfig mapCFG(playerName_, isNewGame_);
 	levelinfos_ = mapCFG.getLevelInfoRecipes();
+
+	MapInfoBoxViewer* mInfo = GETCMP2(infoBox_, MapInfoBoxViewer);
+	mInfo->setCurrentInfoLevel(levelinfos_[0]);
 
 	vector<Transform> transforms_;
 	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
