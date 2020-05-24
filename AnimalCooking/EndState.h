@@ -21,6 +21,7 @@ private:
 
 	int score;
 	int maxScore;
+	bool getNewLevel = false;
 	Texture* background = nullptr;
 public:
 	EndState(AnimalCooking* ac);
