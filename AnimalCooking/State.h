@@ -21,5 +21,6 @@ public:
 	virtual void handleEvent() {};
 	inline AnimalCooking* getAnimalCooking() { return app; }
 	
+	
 };
 

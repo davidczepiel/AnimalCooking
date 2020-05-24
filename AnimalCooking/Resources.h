@@ -43,15 +43,19 @@ public:
 		TicketEndState,
 		BarBackgroundEndState,
 		BarEndState,
-		HomeIcon,
-		MapIcon,
 		ReplayIcon,
 		NextLevelIcon,
 		Star,
 		YellowStar,
 		LimitSign,
+		//MapState
+		NameAsker,
+		MapStateBackground,
+		MapStateHousesBackground,
+		MapStateInfoBox,
+
+
 		//---->Config<---------
-		ButtonConfig,
 		SliderBackground,
 		SliderMovPoint,
 		ConfigBackground,
@@ -244,9 +248,13 @@ public:
 		
 		//spritesheets
 		Button,
+		ButtonConfig,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
+		HomeIconEndState,
+		HomeIconMapState,
+		MapIcon,
 		SkilletON,
 		PigIdle,
         PigWalk,
@@ -268,18 +276,10 @@ public:
 		Sausage,
 		Puerta,
 		FireOverHeated,
+		MapRestaurantButton,
+		MapStatePlayButton,
 
 		// text
-			AntonioJesus,
-			Daniel,
-			David,
-			Felipe,
-			Javier,
-			Marco,
-			Nicolas,
-			Pablo,
-			Sandra,
-			Tatiana,
 		Back,
 		ToggleFullscreen,
 		ToggleHelper,
@@ -292,6 +292,19 @@ public:
 		NextText,
 		PreviousText,
 
+
+		AntonioJesus,
+		Daniel,
+		David,
+		Felipe,
+		Javier,
+		Marco,
+		Nicolas,
+		Pablo,
+		Sandra,
+		Tatiana,
+		MapNewGameButton,
+		MapLoadGameButton,
 
 		//Adversities
 		WarningAdversity,

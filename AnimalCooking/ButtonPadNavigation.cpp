@@ -1,6 +1,8 @@
 #include "ButtonPadNavigation.h"
 #include "GpadKeySwitcher.h"
 #include "SliderBehaviour.h"
+#include "ButtonBehaviourNC.h"
+#include "ButtonBehaviour.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
 xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
@@ -20,9 +22,19 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 	newButton.posibleFocus = posibleFocus;
 
 	buttons.push_back(newButton);
-	//Meto el botón que me llegue en caso de que el focus siga siendo nullptr porque si no peta
-	if (focus.e==nullptr)
-		focus = buttons.at(buttons.size()-1);
+	if (buttons.size() == 1) {
+		//Si el el primer boton en aï¿½adirse le digo que esta en el foco
+		if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1))) {
+			ButtonBehaviour* b = GETCMP2(buttons.at(0).e, ButtonBehaviour);
+			if (b != nullptr) b->setFocusByController(true);
+			else {
+				ButtonBehaviourNC* b = GETCMP2(buttons.at(0).e, ButtonBehaviourNC);
+				if (b != nullptr)
+					b->setFocusByController(true);
+			}
+		}
+		focus = buttons.at(0);
+	}
 }
 
 
@@ -33,7 +45,7 @@ void ButtonPadNavigation::update() {
 		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 			horizontalInput();
 			verticalInput();
-			//Si cualquiera de ellos está pulsando la A
+			//Si cualquiera de ellos estï¿½ pulsando la A
 			if (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
 				gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A)) {
 				action();
@@ -95,7 +107,11 @@ void ButtonPadNavigation::action() {
 	}
 	else {
 		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-		b->action();
+		if (b != nullptr) b->action();
+		else {
+			ButtonBehaviourNC* bNC = GETCMP2(focus.e, ButtonBehaviourNC);
+			bNC->action();
+		}
 	}
 }
 
@@ -121,16 +137,16 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 		}
 	}
 	else {
-		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+
 		if (xValue < 0) {
 			if (focus.left != nullptr) {
-				if (b) b->setFocusByController(false);
+				stopFocusButton(focus);
 				changeFocus(focus.left);
 			}
 		}
 		else {
 			if (focus.right != nullptr) {
-				if (b) b->setFocusByController(false);
+				stopFocusButton(focus);
 				changeFocus(focus.right);
 			}
 		}
@@ -161,10 +177,10 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 	}
 	else {
-		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
-				if (b) b->setFocusByController(false);
+				stopFocusButton(focus);
 				changeFocus(focus.down);
 				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
 				if (s != nullptr) s->setFocushed(0);
@@ -172,9 +188,31 @@ void ButtonPadNavigation::verticalMove(double yValue)
 		}
 		else if (yValue < 0) {
 			if (focus.up != nullptr) {
-				if (b) b->setFocusByController(false);
+				stopFocusButton(focus);
 				changeFocus(focus.up);
 			}
+		}
+	}
+}
+
+void ButtonPadNavigation::resetNavigation()
+{
+	buttons.clear();
+	focus.e = nullptr;
+	focus.up = nullptr;
+	focus.down = nullptr;
+	focus.right = nullptr;
+	focus.left = nullptr;
+}
+
+void ButtonPadNavigation::stopFocusButton(button b)
+{
+	if (b.e != nullptr) {
+		ButtonBehaviour* bh = GETCMP2(focus.e, ButtonBehaviour);
+		if (bh) bh->setFocusByController(false);
+		else {
+			ButtonBehaviourNC* bh = GETCMP2(focus.e, ButtonBehaviourNC);
+			if (bh) bh->setFocusByController(false);
 		}
 	}
 }
@@ -182,9 +220,16 @@ void ButtonPadNavigation::verticalMove(double yValue)
 
 void ButtonPadNavigation::changeFocus(Entity* e) {
 	int i = 0;
+	//Tengo que encontrar el struct con la misma entidad para mï¿½s tarde poder seguyir navegando
 	while (i < buttons.size() && buttons.at(i).e != e)
 		i++;
 	focus = buttons.at(i);
 	ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
 	if (b) b->setFocusByController(true);
+	else {
+		ButtonBehaviourNC* nc = GETCMP2(focus.e, ButtonBehaviourNC);
+		if (nc) nc->setFocusByController(true);
+	}
+
+
 }
