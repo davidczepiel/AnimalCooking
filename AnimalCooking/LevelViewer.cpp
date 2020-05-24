@@ -29,12 +29,12 @@ void LevelViewer::draw()
 					casillaY), 7);
 
 	if (timeSpan_ >= barTime_) {
-		double w = barBackground->getWidth() * 1.8;
-		int h= barBackground->getHeight() * 1.5;
+		double w = barBackground->getWidth() * 0.014 * casillaX;
+		int h= barBackground->getHeight() * 0.012 * casillaY;
 
-		barBackground->render(RECT(casillaX, casillaY, w, h));
+		barBackground->render(RECT(casillaX * 1.8, casillaY, w, h));
 		//bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h));
-		bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w/ 1.8, h/ 1.5));
+		bar->render(RECT(casillaX * 1.8, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w/ (0.014 * casillaX), h/ (0.012 * casillaY )));
 		double osp = casillaX + (oneStarPerc_ / 100) * w - casillaX / 10;
 		double tsp = casillaX + (twoStarPerc_ / 100) * w - casillaX / 10;
 		double thsp = casillaX + (threeStarPerc_ / 100) * w - casillaX / 10;
