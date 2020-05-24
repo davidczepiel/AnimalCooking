@@ -21,8 +21,8 @@ namespace config {
 	constexpr int ANIM_TIME = 20000;
 
 	//COOKERS
-	constexpr int SKILLET_SECONDS_TO_COOK = 10;
-	constexpr int OVEN_SECONDS_TO_COOK = 10;
+	constexpr int SKILLET_SECONDS_TO_COOK = 7;
+	constexpr int OVEN_SECONDS_TO_COOK = 7;
 	constexpr int COOKER_ANIM_SPEED = 150;
 	constexpr int COOKER_ANIM_OVERHEATED = 150;
 

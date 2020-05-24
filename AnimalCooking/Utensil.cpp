@@ -38,7 +38,7 @@ Utensil::~Utensil() {
 void Utensil::update() {
 
 	if (myState != State::playerHand) {
-		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+		if (myState == State::floor && !dirty_) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
 			dirtTimer_->update();
 			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
@@ -152,7 +152,8 @@ void Utensil::feedback(int player)
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	dirtTimer_->setTime(maxTimeOnFloor_+speedModifier);
+	if(myState == State::floor)
+	dirtTimer_->setTime(dirtTimer_->getTime()+speedModifier);
 }
 
 void Utensil::resetDirtTimer()
