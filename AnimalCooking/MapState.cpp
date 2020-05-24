@@ -60,7 +60,7 @@ void MapState::chooseOption() {
 			1.5 * casillaY,
 			0);
 		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
-		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
+		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
 	}
@@ -74,7 +74,7 @@ void MapState::chooseOption() {
 			1.5 * casillaY,
 			0);
 		ButtonBehaviour* bb = loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
-		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
+		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
 	}
@@ -88,7 +88,7 @@ void MapState::chooseOption() {
 		1.5 * casillaY,
 		0);
 	ButtonBehaviour* bb = exit->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::Back));
+	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::Back));
 	bb->setButtonRenderer(br);
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
@@ -174,7 +174,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
-			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
@@ -186,7 +186,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonBin), nullptr);
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
@@ -205,7 +205,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
-			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
@@ -217,7 +217,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonBin), nullptr);
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
@@ -387,12 +387,13 @@ void MapState::loadGameCallback(AnimalCooking* ac)
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
-	SDLGame::instance()->getAudioMngr()->haltMusic();
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	MapState* mp = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	int cl = mp->getCurrentLevel();
-	if (mp->isCurrentLevelUnlocked())
+	if (mp->isCurrentLevelUnlocked()) {
+	SDLGame::instance()->getAudioMngr()->haltMusic();
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDLGame::instance()->getFSM()->pushState(new ScreenLoader(cl + 2, ac));
+	}
 }
 
 void MapState::backButtonCallback(AnimalCooking* ac) {

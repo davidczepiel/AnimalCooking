@@ -7,6 +7,7 @@
 #include "ButtonRenderer.h"
 #include "Transform.h"
 #include "Vector2D.h"
+#include "GPadController.h"
 
 class CreditsState :
 	public State
@@ -15,6 +16,9 @@ private:
 	static void GoBackMenu(AnimalCooking* ac);
 public:
 	CreditsState(AnimalCooking* ac);
+	virtual void draw();
+	virtual void update();
+
 
 };
 

@@ -12,6 +12,8 @@ class PauseState : public State
 public:
 	PauseState(AnimalCooking* ac);
 	virtual ~PauseState();
+	virtual void draw();
+	virtual void update();
 
 private:
 

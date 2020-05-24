@@ -110,14 +110,14 @@ void ConfigState::initSliders()
 	Entity* sliderText1 = stage->addEntity();
 	stage->addToGroup(sliderText1, ecs::GroupID::ui);
 	sliderText1->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 4 / 5, game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 3.85 / 5, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
 	sliderText1->addComponent<ImageViewer>(textSliderMusic);
 
 	Entity* sliderText2 = stage->addEntity();
 	stage->addToGroup(sliderText2, ecs::GroupID::ui);
 	sliderText2->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 4 / 5, 3 * game_->getWindowHeight() / 16),
+		Vector2D(game_->getWindowWidth() * 3.85 / 5, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
 	sliderText2->addComponent<ImageViewer>(textSliderSound);
 }

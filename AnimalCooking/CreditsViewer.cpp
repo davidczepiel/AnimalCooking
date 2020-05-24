@@ -17,7 +17,7 @@ void CreditsViewer::update()
 			names[i].pos.setY(names[i].pos.getY() - config::PIXELS_TO_MOVE);
 		}
 	}
-	if (names[5].pos.getY() <= 0 &&
+	if (names[2].pos.getY() <= 0 &&
 		logoPos.getY() > SDLGame::instance()->getWindowHeight() / 2 - tenByTenLogo->getHeight() / 2) {
 		logoPos.setY(logoPos.getY() - config::PIXELS_TO_MOVE);
 

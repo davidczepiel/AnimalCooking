@@ -124,6 +124,8 @@ void EndState::createButtons()
 		bb->setButtonRenderer(br);
 		//Ponemos la m�sica de ganar
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
+		padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
+
 	}
 	else {
 		//Ponemos la m�sica de perder
@@ -143,7 +145,6 @@ void EndState::createButtons()
 	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIconEndState), nullptr);
 	bb->setButtonRenderer(br);
 	//------------------>Navegaci�n por mando<---------------------
-	padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 	padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
 	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
 	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
