@@ -97,7 +97,7 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::SlicedPotato},	Resources::FoodType::SlicedPotatoSkillet });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedMushroom, Resources::FoodType::GratedCheese, Resources::FoodType::SlicedOnion },	Resources::FoodType::Risotto });
-	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::CaughtClam, Resources::FoodType::MashedMushroom, Resources::FoodType::SlicedMushroom},	Resources::FoodType::RiceAndClams });
+	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::CaughtClam, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedMushroom},	Resources::FoodType::RiceAndClams });
 	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs });
 
 
