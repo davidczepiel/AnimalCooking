@@ -118,11 +118,11 @@ void EndState::createButtons()
 		bb = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
 		br = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
 		bb->setButtonRenderer(br);
-		//Ponemos la música de ganar
+		//Ponemos la mï¿½sica de ganar
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
 	}
 	else {
-		//Ponemos la música de perder
+		//Ponemos la mï¿½sica de perder
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Lost, 0);
 	}
 
@@ -138,13 +138,13 @@ void EndState::createButtons()
 	bb = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
 	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIcon), nullptr);
 	bb->setButtonRenderer(br);
-	//------------------>Navegación por mando<---------------------
+	//------------------>Navegaciï¿½n por mando<---------------------
 	padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 	padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
 	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
 	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
 
-	//Pongo a focus uno u otro dependiendo de la puntación del player
+	//Pongo a focus uno u otro dependiendo de la puntaciï¿½n del player
 	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton!= nullptr)
 		GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
 	else if((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton == nullptr)

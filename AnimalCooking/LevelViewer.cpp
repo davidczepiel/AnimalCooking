@@ -24,20 +24,20 @@ void LevelViewer::draw()
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
 				"#00000000")).render(RECT(
 					winW - 2.7 * casillaX,
-					casillaY *1.7,
+					casillaY * 1.7,
 					2 * casillaX,
 					casillaY), 7);
 
 	if (timeSpan_ >= barTime_) {
 		double w = barBackground->getWidth() * 0.014 * casillaX;
-		int h= barBackground->getHeight() * 0.012 * casillaY;
+		int h = barBackground->getHeight() * 0.012 * casillaY;
 
 		barBackground->render(RECT(casillaX * 1.8, casillaY, w, h));
 		//bar->render(RECT(casillaX, casillaY, scoreProgress_ * w, h));
-		bar->render(RECT(casillaX * 1.8, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w/ (0.014 * casillaX), h/ (0.012 * casillaY )));
-		double osp = casillaX + (oneStarPerc_ / 100) * w - casillaX / 10;
-		double tsp = casillaX + (twoStarPerc_ / 100) * w - casillaX / 10;
-		double thsp = casillaX + (threeStarPerc_ / 100) * w - casillaX / 10;
+		bar->render(RECT(casillaX * 1.8, casillaY, scoreProgress_ * w, h), 0, RECT(0, 0, scoreProgress_ * w / (0.014 * casillaX), h / (0.012 * casillaY)));
+		double osp = casillaX * 1.8 + (oneStarPerc_ / 100) * w - casillaX / 10;
+		double tsp = casillaX * 1.8 + (twoStarPerc_ / 100) * w - casillaX / 10;
+		double thsp = casillaX * 1.8 + (threeStarPerc_ / 100) * w - casillaX / 10;
 
 		limitSign->render(RECT(osp, casillaY, casillaX / 10, casillaY / 5));
 		limitSign->render(RECT(tsp, casillaY, casillaX / 10, casillaY / 5));
