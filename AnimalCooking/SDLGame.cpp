@@ -83,7 +83,8 @@ void SDLGame::initSDL() {
 	assert(renderer_ != nullptr);
 
 	SDL_RenderSetLogicalSize(renderer_, 1920, 1080);
-
+	width_ = 1920;
+	height_ = 1080;
 	SDL_SetWindowResizable(window_, SDL_TRUE);
 
 	// Clear screen (background color).
@@ -94,7 +95,7 @@ void SDLGame::initSDL() {
 	assert(sdlRenderClear_ret != -1);
 	SDL_RenderPresent(renderer_);
 
-	//toggleFullScreen();
+	toggleFullScreen();
 
 	// hide cursor by default
 	//SDL_ShowCursor(0);

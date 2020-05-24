@@ -102,13 +102,17 @@ public:
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
 		if (flags & SDL_WINDOW_FULLSCREEN) {
-			SDL_SetWindowSize(window_, width_, height_ - 60);
+			SDL_DisplayMode DM;
+			SDL_GetCurrentDisplayMode(0, &DM);
+			SDL_SetWindowSize(window_, DM.w, DM.h - 60);
 			SDL_SetWindowFullscreen(window_, 0);
 			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
 			imFullscreen = false;
 		}
 		else {
-			SDL_SetWindowSize(window_, width_, height_);
+			SDL_DisplayMode DM;
+			SDL_GetCurrentDisplayMode(0, &DM);
+			SDL_SetWindowSize(window_, DM.w, DM.h);
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 			imFullscreen = true;
 		}
