@@ -18,6 +18,7 @@ public:
 	void addEntity(Entity* e);
 	void addToGroup(Entity* e, ecs::GroupID id);
 	std::array<std::list<Entity*>, ecs::maxGroups>& getGroups() { return entitiesGroup; }
+	inline std::vector<std::unique_ptr<Entity>>& getEntites() { return entities; }
 
 private:
 	SDLGame* game_;

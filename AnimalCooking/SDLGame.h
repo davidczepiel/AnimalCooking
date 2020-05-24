@@ -14,6 +14,7 @@
 #include "InputHandler.h"
 #include "jute.h"
 #include "GameConfig.h"
+#include "MapConfig.h"
 
 using namespace std;
 class FSM;
@@ -21,6 +22,7 @@ class Entity;
 
 class SDLGame {
 public:
+
 	virtual ~SDLGame();
 
 	SDLGame(SDLGame&) = delete;
@@ -72,24 +74,51 @@ public:
 	inline InputHandler* getInputHandler() const {
 		return InputHandler::instance();
 	}
+
 	inline int getCurrentLevel()const {
 		return currentLevel;
+	}
+
+	inline int getCurrenUnlockLevel() const {
+		return unlockedLevels;
+	}
+
+	inline void setCurrentUnlockLevel(int a) {
+		unlockedLevels = a;
+	}
+
+	inline void addCurrentUnlockLevel() {
+		unlockedLevels++;
+	}
+
+	inline int getMaxLevels() {
+		return maxLevels;
+	}
+
+	inline void setMaxLevels(int a) {
+		maxLevels = a;
 	}
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
 		if (flags & SDL_WINDOW_FULLSCREEN) {
-			SDL_SetWindowSize(window_, width_, height_ - 60);
+			SDL_DisplayMode DM;
+			SDL_GetCurrentDisplayMode(0, &DM);
+			SDL_SetWindowSize(window_, DM.w, DM.h - 60);
 			SDL_SetWindowFullscreen(window_, 0);
 			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
 			imFullscreen = false;
 		}
 		else {
-			SDL_SetWindowSize(window_, width_, height_);
+			SDL_DisplayMode DM;
+			SDL_GetCurrentDisplayMode(0, &DM);
+			SDL_SetWindowSize(window_, DM.w, DM.h);
 			SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
 			imFullscreen = true;
 		}
 	}
+	inline void setName(const string& nName) { name = nName; }
+	inline const string& getName() { return name; }
 
 	inline FSM* getFSM() { return fsm_; }
 
@@ -114,7 +143,11 @@ public:
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
-
+	void addStarsPerLevel(int stars, int level);
+	inline const map<int, int>& getUnlockedStars() { return unlockedStarsPerLevel; }
+	inline vector<levelInfo*>* getLevelInfos() { return &levelInfos_; };
+	void setLevelInfos(const vector<levelInfo> infos);
+	void removeLevelInfos();
 	void changeWindowSize(int w, int h) {
 		SDL_SetWindowSize(window_, w, h);
 	}
@@ -147,12 +180,18 @@ protected:
 	int width_; // window width
 	int height_; // window height
 	int currentLevel;
+	int unlockedLevels;
+	int maxLevels;
 	int score;
 	int maxScore;
 	double casillaX;
 	double casillaY;
 	Entity* timersViewer_;
-
+	string name;
+	
+	//key = level, value = stars
+	map<int,int>unlockedStarsPerLevel;
+	vector<levelInfo*> levelInfos_;
 	config::Options options_;
 	bool imFullscreen;
 	static unique_ptr<SDLGame> instance_;

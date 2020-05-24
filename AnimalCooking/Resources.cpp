@@ -26,13 +26,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
-
-
+	
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
 	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
-	
+
 	//----->EndState<---------
 	{Basic, BackgroundEndState,"../AnimalCooking/resources/images/EndState/background.png"},
 	{Basic, TicketEndState,"../AnimalCooking/resources/images/EndState/ticket.png"},
@@ -42,6 +41,13 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, YellowStar,"../AnimalCooking/resources/images/EndState/YellowStar.png"},
 	{Basic, LimitSign,"../AnimalCooking/resources/images/EndState/Indicador.png"},
 
+	//MapState
+	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
+	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
+	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
+	
+
 	//---->Config<---------
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
 	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
@@ -50,6 +56,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	//CreditState-----------
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
+	
 
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
@@ -254,7 +261,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, ButtonConfig,"../AnimalCooking/resources/images/Menu/botonesConfig.png", 1, 3},
 	{Basic, ReplayIcon,"../AnimalCooking/resources/images/EndState/ReplayProvisional.png", 1, 3},
 	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/EndState/PlayProvisional.png",1,3},
-	{Basic, HomeIcon,"../AnimalCooking/resources/images/EndState/HomeProvisional.png",1,3},
+	{Basic, HomeIconEndState,"../AnimalCooking/resources/images/EndState/HomeProvisional.png",1,3},
+	{Basic, HomeIconMapState,"../AnimalCooking/resources/images/Mapstate/homeMapState.png",1,2},
 	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
 	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
@@ -280,7 +288,9 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
-	{Basic,FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3}
+	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
+	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
+	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 }
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{
@@ -295,6 +305,8 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
 
 	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0xffffffff), FontId::QuarkCheese100},

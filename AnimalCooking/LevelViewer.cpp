@@ -1,6 +1,24 @@
 #include "LevelViewer.h"
 #include "SDL_macros.h"
 #include<string>
+LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarPerc, int twoStarPerc, int threeStarPerc, double scorePercentage)
+	: Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casillaX(0), casillaY(0), scoreProgress_(0)
+	, barBackground(nullptr), yellowStar(nullptr), timeSpan_(0),
+	startedTick_(SDLGame::instance()->getTime()),
+	levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
+	twoStarPerc_(twoStarPerc), threeStarPerc_(threeStarPerc), scorePercentage_(scorePercentage) {
+	if (scorePercentage_ > 1.0)
+		scorePercentage_ = 1.0;
+	int stars = 0;
+	if (scorePercentage_ * 100 >= threeStarPerc_)
+		stars = 3;
+	else if (scorePercentage_ * 100 >= twoStarPerc_)
+		stars = 2;
+	else if (scorePercentage_ * 100 >= oneStarPerc_)
+		stars = 1;
+	SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
+}
+
 void LevelViewer::draw()
 {
 	timeSpan_ = SDLGame::instance()->getTime() - startedTick_;
@@ -8,11 +26,11 @@ void LevelViewer::draw()
 
 	if (timeSpan_ >= levelTime_)
 	{
-		int lv = SDLGame::instance()->getCurrentLevel() - 1;
-		string lvs = "Level " + std::to_string(lv);
+		int lv = SDLGame::instance()->getCurrentLevel() + 1;
+		string lvs = "level " + std::to_string(lv);
 		Texture(SDLGame::instance()->getRenderer(), lvs,
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
-				"#00000000")).render(RECT(
+				"#000000FF")).render(RECT(
 					winW - 2.7 * casillaX,
 					casillaY * 0.7,
 					2 * casillaX,
@@ -20,11 +38,11 @@ void LevelViewer::draw()
 	}
 
 	if (timeSpan_ >= scoreTime_)
-		Texture(SDLGame::instance()->getRenderer(), "Points: " + std::to_string(SDLGame::instance()->getScore()),
+		Texture(SDLGame::instance()->getRenderer(), std::to_string(SDLGame::instance()->getScore()) + " points",
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
-				"#00000000")).render(RECT(
+				"#000000FF")).render(RECT(
 					winW - 2.7 * casillaX,
-					casillaY *1.7,
+					casillaY * 1.7,
 					2 * casillaX,
 					casillaY), 7);
 

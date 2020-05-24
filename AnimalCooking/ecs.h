@@ -87,7 +87,9 @@ enum CmpId : CmpIdType {
 	PhysicsPool,
 
 	ButtonBehaviour, //Buttons
+	ButtonBehaviourNC,
 	ButtonRenderer,
+	ButtonRendererHouse,
 	ButtonsViewer,
 	ButtonDirector,
 	MenuButtonRenderer,
@@ -110,6 +112,10 @@ enum CmpId : CmpIdType {
 	KeyboardKeySwitcherViewer,
 	GpadKeySwitcher,
 	GpadKeySwitcherViewer,
+	
+	NameAsker,//MapState
+	MapInfoBox,
+	MapInfoBoxViewer,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

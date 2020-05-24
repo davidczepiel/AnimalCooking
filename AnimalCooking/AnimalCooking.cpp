@@ -34,6 +34,7 @@ void AnimalCooking::initGame() {
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
 	game_->getFSM()->pushState(new MenuState /*EndState*/(this));
+	//game_->getFSM()->pushState(new MapState (this));
 	game_->getFSM()->refresh();
 
 }
@@ -61,6 +62,7 @@ void AnimalCooking::start() {
 
 void AnimalCooking::stop() {
 	exit_ = true;
+	
 }
 
 void AnimalCooking::handleInput() {
