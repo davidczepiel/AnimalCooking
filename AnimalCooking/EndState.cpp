@@ -21,8 +21,8 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	int degrees = 7;
 	int nextLevelLimit = 45;
 
-	//score = 120;
-	//maxScore = 150;
+	/*score = 120;
+	maxScore = 150;*/
 
 	createButtons();
 	//createPlayers();
@@ -108,7 +108,7 @@ void EndState::createButtons()
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
 
-		Entity* NextLevelButton = stage->addEntity();
+		 NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
 		(winWidth - 2.5 * casillaX +
@@ -148,18 +148,8 @@ void EndState::createButtons()
 	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
 	padNav->AddButton(returnToMenuButton, ResetLevelButton, nullptr, nullptr, returnToMapButton);            //ReturnToMainmenu
 
-	//Pongo a focus uno u otro dependiendo de la puntaci�n del player
-	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton!= nullptr)
-		GETCMP2(NextLevelButton, ButtonBehaviour)->setFocusByController(true);
-	else if((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) && NextLevelButton == nullptr)
-		GETCMP2(ResetLevelButton, ButtonBehaviour)->setFocusByController(true);
+
 	//-----------------------------------------------------------------------------------------
-
-	//Final
-	Entity* lv = stage->addEntity();
-	lv->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 75, 95,(double)(score)/maxScore);
-	stage->addToGroup(lv, ecs::GroupID::ui);
-
 }
 
 void EndState::createPlayers()

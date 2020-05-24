@@ -125,14 +125,8 @@ void MapState::draw()
 
 void MapState::update()
 {
-	for (auto& e : stage->getEntites()) {
-		if (!hasToBreak)
-			e->update();
-		else break;
-	}
-	hasToBreak = false;
 	GPadController* gpad = GPadController::instance();
-	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->buttonJustPressed()) {
+	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 		if (playButton_ != nullptr &&  (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
 			GETCMP2(playButton_, ButtonBehaviour)->action();
 		}
@@ -140,6 +134,12 @@ void MapState::update()
 			backButtonCallback(getAnimalCooking());
 		}
 	}
+	for (auto& e : stage->getEntites()) {
+		if (!hasToBreak)
+			e->update();
+		else break;
+	}
+	hasToBreak = false;
 
 }
 
