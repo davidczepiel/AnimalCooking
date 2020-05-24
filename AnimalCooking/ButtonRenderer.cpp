@@ -51,7 +51,7 @@ void ButtonRenderer::draw()
 
 			if (buttonOnClick_ != nullptr) {
 				size_t i = buttonOnClick_->getState(); //0 es de-activado
-				text_->renderWithTint(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + 5, s.getX(), s.getY()), (1 - i) * 200, i * 100, (1 - i) * 51);
+				text_->renderWithTint(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()), (1 - i) * 200, i * 100, (1 - i) * 51);
 			}
 			else text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()));		
 		}

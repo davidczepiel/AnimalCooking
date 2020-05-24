@@ -88,7 +88,7 @@ void MapState::chooseOption() {
 		1.5 * casillaY,
 		0);
 	ButtonBehaviour* bb = exit->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::Back));
 	bb->setButtonRenderer(br);
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
