@@ -14,24 +14,34 @@ void RiceGiver::action1(int player) {
 
 	if (player == Resources::Player::Player1)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+		Food* f = nullptr;
 
-		if(player1_->getObjectInHands() == nullptr) player1_->pick(f, Resources::PickableType::Food);
+		if (player1_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+			player1_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player1_->getObjectTypeInHands()==Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 
 	}
 	else if (player == Resources::Player::Player2 ) {
-		Food* f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr)player2_->pick(f, Resources::PickableType::Food);
+		if (player2_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
+			player2_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
@@ -47,23 +57,34 @@ BreadBurgerGiver::BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, T
 void BreadBurgerGiver::action1(int player) {
 	if (player == Resources::Player::Player1)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
+		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr)player1_->pick(f, Resources::PickableType::Food);
+		if (player1_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
+			player1_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
-	else if (player == Resources::Player::Player2) {
-		Food* f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
+	else if (player == Resources::Player::Player2) 
+	{
+		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr)player2_->pick(f, Resources::PickableType::Food);
+		if (player2_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
+			player2_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
@@ -80,23 +101,34 @@ BreadHotDogGiver::BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, T
 void BreadHotDogGiver::action1(int player) {
 	if (player == Resources::Player::Player1)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) player1_->pick(f, Resources::PickableType::Food);
+		if (player1_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+			player1_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
 			d->addFood(f);
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
 	else if (player == Resources::Player::Player2) 
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) player2_->pick(f, Resources::PickableType::Food);
+		if (player2_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
+			player2_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
@@ -113,24 +145,35 @@ DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2
 void DoughGiver::action1(int player) {
 	if (player == Resources::Player::Player1)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) player1_->pick(f, Resources::PickableType::Food);
+		if (player1_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+			player1_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
-	else if (player == Resources::Player::Player2) {
+	else if (player == Resources::Player::Player2) 
+	{
 
-		Food* f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) player2_->pick(f, Resources::PickableType::Food);
+		if (player2_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
+			player2_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
@@ -147,24 +190,34 @@ DressingGiver::DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transpo
 void DressingGiver::action1(int player) {
 	if (player == Resources::Player::Player1)
 	{
-		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) player1_->pick(f, Resources::PickableType::Food);
+		if (player1_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+			player1_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
 	else if (player == Resources::Player::Player2) {
 
-		Food* f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) player2_->pick(f, Resources::PickableType::Food);
+		if (player2_->getObjectInHands() == nullptr) 
+		{ 
+			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
+			player2_->pick(f, Resources::PickableType::Food); 
+		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
 			d->addFood(f);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
