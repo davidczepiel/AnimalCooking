@@ -15,6 +15,7 @@ void Dish::addFood(Food* f)
 {
 	if (f != nullptr) 
 	{
+		f->setInHands(false);
 		foods_.push_back(f);			
 		currentFood = ++(foods_.rbegin());		
 		f->setCanInteract(false);
@@ -27,6 +28,7 @@ Food* Dish::takeFood()
 	if (!foods_.empty()) 
 	{
 		Food* aux = *currentFood.base();
+		aux->setInHands(true);
 		//Se vuelve a establecer el size tras salir del plato
 		jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
 		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY()));

@@ -14,6 +14,7 @@ protected:
 	Resources::FoodType type_;
 	Texture* texture_;
 	bool dead = false;
+	bool inHands = false;
 	FoodPool* foodPool_;
 	std::vector<Food*>::iterator iterator_;
 
@@ -36,6 +37,7 @@ public:
 	Resources::FoodType getType() { return type_; }
 	inline bool getCanDraw() { return canDraw; }
 	void setCanDraw(bool value) { canDraw = value; }
+	void setInHands(bool b) { inHands = b; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw();
