@@ -6,18 +6,21 @@
 #include "FSM.h"
 #include "SliderBehaviour.h"
 
+#include <fstream>
+
 class ConfigState :
 	public State
 {
 public:
 	ConfigState(AnimalCooking* ac);
-	~ConfigState() {
-		delete textSliderMusic;
-		delete textSliderSound;
-	}
+	~ConfigState();
 	virtual void update();
 	virtual void draw();
 private:
+	void saveToFile();
+	void savePlayer(ofstream& f, Uint8 player, const config::Options& o);
+	void loadFromFile();
+	void loadPlayer(ifstream& f, Uint8 player, config::Options& o);
 	void initButtons();
 	void initSliders();
 	void initKeyModifiers();

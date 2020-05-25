@@ -58,6 +58,9 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	
 
+	//---->Creditos<-----
+	{Basic, LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
+
 	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
