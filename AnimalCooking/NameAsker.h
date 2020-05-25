@@ -12,6 +12,8 @@ public:
 	virtual void update()override;
 
 	void setActive(bool a);
+	inline bool getActive() { return active; }
+	inline string getName() { return nameStream.str(); }
 private:
 	Texture* bg;
 	stringstream nameStream;

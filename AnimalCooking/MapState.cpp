@@ -10,6 +10,7 @@
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
+	nameAsker(nullptr),
 	infoBox_(nullptr),
 	playButton_(nullptr),
 	returnButton_(nullptr),
@@ -35,7 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#000000ff"));
 	chooseOption();
-	
+
 }
 
 MapState::~MapState() {
@@ -127,12 +128,23 @@ void MapState::update()
 {
 	GPadController* gpad = GPadController::instance();
 	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
-		if (playButton_ != nullptr &&  (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
-			GETCMP2(playButton_, ButtonBehaviour)->action();
+
+		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
+			if (playButton_ != nullptr)
+				GETCMP2(playButton_, ButtonBehaviour)->action();
+			else if (nameAsker != nullptr) {
+				NameAsker* na = GETCMP2(nameAsker, NameAsker);
+				if (na->getActive() && na->getName().size() > 1) {
+					na->setActive(false);
+					setName(na->getName());
+					setState();
+				}
+			}
 		}
-		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+		else if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
 			backButtonCallback(getAnimalCooking());
 		}
+
 	}
 	for (auto& e : stage->getEntites()) {
 		if (!hasToBreak)
@@ -390,8 +402,8 @@ void MapState::screenLoaderCallback(AnimalCooking* ac) {
 	MapState* mp = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	int cl = mp->getCurrentLevel();
 	if (mp->isCurrentLevelUnlocked()) {
-	SDLGame::instance()->getAudioMngr()->haltMusic();
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+		SDLGame::instance()->getAudioMngr()->haltMusic();
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDLGame::instance()->getFSM()->pushState(new ScreenLoader(cl + 2, ac));
 	}
 }
