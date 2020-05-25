@@ -55,11 +55,11 @@ void MapState::chooseOption() {
 	if (mapCFG.getProfiles().size() < 10) {
 		newGameButton_ = stage->addEntity();
 		newGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 2.5 * casillaY),
+			Vector2D(5 * casillaX, 4.5 * casillaY),
 			Vector2D(),
 			6 * casillaX,
 			1.5 * casillaY,
-			0);
+			0);		
 		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
 		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 		bb->setButtonRenderer(br);
@@ -69,7 +69,7 @@ void MapState::chooseOption() {
 	if (mapCFG.getProfiles().size() > 0) {
 		loadGameButton_ = stage->addEntity();
 		loadGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 4.5 * casillaY),
+			Vector2D(5 * casillaX, 2.5 * casillaY),
 			Vector2D(),
 			6 * casillaX,
 			1.5 * casillaY,
@@ -98,8 +98,8 @@ void MapState::chooseOption() {
 
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 		if (newGameButton_ && loadGameButton_) {
-			padNavigation_->AddButton(newGameButton_, exit, loadGameButton_, exit, nullptr);
 			padNavigation_->AddButton(loadGameButton_, newGameButton_, nullptr, exit, nullptr);
+			padNavigation_->AddButton(newGameButton_, exit, loadGameButton_, exit, nullptr);		
 			padNavigation_->AddButton(exit, nullptr, newGameButton_, nullptr, newGameButton_);
 		}
 		else if (!loadGameButton_) {
@@ -240,7 +240,6 @@ void MapState::askProfile()
 
 void MapState::prepareNavPadFewProfiles(bool muchos)
 {
-	padNavigation_->AddButton(exit, nullptr, profileAskers.at(0), nullptr, profileAskers.at(0));
 	int jump;
 	if (muchos) jump = 4;
 	else jump = 2;
@@ -277,6 +276,7 @@ void MapState::prepareNavPadFewProfiles(bool muchos)
 
 		padNavigation_->AddButton(profileAskers.at(i), up, down, left, right);
 	}
+	padNavigation_->AddButton(exit, nullptr, profileAskers.at(0), nullptr, profileAskers.at(0));
 }
 
 
