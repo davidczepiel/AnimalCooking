@@ -32,7 +32,7 @@ void MapInfoBoxViewer::draw()
 		boxText_->render(RECT(40, 40, casillaX_ * 7.5, heightCasillas * casillaY_));
 		for (int i = 0; i < 3; i++)
 		{
-			Texture loreLineai = Texture(game_->getRenderer(), info_->lore[i], game_->getFontMngr()->getFont(Resources::QuarkCheese70), hex2sdlcolor("#000000FF"));
+			Texture loreLineai = Texture(game_->getRenderer(), info_->lore[i], game_->getFontMngr()->getFont(Resources::QuarkCheese70), hex2sdlcolor("#FFFFFFFF"));
 			loreLineai.render(RECT(60, 60 + i*casillaY_ * lineaHeight, casillaX_ * 7.5 - 60, lineaHeight * casillaY_));
 		}
 		switch (info_->stars)

@@ -47,7 +47,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
-	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 	
 
 	//---->Config<---------
