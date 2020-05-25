@@ -261,6 +261,7 @@ public:
 		HomeIconMapState,
 		MapIcon,
 		SkilletON,
+		SmokeBurned,
 		PigIdle,
         PigWalk,
 		PigAttack,
