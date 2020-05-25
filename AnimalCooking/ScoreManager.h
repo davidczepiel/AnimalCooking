@@ -15,7 +15,6 @@ public:
 	void resetScore() {
 		score_ = 0;
 		SDLGame::instance()->setScore(0);
-		cout << "resetScore" <<score_;
 	}
 private:
 	Uint32 score_;

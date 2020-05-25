@@ -5,7 +5,6 @@
 
 PauseState::PauseState(AnimalCooking* ac) : State(ac)
 {
-	cout << "PauseState";
 
 	SDLGame* game_ = SDLGame::instance();
 
@@ -86,7 +85,6 @@ void PauseState::update()
 
 void PauseState::menuCallback(AnimalCooking* ac)
 {
-	cout << "Menu";
 	FSM* fsm= SDLGame::instance()->getFSM();
 	for (int i = 0; i < 3; i++)
 	{
@@ -98,14 +96,12 @@ void PauseState::menuCallback(AnimalCooking* ac)
 
 void PauseState::configCallback(AnimalCooking* ac)
 {
-	cout << "Config";
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new ConfigState(ac));
 }
 
 void PauseState::resumeCallback(AnimalCooking* ac)
 {
-	cout << "Resume";
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState([]() { 
 			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers();

@@ -18,7 +18,6 @@
 ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
-	cout << "Config State" << endl;
 	loadFromFile();
 	initButtons();
 	initSliders();

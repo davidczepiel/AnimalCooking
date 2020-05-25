@@ -4,7 +4,6 @@ void ScoreManager::addScore(int points)
 {
 	score_ += points; if (score_ < 0) score_ = 0;
 	SDLGame::instance()->setScore(score_);
-	cout << "addscore " << score_;
 }
 
 void ScoreManager::setScore(Uint32 value)
@@ -12,7 +11,6 @@ void ScoreManager::setScore(Uint32 value)
 	if (value >= 0) {
 		score_ = value;
 		SDLGame::instance()->setScore(score_);
-		cout << "setScore" << score_;
 	}
 }
 
