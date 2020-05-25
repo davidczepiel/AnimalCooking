@@ -6,8 +6,8 @@
 #include "GPadController.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), 
-	tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true), lengthOfRumble_(100), rumbleCadence(333)
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager),
+tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true), lengthOfRumble_(100), rumbleCadence(333)
 {
 	adversities.push_back(new PlaneAdversity(nullptr, this));
 	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
@@ -94,7 +94,7 @@ void MultipleAdversityManager::seeAdversityWarning() {
 
 	if (playingWarning) {
 		adversityTimer->update();
-		if (SDL_GetTicks() - startRumbleTime_ > rumbleCadence) {	
+		if (SDL_GetTicks() - startRumbleTime_ > rumbleCadence) {
 			playRumbles();
 			startRumbleTime_ = SDL_GetTicks();
 		}
@@ -121,8 +121,9 @@ void MultipleAdversityManager::playRumbles()
 		if (work && SDL_HapticRumblePlay(haptic1, 0.25, lengthOfRumble_) != 0)
 			work = false;
 	}
-	if (work && GPadController::instance()->playerControllerConnected(1)) {
-		if (haptic2 == NULL) SDL_HapticOpen(1);
+	work = true;
+	if (GPadController::instance()->playerControllerConnected(1)) {
+		haptic2 = SDL_HapticOpen(1);
 		if (haptic2 == NULL)
 			work = false;
 		if (work && SDL_HapticRumbleInit(haptic2) != 0)
@@ -132,9 +133,9 @@ void MultipleAdversityManager::playRumbles()
 	}
 }
 
-void MultipleAdversityManager:: seeTimers() {
+void MultipleAdversityManager::seeTimers() {
 	planeTimer->update();
-	
+
 	if (planeTimer->isTimerEnd()) {
 		planeTimer->timerReset();
 		activeAdversities.at(ecs::AdversityID::PlaneAdversity) = true;
@@ -149,7 +150,7 @@ void MultipleAdversityManager:: seeTimers() {
 	}
 
 	hookTimer->update();
-	
+
 	if (hookTimer->isTimerEnd()) {
 		hookTimer->timerReset();
 		activeAdversities.at(ecs::AdversityID::HookAdversity) = true;
@@ -163,7 +164,7 @@ void MultipleAdversityManager:: seeTimers() {
 	}
 
 	rainTimer->update();
-	
+
 	if (rainTimer->isTimerEnd()) {
 		rainTimer->timerReset();
 		activeAdversities.at(ecs::AdversityID::RainAdversity) = true;
@@ -177,7 +178,7 @@ void MultipleAdversityManager:: seeTimers() {
 	}
 
 	burnCookerTimer->update();
-	
+
 	if (burnCookerTimer->isTimerEnd()) {
 		burnCookerTimer->timerReset();
 		activeAdversities.at(ecs::AdversityID::CookersAdversity) = true;
@@ -189,7 +190,7 @@ void MultipleAdversityManager:: seeTimers() {
 			cookerQueue.pop();
 		}
 	}
-	
+
 }
 
 void MultipleAdversityManager::draw()
@@ -210,7 +211,7 @@ void MultipleAdversityManager::startAdvesities()
 
 void MultipleAdversityManager::stopAdversity(ecs::AdversityID i)
 {
-	 activeAdversities[i] = false;
+	activeAdversities[i] = false;
 }
 
 void MultipleAdversityManager::setTimerTime(ecs::AdversityID id, int time)
