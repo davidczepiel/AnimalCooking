@@ -45,3 +45,9 @@ void SliderBehaviour::update()
 		value = (rectMovePoint.x - transform->getPos().getX()) / transform->getW();
 	}
 }
+
+void SliderBehaviour::movePercentage(float v)
+{
+	rectMovePoint.x = transform->getPos().getX() + v * transform->getW();
+	value = (rectMovePoint.x - transform->getPos().getX()) / transform->getW();
+}

@@ -19,9 +19,9 @@ ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullpt
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	cout << "Config State" << endl;
+	initSliders();
 	loadFromFile();
 	initButtons();
-	initSliders();
 	initKeyModifiers();
 }
 
@@ -40,6 +40,7 @@ void ConfigState::saveToFile()
 	if (f.is_open()) {
 		savePlayer(f, 0, o);
 		savePlayer(f, 1, o);
+		saveVolumeSetting(f);
 	}
 	f.close();
 }
@@ -52,6 +53,7 @@ void ConfigState::loadFromFile()
 	if (f.is_open()) {
 		loadPlayer(f, 0, o);
 		loadPlayer(f, 1, o);
+		loadVolumeSetting(f);
 	}
 	f.close();
 }
@@ -65,6 +67,11 @@ void ConfigState::savePlayer(ofstream& f, Uint8 player, const config::Options& o
 	f << (Sint32)o.players_gPadButtons[player].PICKUP << " " << (Sint32)o.players_gPadButtons[player].ATTACK << " "
 	<< (Sint32)o.players_gPadButtons[player].OPEN << " " << (Sint32)o.players_gPadButtons[player].PREVIOUS << " "
 	<< (Sint32)o.players_gPadButtons[player].NEXT << " " << (Sint32)o.players_gPadButtons[player].FINISHER << " " << endl;
+}
+
+void ConfigState::saveVolumeSetting(ofstream& f)
+{
+	f << sliderMusic_->getValue() << " " << sliderSound_->getValue() << endl;
 }
 
 void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
@@ -84,6 +91,13 @@ void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
 	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
 	f >> aux; if(!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
 	f >> aux; if(!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
+}
+
+void ConfigState::loadVolumeSetting(ifstream& f)
+{
+	float value;
+	f >> value; sliderMusic_->movePercentage(value);
+	f >> value; sliderSound_->movePercentage(value);
 }
 
 
