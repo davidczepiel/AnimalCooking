@@ -98,9 +98,9 @@ void MapState::chooseOption() {
 
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 		if (newGameButton_ && loadGameButton_) {
-			padNavigation_->AddButton(loadGameButton_, newGameButton_, nullptr, exit, nullptr);
-			padNavigation_->AddButton(newGameButton_, exit, loadGameButton_, exit, nullptr);		
-			padNavigation_->AddButton(exit, nullptr, newGameButton_, nullptr, newGameButton_);
+			padNavigation_->AddButton(loadGameButton_, exit, newGameButton_, exit, nullptr);
+			padNavigation_->AddButton(newGameButton_, loadGameButton_, nullptr, exit, nullptr);
+			padNavigation_->AddButton(exit, nullptr, loadGameButton_, nullptr, loadGameButton_);
 		}
 		else if (!loadGameButton_) {
 			padNavigation_->AddButton(newGameButton_, exit, nullptr, exit, nullptr);
