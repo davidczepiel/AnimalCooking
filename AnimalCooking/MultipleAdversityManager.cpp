@@ -3,10 +3,11 @@
 #include "PlaneAdversity.h"
 #include "HookAdversity.h"
 #include "RainAdversity.h"
+#include "GPadController.h"
 
 
 MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager), 
-	tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true)
+	tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true), lengthOfRumble_(100), rumbleCadence(333)
 {
 	adversities.push_back(new PlaneAdversity(nullptr, this));
 	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
@@ -61,6 +62,7 @@ void MultipleAdversityManager::seeAdversityWarning() {
 		adversityTimer->timerReset();
 		adversityTimer->setTime(warningRate);
 		adversityTimer->timerStart();
+		startRumbleTime_ = SDL_GetTicks();
 	}
 	hookWarning->update();
 	if (hookWarning->isTimerEnd()) {
@@ -69,6 +71,7 @@ void MultipleAdversityManager::seeAdversityWarning() {
 		adversityTimer->timerReset();
 		adversityTimer->setTime(warningRate);
 		adversityTimer->timerStart();
+		startRumbleTime_ = SDL_GetTicks();
 	}
 	rainWarning->update();
 	if (rainWarning->isTimerEnd()) {
@@ -77,6 +80,7 @@ void MultipleAdversityManager::seeAdversityWarning() {
 		adversityTimer->timerReset();
 		adversityTimer->setTime(warningRate);
 		adversityTimer->timerStart();
+		startRumbleTime_ = SDL_GetTicks();
 	}
 	burnedCookerWarning->update();
 	if (burnedCookerWarning->isTimerEnd()) {
@@ -85,10 +89,15 @@ void MultipleAdversityManager::seeAdversityWarning() {
 		adversityTimer->timerReset();
 		adversityTimer->setTime(warningRate);
 		adversityTimer->timerStart();
+		startRumbleTime_ = SDL_GetTicks();
 	}
 
 	if (playingWarning) {
 		adversityTimer->update();
+		if (SDL_GetTicks() - startRumbleTime_ > rumbleCadence) {	
+			playRumbles();
+			startRumbleTime_ = SDL_GetTicks();
+		}
 		if (adversityTimer->isTimerEnd()) {
 			if (active) active = false;
 			else active = true;
@@ -97,6 +106,29 @@ void MultipleAdversityManager::seeAdversityWarning() {
 			adversityTimer->setTime(warningRate);
 			adversityTimer->timerStart();
 		}
+	}
+}
+
+void MultipleAdversityManager::playRumbles()
+{
+	bool work = true;
+	if (GPadController::instance()->playerControllerConnected(0)) {
+		haptic1 = SDL_HapticOpen(0);
+		if (haptic1 == NULL)
+			work = false;
+		if (work && SDL_HapticRumbleInit(haptic1) != 0)
+			work = false;
+		if (work && SDL_HapticRumblePlay(haptic1, 0.25, lengthOfRumble_) != 0)
+			work = false;
+	}
+	if (work && GPadController::instance()->playerControllerConnected(1)) {
+		if (haptic2 == NULL) SDL_HapticOpen(1);
+		if (haptic2 == NULL)
+			work = false;
+		if (work && SDL_HapticRumbleInit(haptic2) != 0)
+			work = false;
+		if (work && SDL_HapticRumblePlay(haptic2, 0.25, lengthOfRumble_) != 0)
+			work = false;
 	}
 }
 

@@ -39,11 +39,18 @@ class MultipleAdversityManager : public Component
 	queue<int> hookQueue;
 	bool justStarted;
 
+	Uint32 startRumbleTime_, rumbleCadence, lengthOfRumble_;
+	SDL_Haptic* haptic1 = nullptr, *haptic2 = nullptr;
 	void seeTimers();
 	void seeAdversityWarning();
+	void playRumbles();
 
 public:
 	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
+	~MultipleAdversityManager() {
+		if (haptic1 != NULL) SDL_HapticClose(haptic1);
+		if (haptic2 != NULL) SDL_HapticClose(haptic2);
+	}
 	void update();
 	void draw();
 	void startAdvesities();
