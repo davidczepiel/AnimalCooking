@@ -5,6 +5,7 @@
 #include "ButtonBehaviour.h"
 #include "ButtonRenderer.h"
 #include "SDL_macros.h"
+
 class ButtonPadNavigation :
 	public Component
 {
@@ -13,13 +14,8 @@ public:
 	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);
 	void update() override;
 	void onlyListenTo(int player) { playerToListen = player; }
+	void resetNavigation();
 private:
-	void changeFocus(Entity* e);
-	void action();
-	void horizontalInput();
-	void verticalInput();
-	void horizontalMove(double xValue);
-	void verticalMove(double yValue);
 	struct button {
 		Entity* e;
 		Entity* up;
@@ -28,6 +24,13 @@ private:
 		Entity* right;
 		bool posibleFocus;
 	};
+	void stopFocusButton(button b);
+	void changeFocus(Entity* e);
+	void action();
+	void horizontalInput();
+	void verticalInput();
+	void horizontalMove(double xValue);
+	void verticalMove(double yValue);
 	button focus;
 	bool xAxisMoved;
 	bool aButtonPressed;

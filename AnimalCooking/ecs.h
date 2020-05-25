@@ -89,6 +89,7 @@ enum CmpId : CmpIdType {
 	ButtonBehaviour, //Buttons
 	ButtonBehaviourNC,
 	ButtonRenderer,
+	ButtonRendererHouse,
 	ButtonsViewer,
 	ButtonDirector,
 	MenuButtonRenderer,
@@ -112,10 +113,9 @@ enum CmpId : CmpIdType {
 	GpadKeySwitcher,
 	GpadKeySwitcherViewer,
 	
-	nameAsker,//MapState
+	NameAsker,//MapState
 	MapInfoBox,
 	MapInfoBoxViewer,
-	MapChooser,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

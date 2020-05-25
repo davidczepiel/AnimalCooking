@@ -11,12 +11,13 @@ public:
 	virtual void init()override;
 	virtual void update()override;
 
-	inline void setActive(bool a);
+	void setActive(bool a);
 private:
 	Texture* bg;
 	stringstream nameStream;
 	double casillaX;
 	double casillaY;
+	double nameWidth_;
 	InputHandler* ih;
 	bool active;	
 };

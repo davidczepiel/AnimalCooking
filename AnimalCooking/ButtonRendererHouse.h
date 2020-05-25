@@ -4,22 +4,20 @@
 #include "ButtonBehaviour.h"
 
 class ButtonBehaviourNC;
-class ButtonChangeOnClick;
-class ButtonRenderer : public Component
+class ButtonRendererHouse : public Component
 {
 public:
-	ButtonRenderer(Texture* background, Texture* text);
+	ButtonRendererHouse(Texture* background, Texture* text, levelInfo* info);
 	void init() override;
 	void draw() override;
+	void clicked() { clickedTime_ = game_->getTime(); }
 	inline void setActive(bool val) { active = val; }
-	void clicked();
+	inline void setLevel(levelInfo* l) { info = l; }
 private:
 	Transform* ownerTransform_;
 	ButtonBehaviour* buttonBehaviour_;
 	ButtonBehaviourNC* buttonBehaviourNC_;
-
-	ButtonChangeOnClick* buttonOnClick_;
-	
+	levelInfo* info;
 	Texture* background_;
 	Texture* text_;
 
@@ -27,10 +25,9 @@ private:
 	bool active;
 
 	enum ButtonState : size_t {
-		Focushed,
 		Unfocushed,
-		Cliked,
+		Focushed,	
+		Locked,
 	};
-
 };
 

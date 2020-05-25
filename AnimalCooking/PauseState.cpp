@@ -54,8 +54,7 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 	b->AddButton(configButton,resumeButton,menuButton,nullptr,nullptr);
 	b->AddButton(menuButton, configButton, closeButton, nullptr, nullptr);
 	b->AddButton(closeButton, menuButton, nullptr, nullptr, nullptr);
-	if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)))
-		GETCMP2(resumeButton, ButtonBehaviour)->setFocusByController(true);
+
 }
 
 PauseState::~PauseState()

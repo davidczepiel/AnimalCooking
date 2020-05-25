@@ -161,13 +161,13 @@
     <ClCompile Include="SwitcherKeyboard.cpp" />
     <ClCompile Include="SwitcherGPad.cpp" />
     <ClCompile Include="ImageViewer.cpp" />
-    <ClCompile Include="ButtonChangeOnClick.cpp" />
     <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="MapInfoBoxViewer.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
-    <ClCompile Include="MapChooser.cpp" />
+    <ClCompile Include="ButtonRendererHouse.cpp" />
+    <ClCompile Include="ButtonChangeOnClick.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -362,13 +362,13 @@
     <ClInclude Include="SwitcherKeyboard.h" />
     <ClInclude Include="SwitcherGPad.h" />
     <ClInclude Include="ImageViewer.h" />
-    <ClInclude Include="ButtonChangeOnClick.h" />
     <ClInclude Include="MapConfig.h" />
     <ClInclude Include="NameAsker.h" />
     <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="MapInfoBoxViewer.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
-    <ClInclude Include="MapChooser.h" />
+    <ClInclude Include="ButtonRendererHouse.h" />
+    <ClInclude Include="ButtonChangeOnClick.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />
