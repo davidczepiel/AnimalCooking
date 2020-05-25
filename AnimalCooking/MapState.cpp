@@ -232,7 +232,7 @@ void MapState::prepareNavPadFewProfiles(bool muchos)
 	int jump;
 	if (muchos) jump = 4;
 	else jump = 2;
-	//Bucle para meter la navegación de cada botón
+	//Bucle para meter la navegaciï¿½n de cada botï¿½n
 	Entity* up;
 	Entity* down;
 	Entity* left;
