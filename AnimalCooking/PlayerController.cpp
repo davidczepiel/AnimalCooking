@@ -70,6 +70,7 @@ void PlayerController::joystickUpdate()
 		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
 		{
 			animator->getTimer().timerStart();
+			if (!static_cast<Utensil*>(transport->getObjectInHands())->isDirty())
 			setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
 				            Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 		}
