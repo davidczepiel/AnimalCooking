@@ -36,12 +36,12 @@ void ButtonRenderer::draw()
 		else if (buttonBehaviour_ && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()) || 
 			buttonBehaviourNC_ && (buttonBehaviourNC_->getFocusByController() || buttonBehaviourNC_->getFocusByMouse()))
 			state_ = ButtonState::Focushed;
-
+		
 		Vector2D pos = ownerTransform_->getPos();
 
 		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 		background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
-
+			
 		if (text_ != nullptr)
 		{
 			Vector2D s = Vector2D(text_->getWidth() , text_->getHeight());
@@ -55,8 +55,9 @@ void ButtonRenderer::draw()
 			}
 			else text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()));		
 		}
-	}
+	}	
 }
+
 void ButtonRenderer::clicked()
 {
 	clickedTime_ = game_->getTime(); 

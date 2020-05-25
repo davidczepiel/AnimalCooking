@@ -243,7 +243,6 @@ public:
 			PapeleraFeedBack,
 			BordeTeclaFeedBack,
 			RellenoTeclaFeedBack,
-
 		// images level specific
 		Arroz,
 		Aceite,

@@ -14,14 +14,78 @@
 #include "ImageViewer.h"
 #include "ButtonChangeOnClick.h"
 
+
 ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
 		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	cout << "Config State" << endl;
+	loadFromFile();
 	initButtons();
 	initSliders();
 	initKeyModifiers();
 }
+
+ConfigState::~ConfigState()
+{
+	saveToFile();
+	delete textSliderMusic;
+	delete textSliderSound;
+}
+
+void ConfigState::saveToFile()
+{
+	config::Options& o = game_->getOptions();
+	ofstream f;
+	f.open("../AnimalCooking/resources/cfg/options.txt");
+	if (f.is_open()) {
+		savePlayer(f, 0, o);
+		savePlayer(f, 1, o);
+	}
+	f.close();
+}
+
+void ConfigState::loadFromFile()
+{
+	config::Options& o = game_->getOptions();
+	ifstream f;
+	f.open("../AnimalCooking/resources/cfg/options.txt");
+	if (f.is_open()) {
+		loadPlayer(f, 0, o);
+		loadPlayer(f, 1, o);
+	}
+	f.close();
+}
+
+void ConfigState::savePlayer(ofstream& f, Uint8 player, const config::Options& o)
+{
+	f << (Sint32)o.players_keyboardKeys[player].PICKUP << " " << (Sint32)o.players_keyboardKeys[player].ATTACK << " "
+	<< (Sint32)o.players_keyboardKeys[player].OPEN << " " << (Sint32)o.players_keyboardKeys[player].PREVIOUS << " "
+	<< (Sint32)o.players_keyboardKeys[player].NEXT << " " << (Sint32)o.players_keyboardKeys[player].FINISHER << " " << endl;
+
+	f << (Sint32)o.players_gPadButtons[player].PICKUP << " " << (Sint32)o.players_gPadButtons[player].ATTACK << " "
+	<< (Sint32)o.players_gPadButtons[player].OPEN << " " << (Sint32)o.players_gPadButtons[player].PREVIOUS << " "
+	<< (Sint32)o.players_gPadButtons[player].NEXT << " " << (Sint32)o.players_gPadButtons[player].FINISHER << " " << endl;
+}
+
+void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
+{
+	Sint32 aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PICKUP = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].ATTACK = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].OPEN = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PREVIOUS = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].NEXT = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].FINISHER = (SDL_Keycode)aux;
+
+	aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
+}
+
 
 void ConfigState::update()
 {
@@ -42,6 +106,7 @@ void ConfigState::draw()
 	SDLGame::instance()->getTextureMngr()->getTexture(Resources::ConfigBackground)->render(d);
 	State::draw();
 }
+
 
 void ConfigState::initButtons()
 {
