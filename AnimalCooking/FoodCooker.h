@@ -7,8 +7,10 @@ class FoodCooker : public Component {
 public:
 	FoodCooker(FoodPool* fp);
 	~FoodCooker();
+
 	void init() override;
 	void update() override;
+
 	void startCooked(Cooker *c);
 	void clearFoods(Cooker *c);
 private:

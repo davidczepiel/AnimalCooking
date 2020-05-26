@@ -3,7 +3,7 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 FoodGiverAdder::FoodGiverAdder(EntityManager* mngr, jute::jValue nivel, jute::jValue general, std::array<Entity*, 2>& player, Entity* gameManager, const double casillaX, const double casillaY)
-	:mngr(mngr), nivel(nivel), general(general), casillaX(casillaX),casillaY(casillaY), players(player), gameManager(gameManager)
+	:mngr(mngr), nivel(nivel), general(general), casillaX(casillaX), casillaY(casillaY), players(player), gameManager(gameManager)
 {
 	jute::jValue ents = nivel["FoodGivers"];
 	for (size_t i = 0; i < ents.size(); i++)

@@ -3,6 +3,12 @@
 #include "Dish.h"
 #include "GPadController.h"
 
+FoodGiver::FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) :
+	Interactive(p1, p2, nullptr), gameControl_(gameControl) {
+	feedbackVisual_ = nullptr;
+	position_ = pos;
+	size_ = size;
+}
 
 //-----------------------------
 RiceGiver::RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
@@ -16,12 +22,12 @@ void RiceGiver::action1(int player) {
 	{
 		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) 
-		{ 
+		if (player1_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
-			player1_->pick(f, Resources::PickableType::Food); 
+			player1_->pick(f, Resources::PickableType::Food);
 		}
-		else if (player1_->getObjectTypeInHands()==Resources::Dish)
+		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
 			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
 			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
@@ -30,13 +36,13 @@ void RiceGiver::action1(int player) {
 		}
 
 	}
-	else if (player == Resources::Player::Player2 ) {
+	else if (player == Resources::Player::Player2) {
 		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) 
-		{ 
+		if (player2_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::Rice, position_);
-			player2_->pick(f, Resources::PickableType::Food); 
+			player2_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -59,10 +65,10 @@ void BreadBurgerGiver::action1(int player) {
 	{
 		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) 
-		{ 
+		if (player1_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
-			player1_->pick(f, Resources::PickableType::Food); 
+			player1_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -72,14 +78,14 @@ void BreadBurgerGiver::action1(int player) {
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
-	else if (player == Resources::Player::Player2) 
+	else if (player == Resources::Player::Player2)
 	{
 		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) 
-		{ 
+		if (player2_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::BreadBurger, position_);
-			player2_->pick(f, Resources::PickableType::Food); 
+			player2_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -103,10 +109,10 @@ void BreadHotDogGiver::action1(int player) {
 	{
 		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) 
-		{ 
+		if (player1_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
-			player1_->pick(f, Resources::PickableType::Food); 
+			player1_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -116,14 +122,14 @@ void BreadHotDogGiver::action1(int player) {
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
-	else if (player == Resources::Player::Player2) 
+	else if (player == Resources::Player::Player2)
 	{
 		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) 
-		{ 
+		if (player2_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::BreadHotDog, position_);
-			player2_->pick(f, Resources::PickableType::Food); 
+			player2_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -147,10 +153,10 @@ void DoughGiver::action1(int player) {
 	{
 		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) 
-		{ 
+		if (player1_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
-			player1_->pick(f, Resources::PickableType::Food); 
+			player1_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -160,15 +166,15 @@ void DoughGiver::action1(int player) {
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 		}
 	}
-	else if (player == Resources::Player::Player2) 
+	else if (player == Resources::Player::Player2)
 	{
 
 		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) 
-		{ 
+		if (player2_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::PizzaMass, position_);
-			player2_->pick(f, Resources::PickableType::Food); 
+			player2_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -192,10 +198,10 @@ void DressingGiver::action1(int player) {
 	{
 		Food* f = nullptr;
 
-		if (player1_->getObjectInHands() == nullptr) 
-		{ 
+		if (player1_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
-			player1_->pick(f, Resources::PickableType::Food); 
+			player1_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player1_->getObjectTypeInHands() == Resources::Dish)
 		{
@@ -209,10 +215,10 @@ void DressingGiver::action1(int player) {
 
 		Food* f = nullptr;
 
-		if (player2_->getObjectInHands() == nullptr) 
-		{ 
+		if (player2_->getObjectInHands() == nullptr)
+		{
 			f = gameControl_->newFood(Resources::FoodType::Dress, position_);
-			player2_->pick(f, Resources::PickableType::Food); 
+			player2_->pick(f, Resources::PickableType::Food);
 		}
 		else if (player2_->getObjectTypeInHands() == Resources::Dish)
 		{

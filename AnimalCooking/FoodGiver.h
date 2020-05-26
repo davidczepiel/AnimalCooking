@@ -6,23 +6,19 @@
 
 class FoodGiver : public Entity, public Interactive
 {
-protected:
-	Texture* texture_;
-	GameControl* gameControl_;
-
-	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl)
-		: Interactive(p1, p2,nullptr), gameControl_(gameControl) {
-		feedbackVisual_ = nullptr;
-		position_ = pos;
-		size_ = size;
-	}
-
 public:
 	~FoodGiver() {};
 	void feedback(int player) override;
+
 	inline Texture* getTexture() { return texture_; }
 	inline Vector2D getPos() { return position_; }
 	inline Vector2D getSize() { return size_; }
+
+protected:
+	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+
+	Texture* texture_;
+	GameControl* gameControl_;
 };
 
 //-----------------------------------------------------

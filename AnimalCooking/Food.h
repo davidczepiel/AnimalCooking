@@ -5,39 +5,10 @@
 #include "Transport.h"
 #include "Timer.h"
 
-class Food : public Pickable 
+class Food : public Pickable
 {
-protected:
-	Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2);
-	Food(Resources::FoodType type);
-
-	Resources::FoodType type_;
-	Texture* texture_;
-	bool dead = false;
-	bool inHands = false;
-	FoodPool* foodPool_;
-	std::vector<Food*>::iterator iterator_;
-
-	FoodTimer* timer_;
-	bool canDraw;
-	bool showHelp;
 public:
 	virtual ~Food() { timer_ = nullptr; }
-
-	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
-	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
-	void Destroy();
-	void startTimer() {
-		timer_->timerStart();
-	}
-	void resetTimer() {
-		timer_->timerReset();
-	}
-
-	Resources::FoodType getType() { return type_; }
-	inline bool getCanDraw() { return canDraw; }
-	void setCanDraw(bool value) { canDraw = value; }
-	void setInHands(bool b) { inHands = b; }
 
 	virtual void update(); //Este udate solo actualiza la posicion respecto a la direccion
 	virtual void draw();
@@ -49,13 +20,41 @@ public:
 	void onFloor();
 	virtual void onPick();
 
+	void setFoodPool(FoodPool* foodPool, std::vector<Food*>::iterator it);
+	void setIt(std::vector<Food*>::iterator it) { iterator_ = it; };
+	void Destroy();
+	void startTimer() { timer_->timerStart(); }
+	void resetTimer() { timer_->timerReset(); }
+
+	void setCanDraw(bool value) { canDraw = value; }
+	void setInHands(bool b) { inHands = b; }
+
+	Resources::FoodType getType() { return type_; }
+	inline bool getCanDraw() { return canDraw; }
+
+protected:
+	Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2);
+	Food(Resources::FoodType type);
+
+	Texture* texture_;
+	FoodPool* foodPool_;
+	FoodTimer* timer_;
+
+	std::vector<Food*>::iterator iterator_;
+
+	Resources::FoodType type_;
+
+	bool dead = false;
+	bool inHands = false;
+	bool canDraw;
+	bool showHelp;
 };
 
 class SlicedTomato : public Food
 {
 public:
-	SlicedTomato(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedTomato, p1, p2) { 
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedTomatoT); 
+	SlicedTomato(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedTomato, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedTomatoT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedTomatoFeedBack);
 	}
 	SlicedTomato() : Food(Resources::FoodType::SlicedTomato) {
@@ -63,6 +62,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedTomatoFeedBack);
 	}
 };
+
 class MashedTomato : public Food
 {
 public:
@@ -75,6 +75,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedTomatoFeedBack);
 	}
 };
+
 class SlicedLettuce : public Food
 {
 public:
@@ -87,6 +88,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedLettuceFeedBack);
 	}
 };
+
 class SlicedOnion : public Food
 {
 public:
@@ -99,6 +101,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedOnionFeedBack);
 	}
 };
+
 class SlicedMeat : public Food
 {
 public:
@@ -111,6 +114,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedMeatFeedBack);
 	}
 };
+
 class MashedMeat : public Food
 {
 public:
@@ -123,6 +127,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedMeatFeedBack);
 	}
 };
+
 class SlicedCheese : public Food
 {
 public:
@@ -135,6 +140,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedCheeseFeedBack);
 	}
 };
+
 class GratedCheese : public Food
 {
 public:
@@ -147,6 +153,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedCheeseFeedBack);
 	}
 };
+
 class SlicedPotato : public Food
 {
 public:
@@ -159,6 +166,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedPotatoFeedBack);
 	}
 };
+
 class SlicedSausage : public Food
 {
 public:
@@ -171,6 +179,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedSausageFeedBack);
 	}
 };
+
 class SlicedCarrot : public Food
 {
 public:
@@ -183,6 +192,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedCarrotFeedBack);
 	}
 };
+
 class CaughtSausage : public Food
 {
 public:
@@ -195,6 +205,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CaughtSausageFeedBack);
 	}
 };
+
 class SlicedMushroom : public Food
 {
 public:
@@ -207,16 +218,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedMushroomFeedBack);
 	}
 };
-/*class MashedMushroom : public Food
-{
-public:
-	MashedMushroom(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::MashedMushroom, p1, p2) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Tomato);
-	}
-	MashedMushroom() : Food(Resources::FoodType::MashedMushroom) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Tomato);
-	}
-};*/
+
 class CaughtFish : public Food
 {
 public:
@@ -229,6 +231,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CaughtFishFeedBack);
 	}
 };
+
 class SlicedChicken : public Food
 {
 public:
@@ -241,6 +244,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedChickenFeedBack);
 	}
 };
+
 class CaughtClam : public Food
 {
 public:

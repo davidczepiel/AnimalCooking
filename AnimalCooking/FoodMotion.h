@@ -4,10 +4,11 @@
 
 class FoodMotion : public Component
 {
-private:
-	FoodPool* foodPool_;
 public:
 	FoodMotion();
 	void update() override;
 	void init() override;
+
+private:
+	FoodPool* foodPool_;
 };

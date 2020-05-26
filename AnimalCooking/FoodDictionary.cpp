@@ -5,7 +5,6 @@ unique_ptr<FoodDictionary> FoodDictionary::instance_;
 const std::string jsonFileName = "../AnimalCooking/resources/cfg/food.cfg";
 
 FoodDictionary::FoodDictionary() {
-
 	fill();
 }
 
@@ -16,11 +15,11 @@ void FoodDictionary::fill()
 {
 	FoodConfig foodCfg;
 
-	for (int u = 0; u < foodCfg.getUtensilsRecipes().size(); ++u) {				
+	for (int u = 0; u < foodCfg.getUtensilsRecipes().size(); ++u) {
 		for (int i = 0; i < foodCfg.getUtensilsRecipes()[u].transformations.size(); ++i) {
 			set<int> set;
 			set.insert(foodCfg.getUtensilsRecipes()[u].transformations[i].set);
-			dictionaryIng_.insert(Par(par(u, set), foodCfg.getUtensilsRecipes()[u].transformations[i].result));			
+			dictionaryIng_.insert(Par(par(u, set), foodCfg.getUtensilsRecipes()[u].transformations[i].result));
 		}
 	}
 
@@ -44,7 +43,7 @@ Food* FoodDictionary::bind(const int& c) const
 	case -1:
 		return new Poop();
 		break;
-		
+
 		//Ingredientes
 	case Resources::FoodType::SlicedTomato:
 		return new SlicedTomato;
@@ -95,7 +94,7 @@ Food* FoodDictionary::bind(const int& c) const
 		return new CaughtClam;
 		break;
 
-	// Platos enteros :
+		// Platos enteros :
 	case Resources::FoodType::Salad:
 		return new Salad();
 		break;
@@ -177,7 +176,7 @@ Food* FoodDictionary::getResult(const int& c, const set<int>& set, bool isCooker
 	else {
 		auto it = dictionaryIng_.find(par(c, set));
 		return it != dictionaryIng_.end() ? bind(it->second) : bind(-1); //Devuelve el result si lo encuentra, y si no devuelve fallo
-	}	
+	}
 }
 
 const set<int>& FoodDictionary::getIngsForFood(const int& result)

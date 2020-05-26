@@ -49,9 +49,12 @@ public:
 private:
 	FoodDictionary();
 	void fill();
+
 	Food* bind(const int& c) const;
-	static unique_ptr<FoodDictionary> instance_;
+
 	map<par, int, CompareMap> dictionaryCookers_;
 	map<par, int, CompareMap> dictionaryIng_;
 	map<int, set<int>> resultToSetDictionary_;
+
+	static unique_ptr<FoodDictionary> instance_;
 };

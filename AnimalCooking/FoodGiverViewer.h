@@ -5,15 +5,13 @@
 
 class FoodGiverViewer : public Component
 {
+public:
+	FoodGiverViewer(FoodGiver* entity);
+
+	void init() override;
+	void draw() override;
 private:
 	FoodGiver* entity_;
 	Texture* texture_;
 	SDL_Rect rect_;
-
-public:
-	FoodGiverViewer(FoodGiver* entity) :
-		Component(ecs::FoodGiverViewer), entity_(entity) {}
-
-	void init() override;
-	void draw() override;
 };
