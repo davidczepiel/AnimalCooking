@@ -5,12 +5,13 @@
 
 class IngredientMotion : public Component
 {
-private:
-	IngredientsPool* pool_;
 
 public:
 	IngredientMotion() : Component(ecs::IngredientMotion), pool_(nullptr) { }
 	virtual ~IngredientMotion() { }
 	void init() override;
 	void update() override;
+
+private:
+	IngredientsPool* pool_;
 };

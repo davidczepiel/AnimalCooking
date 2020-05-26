@@ -14,11 +14,11 @@ public:
 	}
 	~IngredientsPool();
 
-	inline const std::vector<Ingredient*>& getPool() { return ingredients_; }
-
 	void addIngredient(Ingredient* i);
 	void deleteIngredient(vector<Ingredient*>::iterator it);
 	void clearIngredients();
+
+	inline const std::vector<Ingredient*>& getPool() { return ingredients_; }
 
 private:
 	std::vector<Ingredient*> ingredients_;

@@ -28,41 +28,40 @@ public:
 		pos_.set(pos);
 		vel_.set(vel);
 	}
-	inline void setMaxVel(double maxVel) { maxVel_ = maxVel; }
-	inline double getMaxVel() { return maxVel_; }
+	virtual void destroy(Resources::UtensilType utensilio);	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
 
 	//No se si van a hacer falta todos pero por si acaso, si no se borran
-	inline void setSize(double w, double h) { size_.set(w, h); }
 	inline void setPos(Vector2D pos) { pos_.set(pos); }
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	inline void setTexture(Texture* tex) { texture_ = tex; }
+	inline void setLastVel(Vector2D v) { lastVel_ = v; }
+	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
+	void setIt(std::vector<Ingredient*>::iterator i) { it_ = i; }
+	void setState(IngredientState s) { state = s; }
+	inline void setMaxVel(double maxVel) { maxVel_ = maxVel; }
+	inline void setSize(double w, double h) { size_.set(w, h); }
 
-	inline double getWidth() { return size_.getX(); }
-	inline double getHeight() { return size_.getY(); }
 	inline Vector2D getPos() { return pos_; }
 	Vector2D& getPosReference() { return pos_; }
 	inline Vector2D getVel() { return vel_; }
 	inline Resources::IngredientType getType() { return type_; }
 	inline Timer& getInternalTimer() { return internalTimer; }
 	inline IngredientState getIngredientState() { return state; }
-	inline void setLastVel(Vector2D v) { lastVel_ = v; }
+	inline double getWidth() { return size_.getX(); }
+	inline double getHeight() { return size_.getY(); }
+	inline double getMaxVel() { return maxVel_; }
 
-
-	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
-	void setIt(std::vector<Ingredient*>::iterator i) { it_ = i; }
-	void setState(IngredientState s) { state = s; }
-	virtual void destroy(Resources::UtensilType utensilio);	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
 
 protected:
 	Vector2D size_, pos_, vel_,lastVel_;
 	Texture* texture_;
-	double maxVel_; //si maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 	IngredientsPool* ingredientPool_;
 	std::vector<Ingredient*>::iterator it_;
 	Resources::IngredientType type_;
-
 	Timer internalTimer;
 	IngredientState state;
+
+	double maxVel_; //si maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 };
 
 //<----------------------------------------------------------Clases Ingredientes-------------------------------------------------------------------------->
