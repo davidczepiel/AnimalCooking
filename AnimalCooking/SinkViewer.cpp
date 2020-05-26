@@ -3,7 +3,7 @@
 
 
 
-SinkViewer::SinkViewer(Interactive* i) :Component(ecs::SinkViewer), entity(i), onAction(false) {
+SinkViewer::SinkViewer(Interactive* i) :Component(ecs::SinkViewer), entity(i), onAction(false),text(nullptr),textOn(nullptr) {
 	recoverNormalState.setTime(2*config::SINK_CADENCE);
 }
 

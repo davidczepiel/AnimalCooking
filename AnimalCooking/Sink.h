@@ -17,6 +17,7 @@ class Sink :public Entity, public Interactive
 public:
 	Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng);
 	virtual ~Sink();
+
 	virtual void action1(int player);
 	virtual void feedback(int player);
 private:

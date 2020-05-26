@@ -21,7 +21,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 		jute::jValue shelf_ = jsonLevel["Shelfs"]["entities"][i]["content"];
 		//Si contiene un utensilio, hago ese utensilio
 		if (shelf_.size() > 0) {
-			u = switchUten(shelf_[0].as_string(), pool_, player);
+			u = switchUtensil(shelf_[0].as_string(), pool_, player);
 		}
 
 		shelf_ = jsonLevel["Shelfs"]["entities"][i];
@@ -47,7 +47,7 @@ constexpr unsigned int str2int(const char* str, int h = 0)
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
 
-Utensil* ShelfAdder::switchUten(const string& ing, UtensilsPool* pool_, std::array<Entity*, 2>& player)
+Utensil* ShelfAdder::switchUtensil(const string& ing, UtensilsPool* pool_, std::array<Entity*, 2>& player)
 {
 	Utensil* u = nullptr;
 	switch (str2int(ing.c_str()))

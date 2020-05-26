@@ -5,7 +5,6 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 	addComponent<ShelfViewer>(this, texture);
 	dishFinisher=addComponent<DishFinisher>(p1,p2);
 	position_ = pos;
-	size_ = Vector2D(128, 128);
 	if (content != nullptr) {
 		contentType = Resources::PickableType::Utensil;
 		setContentPos();

@@ -2,11 +2,12 @@
 #include "GameConfig.h"
 
 Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2,nullptr), 
-nTries(), lastTry(), channel(SDLGame::instance()->getAudioMngr()->channels() - 1) {
+           nTries(), lastTry(), channel(SDLGame::instance()->getAudioMngr()->channels() - 1), 
+           maxTries(SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES)) 
+{
+
 	sV = addComponent<SinkViewer>(this);
-	position_ = pos;
-	size_ = Vector2D(128, 128);
-	maxTries = SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES);
+	position_ = pos;	
 }
 
 Sink::~Sink() {
