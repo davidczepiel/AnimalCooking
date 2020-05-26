@@ -1,18 +1,13 @@
 #include "HookAdversity.h"
-#include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
 
-HookAdversity::HookAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam)
+HookAdversity::HookAdversity(MultipleAdversityManager* mam) : Adversity(mam)
 {
 	speed = 5;
-	if (adversityMngr_ != nullptr) {
-		tP1 = adversityMngr_->getTransformPlayer(Resources::Player::Player1);
-		tP2 = adversityMngr_->getTransformPlayer(Resources::Player::Player2);
-	}
-	else {
-		tP1 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player1);
-		tP2 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player2);
-	}
+
+	tP1 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player1);
+	tP2 = multipleAdversityMngr_->getTransformPlayer(Resources::Player::Player2);
+
 	hookTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::HookAdversity);
 	clipArea.x = 0;
 	clipArea.y = 0;
@@ -101,8 +96,6 @@ void HookAdversity::GoingUp() {
 		}
 		//Si es la segunda vez que los subo significa que la adversidad se acabó
 		else {
-			if(adversityMngr_ != nullptr)
-			adversityMngr_->stopAdversity();
 			multipleAdversityMngr_->stopAdversity(ecs::AdversityID::HookAdversity);
 		}
 	}

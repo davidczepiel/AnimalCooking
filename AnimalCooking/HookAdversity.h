@@ -41,7 +41,7 @@ class HookAdversity :
 	void Move(bool down);
 	void SetContentPos(Transform* contentHook1, Transform* contentHook2);
 public:
-	HookAdversity(AdversityManager* am, MultipleAdversityManager* mam);
+	HookAdversity(MultipleAdversityManager* mam);
 	virtual void update();
 	virtual void draw();
 	virtual void reset();

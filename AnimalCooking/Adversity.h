@@ -9,7 +9,7 @@ protected:
 	MultipleAdversityManager* multipleAdversityMngr_;
 
 public:
-	Adversity(AdversityManager* am, MultipleAdversityManager* mam) : adversityMngr_(am), multipleAdversityMngr_(mam) {}
+	Adversity(MultipleAdversityManager* mam) : adversityMngr_(nullptr), multipleAdversityMngr_(mam) {}
 
 	virtual void update()=0;
 	virtual void draw()=0;
