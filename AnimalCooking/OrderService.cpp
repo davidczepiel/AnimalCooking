@@ -2,7 +2,7 @@
 #include "GPadController.h"
 
 OrderService::OrderService(Transport* p1, Transport* p2, EntityManager* mng, DishPool* dp) :
-	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr), dp(dp)
+	Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr), dp(dp), orderMngr(nullptr)
 {
 	feedbackVisual_ = nullptr;
 }
@@ -79,7 +79,7 @@ void OrderService::feedback(int id)
 					SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order",
 						SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));
 			}
-		}		
+		}
 	}
 }
 

@@ -13,13 +13,14 @@
 #include "AIClient.h"
 #include "DishPool.h"
 
-class OrderService: public Entity, public Interactive
+class OrderService : public Entity, public Interactive
 {
 public:
 	OrderService(Transport* p1, Transport* p2, EntityManager* mng, DishPool* dp);
 	virtual void action1(int id);
 	virtual void feedback(int player);
 	OrderManager* setOrderMngr(OrderManager* om) { orderMngr = om; return orderMngr; }
+
 private:
 	OrderManager* orderMngr;
 	DishPool* dp;

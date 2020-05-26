@@ -15,8 +15,9 @@ public:
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 
 private:
+	std::vector<Interactive*> interactives_;
+
 	void switchPedido(const string& p, vector<Resources::FoodType>& pedido);
 	void initializeComponent(const string& component, Entity* entity);
-	std::vector<Interactive*> interactives_;
 };
 

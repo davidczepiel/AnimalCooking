@@ -23,20 +23,16 @@ public:
 	~Order() {
 		timer = nullptr;
 	}
-	void update();
-
 	void setPos(Vector2D pos) { position_ = pos; }
+
 	Vector2D getPos() { return position_; }
-
 	Texture* getOrderText() { return orderTetxure_; }
-
-	int getNumIngs() { return nIngredients_; }
-
 	Resources::FoodType getFinalProduct() { return finalProduct_; }
-
+	int getNumIngs() { return nIngredients_; }
 	//El anger debe ser entre 0 y 1
 	double getAnger() { return timer->getProgress(); }
 
+	void update();
 	void removeTimer() {
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->deleteTimer(timer);
 	}
@@ -46,6 +42,6 @@ private:
 	Timer* timer;
 	Vector2D position_;
 	Texture* orderTetxure_;
-	int nIngredients_;
 	Resources::FoodType finalProduct_;
+	int nIngredients_;
 };

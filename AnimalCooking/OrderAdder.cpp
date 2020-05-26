@@ -40,9 +40,9 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 		Vector2D(nivel["Clients"]["pedidos"]["pos"]["x"].as_double() * casillaX, nivel["Clients"]["pedidos"]["pos"]["y"].as_double() * casillaY), GETCMP2(gameManager, ScoreManager)));
 	om->setSecondsPerIng(nivel["Clients"]["pedidos"]["segundosPorIngrediente"].as_double());
 
-	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casillaX, general["Clients"]["pedidos"]["size"]["height"].as_double() * casillaY, 
+	os->addComponent<OrderViewer>(general["Clients"]["pedidos"]["size"]["width"].as_double() * casillaX, general["Clients"]["pedidos"]["size"]["height"].as_double() * casillaY,
 		Vector2D(general["Clients"]["pedidos"]["margin"]["x"].as_double() * casillaX, general["Clients"]["pedidos"]["margin"]["y"].as_double() * casillaY));
-	
+
 	AIClient* ai = os->addComponent<AIClient>(nivel["Clients"]["pedidos"]["segundosEntrePedido"].as_double() * 1000, nivel["Clients"]["pedidos"]["segundosPrimerPedido"].as_double() * 1000, tv);
 
 	//Inicializacion de los posibles pedidos en ese nivel
@@ -72,7 +72,7 @@ constexpr unsigned int str2int(const char* str, int h = 0)
 }
 
 void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedido)
-{		
+{
 	switch (str2int(p.c_str()))
 	{
 	case str2int("Salad"):

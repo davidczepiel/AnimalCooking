@@ -7,7 +7,7 @@ OrderManager::OrderManager() : OrderManager(2, 100, { 100, 700 })
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager) : Component(ecs::OrderManager),
 currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
-distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager)
+distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager), msPerIng_(), availableOrders_()
 {
 }
 
@@ -38,7 +38,7 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 					finalProduct, //Producto que da
 					msPerIng_ * ings_.size() //Tiempo que se mantiene en vigor
 				);
-				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::OrderRecieved,0);
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::OrderRecieved, 0);
 			}
 		}
 	}
@@ -55,7 +55,7 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 		if (playerDidIt) {
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
-		}	
+		}
 		//else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
 		//	scoreManager_->addScore((*it)->getNumIngs() * -1.5);
 
@@ -104,6 +104,6 @@ bool OrderManager::someOneWantsThis(Resources::FoodType finalProduct) {
 	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
 	if (!lista.empty())
 		return true;
-	else 
+	else
 		return false;
 }

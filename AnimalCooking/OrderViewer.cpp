@@ -3,12 +3,12 @@
 #include "Entity.h"
 #include "GameConfig.h"
 
-OrderViewer::OrderViewer() : OrderViewer(80, 50, {5, 5})
+OrderViewer::OrderViewer() : OrderViewer(80, 50, { 5, 5 })
 {
 }
 
 OrderViewer::OrderViewer(size_t width, size_t height, Vector2D margin) : Component(ecs::OrderViewer),
-		width_(width), height_(height), margin_(margin)
+width_(width), height_(height), margin_(margin), om_(nullptr), backGroundTexture_(nullptr)
 {
 }
 
@@ -23,12 +23,12 @@ void OrderViewer::draw()
 	for (auto o : om_->getOrders()) {
 		if (o != nullptr) { //Si esta el pedido
 			Texture* orText = o->getOrderText();
-		
+
 			double anger = o->getAnger() - config::ORDERVIEWER_START_RED_OFFSET;
 			if (anger < 0) anger = 0;
-			else if (anger > config::ORDERVIEWER_MAX_RED_OFFSET - config::ORDERVIEWER_START_RED_OFFSET) 
+			else if (anger > config::ORDERVIEWER_MAX_RED_OFFSET - config::ORDERVIEWER_START_RED_OFFSET)
 				anger = config::ORDERVIEWER_MAX_RED_OFFSET - config::ORDERVIEWER_START_RED_OFFSET; //Maximo anger de 0.5
-			
+
 			//// Fondo
 			//backGroundTexture_->render(RECT(o->getPos().getX(), o->getPos().getY(), width_, height_)/*,  //Usa getAnger() para determinar que zona usar de la textura
 			//						   RECT(anger * (backGroundTexture_->getWidth() / 5), 0, backGroundTexture_->getWidth() / 5, backGroundTexture_->getHeight())*/);
