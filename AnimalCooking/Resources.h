@@ -311,6 +311,7 @@ public:
 		Tatiana,
 		MapNewGameButton,
 		MapLoadGameButton,
+		Go,
 
 		//Adversities
 		WarningAdversity,

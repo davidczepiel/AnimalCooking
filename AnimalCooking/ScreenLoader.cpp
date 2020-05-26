@@ -45,7 +45,7 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 		0); //Rot
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
-	jugarText = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0x000000ff) });
+	jugarText = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0xffffffff) });
 	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);

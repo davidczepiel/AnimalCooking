@@ -127,16 +127,16 @@ void Utensil::action1(int player) {
 	//Porque si estoy en una repisa ya hace los ajustes necesarios ella misma
 	//Y si estoy en la mano de un player no debería llamarse a esta action
 	if (myState == State::floor) {
-		Transport* player = nullptr;
+		Transport* playerT = nullptr;
 		if (player == 0)
-			player = player1_;
+			playerT = player1_;
 		else
-			player = player2_;
+			playerT = player2_;
 
-		if (player->getObjectTypeInHands() != Resources::PickableType::Dish)
+		if (playerT->getObjectTypeInHands() != Resources::PickableType::Dish)
 		{
 			onPick();
-			player->pick(this, Resources::PickableType::Utensil);
+			playerT->pick(this, Resources::PickableType::Utensil);
 		}
 	}
 }

@@ -13,14 +13,15 @@ void BinEntity::action1(int player)
 			static_cast<Food*>(playerTransport->getObjectInHands())->Destroy();
 			playerTransport->setObjectTypeInHands(Resources::PickableType::none);
 			playerTransport->setObjectInHands(nullptr);
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin, 0);
 		}
 		else if (playerTransport->getObjectTypeInHands() == Resources::Dish) {
 			for (auto& i : static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector()) {
 				i->Destroy();
 			}
 			static_cast<Dish*>(playerTransport->getObjectInHands())->getFoodVector().clear();
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin, 0);
 		}
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Bin, 0);
 	}
 
 	playerTransport = nullptr;

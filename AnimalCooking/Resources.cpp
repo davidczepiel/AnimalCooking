@@ -321,6 +321,7 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Go,"Go",hex2sdlcolor("#000000FF"),QuarkCheese50},
 
 	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0xffffffff), FontId::QuarkCheese100},

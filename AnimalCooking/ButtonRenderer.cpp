@@ -45,7 +45,7 @@ void ButtonRenderer::draw()
 		if (text_ != nullptr)
 		{
 			Vector2D s = Vector2D(text_->getWidth() , text_->getHeight());
-			if (s.getX() > ownerTransform_->getW() - 100) {
+			if (s.getX() > ownerTransform_->getW() - 20) {
 				s = Vector2D(ownerTransform_->getW() - 100, text_->getHeight());
 			}
 
