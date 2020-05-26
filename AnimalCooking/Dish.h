@@ -8,7 +8,7 @@ class Dish : public Pickable
 {
 public:
 	Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp);
-	~Dish() {  }
+	~Dish() {}
 
 	//Añade un alimento al plato	
 	void addFood(Food* f);

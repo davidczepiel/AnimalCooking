@@ -6,7 +6,7 @@ class DishMotion : public Component
 {
 public:
 	DishMotion();
-	~DishMotion() { }
+	~DishMotion() {}
 
 	void init()override;
 	void update()override;

@@ -11,7 +11,7 @@ class DishAdder
 {
 public:
 	DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, FoodPool* fp, const double casillaX, const double casillaY);
-	~DishAdder(){ }
+	~DishAdder() {}
 
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
 	DishPool* getDishPool() { return dp; }

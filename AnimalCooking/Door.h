@@ -11,5 +11,6 @@ public:
 		Transform* tr = addComponent<Transform>(pos, Vector2D(), size.getX(), size.getY());
 		addComponent<DoorRenderer>(tr, p1, p2, texture);
 	}
+	~Door() {}
 };
 

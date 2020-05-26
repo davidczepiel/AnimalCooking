@@ -10,7 +10,7 @@ class DishStack : public Entity, public Interactive
 {
 public:
 	DishStack(Vector2D pos, int maxDishes_, Transport* t1, Transport* t2, EntityManager* mng, DishPool* dp, FoodPool* fp);
-	~DishStack() { }
+	~DishStack() {}
 
 	void setDishSize(const Vector2D& size) { dishSize_ = size; }
 	Dish* addNewDish(Vector2D pos);

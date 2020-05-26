@@ -13,14 +13,18 @@ class DoorRenderer : public Component
 {
 public:
 	DoorRenderer(Transform* tr, Transform* p1, Transform* p2, Texture* texture);
+	~DoorRenderer() {}
+
 	void update() override;
 	void draw() override;
 private:
 	State checkCollision();
+
 	State state;
-	double animState;
 	Transform* tr;
 	Texture* t;
 	std::array<Transform*, 2> players;
+
+	double animState;
 };
 

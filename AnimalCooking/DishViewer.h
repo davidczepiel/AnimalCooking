@@ -10,7 +10,8 @@ class DishViewer : public Component
 {
 public:
 	DishViewer();
-	virtual ~DishViewer() { }
+	virtual ~DishViewer() {}
+
 	void draw()override;
 	void init() override;
 

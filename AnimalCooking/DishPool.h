@@ -7,7 +7,7 @@ class DishPool : public Component
 {
 public:
 	DishPool();
-	~DishPool() { }
+	~DishPool() {}
 
 	//Metodo auxiliar para meter platos llamar al de DishStack
 	void addDish(Dish* d);
