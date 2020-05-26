@@ -37,9 +37,9 @@ void ConfigState::saveToFile()
 	ofstream f;
 	f.open("../AnimalCooking/resources/cfg/options.txt");
 	if (f.is_open()) {
+		saveVolumeSetting(f);
 		savePlayer(f, 0, o);
 		savePlayer(f, 1, o);
-		saveVolumeSetting(f);
 	}
 	f.close();
 }
@@ -50,9 +50,9 @@ void ConfigState::loadFromFile()
 	ifstream f;
 	f.open("../AnimalCooking/resources/cfg/options.txt");
 	if (f.is_open()) {
+		loadVolumeSetting(f);
 		loadPlayer(f, 0, o);
 		loadPlayer(f, 1, o);
-		loadVolumeSetting(f);
 	}
 	f.close();
 }

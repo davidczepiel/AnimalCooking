@@ -135,6 +135,17 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 	m->setLeftArrow(leftButton_);
 	m->setSelectButton(selectionButton_);
 	m->setRightArrow(rightButton_);
+
+	ifstream f;
+	f.open("../AnimalCooking/resources/cfg/options.txt");
+	if (f.is_open()) {
+		float value;
+		f >> value; 
+		SDLGame::instance()->getAudioMngr()->setMusicVolume(SDLGame::instance()->getOptions().volume.music_ = Uint8(value * 128));
+		f >> value;
+		SDLGame::instance()->getAudioMngr()->setChannelVolume(SDLGame::instance()->getOptions().volume.sounds_ = Uint8(value * 128));
+	}
+	f.close();
 }
 
 MenuState::~MenuState()
