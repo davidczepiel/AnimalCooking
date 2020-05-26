@@ -1,22 +1,31 @@
 #include "LevelViewer.h"
 #include "SDL_macros.h"
 #include<string>
+
 LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarPerc, int twoStarPerc, int threeStarPerc, double scorePercentage)
-	: Component(ecs::levelViewer), bar(nullptr), limitSign(nullptr), star(nullptr), casillaX(0), casillaY(0), scoreProgress_(0)
-	, barBackground(nullptr), yellowStar(nullptr), timeSpan_(0),
+	: Component(ecs::levelViewer), 
+	bar(nullptr), 
+	limitSign(nullptr), 
+	star(nullptr), 
+	casillaX(0), 
+	casillaY(0), 
+	scoreProgress_(0), 
+	barBackground(nullptr), 
+	yellowStar(nullptr), 
+	timeSpan_(0),
 	startedTick_(SDLGame::instance()->getTime()),
 	levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
 	twoStarPerc_(twoStarPerc), threeStarPerc_(threeStarPerc), scorePercentage_(scorePercentage) {
-	if (scorePercentage_ > 1.0)
-		scorePercentage_ = 1.0;
-	int stars = 0;
-	if (scorePercentage_ * 100 >= threeStarPerc_)
-		stars = 3;
-	else if (scorePercentage_ * 100 >= twoStarPerc_)
-		stars = 2;
-	else if (scorePercentage_ * 100 >= oneStarPerc_)
-		stars = 1;
-	SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
+		if (scorePercentage_ > 1.0)
+			scorePercentage_ = 1.0;
+		int stars = 0;
+		if (scorePercentage_ * 100 >= threeStarPerc_)
+			stars = 3;
+		else if (scorePercentage_ * 100 >= twoStarPerc_)
+			stars = 2;
+		else if (scorePercentage_ * 100 >= oneStarPerc_)
+			stars = 1;
+		SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
 }
 
 void LevelViewer::draw()
@@ -94,9 +103,7 @@ void LevelViewer::draw()
 			star->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			star->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 		}
-
 	}
-
 }
 
 void LevelViewer::init()

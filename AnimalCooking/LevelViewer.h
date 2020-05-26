@@ -9,24 +9,25 @@ public:
 	void draw() override;
 	void init() override;
 	void update() override;
+
 private:
-	int startedTick_;
-	int levelTime_;
-	int scoreTime_;
-	int barTime_;
-	int timeSpan_;
-	double scorePercentage_;
-	double scoreProgress_;
-	double oneStarPerc_;
-	double twoStarPerc_;
-	double threeStarPerc_;
 	Texture* bar;
 	Texture* barBackground;
 	Texture* limitSign;
 	Texture* star;
 	Texture* yellowStar;
+
+	double scorePercentage_;
+	double scoreProgress_;
+	double oneStarPerc_;
+	double twoStarPerc_;
+	double threeStarPerc_;
 	double casillaX;
 	double casillaY;
-
+	int startedTick_;
+	int levelTime_;
+	int scoreTime_;
+	int barTime_;
+	int timeSpan_;
 };
 

@@ -11,25 +11,21 @@ public:
 	~Timer();
 	virtual void update();
 	virtual void draw() {}
-
-	void setTime(Uint32 t) { time_ = t; };
-	void setTexture(Texture* t) { texture_ = t; };
-	void setPos(Vector2D p);
-	void setSize(Vector2D s) { size_ = s; };
-	inline Vector2D getSize() { return size_; }
-	void setRot(double r) { rot_ = r; };
-
-	inline bool isStarted() { return timerStarted_; }
-
-	Uint32 getTime() { return time_; };
-	bool isTimerEnd() { return timerEnd_; };
-
 	void timerStart();
 	void timerReset();
 	void timerPause();
 	void timerResume();
 
-	//De 0 a 1
+	void setTime(Uint32 t) { time_ = t; };
+	void setTexture(Texture* t) { texture_ = t; };
+	void setPos(Vector2D p);
+	void setSize(Vector2D s) { size_ = s; };
+	void setRot(double r) { rot_ = r; };
+
+	inline bool isStarted() { return timerStarted_; }
+	Uint32 getTime() { return time_; };
+	inline Vector2D getSize() { return size_; }
+	bool isTimerEnd() { return timerEnd_; };
 	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
 	int getElapsedMs() { return game_->getTime() - startedTime_; }
 	Texture* getTexture() { return texture_; }
@@ -37,17 +33,15 @@ public:
 protected:
 	SDLGame* game_;
 	Texture* texture_;
-
+	Vector2D pos_;
+	Vector2D size_;
 	Uint32 time_;
 	Uint32 startedTime_;
 	Uint32 pausedTime_;
 
+	double rot_;
 	bool timerStarted_;
 	bool timerEnd_;
-
-	Vector2D pos_;
-	Vector2D size_;
-	double rot_;
 };
 
 class LevelTimer : public Timer {

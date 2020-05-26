@@ -2,6 +2,7 @@
 #include "SDL_macros.h"
 #include "FSM.h";
 #include "PlayState.h"
+
 Timer::Timer() :
 	game_(SDLGame::instance()),
 	texture_(nullptr),
@@ -11,7 +12,8 @@ Timer::Timer() :
 	timerStarted_(false),
 	pos_(),
 	size_(Vector2D(0, 5)),
-	rot_(0)
+	rot_(0),
+	pausedTime_()
 {
 }
 
@@ -77,8 +79,6 @@ void UtensilTimer::update()
 	Timer::update();
 }
 
-
-
 void Timer::timerStart() {
 	if (!timerStarted_) {
 		timerStarted_ = true;
@@ -107,6 +107,7 @@ void Timer::timerResume()
 		pausedTime_ = 0;
 	}
 }
+
 void LevelTimer::draw()
 {
 	SDL_Rect rect = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());

@@ -16,6 +16,7 @@ class LevelInitializer
 {
 public:
 	LevelInitializer(EntityManager* em, int level ,ScreenLoader* sL);
+
 private:
 
 	void initialize_players();
@@ -37,25 +38,23 @@ private:
 	void initialize_walls();
 	void initialize_adversities();
 
-	double casillaX;
-	double casillaY;
-	double offsetX;
-	double offsetY;
-
-	std::array<Entity*, 2> players;
 	Entity* ingPoolEntity_;
 	Entity* utensil;
 	Entity* foodPool;
 	Entity* gameManager;
 	Entity* cookerPool;
-	std::vector<Interactive*> interactives_;
-
 	ScreenLoader* sL;
 	TimerViewer* tv_;
 	DishPool* dp;
-
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;
 	jute::jValue jsonGeneral;
+	std::array<Entity*, 2> players;
+	std::vector<Interactive*> interactives_;
+
+	double casillaX;
+	double casillaY;
+	double offsetX;
+	double offsetY;
 };
 

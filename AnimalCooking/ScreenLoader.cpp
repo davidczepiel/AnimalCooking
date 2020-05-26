@@ -19,18 +19,18 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 	//-2 porque level tiene 2 valores extra al principio
 	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::level0Menu + level - 2));
 	stage->addToGroup(bg, ecs::GroupID::Layer1);
-	barraCarga_ = stage->addEntity();
-	stage->addToGroup(barraCarga_, ecs::GroupID::Layer1);
+	loadingBar_ = stage->addEntity();
+	stage->addToGroup(loadingBar_, ecs::GroupID::Layer1);
 
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
 	int height = 80;
-	barraCarga_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
+	loadingBar_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
 		Vector2D(), //Dir
 		width, //Width
 		height, //Height
 		0); //Rot
-	barraCarga_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
+	loadingBar_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
 		game_->getTextureMngr()->getTexture(Resources::BarEndState));
 
 	buttonGo_ = stage->addEntity();
@@ -45,8 +45,8 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 		0); //Rot
 
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
-	jugarText = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0xffffffff) });
-	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), jugarText);
+	playTexture_ = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0xffffffff) });
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), playTexture_);
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 
@@ -172,7 +172,7 @@ void ScreenLoader::loadMessagges(SDL_Renderer* renderer_)
 
 void ScreenLoader::updateLength()
 {
-	GETCMP2(barraCarga_, LoadingBarViewer)->plusLength(step_);
+	GETCMP2(loadingBar_, LoadingBarViewer)->plusLength(step_);
 
 	SDL_SetRenderDrawColor(SDLGame::instance()->getRenderer(), COLOR(0x00AAAAFF));
 	SDL_RenderClear(SDLGame::instance()->getRenderer());
