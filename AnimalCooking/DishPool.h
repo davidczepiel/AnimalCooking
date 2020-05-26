@@ -12,6 +12,7 @@ public:
 	//Metodo auxiliar para meter platos llamar al de DishStack
 	void addDish(Dish* d);
 	void removeDish(Dish* d);
+
 	int getNumDishes() { return dishes_.size(); }
 	inline vector<Dish*>& getDishes() { return dishes_; }
 

@@ -4,10 +4,8 @@
 
 
 Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2, nullptr),
-currentFood(), foods_(), isViewingContent(false), inHands(true), foodPool(fp), game_(nullptr)
-{
-	game_ = SDLGame::instance();
-	//foods_.reserve(maxFood);
+currentFood(), foods_(), isViewingContent(false), inHands(true), foodPool(fp), game_(SDLGame::instance())
+{	
 	feedbackVisual_ = game_->getTextureMngr()->getTexture(Resources::PlatoFeedBack);
 }
 

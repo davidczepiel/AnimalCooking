@@ -12,7 +12,5 @@ public:
 	void update()override;
 
 private:
-
 	DishPool* dp = nullptr;
-
 };

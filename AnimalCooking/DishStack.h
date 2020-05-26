@@ -9,7 +9,6 @@
 class DishStack : public Entity, public Interactive
 {
 public:
-
 	DishStack(Vector2D pos, int maxDishes_, Transport* t1, Transport* t2, EntityManager* mng, DishPool* dp, FoodPool* fp);
 	~DishStack() { }
 
@@ -19,9 +18,10 @@ public:
 	virtual void action1(int id);
 	virtual void feedback(int id);
 private:
-	int maxDishes;
 	DishPool* dishPool = nullptr;
 	FoodPool* foodPool = nullptr;
 	Vector2D dishSize_;
+
+	int maxDishes;
 };
 

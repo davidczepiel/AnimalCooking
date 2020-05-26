@@ -9,6 +9,7 @@ class DishStackViewer : public Component
 public:
 	DishStackViewer(Interactive* i);
 	~DishStackViewer() { }
+
 	void init()override;
 	void draw() override;
 

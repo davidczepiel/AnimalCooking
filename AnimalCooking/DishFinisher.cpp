@@ -17,14 +17,9 @@ void DishFinisher::finish(int id, Dish* d)
 	if (id == 0) player = tr1_;
 	else player = tr2_;
 
-	/*if ( player->getObjectInHands() != nullptr && player->getObjectTypeInHands() == Resources::PickableType::Dish) {*/
-		/*Dish* dish = static_cast<Dish*>(player->getObjectInHands());*/
-
 	if (d->getFoodVector().size() > 1) {
 		Food* newFood = FoodDictionary::instance()->getResult(Resources::Cookers::Hands, d->getFoodVector());
 		d->clearFoods();
-		/*d->getFoodVector().insert(d->getFoodVector().begin(), newFood);*/
 		d->addFinalFood(newFood);
-	}
-	/*}*/
+	}	
 }
