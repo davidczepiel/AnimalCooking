@@ -4,9 +4,6 @@
     <ClCompile Include="AdversityAdder.cpp">
       <Filter>Source Files\Adversities</Filter>
     </ClCompile>
-    <ClCompile Include="AIAssistant.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
     <ClCompile Include="AIClient.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
@@ -458,9 +455,6 @@
     </ClInclude>
     <ClInclude Include="AdversityAdder.h">
       <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AIAssistant.h">
-      <Filter>Headers Files\AI</Filter>
     </ClInclude>
     <ClInclude Include="AIClient.h">
       <Filter>Headers Files\AI</Filter>

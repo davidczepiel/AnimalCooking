@@ -3,9 +3,11 @@
 #include "GameConfig.h"
 
 AIIngredient::AIIngredient(IngredientsPool* ip, Transform* t1, Transform* t2) :
-	Component(ecs::AIIngredient), ip_(ip), t1_(t1), t2_(t2), rangeX(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaX()),
-	rangeY(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaY())
-{
+	Component(ecs::AIIngredient), 
+	ip_(ip), t1_(t1), 
+	t2_(t2), 
+	rangeX(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaX()),
+	rangeY(config::AI_INGREDIENT_RANGE* SDLGame::instance()->getCasillaY()){
 }
 
 void AIIngredient::update()

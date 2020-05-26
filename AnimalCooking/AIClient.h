@@ -12,6 +12,9 @@ public:
 	AIClient();
 	AIClient(Uint32 deltaTimePerOrder, Uint32 deltaTimeFirstOrder,TimerViewer* tv);
 
+	void init() override;
+	void update() override;
+
 	inline void setAvailableOrders(vector<Resources::FoodType>& lista) {
 		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
 	}
@@ -22,9 +25,10 @@ public:
 		}
 	}
 
-	void init() override;
-	void update() override;
 private:
+	void checkNewOrder();
+	Resources::FoodType chooseRandomOrder();
+
 	OrderManager* orMngr_;
 	Timer* t;
 
@@ -33,7 +37,4 @@ private:
 
 	Uint32 deltaTimePerOrder_;
 	bool firstOrder_;
-
-	void checkNewOrder();
-	Resources::FoodType chooseRandomOrder();
 };

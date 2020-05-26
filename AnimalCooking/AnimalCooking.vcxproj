@@ -156,7 +156,6 @@
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
     <ClInclude Include="AdversityAdder.h" />
-    <ClInclude Include="AIAssistant.h" />
     <ClInclude Include="AIClient.h" />
     <ClInclude Include="AIIngredient.h" />
     <ClInclude Include="Animator.h" />
@@ -315,7 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdversityAdder.cpp" />
-    <ClCompile Include="AIAssistant.cpp" />
     <ClCompile Include="AIClient.cpp" />
     <ClCompile Include="AIIngredient.cpp" />
     <ClCompile Include="Animator.cpp" />
