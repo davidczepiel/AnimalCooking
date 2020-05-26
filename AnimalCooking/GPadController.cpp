@@ -10,7 +10,7 @@ GPadController::GPadController()
 	player2_ = nullptr;
 }
 
-void GPadController::update(SDL_Event& event) {	
+void GPadController::update(SDL_Event& event) {
 	//Si se ha añadido un mando se lo asigno al player que le falte
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
@@ -19,11 +19,11 @@ void GPadController::update(SDL_Event& event) {
 			if (player1_ != nullptr && player2_ != nullptr)
 				SDL_ShowCursor(0);
 		}
-		else if(player2_ == nullptr){
+		else if (player2_ == nullptr) {
 			player2_ = SDL_GameControllerOpen(1);
 			//SI los 2 players tienen mando el cursor no se debería de ver
-			if(player1_ != nullptr && player2_ != nullptr)
-			SDL_ShowCursor(0);  
+			if (player1_ != nullptr && player2_ != nullptr)
+				SDL_ShowCursor(0);
 		}
 	}
 	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual tengo y cual no
@@ -32,7 +32,7 @@ void GPadController::update(SDL_Event& event) {
 		player2_ = SDL_GameControllerOpen(1);
 		//Significa que solo un player tiene mando y el cursor deberia de verse
 		SDL_ShowCursor(1);
-	}		
+	}
 
 	if (event.cbutton.type == SDL_CONTROLLERBUTTONDOWN) {
 		lastButtonPressed_.first = true;
@@ -74,7 +74,7 @@ double ::GPadController::getAxis(int player, SDL_GameControllerAxis axis) {
 	//EN caso de que haya mando conectado pregunto por el valor
 	//Si o hay mando devuelvo 0
 	if (p != nullptr && p != NULL) {
-		double value = SDL_GameControllerGetAxis(p,axis);
+		double value = SDL_GameControllerGetAxis(p, axis);
 		if (abs(value) < m_joystickDeadZone) return (0);
 		else return (value / 32678);
 	}

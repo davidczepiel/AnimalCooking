@@ -26,15 +26,12 @@ void CollisionsSystem::update()
 {
 	//Resolvemos las colisiones si el objeto es movible
 	for (auto en : entidadesTr) {
-		if(en.second) resolveCollisions(en.first->getPosReference(), en.first->getHitboxOffset(), en.first->getHitboxSize(), en.first->getVel());
+		if (en.second) resolveCollisions(en.first->getPosReference(), en.first->getHitboxOffset(), en.first->getHitboxSize(), en.first->getVel());
 	}
 
 	for (auto en : entidadesIng) {
-		if (en.second){
-			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true); 
-			
-			//Aviso al ingrediente que ha colisionado
-			//tellIngredient(en.first, cT);
+		if (en.second) {
+			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true);
 		}
 	}
 }
@@ -61,9 +58,6 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
 			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), col);
 			changeBackCol(collisions, col);
-			
-			//Aviso al ingrediente que ha colisionado
-			//tellIngredient(en.first, cT);
 		}
 	}
 
@@ -170,7 +164,7 @@ ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& 
 				}
 			}
 		}
-		resolveCollisions(pos, offset, size, vel);	
+		resolveCollisions(pos, offset, size, vel);
 	}
 	return cT;
 }
@@ -250,5 +244,5 @@ void CollisionsSystem::tellIngredient(Ingredient* en, const ColisionType& colTyp
 			en->onCollisionX();
 			en->onCollisionY();
 		}
-	}	
+	}
 }

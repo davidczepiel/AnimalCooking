@@ -5,12 +5,12 @@
 GameLogic::GameLogic(TimerViewer* tv) : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
 foodPool(nullptr), levelTimer_(new LevelTimer()), tv(tv)
 {
-    tv->addTimer(levelTimer_);
+	tv->addTimer(levelTimer_);
 }
 
 void GameLogic::init()
 {
-    colSys_ = GETCMP1_(CollisionsSystem);
+	colSys_ = GETCMP1_(CollisionsSystem);
 
 }
 
@@ -55,7 +55,7 @@ void GameLogic::playHit(Resources::UtensilType type) {
 
 void GameLogic::setLevelTimer(Uint32 time, Vector2D pos, Vector2D size)
 {
-    levelTimer_->setTime(time); 
-    levelTimer_->setPos(pos);
+	levelTimer_->setTime(time);
+	levelTimer_->setPos(pos);
 	levelTimer_->setSize(size);
 }

@@ -37,6 +37,6 @@ private:
 
 	SDLGame* game_;
 	double musicLastValue_, soundLastValue;
-	SliderBehaviour* sliderMusic_, *sliderSound_;
+	SliderBehaviour* sliderMusic_, * sliderSound_;
 };
 

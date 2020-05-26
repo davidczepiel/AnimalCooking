@@ -5,7 +5,7 @@ CookerViewer::CookerViewer() :
 
 }
 
-CookerViewer::~CookerViewer(){
+CookerViewer::~CookerViewer() {
 }
 
 void CookerViewer::init() {
