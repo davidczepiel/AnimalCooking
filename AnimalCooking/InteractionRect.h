@@ -10,7 +10,6 @@ public:
 	~InteractionRect(){}
 
 	void init() override;
-	/*void draw() override;*/
 	void update() override;
 
 	void setDir	(double x, double y) { dir_.set(Vector2D(x, y)); }
