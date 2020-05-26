@@ -7,12 +7,13 @@
 #include "GPadController.h"
 
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
-	timer_(new FoodTimer()),canDraw(true),
-	type_(type),
-	foodPool_(nullptr),
-	texture_(nullptr), 
-	showHelp(true)
-{	
+timer_(new FoodTimer()),
+canDraw(true),
+type_(type),
+foodPool_(nullptr),
+texture_(nullptr),
+showHelp(true)
+{
 	position_ = position;
 
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
@@ -23,11 +24,11 @@ Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport
 }
 
 Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
-	timer_(new FoodTimer()),
-	type_(type),
-	foodPool_(nullptr), 
-	canDraw(true), 
-	showHelp(true)
+timer_(new FoodTimer()),
+type_(type),
+foodPool_(nullptr),
+canDraw(true),
+showHelp(true)
 {
 	position_ = Vector2D();
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
@@ -76,9 +77,9 @@ void Food::onDrop(bool onfloor)
 	if (onfloor) {
 		Pickable::onDrop(onfloor);
 		timer_->timerStart();
-				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
-				showHelp = true;
-				inHands = false;
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop, 0);
+		showHelp = true;
+		inHands = false;
 	}
 }
 
@@ -92,11 +93,11 @@ void Food::onFloor()
 
 void Food::action1(int player)
 {
-	if (player == Resources::Player1) 
-	{				
-		if(!inHands) player1_->pick(this, Resources::PickableType::Food);		
+	if (player == Resources::Player1)
+	{
+		if (!inHands) player1_->pick(this, Resources::PickableType::Food);
 	}
-	else 
+	else
 	{
 		if (!inHands) player2_->pick(this, Resources::PickableType::Food);
 	}
@@ -113,7 +114,7 @@ void Food::feedback(int player)
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
-		}	
+		}
 	}
 }
 

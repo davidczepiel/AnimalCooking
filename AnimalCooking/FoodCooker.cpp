@@ -2,7 +2,7 @@
 #include "FoodDictionary.h"
 
 FoodCooker::FoodCooker(FoodPool* fp) :
-	Component(ecs::FoodCooker), fp_(fp){
+	Component(ecs::FoodCooker), pool_(nullptr), fp_(fp){
 }
 
 FoodCooker::~FoodCooker() {

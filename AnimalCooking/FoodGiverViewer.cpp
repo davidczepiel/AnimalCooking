@@ -1,6 +1,10 @@
 #include "FoodGiverViewer.h"
 #include "SDL_macros.h"
 
+FoodGiverViewer::FoodGiverViewer(FoodGiver* entity) :
+	Component(ecs::FoodGiverViewer), entity_(entity), texture_(nullptr), rect_(SDL_Rect())
+{}
+
 void FoodGiverViewer::init()
 {
 	texture_ = entity_->getTexture();
