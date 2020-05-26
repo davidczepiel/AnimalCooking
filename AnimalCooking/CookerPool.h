@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "Cooker.h"
 
-class CookerPool: public Component {
+class CookerPool : public Component {
 public:
 	CookerPool(size_t sizeIni = 4);
 	~CookerPool();
@@ -24,5 +24,5 @@ public:
 	}
 
 private:
-	vector<Cooker*> pool_;	
+	vector<Cooker*> pool_;
 };

@@ -9,7 +9,7 @@
 enum class CookerStates { empty, cooking, cooked, burned, overheated };
 class Food;
 class InsertExpel;
-class Cooker:public Interactive {
+class Cooker :public Interactive {
 public:
 	virtual ~Cooker();
 	virtual void draw();
@@ -26,13 +26,13 @@ public:
 	Uint32 getCookingTime() { return cookingTime_; }
 	vector<Food*>& getFoods() { return foods_; }
 
-	inline int getCookerType() { return (int) cookerType_; };
+	inline int getCookerType() { return (int)cookerType_; };
 	void action1(int player)override;
 	void feedback(int player) override;
 	void sound();
 
 protected:
-	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2,Entity* e);
+	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
 
 	void initTimer();
 

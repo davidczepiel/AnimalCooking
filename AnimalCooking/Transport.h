@@ -18,7 +18,7 @@ public:
 	Resources::PickableType getObjectTypeInHands() { return objType_; }
 	void setObjectInHands(Pickable* p) { objInHands_ = p; }
 	void setObjectTypeInHands(Resources::PickableType p) { objType_ = p; }
-	void setDir(Vector2D v) { dir = v; }
+	void setDir(const Vector2D& v) { dir = v; }
 
 private:
 	Pickable* objInHands_;

@@ -12,7 +12,7 @@ public:
 	virtual void update();
 	virtual void draw() {}
 
-	void setTime(Uint32 t) { time_ = t; };	
+	void setTime(Uint32 t) { time_ = t; };
 	void setTexture(Texture* t) { texture_ = t; };
 	void setPos(Vector2D p);
 	void setSize(Vector2D s) { size_ = s; };
@@ -20,7 +20,7 @@ public:
 	void setRot(double r) { rot_ = r; };
 
 	inline bool isStarted() { return timerStarted_; }
-	
+
 	Uint32 getTime() { return time_; };
 	bool isTimerEnd() { return timerEnd_; };
 
@@ -44,7 +44,7 @@ protected:
 
 	bool timerStarted_;
 	bool timerEnd_;
-	
+
 	Vector2D pos_;
 	Vector2D size_;
 	double rot_;
@@ -52,11 +52,11 @@ protected:
 
 class LevelTimer : public Timer {
 public:
-	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
+	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)) {
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
 		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
 	}
-	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
+	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)) {
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
 		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
@@ -71,7 +71,7 @@ private:
 class DefaultTimer : public Timer {
 public:
 	DefaultTimer() : Timer() { texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
-	DefaultTimer( Uint32 time ) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
+	DefaultTimer(Uint32 time) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
 	void draw();
 	void update();
 };

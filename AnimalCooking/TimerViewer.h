@@ -10,7 +10,7 @@ public:
 	TimerViewer();
 	~TimerViewer() {
 		for (auto& t : timersList_) {
-			if(t != nullptr) delete t;
+			if (t != nullptr) delete t;
 			t = nullptr;
 		}
 	}

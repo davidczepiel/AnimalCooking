@@ -42,13 +42,13 @@ void DefaultTimer::update()
 	size_.setX(((game_->getTime() - startedTime_) / 100));
 }
 
-UtensilTimer::UtensilTimer(): Timer() {
+UtensilTimer::UtensilTimer() : Timer() {
 	texture_ = game_->getTextureMngr()->getTexture(Resources::UtensilTimerForeground);
 	outlineText_ = game_->getTextureMngr()->getTexture(Resources::UtensilTimerBackground);
 	clip.x = 0;
 	clip.y = 0;
-	clip.w = texture_->getWidth(); 
-	clip.h= texture_->getHeight();
+	clip.w = texture_->getWidth();
+	clip.h = texture_->getHeight();
 }
 
 UtensilTimer::UtensilTimer(Uint32 time) : Timer()
@@ -63,12 +63,12 @@ UtensilTimer::UtensilTimer(Uint32 time) : Timer()
 
 void UtensilTimer::draw() {
 	if (timerStarted_) {
-		SDL_Rect r =RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
+		SDL_Rect r = RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY());
 		outlineText_->render(r);
 		double percent = (game_->getTime() - startedTime_) / double(time_);
-		SDL_Rect clipRect = RECT(clip.x, clip.y, clip.w*percent, clip.h);
+		SDL_Rect clipRect = RECT(clip.x, clip.y, clip.w * percent, clip.h);
 		r.w = size_.getX() * percent;
-		texture_->render(r,0,clipRect);
+		texture_->render(r, 0, clipRect);
 	}
 }
 
@@ -120,7 +120,7 @@ void LevelTimer::draw()
 	rect.h = size_.getY();
 
 	SDL_Rect clip = SDL_Rect();
-	clip.x = 0; clip.y = 0; clip.w = texture_->getWidth() * (1-percent); clip.h = texture_->getHeight();
+	clip.x = 0; clip.y = 0; clip.w = texture_->getWidth() * (1 - percent); clip.h = texture_->getHeight();
 
 	texture_->render(rect, 0, clip);
 }

@@ -18,12 +18,12 @@ public:
 	virtual bool init() = 0;
 
 	virtual Texture* getTexture(std::size_t tag) = 0;
-	virtual bool loadFromImg(std::size_t tag, SDL_Renderer *renderer,
-			const string &fileName) = 0;
+	virtual bool loadFromImg(std::size_t tag, SDL_Renderer* renderer,
+		const string& fileName) = 0;
 	virtual bool loadFromSprSheet(std::size_t tag,
 		SDL_Renderer* renderer, const string& fileName, int nRows, int nCols) = 0;
-	virtual bool loadFromText(std::size_t tag, SDL_Renderer *renderer,
-			const string &texto, const Font *font, const SDL_Color &color = { 0,
-					0, 0, 255 }) = 0;
+	virtual bool loadFromText(std::size_t tag, SDL_Renderer* renderer,
+		const string& texto, const Font* font, const SDL_Color& color = { 0,
+				0, 0, 255 }) = 0;
 	virtual void destroyTexture(std::size_t tag) = 0;
 };
