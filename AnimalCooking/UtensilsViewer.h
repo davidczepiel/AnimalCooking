@@ -5,13 +5,13 @@
 
 class UtensilsViewer : public Component
 {
-private:
-	vector<Utensil*>* pool_;
-
 public:
-	UtensilsViewer() : Component(ecs::UtensilsViewer) { }
+	UtensilsViewer() : Component(ecs::UtensilsViewer),pool_() { }
 	virtual ~UtensilsViewer() { }
+
 	void init() override;
 	void draw() override;
+private:
+	vector<Utensil*>* pool_;
 };
 

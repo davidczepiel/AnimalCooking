@@ -7,6 +7,7 @@ class UtensilsPool: public Component
 public:
 	UtensilsPool(size_t size=4);
 	~UtensilsPool();
+
 	vector<Utensil*>& getPool() { return pool_; }
 
 	Utensil* addUtensil(Utensil* u) {

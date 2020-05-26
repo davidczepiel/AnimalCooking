@@ -14,21 +14,21 @@ class Utensil : public Pickable{
 public:
 	Utensil( Transport* p1, Transport* p2);
 	virtual ~Utensil();
+
 	void action1(int player) override;
 	void feedback(int player) override;
-
 	virtual void render() const;
 	virtual void update();
 	virtual void attack(Vector2D dir) = 0;
-
-	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
-	Timer* getTimer() { return dirtTimer_; }
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
 	void cleanUp();
+	void resetDirtTimer();
+
+	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
+	Timer* getTimer() { return dirtTimer_; }
 	void changeDirtySpeed(int speedModifier);
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
-	void resetDirtTimer();
 	Resources::UtensilType getUtensilType() { return myType; }
 	bool isDirty() { return dirty_; }
 
@@ -38,14 +38,22 @@ protected:
 	{
 		floor, playerHand, shelf
 	};
+	void onHit(Vector2D dir);
+
 	Resources::UtensilType myType;
 	State myState;
+	Timer* dirtTimer_;
+	//Mis 2 texturas
+	Texture* cleantexture_;
+	Texture* dirtyTexture_;
+	Texture* attackTexture_;
+	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
+	GameLogic* gameLogic;
+
 	//Suciedad
 	int myDirt_;
 	int maxDirt_;
-	Timer* dirtTimer_;
 	int maxTimeOnFloor_;
-
 	//Ataque
 	int rangeX_;
 	int rangeY_;
@@ -55,19 +63,10 @@ protected:
 	int lastAttack_;
 	//Confirmaci�n de que esta  sucio
 	bool dirty_;
-
-	//Mis 2 texturas
-	Texture* cleantexture_;
-	Texture* dirtyTexture_;
-	Texture* attackTexture_;
 	//Control animacion ataque
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
-	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
-	GameLogic* gameLogic;
-
-	void onHit(Vector2D dir);
 };
 
 /////////////////////////////////////////////Utensilios//////////////////////////////
