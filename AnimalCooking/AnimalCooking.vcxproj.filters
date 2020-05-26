@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CreditsViewer.cpp" />
     <ClCompile Include="Adversity.cpp">
       <Filter>Source Files\Adversities</Filter>
     </ClCompile>
@@ -34,9 +33,6 @@
     </ClCompile>
     <ClCompile Include="AIIngredient.cpp">
       <Filter>Source Files\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimalCooking.cpp">
-      <Filter>Organizar</Filter>
     </ClCompile>
     <ClCompile Include="AssistantMotion.cpp">
       <Filter>Organizar</Filter>
@@ -506,28 +502,14 @@
     <ClCompile Include="SliderRenderer.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="CreditsViewer.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimalCooking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FoodConfig.h">
-      <Filter>Header Files\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="BinAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="FoodGiverAdder.h">
-      <Filter>Header Files\Adders</Filter>
-    </ClInclude>
-    <ClInclude Include="TextSpeechBubble.h" />
-    <ClInclude Include="TextSpeechBubbleViewer.h" />
-    <ClInclude Include="FoodPoolAdder.h" />
-    <ClInclude Include="GameManagerAdder.h" />
-    <ClInclude Include="IngAdder.h" />
-    <ClInclude Include="LevelInitializer.h" />
-    <ClInclude Include="PlayersAdder.h" />
-    <ClInclude Include="ShelfAdder.h" />
-    <ClInclude Include="SinkAdder.h" />
-    <ClInclude Include="UtensilsAdder.h" />
-    <ClInclude Include="CreditsViewer.h" />
     <ClInclude Include="Adversity.h">
       <Filter>Headers Files\Adversities</Filter>
     </ClInclude>
@@ -560,9 +542,6 @@
     </ClInclude>
     <ClInclude Include="AIIngredient.h">
       <Filter>Headers Files\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimalCooking.h">
-      <Filter>Organizar</Filter>
     </ClInclude>
     <ClInclude Include="AssistantMotion.h">
       <Filter>Organizar</Filter>
@@ -1059,10 +1038,57 @@
     <ClInclude Include="StaticRenderer.h">
       <Filter>Headers Files\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="BinAdder.h">
+      <Filter>Headers Files\Utensils\Bin</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsViewer.h">
+      <Filter>Headers Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodConfig.h">
+      <Filter>Headers Files\Foods</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodGiverAdder.h">
+      <Filter>Headers Files\Foods</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodPoolAdder.h">
+      <Filter>Headers Files\Foods</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManagerAdder.h">
+      <Filter>Headers Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="IngAdder.h">
+      <Filter>Headers Files\Ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelInitializer.h">
+      <Filter>Headers Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayersAdder.h">
+      <Filter>Headers Files\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="ShelfAdder.h">
+      <Filter>Headers Files\Utensils\Shelf</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkAdder.h">
+      <Filter>Headers Files\Utensils\Shink</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilsAdder.h">
+      <Filter>Headers Files\Utensils</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimalCooking.h">
+      <Filter>Headers Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextSpeechBubble.h">
+      <Filter>Organizar</Filter>
+    </ClInclude>
+    <ClInclude Include="TextSpeechBubbleViewer.h">
+      <Filter>Organizar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="small.ico" />
     <Image Include="AnimalCooking.ico">
+      <Filter>Organizar</Filter>
+    </Image>
+    <Image Include="small.ico">
       <Filter>Organizar</Filter>
     </Image>
   </ItemGroup>
