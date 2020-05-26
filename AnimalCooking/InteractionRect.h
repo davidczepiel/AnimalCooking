@@ -23,7 +23,6 @@ private:
 	Vector2D pos_;
 	Vector2D dir_;
 	Vector2D size_;
-	/*Texture* tx_;*/
 	Transform* tr_;
 };
 

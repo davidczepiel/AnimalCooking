@@ -5,7 +5,8 @@ class FeedBack : public Component
 {
 public:
 	FeedBack(Selector* s1, Selector* s2) : Component(ecs::FeedBack), s1_(s1), s2_(s2) {}
-	~FeedBack() {};
+	~FeedBack() {}
+
 	void draw() override;
 private:
 	Selector* s1_;

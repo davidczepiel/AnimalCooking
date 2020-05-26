@@ -11,8 +11,9 @@ using namespace std;
 class Selector : public Component
 {
 public:
-	Selector() :Component(ecs::Selector) {};
+	Selector() :Component(ecs::Selector),interationArea() {};
 	~Selector() {};
+
 	inline Interactive* getSelect() { return select_; }
 	inline void setSelect(Interactive* i, int area) { select_ = i; interationArea = area; }
 	inline int getInteractionArea() { return interationArea; }

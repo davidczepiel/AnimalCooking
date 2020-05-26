@@ -23,8 +23,7 @@ void PlayerController::update()
 void PlayerController::joystickUpdate()
 {
 	GPadController* gpad = GPadController::instance();
-	//if (gpad->joysticksInitialised()) {
-	double x = 0, y = 0;	//interactive
+	double x = 0, y = 0;	
 	double speed = 0.6;
 
 	//Axis------------------------

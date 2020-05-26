@@ -21,10 +21,11 @@ public:
 	void setDir(const Vector2D& v) { dir = v; }
 
 private:
+	void swap(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
+
 	Pickable* objInHands_;
 	Transform* playerTransform_;
 	InteractionRect* interactionPlayerRect;
 	Resources::PickableType objType_;
 	Vector2D dir;
-	void swap(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
 };
