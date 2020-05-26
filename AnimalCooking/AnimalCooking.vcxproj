@@ -314,7 +314,6 @@
     <ClInclude Include="WallAdder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Adversity.cpp" />
     <ClCompile Include="AdversityAdder.cpp" />
     <ClCompile Include="AIAssistant.cpp" />
     <ClCompile Include="AIClient.cpp" />

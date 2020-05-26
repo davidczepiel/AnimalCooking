@@ -2,37 +2,45 @@
 #include "Cooker.h"
 #include "TimerViewer.h"
 
-void BurnedCookerAdversity::StartAdversity() {
-	if (!alreadyInitialized) {
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
-		alreadyInitialized = true;
-	}
-	internalTimer->timerReset();
-	internalTimer->setTime(5000);
-	internalTimer->timerStart();
+BurnedCookerAdversity::BurnedCookerAdversity(MultipleAdversityManager* mam) : 
+	Adversity(mam), 
+	internalTimer_(new Timer()),
+	cookerPool_(mam->getCookerPool()), 
+	targetCooker_(nullptr), 
+	alreadyInitialized_(false) {
+}
 
-	int rnd = SDLGame::instance()->getRandGen()->nextInt(0,cookerPool->getPool().size());
-	int i = (rnd + 1) % cookerPool->getPool().size();
+void BurnedCookerAdversity::StartAdversity() {
+	if (!alreadyInitialized_) {
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer_);
+		alreadyInitialized_ = true;
+	}
+	internalTimer_->timerReset();
+	internalTimer_->setTime(5000);
+	internalTimer_->timerStart();
+
+	int rnd = SDLGame::instance()->getRandGen()->nextInt(0,cookerPool_->getPool().size());
+	int i = (rnd + 1) % cookerPool_->getPool().size();
 
 	while (i != rnd) {
-		if (cookerPool->getPool()[rnd]->getCookerState() == CookerStates::empty) {	//Se elige un cooker que no tenga nada dentro para quemarlo
-			targetCooker = cookerPool->getPool()[rnd];
-			targetCooker->setCookerState(CookerStates::overheated);
+		if (cookerPool_->getPool()[rnd]->getCookerState() == CookerStates::empty) {	//Se elige un cooker que no tenga nada dentro para quemarlo
+			targetCooker_ = cookerPool_->getPool()[rnd];
+			targetCooker_->setCookerState(CookerStates::overheated);
 			break;
 		}
-		else i = (i + 1) % cookerPool->getPool().size();
+		else i = (i + 1) % cookerPool_->getPool().size();
 	}
 
-	if (targetCooker == nullptr) {
+	if (targetCooker_ == nullptr) {
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
 	}
 }
 
 void BurnedCookerAdversity::update() {
-	internalTimer->update();
-	if (internalTimer->isTimerEnd() && targetCooker != nullptr) {
-		targetCooker->setCookerState(CookerStates::empty);
-		targetCooker = nullptr;
+	internalTimer_->update();
+	if (internalTimer_->isTimerEnd() && targetCooker_ != nullptr) {
+		targetCooker_->setCookerState(CookerStates::empty);
+		targetCooker_ = nullptr;
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::CookersAdversity);
 	}
 }

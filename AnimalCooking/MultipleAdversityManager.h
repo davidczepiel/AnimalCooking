@@ -12,39 +12,6 @@
 
 class MultipleAdversityManager : public Component
 {
-	Texture* warningTexture;
-	vector<Adversity*> adversities;
-	vector<bool> activeAdversities;
-	Transform* tP1;
-	Transform* tP2;
-	CookerPool* cookerPool;
-	IngredientsPool* ingredientsPool;
-	UtensilsPool* utensilsPool;
-	bool playingAdversity;
-	AdversityTimer* rainTimer;
-	AdversityTimer* rainWarning;
-	AdversityTimer* planeTimer;
-	AdversityTimer* planeWarning;
-	AdversityTimer* hookTimer;
-	AdversityTimer* hookWarning;
-	AdversityTimer* burnCookerTimer;
-	AdversityTimer* burnedCookerWarning;
-	AdversityTimer* adversityTimer;
-	bool playingWarning, active;
-	int warningRate;
-
-	queue<int> planeQueue;
-	queue<int> rainQueue;
-	queue<int> cookerQueue;
-	queue<int> hookQueue;
-	bool justStarted;
-
-	Uint32 startRumbleTime_, rumbleCadence, lengthOfRumble_;
-	SDL_Haptic* haptic1 = nullptr, *haptic2 = nullptr;
-	void seeTimers();
-	void seeAdversityWarning();
-	void playRumbles();
-
 public:
 	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
 	~MultipleAdversityManager() {
@@ -54,27 +21,63 @@ public:
 	void update();
 	void draw();
 	void startAdvesities();
-	void playAdversity(ecs::AdversityID i) { activeAdversities[i] = true; }
+	void playAdversity(ecs::AdversityID i) { activeAdversities_[i] = true; }
 	void stopAdversity(ecs::AdversityID i);
 	void setTimerTime(ecs::AdversityID id, int time);
 
 	void addAdversityToQueue(ecs::AdversityID type, int time);
 
 	Transform* getTransformPlayer(Resources::Player player) {
-		return player == Resources::Player1 ? tP1 : tP2;
+		return player == Resources::Player1 ? tP1_ : tP2_;
 	}
 
 	CookerPool* getCookerPool() {
-		return cookerPool;
+		return cookerPool_;
 	}
 
 	IngredientsPool* getIngredientsPool() {
-		return ingredientsPool;
+		return ingredientsPool_;
 	}
 
 	UtensilsPool* getUtensilsPool() {
-		return utensilsPool;
+		return utensilsPool_;
 	}
 
+private:
+	void seeTimers();
+	void seeAdversityWarning();
+	void playRumbles();
+
+	Texture* warningTexture_;
+	vector<Adversity*> adversities_;
+	vector<bool> activeAdversities_;
+	Transform* tP1_;
+	Transform* tP2_;
+	CookerPool* cookerPool_;
+	IngredientsPool* ingredientsPool_;
+	UtensilsPool* utensilsPool_;
+	AdversityTimer* rainTimer_;
+	AdversityTimer* rainWarning_;
+	AdversityTimer* planeTimer_;
+	AdversityTimer* planeWarning_;
+	AdversityTimer* hookTimer_;
+	AdversityTimer* hookWarning_;
+	AdversityTimer* burnCookerTimer_;
+	AdversityTimer* burnedCookerWarning_;
+	AdversityTimer* adversityTimer_;
+
+	queue<int> planeQueue;
+	queue<int> rainQueue;
+	queue<int> cookerQueue;
+	queue<int> hookQueue;
+
+	int warningRate_;
+	bool playingWarning_;
+	bool active_;
+	bool playingAdversity_;
+	bool justStarted_;
+
+	Uint32 startRumbleTime_, rumbleCadence_, lengthOfRumble_;
+	SDL_Haptic* haptic1 = nullptr, * haptic2 = nullptr;
 };
 

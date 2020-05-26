@@ -5,20 +5,21 @@
 
 class BurnedCookerAdversity : public Adversity
 {
-	Timer* internalTimer;
-	CookerPool* cookerPool;
-	Cooker* targetCooker;
-	bool alreadyInitialized;
-
-	void StartAdversity();
-
 public:
-	BurnedCookerAdversity(MultipleAdversityManager* mam) : Adversity(mam), 
-		cookerPool(mam->getCookerPool()), internalTimer(new Timer()), alreadyInitialized(false) { }
+	BurnedCookerAdversity(MultipleAdversityManager* mam);
 	~BurnedCookerAdversity() {}
 
 	void update();
 	void draw();
 	void reset();
+
+private:
+	void StartAdversity();
+
+	Timer* internalTimer_;
+	CookerPool* cookerPool_;
+	Cooker* targetCooker_;
+
+	bool alreadyInitialized_;	
 };
 

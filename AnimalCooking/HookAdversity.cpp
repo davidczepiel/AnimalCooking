@@ -35,7 +35,6 @@ HookAdversity::HookAdversity(MultipleAdversityManager* mam) : Adversity(mam)
 	lastFrame = 0;
 	frameTime = 50;
 	animationFrame = 0;
-
 }
 
 void HookAdversity::Start() {
@@ -124,7 +123,6 @@ void HookAdversity::GoingDown( ) {
 	else
 		Move(true);
 }
-
 
 void HookAdversity::draw()
 {

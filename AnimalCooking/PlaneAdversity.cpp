@@ -2,6 +2,21 @@
 #include "IngredientsPool.h"
 #include "Ingredient.h"
 
+PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) : 
+	Adversity(mam), 
+	planeTexture_(nullptr),
+	internalTimer(new Timer()),
+	dirs_(),
+	angles_(),
+	dir_(),
+	planeRect_(),
+	state_(),
+	angle_(),
+	force_(),
+	velocity_(),
+	alreadyInitialized(false){
+}
+
 void PlaneAdversity::StartPlane() {
 	RandomNumberGenerator* rnd = SDLGame::instance()->getRandGen();
 	int height = SDLGame::instance()->getWindowHeight();
@@ -56,7 +71,7 @@ void PlaneAdversity::StartPlane() {
 	velocity_ = 1;
 	force_ = 1.5;
 
-	state_ = Pasando;
+	state_ = Going;
 	if (!alreadyInitialized) {
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
 		alreadyInitialized = true;
@@ -75,18 +90,18 @@ bool PlaneAdversity::isPlaneOut()
 void PlaneAdversity::update() {
 	internalTimer->update();
 
-	if (internalTimer->isTimerEnd() && state_ == Pasando) {
+	if (internalTimer->isTimerEnd() && state_ == Going) {
 		internalTimer->timerReset();
 		internalTimer->setTime(7000);
 		internalTimer->timerStart();
 		velocity_ = 3;
-		state_ = Empujando;
+		state_ = Pushing;
 	}
 
 	planeRect_.x += (dir_.getX() * velocity_);
 	planeRect_.y += (dir_.getY() * velocity_);
 
-	if (state_ == Pasando) return;
+	if (state_ == Going) return;
 
 	if (isPlaneOut()) multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
 

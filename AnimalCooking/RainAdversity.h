@@ -6,29 +6,27 @@
 #include "UtensilsPool.h"
 #include "Collisions.h"
 #include "SDL_macros.h"
-class RainAdversity :
-	public Adversity
+class RainAdversity :public Adversity
 {
-
-	Texture* rainTexture;
-	SDL_Rect drawingArea;
-	SDL_Rect clipArea;
-	vector<Utensil*>* utensilsPool;
-	double dirtSpeedUp;
-	Timer* rainTimer;
-	int frameTime;
-	int lastFrame;
-	int animationFrame;
-	bool started;
-	int lastTick;
-	int cadence;
-	
-
 public:
 	RainAdversity(MultipleAdversityManager* mam);
 	virtual void update();
 	virtual void draw();
 	virtual void reset();
 
+private:
+	Texture* rainTexture_;
+	Timer* rainTimer_;	
+	vector<Utensil*>* utensilsPool_;
+	SDL_Rect drawingArea_;
+	SDL_Rect clipArea_;
+
+	double dirtSpeedUp_;
+	int frameTime_;
+	int lastFrame_;
+	int animationFrame_;	
+	int lastTick_;
+	int cadence_;
+	bool started_;
 };
 

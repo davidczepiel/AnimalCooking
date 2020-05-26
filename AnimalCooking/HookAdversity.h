@@ -2,9 +2,20 @@
 #include "Adversity.h"
 #include "Transform.h"
 #include"Texture.h"
-class HookAdversity :
-	public Adversity
+class HookAdversity : public Adversity
 {
+public:
+	HookAdversity(MultipleAdversityManager* mam);
+	virtual void update();
+	virtual void draw();
+	virtual void reset();
+
+private:
+	void GoingUp();
+	void GoingDown();
+	void Start();
+	void Move(bool down);
+
 	Transform* tP1;
 	Transform* tP2;
 
@@ -13,12 +24,6 @@ class HookAdversity :
 	SDL_Rect drawingAreaHook1;
 	SDL_Rect drawingAreaHook2;
 	SDL_Rect clipArea;
-
-	//Flags para el proceso
-	bool catched;
-	bool changedPositions;
-	bool droped;
-	bool playersVisible;
 
 	//Posiciones y tamaño de los players
 	Vector2D p1OriginalPos;
@@ -29,21 +34,17 @@ class HookAdversity :
 	int frameTime;
 	int lastFrame;
 	int animationFrame;
+
 	//Velocidad del proceso
 	double hook1Vel;
 	double hook2Vel;
 	int lastTick;
 	int speed;
 
-	void GoingUp();
-	void GoingDown();
-	void Start();
-	void Move(bool down);
-	void SetContentPos(Transform* contentHook1, Transform* contentHook2);
-public:
-	HookAdversity(MultipleAdversityManager* mam);
-	virtual void update();
-	virtual void draw();
-	virtual void reset();
+	//Flags para el proceso
+	bool catched;
+	bool changedPositions;
+	bool droped;
+	bool playersVisible;
 };
 
