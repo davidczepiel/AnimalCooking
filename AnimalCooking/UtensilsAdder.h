@@ -10,6 +10,7 @@ class UtensilsAdder
 {
 public:
 	UtensilsAdder(Entity* utensilsPool, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player);
+	~UtensilsAdder() {}
 private:
 
 	void initializeComponent(const string& component, Entity* entity);

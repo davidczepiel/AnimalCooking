@@ -26,7 +26,6 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	attacking_ = false;
 	lastFrameTick = 0;
 	gameLogic = nullptr;
-	size_ = Vector2D(50, 50);
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(dirtTimer_);
 }
@@ -43,8 +42,7 @@ void Utensil::update() {
 			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
 				myDirt_ = maxDirt_;
-				dirtTimer_->timerReset();
-				//resetDirtTimer();
+				dirtTimer_->timerReset();				
 			}
 		}
 		else
