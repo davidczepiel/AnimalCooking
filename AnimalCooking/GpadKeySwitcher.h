@@ -12,20 +12,21 @@ public:
 		for (SwitcherGPad* s : switchers_)
 			delete s;
 	}
-	void init();
-	void update() override;
-
 	const vector<SwitcherGPad*>& getSwitchers() const { return switchers_; }
 	const int& getPlayer() const { return player_; }
+	inline const bool& onTop() { return focus == 0; }
 
+	void setFocushed(const int& delta) { focus = delta; }
+
+	void init();
+	void update() override;
 	//Adds delta to focus and then it modules by 6
 	void addFocushed(const int& delta);
-	void setFocushed(const int& delta) { focus = delta; }
-	inline const bool& onTop() { return focus == 0; }
+
 private:
+	vector<SwitcherGPad*> switchers_;
 	bool navEnabled;
 	int focus;
-	vector<SwitcherGPad*> switchers_;
 	int player_;
 	int buttonWidth_, buttonHeight_;
 };

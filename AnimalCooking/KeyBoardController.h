@@ -22,55 +22,43 @@ public:
 		}
 		return instance_.get();
 	}
-
-	// update the state
-	void update();
-
 	// keyboard
 	inline bool keyDownEvent() {
 		return isKeyDownEvent_;
 	}
-
 	inline bool keyUpEvent() {
 		return isKeyUpEvent_;
 	}
-
 	inline bool isKeyDown(SDL_Scancode key) {
 		// return kbState_[key] == 1;
 		return keyDownEvent() && kbState_[key] == 1;
 	}
-
 	inline bool isKeyDown(SDL_Keycode key) {
 		return isKeyDown(SDL_GetScancodeFromKey(key));
 	}
-
 	inline bool isKeyUp(SDL_Scancode key) {
 		// kbState_[key] == 0;
 		return keyUpEvent() && kbState_[key] == 0;
 	}
-
 	inline bool isKeyUp(SDL_Keycode key) {
 		return isKeyUp(SDL_GetScancodeFromKey(key));
 	}
-
 	// mouse
 	inline bool mouseMotionEvent() {
 		return isMouseMotionEvent_;
 	}
-
 	inline bool mouseButtonEvent() {
 		return isMouseButtonEvent_;
 	}
-
 	inline const Vector2D& getMousePos() {
 		return mousePos_;
 	}
-
 	inline int getMouseButtonState(MOUSEBUTTON b) {
 		return mbState_[b];
 	}
-
 	inline const SDL_Keycode& getLastKeyPressed() const { return lastKeyPressed_; }
+	// update the state
+	void update();
 private:
 	KeyBoardController();
 	void clearState();
@@ -101,17 +89,18 @@ private:
 		}
 	}
 
-	static unique_ptr<KeyBoardController> instance_;
 
+	static unique_ptr<KeyBoardController> instance_;
 	const Uint8* kbState_;
+	SDL_Keycode lastKeyPressed_;
+	Vector2D mousePos_;
+	std::array<bool, 3> mbState_;
+
 	bool isKeyUpEvent_;
 	bool isKeyDownEvent_;
 	bool isMouseMotionEvent_;
 	bool isMouseButtonEvent_;
 
-	SDL_Keycode lastKeyPressed_;
 
-	Vector2D mousePos_;
-	std::array<bool, 3> mbState_;
 };
 

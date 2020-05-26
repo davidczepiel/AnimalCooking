@@ -12,8 +12,8 @@ void MainMenuPadNavigation::setSelectButton(Entity* e) {
 }
 
 void MainMenuPadNavigation::update() {
-	//EN caso de que haya algún dispositivo conectado pregunto si ha pulsado algo para navegar
-	//Si no hay ningún mando conectado no me interesa hacer nada
+	//EN caso de que haya algï¿½n dispositivo conectado pregunto si ha pulsado algo para navegar
+	//Si no hay ningï¿½n mando conectado no me interesa hacer nada
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 		double dpad = 0;
 		if (dPadUsed(&dpad) && !xDpadMoved) {
@@ -26,7 +26,7 @@ void MainMenuPadNavigation::update() {
 		else  if (xDpadMoved && dpad == 0)
 			noArrowsFocused();
 
-		//Si cualquiera de ellos está pulsando la A
+		//Si cualquiera de ellos estï¿½ pulsando la A
 		if (!aButtonPressed && (GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_A) ||
 			GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
 			if (selectButton != nullptr) {
@@ -35,7 +35,7 @@ void MainMenuPadNavigation::update() {
 				m->action();
 			}
 		}
-		//Esta comprobación y el bool están preparados para que si vuelves del menu de mapa al menu principal
+		//Esta comprobaciï¿½n y el bool estï¿½n preparados para que si vuelves del menu de mapa al menu principal
 		//no te detecte instantaneamente que estas pulsando la A y vuelvas a meterte al mapa
 		else if (aButtonPressed && (!GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_A) &&
 			!GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_A)))
@@ -60,7 +60,7 @@ bool MainMenuPadNavigation::dPadUsed(double* dpad) {
 }
 
 bool MainMenuPadNavigation::dPadNotUsed() {
-	//EN caso de que ningun player se esté intentando desplazar por el menú
+	//EN caso de que ningun player se estï¿½ intentando desplazar por el menï¿½
 	if (!GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_LEFT) &&
 		!GPadController::instance()->playerPressed(0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT) &&
 		!GPadController::instance()->playerPressed(1, SDL_CONTROLLER_BUTTON_DPAD_LEFT) &&
@@ -89,7 +89,7 @@ void MainMenuPadNavigation::noArrowsFocused() {
 	xDpadMoved = false;
 	GETCMP2(rightArrow, MenuButtonRenderer)->setFocused(false);
 	GETCMP2(leftArrow, MenuButtonRenderer)->setFocused(false);
-	//Tengo que volver a poner el botón central como que esta siendo seleccionado
+	//Tengo que volver a poner el botï¿½n central como que esta siendo seleccionado
 	GETCMP2(selectButton, MenuButtonRenderer)->setFocused(true);
 
 }

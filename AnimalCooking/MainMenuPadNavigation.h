@@ -10,17 +10,16 @@ class MainMenuPadNavigation :
 	public Component
 {
 public:
+	void setSelectButton(Entity* e);
+	void setRightArrow(Entity* e) { rightArrow = e; }
+	void setLeftArrow(Entity* e) { leftArrow = e; }
+
 	MainMenuPadNavigation();
 	void update() override;
 	void changeFocus(float xValue);
-	void setSelectButton(Entity* e);
-	void setRightArrow(Entity* e) { rightArrow = e;}
-	void setLeftArrow(Entity* e) { leftArrow = e;}
+
 private:
-	void arrowFocused(double xValue);
-	void noArrowsFocused();
-	bool dPadUsed(double* dpad);
-	bool dPadNotUsed();
+
 	Entity* leftArrow;
 	Entity* rightArrow;
 	Entity* selectButton;
@@ -29,5 +28,9 @@ private:
 	bool aButtonPressed;
 	bool someDpadConnected;
 
+	void arrowFocused(double xValue);
+	void noArrowsFocused();
+	bool dPadUsed(double* dpad);
+	bool dPadNotUsed();
 };
 

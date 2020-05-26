@@ -8,7 +8,7 @@ class IngredientInitializer
 {
 public:
 
-	IngredientInitializer(jute::jValue& jsonLevel,GameControl* gc);
+	IngredientInitializer(jute::jValue& jsonLevel, GameControl* gc);
 
 private:
 	Resources::IngredientType newIngType(const string& s);

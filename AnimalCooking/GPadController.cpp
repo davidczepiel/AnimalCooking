@@ -4,29 +4,27 @@
 unique_ptr<GPadController> GPadController::instance_;
 
 
-GPadController::GPadController()
-{
-	player1_ = nullptr;
-	player2_ = nullptr;
-}
+GPadController::GPadController() :player1_(nullptr),
+player2_(nullptr)
+{}
 
 void GPadController::update(SDL_Event& event) {
-	//Si se ha añadido un mando se lo asigno al player que le falte
+	//Si se ha aï¿½adido un mando se lo asigno al player que le falte
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
 			player1_ = SDL_GameControllerOpen(0);
-			//SI los 2 players tienen mando el cursor no se debería de ver
+			//SI los 2 players tienen mando el cursor no se deberï¿½a de ver
 			if (player1_ != nullptr && player2_ != nullptr)
 				SDL_ShowCursor(0);
 		}
 		else if (player2_ == nullptr) {
 			player2_ = SDL_GameControllerOpen(1);
-			//SI los 2 players tienen mando el cursor no se debería de ver
+			//SI los 2 players tienen mando el cursor no se deberï¿½a de ver
 			if (player1_ != nullptr && player2_ != nullptr)
 				SDL_ShowCursor(0);
 		}
 	}
-	//Si algún mando se ha desconectado vuelvo a pillar los mandos para ver cual tengo y cual no
+	//Si algï¿½n mando se ha desconectado vuelvo a pillar los mandos para ver cual tengo y cual no
 	else if (event.type == SDL_CONTROLLERDEVICEREMOVED) {
 		player1_ = SDL_GameControllerOpen(0);
 		player2_ = SDL_GameControllerOpen(1);
@@ -53,12 +51,12 @@ bool GPadController::playerControllerConnected(int id) {
 		return true;
 }
 
-//Metodo llamado al principio de la ejecucion para conseguir mandos en caso de que estén conectados
+//Metodo llamado al principio de la ejecucion para conseguir mandos en caso de que estï¿½n conectados
 void GPadController::getPlayerGPADS() {
 	player1_ = SDL_GameControllerOpen(0);
 	player2_ = SDL_GameControllerOpen(1);
 
-	//SI los 2 players tienen mando el cursor no se debería de ver
+	//SI los 2 players tienen mando el cursor no se deberï¿½a de ver
 	if (player1_ != nullptr && player2_ != nullptr)
 		SDL_ShowCursor(0);
 }
@@ -87,7 +85,7 @@ bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
 	SDL_GameController* c;
 	if (id == 0)c = player1_;
 	else c = player2_;
-	//Si hay un mando asi conectado pregunto por la tecla, si no hay mando, no hay pulsación
+	//Si hay un mando asi conectado pregunto por la tecla, si no hay mando, no hay pulsaciï¿½n
 	if (c != nullptr && c != NULL)
 		return SDL_GameControllerGetButton(c, button);
 	else

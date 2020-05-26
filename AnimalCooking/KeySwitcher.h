@@ -7,14 +7,14 @@
 class KeySwitcher
 {
 public:
-	virtual void update() = 0;
-	virtual void draw() = 0;
-
 	inline void setPos(const Vector2D& Pos) { pos_ = Pos; }
 	inline void setSize(const Vector2D& Size) { size_ = Size; }
+	inline void setBackGroundTexture(Texture* t) { backGround_ = t; }
+
 	const bool& getPlayerIsChoosing() const { return playerIsChoosing_; }
 
-	inline void setBackGroundTexture(Texture* t) { backGround_ = t; }
+	virtual void update() = 0;
+	virtual void draw() = 0;
 protected:
 	KeySwitcher(const Vector2D& pos, const Vector2D& size, const Resources::TextureId& name) :
 		playerIsChoosing_(false), name_(SDLGame::instance()->getTextureMngr()->getTexture(name)),

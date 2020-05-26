@@ -24,61 +24,46 @@ public:
 		}
 		return instance_.get();
 	}
-
-	// update the state
-	void update(SDL_Event& event);
-	void clearState();
-
 	// keyboard
 	inline bool keyDownEvent() {
 		return isKeyDownEvent_;
 	}
-
 	inline bool keyUpEvent() {
 		return isKeyUpEvent_;
 	}
-
 	inline bool isKeyDown(SDL_Scancode key) {
-	// return kbState_[key] == 1;
+		// return kbState_[key] == 1;
 		return keyDownEvent() && kbState_[key] == 1;
 	}
-
 	inline bool isKeyDown(SDL_Keycode key) {
 		return isKeyDown(SDL_GetScancodeFromKey(key));
 	}
-
 	inline bool isKeyUp(SDL_Scancode key) {
 		// kbState_[key] == 0;
 		return keyUpEvent() && kbState_[key] == 0;
 	}
-
 	inline bool isKeyUp(SDL_Keycode key) {
 		return isKeyUp(SDL_GetScancodeFromKey(key));
 	}
-
 	// mouse
 	inline bool mouseMotionEvent() {
 		return isMouseMotionEvent_;
 	}
-
 	inline bool mouseButtonEvent() {
 		return isMouseButtonEvent_;
 	}
-
 	inline bool mouseButtonUpEvent() {
 		return isMouseButtonUpEvent_;
 	}
-
 	inline const Vector2D& getMousePos() {
 		return mousePos_;
 	}
-
 	inline int getMouseButtonState(MOUSEBUTTON b) {
 		return mbState_[b];
 	}
-
 	inline const SDL_Keycode& getLastKeyPressed() const { return lastKeyPressed_; }
-	
+
+
 
 	// Joystick
 	// see:
@@ -86,56 +71,63 @@ public:
 	//   Available online via https://biblioteca.ucm.es/
 	//
 
+	// update the state
+	void update(SDL_Event& event);
+	void clearState();
 private:
 	InputHandler();
 
-	inline void onKeyDown(SDL_Event &event) {
+	inline void onKeyDown(SDL_Event& event) {
 		isKeyDownEvent_ = true;
 		// kbState_ = SDL_GetKeyboardState(0);
 		lastKeyPressed_ = event.key.keysym.sym;
 	}
-	inline void onKeyUp(SDL_Event &event) {
+	inline void onKeyUp(SDL_Event& event) {
 		isKeyUpEvent_ = true;
 		// kbState_ = SDL_GetKeyboardState(0);
 	}
-	inline void onMouseMotion(SDL_Event &event) {
+	inline void onMouseMotion(SDL_Event& event) {
 		isMouseMotionEvent_ = true;
 		mousePos_.set(event.motion.x, event.motion.y);
 	}
-	inline void onMouseButtonChange(SDL_Event &event, bool isDown) {
+	inline void onMouseButtonChange(SDL_Event& event, bool isDown) {
 		isMouseButtonEvent_ = true;
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			mbState_[LEFT] = isDown;
-		} else if (event.button.button == SDL_BUTTON_MIDDLE) {
+		}
+		else if (event.button.button == SDL_BUTTON_MIDDLE) {
 			mbState_[MIDDLE] = isDown;
-		} else if (event.button.button == SDL_BUTTON_RIGHT) {
+		}
+		else if (event.button.button == SDL_BUTTON_RIGHT) {
 			mbState_[RIGHT] = isDown;
 		}
 
 		if (event.type == SDL_MOUSEBUTTONUP) {
-		isMouseButtonUpEvent_ = true;
-		if (event.button.button == SDL_BUTTON_LEFT) {
-			mbState_[LEFT] = false;
-		} else if (event.button.button == SDL_BUTTON_MIDDLE) {
-			mbState_[MIDDLE] = false;
-		} else if (event.button.button == SDL_BUTTON_RIGHT) {
-			mbState_[RIGHT] = false;
-		}
+			isMouseButtonUpEvent_ = true;
+			if (event.button.button == SDL_BUTTON_LEFT) {
+				mbState_[LEFT] = false;
+			}
+			else if (event.button.button == SDL_BUTTON_MIDDLE) {
+				mbState_[MIDDLE] = false;
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT) {
+				mbState_[RIGHT] = false;
+			}
 		}
 	}
 
 	static unique_ptr<InputHandler> instance_;
+	const Uint8* kbState_;
+	Vector2D mousePos_;
+	std::array<bool, 3> mbState_;
+	SDL_Keycode lastKeyPressed_;
 
-	const Uint8 *kbState_;
 	bool isKeyUpEvent_;
 	bool isKeyDownEvent_;
 	bool isMouseMotionEvent_;
 	bool isMouseButtonEvent_;
 	bool isMouseButtonUpEvent_;
 
-	Vector2D mousePos_;
-	std::array<bool, 3> mbState_;
 
-	SDL_Keycode lastKeyPressed_;
 };
 

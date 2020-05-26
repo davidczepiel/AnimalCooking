@@ -23,7 +23,7 @@ void SwitcherKeyboard::update()
 	if (playerIsChoosing_ && ih->keyDownEvent()) {
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDL_Keycode keyHitted = ih->getLastKeyPressed();
-		if (keyToChange_ != keyHitted) keyToChange_ = keyHitted;		
+		if (keyToChange_ != keyHitted) keyToChange_ = keyHitted;
 		playerIsChoosing_ = false;
 	}
 }
@@ -33,7 +33,7 @@ void SwitcherKeyboard::draw()
 	size_t aux = col;
 	if (playerIsChoosing_) aux = 2;
 
-	backGround_->renderFrame(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()), 0, aux, 0);	
+	backGround_->renderFrame(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()), 0, aux, 0);
 
 	const string& cadena = string(SDL_GetKeyName(keyToChange_));
 
