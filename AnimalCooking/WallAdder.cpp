@@ -50,6 +50,16 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
 	mngr->addToGroup(valla, ecs::Valla);
 
+	//Suelos
+	Entity* cocina = mngr->addEntity();
+	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
+	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casillaX, casillaY));
+	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
+
+	Entity* campo = mngr->addEntity();
+	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
+	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
+	mngr->addToGroup(campo, ecs::GroupID::Layer1);
 	//Hacer esquinas
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
 		Entity* corner = mngr->addEntity();
@@ -63,7 +73,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		tr->setHitboxSize(tr->getW(), tr->getH());
 
 		corner->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
-		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int()));
+		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int() - 1 ));
 		colSys_->addCollider(GETCMP2(corner, Transform), false);
 	}
 
@@ -83,16 +93,6 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		mngr->addToGroup(e, CASTID(general["Shelf"]["Layer"].as_int()));
 	}
 
-	//Suelos
-	Entity* cocina = mngr->addEntity();
-	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
-	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casillaX, casillaY));
-	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
-
-	Entity* campo = mngr->addEntity();
-	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
-	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
-	mngr->addToGroup(campo, ecs::GroupID::Layer1);
 
 	//Hacer puerta
 	Door* d = new Door(Vector2D(7.55 * casillaX + offsetX / 2, 4.37 * casillaY), Vector2D(1 * casillaX, 1.4 * casillaY), 

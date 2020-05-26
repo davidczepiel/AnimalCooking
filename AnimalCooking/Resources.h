@@ -40,7 +40,6 @@ public:
 		ScoreBackground,
 		//----->EndState<---------
 		BackgroundEndState,
-		TicketEndState,
 		BarBackgroundEndState,
 		BarEndState,
 		ReplayIcon,
@@ -63,13 +62,11 @@ public:
 		LogoTenByTen,
 
 		// images all
-		Repisa,
 		Plato,
 		Suelo,
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
-		CookerBurned,
 		Platera,
 		Muro,
 		Valla,
@@ -88,7 +85,6 @@ public:
 		RedSucia,
 		Fregadero,
 		FregaderoON,
-		Ingrediente,
 		Panera,
 		Papelera,
 		CuadradoAux,
@@ -238,8 +234,6 @@ public:
 			//General
 			Panel,
 			PlatoFeedBack,
-			VerContenidoPlato,
-			EntregarPedido,
 			PapeleraFeedBack,
 			BordeTeclaFeedBack,
 			RellenoTeclaFeedBack,
@@ -385,10 +379,6 @@ public:
 
 		End_Win,
 		End_Lost,
-
-		// sound effects
-		Wall_Hit,
-		Paddle_Hit
 	};
 
 	enum FontId : std::size_t {

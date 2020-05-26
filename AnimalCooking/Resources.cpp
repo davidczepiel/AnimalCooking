@@ -36,7 +36,6 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	//----->EndState<---------
 	{Basic, BackgroundEndState,"../AnimalCooking/resources/images/EndState/background.png"},
-	{Basic, TicketEndState,"../AnimalCooking/resources/images/EndState/ticket.png"},
 	{Basic, BarBackgroundEndState,"../AnimalCooking/resources/images/EndState/barraSin.png"},
 	{Basic, BarEndState,"../AnimalCooking/resources/images/EndState/barraCon.png"},
 	{Basic, Star,"../AnimalCooking/resources/images/EndState/star.png"},
@@ -63,13 +62,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	//---->Creditos<-----
 	{Basic, LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
-	{AllLevels, Repisa,"../AnimalCooking/resources/images/repisa.png"},
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
 	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
 	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
-	{AllLevels, CookerBurned,"../AnimalCooking/resources/images/sartenburned.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -89,7 +86,6 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
-	{AllLevels, Ingrediente,"../AnimalCooking/resources/images/ingrediente.png"},
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
 	{AllLevels, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
@@ -243,8 +239,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	//General
 	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
 	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
-	{AllLevels, VerContenidoPlato,"../AnimalCooking/resources/images/FeedBack/General/verPlato.png"},
-	{AllLevels, EntregarPedido,"../AnimalCooking/resources/images/FeedBack/General/entregarPedido.png"},
 	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
 	{AllLevels, BordeTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaBorde.png"},
 	{AllLevels, RellenoTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaRelleno.png"},

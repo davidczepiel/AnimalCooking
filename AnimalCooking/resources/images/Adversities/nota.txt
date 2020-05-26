@@ -1,3 +1,0 @@
-Fuego:
--Tamaño frame: 64x64
--Orden: 1-2-3 (No hay que repetir frames)
