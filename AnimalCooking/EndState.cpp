@@ -10,14 +10,16 @@
 
 EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::instance()->getMaxScore()) {
 
-	score = SDLGame::instance()->getScore();
+	SDLGame* game = SDLGame::instance();
 
-	background = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BackgroundEndState);
+	score = game->getScore();
 
-	double casillaX = SDLGame::instance()->getCasillaX();
-	double casillaY = SDLGame::instance()->getCasillaY();
-	int winHeight = SDLGame::instance()->getWindowHeight();
-	int winWidth = SDLGame::instance()->getWindowWidth();
+	background = game->getTextureMngr()->getTexture(Resources::BackgroundEndState);
+
+	double casillaX = game->getCasillaX();
+	double casillaY = game->getCasillaY();
+	int winHeight = game->getWindowHeight();
+	int winWidth = game->getWindowWidth();
 	int degrees = 7;
 	int nextLevelLimit = 45;
 
@@ -27,21 +29,23 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	createButtons();
 	//createPlayers();
 	//Creamos la barra de carga con el texto
-	Entity* lv = stage->addEntity();
-	lv->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 85, (double)(score) / maxScore);
-	stage->addToGroup(lv, ecs::GroupID::ui);
+	Entity* levelViewer = stage->addEntity();
+	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 85, (double)(score) / maxScore);
+	stage->addToGroup(levelViewer, ecs::GroupID::ui);
 
 
 }
 void EndState::goToLoadState(AnimalCooking* ac) {
 	goToMapState(ac);
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 3), ac));
-	SDLGame::instance()->setMaxScore(0);
-	SDLGame::instance()->setScore(0);
+	SDLGame* gameInstance = SDLGame::instance();
+	gameInstance->getFSM()->pushState(new ScreenLoader(static_cast<Resources::Level> (SDLGame::instance()->getCurrentLevel() + 3), ac));
+	gameInstance->setMaxScore(0);
+	gameInstance->setScore(0);
 }
 void EndState::goToMapState(AnimalCooking* ac) {
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
-	FSM* fsm = SDLGame::instance()->getFSM();
+	SDLGame* gameInstance = SDLGame::instance();
+	gameInstance->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + gameInstance->getRandGen()->nextInt(0, 6), 0);
+	FSM* fsm = gameInstance->getFSM();
 	for (int i = 0; i < 2; i++)
 	{
 		fsm->popState();
@@ -49,24 +53,28 @@ void EndState::goToMapState(AnimalCooking* ac) {
 }
 void EndState::goToMenuState(AnimalCooking* ac) {
 	goToMapState(ac);
-	SDLGame::instance()->getFSM()->popState();
-	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
+	SDLGame* gameInstance = SDLGame::instance();
+	gameInstance->getFSM()->popState();
+	gameInstance->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 }
 
 void EndState::resetLevel(AnimalCooking* ac)
 {
 	goToMapState(ac);
-	SDLGame::instance()->getFSM()->pushState(new ScreenLoader(SDLGame::instance()->getCurrentLevel() + 2, ac));
-	SDLGame::instance()->setMaxScore(0);
-	SDLGame::instance()->setScore(0);
+	SDLGame* gameInstance = SDLGame::instance();
+	gameInstance->getFSM()->pushState(new ScreenLoader(SDLGame::instance()->getCurrentLevel() + 2, ac));
+	gameInstance->setMaxScore(0);
+	gameInstance->setScore(0);
 }
 
 void EndState::createButtons()
 {
-	double casillaX = SDLGame::instance()->getCasillaX();
-	double casillaY = SDLGame::instance()->getCasillaY();
-	int winHeight = SDLGame::instance()->getWindowHeight();
-	int winWidth = SDLGame::instance()->getWindowWidth();
+	SDLGame* gameInstance = SDLGame::instance();
+
+	double casillaX = gameInstance->getCasillaX();
+	double casillaY = gameInstance->getCasillaY();
+	int winHeight = gameInstance->getWindowHeight();
+	int winWidth = gameInstance->getWindowWidth();
 	int nextLevelLimit = 50;
 	int degrees = 7;
 
@@ -81,9 +89,9 @@ void EndState::createButtons()
 		64,
 		0);
 	stage->addToGroup(returnToMapButton, ecs::GroupID::Layer1);
-	ButtonBehaviour* bb = returnToMapButton->addComponent<ButtonBehaviour>(goToMapState, app);
-	ButtonRenderer* br = returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
-	bb->setButtonRenderer(br);
+	ButtonBehaviour* buttonBehaviour = returnToMapButton->addComponent<ButtonBehaviour>(goToMapState, app);
+	ButtonRenderer* buttonRenderer = returnToMapButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MapIcon), nullptr);
+	buttonBehaviour->setButtonRenderer(buttonRenderer);
 
 	//------------------>Vovler a Jugar<---------------------
 	Entity* ResetLevelButton = stage->addEntity();
@@ -96,9 +104,9 @@ void EndState::createButtons()
 		casillaX / 1.3,
 		casillaY / 1.3,
 		degrees);
-	bb = ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
-	br = ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
-	bb->setButtonRenderer(br);
+	buttonBehaviour = ResetLevelButton->addComponent<ButtonBehaviour>(resetLevel, app);
+	buttonRenderer = ResetLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ReplayIcon), nullptr);
+	buttonBehaviour->setButtonRenderer(buttonRenderer);
 
 	//------------------>Siguiente nivel<---------------------
 	//Si el score es el suficiente para pasar al siguiente nivel
@@ -108,7 +116,7 @@ void EndState::createButtons()
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
 
-		 NextLevelButton = stage->addEntity();
+		NextLevelButton = stage->addEntity();
 		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
 		NextLevelButton->addComponent<Transform>(Vector2D
 		(winWidth - 2.5 * casillaX +
@@ -119,17 +127,17 @@ void EndState::createButtons()
 			casillaX / 1.3,
 			casillaY / 1.3,
 			degrees);
-		bb = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
-		br = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
-		bb->setButtonRenderer(br);
+		buttonBehaviour = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
+		buttonRenderer = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+		buttonBehaviour->setButtonRenderer(buttonRenderer);
 		//Ponemos la m�sica de ganar
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
+		gameInstance->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
 		padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 
 	}
 	else {
 		//Ponemos la m�sica de perder
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::End_Lost, 0);
+		gameInstance->getAudioMngr()->playChannel(Resources::AudioId::End_Lost, 0);
 	}
 
 	//------------------>Volver al MenuPpal<---------------------
@@ -141,9 +149,9 @@ void EndState::createButtons()
 		64,
 		64,
 		0);
-	bb = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
-	br = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIconEndState), nullptr);
-	bb->setButtonRenderer(br);
+	buttonBehaviour = returnToMenuButton->addComponent<ButtonBehaviour>(goToMenuState, app);
+	buttonRenderer = returnToMenuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIconEndState), nullptr);
+	buttonBehaviour->setButtonRenderer(buttonRenderer);
 	//------------------>Navegaci�n por mando<---------------------
 	padNav->AddButton(ResetLevelButton, nullptr, returnToMapButton, returnToMapButton, NextLevelButton);         //RestartLevel
 	padNav->AddButton(returnToMapButton, ResetLevelButton, nullptr, returnToMenuButton, ResetLevelButton);   //ReturntoMap
@@ -155,10 +163,12 @@ void EndState::createButtons()
 
 void EndState::createPlayers()
 {
-	double casillaX = SDLGame::instance()->getCasillaX();
-	double casillaY = SDLGame::instance()->getCasillaY();
-	int winHeight = SDLGame::instance()->getWindowHeight();
-	int winWidth = SDLGame::instance()->getWindowWidth();
+	SDLGame* gameInstance = SDLGame::instance();
+
+	double casillaX = gameInstance->getCasillaX();
+	double casillaY = gameInstance->getCasillaY();
+	int winHeight = gameInstance->getWindowHeight();
+	int winWidth = gameInstance->getWindowWidth();
 	//-------------------Player1<-----------------------
 	{
 		Entity* Player1Idle = stage->addEntity();
@@ -170,7 +180,7 @@ void EndState::createPlayers()
 			5 * casillaY,
 			0);
 		Animator* p1Anim = Player1Idle->addComponent<Animator>();
-		Player1Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::PigAttack));
+		Player1Idle->addComponent<PlayerViewer>(gameInstance->getTextureMngr()->getTexture(Resources::PigIdle), gameInstance->getTextureMngr()->getTexture(Resources::PigWalk), gameInstance->getTextureMngr()->getTexture(Resources::PigAttack));
 		stage->addToGroup(Player1Idle, ecs::GroupID::PlayerLayer);
 		p1Anim->setCurrentState(Animator::States::Idle);
 	}
@@ -185,7 +195,7 @@ void EndState::createPlayers()
 			5 * casillaY,
 			0);
 		Animator* p2Anim = Player2Idle->addComponent<Animator>();
-		Player2Idle->addComponent<PlayerViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenIdle), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenWalk), SDLGame::instance()->getTextureMngr()->getTexture(Resources::ChickenAttack));
+		Player2Idle->addComponent<PlayerViewer>(gameInstance->getTextureMngr()->getTexture(Resources::ChickenIdle), gameInstance->getTextureMngr()->getTexture(Resources::ChickenWalk), gameInstance->getTextureMngr()->getTexture(Resources::ChickenAttack));
 		stage->addToGroup(Player2Idle, ecs::GroupID::PlayerLayer);
 		p2Anim->setCurrentState(Animator::States::Idle);
 	}
@@ -193,6 +203,8 @@ void EndState::createPlayers()
 
 void EndState::draw()
 {
-	background->render(RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight()));
+	SDLGame* gameInstance = SDLGame::instance();
+
+	background->render(RECT(0, 0, gameInstance->getWindowWidth(), gameInstance->getWindowHeight()));
 	State::draw();
 }

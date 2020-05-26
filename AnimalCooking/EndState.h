@@ -8,6 +8,8 @@
 #include "Vector2D.h"
 class EndState : public State
 {
+public:
+	EndState(AnimalCooking* ac);
 private:
 	//Cuando se cambie el callback por std::function se quita el static (y quizá el sdlGame)
 	static void goToMapState(AnimalCooking* ac);
@@ -23,8 +25,5 @@ private:
 	int maxScore;
 	bool getNewLevel = false;
 	Texture* background = nullptr;
-public:
-	EndState(AnimalCooking* ac);
-
 };
 
