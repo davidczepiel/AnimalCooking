@@ -6,8 +6,8 @@ class Transform;
 class ImageViewer : public Component
 {
 public:
-	ImageViewer(Texture* texture) : Component(ecs::ImageViewer), texture_(texture) {}
-	ImageViewer(): Component(ecs::ImageViewer), texture_(nullptr){}
+	ImageViewer(Texture* texture) : Component(ecs::ImageViewer), texture_(texture), transform_(nullptr) {}
+	ImageViewer(): Component(ecs::ImageViewer), texture_(nullptr), transform_(nullptr) {}
 
 	void setTexture(Texture* texture) { texture_ = texture; }
 
