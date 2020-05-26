@@ -381,4 +381,90 @@
     <Image Include="AnimalCooking.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6f5bd2ba-cc14-4f11-9c98-3608aace18cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files">
+      <UniqueIdentifier>{93164c63-2a02-4ba7-b622-32de26aa0cc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Adversities">
+      <UniqueIdentifier>{905d5e98-0f98-4e08-a97e-4aa4a45b1e89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\AI">
+      <UniqueIdentifier>{45cadca0-2cc6-4961-81b0-f50c01dea14e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Buttons">
+      <UniqueIdentifier>{eb032b87-3b1f-4a6e-a197-5185e48c4551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Cookers">
+      <UniqueIdentifier>{16131e3b-0f5e-4365-bf5c-de3555a4d70f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Foods">
+      <UniqueIdentifier>{f4e7185a-d801-439b-bb29-eb6c394a01a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Game">
+      <UniqueIdentifier>{3d71f315-7332-4faf-bca4-7e03b1d64020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Gpad">
+      <UniqueIdentifier>{425771b3-f303-45a9-bbc0-0db7f1e8d8d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Ingredients">
+      <UniqueIdentifier>{dadb2daf-74a8-4b9f-a13f-a666a92ea36b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Levels">
+      <UniqueIdentifier>{34638f04-5350-41f9-9831-9dbf3158f5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Orders">
+      <UniqueIdentifier>{90001198-e331-418a-827b-0e2a8a192e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Resources">
+      <UniqueIdentifier>{184317dd-014f-48a7-9a8a-a19c32ebad55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\States">
+      <UniqueIdentifier>{1c988027-6682-4e67-9231-46ccea8b60b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\Utensils">
+      <UniqueIdentifier>{06c60058-8e02-4526-b900-f7a03e21cbe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Adversities">
+      <UniqueIdentifier>{fca30325-3fd0-4573-b30c-b66c6b6e27fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{7ff6adaa-2432-4b93-909b-386cb809d65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Buttons">
+      <UniqueIdentifier>{372fe2dd-beed-4765-8db2-2d2438b7b82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cookers">
+      <UniqueIdentifier>{a1c23800-43e2-4e6c-8ee2-3b28ecbf1c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Foods">
+      <UniqueIdentifier>{d3effed3-110b-411c-8aed-f4c311163d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{f414c1e2-ed67-4693-801e-19fec288437f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gpad">
+      <UniqueIdentifier>{0f72e2d0-be77-4e61-b6e5-2c3a246cb753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ingredients">
+      <UniqueIdentifier>{626387ce-f5c4-459c-bcd3-546059290366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{ac04c7c9-70cf-4c6e-978f-ed4e33387a31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Orders">
+      <UniqueIdentifier>{70a43791-9ac0-4adb-aac8-e7a131eda1da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{012e5e7a-3c41-4666-b570-131a9bf3514a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{0bf08231-44e4-4ad9-be63-ba5bedf59ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utensils">
+      <UniqueIdentifier>{35757690-3163-45b6-b6e1-5cfa7f87efd9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
 </Project>
