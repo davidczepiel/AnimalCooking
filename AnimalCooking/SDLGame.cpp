@@ -29,8 +29,13 @@ void SDLGame::addStarsPerLevel(int stars, int level)
 
 void SDLGame::setLevelInfos(const vector<levelInfo> infos)
 {
-	for (int i = 0; i < infos.size(); ++i) 
+	for (int i = 0; i < infos.size(); ++i)
+	{
 		levelInfos_.push_back(new levelInfo(infos.at(i)));
+		unlockedStarsPerLevel.insert(std::make_pair(infos.at(i).level, infos.at(i).stars));
+		if (infos.at(i).unlocked)
+			unlockedLevels = i;
+	}
 }
 
 void SDLGame::removeLevelInfos()
@@ -47,6 +52,7 @@ SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),sco
 		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen() {
 	initSDL();
 	initResources();
+	
 }
 
 SDLGame::~SDLGame() {
