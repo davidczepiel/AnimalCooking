@@ -5,6 +5,7 @@ MapInfoBoxViewer::MapInfoBoxViewer() : Component(ecs::MapInfoBoxViewer),
 	boxText_(nullptr),
 	gotStar_(nullptr),
 	notGotStar_(nullptr),
+	active(true),
 	casillaX_(),
 	casillaY_() {
 	init();
