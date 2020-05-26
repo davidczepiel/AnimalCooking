@@ -9,8 +9,8 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 
-DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, 
-	std::array<Entity*, 2>& player,FoodPool* fp , const double casillaX, const double casillaY) :
+DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
+	std::array<Entity*, 2>& player, FoodPool* fp, const double casillaX, const double casillaY) :
 	em(em)
 {
 	//DishPool
@@ -28,7 +28,7 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 	//DishStack
 	DishStack* dish = new DishStack(Vector2D(jsonLevel["DishStack"]["pos"]["x"].as_double() * casillaX,
 		jsonLevel["DishStack"]["pos"]["y"].as_double() * casillaY),
-		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp,fp);
+		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp, fp);
 	em->addEntity(dish);
 	em->addToGroup(dish, CASTID(jsonGeneral["DishStack"]["Layer"].as_int()));
 

@@ -6,11 +6,11 @@
 #include "Transport.h"
 #include "FoodPool.h"
 
-class DishStack : public Entity,public Interactive
+class DishStack : public Entity, public Interactive
 {
 public:
 
-	DishStack(Vector2D pos,int maxDishes_,Transport* t1,Transport* t2,EntityManager* mng,DishPool* dp,FoodPool* fp);
+	DishStack(Vector2D pos, int maxDishes_, Transport* t1, Transport* t2, EntityManager* mng, DishPool* dp, FoodPool* fp);
 	~DishStack() { }
 
 	void setDishSize(const Vector2D& size) { dishSize_ = size; }

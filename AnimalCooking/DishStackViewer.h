@@ -4,7 +4,7 @@
 #include "Transform.h"
 #include "Interactive.h"
 
-class DishStackViewer : public Component	
+class DishStackViewer : public Component
 {
 public:
 	DishStackViewer(Interactive* i);

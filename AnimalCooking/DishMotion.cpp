@@ -13,11 +13,11 @@ void DishMotion::init()
 }
 
 void DishMotion::update()
-{	
+{
 	vector<Dish*> d = dp->getDishes();
 
 	for (auto it = d.begin(); it != d.end(); it++)
 	{
-		if((*it)->getInHands())(*it)->setPos((*it)->getPos() + (*it)->getSpeed());
-	}	
+		if ((*it)->getInHands())(*it)->setPos((*it)->getPos() + (*it)->getSpeed());
+	}
 }

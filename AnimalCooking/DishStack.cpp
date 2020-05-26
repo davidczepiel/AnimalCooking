@@ -4,12 +4,10 @@
 #include "GPadController.h"
 #include "Dish.h"
 
-DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : 
-	Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_,nullptr), maxDishes(maxDishes_), dishPool(dp),foodPool(fp), dishSize_()
+DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) :
+	Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_, nullptr), maxDishes(maxDishes_), dishPool(dp), foodPool(fp), dishSize_()
 {
 	position_ = pos;
-	size_ = Vector2D(128, 128);
-
 	addComponent<DishStackViewer>(this);
 }
 
@@ -54,7 +52,7 @@ void DishStack::action1(int id)
 		{
 			player->drop(false);
 			removeDish(d);
-					SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::DropDish, 0);
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::DropDish, 0);
 		}
 	}
 	else if (player->getObjectTypeInHands() == Resources::PickableType::Food) {
@@ -72,7 +70,7 @@ void DishStack::feedback(int id)
 
 	if (id == Resources::Player::Player1)
 	{
-		if (player1_->getObjectInHands() == nullptr || player1_->getObjectTypeInHands() == Resources::PickableType::Food) {	
+		if (player1_->getObjectInHands() == nullptr || player1_->getObjectTypeInHands() == Resources::PickableType::Food) {
 			if (GPadController::instance()->playerControllerConnected(id))
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[0].PICKUP));
 			else

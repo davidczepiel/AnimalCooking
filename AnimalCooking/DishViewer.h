@@ -17,6 +17,6 @@ public:
 private:
 	Texture* dish = nullptr; //textura plato vacio
 	DishPool* dp = nullptr;
-	
+
 };
 

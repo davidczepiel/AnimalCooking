@@ -3,8 +3,8 @@
 #include "Collisions.h"
 #include "GameConfig.h"
 
-DoorRenderer::DoorRenderer(Transform* tr, Transform* p1, Transform* p2, Texture* texture): Component(ecs::DoorRenderer),
-	state(State::Closed), tr(tr), t(texture), animState()
+DoorRenderer::DoorRenderer(Transform* tr, Transform* p1, Transform* p2, Texture* texture) : Component(ecs::DoorRenderer),
+state(State::Closed), tr(tr), t(texture), animState()
 {
 	players[0] = p1;
 	players[1] = p2;
@@ -27,7 +27,7 @@ void DoorRenderer::draw()
 	}
 }
 
-State DoorRenderer::checkCollision(){
+State DoorRenderer::checkCollision() {
 	if (Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), players[0]->getPos(), players[0]->getW(), players[0]->getH()) ||
 		Collisions::collides(tr->getPos(), tr->getW(), tr->getH(), players[1]->getPos(), players[1]->getW(), players[1]->getH())) {
 		return State::Open;
