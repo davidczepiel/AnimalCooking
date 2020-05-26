@@ -20,31 +20,28 @@ class MenuState: public State
 public:
 	MenuState(AnimalCooking* ac);
 	~MenuState();
-
 	void leftState();
 	void rightState();
 	void selectedState();
 
 private:
-	SelectionState state;
-	SDL_Rect backgroundRect;
-	SDL_Rect ruedecillaRect;
-	double ruedecillaAngle;
-
-	Texture* background;
-	Texture* ruedecilla;
-	Texture* ruedecillaShadow;
-
-	Entity* leftButton_;
-	Entity* rightButton_;
-	Entity* selectionButton_;
-	Entity* padNavigation_;
-
 	void draw() override;
-
 	void playMenuCallback();
 	void optionsMenuCallback();
 	void creditsMenuCallback();
 	void closeGame();
+
+	Texture* background;
+	Texture* ruedecilla;
+	Texture* ruedecillaShadow;
+	Entity* leftButton_;
+	Entity* rightButton_;
+	Entity* selectionButton_;
+	Entity* padNavigation_;
+	SelectionState state;
+	SDL_Rect backgroundRect;
+	SDL_Rect ruedecillaRect;
+
+	double ruedecillaAngle;
 };
 

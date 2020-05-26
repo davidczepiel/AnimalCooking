@@ -218,7 +218,6 @@
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManagerAdder.h" />
-    <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="GpadKeySwitcher.h" />
     <ClInclude Include="GpadKeySwitcherViewer.h" />

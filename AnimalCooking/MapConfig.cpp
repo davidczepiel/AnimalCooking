@@ -1,6 +1,10 @@
 #include "MapConfig.h"
 #include "MapState.h"
 
+MapConfig::MapConfig(): levelsRecipes_(), newGame_(nullptr)
+{
+}
+
 MapConfig::MapConfig(string fileN) : fileName_(fileN), levelsRecipes_(), newGame_(false)
 {
 }

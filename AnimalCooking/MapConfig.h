@@ -17,15 +17,14 @@ struct levelInfo {
 
 class MapConfig {
 public: 
+	MapConfig();
 	MapConfig(string fileN);
 	MapConfig(string fileN, bool isNewGame);
-	MapConfig() {};
 	~MapConfig() {};
 
 	void save();
 	void saveNewProfile(const string& newProfile);
 	void load();
-
 	void removeProfile();
 
 	inline const vector <levelInfo>& getLevelInfoRecipes() { return levelsRecipes_; }
@@ -34,7 +33,9 @@ public:
 
 private:
 	void fill();
+
 	vector <levelInfo> levelsRecipes_;
 	string fileName_ = "";
+
 	bool newGame_;
 };

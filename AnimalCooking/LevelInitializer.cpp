@@ -1,7 +1,6 @@
 #include "LevelInitializer.h"
 #include "ScreenLoader.h"
 #include "Manager.h"
-
 #include "PlayersAdder.h"
 #include "IngAdder.h"
 #include "FoodPoolAdder.h"
@@ -20,14 +19,12 @@
 #include "OrderAdder.h"
 #include "WallAdder.h"
 #include "MultipleAdversityManager.h"
-
 #include "SDLGame.h"
 #include "AdversityAdder.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
-
 
 LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
 {
@@ -41,8 +38,6 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	
 	offsetX = casillaX * 0.2;
 	offsetY = casillaY * 0.2;
-	
-
 
 	initialize_players();
 	initialize_ingredientsPool();

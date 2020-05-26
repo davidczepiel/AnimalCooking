@@ -738,9 +738,6 @@
     <ClInclude Include="EndState.h">
       <Filter>Headers Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="GameStates.h">
-      <Filter>Headers Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="MapState.h">
       <Filter>Headers Files\States</Filter>
     </ClInclude>

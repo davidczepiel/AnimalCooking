@@ -10,6 +10,7 @@ class EndState : public State
 {
 public:
 	EndState(AnimalCooking* ac);
+
 private:
 	//Cuando se cambie el callback por std::function se quita el static (y quizá el sdlGame)
 	static void goToMapState(AnimalCooking* ac);
@@ -21,9 +22,10 @@ private:
 	void createPlayers();
 	void draw() override;
 
+	Texture* background = nullptr;
+
 	int score;
 	int maxScore;
-	bool getNewLevel = false;
-	Texture* background = nullptr;
+	bool getNewLevel = false;	
 };
 

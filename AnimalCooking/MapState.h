@@ -11,6 +11,7 @@ class MapState :public State {
 public:
 	MapState(AnimalCooking* ac);
 	~MapState();
+
 	static void screenLoaderCallback(AnimalCooking* ac);
 	static void backButtonCallback(AnimalCooking* ac);
 	static void newGameCallback(AnimalCooking* ac);
@@ -18,13 +19,14 @@ public:
 
 	void draw() override;
 	void update() override;
-
 	void chooseOption();
 	void askName();
 	void init();
 	void setState();
 	void hideChooseButtons();
 	void prepareNavPadFewProfiles(bool many);
+	void askProfile();
+	void removeProfile(const string& name);
 
 	inline void setName(const string& n) { playerName_ = n; game_->setName(n); }
 	inline void setCurrentLevel(int nl) {
@@ -36,12 +38,8 @@ public:
 	inline void isNotNewGame() { isNewGame_ = false; }
 	inline bool isCurrentLevelUnlocked() { return levelinfos_->at(currentLevel_)->unlocked; }
 
-	void askProfile();
-	void removeProfile(const string& name);
-
 private:
 	void configPadNavigation();
-
 	void placeHousesAndButtons();
 
 	SDLGame* game_;
@@ -59,17 +57,16 @@ private:
 	vector<levelInfo*>* levelinfos_;
 	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
-
 	Texture* bgText_;
 	Texture* housesBackgroundText_;
 	Texture* playButtonText_;
-
 	std::string playerName_;
+
+	double casillaX;
+	double casillaY;
 	int currentLevel_;
 	int lastLevel_;
 	int maxLevels_;
-	double casillaX;
-	double casillaY;
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;

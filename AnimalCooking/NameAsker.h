@@ -14,13 +14,15 @@ public:
 	void setActive(bool a);
 	inline bool getActive() { return active; }
 	inline string getName() { return nameStream.str(); }
+
 private:
 	Texture* bg;
 	stringstream nameStream;
+	InputHandler* ih;
+
 	double casillaX;
 	double casillaY;
 	double nameWidth_;
-	InputHandler* ih;
 	bool active;	
 };
 

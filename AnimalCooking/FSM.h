@@ -8,6 +8,20 @@ using namespace std;
 
 class FSM
 {
+public:
+	FSM() {}
+	virtual ~FSM();
+	void pushState(State* s);
+	void pushState(State* s, std::function<void()> f);
+	void popState();
+	void popState(std::function<void()> f);
+	void changeState(State* s);
+	void changeState(State* s, std::function<void()> f);
+	void refresh();
+
+	State* currentState();
+	inline const size_t getStackSize() const { return statesStack.size(); }
+
 private:
 	struct Event {
 		bool push;
@@ -16,17 +30,4 @@ private:
 	};
 	queue<Event> events;
 	stack<State*> statesStack;
-public:
-	FSM() {}
-	virtual ~FSM();
-
-	void pushState(State* s);
-	void pushState(State* s, std::function<void()> f);
-	void popState();
-	void popState(std::function<void()> f);
-	State* currentState();
-	void changeState(State* s);
-	void changeState(State* s, std::function<void()> f);
-	void refresh();
-	inline const size_t getStackSize() const { return statesStack.size(); }
 };
