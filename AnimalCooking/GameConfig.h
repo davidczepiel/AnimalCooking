@@ -21,8 +21,8 @@ namespace config {
 	constexpr int ANIM_TIME = 20000;
 
 	//COOKERS
-	constexpr int SKILLET_SECONDS_TO_COOK = 10;
-	constexpr int OVEN_SECONDS_TO_COOK = 15;
+	constexpr int SKILLET_SECONDS_TO_COOK = 7;
+	constexpr int OVEN_SECONDS_TO_COOK = 7;
 	constexpr int COOKER_ANIM_SPEED = 150;
 	constexpr int COOKER_ANIM_OVERHEATED = 150;
 
@@ -31,7 +31,6 @@ namespace config {
 
 	//INGREDIENTS
 	constexpr int ING_STARTING_DELTA_TIME = 500;
-	constexpr int ING_MAX_IN_SCENE = 8;
 
 	//PauseState
 	constexpr double PAUSESTATE_BUTTON_WIDTH = 1 / 10; //Porcentaje respecto a la pantalla
@@ -63,7 +62,7 @@ namespace config {
 	constexpr double KNIFE_RANGE = 0.8;
 	constexpr double KNIFE_HITBOX_WIDTH = 0.8;
 	constexpr double KNIFE_HITBOX_HEIGHT = 0.5;
-	constexpr int MAX_TIME_ON_FLOOR = 5;
+	constexpr int MAX_TIME_ON_FLOOR = 25;
 
 	constexpr double MACE_RANGE = 0.8;
 	constexpr double MACE_HITBOX_WIDTH = 0.8;
@@ -94,12 +93,12 @@ namespace config {
 			players_keyboardKeys[1].DOWN = SDLK_DOWN;
 			players_keyboardKeys[1].LEFT = SDLK_LEFT;
 			players_keyboardKeys[1].RIGHT = SDLK_RIGHT;
-			players_keyboardKeys[1].PICKUP = SDLK_b;
-			players_keyboardKeys[1].ATTACK = SDLK_n;
-			players_keyboardKeys[1].OPEN = SDLK_v;
-			players_keyboardKeys[1].PREVIOUS = SDLK_c;
-			players_keyboardKeys[1].NEXT = SDLK_g;
-			players_keyboardKeys[1].FINISHER = SDLK_j;
+			players_keyboardKeys[1].PICKUP = SDLK_k;
+			players_keyboardKeys[1].ATTACK = SDLK_l;
+			players_keyboardKeys[1].OPEN = SDLK_p;
+			players_keyboardKeys[1].PREVIOUS = SDLK_i;
+			players_keyboardKeys[1].NEXT = SDLK_o;
+			players_keyboardKeys[1].FINISHER = SDLK_RSHIFT;
 		}
 
 		struct KeyboardKeys {
@@ -108,12 +107,12 @@ namespace config {
 			SDL_Keycode DOWN = SDLK_s;
 			SDL_Keycode LEFT = SDLK_a;
 			SDL_Keycode RIGHT = SDLK_d;
-			SDL_Keycode PICKUP = SDLK_k;
-			SDL_Keycode ATTACK = SDLK_p;
-			SDL_Keycode OPEN = SDLK_f;
+			SDL_Keycode PICKUP = SDLK_f;
+			SDL_Keycode ATTACK = SDLK_g;
+			SDL_Keycode OPEN = SDLK_r;
 			SDL_Keycode PREVIOUS = SDLK_q;
 			SDL_Keycode NEXT = SDLK_e;
-			SDL_Keycode FINISHER = SDLK_r;
+			SDL_Keycode FINISHER = SDLK_SPACE;
 		};
 		struct GPadButtons {
 			//PlayerController 1

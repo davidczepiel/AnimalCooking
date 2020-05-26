@@ -29,11 +29,11 @@ void MapInfoBoxViewer::draw()
 		double heightCasillas = 3;
 		//height casillas/6 porque es heightcasillas/2 (para que todo ocupe la mitad) /3(para que sean 3 líneas)
 		double lineaHeight = heightCasillas / 6;
-		boxText_->render(RECT(40, 40, casillaX_ * 6, heightCasillas * casillaY_));
+		boxText_->render(RECT(40, 40, casillaX_ * 7.5, heightCasillas * casillaY_));
 		for (int i = 0; i < 3; i++)
 		{
-			Texture loreLineai = Texture(game_->getRenderer(), info_->lore[i], game_->getFontMngr()->getFont(Resources::QuarkCheese70), hex2sdlcolor("#000000FF"));
-			loreLineai.render(RECT(60, 60 + i*casillaY_ * lineaHeight, casillaX_ * 6 - 60, lineaHeight * casillaY_));
+			Texture loreLineai = Texture(game_->getRenderer(), info_->lore[i], game_->getFontMngr()->getFont(Resources::QuarkCheese70), hex2sdlcolor("#FFFFFFFF"));
+			loreLineai.render(RECT(60, 60 + i*casillaY_ * lineaHeight, casillaX_ * 7.5 - 60, lineaHeight * casillaY_));
 		}
 		switch (info_->stars)
 		{

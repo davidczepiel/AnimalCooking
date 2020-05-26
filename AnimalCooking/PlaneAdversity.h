@@ -20,12 +20,13 @@ class PlaneAdversity : public Adversity
 	double angle_;
 	Timer* internalTimer;
 	state state_;
+	bool alreadyInitialized;
 
 	void StartPlane();
 	bool isPlaneOut();
 public:
-	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam), internalTimer(new Timer()) { }
-	~PlaneAdversity() {}
+	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam), internalTimer(new Timer()), alreadyInitialized(false) { }
+	~PlaneAdversity() { delete internalTimer; }
 	
 	void update();
 	void draw();

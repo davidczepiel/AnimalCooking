@@ -15,6 +15,6 @@ void Attack::attack()
 {
 	Pickable* p = GETCMP1_(Transport)->getObjectInHands();
 	if (p != nullptr && GETCMP1_(Transport)->getObjectTypeInHands() == Resources::PickableType::Utensil) {	
-		static_cast<Utensil*>(p)->attack(Vector2D(GETCMP1_(InteractionRect)->getPos()-tr_->getPos()));
+		static_cast<Utensil*>(p)->attack(Vector2D(GETCMP1_(InteractionRect)->getdir()));
 	}
 }

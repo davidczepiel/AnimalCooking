@@ -4,9 +4,9 @@
 
 
 Dish::Dish(Vector2D pos_, Transport* transPlayer1, Transport* transPlayer2, int maxFood, FoodPool* fp) : Pickable(transPlayer1, transPlayer2, nullptr),
-	foods_(vector<Food*>()),isViewingContent(false), inHands(true), foodPool(fp)
+	currentFood(), foods_(), isViewingContent(false), inHands(true), foodPool(fp)
 {
-	foods_.reserve(maxFood);
+	//foods_.reserve(maxFood);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatoFeedBack);
 }
 
@@ -15,7 +15,8 @@ void Dish::addFood(Food* f)
 {
 	if (f != nullptr) 
 	{
-		foods_.emplace_back(f);			
+		f->setInHands(false);
+		foods_.push_back(f);			
 		currentFood = ++(foods_.rbegin());		
 		f->setCanInteract(false);
 	}
@@ -27,6 +28,7 @@ Food* Dish::takeFood()
 	if (!foods_.empty()) 
 	{
 		Food* aux = *currentFood.base();
+		aux->setInHands(true);
 		//Se vuelve a establecer el size tras salir del plato
 		jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
 		aux->setSize(Vector2D(jsonGeneral["Foods"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), jsonGeneral["Foods"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY()));
@@ -59,13 +61,19 @@ void Dish::firstFood()
 
 void Dish::clearFoods()
 {	
+	//Elimino de la foodPool las food que tiene el plato
+	for (auto& f : foods_)
+	{
+		foodPool->RemoveFood(std::find(foodPool->getPool().begin(), foodPool->getPool().end(),f));
+	}
+
 	auto it = foods_.begin();
+	//Elimino las food del plato
 	while (it != foods_.end()) {
 		delete* it;		
 		++it;
 	}
 	foods_.clear();
-	foodPool->getPool().clear();
 }
 
 
@@ -81,13 +89,13 @@ void Dish::feedback(int player)
 	{
 		vector<Food*> foods = this->getFoodVector();
 
-		int ofset = 55;
+		int ofset = 40;
 		int offsetInside = 15;
 		int rows = ceil(foods.size() / 2.0);
 		if (rows == 0) rows = 1;
 
 		int w = 140 / 2 - offsetInside * 2;
-		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 140, rows * w + offsetInside * 2);
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 120, rows * w + offsetInside * 2);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 		feedbackVisual_->render(rect);
 		rect.x += offsetInside;

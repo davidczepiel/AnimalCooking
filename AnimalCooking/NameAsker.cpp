@@ -16,7 +16,7 @@ void NameAsker::draw()
 				"#000000FF"));
 		t.render(RECT(
 			8 * casillaX - t.getWidth()/2,
-			4.4 * casillaY,
+			4.25 * casillaY,
 			t.getWidth(),
 			t.getHeight()), 0);
 		nameWidth_ = t.getWidth();

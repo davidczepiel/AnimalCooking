@@ -168,6 +168,8 @@
     <ClCompile Include="ButtonBehaviourNC.cpp" />
     <ClCompile Include="ButtonRendererHouse.cpp" />
     <ClCompile Include="ButtonChangeOnClick.cpp" />
+    <ClCompile Include="CreditsViewer.cpp" />
+    <ClCompile Include="AdversityAdder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
@@ -369,6 +371,8 @@
     <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonRendererHouse.h" />
     <ClInclude Include="ButtonChangeOnClick.h" />
+    <ClInclude Include="CreditsViewer.h" />
+    <ClInclude Include="AdversityAdder.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

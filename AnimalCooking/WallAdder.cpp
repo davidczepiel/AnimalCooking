@@ -85,7 +85,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	//Suelos
 	Entity* cocina = mngr->addEntity();
-	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 7 * casillaY);
+	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
 	cocina->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Suelo), Vector2D(casillaX, casillaY));
 	mngr->addToGroup(cocina, ecs::GroupID::Layer1);
 

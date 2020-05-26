@@ -20,6 +20,7 @@ public:
     void setUtensilsPool(UtensilsPool* u) { utensilPool = u; utensilPool->SetGameLogic(this); }
     void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
     void setLevelTimer(Uint32 time, Vector2D pos, Vector2D size);
+    int getLevelTime() { return levelTimer_->getTime(); }
 
 private:
     void playHit(Resources::UtensilType type);

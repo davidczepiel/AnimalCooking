@@ -33,9 +33,9 @@ void PlayersAdder::players_addComponents(Entity* entity, int id)
 	entity->addComponent<Animator>();
 	entity->addComponent<PlayerMotion>();
 	entity->addComponent<Selector>();
-	entity->addComponent<InteractionRect>();
+	InteractionRect* ir = entity->addComponent<InteractionRect>();
 	entity->addComponent<Attack>();
-	entity->addComponent<Transport>();
+	entity->addComponent<Transport>(ir);
 	entity->addComponent<PlayerController>(id);
 }
 

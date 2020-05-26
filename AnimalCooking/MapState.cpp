@@ -10,6 +10,7 @@
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
+	nameAsker(nullptr),
 	infoBox_(nullptr),
 	playButton_(nullptr),
 	returnButton_(nullptr),
@@ -35,7 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#000000ff"));
 	chooseOption();
-	
+
 }
 
 MapState::~MapState() {
@@ -54,13 +55,13 @@ void MapState::chooseOption() {
 	if (mapCFG.getProfiles().size() < 10) {
 		newGameButton_ = stage->addEntity();
 		newGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 2.5 * casillaY),
+			Vector2D(5 * casillaX, 4.5 * casillaY),
 			Vector2D(),
 			6 * casillaX,
 			1.5 * casillaY,
-			0);
+			0);		
 		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
-		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
+		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
 	}
@@ -68,13 +69,13 @@ void MapState::chooseOption() {
 	if (mapCFG.getProfiles().size() > 0) {
 		loadGameButton_ = stage->addEntity();
 		loadGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 4.5 * casillaY),
+			Vector2D(5 * casillaX, 2.5 * casillaY),
 			Vector2D(),
 			6 * casillaX,
 			1.5 * casillaY,
 			0);
 		ButtonBehaviour* bb = loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
-		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
+		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
 		bb->setButtonRenderer(br);
 		stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
 	}
@@ -88,7 +89,7 @@ void MapState::chooseOption() {
 		1.5 * casillaY,
 		0);
 	ButtonBehaviour* bb = exit->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), game_->getTextureMngr()->getTexture(Resources::Back));
+	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::Back));
 	bb->setButtonRenderer(br);
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
@@ -97,9 +98,9 @@ void MapState::chooseOption() {
 
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 		if (newGameButton_ && loadGameButton_) {
-			padNavigation_->AddButton(newGameButton_, exit, loadGameButton_, exit, nullptr);
-			padNavigation_->AddButton(loadGameButton_, newGameButton_, nullptr, exit, nullptr);
-			padNavigation_->AddButton(exit, nullptr, newGameButton_, nullptr, newGameButton_);
+			padNavigation_->AddButton(loadGameButton_, exit, newGameButton_, exit, nullptr);
+			padNavigation_->AddButton(newGameButton_, loadGameButton_, nullptr, exit, nullptr);
+			padNavigation_->AddButton(exit, nullptr, loadGameButton_, nullptr, loadGameButton_);
 		}
 		else if (!loadGameButton_) {
 			padNavigation_->AddButton(newGameButton_, exit, nullptr, exit, nullptr);
@@ -125,21 +126,32 @@ void MapState::draw()
 
 void MapState::update()
 {
+	GPadController* gpad = GPadController::instance();
+	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+
+		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
+			if (playButton_ != nullptr)
+				GETCMP2(playButton_, ButtonBehaviour)->action();
+			else if (nameAsker != nullptr) {
+				NameAsker* na = GETCMP2(nameAsker, NameAsker);
+				if (na->getActive() && na->getName().size() > 1) {
+					na->setActive(false);
+					setName(na->getName());
+					setState();
+				}
+			}
+		}
+		else if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+			backButtonCallback(getAnimalCooking());
+		}
+
+	}
 	for (auto& e : stage->getEntites()) {
 		if (!hasToBreak)
 			e->update();
 		else break;
 	}
 	hasToBreak = false;
-	GPadController* gpad = GPadController::instance();
-	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->buttonJustPressed()) {
-		if (playButton_ != nullptr &&  (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
-			GETCMP2(playButton_, ButtonBehaviour)->action();
-		}
-		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
-			backButtonCallback(getAnimalCooking());
-		}
-	}
 
 }
 
@@ -174,7 +186,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
-			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
@@ -186,7 +198,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonBin), nullptr);
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
@@ -205,7 +217,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			ButtonBehaviourNC* bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(true, profiles[i]);
-			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), profileTextures.back());
+			ButtonRenderer* br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), profileTextures.back());
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 
@@ -217,7 +229,7 @@ void MapState::askProfile()
 				1.1 * casillaY,
 				0);
 			bb = profileAskers.back()->addComponent<ButtonBehaviourNC>(false, profiles[i]);
-			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), nullptr);
+			br = profileAskers.back()->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonBin), nullptr);
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
@@ -228,11 +240,10 @@ void MapState::askProfile()
 
 void MapState::prepareNavPadFewProfiles(bool muchos)
 {
-	padNavigation_->AddButton(exit, nullptr, profileAskers.at(0), nullptr, profileAskers.at(0));
 	int jump;
 	if (muchos) jump = 4;
 	else jump = 2;
-	//Bucle para meter la navegación de cada botón
+	//Bucle para meter la navegaciï¿½n de cada botï¿½n
 	Entity* up;
 	Entity* down;
 	Entity* left;
@@ -265,6 +276,7 @@ void MapState::prepareNavPadFewProfiles(bool muchos)
 
 		padNavigation_->AddButton(profileAskers.at(i), up, down, left, right);
 	}
+	padNavigation_->AddButton(exit, nullptr, profileAskers.at(0), nullptr, profileAskers.at(0));
 }
 
 
@@ -300,7 +312,7 @@ void MapState::setState() {
 	infoBox_ = stage->addEntity();
 	playButton_ = stage->addEntity();
 	playButton_->addComponent<Transform>(
-		Vector2D(4 * casillaX, 2.3 * casillaY),
+		Vector2D(4.7 * casillaX, 2.3 * casillaY),
 		Vector2D(),
 		2 * casillaX,
 		0.75 * casillaY,
@@ -387,12 +399,13 @@ void MapState::loadGameCallback(AnimalCooking* ac)
 }
 
 void MapState::screenLoaderCallback(AnimalCooking* ac) {
-	SDLGame::instance()->getAudioMngr()->haltMusic();
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	MapState* mp = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	int cl = mp->getCurrentLevel();
-	if (mp->isCurrentLevelUnlocked())
+	if (mp->isCurrentLevelUnlocked()) {
+		SDLGame::instance()->getAudioMngr()->haltMusic();
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDLGame::instance()->getFSM()->pushState(new ScreenLoader(cl + 2, ac));
+	}
 }
 
 void MapState::backButtonCallback(AnimalCooking* ac) {

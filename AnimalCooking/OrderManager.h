@@ -46,6 +46,8 @@ public:
 
 	inline const set<Resources::FoodType>& getPosibleOrders() const { return availableOrders_; }
 
+	bool someOneWantsThis(Resources::FoodType finalProduct);
+
 private:
 	size_t distXBetweenOrders_;
 	double msPerIng_;

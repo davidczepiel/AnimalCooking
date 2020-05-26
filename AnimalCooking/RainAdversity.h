@@ -20,6 +20,9 @@ class RainAdversity :
 	int lastFrame;
 	int animationFrame;
 	bool started;
+	int lastTick;
+	int cadence;
+	
 
 public:
 	RainAdversity(AdversityManager* am, MultipleAdversityManager* mam);

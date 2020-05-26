@@ -9,14 +9,15 @@
 Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
-	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR *1000;
-	dirtTimer_ = new DefaultTimer();
+	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR * 1000;
+	dirtTimer_ = new UtensilTimer();
+	dirtTimer_->setSize(Vector2D(100, 30));
 	dirtTimer_->setTime(maxTimeOnFloor_);
 	rangeX_ = 100;
 	rangeY_ = 100;
 	attackHitBoxWidth_ = 100;
 	attackHitBoxHeight_ = 50;
-	attackRate_ = 1000;
+	attackRate_ = 500;
 	lastAttack_ = SDL_GetTicks();
 	myState = State::shelf;
 	dirty_ = false;
@@ -37,7 +38,7 @@ Utensil::~Utensil() {
 void Utensil::update() {
 
 	if (myState != State::playerHand) {
-		if (myState == State::floor) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
+		if (myState == State::floor && !dirty_) {  //Si me encuentro en el suelo puedo empezar a ensuciarme
 			dirtTimer_->update();
 			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
@@ -46,6 +47,8 @@ void Utensil::update() {
 				//resetDirtTimer();
 			}
 		}
+		else
+			dirtTimer_->timerReset();
 	}
 	else
 	{
@@ -86,7 +89,7 @@ void Utensil::render()const {
 
 	//Si no esta en las manos del jugador,es decir en el suelo o en repsias,se renderiza
 	if (myState != State::playerHand)
-	{	
+	{
 		if (!dirty_ && !attacking_)
 			cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
 		else if (!dirty_ && attacking_) {
@@ -104,6 +107,7 @@ void Utensil::onDrop(bool onFloor) {
 		Pickable::onDrop(onFloor);
 		myState = State::floor;
 		dirtTimer_->timerStart();
+		dirtTimer_->setPos(Vector2D(position_.getX(), position_.getY() - 50));
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop, 0);
 	}
 	else
@@ -123,11 +127,17 @@ void Utensil::action1(int player) {
 	//Porque si estoy en una repisa ya hace los ajustes necesarios ella misma
 	//Y si estoy en la mano de un player no debería llamarse a esta action
 	if (myState == State::floor) {
-		onPick();
+		Transport* player = nullptr;
 		if (player == 0)
-			player1_->pick(this, Resources::PickableType::Utensil);
+			player = player1_;
 		else
-			player2_->pick(this, Resources::PickableType::Utensil);
+			player = player2_;
+
+		if (player->getObjectTypeInHands() != Resources::PickableType::Dish)
+		{
+			onPick();
+			player->pick(this, Resources::PickableType::Utensil);
+		}
 	}
 }
 
@@ -140,7 +150,7 @@ void Utensil::feedback(int player)
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
-		}	
+		}
 		feedbackVisual_->render(rect);
 	}
 }
@@ -148,7 +158,8 @@ void Utensil::feedback(int player)
 
 
 void Utensil::changeDirtySpeed(int speedModifier) {
-	dirtTimer_->setTime(maxTimeOnFloor_+speedModifier);
+	if (myState == State::floor)
+		dirtTimer_->setTime(dirtTimer_->getTime() + speedModifier);
 }
 
 void Utensil::resetDirtTimer()

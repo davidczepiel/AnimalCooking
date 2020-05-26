@@ -3,7 +3,7 @@
 #include "MultipleAdversityManager.h"
 #include "TimerViewer.h"
 
-RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam) :Adversity(am, mam)
+RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam) :Adversity(am, mam), lastTick(0),cadence(500)
 {
 	rainTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
 	if (adversityMngr_ != nullptr)
@@ -20,7 +20,7 @@ RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam
 	clipArea.y = 0;
 	clipArea.w = 202;
 	clipArea.h = 149;
-	dirtSpeedUp = -4000;
+	dirtSpeedUp = -500;
 	rainTimer->setTime(10000);
 	lastFrame = 0;
 	frameTime = 75;
@@ -38,11 +38,16 @@ void RainAdversity::update()
 	if (!rainTimer->isTimerEnd()) {
 		for (int i = 0; i < utensilsPool->size(); i++) {
 			if (Collisions::collides(Vector2D(drawingArea.x, drawingArea.y), drawingArea.w, drawingArea.h,
-				utensilsPool->at(i)->getPos(), utensilsPool->at(i)->getSize().getX(), utensilsPool->at(i)->getSize().getY()))
-				utensilsPool->at(i)->changeDirtySpeed(dirtSpeedUp);
+				utensilsPool->at(i)->getPos(), utensilsPool->at(i)->getSize().getX(), utensilsPool->at(i)->getSize().getY())) {
+				if (SDL_GetTicks() - lastTick > cadence) {
+					lastTick = SDL_GetTicks();
+					utensilsPool->at(i)->changeDirtySpeed(dirtSpeedUp);
+				}
+			}
 			else
 				utensilsPool->at(i)->resetDirtTimer();
 		}
+
 	}
 	//Si no, la adversidad se acabó
 	else {
@@ -50,6 +55,7 @@ void RainAdversity::update()
 			adversityMngr_->stopAdversity();
 		else
 			multipleAdversityMngr_->stopAdversity(ecs::AdversityID::RainAdversity);
+		
 	}
 	if (SDL_GetTicks() - lastFrame >= frameTime) {
 		lastFrame = SDL_GetTicks();

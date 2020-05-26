@@ -10,7 +10,7 @@ class OrderManager;
 class AIClient : public Component {
 public:
 	AIClient();
-	AIClient(Uint32 deltaTimePerOrder, TimerViewer* tv);
+	AIClient(Uint32 deltaTimePerOrder, Uint32 deltaTimeFirstOrder,TimerViewer* tv);
 
 	inline void setAvailableOrders(vector<Resources::FoodType>& lista) {
 		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
@@ -30,6 +30,9 @@ private:
 
 	queue<Resources::FoodType> initialOrders_;
 	vector<Resources::FoodType> availableOrders_; // posibles platos en este nivel
+
+	Uint32 deltaTimePerOrder_;
+	bool firstOrder_;
 
 	void checkNewOrder();
 	Resources::FoodType chooseRandomOrder();

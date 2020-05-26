@@ -7,6 +7,7 @@
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
 xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
 {
+	focus.e = nullptr;
 }
 
 
@@ -21,9 +22,11 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 	newButton.posibleFocus = posibleFocus;
 
 	buttons.push_back(newButton);
-	if (buttons.size() == 1) {
+
+	if (buttons.size()>0 && focus.e == nullptr && buttons.at(buttons.size()-1).e != nullptr ) {
 		//Si el el primer boton en a�adirse le digo que esta en el foco
 		if ((GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1))) {
+
 			ButtonBehaviour* b = GETCMP2(buttons.at(0).e, ButtonBehaviour);
 			if (b != nullptr) b->setFocusByController(true);
 			else {
@@ -32,7 +35,7 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 					b->setFocusByController(true);
 			}
 		}
-		focus = buttons.at(0);
+		focus = buttons.at(buttons.size()-1);
 	}
 }
 

@@ -15,7 +15,7 @@
 
 class MenuState: public State
 {
-	enum SelectionState { Options, Play, Credits, Exit};
+	enum SelectionState { Config, Play, Credits, Exit};
 
 public:
 	MenuState(AnimalCooking* ac);

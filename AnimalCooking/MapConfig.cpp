@@ -20,9 +20,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "nuestros amigos el cerdo y el pollo acaban de ";
-	auxiliar.lore[1] = "iniciar su aventura por los restaurantes.";
-	auxiliar.lore[2] = "Y los montes de por ahí son mu bonicos";
+	auxiliar.lore[0] = "Get the kitchens ready, the cooking conmpetition starts in Villa del Pun!";
+	auxiliar.lore[1] = "Your first opponents are your pastrycook neighbours...";
+	auxiliar.lore[2] = "can you beat them?";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -32,9 +32,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "lore";
-	auxiliar.lore[1] = "lore";
-	auxiliar.lore[2] = "lore";
+	auxiliar.lore[0] = "The villagers find out about the cooking competition and that the best restaurant";
+	auxiliar.lore[1] = "in the village wants to challenge you to be the representative of the village in this one";	
+	auxiliar.lore[2] = "Show them what a gourmet dish is!";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -44,9 +44,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "lore";
-	auxiliar.lore[1] = "lore";
-	auxiliar.lore[2] = "lore";
+	auxiliar.lore[0] = "You've moved on to the next phase, however, you still have a long way to go.";
+	auxiliar.lore[1] = "It's your turn to join the other villages at Serendipity.";
+	auxiliar.lore[2] = "Look out! There are a lot of planes passing by.";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -56,9 +56,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "lore";
-	auxiliar.lore[1] = "lore";
-	auxiliar.lore[2] = "lore";
+	auxiliar.lore[0] = "Wow! You start to gain fame after the challenges and you even";
+	auxiliar.lore[1] = "have your first fans,although these are friends and acquaintances.";		
+	auxiliar.lore[2] = "It's time to show that you're better at cooking than anything else.";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -68,9 +68,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = " ";
-	auxiliar.lore[1] = " ";
-	auxiliar.lore[2] = " ";
+	auxiliar.lore[0] = "Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);

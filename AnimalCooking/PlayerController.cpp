@@ -25,29 +25,30 @@ void PlayerController::joystickUpdate()
 	GPadController* gpad = GPadController::instance();
 	//if (gpad->joysticksInitialised()) {
 	double x = 0, y = 0;	//interactive
+	double speed = 0.6;
+
 	//Axis------------------------
 	double Xvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
 	if (Xvalue > 0 || Xvalue < 0)
-	{
 		x = Xvalue;
-		tr_->setVelX(x);
-	}
-	else {
-		tr_->setVelX(0);
-	}
+	else 
+		x = 0;
+
 	double Yvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY);
 	if (Yvalue > 0 || Yvalue < 0)
-	{
 		y = Yvalue;
-		tr_->setVelY(Yvalue);
-	}
-	else {
-		tr_->setVelY(0);
-	}
+	else 
+		y = 0;
+
+	Vector2D vel(x, y);
+	vel = vel.normalize();
+	tr_->setVelY(speed * vel.getY());
+	tr_->setVelX(speed * vel.getX());
+
 	ir_->setDir(x, y);
 	//Se establece la direccion para mostrar la animacion correspondiente
-	if (!(x == 0 && y == 0)) animator->setDir(Vector2D(x, y));
-
+	if (!(x == 0 && y == 0)) { animator->setDir(Vector2D(x, y)); transport->setDir(Vector2D(x, y)); }
+	
 	//Botones-------------------------------
 	if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.PICKUP)) {
 		ableToPress = false;
@@ -69,8 +70,9 @@ void PlayerController::joystickUpdate()
 		if (transport->getObjectInHands() != nullptr && transport->getObjectTypeInHands() == Resources::PickableType::Utensil)
 		{
 			animator->getTimer().timerStart();
+			if (!static_cast<Utensil*>(transport->getObjectInHands())->isDirty())
 			setUtensilState(Animator::States::AttackWithKnife, Animator::States::AttackWithMace,
-				Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
+				            Animator::States::AttackWithGrater, Animator::States::AttackWithNet);
 		}
 	}
 	else if (ableToPress && GPadController::instance()->playerPressed(id_, buttons.FINISHER)) {
@@ -108,7 +110,7 @@ void PlayerController::joystickUpdate()
 		                                                                          Animator::States::WalkWithMace, Animator::States::WalkWithGrater, Animator::States::WalkWithNet, Animator::States::Walk,	        	                                                                 
 		                                                                          Animator::States::WalkWithDirtyKnife,Animator::States::WalkWithDirtyMace,Animator::States::WalkWithDirtyGrater,Animator::States::WalkWithDirtyNet);
 
-
+	//Estados de idle
 	else if(((Xvalue==0 && Yvalue==0) || animator->getTimer().isTimerEnd()) && !GPadController::instance()->playerPressed(id_, SDL_CONTROLLER_BUTTON_X)) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
 		                                                                                Animator::States::IdleWithMace, Animator::States::IdleWithGrater,Animator::States::IdleWithNet, Animator::States::Idle,		                                                                                 
 		                                                                                Animator::States::IdleWithDirtyKnife, Animator::States::IdleWithDirtyMace, Animator::States::IdleWithDirtyGrater, Animator::States::IdleWithDirtyNet);
@@ -138,7 +140,7 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
-	double speed = 0.4;
+	double speed = 0.6;
 	int x = 0, y = 0;
 
 	if (keyboard->keyDownEvent()) {
@@ -184,7 +186,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 
-		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -192,7 +194,7 @@ void PlayerController::keyUpdate()
 				i = nullptr;
 			}
 		}
-		if (keyboard->isKeyDown(keys.PREVIOUS) && selector_ != nullptr)
+		if (keyboard->isKeyDown(keys.NEXT) && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr) {
@@ -240,13 +242,16 @@ void PlayerController::keyUpdate()
 	else if (movKeys.left) x = -1;
 	else x = 0;
 
-	tr_->setVelY(speed * y);
-	tr_->setVelX(speed * x);
+	Vector2D vel(x, y);
+	vel = vel.normalize();
+
+	tr_->setVelY(speed * vel.getY());
+	tr_->setVelX(speed * vel.getX());
+	
 
 	ir_->setDir(x, y);
-
 	//Se establece la direccion para mostrar la animacion correspondiente
-	if(!(x==0 && y==0)) animator->setDir(Vector2D(x,y));                                                                                                       		
+	if (!(x == 0 && y == 0)) { animator->setDir(Vector2D(x, y)); transport->setDir(Vector2D(x, y)); }
 
 	//Estados de idle
 	if (keyboard->keyUpEvent() || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::IdleWithDishFood, Animator::States::IdleWithKnife,
@@ -257,7 +262,7 @@ void PlayerController::keyUpdate()
 	//Estados de walk
 	if ((tr_->getVel().getX() != 0 || tr_->getVel().getY() != 0) || animator->getTimer().isTimerEnd()) setAnimState(Animator::States::WalkWithDishFood, Animator::States::WalkWithKnife,
 		Animator::States::WalkWithMace, Animator::States::WalkWithGrater,
-		Animator::States::WalkWithNet, Animator::Walk, 
+		Animator::States::WalkWithNet, Animator::States::Walk, 
 		Animator::States::WalkWithDirtyKnife, Animator::States::WalkWithDirtyMace, Animator::States::WalkWithDirtyGrater, Animator::States::WalkWithDirtyNet);
 }
 

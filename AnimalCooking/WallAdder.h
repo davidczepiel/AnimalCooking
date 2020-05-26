@@ -1,6 +1,6 @@
 #pragma once
 #include "jute.h"
-#include "Vector2D.h";
+#include "Vector2D.h"
 #include "Resources.h"
 
 class Wall;

@@ -6,6 +6,10 @@
 #include "CookerPool.h"
 #include "UtensilsPool.h"
 #include "IngredientsPool.h"
+
+#include <queue>
+#include <tuple>
+
 class MultipleAdversityManager : public Component
 {
 	Texture* warningTexture;
@@ -29,16 +33,32 @@ class MultipleAdversityManager : public Component
 	bool playingWarning, active;
 	int warningRate;
 
+	queue<int> planeQueue;
+	queue<int> rainQueue;
+	queue<int> cookerQueue;
+	queue<int> hookQueue;
+	bool justStarted;
+
+	Uint32 startRumbleTime_, rumbleCadence, lengthOfRumble_;
+	SDL_Haptic* haptic1 = nullptr, *haptic2 = nullptr;
 	void seeTimers();
 	void seeAdversityWarning();
+	void playRumbles();
 
 public:
 	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
+	~MultipleAdversityManager() {
+		if (haptic1 != NULL) SDL_HapticClose(haptic1);
+		if (haptic2 != NULL) SDL_HapticClose(haptic2);
+	}
 	void update();
 	void draw();
+	void startAdvesities();
 	void playAdversity(ecs::AdversityID i) { activeAdversities[i] = true; }
 	void stopAdversity(ecs::AdversityID i);
 	void setTimerTime(ecs::AdversityID id, int time);
+
+	void addAdversityToQueue(ecs::AdversityID type, int time);
 
 	Transform* getTransformPlayer(Resources::Player player) {
 		return player == Resources::Player1 ? tP1 : tP2;

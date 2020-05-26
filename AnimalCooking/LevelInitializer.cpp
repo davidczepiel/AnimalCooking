@@ -23,6 +23,7 @@
 #include "MultipleAdversityManager.h"
 
 #include "SDLGame.h"
+#include "AdversityAdder.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -158,7 +159,7 @@ void LevelInitializer::initialize_bin()
 void LevelInitializer::initialize_dishes()
 {
 	DishAdder da = DishAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(foodPool, FoodPool), casillaX,casillaY);
-
+	dp = da.getDishPool();
 	interactives_.insert(interactives_.end(), da.getInteractives().begin(), da.getInteractives().end());
 
 	sL->updateLength();
@@ -213,7 +214,7 @@ void LevelInitializer::initialize_levelIngredients()
 
 void LevelInitializer::initialize_clients()
 {
-	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY, tv_);
+	OrderAdder oa = OrderAdder(emPlaystate, jsonLevel, jsonGeneral, players, gameManager, casillaX,casillaY, tv_, dp);
 
 	interactives_.insert(interactives_.end(), oa.getInteractives().begin(), oa.getInteractives().end());
 
@@ -229,19 +230,7 @@ void LevelInitializer::initialize_walls()
 
 void LevelInitializer::initialize_adversities()
 {
-	Entity* adversityManager = emPlaystate->addEntity();
-	//AdversityManager de una sola adversidad
-	/*adversityManager->addComponent<AdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), nullptr, GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
-	GETCMP2(adversityManager, AdversityManager)->loadAdversity(ecs::AdversityID::RainAdversity);
-	GETCMP2(gameManager, GameControl)->getAdversityTime()->setTime(5000);
-	GETCMP2(gameManager, GameControl)->setAdvMngr(GETCMP2(adversityManager, AdversityManager));*/
-	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), GETCMP2(cookerPool, CookerPool), GETCMP2(ingPoolEntity_, IngredientsPool), GETCMP2(utensil, UtensilsPool));
-	mam->setTimerTime(ecs::AdversityID::RainAdversity,5000);
-	mam->setTimerTime(ecs::AdversityID::HookAdversity, 10000);
-	mam->setTimerTime(ecs::AdversityID::PlaneAdversity, 13000);
-	mam->setTimerTime(ecs::AdversityID::CookersAdversity, 17000);
-
-	emPlaystate->addToGroup(adversityManager, ecs::GroupID::topLayer);
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil);
 	
 	sL->updateLength();
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <vector>
-#include"Dish.h"
+class Dish;
 
 class DishPool : public Component
 {

@@ -17,7 +17,8 @@ class CollisionsSystem :
 	public Component
 {
 public:
-	CollisionsSystem(const double casillaX, const double casillaY, const size_t leftBorder) :Component(ecs::CollisionsSystem), flexibilityX(casillaX/20),flexibilityY(casillaY/20), leftBorder(leftBorder)  { }
+	CollisionsSystem(const double casillaX, const double casillaY, const size_t leftBorder, const size_t bottomBorder) :
+		Component(ecs::CollisionsSystem), flexibilityX(casillaX/20),flexibilityY(casillaY/20), leftBorder(leftBorder), bottomBorder(bottomBorder){ }
 
 	void addCollider(Transform* t, bool isMovable = true) { entidadesTr.push_back(std::make_pair(t, isMovable)); }
 	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }
@@ -30,7 +31,7 @@ private:
 	int flexibilityX;
 	int flexibilityY;
 
-	size_t leftBorder;
+	size_t leftBorder, bottomBorder;
 
 	list<std::pair<Transform*, bool>> entidadesTr;
 	list<std::pair<Interactive*, bool>> entidadesInt;

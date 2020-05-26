@@ -17,11 +17,11 @@ public:
 	void resetNavigation();
 private:
 	struct button {
-		Entity* e;
-		Entity* up;
-		Entity* down;
-		Entity* left;
-		Entity* right;
+		Entity* e=nullptr;
+		Entity* up=nullptr;
+		Entity* down=nullptr;
+		Entity* left=nullptr;
+		Entity* right=nullptr;
 		bool posibleFocus;
 	};
 	void stopFocusButton(button b);

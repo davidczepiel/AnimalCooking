@@ -30,6 +30,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
+	{Basic, UtensilTimerBackground,"../AnimalCooking/resources/images/gotaSinCarga.png"},
+	{Basic, UtensilTimerForeground,"../AnimalCooking/resources/images/gotaCarga.png"},
 	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
 
 	//----->EndState<---------
@@ -45,7 +47,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, NameAsker, "../AnimalCooking/resources/images/provisional/NameAskerBG.png" },
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
-	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/cuadrado.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 	
 
 	//---->Config<---------
@@ -103,6 +105,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic,level2Menu,"../AnimalCooking/resources/images/ScreenLoader/level2Menu.png"},
 	{Basic,level3Menu,"../AnimalCooking/resources/images/ScreenLoader/level3Menu.png"},
 	{Basic,level4Menu,"../AnimalCooking/resources/images/ScreenLoader/level4Menu.png"},
+	//PauseState
+	//pauseStateBackground
+	{Basic,pauseStateBackground,"../AnimalCooking/resources/images/Menu/pauseState.png"},
+
 	//Encimera
 	{AllLevels,EncimeraAbajoConMantel,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoCon.png"},
 	{AllLevels,EncimeraAbajoConMantelDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoConDcha.png"},
@@ -254,6 +260,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
 	{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
 
+		//creditState
+	{ Basic, woodCredits, "../AnimalCooking/resources/images/Menu/pauseStateEfecto.png" },
 
 };
 
@@ -262,16 +270,19 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	//Botones
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/botones.png", 1, 3},
 	{Basic, ButtonConfig,"../AnimalCooking/resources/images/Menu/botonesConfig.png", 1, 3},
+	{Basic, ButtonBin,"../AnimalCooking/resources/images/Menu/botonesPapelera.png", 1, 3},
 	{Basic, ReplayIcon,"../AnimalCooking/resources/images/EndState/ReplayProvisional.png", 1, 3},
 	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/EndState/PlayProvisional.png",1,3},
 	{Basic, HomeIconEndState,"../AnimalCooking/resources/images/EndState/HomeProvisional.png",1,3},
 	{Basic, HomeIconMapState,"../AnimalCooking/resources/images/Mapstate/homeMapState.png",1,2},
 	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
+	{Basic, botonPauseState,"../AnimalCooking/resources/images/Menu/botonesPauseState.png",1,3},
 	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
 	{AllLevels, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
     {AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",20,8},
 	{AllLevels, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",20,4},
 	{AllLevels, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2},
@@ -298,18 +309,18 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 
 vector<Resources::TextMsgInfo> Resources::messages_{
 
-	{Basic,AntonioJesus,"Antonio Jesus Guerra Garduno",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Daniel,"Daniel Gonzalez Sellan",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,David,"David Czepiel",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Felipe,"Felipe Cuadra Plaza",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Javier,"Javier Cruz Lopez de Ochoa",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Marco,"Marco Ivan Merino Hernandez",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Nicolas,"Nicolas Fernandez Descalzo",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
-	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese50},
+	{Basic,AntonioJesus,"Antonio Jesus Guerra Garduno",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Daniel,"Daniel Gonzalez Sellan",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,David,"David Czepiel",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Felipe,"Felipe Cuadra Plaza",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Javier,"Javier Cruz Lopez de Ochoa",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Marco,"Marco Ivan Merino Hernandez",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Nicolas,"Nicolas Fernandez Descalzo",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
+	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 
 	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},
 	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0xffffffff), FontId::QuarkCheese100},

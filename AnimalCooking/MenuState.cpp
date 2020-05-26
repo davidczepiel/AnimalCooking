@@ -13,16 +13,16 @@ void MenuState::leftState()
 {
 	switch (state) {
 	case Credits:
-		state = Play;
-		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
-		break;
-	case Play:
-		state = Options;
+		state = Config;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
 		break;
-	case Options:
+	case Play:
 		state = Exit;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuExitButton));
+		break;
+	case Config:
+		state = Play;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 		break;
 	case Exit:
 		state = Credits;
@@ -36,20 +36,20 @@ void MenuState::rightState()
 {
 	switch (state) {
 	case Exit:
-		state = Options;
-		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
-		break;
-	case Credits:
-		state = Exit;
-		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuExitButton));
-		break;
-	case Options:
 		state = Play;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 		break;
 	case Play:
+		state = Config;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
+		break;
+	case Config:
 		state = Credits;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuCreditsButton));
+		break;
+	case Credits:
+		state = Exit;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuExitButton));
 		break;
 	}
 	ruedecillaAngle += 45.0;
@@ -61,7 +61,7 @@ void MenuState::selectedState()
 	case Credits:
 		creditsMenuCallback();
 		break;
-	case Options:
+	case Config:
 		optionsMenuCallback();
 		break;
 	case Play:
@@ -96,7 +96,6 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 
 	SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::MenuInicio);
 
-	cout << "Menu State" << endl;
 	
 
 	double casillaX = SDLGame::instance()->getWindowWidth() / 16;

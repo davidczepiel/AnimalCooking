@@ -14,7 +14,7 @@ public:
 
 	void setTime(Uint32 t) { time_ = t; };	
 	void setTexture(Texture* t) { texture_ = t; };
-	void setPos(Vector2D p) { pos_ = p; };
+	void setPos(Vector2D p);
 	void setSize(Vector2D s) { size_ = s; };
 	inline Vector2D getSize() { return size_; }
 	void setRot(double r) { rot_ = r; };
@@ -32,6 +32,7 @@ public:
 	//De 0 a 1
 	double getProgress() { return (game_->getTime() - startedTime_) / (double)time_; }
 	int getElapsedMs() { return game_->getTime() - startedTime_; }
+	Texture* getTexture() { return texture_; }
 
 protected:
 	SDLGame* game_;
@@ -53,10 +54,12 @@ class LevelTimer : public Timer {
 public:
 	LevelTimer() : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
 	}
 	LevelTimer(Uint32 lvlT) : Timer(), outlineText_(game_->getTextureMngr()->getTexture(Resources::LevelTimerBackground)){
 		time_ = lvlT;
 		texture_ = game_->getTextureMngr()->getTexture(Resources::LevelTimerForeground);
+		size_ = Vector2D(texture_->getWidth(), texture_->getHeight());
 	}
 	void draw();
 	void update();
@@ -71,6 +74,17 @@ public:
 	DefaultTimer( Uint32 time ) : Timer() { time_ = time; texture_ = game_->getTextureMngr()->getTexture(Resources::CuadradoAux); }
 	void draw();
 	void update();
+};
+
+class UtensilTimer : public Timer {
+public:
+	UtensilTimer();
+	UtensilTimer(Uint32 time);
+	virtual void draw();
+	virtual void update();
+private:
+	Texture* outlineText_;
+	SDL_Rect clip;
 };
 
 class FoodTimer : public Timer {

@@ -20,7 +20,7 @@ void SDLGame::addStarsPerLevel(int stars, int level)
 	auto it = unlockedStarsPerLevel.find(level);
 	if (it == unlockedStarsPerLevel.end() || (*it).second > stars) {
 		unlockedStarsPerLevel.insert(std::make_pair(level, stars));
-		MapConfig mpCFG(SDLGame::instance()->getName(), level);
+		MapConfig mpCFG(SDLGame::instance()->getName(), false);
 		mpCFG.save();
 		levelInfos_.at(level)->stars = stars;
 		if(stars > 0 && level + 1 < levelInfos_.size()) levelInfos_.at(level + 1)->unlocked = true;

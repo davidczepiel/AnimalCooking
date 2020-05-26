@@ -15,6 +15,7 @@ public:
 	inline float getValue() { return value; }
 
 	inline void move(int value) { rectMovePoint.x += value; }
+	void movePercentage(float value);
 	inline void setPadNavEnable(const bool& b) { padNavEnable = b; }
 protected:
 	Transform* transform;

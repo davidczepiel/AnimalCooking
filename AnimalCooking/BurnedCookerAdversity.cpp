@@ -3,7 +3,10 @@
 #include "TimerViewer.h"
 
 void BurnedCookerAdversity::StartAdversity() {
-	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+	if (!alreadyInitialized) {
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(internalTimer);
+		alreadyInitialized = true;
+	}
 	internalTimer->timerReset();
 	internalTimer->setTime(5000);
 	internalTimer->timerStart();

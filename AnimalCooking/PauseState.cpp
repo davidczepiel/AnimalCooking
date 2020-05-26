@@ -5,7 +5,6 @@
 
 PauseState::PauseState(AnimalCooking* ac) : State(ac)
 {
-	cout << "PauseState";
 
 	SDLGame* game_ = SDLGame::instance();
 
@@ -14,37 +13,37 @@ PauseState::PauseState(AnimalCooking* ac) : State(ac)
 
 	int x = SDLGame::instance()->getWindowWidth()/2;
 	int y = SDLGame::instance()->getWindowHeight()/5;
-	int buttonHeight = 100;
-	int buttonWidth = 180;
+	int buttonHeight = 150;
+	int buttonWidth = 400;
 	resumeButton = stage->addEntity();
 	resumeButton->addComponent<Transform>(Vector2D(x-(buttonWidth/2), y-(buttonHeight/2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
 	ButtonBehaviour* bb = resumeButton->addComponent<ButtonBehaviour>(resumeCallback, app);
-	resumeText_ = new Texture(game_->getRenderer(), "Resume", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	ButtonRenderer* br = resumeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), resumeText_);
+	resumeText_ = new Texture(game_->getRenderer(), "Resume", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0xffffffff) });
+	ButtonRenderer* br = resumeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::botonPauseState), resumeText_);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(resumeButton, ecs::GroupID::Layer1);
 
 	configButton = stage->addEntity();
 	configButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 2*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
 	bb = configButton->addComponent<ButtonBehaviour>(configCallback, app);
-	optionsText_ = new Texture(game_->getRenderer(), "Options", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	br =configButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), optionsText_);
+	optionsText_ = new Texture(game_->getRenderer(), "Options", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0xffffffff) });
+	br =configButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::botonPauseState), optionsText_);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(configButton, ecs::GroupID::Layer1);
 
 	menuButton = stage->addEntity();
 	menuButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 3*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
 	bb = menuButton->addComponent<ButtonBehaviour>(menuCallback, app);
-	menuText_ = new Texture(game_->getRenderer(), "Menu", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	br = menuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), menuText_);
+	menuText_ = new Texture(game_->getRenderer(), "Menu", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0xffffffff) });
+	br = menuButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::botonPauseState), menuText_);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(menuButton, ecs::GroupID::Layer1);
 
 	closeButton = stage->addEntity();
 	closeButton->addComponent<Transform>(Vector2D(x - (buttonWidth / 2), 4*y - (buttonHeight / 2)), Vector2D(0, 0), buttonWidth, buttonHeight, 0);
 	bb = closeButton->addComponent<ButtonBehaviour>(closeCallback, app);
-	closeText_ = new Texture(game_->getRenderer(), "Exit", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0x000000ff) });
-	br = closeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Button), closeText_);
+	closeText_ = new Texture(game_->getRenderer(), "Exit", (game_->getFontMngr()->getFont(Resources::QuarkCheese70)), { COLOR(0xffffffff) });
+	br = closeButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::botonPauseState), closeText_);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(closeButton, ecs::GroupID::Layer1);
 
@@ -65,9 +64,27 @@ PauseState::~PauseState()
 	delete closeText_; closeText_ = nullptr;
 }
 
+void PauseState::draw()
+{
+	SDLGame::instance()->getTextureMngr()->getTexture(Resources::pauseStateBackground)->render(RECT(0,0,SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight()));
+	State::draw();
+}
+
+void PauseState::update()
+{
+
+		GPadController* gpad = GPadController::instance();
+		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+
+			if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+				resumeCallback(getAnimalCooking());
+			}
+		}
+		State::update();
+}
+
 void PauseState::menuCallback(AnimalCooking* ac)
 {
-	cout << "Menu";
 	FSM* fsm= SDLGame::instance()->getFSM();
 	for (int i = 0; i < 3; i++)
 	{
@@ -79,14 +96,12 @@ void PauseState::menuCallback(AnimalCooking* ac)
 
 void PauseState::configCallback(AnimalCooking* ac)
 {
-	cout << "Config";
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new ConfigState(ac));
 }
 
 void PauseState::resumeCallback(AnimalCooking* ac)
 {
-	cout << "Resume";
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState([]() { 
 			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resumeTimers();

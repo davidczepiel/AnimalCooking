@@ -19,8 +19,10 @@ public:
 private:
 	void saveToFile();
 	void savePlayer(ofstream& f, Uint8 player, const config::Options& o);
+	void saveVolumeSetting(ofstream& f);
 	void loadFromFile();
 	void loadPlayer(ifstream& f, Uint8 player, config::Options& o);
+	void loadVolumeSetting(ifstream& f);
 	void initButtons();
 	void initSliders();
 	void initKeyModifiers();

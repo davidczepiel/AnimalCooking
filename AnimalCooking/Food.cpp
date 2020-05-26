@@ -54,11 +54,9 @@ void Food::update()
 {
 	Pickable::update();
 
+	timer_->update();
 	if (timer_->isTimerEnd()) {
 		Destroy();
-	}
-	else {
-		timer_->update();
 	}
 }
 
@@ -80,6 +78,7 @@ void Food::onDrop(bool onfloor)
 		timer_->timerStart();
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Drop,0);
 				showHelp = true;
+				inHands = false;
 	}
 }
 
@@ -93,18 +92,20 @@ void Food::onFloor()
 
 void Food::action1(int player)
 {
-	if (player == Resources::Player1) {
-		player1_->pick(this, Resources::PickableType::Food);
+	if (player == Resources::Player1) 
+	{				
+		if(!inHands) player1_->pick(this, Resources::PickableType::Food);		
 	}
-	else {
-		player2_->pick(this, Resources::PickableType::Food);
+	else 
+	{
+		if (!inHands) player2_->pick(this, Resources::PickableType::Food);
 	}
 	showHelp = false;
 }
 
 void Food::feedback(int player)
 {
-	if (!dead && feedbackVisual_ != nullptr) {
+	if (!inHands && !dead && feedbackVisual_ != nullptr) {
 		SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 		feedbackVisual_->render(destRect);
 		if (showHelp && SDLGame::instance()->getOptions().showKeyToPress) {
@@ -117,6 +118,7 @@ void Food::feedback(int player)
 }
 
 void Food::onPick() {
+	inHands = true;
 	timer_->timerReset();
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }

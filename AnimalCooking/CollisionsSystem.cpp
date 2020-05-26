@@ -186,8 +186,8 @@ ColisionType CollisionsSystem::worldCollision(Vector2D& pos, const Vector2D& off
 			cT = singleCollision(pos, offset, size, vel, RECT(game_->getWindowWidth(), pos.getY(), ceil(pos.getX() + size.getX() - game_->getWindowWidth()), size.getY()));
 		if (pos.getY() < 0)
 			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), pos.getY(), size.getX(), ceil(-pos.getY())));
-		else if (pos.getY() + size.getY() > game_->getWindowHeight())
-			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - game_->getWindowHeight())));
+		else if (pos.getY() + size.getY() > bottomBorder)
+			cT = singleCollision(pos, offset, size, vel, RECT(pos.getX(), game_->getWindowHeight(), size.getX(), ceil(pos.getY() + size.getY() - bottomBorder)));
 	}
 	else {
 		if (pos.getX() < 0)

@@ -16,7 +16,7 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 	//DishPool
 	Entity* poolPlatos = em->addEntity();
 	em->addToGroup(poolPlatos, CASTID(jsonGeneral["Dish"]["Layer"].as_int()));
-	DishPool* dp = poolPlatos->addComponent<DishPool>();
+	dp = poolPlatos->addComponent<DishPool>();
 	poolPlatos->addComponent<DishMotion>();
 	poolPlatos->addComponent<DishViewer>();
 	//Componentes extra

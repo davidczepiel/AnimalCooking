@@ -36,5 +36,4 @@ void LoadingBarViewer::draw()
 void LoadingBarViewer::plusLength(double extra)
 {	
 	percentage_ += extra;
-	cout << "Carga al: " << percentage_ << endl;
 }

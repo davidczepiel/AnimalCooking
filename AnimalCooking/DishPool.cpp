@@ -1,12 +1,14 @@
 #include "DishPool.h"
+#include "Dish.h"
 
-DishPool::DishPool() :Component(ecs::DishPool),dishes_(vector<Dish*>())
+DishPool::DishPool() :Component(ecs::DishPool),dishes_()
 {
 }
 
 void DishPool::addDish(Dish* d)
 {	
-	if(d!=nullptr)dishes_.push_back(d);	
+	if(d!=nullptr)
+		dishes_.push_back(d);	
 }
 
 void DishPool::removeDish(Dish* d)

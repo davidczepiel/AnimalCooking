@@ -56,8 +56,8 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
 		}	
-		else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
-			scoreManager_->addScore((*it)->getNumIngs() * -7.5);
+		//else if (scoreManager_->getScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_NOT_SERVED_PENALIZATION >= 0)
+		//	scoreManager_->addScore((*it)->getNumIngs() * -1.5);
 
 		(*it)->removeTimer();
 		delete* it;
@@ -72,6 +72,7 @@ vector<Order*>& OrderManager::getOrders()
 {
 	return currentOrders_;
 }
+
 
 vector<Order*>::iterator OrderManager::getFreePos()
 {
@@ -96,4 +97,13 @@ vector<Order*>::iterator OrderManager::getFirst(const list<vector<Order*>::itera
 		if (*it != nullptr && (*it)->getAnger() > (*first)->getAnger()) first = it;
 	}
 	return first;
+}
+
+bool OrderManager::someOneWantsThis(Resources::FoodType finalProduct) {
+
+	list<vector<Order*>::iterator> lista = getListOf(finalProduct);
+	if (!lista.empty())
+		return true;
+	else 
+		return false;
 }

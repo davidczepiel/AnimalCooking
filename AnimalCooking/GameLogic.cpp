@@ -26,7 +26,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 			colSys_->removeCollider(ing);
 			ing->destroy(type);
 			Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
-			GETCMP1_(GameControl)->newFood(f, ingPos);
+			GETCMP1_(GameControl)->newFood(f, ingPos, ingType);
 			playHit(type);
 			break;
 		}
@@ -57,5 +57,5 @@ void GameLogic::setLevelTimer(Uint32 time, Vector2D pos, Vector2D size)
 {
     levelTimer_->setTime(time); 
     levelTimer_->setPos(pos);
-    levelTimer_->setSize(size);
+	levelTimer_->setSize(size);
 }

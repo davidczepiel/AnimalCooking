@@ -35,6 +35,8 @@ public:
 		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,
+		UtensilTimerBackground,
+		UtensilTimerForeground,
 		ScoreBackground,
 		//----->EndState<---------
 		BackgroundEndState,
@@ -102,6 +104,9 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		//PauseState
+		pauseStateBackground,
+		botonPauseState,
 			//Encimeras
 			EncimeraAbajoConMantel,
 			EncimeraAbajoConMantelDcha,
@@ -242,10 +247,13 @@ public:
 		Arroz,
 		Aceite,
 		EncimeraMasa,
-		
+
+		//CreditState
+		woodCredits,
 		//spritesheets
 		Button,
 		ButtonConfig,
+		ButtonBin,
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
@@ -253,6 +261,7 @@ public:
 		HomeIconMapState,
 		MapIcon,
 		SkilletON,
+		SmokeBurned,
 		PigIdle,
         PigWalk,
 		PigAttack,

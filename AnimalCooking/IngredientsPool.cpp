@@ -13,7 +13,7 @@ void IngredientsPool::addIngredient(Ingredient* i)
 	ingredients_.emplace_back(i);
 	std::vector<Ingredient*>::iterator it = ingredients_.end();
 	--it;
-	i->setInVector(it, this);
+	i->setInVector(it, this);	
 }
 
 void IngredientsPool::clearIngredients()

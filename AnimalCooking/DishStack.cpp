@@ -2,6 +2,7 @@
 #include "DishStackViewer.h"
 #include "GameConfig.h"
 #include "GPadController.h"
+#include "Dish.h"
 
 DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) : 
 	Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_,nullptr), maxDishes(maxDishes_), dishPool(dp),foodPool(fp), dishSize_()
