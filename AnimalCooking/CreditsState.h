@@ -12,12 +12,13 @@
 class CreditsState :
 	public State
 {
+private:
+	static void GoBackMenu(AnimalCooking* ac);
 public:
 	CreditsState(AnimalCooking* ac);
 	virtual void draw();
 	virtual void update();
-private:
-	static void GoBackMenu(AnimalCooking* ac);
-	SDLGame* game_;
+
+
 };
 

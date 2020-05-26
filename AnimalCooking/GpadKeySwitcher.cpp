@@ -31,12 +31,12 @@ void GpadKeySwitcher::update()
 			else if (focus > 5) focus = 5;
 		}
 	}
-	if (focus >= 0) switchers_[focus]->update();
+	if(focus >= 0) switchers_[focus]->update();
 }
 
 void GpadKeySwitcher::addFocushed(const int& delta)
 {
 	if (focus < 0) focus++;
-	if (!switchers_[focus]->getPlayerIsChoosing())
+	if (!switchers_[focus]->getPlayerIsChoosing()) 
 		focus = (focus + delta) % 6;
 }

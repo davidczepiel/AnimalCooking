@@ -10,7 +10,7 @@ public:
 	GPadController(GPadController&) = delete;
 	GPadController& operator=(GPadController&) = delete;
 
-	virtual ~GPadController() {}
+	virtual ~GPadController(){}
 
 	static GPadController* instance() {
 		if (instance_.get() == nullptr) {

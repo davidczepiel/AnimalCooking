@@ -4,9 +4,9 @@
 #define ADD(t)makeCooker<t>(type, n)
 
 CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::jValue& jsongeneral, std::array<Entity*, 2> players, FoodPool* fp, const double casillaX, const double casillaY) :
-	nivel(jsonnivel), general(jsongeneral), players(players), cookersPool(cookersPool), casillaX(casillaX), casillaY(casillaY)
+	nivel(jsonnivel), general(jsongeneral), players(players), cookersPool(cookersPool), casillaX(casillaX),casillaY(casillaY)
 {
-	CookerPool* cookerP = cookersPool->addComponent<CookerPool>();
+	CookerPool* cookerP =cookersPool->addComponent<CookerPool>();
 	cookersPool->addComponent<FoodCooker>(fp);
 	cookersPool->addComponent<CookerViewer>();
 	cookersPool->addComponent<InsertExpel>(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));

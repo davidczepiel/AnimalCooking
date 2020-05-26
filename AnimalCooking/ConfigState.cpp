@@ -15,8 +15,8 @@
 #include "ButtonChangeOnClick.h"
 
 
-ConfigState::ConfigState(AnimalCooking* ac) : State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
-game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
+ConfigState::ConfigState(AnimalCooking* ac) :  State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
+		game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	initSliders();
 	loadFromFile();
@@ -60,12 +60,12 @@ void ConfigState::loadFromFile()
 void ConfigState::savePlayer(ofstream& f, Uint8 player, const config::Options& o)
 {
 	f << (Sint32)o.players_keyboardKeys[player].PICKUP << " " << (Sint32)o.players_keyboardKeys[player].ATTACK << " "
-		<< (Sint32)o.players_keyboardKeys[player].OPEN << " " << (Sint32)o.players_keyboardKeys[player].PREVIOUS << " "
-		<< (Sint32)o.players_keyboardKeys[player].NEXT << " " << (Sint32)o.players_keyboardKeys[player].FINISHER << " " << endl;
+	<< (Sint32)o.players_keyboardKeys[player].OPEN << " " << (Sint32)o.players_keyboardKeys[player].PREVIOUS << " "
+	<< (Sint32)o.players_keyboardKeys[player].NEXT << " " << (Sint32)o.players_keyboardKeys[player].FINISHER << " " << endl;
 
 	f << (Sint32)o.players_gPadButtons[player].PICKUP << " " << (Sint32)o.players_gPadButtons[player].ATTACK << " "
-		<< (Sint32)o.players_gPadButtons[player].OPEN << " " << (Sint32)o.players_gPadButtons[player].PREVIOUS << " "
-		<< (Sint32)o.players_gPadButtons[player].NEXT << " " << (Sint32)o.players_gPadButtons[player].FINISHER << " " << endl;
+	<< (Sint32)o.players_gPadButtons[player].OPEN << " " << (Sint32)o.players_gPadButtons[player].PREVIOUS << " "
+	<< (Sint32)o.players_gPadButtons[player].NEXT << " " << (Sint32)o.players_gPadButtons[player].FINISHER << " " << endl;
 }
 
 void ConfigState::saveVolumeSetting(ofstream& f)
@@ -84,12 +84,12 @@ void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
 	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].FINISHER = (SDL_Keycode)aux;
 
 	aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
-	f >> aux; if (!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
+	f >> aux; if(!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
 }
 
 void ConfigState::loadVolumeSetting(ifstream& f)
@@ -104,19 +104,19 @@ void ConfigState::update()
 {
 	State::update();
 	double musicValue = sliderMusic_->getValue(), soundValue = sliderSound_->getValue();
-	if (musicLastValue_ != musicValue)
+	if (musicLastValue_ != musicValue) 
 		game_->getAudioMngr()->setMusicVolume(game_->getOptions().volume.music_ = Uint8(musicValue * 128));
-	else if (soundLastValue != soundValue)
+	else if (soundLastValue != soundValue) 
 		game_->getAudioMngr()->setChannelVolume(game_->getOptions().volume.sounds_ = Uint8(soundValue * 128));
-
+	
 	musicLastValue_ = musicValue;
 	soundLastValue = soundValue;
 }
 
 void ConfigState::draw()
 {
-	SDL_Rect dest = RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight());
-	game_->getTextureMngr()->getTexture(Resources::ConfigBackground)->render(dest);
+	SDL_Rect d = RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight());
+	SDLGame::instance()->getTextureMngr()->getTexture(Resources::ConfigBackground)->render(d);
 	State::draw();
 }
 
@@ -141,7 +141,7 @@ void ConfigState::initButtons()
 		Vector2D((game_->getWindowWidth() * 2 / 5) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
-	res->addComponent<ButtonChangeOnClick>(game_->getIfFullscreen());
+	res->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getIfFullscreen());
 	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
 	bb->setButtonRenderer(br);
@@ -153,11 +153,11 @@ void ConfigState::initButtons()
 		Vector2D(game_->getWindowWidth() * 2 / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
 		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
-	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
+	helper->addComponent<ButtonChangeOnClick>(SDLGame::instance()->getOptions().showKeyToPress);
 	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
 		game_->getTextureMngr()->getTexture(Resources::ToggleHelper));
 	bb->setButtonRenderer(br);
-
+	
 }
 
 void ConfigState::initSliders()
@@ -213,7 +213,7 @@ void ConfigState::initKeyModifiers()
 	if (gpCont->playerControllerConnected(0)) {
 		changeP1->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16, false);
 		changeP1->addComponent<GpadKeySwitcherViewer>();
-
+		
 		Entity* e = stage->addEntity();
 		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
 		bp->onlyListenTo(0);
@@ -229,7 +229,7 @@ void ConfigState::initKeyModifiers()
 		changeP1->addComponent<KeyboardKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
 		changeP1->addComponent<KeyboardKeySwitcherViewer>();
 	}
-
+	
 	//Player2 Right
 	changeP2 = stage->addEntity();
 	stage->addToGroup(changeP2, ecs::GroupID::ui);

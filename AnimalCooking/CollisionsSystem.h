@@ -18,7 +18,7 @@ class CollisionsSystem :
 {
 public:
 	CollisionsSystem(const double casillaX, const double casillaY, const size_t leftBorder, const size_t bottomBorder) :
-		Component(ecs::CollisionsSystem), flexibilityX(casillaX / 20), flexibilityY(casillaY / 20), leftBorder(leftBorder), bottomBorder(bottomBorder) { }
+		Component(ecs::CollisionsSystem), flexibilityX(casillaX/20),flexibilityY(casillaY/20), leftBorder(leftBorder), bottomBorder(bottomBorder){ }
 
 	void addCollider(Transform* t, bool isMovable = true) { entidadesTr.push_back(std::make_pair(t, isMovable)); }
 	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }

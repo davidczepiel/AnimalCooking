@@ -3,10 +3,11 @@
 #include "GameConfig.h"
 
 GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int levelMaxIngredients) : Component(ecs::GameControl),
-utensilsPool(u), foodPool(fp), tP1(p1), tP2(p2), ingPool_(ip), levelIngType(), justStarted(true), advManager(nullptr), indexType(0), maxIngr(levelMaxIngredients)
+	utensilsPool(u),foodPool(fp),tP1(p1),tP2(p2),ingPool_(ip),levelIngType(), justStarted(true), advManager(nullptr), indexType(0), maxIngr(levelMaxIngredients)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
+	//adversityTimer.timerStart();
 }
 
 
@@ -32,11 +33,17 @@ void GameControl::update()
 		}
 		else timer.update();
 	}
+
+	//if (!adversityTimer.isStarted())adversityTimer.timerStart();
+	/*adversityTimer.update();
+	if (adversityTimer.isTimerEnd() && advManager != nullptr) {
+		advManager->playAdversity();
+	}*/
 }
 
-void GameControl::newIngredient()
-{
-	Ingredient* ing = newIngType(chooseIng());
+void GameControl::newIngredient() 
+{   
+	Ingredient* ing = newIngType(chooseIng());  
 
 	jute::jValue& jsonGeneral = game_->getJsonGeneral();
 	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(),
@@ -45,11 +52,11 @@ void GameControl::newIngredient()
 	//double y = game_->getRandGen()->nextInt(ing->getHeight(), game_->getWindowHeight()/2+ing->getHeight());
 	double y = ((game_->getRandGen()->nextInt(0, 3) * 2) + 1.5) * SDLGame::instance()->getCasillaY();
 
-	ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
-	ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
+    ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
+    ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
 	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
 	ingPool_->addIngredient(ing);
-	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned,0);
 	colSys_->addCollider(ing);
 	ing = nullptr;
 }
@@ -76,7 +83,7 @@ void GameControl::newIngredient(Resources::IngredientType i) {
 Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 
 	Ingredient* i = nullptr;
-
+	
 	switch (iT)
 	{
 	case Resources::IngredientType::tomato:
@@ -140,7 +147,7 @@ Resources::IngredientType GameControl::chooseIng()
 	//Buscar el ingrediente con menos apariciones
 	size_t min = SIZE_MAX;
 	for (auto ings : ingsInScene) {
-		if (ings.second < min) {
+		if(ings.second < min){
 			min = ings.second;
 		}
 	}
@@ -187,6 +194,7 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 		break;
 	}
 	foodPool->AddFood(f);
+	//f->onFloor();
 	return f;
 }
 

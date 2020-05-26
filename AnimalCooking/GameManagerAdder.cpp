@@ -9,19 +9,19 @@
 #include "ScoreViewer.h"
 #include "TimerViewer.h"
 
-GameManagerAdder::GameManagerAdder(Entity* gameManager, EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
-	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casillaX, int casillaY, const double offsetX, const double offsetY, TimerViewer* tv)
+GameManagerAdder::GameManagerAdder(Entity* gameManager,EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
+	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casillaX,int casillaY, const double offsetX, const double offsetY, TimerViewer* tv)
 {
-	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casillaX, casillaY, 8.5 * casillaX + offsetY, 7 * casillaY), player, ip);
+	initializeCollisionSystem(gameManager->addComponent<CollisionsSystem>(casillaX ,casillaY, 8.5 * casillaX + offsetY, 7 * casillaY), player, ip);
 
 	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
-	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp, ip, jsonLevel["MaxIngredients"].as_int());
+	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp,ip, jsonLevel["MaxIngredients"].as_int());
 	glogic->setUtensilsPool(utensilpool_);
 	glogic->setIngredientPool(ip);
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();
-	sv->setPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casillaX, jsonGeneral["Score"]["pos"]["y"].as_double() * casillaY));
+	sv->SetPos(Vector2D(jsonGeneral["Score"]["pos"]["x"].as_double() * casillaX, jsonGeneral["Score"]["pos"]["y"].as_double() * casillaY));
 
 	glogic->setLevelTimer(jsonLevel["LevelTimer"]["Time"].as_int() * 1000,
 		Vector2D(jsonGeneral["LevelTimer"]["pos"]["x"].as_double() * casillaX, jsonGeneral["LevelTimer"]["pos"]["y"].as_double() * casillaY),

@@ -1,7 +1,10 @@
 #include "CreditsState.h"
 #include "CreditsViewer.h"
 
-CreditsState::CreditsState(AnimalCooking* ac) :State(ac), game_(SDLGame::instance()) {
+
+
+
+CreditsState::CreditsState(AnimalCooking* ac) :State(ac) {
 	double casillaX = SDLGame::instance()->getCasillaX();
 	double casillaY = SDLGame::instance()->getCasillaY();
 
@@ -18,22 +21,24 @@ CreditsState::CreditsState(AnimalCooking* ac) :State(ac), game_(SDLGame::instanc
 	//Aquí debería ir el botón de la casa, pero no sé cómo se pone :P
 	returnToMenuState->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::HomeIconMapState), nullptr);
 
-	Entity* names = stage->addEntity();
-	stage->addToGroup(names, ecs::GroupID::ui);
-	names->addComponent<CreditsViewer>();
+	Entity* nombres = stage->addEntity();
+	stage->addToGroup(nombres, ecs::GroupID::ui);
+	nombres->addComponent<CreditsViewer>();
 }
 
 
 void CreditsState::GoBackMenu(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
+
+
 }
 
 void CreditsState::draw()
 {
-	game_->getTextureMngr()->getTexture(Resources::pauseStateBackground)->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	SDLGame::instance()->getTextureMngr()->getTexture(Resources::pauseStateBackground)->render(RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight()));
 	State::draw();
-	game_->getTextureMngr()->getTexture(Resources::woodCredits)->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	SDLGame::instance()->getTextureMngr()->getTexture(Resources::woodCredits)->render(RECT(0, 0, SDLGame::instance()->getWindowWidth(), SDLGame::instance()->getWindowHeight()));
 }
 
 void CreditsState::update()

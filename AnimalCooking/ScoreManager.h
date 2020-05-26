@@ -3,8 +3,8 @@
 class ScoreManager : public Component
 {
 public:
-	ScoreManager() : Component(ecs::ScoreManager),
-		score_(0), maxScore(0)
+	ScoreManager(): Component(ecs::ScoreManager), 
+		score_(0),maxScore(0)
 	{}
 
 	inline Uint32 getScore() const { return score_; }

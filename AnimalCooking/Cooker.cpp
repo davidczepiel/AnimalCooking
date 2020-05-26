@@ -6,9 +6,9 @@
 #include "GameConfig.h"
 #include "GPadController.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Interactive(t1, t2, nullptr),
-state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr), fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
-smokeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::SmokeBurned))
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2,Entity* e) : Interactive(t1,t2,nullptr),
+	state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr), fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
+	smokeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::SmokeBurned))
 {
 	setPos(pos);
 	setSize(size);
@@ -30,22 +30,22 @@ Cooker::~Cooker() {
 	timer_ = nullptr;
 }
 
-void Cooker::setCookerState(CookerStates s) {
+void Cooker::setCookerState(CookerStates s) { 
 	switch (s) {
-	case CookerStates::empty:  setEmptyTexture(); break;
-	case CookerStates::cooking: setCookingTexture(); break;
-	case CookerStates::burned:  setBurnedTexture(); break;
-	case CookerStates::overheated: setEmptyTexture(); break;
+		case CookerStates::empty:  setEmptyTexture(); break;
+		case CookerStates::cooking: setCookingTexture(); break;
+		case CookerStates::burned:  setBurnedTexture(); break;
+		case CookerStates::overheated: setEmptyTexture(); break;
 	}
-	state_ = s;
+	state_ = s; 
 };
 
 void Cooker::draw()
 {
 	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 
-	if (state_ == CookerStates::cooking || state_ == CookerStates::cooked) {
-		int row = (SDLGame::instance()->getTime() / config::COOKER_ANIM_SPEED) % texture_->getNumRows();
+	if (state_ == CookerStates::cooking || state_ == CookerStates::cooked ) {
+		int row = ( SDLGame::instance()->getTime() / config::COOKER_ANIM_SPEED) % texture_->getNumRows();
 		texture_->renderFrame(rect, row, 0, rotation_);
 	}
 	else if (state_ == CookerStates::overheated) {
@@ -69,7 +69,7 @@ void Cooker::action1(int player)
 	{
 		ie->insertFood(this, player);
 	}
-	else
+	else 
 	{
 		ie->extractFood(this, timer_, player);
 	}
@@ -84,7 +84,7 @@ void Cooker::feedback(int player)
 			else
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 		}
-		else if (state_ != CookerStates::cooking) {
+		else if(state_ != CookerStates::cooking){
 			if (GPadController::instance()->playerControllerConnected(player))
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else
@@ -98,8 +98,8 @@ void Cooker::feedback(int player)
 		int rows = ceil(foods_.size() / 2.0);
 		if (rows == 0) rows = 1;
 
-		int w = 190 / 2 - offsetInside * 2;
-		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 190, rows * w + offsetInside * 2);
+		int w = 190/ 2 - offsetInside * 2;
+		SDL_Rect rect = RECT(position_.getX() + ofset, position_.getY() + ofset, 190, rows*w + offsetInside*2);
 		feedbackVisual_->render(rect);
 		rect.x += offsetInside;
 		rect.y += offsetInside;
@@ -119,18 +119,18 @@ void Cooker::sound()
 		//Miro qu� tipo de cooker soy y reprocuzco un sonido u otro dependiendo de si he quemado algo o no 
 		switch (cookerType_) {
 		case Resources::Cookers::Skillet:
-			if (state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound, 0);
-			else if (state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
+			else if(state_ == CookerStates::cooked) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
 			break;
 		case Resources::Cookers::Oven:
-			if (state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound, 0);
+			if(state_ == CookerStates::cooking)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySound,0);
 			else if (state_ == CookerStates::cooked)SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::FrySoundBurned, 0);
 			break;
 		}
 	}
 }
 
-Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text, t1, t2, e)
+Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text,Transport* t1,Transport* t2, Entity* e) : Cooker(pos, size, rot, text,t1,t2,e)
 {
 	cookingTime_ = config::SKILLET_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Skillet;
