@@ -5,11 +5,12 @@
 #include "ButtonBehaviour.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
-xAxisMoved(false), aButtonPressed(true), focushing(false), playerToListen(2)
-{
-	focus.e = nullptr;
+	xAxisMoved(false), 
+	aButtonPressed(true), 
+	focushing(false), 
+	playerToListen(2){
+		focus.e = nullptr;
 }
-
 
 void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus)
 {
@@ -38,8 +39,6 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 		focus = buttons.at(buttons.size()-1);
 	}
 }
-
-
 
 void ButtonPadNavigation::update() {
 	GPadController* gpad = GPadController::instance();

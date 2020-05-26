@@ -4,17 +4,18 @@
 #include "ButtonBehaviourNC.h"
 
 ButtonRendererHouse::ButtonRendererHouse(Texture* background, Texture* text, levelInfo* info) : 
-	Component(ecs::ButtonRendererHouse), active(true), info(info)
-{
-	background_ = background;
-	text_ = text;
+	Component(ecs::ButtonRendererHouse), 
+	active(true), 
+	info(info){
+		background_ = background;
+		text_ = text;
 
-	ownerTransform_ = nullptr;
-	buttonBehaviour_ = nullptr;
-	buttonBehaviourNC_ = nullptr;
+		ownerTransform_ = nullptr;
+		buttonBehaviour_ = nullptr;
+		buttonBehaviourNC_ = nullptr;
 
-	clickedTime_ = 0;
-	clickedTimeCD_ = 70;
+		clickedTime_ = 0;
+		clickedTimeCD_ = 70;
 }
 
 void ButtonRendererHouse::init()

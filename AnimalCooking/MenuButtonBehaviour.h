@@ -10,13 +10,15 @@ class MenuButtonBehaviour : public Component
 {
 public:
 	enum ButtonType { RightArr, LeftArrow, SelectionButton};
-	MenuButtonBehaviour(MenuState* ms, ButtonType t) : Component(ecs::MenuButtonBehaviour), ms_(ms),buttonType_(t) {}
+	MenuButtonBehaviour(MenuState* ms, ButtonType t);
 	~MenuButtonBehaviour() { tr_ = nullptr; }
 
 	void init() override;
 	void update() override;
 	void action();
+
 	ButtonType getButtonType() { return buttonType_; }
+
 private:
 	Transform* tr_;
 	MenuState* ms_;

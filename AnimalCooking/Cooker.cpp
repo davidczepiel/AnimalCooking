@@ -6,15 +6,22 @@
 #include "GameConfig.h"
 #include "GPadController.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Interactive(t1, t2, nullptr),
-state_(CookerStates::empty), cookingTime_(5), entity_(e), timer_(nullptr), fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
-smokeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::SmokeBurned))
-{
-	setPos(pos);
-	setSize(size);
-	setRot(rot);
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : 
+	Interactive(t1, t2, nullptr),
+	state_(CookerStates::empty), 
+	cookingTime_(5), 
+	entity_(e), 
+	timer_(nullptr), 
+	texture_(nullptr),
+	lastTimeSound_(),
+	cookerType_(),
+	fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
+	smokeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::SmokeBurned)){
+		setPos(pos);
+		setSize(size);
+		setRot(rot);
 
-	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Panel);
 }
 
 void Cooker::initTimer()

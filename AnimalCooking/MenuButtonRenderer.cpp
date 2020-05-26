@@ -2,6 +2,13 @@
 #include "SDL_macros.h"
 #include "Entity.h"
 
+MenuButtonRenderer::MenuButtonRenderer(Texture* t) : 
+	Component(ecs::MenuButtonRenderer), 
+	tr_(nullptr),
+	texture(t), 
+	focused(false){
+}
+
 void MenuButtonRenderer::init()
 {
 	tr_ = GETCMP1_(Transform);

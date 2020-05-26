@@ -7,10 +7,11 @@ class ButtonChangeOnClick : public Component
 		True
 	};
 public:
-	ButtonChangeOnClick(int s) : Component(ecs::ButtonChangeOnClick), state((State)s) {}
-	void changeState() { state = State(1 - state); }
-	inline const State& getState() const { return state; }
+	ButtonChangeOnClick(int s) : Component(ecs::ButtonChangeOnClick), state_((State)s) {}
+	void changeState() { state_ = State(1 - state_); }
+	inline const State& getState() const { return state_; }
+
 private:
-	State state;
+	State state_;
 };
 

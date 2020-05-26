@@ -6,15 +6,15 @@
 #include "ButtonRenderer.h"
 #include "SDL_macros.h"
 
-class ButtonPadNavigation :
-	public Component
+class ButtonPadNavigation :	public Component
 {
 public:
 	ButtonPadNavigation();
-	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);
 	void update() override;
+	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);	
 	void onlyListenTo(int player) { playerToListen = player; }
 	void resetNavigation();
+
 private:
 	struct button {
 		Entity* e=nullptr;
@@ -32,10 +32,11 @@ private:
 	void horizontalMove(double xValue);
 	void verticalMove(double yValue);
 	button focus;
-	bool xAxisMoved;
-	bool aButtonPressed;
 	vector<button> buttons;
-	bool focushing;
+
 	int playerToListen;
+	bool xAxisMoved;
+	bool aButtonPressed;	
+	bool focushing;	
 };
 

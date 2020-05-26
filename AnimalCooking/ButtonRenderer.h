@@ -11,26 +11,25 @@ public:
 	ButtonRenderer(Texture* background, Texture* text);
 	void init() override;
 	void draw() override;
-	inline void setActive(bool val) { active = val; }
-	void clicked();
-private:
-	Transform* ownerTransform_;
-	ButtonBehaviour* buttonBehaviour_;
-	ButtonBehaviourNC* buttonBehaviourNC_;
-
-	ButtonChangeOnClick* buttonOnClick_;
 	
-	Texture* background_;
-	Texture* text_;
+	void clicked();
+	inline void setActive(bool val) { active = val; }
 
-	Uint32 clickedTime_, clickedTimeCD_;
-	bool active;
-
+private:
 	enum ButtonState : size_t {
 		Focushed,
 		Unfocushed,
 		Cliked,
 	};
 
+	Transform* ownerTransform_;
+	ButtonBehaviour* buttonBehaviour_;
+	ButtonBehaviourNC* buttonBehaviourNC_;
+	ButtonChangeOnClick* buttonOnClick_;	
+	Texture* background_;
+	Texture* text_;
+
+	Uint32 clickedTime_, clickedTimeCD_;
+	bool active;
 };
 

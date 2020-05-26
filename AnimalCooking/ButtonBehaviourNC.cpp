@@ -14,7 +14,8 @@ ButtonBehaviourNC::ButtonBehaviourNC(Entity* infoBox, levelInfo* info) :
 	focusedByMouse_(nullptr),
 	bRenderer_(nullptr),
 	mapInfo_(info), 
-	action_()
+	action_(),
+	ac_(nullptr)
 {
 }
 
@@ -27,7 +28,8 @@ ButtonBehaviourNC::ButtonBehaviourNC(bool profilechooser, const string& name) :
 	focusedByMouse_(nullptr),
 	bRenderer_(nullptr),
 	mapInfo_(nullptr),
-	name_(name)
+	name_(name),
+	ac_(nullptr)
 {
 	action_ = profilechooser ? 1 : 2;
 }

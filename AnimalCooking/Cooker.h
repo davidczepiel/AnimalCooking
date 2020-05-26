@@ -13,6 +13,9 @@ class Cooker :public Interactive {
 public:
 	virtual ~Cooker();
 	virtual void draw();
+	void action1(int player)override;
+	void feedback(int player) override;
+	void sound();
 
 	void setCookerState(CookerStates s);
 	inline CookerStates getCookerState() { return state_; };
@@ -27,26 +30,20 @@ public:
 	vector<Food*>& getFoods() { return foods_; }
 
 	inline int getCookerType() { return (int)cookerType_; };
-	void action1(int player)override;
-	void feedback(int player) override;
-	void sound();
 
 protected:
 	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
-
 	void initTimer();
 
 	Texture* texture_;
 	Texture* smokeTexture_;
 	Texture* fireTexture_;
 	Entity* entity_;
-	CookerStates state_;
-
 	CookerTimer* timer_;
+	vector<Food*> foods_;
+	CookerStates state_;
 	Uint32 cookingTime_;
 	Uint32 lastTimeSound_;
-
-	vector<Food*> foods_;
 	Resources::Cookers cookerType_;
 };
 

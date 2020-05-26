@@ -10,7 +10,6 @@ public:
 	InsertExpel(Transport *tr1, Transport* tr2);
 	~InsertExpel();
 	void init() override;
-
 	void insertFood(Cooker* c, int player);
 	void extractFood(Cooker *c, Timer* timer, int player);
 

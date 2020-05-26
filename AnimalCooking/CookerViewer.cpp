@@ -1,8 +1,8 @@
 #include "CookerViewer.h"
 
 CookerViewer::CookerViewer() :
-	Component(ecs::CookerViewer) {
-
+	Component(ecs::CookerViewer),
+	pool_(nullptr){
 }
 
 CookerViewer::~CookerViewer() {

@@ -4,7 +4,12 @@
 #define ADD(t)makeCooker<t>(type, n)
 
 CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::jValue& jsongeneral, std::array<Entity*, 2> players, FoodPool* fp, const double casillaX, const double casillaY) :
-	nivel(jsonnivel), general(jsongeneral), players(players), cookersPool(cookersPool), casillaX(casillaX), casillaY(casillaY)
+	nivel(jsonnivel), 
+	general(jsongeneral), 
+	players(players), 
+	cookersPool(cookersPool), 
+	casillaX(casillaX), 
+	casillaY(casillaY)
 {
 	CookerPool* cookerP = cookersPool->addComponent<CookerPool>();
 	cookersPool->addComponent<FoodCooker>(fp);
@@ -12,7 +17,6 @@ CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::j
 	cookersPool->addComponent<InsertExpel>(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
 	cookersPool->addComponent<SelectorPopUp>(&reinterpret_cast<vector<Interactive*>&>(cookerP->getPool()), GETCMP2(players[0], InteractionRect), GETCMP2(players[1], InteractionRect),
 		GETCMP2(players[0], Selector), GETCMP2(players[1], Selector), GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
-
 
 	jute::jValue cookerlist = jsonnivel["CookersPool"];
 	for (size_t i = 0; i < cookerlist.size(); i++)
@@ -23,10 +27,12 @@ CookersAdder::CookersAdder(Entity* cookersPool, jute::jValue& jsonnivel, jute::j
 		}
 	}
 }
+
 constexpr unsigned int str2int(const char* str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
+
 void CookersAdder::switchCookers(const string& cooker, int type, int n) {
 	switch (str2int(cooker.c_str()))
 	{
@@ -40,6 +46,7 @@ void CookersAdder::switchCookers(const string& cooker, int type, int n) {
 		break;
 	}
 }
+
 template<typename T>
 void CookersAdder::makeCooker(int type, int n) {
 	Vector2D pos(nivel["CookersPool"][type][1][n]["pos"]["x"].as_double() * casillaX,

@@ -2,13 +2,6 @@
 #include "Dish.h"
 #include <list>
 
-//InsertExpel::InsertExpel() :
-//	Component(ecs::InsertExpel),
-//	foodCooker_(nullptr),
-//	transport_(nullptr)
-//{
-//}
-
 InsertExpel::InsertExpel(Transport* tr1, Transport* tr2) :
 	Component(ecs::InsertExpel),
 	transport1_(tr1), transport2_(tr2),
@@ -59,7 +52,6 @@ void InsertExpel::insertFood(Cooker* cooker, int player) {
 }
 
 void InsertExpel::extractFood(Cooker *cooker, Timer* timer, int player){
-
 	Transport* t;
 	if (player == 0) t = transport1_;
 	else t = transport2_;

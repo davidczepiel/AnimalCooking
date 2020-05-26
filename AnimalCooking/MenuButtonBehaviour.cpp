@@ -3,6 +3,13 @@
 #include "MenuState.h"
 #include "SDL_macros.h"
 
+MenuButtonBehaviour::MenuButtonBehaviour(MenuState* ms, ButtonType t) : 
+	Component(ecs::MenuButtonBehaviour),
+	tr_(nullptr),
+	ms_(ms), 
+	buttonType_(t){
+}
+
 void MenuButtonBehaviour::init()
 {
 	tr_ = GETCMP1_(Transform);
