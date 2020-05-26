@@ -1,6 +1,5 @@
 #pragma once
 #include "Adversity.h"
-#include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
 #include "Timer.h"
 
@@ -14,7 +13,7 @@ class BurnedCookerAdversity : public Adversity
 	void StartAdversity();
 
 public:
-	BurnedCookerAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam), 
+	BurnedCookerAdversity(MultipleAdversityManager* mam) : Adversity(mam), 
 		cookerPool(mam->getCookerPool()), internalTimer(new Timer()), alreadyInitialized(false) { }
 	~BurnedCookerAdversity() {}
 

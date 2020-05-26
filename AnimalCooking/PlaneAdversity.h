@@ -2,7 +2,6 @@
 #include "Adversity.h"
 #include "SDL_macros.h"
 #include "Texture.h"
-#include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
 #include "TimerViewer.h"
 
@@ -25,7 +24,7 @@ class PlaneAdversity : public Adversity
 	void StartPlane();
 	bool isPlaneOut();
 public:
-	PlaneAdversity(AdversityManager* am, MultipleAdversityManager* mam) : Adversity(am, mam), internalTimer(new Timer()), alreadyInitialized(false) { }
+	PlaneAdversity(MultipleAdversityManager* mam) : Adversity(mam), internalTimer(new Timer()), alreadyInitialized(false) { }
 	~PlaneAdversity() { delete internalTimer; }
 	
 	void update();

@@ -7,24 +7,6 @@
     <ClCompile Include="AdversityAdder.cpp">
       <Filter>Source Files\Adversities</Filter>
     </ClCompile>
-    <ClCompile Include="AdversityEffect.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityLoader.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityMotion.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversitySpawn.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityViewer.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
-    <ClCompile Include="AdversityManager.cpp">
-      <Filter>Source Files\Adversities</Filter>
-    </ClCompile>
     <ClCompile Include="AIAssistant.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
@@ -47,9 +29,6 @@
       <Filter>Source Files\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="ButtonBehaviourNC.cpp">
-      <Filter>Source Files\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonChangeOnClick.cpp">
       <Filter>Source Files\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="ButtonPadNavigation.cpp">
@@ -145,19 +124,10 @@
     <ClCompile Include="SDLRenderer.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="SDLRendererFrame.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
     <ClCompile Include="SDLTexturesManager.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
     <ClCompile Include="SRandBasedGenerator.cpp">
-      <Filter>Source Files\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticRenderer.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
@@ -199,9 +169,6 @@
     <ClCompile Include="FoodPoolAdder.cpp">
       <Filter>Source Files\Foods</Filter>
     </ClCompile>
-    <ClCompile Include="FoodTextures.cpp">
-      <Filter>Source Files\Foods</Filter>
-    </ClCompile>
     <ClCompile Include="FoodViewer.cpp">
       <Filter>Source Files\Foods</Filter>
     </ClCompile>
@@ -211,19 +178,10 @@
     <ClCompile Include="GameControl.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="GameLoader.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="GameLogic.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="GameManagerAdder.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSave.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Order.cpp">
@@ -254,9 +212,6 @@
       <Filter>Source Files\Ingredients</Filter>
     </ClCompile>
     <ClCompile Include="IngredientMotion.cpp">
-      <Filter>Source Files\Ingredients</Filter>
-    </ClCompile>
-    <ClCompile Include="IngredientSpawn.cpp">
       <Filter>Source Files\Ingredients</Filter>
     </ClCompile>
     <ClCompile Include="IngredientsPool.cpp">
@@ -291,9 +246,6 @@
     </ClCompile>
     <ClCompile Include="UtensilsViewer.cpp">
       <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
-    <ClCompile Include="InOutFood.cpp">
-      <Filter>Source Files\Cookers</Filter>
     </ClCompile>
     <ClCompile Include="InsertExpel.cpp">
       <Filter>Source Files\Cookers</Filter>
@@ -374,9 +326,6 @@
       <Filter>Source Files\Gpad Keyboard</Filter>
     </ClCompile>
     <ClCompile Include="KeyboardKeySwitcherViewer.cpp">
-      <Filter>Source Files\Gpad Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="KeySwitcher.cpp">
       <Filter>Source Files\Gpad Keyboard</Filter>
     </ClCompile>
     <ClCompile Include="MultipleAdversityManager.cpp">
@@ -463,9 +412,6 @@
     <ClCompile Include="InputHandler.cpp">
       <Filter>Source Files\Gpad Keyboard</Filter>
     </ClCompile>
-    <ClCompile Include="Converter.cpp">
-      <Filter>Source Files\Cookers</Filter>
-    </ClCompile>
     <ClCompile Include="Collisions.cpp">
       <Filter>Source Files\Resources</Filter>
     </ClCompile>
@@ -516,24 +462,6 @@
     <ClInclude Include="AdversityAdder.h">
       <Filter>Headers Files\Adversities</Filter>
     </ClInclude>
-    <ClInclude Include="AdversityEffect.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityManager.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityMotion.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversitySpawn.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityViewer.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
-    <ClInclude Include="AdversityLoader.h">
-      <Filter>Headers Files\Adversities</Filter>
-    </ClInclude>
     <ClInclude Include="AIAssistant.h">
       <Filter>Headers Files\AI</Filter>
     </ClInclude>
@@ -556,9 +484,6 @@
       <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="ButtonBehaviourNC.h">
-      <Filter>Headers Files\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonChangeOnClick.h">
       <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="ButtonPadNavigation.h">
@@ -672,13 +597,7 @@
     <ClInclude Include="SDLRenderer.h">
       <Filter>Headers Files\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="SDLRendererFrame.h">
-      <Filter>Headers Files\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="SDLTexturesManager.h">
-      <Filter>Headers Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.h">
       <Filter>Headers Files\Resources</Filter>
     </ClInclude>
     <ClInclude Include="SRandBasedGenerator.h">
@@ -708,9 +627,6 @@
     <ClInclude Include="FoodDictionary.h">
       <Filter>Headers Files\Foods</Filter>
     </ClInclude>
-    <ClInclude Include="FoodEnum.h">
-      <Filter>Headers Files\Foods</Filter>
-    </ClInclude>
     <ClInclude Include="FoodGiver.h">
       <Filter>Headers Files\Foods</Filter>
     </ClInclude>
@@ -729,9 +645,6 @@
     <ClInclude Include="FoodPoolAdder.h">
       <Filter>Headers Files\Foods</Filter>
     </ClInclude>
-    <ClInclude Include="FoodTextures.h">
-      <Filter>Headers Files\Foods</Filter>
-    </ClInclude>
     <ClInclude Include="FoodViewer.h">
       <Filter>Headers Files\Foods</Filter>
     </ClInclude>
@@ -741,19 +654,10 @@
     <ClInclude Include="GameControl.h">
       <Filter>Headers Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameLoader.h">
-      <Filter>Headers Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameLogic.h">
       <Filter>Headers Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Headers Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameManagerAdder.h">
-      <Filter>Headers Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSave.h">
       <Filter>Headers Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Order.h">
@@ -789,9 +693,6 @@
     <ClInclude Include="IngredientsPool.h">
       <Filter>Headers Files\Ingredients</Filter>
     </ClInclude>
-    <ClInclude Include="IngredientSpawn.h">
-      <Filter>Headers Files\Ingredients</Filter>
-    </ClInclude>
     <ClInclude Include="IngredientViewer.h">
       <Filter>Headers Files\Ingredients</Filter>
     </ClInclude>
@@ -821,9 +722,6 @@
     </ClInclude>
     <ClInclude Include="UtensilsViewer.h">
       <Filter>Headers Files\Utensils</Filter>
-    </ClInclude>
-    <ClInclude Include="InOutFood.h">
-      <Filter>Headers Files\Cookers</Filter>
     </ClInclude>
     <ClInclude Include="InsertExpel.h">
       <Filter>Headers Files\Cookers</Filter>
@@ -993,9 +891,6 @@
     <ClInclude Include="CookersAdder.h">
       <Filter>Headers Files\Cookers</Filter>
     </ClInclude>
-    <ClInclude Include="Converter.h">
-      <Filter>Headers Files\Cookers</Filter>
-    </ClInclude>
     <ClInclude Include="DishAdder.h">
       <Filter>Headers Files\Utensils\Dishes</Filter>
     </ClInclude>
@@ -1033,9 +928,6 @@
       <Filter>Headers Files\Resources</Filter>
     </ClInclude>
     <ClInclude Include="SliderRenderer.h">
-      <Filter>Headers Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticRenderer.h">
       <Filter>Headers Files\Resources</Filter>
     </ClInclude>
     <ClInclude Include="BinAdder.h">
@@ -1077,11 +969,8 @@
     <ClInclude Include="AnimalCooking.h">
       <Filter>Headers Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextSpeechBubble.h">
-      <Filter>Organizar</Filter>
-    </ClInclude>
-    <ClInclude Include="TextSpeechBubbleViewer.h">
-      <Filter>Organizar</Filter>
+    <ClInclude Include="ButtonChangeOnClick.h">
+      <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -156,12 +156,6 @@
   <ItemGroup>
     <ClInclude Include="Adversity.h" />
     <ClInclude Include="AdversityAdder.h" />
-    <ClInclude Include="AdversityEffect.h" />
-    <ClInclude Include="AdversityLoader.h" />
-    <ClInclude Include="AdversityManager.h" />
-    <ClInclude Include="AdversityMotion.h" />
-    <ClInclude Include="AdversitySpawn.h" />
-    <ClInclude Include="AdversityViewer.h" />
     <ClInclude Include="AIAssistant.h" />
     <ClInclude Include="AIClient.h" />
     <ClInclude Include="AIIngredient.h" />
@@ -186,7 +180,6 @@
     <ClInclude Include="CollisionsSystem.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ConfigState.h" />
-    <ClInclude Include="Converter.h" />
     <ClInclude Include="Cooker.h" />
     <ClInclude Include="CookerPool.h" />
     <ClInclude Include="CookersAdder.h" />
@@ -213,24 +206,19 @@
     <ClInclude Include="FoodConfig.h" />
     <ClInclude Include="FoodCooker.h" />
     <ClInclude Include="FoodDictionary.h" />
-    <ClInclude Include="FoodEnum.h" />
     <ClInclude Include="FoodGiver.h" />
     <ClInclude Include="FoodGiverAdder.h" />
     <ClInclude Include="FoodGiverViewer.h" />
     <ClInclude Include="FoodMotion.h" />
     <ClInclude Include="FoodPool.h" />
     <ClInclude Include="FoodPoolAdder.h" />
-    <ClInclude Include="FoodTextures.h" />
     <ClInclude Include="FoodViewer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FSM.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
-    <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameManagerAdder.h" />
-    <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="GpadKeySwitcher.h" />
@@ -241,10 +229,8 @@
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientInitializer.h" />
     <ClInclude Include="IngredientMotion.h" />
-    <ClInclude Include="IngredientSpawn.h" />
     <ClInclude Include="IngredientsPool.h" />
     <ClInclude Include="IngredientViewer.h" />
-    <ClInclude Include="InOutFood.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InsertExpel.h" />
     <ClInclude Include="InteractionRect.h" />
@@ -294,7 +280,6 @@
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
     <ClInclude Include="SDLRenderer.h" />
-    <ClInclude Include="SDLRendererFrame.h" />
     <ClInclude Include="SDLTexturesManager.h" />
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Selector.h" />
@@ -308,15 +293,11 @@
     <ClInclude Include="SelectorPopUpEntity.h" />
     <ClInclude Include="SliderBehaviour.h" />
     <ClInclude Include="SliderRenderer.h" />
-    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="StaticRenderer.h" />
     <ClInclude Include="SwitcherGPad.h" />
     <ClInclude Include="SwitcherKeyboard.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TextSpeechBubble.h" />
-    <ClInclude Include="TextSpeechBubbleViewer.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
@@ -335,12 +316,6 @@
   <ItemGroup>
     <ClCompile Include="Adversity.cpp" />
     <ClCompile Include="AdversityAdder.cpp" />
-    <ClCompile Include="AdversityEffect.cpp" />
-    <ClCompile Include="AdversityLoader.cpp" />
-    <ClCompile Include="AdversityManager.cpp" />
-    <ClCompile Include="AdversityMotion.cpp" />
-    <ClCompile Include="AdversitySpawn.cpp" />
-    <ClCompile Include="AdversityViewer.cpp" />
     <ClCompile Include="AIAssistant.cpp" />
     <ClCompile Include="AIClient.cpp" />
     <ClCompile Include="AIIngredient.cpp" />
@@ -356,7 +331,6 @@
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
-    <ClCompile Include="ButtonChangeOnClick.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="ButtonRendererHouse.cpp" />
@@ -364,7 +338,6 @@
     <ClCompile Include="CollisionsSystem.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigState.cpp" />
-    <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Cooker.cpp" />
     <ClCompile Include="CookerPool.cpp" />
     <ClCompile Include="CookersAdder.cpp" />
@@ -396,16 +369,12 @@
     <ClCompile Include="FoodMotion.cpp" />
     <ClCompile Include="FoodPool.cpp" />
     <ClCompile Include="FoodPoolAdder.cpp" />
-    <ClCompile Include="FoodTextures.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="GameControl.cpp" />
-    <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameManagerAdder.cpp" />
-    <ClCompile Include="GameSave.cpp" />
     <ClCompile Include="GPadController.cpp" />
     <ClCompile Include="GpadKeySwitcher.cpp" />
     <ClCompile Include="GpadKeySwitcherViewer.cpp" />
@@ -415,10 +384,8 @@
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
-    <ClCompile Include="IngredientSpawn.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="IngredientViewer.cpp" />
-    <ClCompile Include="InOutFood.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InsertExpel.cpp" />
     <ClCompile Include="InteractionRect.cpp" />
@@ -427,7 +394,6 @@
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="KeyboardKeySwitcher.cpp" />
     <ClCompile Include="KeyboardKeySwitcherViewer.cpp" />
-    <ClCompile Include="KeySwitcher.cpp" />
     <ClCompile Include="LevelInitializer.cpp" />
     <ClCompile Include="LevelViewer.cpp" />
     <ClCompile Include="LoadingBarViewer.cpp" />
@@ -467,7 +433,6 @@
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />
     <ClCompile Include="SDLRenderer.cpp" />
-    <ClCompile Include="SDLRendererFrame.cpp" />
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
@@ -481,10 +446,8 @@
     <ClCompile Include="SelectorPopUpEntity.cpp" />
     <ClCompile Include="SliderBehaviour.cpp" />
     <ClCompile Include="SliderRenderer.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
     <ClCompile Include="State.cpp" />
-    <ClCompile Include="StaticRenderer.cpp" />
     <ClCompile Include="SwitcherGPad.cpp" />
     <ClCompile Include="SwitcherKeyboard.cpp" />
     <ClCompile Include="Texture.cpp" />

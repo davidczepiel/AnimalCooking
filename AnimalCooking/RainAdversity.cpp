@@ -1,15 +1,11 @@
 #include "RainAdversity.h"
-#include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
 #include "TimerViewer.h"
 
-RainAdversity::RainAdversity(AdversityManager* am, MultipleAdversityManager* mam) :Adversity(am, mam), lastTick(0),cadence(500)
+RainAdversity::RainAdversity(MultipleAdversityManager* mam) :Adversity(mam), lastTick(0),cadence(500)
 {
 	rainTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
-	if (adversityMngr_ != nullptr)
-		utensilsPool = &adversityMngr_->getUtensilsPool()->getPool();
-	else
-		utensilsPool = &multipleAdversityMngr_->getUtensilsPool()->getPool();
+	utensilsPool = &multipleAdversityMngr_->getUtensilsPool()->getPool();
 
 	rainTimer = new Timer();
 	drawingArea.x = SDLGame::instance()->getCasillaX() *8;
@@ -51,11 +47,7 @@ void RainAdversity::update()
 	}
 	//Si no, la adversidad se acabó
 	else {
-		if (adversityMngr_ != nullptr)
-			adversityMngr_->stopAdversity();
-		else
-			multipleAdversityMngr_->stopAdversity(ecs::AdversityID::RainAdversity);
-		
+		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::RainAdversity);
 	}
 	if (SDL_GetTicks() - lastFrame >= frameTime) {
 		lastFrame = SDL_GetTicks();

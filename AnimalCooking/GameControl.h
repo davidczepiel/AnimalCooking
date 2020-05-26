@@ -8,7 +8,6 @@
 #include "jute.h"
 #include "Timer.h"
 #include "CollisionsSystem.h"
-#include "AdversityManager.h"
 
 class GameControl : public Component
 {
@@ -24,7 +23,6 @@ public:
     void newFood(Food* f, Vector2D pos, Resources::IngredientType ingType);
 	vector<Resources::IngredientType>& getLevelIngType() { return levelIngType; }
     inline Timer* getAdversityTime() { return &adversityTimer; }
-    inline void setAdvMngr(AdversityManager* am) { advManager = am; }
 
 private:
     CollisionsSystem* colSys_;
@@ -33,7 +31,6 @@ private:
     IngredientsPool* ingPool_;
     FoodPool* foodPool;
     UtensilsPool* utensilsPool;
-    AdversityManager* advManager;
     Transport* tP1;
     Transport* tP2;
 	FoodTimer timer;

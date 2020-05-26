@@ -25,7 +25,7 @@ class RainAdversity :
 	
 
 public:
-	RainAdversity(AdversityManager* am, MultipleAdversityManager* mam);
+	RainAdversity(MultipleAdversityManager* mam);
 	virtual void update();
 	virtual void draw();
 	virtual void reset();

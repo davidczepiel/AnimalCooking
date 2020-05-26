@@ -19,7 +19,6 @@
 #include "IngredientInitializer.h"
 #include "OrderAdder.h"
 #include "WallAdder.h"
-#include "AdversityManager.h"
 #include "MultipleAdversityManager.h"
 
 #include "SDLGame.h"

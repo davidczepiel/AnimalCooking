@@ -9,10 +9,10 @@
 MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : Component(ecs::AdversityManager),
 tP1(tp1), tP2(tp2), cookerPool(cp), ingredientsPool(ip), utensilsPool(up), active(false), playingWarning(false), warningRate(100), justStarted(true), lengthOfRumble_(100), rumbleCadence(333)
 {
-	adversities.push_back(new PlaneAdversity(nullptr, this));
-	adversities.push_back(new BurnedCookerAdversity(nullptr, this));
-	adversities.push_back(new HookAdversity(nullptr, this));
-	adversities.push_back(new RainAdversity(nullptr, this));
+	adversities.push_back(new PlaneAdversity(this));
+	adversities.push_back(new BurnedCookerAdversity(this));
+	adversities.push_back(new HookAdversity(this));
+	adversities.push_back(new RainAdversity(this));
 
 	warningTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::WarningAdversity);
 
