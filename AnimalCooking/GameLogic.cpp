@@ -2,8 +2,14 @@
 #include "Ingredient.h"
 #include "FoodDictionary.h"
 
-GameLogic::GameLogic(TimerViewer* tv) : Component(ecs::GameLogic), ingPool(nullptr), utensilPool(nullptr),
-foodPool(nullptr), levelTimer_(new LevelTimer()), tv(tv)
+GameLogic::GameLogic(TimerViewer* tv) : 
+	Component(ecs::GameLogic), 
+	ingPool(nullptr), 
+	utensilPool(nullptr),
+	foodPool(nullptr), 
+	colSys_(nullptr),
+	levelTimer_(new LevelTimer()), 
+	tv(tv)
 {
 	tv->addTimer(levelTimer_);
 }

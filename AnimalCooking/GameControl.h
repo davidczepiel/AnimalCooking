@@ -21,6 +21,7 @@ public:
 	void newIngredient(Resources::IngredientType ing);
 	Food* newFood(Resources::FoodType type, Vector2D pos);
 	void newFood(Food* f, Vector2D pos, Resources::IngredientType ingType);
+
 	vector<Resources::IngredientType>& getLevelIngType() { return levelIngType; }
 	inline Timer* getAdversityTime() { return &adversityTimer; }
 
@@ -33,12 +34,12 @@ private:
 	UtensilsPool* utensilsPool;
 	Transport* tP1;
 	Transport* tP2;
-	FoodTimer timer;
-	Timer adversityTimer;
-	int casillaLength;
 	vector<Resources::IngredientType> levelIngType;
-	bool justStarted;
-	int maxIngr;
+	FoodTimer timer;
+	Timer adversityTimer;	
 
+	int maxIngr;
+	int casillaLength;
 	int indexType;
+	bool justStarted;
 };

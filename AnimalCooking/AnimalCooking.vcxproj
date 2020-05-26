@@ -368,7 +368,6 @@
     <ClCompile Include="FoodPoolAdder.cpp" />
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
-    <ClCompile Include="GameConfig.cpp" />
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManagerAdder.cpp" />

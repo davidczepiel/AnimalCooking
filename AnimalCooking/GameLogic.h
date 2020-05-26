@@ -13,9 +13,9 @@ class GameLogic : public Component
 public:
 	GameLogic(TimerViewer* Tv);
 	~GameLogic() {}
-
 	void init() override;
 	virtual void update() override { levelTimer_->update(); }
+
 	void setIngredientPool(IngredientsPool* p) { ingPool = p; }
 	void setUtensilsPool(UtensilsPool* u) { utensilPool = u; utensilPool->SetGameLogic(this); }
 	void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
@@ -24,6 +24,7 @@ public:
 
 private:
 	void playHit(Resources::UtensilType type);
+
 	CollisionsSystem* colSys_;
 	IngredientsPool* ingPool;
 	FoodPool* foodPool;

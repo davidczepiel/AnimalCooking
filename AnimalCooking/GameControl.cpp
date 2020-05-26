@@ -2,13 +2,21 @@
 #include "Ingredient.h"  
 #include "GameConfig.h"
 
-GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int levelMaxIngredients) : Component(ecs::GameControl),
-utensilsPool(u), foodPool(fp), tP1(p1), tP2(p2), ingPool_(ip), levelIngType(), justStarted(true), indexType(0), maxIngr(levelMaxIngredients)
+GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool* fp, IngredientsPool* ip, int levelMaxIngredients) : 
+	Component(ecs::GameControl),
+	utensilsPool(u), 
+	foodPool(fp), 
+	tP1(p1), 
+	tP2(p2), 
+	ingPool_(ip), 
+	levelIngType(), 
+	justStarted(true), 
+	indexType(0), 
+	maxIngr(levelMaxIngredients)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
 	timer.timerStart();
 }
-
 
 void GameControl::init()
 {
