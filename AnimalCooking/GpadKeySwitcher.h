@@ -6,7 +6,7 @@
 class GpadKeySwitcher : public Component
 {
 public:
-	GpadKeySwitcher(int player, int buttonWidth, int buttonHeight, bool navEnabled) : Component(ecs::GpadKeySwitcher), 
+	GpadKeySwitcher(int player, int buttonWidth, int buttonHeight, bool navEnabled) : Component(ecs::GpadKeySwitcher),
 		focus(-1), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight), navEnabled(navEnabled) {}
 	~GpadKeySwitcher() {
 		for (SwitcherGPad* s : switchers_)

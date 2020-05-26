@@ -17,10 +17,10 @@ void ScoreViewer::draw()
 		digits++;
 		auxPoints = auxPoints / 10;
 	}
-	digits ++;
+	digits++;
 
-	
-	Texture score = Texture(game_->getRenderer(),to_string(scoreManager_->getScore()), (game_->getFontMngr()->getFont(Resources::QuarkCheese100)),
+
+	Texture score = Texture(game_->getRenderer(), to_string(scoreManager_->getScore()), (game_->getFontMngr()->getFont(Resources::QuarkCheese100)),
 		{ COLOR(0x000000ff) });
 	SDL_Rect destRect = RECT(pos_.getX(), pos_.getY(), score.getWidth(), score.getHeight());
 	score.render(destRect);

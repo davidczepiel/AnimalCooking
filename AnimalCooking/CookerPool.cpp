@@ -1,6 +1,6 @@
 #include "CookerPool.h"
 
-CookerPool::CookerPool(size_t sizeIni): Component(ecs::CookerPool)
+CookerPool::CookerPool(size_t sizeIni) : Component(ecs::CookerPool)
 {
 	pool_.reserve(sizeIni);
 }
