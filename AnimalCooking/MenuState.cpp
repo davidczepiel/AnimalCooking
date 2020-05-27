@@ -144,8 +144,34 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 		SDLGame::instance()->getAudioMngr()->setMusicVolume(SDLGame::instance()->getOptions().volume.music_ = Uint8(value * 128));
 		f >> value;
 		SDLGame::instance()->getAudioMngr()->setChannelVolume(SDLGame::instance()->getOptions().volume.sounds_ = Uint8(value * 128));
+
+		bool v;
+		f >> v; if (!v) SDLGame::instance()->toggleFullScreen();
+		f >> v; SDLGame::instance()->getOptions().showKeyToPress = v;
+
+		loadPlayer(f, 0, SDLGame::instance()->getOptions());
+		loadPlayer(f, 1, SDLGame::instance()->getOptions());
 	}
 	f.close();
+}
+
+void MenuState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
+{
+	Sint32 aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PICKUP = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].ATTACK = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].OPEN = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].PREVIOUS = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].NEXT = (SDL_Keycode)aux;
+	f >> aux; if (!f.fail()) o.players_keyboardKeys[player].FINISHER = (SDL_Keycode)aux;
+
+	aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].PICKUP = (SDL_GameControllerButton)aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].ATTACK = (SDL_GameControllerButton)aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].OPEN = (SDL_GameControllerButton)aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].PREVIOUS = (SDL_GameControllerButton)aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].NEXT = (SDL_GameControllerButton)aux;
+	f >> aux; if (!f.fail()) o.players_gPadButtons[player].FINISHER = (SDL_GameControllerButton)aux;
 }
 
 MenuState::~MenuState()

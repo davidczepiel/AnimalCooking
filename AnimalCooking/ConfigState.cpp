@@ -38,6 +38,7 @@ void ConfigState::saveToFile()
 	f.open("../AnimalCooking/resources/cfg/options.txt");
 	if (f.is_open()) {
 		saveVolumeSetting(f);
+		saveBooleansSetting(f);
 		savePlayer(f, 0, o);
 		savePlayer(f, 1, o);
 	}
@@ -51,6 +52,7 @@ void ConfigState::loadFromFile()
 	f.open("../AnimalCooking/resources/cfg/options.txt");
 	if (f.is_open()) {
 		loadVolumeSetting(f);
+		loadBooleansSetting(f);
 		loadPlayer(f, 0, o);
 		loadPlayer(f, 1, o);
 	}
@@ -71,6 +73,11 @@ void ConfigState::savePlayer(ofstream& f, Uint8 player, const config::Options& o
 void ConfigState::saveVolumeSetting(ofstream& f)
 {
 	f << sliderMusic_->getValue() << " " << sliderSound_->getValue() << endl;
+}
+
+void ConfigState::saveBooleansSetting(ofstream& f)
+{
+	f << game_->getIfFullscreen() << " " << game_->getOptions().showKeyToPress << endl;
 }
 
 void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
@@ -97,6 +104,13 @@ void ConfigState::loadVolumeSetting(ifstream& f)
 	float value;
 	f >> value; sliderMusic_->movePercentage(value);
 	f >> value; sliderSound_->movePercentage(value);
+}
+
+void ConfigState::loadBooleansSetting(ifstream& f)
+{
+	bool value;
+	f >> value; if (value && !game_->getIfFullscreen()) game_->toggleFullScreen();
+	f >> value; game_->getOptions().showKeyToPress = value;
 }
 
 

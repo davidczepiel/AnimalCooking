@@ -23,6 +23,7 @@ public:
 	void leftState();
 	void rightState();
 	void selectedState();
+	void loadPlayer(ifstream& f, Uint8 player, config::Options& o);
 
 private:
 	void draw() override;
