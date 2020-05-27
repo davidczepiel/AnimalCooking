@@ -6,8 +6,6 @@ PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) :
 	Adversity(mam), 
 	planeTexture_(nullptr),
 	internalTimer(new Timer()),
-	dirs_(),
-	angles_(),
 	dir_(),
 	planeRect_(),
 	state_(),
