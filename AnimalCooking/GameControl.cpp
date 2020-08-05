@@ -151,8 +151,8 @@ Resources::IngredientType GameControl::chooseIng()
 			lessIng = ings.first;
 		}
 	}
-	if(min == 0) return lessIng;
-	else {
+	if(min == 0) return lessIng; //Si no está ese ingrediente, aparece
+	else { //Si todos los ingredientes aparecen una vez, se elige de entre los que menos haya uno (con +1 de rango) al azar
 		vector<Resources::IngredientType> lista;
 		lista.reserve(levelIngType.size());
 
