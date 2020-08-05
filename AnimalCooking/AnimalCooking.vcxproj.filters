@@ -445,6 +445,7 @@
     <ClCompile Include="AnimalCooking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DishFinisherViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -957,6 +958,7 @@
     <ClInclude Include="ButtonChangeOnClick.h">
       <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="DishFinisherViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

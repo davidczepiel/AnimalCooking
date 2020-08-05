@@ -11,6 +11,7 @@
 #include "Dish.h"
 #include "Manager.h"
 #include "DishFinisher.h"
+#include "DishFinisherViewer.h"
 
 class Shelf : public Entity, public Interactive	
 {
@@ -33,6 +34,7 @@ public:
 
 private:
 	DishFinisher* dishFinisher;
+	DishFinisherViewer* dishFinisherViewer;
 	Pickable* content;
 	Resources::PickableType contentType;
 };

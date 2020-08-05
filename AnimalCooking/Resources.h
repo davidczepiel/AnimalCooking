@@ -278,7 +278,7 @@ public:
 		FireOverHeated,
 		MapRestaurantButton,
 		MapStatePlayButton,
-
+		Explosion,
 		// text
 		Back,
 		ToggleFullscreen,
