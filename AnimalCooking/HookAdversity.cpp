@@ -48,20 +48,22 @@ void HookAdversity::StartAdversity() {
 	p1OriginalPos = tP1->getPos();
 	p2OriginalPos = tP2->getPos();
 	lastTick = SDL_GetTicks();
+
+	catched = false;
+	changedPositions = false;
+	droped = false;
+	playersVisible = true;
 }
 
 void HookAdversity::update()
 {
-	//if (lastTick == 0)StartAdversity(); //Comienza la adversidad
-	//else {
-		//impido que los players se muevan mientras dure la adversidad
-		tP1->setVel(Vector2D(0, 0));
-		tP2->setVel(Vector2D(0, 0));
-		if (!catched) GoingDown(); //Bajo a por ellos
-		else if (catched && !changedPositions) GoingUp(); // "Les saco de pantalla"
-		else if (catched && changedPositions && !droped) GoingDown(); //les dejo en la posición del otro
-		else if (catched && changedPositions && droped) GoingUp(); //saco los ganchos de pantalla
-	//}
+	//impido que los players se muevan mientras dure la adversidad
+	tP1->setVel(Vector2D(0, 0));
+	tP2->setVel(Vector2D(0, 0));
+	if (!catched) GoingDown(); //Bajo a por ellos
+	else if (catched && !changedPositions) GoingUp(); // "Les saco de pantalla"
+	else if (catched && changedPositions && !droped) GoingDown(); //les dejo en la posición del otro
+	else if (catched && changedPositions && droped) GoingUp(); //saco los ganchos de pantalla
 }
 
 //Muevo los ganchos cada uno a una velocidad concreta para que entren y salgan de pantalla
@@ -132,7 +134,7 @@ void HookAdversity::draw()
 
 void HookAdversity::reset()
 {
-	//lastTick = 0;
+	lastTick = 0;
 }
 
 void HookAdversity::start()
