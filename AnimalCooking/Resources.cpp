@@ -26,7 +26,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
-	
+
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
 	{Basic, LevelTimerForeground,"../AnimalCooking/resources/images/cargaBarra.png"},
@@ -47,7 +47,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
-	
+
 
 	//---->Config<---------
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
@@ -57,7 +57,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	//CreditState-----------
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
-	
+
 
 	//---->Creditos<-----
 	{Basic, LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
@@ -67,6 +67,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
 	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
 	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
+	{AllLevels, SkilletOFFEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffEsquina.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -86,6 +87,9 @@ vector<Resources::ImageInfo> Resources::images_{
 
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
+	{AllLevels, FregaderoFlip, "../AnimalCooking/resources/images/Cocina/fregaderoFlip.png" },
+    {AllLevels, FregaderoFlipON,"../AnimalCooking/resources/images/Cocina/fregaderoFlipOn.png" },
+
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
 	{AllLevels, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
@@ -122,6 +126,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraVEsquinaInferiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
+
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
 	{AllLevels,EsquinaSupIzdaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-2.png"},
@@ -131,6 +136,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EsquinaSupIzdaAgua,"../AnimalCooking/resources/images/Cocina/esquinas/esquina3-2.png"},
 	{AllLevels,EsquinaSupDchaVacia,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-1.png"},
 	{AllLevels,EsquinaSupIzdaVacia,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-2.png"},
+	{ AllLevels,EsquinaInfIzqVaciaDecoracion,"../AnimalCooking/resources/images/Cocina/esquinas/esquina-abajo.png" },
+	{ AllLevels,EsquinaInfDerVaciaDecoracion,"../AnimalCooking/resources/images/Cocina/esquinas/esquina-abajo-2.png" },
 
 	//Pedidos--------------------------------------------------------------
 	{Basic,Bocadillo,"../AnimalCooking/resources/images/Pedidos/bocadillo.png"},
@@ -288,6 +295,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
 	{AllLevels, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+	{AllLevels, SkilletONEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
 	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
     {AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",20,8},
 	{AllLevels, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",20,4},
