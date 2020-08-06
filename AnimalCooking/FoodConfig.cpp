@@ -110,6 +110,10 @@ void FoodConfig::fill()
 	//////////////////////
 
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::SlicedOnion, Resources::FoodType::Dress },	Resources::FoodType::Salad });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress }, Resources::FoodType::Salad1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::Dress },	Resources::FoodType::Salad2 });
+	cTrans.push_back({ { Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress, Resources::FoodType::SlicedOnion  }, Resources::FoodType::Salad3 });
+	cTrans.push_back({ {  Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress, Resources::FoodType::SlicedCarrot  },	Resources::FoodType::Salad4 });
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet },	Resources::FoodType::Burger });
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet, Resources::FoodType::BreadBurger, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedCheese},	Resources::FoodType::HotDog });
 	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet, Resources::FoodType::Dress},	Resources::FoodType::FrenchFries });

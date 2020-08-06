@@ -34,9 +34,14 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	data.push_back(Data(Vector2D(8 * casillaX + offsetX -10 ,0), //Arr hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 10, offsetY),
 		Resources::TextureId::Muro));
+	data.push_back(Data(Vector2D(0, 0), //Arr izq
+		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 30, offsetY),
+		Resources::TextureId::Muro));
+
 
 	
 	maker(data[5], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba
+	maker(data[6], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba izq
 	maker(data[0], casillaX, casillaY, colSys_, mngr, 64, 64); //Valla medio 1
 	maker(data[1], casillaX, casillaY, colSys_, mngr, 64, 64); //Final valla medio 1
 	maker(data[2], casillaX, casillaY, colSys_, mngr, 64, 64); //Inicio valla medio 2
@@ -50,6 +55,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
 	mngr->addToGroup(valla, ecs::Valla);
 
+	
 	//Suelos
 	Entity* cocina = mngr->addEntity();
 	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
