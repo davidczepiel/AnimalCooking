@@ -118,6 +118,7 @@ void Utensil::onPick() {
 	myState = State::playerHand;
 	dirtTimer_->timerReset();
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
+	resetDirtTimer();
 }
 
 void Utensil::action1(int player) {

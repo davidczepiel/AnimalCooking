@@ -19,7 +19,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 		clipArea_.y = 0;
 		clipArea_.w = 202;
 		clipArea_.h = 149;
-		dirtSpeedUp_ = -500;
+		dirtSpeedUp_ = -700;
 		rainTimer_->setTime(10000);
 		lastFrame_ = 0;
 		frameTime_ = 75;
@@ -67,7 +67,7 @@ void RainAdversity::draw()
 void RainAdversity::reset() {
 	//Recorro todos los utensilios y en caso de que les esté dando con la lluvia les digo que devuelvan sus timers de suciedad a la normalidad
 	rainTimer_->timerReset();
-	for (int i = 0; i < utensilsPool_->size(); i++) {
+	/*for (int i = 0; i < utensilsPool_->size(); i++) {
 		utensilsPool_->at(i)->resetDirtTimer();
-	}
+	}*/
 }
