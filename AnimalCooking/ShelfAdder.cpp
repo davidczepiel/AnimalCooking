@@ -106,6 +106,14 @@ Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::j
 	{
 		t = Resources::TextureId::EsquinaSupDchaVacia;
 	}
+	else if(jsonShelf["texture"].as_string() == "EsquinaInfIzqVaciaDecoracion")
+	{
+		t = Resources::TextureId::EsquinaInfIzqVaciaDecoracion;
+	}
+	else if (jsonShelf["texture"].as_string() == "EsquinaInfDerVaciaDecoracion")
+	{
+		t = Resources::TextureId::EsquinaInfDerVaciaDecoracion;
+	}
 	else { //CornerLeft
 		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;
 	}

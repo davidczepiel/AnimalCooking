@@ -67,6 +67,7 @@ public:
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
+		SkilletOFFEsquina,
 		Platera,
 		Muro,
 		Valla,
@@ -85,6 +86,8 @@ public:
 		RedSucia,
 		Fregadero,
 		FregaderoON,
+		FregaderoFlip,
+		FregaderoFlipON,
 		Panera,
 		Papelera,
 		CuadradoAux,
@@ -129,6 +132,8 @@ public:
 			EsquinaSupIzdaAgua,
 			EsquinaSupDchaVacia,
 			EsquinaSupIzdaVacia,
+			EsquinaInfIzqVaciaDecoracion,
+			EsquinaInfDerVaciaDecoracion,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,
@@ -267,6 +272,7 @@ public:
 		HomeIconMapState,
 		MapIcon,
 		SkilletON,
+		SkilletONEsquina,
 		SmokeBurned,
 		PigIdle,
         PigWalk,
