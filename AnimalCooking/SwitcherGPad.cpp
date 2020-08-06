@@ -27,11 +27,9 @@ void SwitcherGPad::draw()
 
 	backGround_->renderFrame(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()), 0, col, 0);
 
-	const string& cadena = string(SDL_GameControllerGetStringForButton(gPad_keyToChange));
-
 	Vector2D s = Vector2D(name_->getWidth() * (size_.getY() - 20) / name_->getHeight(), size_.getY() - 20);
 
-	Texture* c2 = SDLGame::instance()->getKeyShower().getTexture(cadena);
+	Texture* c2 = SDLGame::instance()->getKeyShower().getTexture(string(SDL_GameControllerGetStringForButton(gPad_keyToChange)));
 	
 	name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (24), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
 	c2->render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (24), pos_.getY() + size_.getY() / 2 - s.getY() / 2, 48, 48));

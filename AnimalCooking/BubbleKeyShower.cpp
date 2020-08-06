@@ -23,13 +23,13 @@ void BubbleKeyShower::fillMap(SDLGame* game)
 	//TODO: poner las texturas
 
 	keyToTexture_.insert({ //Map con todos los nombres asociados a cada textura
-		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, 
-		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
-		{ "start", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "back", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
-		{ "rightstick", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "leftstick", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
-		{ "leftshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "rightshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
-		{ "dpup", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "dpdown", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
-		{ "dpleft", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) }, { "dpright", game->getTextureMngr()->getTexture(Resources::TextureId::HomeIconMapState) },
+		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_a) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_b) }, 
+		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_y) },
+		{ "start", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_start) }, { "back", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_back) },
+		{ "rightstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r3) }, { "leftstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l3) },
+		{ "leftshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r1) }, { "rightshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l1) },
+		{ "dpup", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_up) }, { "dpdown", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_down) },
+		{ "dpleft", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_left) }, { "dpright", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_right) },
 		});
 
 }
