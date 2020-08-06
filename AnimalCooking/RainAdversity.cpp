@@ -71,3 +71,8 @@ void RainAdversity::reset() {
 		utensilsPool_->at(i)->resetDirtTimer();
 	}*/
 }
+
+void RainAdversity::start()
+{
+	rainTimer_->timerReset();
+}

@@ -12,6 +12,7 @@ public:
 	void update();
 	void draw();
 	void reset();
+	void start();
 
 private:
 	void StartAdversity();

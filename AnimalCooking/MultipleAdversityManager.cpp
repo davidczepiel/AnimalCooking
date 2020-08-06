@@ -115,18 +115,21 @@ void MultipleAdversityManager::seeTimers() {
 	nextAdversityTimer_->update();
 	if (nextAdversityTimer_->isTimerEnd() && !adversitiesQueue_.empty()) {
 		activeAdversities_.at(std::get<1>(adversitiesQueue_.front())) = true;
-		adversities_.at(std::get<1>(adversitiesQueue_.front()))->reset();
+		adversities_.at(std::get<1>(adversitiesQueue_.front()))->start();
 		playingWarning_ = false;
 		active_ = false;
+		int lastTime = std::get<0>(adversitiesQueue_.front());
 		adversitiesQueue_.pop();
 
-		nextAdversityTimer_->timerReset();
-		nextAdversityTimer_->setTime(std::get<0>(adversitiesQueue_.front()));
-		nextAdversityTimer_->timerStart();
+		if (!adversitiesQueue_.empty()) {
+			nextAdversityTimer_->timerReset();
+			nextAdversityTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - lastTime);
+			nextAdversityTimer_->timerStart();
 
-		nextWarningTimer_->timerReset();
-		nextWarningTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - 2000);
-		nextWarningTimer_->timerStart();
+			nextWarningTimer_->timerReset();
+			nextWarningTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - lastTime - 2000);
+			nextWarningTimer_->timerStart();
+		}
 	}
 
 }
@@ -157,6 +160,7 @@ void MultipleAdversityManager::startAdvesities()
 void MultipleAdversityManager::stopAdversity(ecs::AdversityID i)
 {
 	activeAdversities_[i] = false;
+	adversities_[i]->reset();
 
 	if (!adversitiesQueue_.empty()) return;
 

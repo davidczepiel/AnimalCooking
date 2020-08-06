@@ -13,6 +13,7 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void reset();
+	void start();
 
 private:
 	Texture* rainTexture_;
