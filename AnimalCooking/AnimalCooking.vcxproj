@@ -188,7 +188,6 @@
     <ClInclude Include="Dish.h" />
     <ClInclude Include="DishAdder.h" />
     <ClInclude Include="DishFinisher.h" />
-    <ClInclude Include="DishFinisherViewer.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
     <ClInclude Include="DishStack.h" />
@@ -344,7 +343,6 @@
     <ClCompile Include="Dish.cpp" />
     <ClCompile Include="DishAdder.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
-    <ClCompile Include="DishFinisherViewer.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
     <ClCompile Include="DishStack.cpp" />

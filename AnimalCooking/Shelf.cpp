@@ -4,7 +4,6 @@
 Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2, nullptr), content(c) {
 	addComponent<ShelfViewer>(this, texture);
 	dishFinisher = addComponent<DishFinisher>(p1, p2);
-	dishFinisherViewer = addComponent<DishFinisherViewer>(this);
 	position_ = pos;
 	if (content != nullptr) {
 		contentType = Resources::PickableType::Utensil;
@@ -101,7 +100,6 @@ void Shelf::action5(int id)
 	if (contentType == Resources::PickableType::Dish)
 	{
 		Dish* d = static_cast<Dish*>(content);
-		dishFinisherViewer->play();
 		dishFinisher->finish(id, d);
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CompleteDish, 0);
 	}
