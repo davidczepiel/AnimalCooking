@@ -36,6 +36,7 @@ private:
 	void initialize_levelIngredients();
 	void initialize_clients();
 	void initialize_walls();
+	void initialize_firePool();
 	void initialize_adversities();
 
 	Entity* ingPoolEntity_;
@@ -43,6 +44,7 @@ private:
 	Entity* foodPool;
 	Entity* gameManager;
 	Entity* cookerPool;
+	Entity* firesPool;
 	ScreenLoader* sL;
 	TimerViewer* tv_;
 	DishPool* dp;

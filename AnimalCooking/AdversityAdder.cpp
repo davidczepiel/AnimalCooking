@@ -2,7 +2,7 @@
 #include "MultipleAdversityManager.h"
 
 AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::array<Entity*, 2>& players, 
-	Entity* cookersPool, Entity* ingredientsPool, Entity* utensilsPool)
+	Entity* cookersPool, Entity* ingredientsPool, Entity* utensilsPool, Entity* firesPool)
 {
 	Entity* adversityManager = mngr->addEntity();
 	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(
@@ -10,7 +10,8 @@ AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::ar
 		GETCMP2(players[1], Transform), 
 		GETCMP2(cookersPool, CookerPool), 
 		GETCMP2(ingredientsPool, IngredientsPool),
-		GETCMP2(utensilsPool, UtensilsPool));
+		GETCMP2(utensilsPool, UtensilsPool),
+		GETCMP2(firesPool, FirePool));
 
 	vector<tuple<ecs::AdversityID, int>> adversitiesList;	
 
@@ -32,20 +33,22 @@ AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::ar
 		}
 	}
 
-	int min = std::get<1>(adversitiesList.at(0));
-	int minPos = 0;
+	if (!adversitiesList.empty()) {
+		int min = std::get<1>(adversitiesList.at(0));
+		int minPos = 0;
 
-	for (int i = 0; i < adversitiesList.size(); ++i) {
-		for (int e = 0; e < adversitiesList.size(); ++e) {
-			if (std::get<1>(adversitiesList.at(e)) < min) {
-				min = std::get<1>(adversitiesList.at(e));
-				minPos = e;
+		for (int i = 0; i < adversitiesList.size(); ++i) {
+			for (int e = 0; e < adversitiesList.size(); ++e) {
+				if (std::get<1>(adversitiesList.at(e)) < min) {
+					min = std::get<1>(adversitiesList.at(e));
+					minPos = e;
+				}
 			}
+			mam->addAdversityToQueue(std::get<0>(adversitiesList.at(minPos)), std::get<1>(adversitiesList.at(minPos)));
+			std::get<1>(adversitiesList.at(minPos)) = 9999999;
+			min = 9999999;
 		}
-		mam->addAdversityToQueue(std::get<0>(adversitiesList.at(minPos)), std::get<1>(adversitiesList.at(minPos)));
-		std::get<1>(adversitiesList.at(minPos)) = 9999999;
-		min = 9999999;
-	}
 
-	mngr->addToGroup(adversityManager, ecs::GroupID::topLayer);
+		mngr->addToGroup(adversityManager, ecs::GroupID::topLayer);
+	}
 }

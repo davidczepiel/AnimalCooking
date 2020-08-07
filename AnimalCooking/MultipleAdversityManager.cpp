@@ -6,11 +6,12 @@
 #include "GPadController.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : 
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp) : 
 	Component(ecs::AdversityManager),
 	tP1_(tp1), 
 	tP2_(tp2), 
 	cookerPool_(cp), 
+	firePool_(fp),
 	ingredientsPool_(ip), 
 	utensilsPool_(up), 
 	active_(false), 

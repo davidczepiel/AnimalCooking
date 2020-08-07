@@ -276,6 +276,8 @@ public:
 		Sausage,
 		Puerta,
 		FireOverHeated,
+		LightingStrike,
+		LightingExplosion,
 		MapRestaurantButton,
 		MapStatePlayButton,
 

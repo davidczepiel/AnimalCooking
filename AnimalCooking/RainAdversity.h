@@ -29,5 +29,18 @@ private:
 	int lastTick_;
 	int cadence_;
 	bool started_;
+
+	//-----------RAYOS---------
+	Texture* lightingTexture_;
+	Texture* explosionTexture_;
+	bool lightingStrike_, lightingStrikeDone_, explosionDone_;
+	int lightingFrameCadence_;
+	int lastLightingFrame_;
+	int explosionFrameCadence_;
+	int lastExplosionFrame_;
+	Uint32 lastLightingTick_;
+	Uint32 lastExplosionTick_;
+
+	SDL_Rect rectLighting_;
 };
 

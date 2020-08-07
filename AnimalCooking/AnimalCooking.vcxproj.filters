@@ -445,6 +445,7 @@
     <ClCompile Include="AnimalCooking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FirePool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -957,6 +958,7 @@
     <ClInclude Include="ButtonChangeOnClick.h">
       <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="FirePool.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

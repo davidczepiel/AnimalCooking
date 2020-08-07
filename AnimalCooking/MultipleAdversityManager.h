@@ -6,6 +6,7 @@
 #include "CookerPool.h"
 #include "UtensilsPool.h"
 #include "IngredientsPool.h"
+#include "FirePool.h"
 
 #include <queue>
 #include <tuple>
@@ -13,7 +14,7 @@
 class MultipleAdversityManager : public Component
 {
 public:
-	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
+	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp);
 	~MultipleAdversityManager() {
 		if (haptic1 != NULL) SDL_HapticClose(haptic1);
 		if (haptic2 != NULL) SDL_HapticClose(haptic2);
@@ -42,6 +43,10 @@ public:
 		return utensilsPool_;
 	}
 
+	FirePool* getFirePool() {
+		return firePool_;
+	}
+
 private:
 	void seeTimers();
 	void seeAdversityWarning();
@@ -53,6 +58,7 @@ private:
 	CookerPool* cookerPool_;
 	IngredientsPool* ingredientsPool_;
 	UtensilsPool* utensilsPool_;
+	FirePool* firePool_;
 	AdversityTimer* adversityTimer_;
 
 	int warningRate_;

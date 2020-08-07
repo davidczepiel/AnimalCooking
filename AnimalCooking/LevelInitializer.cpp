@@ -21,6 +21,7 @@
 #include "MultipleAdversityManager.h"
 #include "SDLGame.h"
 #include "AdversityAdder.h"
+#include "FirePool.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -56,6 +57,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_clients();
 	initialize_colSystem();
 	initialize_walls();
+	initialize_firePool();
 	initialize_adversities();
 }
 
@@ -222,9 +224,18 @@ void LevelInitializer::initialize_walls()
 	sL->updateLength();
 }
 
+void LevelInitializer::initialize_firePool()
+{
+	firesPool = emPlaystate->addEntity();
+	firesPool->addComponent<FirePool>(GETCMP2(gameManager, CollisionsSystem));
+	emPlaystate->addToGroup(firesPool, ecs::GroupID::FoodLayer);
+
+	sL->updateLength();
+}
+
 void LevelInitializer::initialize_adversities()
 {
-	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil);
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool);
 	
 	sL->updateLength();
 }

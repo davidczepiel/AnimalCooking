@@ -297,6 +297,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
+	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},
+	{Basic, LightingExplosion,"../AnimalCooking/resources/images/Adversities/explosion.png",3,9},
 	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 }
 };
