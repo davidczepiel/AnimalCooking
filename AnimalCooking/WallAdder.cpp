@@ -41,7 +41,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	
 	maker(data[5], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba
-	maker(data[6], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba izq
+	maker(data[6], casillaX, casillaY, colSys_, mngr, offsetX, offsetY, ecs::GroupID::Layer12); //Valla arriba izq 
 	maker(data[0], casillaX, casillaY, colSys_, mngr, 64, 64); //Valla medio 1
 	maker(data[1], casillaX, casillaY, colSys_, mngr, 64, 64); //Final valla medio 1
 	maker(data[2], casillaX, casillaY, colSys_, mngr, 64, 64); //Inicio valla medio 2
@@ -132,11 +132,11 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 
-void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY)
+void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id) 
 {
 	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX,casillaY,offsetX,mngr);
 
 	mngr->addEntity(w);
-	mngr->addToGroup(w, ecs::GroupID::Layer2);
+	mngr->addToGroup(w, id);
 	colSys_->addCollider(GETCMP2(w, Transform), false);
 }

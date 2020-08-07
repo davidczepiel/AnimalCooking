@@ -358,7 +358,7 @@ public:
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//Hamburguesas------------------------------------------------------------------------------------------------
 class Burger : public Food
 {
 public:
@@ -371,7 +371,43 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BurgerFeedBack);
 	}
 };
-
+class Burger1 : public Food
+{
+public:
+	Burger1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger1, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger1FeedBack);
+	}
+	Burger1() : Food(Resources::FoodType::Burger1) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger1FeedBack);
+	}
+};
+class Burger2 : public Food
+{
+public:
+	Burger2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger2, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger2FeedBack);
+	}
+	Burger2() : Food(Resources::FoodType::Burger2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger2FeedBack);
+	}
+};
+class Burger3 : public Food
+{
+public:
+	Burger3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger3, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger3FeedBack);
+	}
+	Burger3() : Food(Resources::FoodType::Burger3) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger3FeedBack);
+	}
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Pizza : public Food
 {
 public:
