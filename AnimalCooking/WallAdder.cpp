@@ -66,7 +66,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
 	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
-	//Hacer esquinas
+	//Hacer esquinas 
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
 		Entity* corner = mngr->addEntity();
 		int t = Resources::TextureId::EsquinaSupDchaCopas + (2 * SDLGame::instance()->getRandGen()->nextInt(0, 3));
@@ -81,6 +81,22 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		corner->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
 		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int() - 1 ));
 		colSys_->addCollider(GETCMP2(corner, Transform), false);
+	}
+
+	//hacer repisas decorativas
+	for (int i = 0; i < nivel["Shelfs"]["decorativeShefls"].size(); ++i) {
+		Entity* shelf = mngr->addEntity();
+		int t = Resources::TextureId::EncimeraVertConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
+		
+		Transform* tr = shelf->addComponent<Transform>(Vector2D(nivel["Shelfs"]["decorativeShefls"][i]["pos"]["x"].as_double() * casillaX,
+			nivel["Shelfs"]["decorativeShefls"][i]["pos"]["y"].as_double() * casillaY), Vector2D(),
+			general["Shelf"]["size"]["width"].as_double() * casillaX, general["Shelf"]["size"]["height"].as_double() * casillaY);
+
+		tr->setHitboxSize(tr->getW(), tr->getH());
+
+		shelf->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
+		mngr->addToGroup(shelf, CASTID(general["Shelf"]["Layer"].as_int() - 1));
+		colSys_->addCollider(GETCMP2(shelf, Transform), false);
 	}
 
 	//Hacer falsa barra de entregas
