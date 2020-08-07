@@ -12,7 +12,12 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 	lastLightingTick_(),
 	lastLightingFrame_(),
 	lightingFrameCadence_(100),
-	explosionFrameCadence_(10)
+	explosionFrameCadence_(10),
+	explosionDone_(false),
+	lastExplosionFrame_(),
+	lastExplosionTick_(),
+	maxLights(3),
+	numLights()
 	{
 		rainTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
 		utensilsPool_ = &multipleAdversityMngr_->getUtensilsPool()->getPool();
@@ -33,11 +38,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 		started_ = false;
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(rainTimer_);
 
-		//----------Rect del rayo-----------
-		rectLighting_.h = 157 * 4;
-		rectLighting_.w = 40 * 4;
-		rectLighting_.y = -50;
-		rectLighting_.x = (SDLGame::instance()->getWindowWidth() / 3) * 2;
+		for (int t = 0; t < maxLights; ++t) rectLighting_.push_back(SDL_Rect());
 
 		lightingTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::LightingStrike);
 		explosionTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::LightingExplosion);
@@ -84,9 +85,11 @@ void RainAdversity::update()
 				explosionDone_ = true;
 			}
 			if (lastExplosionFrame_ == 13) {
-				multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_.x, rectLighting_.y + rectLighting_.h - 64, 64 * 2, 64 * 2));
-				multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_.x, rectLighting_.y + rectLighting_.h, 64, 64));
-				multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_.x + 64, rectLighting_.y + rectLighting_.h, 64, 64));
+				for (int i = 0; i < numLights; ++i) {
+					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x, rectLighting_[i].y + rectLighting_[i].h - 64, 64 * 2, 64 * 2), true);
+					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x, rectLighting_[i].y + rectLighting_[i].h, 64, 64));
+					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x + 64, rectLighting_[i].y + rectLighting_[i].h, 64, 64));
+				}
 			}
 		}
 	}
@@ -107,12 +110,13 @@ void RainAdversity::draw()
 {
 	rainTexture_->render(drawingArea_, clipArea_);
 	if (lightingStrike_) {
-		if(!lightingStrikeDone_) lightingTexture_->renderFrame(rectLighting_, 0, lastLightingFrame_, 0);
-		explosionTexture_->renderFrame(RECT(rectLighting_.x, rectLighting_.y + rectLighting_.h - 32, 64 * 2, 64 * 2), lastExplosionFrame_ / 8, lastExplosionFrame_ % 8, 0);
+		for (int i = 0; i < numLights; ++i) {
+			if (!lightingStrikeDone_) lightingTexture_->renderFrame(rectLighting_[i], 0, lastLightingFrame_, 0);
+			explosionTexture_->renderFrame(RECT(rectLighting_[i].x, rectLighting_[i].y + rectLighting_[i].h - 32, 64 * 2, 64 * 2), lastExplosionFrame_ / 8, lastExplosionFrame_ % 8, 0);
+		}
 	}
 }
 void RainAdversity::reset() {
-	//Recorro todos los utensilios y en caso de que les esté dando con la lluvia les digo que devuelvan sus timers de suciedad a la normalidad
 	rainTimer_->timerReset();
 }
 
@@ -125,4 +129,12 @@ void RainAdversity::start()
 	explosionDone_ = false;
 	lastLightingFrame_ = 0;
 	lastExplosionFrame_ = 0;
+	numLights = SDLGame::instance()->getRandGen()->nextInt(1, maxLights);
+
+	for (int i = 0; i <= numLights; ++i) {
+		rectLighting_[i].x = SDLGame::instance()->getRandGen()->nextInt((SDLGame::instance()->getCasillaX() * 8) + 64, SDLGame::instance()->getWindowWidth() - 128);
+		rectLighting_[i].y = -SDLGame::instance()->getRandGen()->nextInt(50, 450);
+		rectLighting_[i].h = 157 * 4;
+		rectLighting_[i].w = 40 * 4;
+	}
 }

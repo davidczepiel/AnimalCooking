@@ -31,7 +31,7 @@ public:
 		fireTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
 		animationFrameRate_(100)
 		{
-			for (int i = 0; i < 10; ++i) {
+			for (int i = 0; i < 20; ++i) {
 				fires_.push_back(new Fire(SDLGame::instance()->getRandGen()->nextInt(0, 3), false, 0));
 			}
 		}
@@ -42,7 +42,7 @@ public:
 	}
 
 	inline const std::vector<Fire*>& getPool() { return fires_; }
-	bool activateFire(SDL_Rect rect_) {
+	bool activateFire(SDL_Rect rect_, bool hitbox = false) {
 		int i = 0;
 		while (i < fires_.size() && fires_[i]->active) i++;
 
@@ -53,7 +53,7 @@ public:
 			fires_[i]->tr->setWH(rect_.w, rect_.h);
 			fires_[i]->tr->setHitboxSize(Vector2D(rect_.w - 10, rect_.h - 10));
 			fires_[i]->active = true;
-			cs_->addCollider(fires_[i]->tr, false);
+			if(hitbox) cs_->addCollider(fires_[i]->tr, false);
 		}
 	}
 	void desactivateFire(int id) {
