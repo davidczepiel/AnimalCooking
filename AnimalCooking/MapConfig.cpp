@@ -173,7 +173,7 @@ void MapConfig::save()
 		levelsRecipes_.at(it.first).stars = it.second;
 
 	}
-	for (int i = 0; i < unlocked_levels; i++)
+	for (int i = 0; i <= unlocked_levels; i++)
 	{
 		levelsRecipes_.at(i).unlocked = true;
 	}
