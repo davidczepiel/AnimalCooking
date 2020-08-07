@@ -86,7 +86,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//hacer repisas decorativas
 	for (int i = 0; i < nivel["Shelfs"]["decorativeShefls"].size(); ++i) {
 		Entity* shelf = mngr->addEntity();
-		int t = Resources::TextureId::EncimeraVertConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
+		int t = Resources::TextureId::EncimeraVConDecoracion;
 		
 		Transform* tr = shelf->addComponent<Transform>(Vector2D(nivel["Shelfs"]["decorativeShefls"][i]["pos"]["x"].as_double() * casillaX,
 			nivel["Shelfs"]["decorativeShefls"][i]["pos"]["y"].as_double() * casillaY), Vector2D(),

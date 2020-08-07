@@ -123,6 +123,7 @@ public:
 			EncimeraVEsquinaInferiorDcha,
 			EncimeraVEsquinaSuperiorDcha,
 			EncimeraVEsquinaSuperiorIzda,
+			EncimeraVConDecoracion,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
