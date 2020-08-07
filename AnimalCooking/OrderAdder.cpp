@@ -30,7 +30,8 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casillaX, general["Clients"]["repisa"]["size"]["height"].as_double() * casillaY));
 
 	os->setHitboxOffset(Vector2D(0, os->getSize().getY() * 0.25));
-	os->setHitboxSize(Vector2D(os->getSize().getX(), os->getSize().getY() * 0.75));
+	//----------------------------------se añade 400 para que ocupe todo--
+	os->setHitboxSize(Vector2D(os->getSize().getX() + 400, os->getSize().getY() * 0.75));
 
 
 	os->addComponent<OrderServiceViewer>(os);
