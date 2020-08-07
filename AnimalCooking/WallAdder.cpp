@@ -96,7 +96,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 		shelf->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
 		mngr->addToGroup(shelf, CASTID(general["Shelf"]["Layer"].as_int() - 1));
-		colSys_->addCollider(GETCMP2(shelf, Transform), false);
+		//colSys_->addCollider(GETCMP2(shelf, Transform), false);
 	}
 
 	//Hacer falsa barra de entregas
