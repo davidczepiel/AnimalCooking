@@ -94,6 +94,15 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("Burger"):
 		ADDPEDIDO(pedido, Resources::FoodType::Burger);
 		break;
+	case str2int("Burger1"):
+		ADDPEDIDO(pedido, Resources::FoodType::Burger1);
+		break;
+	case str2int("Burger2"):
+		ADDPEDIDO(pedido, Resources::FoodType::Burger2);
+		break;
+	case str2int("Burger3"):
+		ADDPEDIDO(pedido, Resources::FoodType::Burger3);
+		break;
 	case str2int("Pizza"):
 		ADDPEDIDO(pedido, Resources::FoodType::Pizza);
 		break;
