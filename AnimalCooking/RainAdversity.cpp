@@ -124,4 +124,5 @@ void RainAdversity::start()
 	lightingStrikeDone_ = false;
 	explosionDone_ = false;
 	lastLightingFrame_ = 0;
+	lastExplosionFrame_ = 0;
 }
