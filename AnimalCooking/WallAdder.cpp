@@ -86,7 +86,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//hacer repisas decorativas
 	for (int i = 0; i < nivel["Shelfs"]["decorativeShefls"].size(); ++i) {
 		Entity* shelf = mngr->addEntity();
-		int t = Resources::TextureId::EncimeraVertConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
+		int t = Resources::TextureId::EncimeraVConDecoracion;
 		
 		Transform* tr = shelf->addComponent<Transform>(Vector2D(nivel["Shelfs"]["decorativeShefls"][i]["pos"]["x"].as_double() * casillaX,
 			nivel["Shelfs"]["decorativeShefls"][i]["pos"]["y"].as_double() * casillaY), Vector2D(),
@@ -96,7 +96,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 		shelf->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
 		mngr->addToGroup(shelf, CASTID(general["Shelf"]["Layer"].as_int() - 1));
-		colSys_->addCollider(GETCMP2(shelf, Transform), false);
+		//colSys_->addCollider(GETCMP2(shelf, Transform), false);
 	}
 
 	//Hacer falsa barra de entregas

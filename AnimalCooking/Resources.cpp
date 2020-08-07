@@ -129,6 +129,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraVEsquinaInferiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaInferior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorDcha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
 	{AllLevels,EncimeraVEsquinaSuperiorIzda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior.png"},
+	{ AllLevels,EncimeraVConDecoracion,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertDecoracion.png" },
+
 
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
@@ -305,7 +307,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
 	{AllLevels, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
-	{AllLevels, SkilletONEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
+	{AllLevels, SkilletONEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnEsqiuna.png", 3, 1},
 	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
     {AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",20,8},
 	{AllLevels, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",20,4},
