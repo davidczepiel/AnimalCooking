@@ -102,7 +102,7 @@ vector<Order*>::iterator OrderManager::getFirst(const list<vector<Order*>::itera
 double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 {
 	double time = msPerIng_ * size;	//Tiempo por ingrediente* num ingredientes (cfg)
-	double timeCooking = 10.0;		//Tiempo que tarda en cocinar un ingrediente del pedido 
+	double timeCooking = 20.0;		//Tiempo que tarda en cocinar un ingrediente del pedido 
 	switch (finalProduct)
 	{
 	case Resources::FoodType::Burger: time += timeCooking;
@@ -112,8 +112,8 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::Risotto: time += timeCooking;
 	case Resources::FoodType::CookedFish: time += timeCooking;
 	case Resources::FoodType::FriedVegs: time += timeCooking;
-	case Resources::FoodType::FriedVegs1: time += timeCooking;
-	case Resources::FoodType::FriedVegs2: time += timeCooking;
+	case Resources::FoodType::FriedVegs1: time += timeCooking + 5;
+	case Resources::FoodType::FriedVegs2: time += timeCooking + 5;
 	case Resources::FoodType::BakedChicken: time += timeCooking;
 	case Resources::FoodType::FrenchFries: time += timeCooking;
 	case Resources::FoodType::CookedClams: time += timeCooking;
