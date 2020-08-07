@@ -449,7 +449,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedFishFeedBack);
 	}
 };
-
+// VERDURAS FRITAS--------------------------------------------------------------------------------------------------------
 class FriedVegs : public Food
 {
 public:
@@ -462,7 +462,31 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegsFeedBack);
 	}
 };
-
+class FriedVegs1 : public Food
+{
+public:
+	FriedVegs1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs1, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs1FeedBack);
+	}
+	FriedVegs1() : Food(Resources::FoodType::FriedVegs1) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs1FeedBack);
+	}
+};
+class FriedVegs2 : public Food
+{
+public:
+	FriedVegs2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs2, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs2FeedBack);
+	}
+	FriedVegs2() : Food(Resources::FoodType::FriedVegs2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs2FeedBack);
+	}
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class BakedChicken : public Food
 {
 public:

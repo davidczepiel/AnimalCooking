@@ -134,6 +134,12 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::FriedVegs:
 		return new FriedVegs();
 		break;
+	case Resources::FoodType::FriedVegs1:
+		return new FriedVegs1();
+		break;
+	case Resources::FoodType::FriedVegs2:
+		return new FriedVegs2();
+		break;
 	case Resources::FoodType::FrenchFries:
 		return new FrenchFries();
 		break;
