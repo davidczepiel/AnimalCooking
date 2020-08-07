@@ -103,6 +103,9 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		barraScreenLoaderBack,
+		barraScreenLoader,
+		buttonGo,
 		//PauseState
 		pauseStateBackground,
 		botonPauseState,
@@ -410,6 +413,7 @@ public:
 		ARIAL50,
 		ARIAL40,
 		QuarkCheese100,
+		QuarkCheese200,
 		QuarkCheese70,
 		QuarkCheese50
 	};

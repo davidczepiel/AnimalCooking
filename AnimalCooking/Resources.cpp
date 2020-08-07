@@ -7,6 +7,7 @@ vector<Resources::FontInfo> Resources::fonts_{
 	{Basic, ARIAL50, "../AnimalCooking/resources/fonts/ARIAL.ttf", 50 },
 	{Basic, ARIAL40, "../AnimalCooking/resources/fonts/ARIAL.ttf", 40 },
 	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
+	{Basic, QuarkCheese200, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 200 },
 	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
 	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
 };
@@ -105,6 +106,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic,level2Menu,"../AnimalCooking/resources/images/ScreenLoader/level2Menu.png"},
 	{Basic,level3Menu,"../AnimalCooking/resources/images/ScreenLoader/level3Menu.png"},
 	{Basic,level4Menu,"../AnimalCooking/resources/images/ScreenLoader/level4Menu.png"},
+	{Basic,barraScreenLoader,"../AnimalCooking/resources/images/ScreenLoader/barraCon.png"},
+	{Basic,barraScreenLoaderBack,"../AnimalCooking/resources/images/ScreenLoader/barraSin.png"},
 	//PauseState
 	//pauseStateBackground
 	{Basic,pauseStateBackground,"../AnimalCooking/resources/images/Menu/pauseState.png"},
@@ -296,6 +299,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, HomeIconMapState,"../AnimalCooking/resources/images/Mapstate/homeMapState.png",1,2},
 	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
 	{Basic, botonPauseState,"../AnimalCooking/resources/images/Menu/botonesPauseState.png",1,3},
+	{Basic,buttonGo,"../AnimalCooking/resources/images/ScreenLoader/buttonGo.png",1,3},
 	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
