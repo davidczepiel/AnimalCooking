@@ -16,7 +16,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 	explosionDone_(false),
 	lastExplosionFrame_(),
 	lastExplosionTick_(),
-	maxLights(3),
+	maxLights(4),
 	numLights()
 	{
 		rainTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
@@ -80,15 +80,13 @@ void RainAdversity::update()
 		if (SDL_GetTicks() - lastExplosionTick_ >= explosionFrameCadence_) {
 			lastExplosionTick_ = SDL_GetTicks();
 			lastExplosionFrame_++;
-			if (lastExplosionFrame_ > 25) {
+			if (lastExplosionFrame_ > explosionTexture_->getNumCols() * explosionTexture_->getNumRows()) {
 				lightingStrike_ = false;
 				explosionDone_ = true;
 			}
-			if (lastExplosionFrame_ == 13) {
+			if (lastExplosionFrame_ == (explosionTexture_->getNumCols() * explosionTexture_->getNumRows()) / 2) {
 				for (int i = 0; i < numLights; ++i) {
-					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x, rectLighting_[i].y + rectLighting_[i].h - 64, 64 * 2, 64 * 2), true);
-					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x, rectLighting_[i].y + rectLighting_[i].h, 64, 64));
-					multipleAdversityMngr_->getFirePool()->activateFire(RECT(rectLighting_[i].x + 64, rectLighting_[i].y + rectLighting_[i].h, 64, 64));
+					multipleAdversityMngr_->getFirePool()->spawnFlare(rectLighting_[i]);
 				}
 			}
 		}

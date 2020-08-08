@@ -446,6 +446,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FirePool.cpp" />
+    <ClCompile Include="Tool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -959,6 +960,7 @@
       <Filter>Headers Files\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="FirePool.h" />
+    <ClInclude Include="Tool.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

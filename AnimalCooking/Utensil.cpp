@@ -6,7 +6,7 @@
 #include "TimerViewer.h"
 #include "GPadController.h"
 
-Utensil::Utensil(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {
+Utensil::Utensil(Transport* p1, Transport* p2) : Tool(p1, p2, nullptr) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR * 1000;

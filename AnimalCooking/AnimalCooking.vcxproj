@@ -301,6 +301,7 @@
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerViewer.h" />
+    <ClInclude Include="Tool.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="Utensil.h" />
@@ -451,6 +452,7 @@
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerViewer.cpp" />
+    <ClCompile Include="Tool.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />

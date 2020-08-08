@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "CollisionsSystem.h"
+#include "SDL_macros.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ struct Fire {
 		rect = SDL_Rect();
 		tr->setPos(Vector2D(rect.x, rect.y));
 		tr->setWH(rect.w, rect.h);
+		id = -1;
 	}
 
 	SDL_Rect rect;
@@ -20,6 +22,7 @@ struct Fire {
 	int frame;
 	bool active;
 	Uint32 lastAnimTick;
+	int id;
 };
 
 class FirePool : public Component
@@ -29,9 +32,11 @@ public:
 		Component(ecs::FirePool),
 		cs_(collSys),
 		fireTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
-		animationFrameRate_(100)
+		animationFrameRate_(100),
+		poolFires_(20),
+		idCount(0)
 		{
-			for (int i = 0; i < 20; ++i) {
+			for (int i = 0; i < poolFires_; ++i) {
 				fires_.push_back(new Fire(SDLGame::instance()->getRandGen()->nextInt(0, 3), false, 0));
 			}
 		}
@@ -42,23 +47,38 @@ public:
 	}
 
 	inline const std::vector<Fire*>& getPool() { return fires_; }
-	bool activateFire(SDL_Rect rect_, bool hitbox = false) {
+
+	void spawnFlare(SDL_Rect rect_) {
+		activateSingleFire(RECT(rect_.x, rect_.y + rect_.h - 64, 64 * 2, 64 * 2), idCount, true);
+		activateSingleFire(RECT(rect_.x, rect_.y + rect_.h, 64, 64), idCount);
+		activateSingleFire(RECT(rect_.x + 64, rect_.y + rect_.h, 64, 64), idCount);
+		idCount = (idCount + 1) % poolFires_;
+	}
+
+	Fire* activateSingleFire(SDL_Rect rect_, int id_, bool hitbox = false) {
 		int i = 0;
 		while (i < fires_.size() && fires_[i]->active) i++;
 
-		if (i >= fires_.size()) return false;
-		else {
-			fires_[i]->rect = rect_;
-			fires_[i]->tr->setPos(Vector2D(rect_.x, rect_.y));
-			fires_[i]->tr->setWH(rect_.w, rect_.h);
-			fires_[i]->tr->setHitboxSize(Vector2D(rect_.w - 10, rect_.h - 10));
-			fires_[i]->active = true;
-			if(hitbox) cs_->addCollider(fires_[i]->tr, false);
-		}
+		if (i >= fires_.size()) return nullptr;
+
+		fires_[i]->rect = rect_;
+		fires_[i]->tr->setPos(Vector2D(rect_.x, rect_.y));
+		fires_[i]->tr->setWH(rect_.w, rect_.h);
+		fires_[i]->tr->setHitboxSize(Vector2D(rect_.w - 10, rect_.h - 10));
+		fires_[i]->active = true;
+		fires_[i]->id = id_;
+		if(hitbox) cs_->addCollider(fires_[i]->tr, false);
+
+		return fires_[i];
 	}
-	void desactivateFire(int id) {
-		fires_[id]->active = false;
-		cs_->removeCollider(fires_[id]->tr);
+
+	void desactivateFire(int id_) {
+		for (Fire* f : fires_) {
+			if (f->id == id_) {
+				f->active = false;
+				cs_->removeCollider(f->tr);
+			}
+		}
 	}
 
 	void update() override {
@@ -77,12 +97,14 @@ public:
 				fireTexture->renderFrame(f->rect, 0, f->frame, 0);
 		}
 	}
-
 private:
 	CollisionsSystem* cs_;
 
 	Texture* fireTexture;
 	std::vector<Fire*> fires_;
 	int animationFrameRate_;
+	int poolFires_;
+
+	int idCount;
 };
 

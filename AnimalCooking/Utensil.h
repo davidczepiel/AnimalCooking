@@ -7,9 +7,10 @@
 #include "Pickable.h"
 #include "GameConfig.h"
 #include "Timer.h"
+#include "Tool.h"
 
 class GameLogic;
-class Utensil : public Pickable{
+class Utensil : public Tool{
 
 public:
 	Utensil( Transport* p1, Transport* p2);
@@ -19,7 +20,6 @@ public:
 	void feedback(int player) override;
 	virtual void render() const;
 	virtual void update();
-	virtual void attack(Vector2D dir) = 0;
 	virtual void onDrop(bool onFloor);
 	virtual void onPick();
 	void cleanUp();
@@ -76,8 +76,9 @@ class Knife : public Utensil
 public:
 	Knife( Transport* p1, Transport* p2);
 	~Knife() {}
-	virtual void attack(Vector2D dir) {
-		onHit(dir);	}
+	virtual void attack(Vector2D dir) override {
+		onHit(dir);	
+	}
 
 };
 
@@ -87,9 +88,9 @@ public:
 	Mace( Transport* p1, Transport* p2);
 	~Mace() {}
 
-	virtual void attack(Vector2D dir) {  onHit(dir);	}
-
-
+	virtual void attack(Vector2D dir) override{
+		onHit(dir);	
+	}
 };
 
 
@@ -98,8 +99,9 @@ class Grater : public Utensil
 public:
 	Grater( Transport* p1, Transport* p2);
 	~Grater() {}
-	virtual void attack(Vector2D dir) {  onHit(dir); }
-
+	virtual void attack(Vector2D dir) override { 
+		onHit(dir); 
+	}
 };
 
 class Net : public Utensil
@@ -107,6 +109,7 @@ class Net : public Utensil
 public:
 	Net( Transport* p1, Transport* p2);
 	~Net() {}
-	virtual void attack(Vector2D dir) {  onHit(dir); }
-
+	virtual void attack(Vector2D dir) override { 
+		onHit(dir); 
+	}
 };

@@ -230,6 +230,8 @@ void LevelInitializer::initialize_firePool()
 	firesPool->addComponent<FirePool>(GETCMP2(gameManager, CollisionsSystem));
 	emPlaystate->addToGroup(firesPool, ecs::GroupID::FoodLayer);
 
+	GETCMP2(gameManager, GameLogic)->setFirePool(GETCMP2(firesPool, FirePool));
+
 	sL->updateLength();
 }
 
