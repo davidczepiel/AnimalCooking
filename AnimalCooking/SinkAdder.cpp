@@ -15,12 +15,17 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 		Texture* t2 = nullptr;
 
 		//se escoje la textura del fregadero
-		if(sinks_[i]["texture"].as_string() == "flip")
+		if(sinks_[i]["texture"].as_string() == "flip") //mkrando hacia la derecha
 		{
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlip);
 			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipON);
 		}
-		else 
+		else if (sinks_[i]["texture"].as_string() == "down") //mirando hacia abajo
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAbajo);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAbajoON);
+		}
+		else //mirando hacia la izquierda
 		{
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Fregadero);
 			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoON);

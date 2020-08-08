@@ -90,6 +90,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
 	{AllLevels, FregaderoFlip, "../AnimalCooking/resources/images/Cocina/fregaderoFlip.png" },
     {AllLevels, FregaderoFlipON,"../AnimalCooking/resources/images/Cocina/fregaderoFlipOn.png" },
+	{AllLevels, FregaderoAbajo,"../AnimalCooking/resources/images/Cocina/fregaderoAbajo.png" },
+	{AllLevels, FregaderoAbajoON,"../AnimalCooking/resources/images/Cocina/fregaderoAbajoOn.png" },
 
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},

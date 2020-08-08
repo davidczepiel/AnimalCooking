@@ -88,6 +88,8 @@ public:
 		FregaderoON,
 		FregaderoFlip,
 		FregaderoFlipON,
+		FregaderoAbajo,
+		FregaderoAbajoON,
 		Panera,
 		Papelera,
 		CuadradoAux,
