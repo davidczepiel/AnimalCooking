@@ -65,18 +65,21 @@ public:
 	virtual void setEmptyTexture() override 
 	{ 
 		if(textureState=="corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFEsquina);
+		else if(textureState == "borde") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBorde);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF);
 	};
 
 	virtual void setBurnedTexture() override 
 	{ 
 		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
+		else if(textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
 	virtual void setCookingTexture() override 
 	{ 
 		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
+		else if (textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
