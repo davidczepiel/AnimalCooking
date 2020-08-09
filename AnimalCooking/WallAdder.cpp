@@ -36,7 +36,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Resources::TextureId::Muro));
 	data.push_back(Data(Vector2D(0, 0), //Arr izq
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 30, offsetY),
-		Resources::TextureId::Muro));
+		Resources::TextureId::ParedCocina	));
 
 
 	

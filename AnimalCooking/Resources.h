@@ -70,6 +70,7 @@ public:
 		SkilletOFFEsquina,
 		Platera,
 		Muro,
+		ParedCocina,
 		Valla,
 		VallaFinal,
 		VallaInicio,

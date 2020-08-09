@@ -50,7 +50,7 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
 
-	Transform* tr = buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + game_->getWindowWidth() / 4 + width / 1.7, game_->getWindowHeight() - height - 150), //Pos
+	Transform* tr = buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + game_->getWindowWidth() / 4 + width / 1.7, game_->getWindowHeight() - height - 170), //Pos
 		Vector2D(), //Dir
 		200, //Width
 		200, //Height

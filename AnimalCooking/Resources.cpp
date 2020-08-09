@@ -71,6 +71,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, SkilletOFFEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffEsquina.png"},
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
+	{AllLevels, ParedCocina,"../AnimalCooking/resources/images/Cocina/paredCocina.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
 	{AllLevels, VallaFinal,"../AnimalCooking/resources/images/Cocina/vallaFinal.png"},
 	{AllLevels, VallaInicio,"../AnimalCooking/resources/images/Cocina/vallainicio.png"},
@@ -312,7 +313,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, HomeIconMapState,"../AnimalCooking/resources/images/Mapstate/homeMapState.png",1,2},
 	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
 	{Basic, botonPauseState,"../AnimalCooking/resources/images/Menu/botonesPauseState.png",1,3},
-	{Basic,buttonGo,"../AnimalCooking/resources/images/ScreenLoader/buttonGo.png",1,3},
+	{Basic, buttonGo,"../AnimalCooking/resources/images/ScreenLoader/buttonGo.png",1,3},
 	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
