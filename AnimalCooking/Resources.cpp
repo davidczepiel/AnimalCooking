@@ -48,6 +48,21 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateHousesBackground, "../AnimalCooking/resources/images/Mapstate/mapStateCasas.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 	
+	//Botones del mando
+	{ Basic, GPad_a, "../AnimalCooking/resources/images/Menu/ButtonUIMando/aButton.png" },
+	{ Basic, GPad_b,"../AnimalCooking/resources/images/Menu/ButtonUIMando/bButton.png" },
+	{ Basic, GPad_x, "../AnimalCooking/resources/images/Menu/ButtonUIMando/xButton.png" },
+	{ Basic, GPad_y, "../AnimalCooking/resources/images/Menu/ButtonUIMando/yButton.png" },
+	{ Basic, GPad_up, "../AnimalCooking/resources/images/Menu/ButtonUIMando/upButton.png" },
+	{ Basic, GPad_down, "../AnimalCooking/resources/images/Menu/ButtonUIMando/downButton.png" },
+	{ Basic, GPad_left, "../AnimalCooking/resources/images/Menu/ButtonUIMando/leftButton.png" },
+	{ Basic, GPad_right, "../AnimalCooking/resources/images/Menu/ButtonUIMando/rightButton.png"},
+	{ Basic, GPad_r1, "../AnimalCooking/resources/images/Menu/ButtonUIMando/rbButton.png"},
+	{ Basic, GPad_l1,"../AnimalCooking/resources/images/Menu/ButtonUIMando/lbButton.png" },
+	{ Basic, GPad_r3, "../AnimalCooking/resources/images/Menu/ButtonUIMando/rsButton.png" },
+	{ Basic, GPad_l3, "../AnimalCooking/resources/images/Menu/ButtonUIMando/lsButton.png" },
+	{ Basic, GPad_start, "../AnimalCooking/resources/images/Menu/ButtonUIMando/startButton.png" },
+	{ Basic, GPad_back, "../AnimalCooking/resources/images/Menu/ButtonUIMando/selectButton.png" },
 
 	//---->Config<---------
 	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},

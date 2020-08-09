@@ -52,7 +52,7 @@ void Sink::feedback(int iDp)
 	else player = player2_;
 	if (player->getObjectTypeInHands() == Resources::PickableType::Utensil && static_cast<Utensil*>(player->getObjectInHands())->isDirty()) {
 		if (GPadController::instance()->playerControllerConnected(iDp))
-			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[iDp].PICKUP));
+			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[iDp].PICKUP), true);
 		else
 			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[iDp].PICKUP));
 

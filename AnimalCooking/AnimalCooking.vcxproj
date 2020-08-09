@@ -167,6 +167,7 @@
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
+    <ClInclude Include="BubbleKeyShower.h" />
     <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
@@ -324,6 +325,7 @@
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
+    <ClCompile Include="BubbleKeyShower.cpp" />
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
