@@ -72,37 +72,74 @@ Utensil* ShelfAdder::switchUtensil(const string& ing, UtensilsPool* pool_, std::
 
 Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
+	Orientation lookingAt = Orientation::Down;
+
 	Vector2D pos = Vector2D(jsonShelf["pos"]["x"].as_double() * casillaX, jsonShelf["pos"]["y"].as_double() * casillaY);
 	int t = 0;
 	if (jsonShelf["texture"].as_string() == "top") {
+		lookingAt = Orientation::Down;
 		t = Resources::TextureId::EncimeraHorizConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2);
 	}
 	else if (jsonShelf["texture"].as_string() == "right") {
+		lookingAt = Orientation::Left;
 		t = Resources::TextureId::EncimeraVertConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
 	}
 	else if (jsonShelf["texture"].as_string() == "left") {
+		lookingAt = Orientation::Right;
 		t = Resources::TextureId::EncimeraVertConMantelIzda + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 2;
 	}
 	else if (jsonShelf["texture"].as_string() == "bottomLeft") {
+		lookingAt = Orientation::DownLeft;
 		t = Resources::TextureId::EncimeraAbajoConMantelIzda + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
 	}
 	else if (jsonShelf["texture"].as_string() == "bottomCenter") {
+		lookingAt = Orientation::Down;
 		t = Resources::TextureId::EncimeraAbajoConMantel + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
 	}
 	else if (jsonShelf["texture"].as_string() == "bottomRight") {
+		lookingAt = Orientation::DownRight;
 		t = Resources::TextureId::EncimeraAbajoConMantelDcha + SDLGame::instance()->getRandGen()->nextInt(0, 2) * 3;
 	}
 	else if (jsonShelf["texture"].as_string() == "cornerRight") {
+		lookingAt = Orientation::Top;
 		t = Resources::TextureId::EncimeraVEsquinaInferiorDcha;
 	}
 	else if (jsonShelf["texture"].as_string() == "cornerLeft") {
+		lookingAt = Orientation::Top;
 		t = Resources::TextureId::EncimeraVEsquinaInferiorIzda;
 	}
+	else if(jsonShelf["texture"].as_string() == "esqSupIzq") {
+		lookingAt = Orientation::TopLeft;
+		t = Resources::TextureId::EsquinaSupIzdaVacia;
+	}
+	else if (jsonShelf["texture"].as_string() == "esqSupDer"){
+		lookingAt = Orientation::TopRight;
+		t = Resources::TextureId::EsquinaSupDchaVacia;
+	}
+	else if(jsonShelf["texture"].as_string() == "EsquinaInfIzqVaciaDecoracion"){
+		lookingAt = Orientation::DownLeft;
+		t = Resources::TextureId::EsquinaInfIzqVaciaDecoracion;
+	}
+	else if (jsonShelf["texture"].as_string() == "EsquinaInfDerVaciaDecoracion"){
+		lookingAt = Orientation::DownRight;
+		t = Resources::TextureId::EsquinaInfDerVaciaDecoracion;
+	}
+	else if (jsonShelf["texture"].as_string() == "encimeraHorizBordeDcha")
+	{
+		lookingAt = Orientation::Top;
+		t = Resources::TextureId::EncimeraHBordeDerecha;
+	}
+	else if (jsonShelf["texture"].as_string() == "encimeraHorizBordeIzq")
+	{
+		lookingAt = Orientation::Top;
+		t = Resources::TextureId::EncimeraHBordeIzquierda;
+	}
 	else { //CornerLeft
+		lookingAt = Orientation::Down;
 		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;
 	}
 	Shelf* shelf = new Shelf(pos, u, GIVETRANSPORT, emPlayState, SDLGame::instance()->getTextureMngr()->getTexture(t));
-
+	shelf->setOrientation(lookingAt);
 	shelf->setSize(Vector2D(jsonGeneral["Shelf"]["size"]["width"].as_double() * casillaX,
 		jsonGeneral["Shelf"]["size"]["height"].as_double() * casillaY));
 

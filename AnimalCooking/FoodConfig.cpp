@@ -97,8 +97,11 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::SlicedPotato},	Resources::FoodType::SlicedPotatoSkillet });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedMushroom, Resources::FoodType::GratedCheese, Resources::FoodType::SlicedOnion },	Resources::FoodType::Risotto });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::CaughtClam, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedMushroom},	Resources::FoodType::RiceAndClams });
-	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs });
 
+	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs });
+	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs2 });
+	
 
 	//Adding Skillet recipes
 	cookersRecipes_.push_back({ Resources::Skillet, cTrans });
@@ -110,7 +113,15 @@ void FoodConfig::fill()
 	//////////////////////
 
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::SlicedOnion, Resources::FoodType::Dress },	Resources::FoodType::Salad });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress }, Resources::FoodType::Salad1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::Dress },	Resources::FoodType::Salad2 });
+	cTrans.push_back({ { Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress, Resources::FoodType::SlicedOnion  }, Resources::FoodType::Salad3 });
+	cTrans.push_back({ {  Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::Dress, Resources::FoodType::SlicedCarrot  },	Resources::FoodType::Salad4 });
+
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedLettuce, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet },	Resources::FoodType::Burger });
+	/*cTrans.push_back({ { Resources::FoodType::MashedMeatSkillet, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger1 });*/
+	cTrans.push_back({ { Resources::FoodType::SlicedLettuce, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger2 });
+	cTrans.push_back({ { Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger3 });
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet, Resources::FoodType::BreadBurger, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedCheese},	Resources::FoodType::HotDog });
 	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet, Resources::FoodType::Dress},	Resources::FoodType::FrenchFries });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
