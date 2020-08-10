@@ -53,6 +53,21 @@ public:
 		MapStateHousesBackground,
 		MapStateInfoBox,
 
+		//Botones del mando
+		GPad_a,
+		GPad_b,
+		GPad_x,
+		GPad_y,
+		GPad_up,
+		GPad_down,
+		GPad_left,
+		GPad_right,
+		GPad_r1,
+		GPad_l1,
+		GPad_r3,
+		GPad_l3,
+		GPad_start,
+		GPad_back,
 
 		//---->Config<---------
 		SliderBackground,

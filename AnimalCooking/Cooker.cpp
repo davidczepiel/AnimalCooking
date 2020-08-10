@@ -88,13 +88,13 @@ void Cooker::feedback(int player)
 	if (SDLGame::instance()->getOptions().showKeyToPress && state_ != CookerStates::overheated) {
 		if (state_ == CookerStates::empty) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
 			else
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 		}
 		else if (state_ != CookerStates::cooking) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
 			else
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 

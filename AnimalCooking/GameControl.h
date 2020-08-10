@@ -18,14 +18,16 @@ public:
 	void init() override;
 	void update() override;
 	void newIngredient();
-	void newIngredient(Resources::IngredientType ing);
+	//void newIngredient(Resources::IngredientType ing);
 	Food* newFood(Resources::FoodType type, Vector2D pos);
-	void newFood(Food* f, Vector2D pos, Resources::IngredientType ingType);
+	void newFood(Food* f, Vector2D pos);
 
 	vector<Resources::IngredientType>& getLevelIngType() { return levelIngType; }
 	inline Timer* getAdversityTime() { return &adversityTimer; }
 
 private:
+	void makeIngredient(Ingredient* ing);
+
 	CollisionsSystem* colSys_;
 	Ingredient* newIngType(const Resources::IngredientType& iT);
 	Resources::IngredientType chooseIng();
@@ -37,6 +39,8 @@ private:
 	vector<Resources::IngredientType> levelIngType;
 	FoodTimer timer;
 	Timer adversityTimer;	
+
+	list<Uint32> ingToMake_;
 
 	int maxIngr;
 	int casillaLength;
