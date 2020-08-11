@@ -227,7 +227,7 @@ void LevelInitializer::initialize_walls()
 void LevelInitializer::initialize_firePool()
 {
 	firesPool = emPlaystate->addEntity();
-	firesPool->addComponent<FirePool>(GETCMP2(gameManager, CollisionsSystem));
+	firesPool->addComponent<FirePool>(GETCMP2(gameManager, CollisionsSystem), GETCMP2(gameManager, GameLogic));
 	emPlaystate->addToGroup(firesPool, ecs::GroupID::FoodLayer);
 
 	GETCMP2(gameManager, GameLogic)->setFirePool(GETCMP2(firesPool, FirePool));

@@ -4,6 +4,8 @@
 #include "CollisionsSystem.h"
 #include "SDL_macros.h"
 
+class GameLogic;
+
 using namespace std;
 
 struct Fire {
@@ -28,9 +30,10 @@ struct Fire {
 class FirePool : public Component
 {
 public:
-	FirePool(CollisionsSystem* collSys) :
+	FirePool(CollisionsSystem* collSys, GameLogic* gameLgc) :
 		Component(ecs::FirePool),
 		cs_(collSys),
+		gl_(gameLgc),
 		fireTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
 		animationFrameRate_(100),
 		poolFires_(20),
@@ -55,22 +58,7 @@ public:
 		idCount = (idCount + 1) % poolFires_;
 	}
 
-	Fire* activateSingleFire(SDL_Rect rect_, int id_, bool hitbox = false) {
-		int i = 0;
-		while (i < fires_.size() && fires_[i]->active) i++;
-
-		if (i >= fires_.size()) return nullptr;
-
-		fires_[i]->rect = rect_;
-		fires_[i]->tr->setPos(Vector2D(rect_.x, rect_.y));
-		fires_[i]->tr->setWH(rect_.w, rect_.h);
-		fires_[i]->tr->setHitboxSize(Vector2D(rect_.w - 10, rect_.h - 10));
-		fires_[i]->active = true;
-		fires_[i]->id = id_;
-		if(hitbox) cs_->addCollider(fires_[i]->tr, false);
-
-		return fires_[i];
-	}
+	Fire* activateSingleFire(SDL_Rect rect_, int id_, bool hitbox = false);
 
 	void desactivateFire(int id_) {
 		for (Fire* f : fires_) {
@@ -99,6 +87,7 @@ public:
 	}
 private:
 	CollisionsSystem* cs_;
+	GameLogic* gl_;
 
 	Texture* fireTexture;
 	std::vector<Fire*> fires_;

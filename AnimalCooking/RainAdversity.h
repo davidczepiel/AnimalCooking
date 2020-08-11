@@ -16,6 +16,10 @@ public:
 	void start();
 
 private:
+	void lightingUpdate();
+	void rainFrameUpdate();
+	void rainUpdate();
+
 	Texture* rainTexture_;
 	Timer* rainTimer_;	
 	vector<Utensil*>* utensilsPool_;
@@ -44,5 +48,6 @@ private:
 	Uint32 lastExplosionTick_;
 
 	vector<SDL_Rect> rectLighting_;
+	vector<std::pair<Vector2D, bool>> lightingSpots_;
 };
 
