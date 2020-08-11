@@ -5,6 +5,7 @@
 #include "Utensil.h"
 #include "SDL_macros.h"
 #include "SDLGame.h"
+#include <vector>
 
 class PidgeonAdversity :
 	public Adversity
@@ -19,10 +20,13 @@ public:
 private:
 
 	bool hasReached(double d);
-	Texture* pidgeonStandingTexture_;
-	Texture* pidgeonFlyingTexture_;
+	void locatePidgeon();
+	int posibleLocation(int a, int b);
+
 	Texture* drawingTexture_;
 	Timer* durationTimer_;
+
+	vector<bool> positions;
 
 	bool coming_;
 	bool standing_;
@@ -32,6 +36,7 @@ private:
 	int column;
 	int lastFrame;
 	int frameDuration;
+	int angle;
 
 	SDL_Rect drawingArea_;
 	SDL_Rect clipArea_;
