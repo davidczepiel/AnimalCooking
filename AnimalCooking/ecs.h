@@ -142,7 +142,8 @@ enum AdversityID  {
 	PlaneAdversity,
 	CookersAdversity,
 	HookAdversity,
-	RainAdversity
+	RainAdversity,
+	PidgeonAdversity
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;
