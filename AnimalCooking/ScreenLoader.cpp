@@ -7,6 +7,7 @@
 #include "LevelInitializer.h"
 #include "BackGroundViewer.h"
 #include "ButtonPadNavigation.h"
+#include "ImageViewer.h"
 
 constexpr double step_ = 1.0 / 24.0; //24 es el numero de pasos (6 de carga de recursos + 18 de carga de nivel)
 
@@ -19,34 +20,43 @@ ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate
 	//-2 porque level tiene 2 valores extra al principio
 	bg->addComponent<BackGroundViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::level0Menu + level - 2));
 	stage->addToGroup(bg, ecs::GroupID::Layer1);
+	//Barra de carga
+	//--------------------------------------------------
 	loadingBar_ = stage->addEntity();
 	stage->addToGroup(loadingBar_, ecs::GroupID::Layer1);
-
+	
 	SDLGame* game_ = SDLGame::instance();
 	int width = SDLGame::instance()->getWindowWidth() / 5;
-	int height = 80;
-	loadingBar_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height), //Pos
+	int height = 60;
+	loadingBar_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height - 20), //Pos
 		Vector2D(), //Dir
 		width, //Width
 		height, //Height
 		0); //Rot
 	loadingBar_->addComponent<LoadingBarViewer>(/*game_->getTextureMngr()->getTexture(Resources::Button)*/nullptr,
-		game_->getTextureMngr()->getTexture(Resources::BarEndState));
+		game_->getTextureMngr()->getTexture(Resources::barraScreenLoader));
 
+	Entity* loadingBarBackGround_ = stage->addEntity();
+	loadingBarBackGround_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 - width / 2, game_->getWindowHeight() - height - 20), //Pos
+		Vector2D(), //Dir
+		width, //Width
+		height, //Height
+		0); //Rot
+	loadingBarBackGround_->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::barraScreenLoaderBack));
+	stage->addToGroup(loadingBarBackGround_, ecs::GroupID::Layer1);
+	//-----------------------------------------------------
 	buttonGo_ = stage->addEntity();
 	padNavigation_ = stage->addEntity();
 	stage->addToGroup(buttonGo_, ecs::GroupID::Layer1);
 
 
-	buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + width / 1.5, game_->getWindowHeight() - height), //Pos
+	Transform* tr = buttonGo_->addComponent<Transform>(Vector2D(game_->getWindowWidth() / 2 + game_->getWindowWidth() / 4 + width / 1.7, game_->getWindowHeight() - height - 170), //Pos
 		Vector2D(), //Dir
-		80, //Width
-		height, //Height
+		200, //Width
+		200, //Height
 		0); //Rot
-
 	buttonGo_->addComponent<ButtonBehaviour>(goToPlayState,app)->setActive(false);
-	playTexture_ = new Texture(game_->getRenderer(), "Go", (game_->getFontMngr()->getFont(Resources::QuarkCheese50)), { COLOR(0xffffffff) });
-	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Button), playTexture_);
+	buttonGo_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
 	ButtonPadNavigation* b =padNavigation_->addComponent<ButtonPadNavigation>();
 	b->AddButton(buttonGo_,nullptr, nullptr, nullptr, nullptr);
 

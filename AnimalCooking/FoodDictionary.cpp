@@ -98,8 +98,29 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::Salad:
 		return new Salad();
 		break;
+	case Resources::FoodType::Salad1:
+		return new Salad1();
+		break;
+	case Resources::FoodType::Salad2:
+		return new Salad2();
+		break;
+	case Resources::FoodType::Salad3:
+		return new Salad3();
+		break;
+	case Resources::FoodType::Salad4:
+		return new Salad4();
+		break;
 	case Resources::FoodType::Burger:
 		return new Burger();
+		break;
+	case Resources::FoodType::Burger1:
+		return new Burger1();
+		break;
+	case Resources::FoodType::Burger2:
+		return new Burger2();
+		break;
+	case Resources::FoodType::Burger3:
+		return new Burger3();
 		break;
 	case Resources::FoodType::Pizza:
 		return new Pizza();
@@ -121,6 +142,12 @@ Food* FoodDictionary::bind(const int& c) const
 		break;
 	case Resources::FoodType::FriedVegs:
 		return new FriedVegs();
+		break;
+	case Resources::FoodType::FriedVegs1:
+		return new FriedVegs1();
+		break;
+	case Resources::FoodType::FriedVegs2:
+		return new FriedVegs2();
 		break;
 	case Resources::FoodType::FrenchFries:
 		return new FrenchFries();

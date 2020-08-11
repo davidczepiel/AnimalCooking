@@ -125,6 +125,7 @@ enum CmpId : CmpIdType {
 
 enum GroupID : Group {
 	Layer1,
+	Layer12,
 	Layer2,
 	PlayerLayerAux,
 	Dishes,
