@@ -59,7 +59,7 @@ void GameLogic::burnIngredients(SDL_Rect rect)
 void GameLogic::hitFire(SDL_Rect rect)
 {
 	for (Fire* fire : firePool_->getPool()) {
-		if (Collisions::collides(Vector2D(rect.x, rect.y), rect.w, rect.h, Vector2D(fire->rect.x, fire->rect.y), fire->rect.w, fire->rect.h)) {
+		if (fire->active && Collisions::collides(Vector2D(rect.x, rect.y), rect.w, rect.h, Vector2D(fire->rect.x, fire->rect.y), fire->rect.w, fire->rect.h)) {
 			firePool_->desactivateFire(fire->id);
 			//playHit(type);    <--SONIDO CUBO AGUA
 			break;

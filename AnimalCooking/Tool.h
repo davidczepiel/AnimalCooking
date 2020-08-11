@@ -1,5 +1,6 @@
 #pragma once
 #include "Pickable.h"
+#include "Entity.h"
 
 class GameLogic;
 
@@ -7,21 +8,48 @@ class Tool : public Pickable
 {
 public:
 	virtual void attack(Vector2D dir) = 0;
+	void setGameLogic(GameLogic* glc) { gameLogic = glc; }
+	virtual void onDrop(bool onFloor) = 0;
+	virtual void onPick() = 0;
 protected:
-	Tool(Transport* p1, Transport* p2, Texture* t) : Pickable(p1, p2, t) {}
+	//Estado
+	enum  State
+	{
+		floor, playerHand, shelf
+	};
+	Tool(Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr) {}
 	Tool() : Pickable(nullptr, nullptr, nullptr) {}
 	~Tool() {}
+
+	GameLogic* gameLogic;
+	State myState;
 };
 
-class Bucket : public Tool 
+class Bucket : public Entity, public Tool
 {
 public:
-	void attack(Vector2D dir) override;
-protected:
-	Bucket(Transport* p1, Transport* p2, Texture* t) : Tool(p1, p2, t) {}
+	Bucket(Transport* p1, Transport* p2);
 	Bucket() : Tool() {}
 	~Bucket() {}
 
-	GameLogic* gameLogic_;
+	void attack(Vector2D dir) override;
+	inline void fillBucket() { 
+		waterStacks_ = maxStacks_; 
+	}
+	void onPick() override;
+	void onDrop(bool onFloor) override;
+	void updating() { Pickable::update(); }
+	void render();
+protected:
+	int waterStacks_, maxStacks_;
+
+	int lastAttack_;
+	int attackRate_;
+	int attackHitBoxWidth_;
+	int attackHitBoxHeight_;
+	int rangeX_;
+	int rangeY_;
+
+	Texture* bucketTexture;
 };
 

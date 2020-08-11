@@ -1,6 +1,7 @@
 #include "RainAdversity.h"
 #include "MultipleAdversityManager.h"
 #include "TimerViewer.h"
+#include "Utensil.h"
 
 RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 	Adversity(mam), 

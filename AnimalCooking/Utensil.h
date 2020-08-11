@@ -20,35 +20,27 @@ public:
 	void feedback(int player) override;
 	virtual void render() const;
 	virtual void update();
-	virtual void onDrop(bool onFloor);
-	virtual void onPick();
+	virtual void onDrop(bool onFloor) override;
+	virtual void onPick() override;
 	void cleanUp();
 	void resetDirtTimer();
 
 	int getTimeOnTheFloor() { return dirtTimer_->getTime(); }
 	Timer* getTimer() { return dirtTimer_; }
 	void changeDirtySpeed(int speedModifier);
-	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 	Resources::UtensilType getUtensilType() { return myType; }
 	bool isDirty() { return dirty_; }
 
 protected:
-	//Estado
-	enum  State
-	{
-		floor, playerHand, shelf
-	};
+	
 	void onHit(Vector2D dir);
 
 	Resources::UtensilType myType;
-	State myState;
 	Timer* dirtTimer_;
 	//Mis 2 texturas
 	Texture* cleantexture_;
 	Texture* dirtyTexture_;
 	Texture* attackTexture_;
-	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
-	GameLogic* gameLogic;
 
 	//Suciedad
 	int myDirt_;

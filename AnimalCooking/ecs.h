@@ -58,7 +58,8 @@ enum CmpId : CmpIdType {
 	ShelfViewer,
 	OrderServiceViewer,
 	SinkViewer,
-
+	BucketViewer,
+	BucketMotion,
 
 	CookerPool,		//Cookers
 	CookerViewer,	

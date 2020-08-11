@@ -232,9 +232,6 @@
     <ClCompile Include="UtensilsMotion.cpp">
       <Filter>Source Files\Utensils</Filter>
     </ClCompile>
-    <ClCompile Include="UtensilsPool.cpp">
-      <Filter>Source Files\Utensils</Filter>
-    </ClCompile>
     <ClCompile Include="UtensilsViewer.cpp">
       <Filter>Source Files\Utensils</Filter>
     </ClCompile>
@@ -450,6 +447,9 @@
     <ClCompile Include="PidgeonAdversity.cpp">
       <Filter>Source Files\Adversities</Filter>
     </ClCompile>
+    <ClCompile Include="UtensilsPool.cpp" />
+    <ClCompile Include="BucketViewer.cpp" />
+    <ClCompile Include="BucketMotion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -710,9 +710,6 @@
     <ClInclude Include="UtensilsMotion.h">
       <Filter>Headers Files\Utensils</Filter>
     </ClInclude>
-    <ClInclude Include="UtensilsPool.h">
-      <Filter>Headers Files\Utensils</Filter>
-    </ClInclude>
     <ClInclude Include="UtensilsViewer.h">
       <Filter>Headers Files\Utensils</Filter>
     </ClInclude>
@@ -967,6 +964,9 @@
     <ClInclude Include="PidgeonAdversity.h">
       <Filter>Headers Files\Adversities</Filter>
     </ClInclude>
+    <ClInclude Include="UtensilsPool.h" />
+    <ClInclude Include="BucketMotion.h" />
+    <ClInclude Include="BucketViewer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

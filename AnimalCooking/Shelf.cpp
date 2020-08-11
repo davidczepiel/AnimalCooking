@@ -5,8 +5,14 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 	addComponent<ShelfViewer>(this, texture);
 	dishFinisher=addComponent<DishFinisher>(p1,p2);
 	position_ = pos;
+
 	if (content != nullptr) {
-		contentType = Resources::PickableType::Utensil;
+		Utensil* u = dynamic_cast<Utensil*>(c);
+		if (u != nullptr) {
+			contentType = Resources::PickableType::Utensil;
+		}
+		else contentType = Resources::PickableType::Bucket;
+
 		setContentPos();
 	}
 	else
@@ -123,7 +129,7 @@ void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 		content = nullptr;
 		contentType = Resources::PickableType::none;
 		break;
-		//Si tiene comida. SI Y SOLO SI tengo un plato, lo a�ado a este y le digo al player que lo suelte
+		//Si tiene comida. SI Y SOLO SI tengo un plato, lo anado a este y le digo al player que lo suelte
 	case Resources::PickableType::Food:
 		if (contentType == Resources::PickableType::Dish) {
 			static_cast<Dish*>(content)->addFood(static_cast<Food*>(player->getObjectInHands()));

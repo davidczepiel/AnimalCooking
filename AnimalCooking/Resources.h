@@ -83,6 +83,7 @@ public:
 		RalladorSucio,
 		Red,
 		RedSucia,
+		Cubo,
 		Fregadero,
 		FregaderoON,
 		Panera,
@@ -496,6 +497,7 @@ public:
 		Food,
 		Dish,
 		Utensil,
+		Bucket,
 		none
 	};
 

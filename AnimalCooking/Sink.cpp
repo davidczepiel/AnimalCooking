@@ -34,6 +34,12 @@ void Sink::action1(int iDp) {
 			sV->setOnAction(false);
 			maxTries = SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES);
 		}	
+		else if (nTries >= maxTries && player->getObjectTypeInHands() == Resources::PickableType::Bucket) {
+			static_cast<Bucket*>(player->getObjectInHands())->fillBucket();
+			nTries = 0;
+			sV->setOnAction(false);
+			maxTries = SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES);
+		}
 	}
 	else {
 		nTries = 0;

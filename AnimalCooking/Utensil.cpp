@@ -6,7 +6,7 @@
 #include "TimerViewer.h"
 #include "GPadController.h"
 
-Utensil::Utensil(Transport* p1, Transport* p2) : Tool(p1, p2, nullptr) {
+Utensil::Utensil(Transport* p1, Transport* p2) : Tool(p1, p2) {
 	myDirt_ = 0;
 	maxDirt_ = 100;
 	maxTimeOnFloor_ = config::MAX_TIME_ON_FLOOR * 1000;
@@ -89,7 +89,7 @@ void Utensil::render()const {
 	if (myState != State::playerHand)
 	{
 		if (!dirty_ && !attacking_)
-			cleantexture_->render(rect); //EN caso de que solo est� en la mano del jugador	
+			cleantexture_->render(rect); //EN caso de que solo este en la mano del jugador	
 		else if (!dirty_ && attacking_) {
 			attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
 		}

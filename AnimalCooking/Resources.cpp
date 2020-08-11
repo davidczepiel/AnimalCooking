@@ -83,6 +83,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, RalladorSucio,"../AnimalCooking/resources/images/Cocina/pickable/ralladorSucio.png"},
 	{AllLevels, Red,"../AnimalCooking/resources/images/Cocina/pickable/red.png"},
 	{AllLevels, RedSucia,"../AnimalCooking/resources/images/Cocina/pickable/redSucia.png"},
+	{AllLevels, Cubo,"../AnimalCooking/resources/images/Cocina/pickable/bucket.png"},
 
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
