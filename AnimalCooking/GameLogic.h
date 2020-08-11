@@ -23,6 +23,7 @@ public:
 	void setFirePool(FirePool* fp) { firePool_ = fp; }
 
 	void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
+	void burnIngredients(SDL_Rect rect);
 	void hitFire(SDL_Rect rect);
 
 	int getLevelTime() { return levelTimer_->getTime(); }
