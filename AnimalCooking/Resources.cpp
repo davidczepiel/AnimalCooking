@@ -299,7 +299,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
 	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 },
-	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/a.png",1,5 }
+	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 }
 
 };
 

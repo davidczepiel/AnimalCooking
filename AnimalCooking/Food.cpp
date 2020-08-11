@@ -80,6 +80,9 @@ void Food::draw()
 			lastFrameTime_ = time;
 
 		}
+		destRect.w += .2 * destRect.w;
+		destRect.x -= .05 * destRect.w;
+		destRect.h += .1 * destRect.h;
 		explosion_->renderFrame(destRect, 0, explosionFrame_, 0);
 			/*if (explosionFrame_ == explosion_->getNumCols())
 			{
