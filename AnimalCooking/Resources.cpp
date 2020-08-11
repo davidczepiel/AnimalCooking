@@ -253,6 +253,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 	{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
 	{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
+	{ AllLevels, PidgeonStandingAdversity, "../AnimalCooking/resources/images/Adversities/BirdStanding.png" },
+	{ AllLevels, PidgeonFlyingAdversity, "../AnimalCooking/resources/images/Adversities/BirdFlying.png" },
+
 
 		//creditState
 	{ Basic, woodCredits, "../AnimalCooking/resources/images/Menu/pauseStateEfecto.png" },

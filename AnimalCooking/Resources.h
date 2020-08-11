@@ -313,7 +313,9 @@ public:
 		WarningAdversity,
 		PlaneShadow,
 		RainAdversity,
-		HookAdversity
+		HookAdversity,
+		PidgeonStandingAdversity,
+		PidgeonFlyingAdversity
 
 	};
 

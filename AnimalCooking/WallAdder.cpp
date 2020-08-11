@@ -98,7 +98,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	Door* d = new Door(Vector2D(7.55 * casillaX + offsetX / 2, 4.37 * casillaY), Vector2D(1 * casillaX, 1.4 * casillaY), 
 		SDLGame::instance()->getTextureMngr()->getTexture(Resources::Puerta), GETCMP2(players[0], Transform), GETCMP2(players[1], Transform), mngr);
 	mngr->addEntity(d);
-	mngr->addToGroup(d, ecs::GroupID::FeedBackLayer);
+	mngr->addToGroup(d, ecs::GroupID::Valla);
 
 	//Hacer mantel de fondo del Score
 	Entity* ScoreBackground = mngr->addEntity();

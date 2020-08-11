@@ -14,11 +14,24 @@ public:
 	PidgeonAdversity(MultipleAdversityManager* mam);
 	virtual void update();
 	virtual void draw();
-	virtual void reset() {};
-	void start() {};
+	virtual void reset() ;
+	void start() ;
 private:
-	Texture* pidgeonTexture_;
+
+	bool hasReached(double d);
+	Texture* pidgeonStandingTexture_;
+	Texture* pidgeonFlyingTexture_;
+	Texture* drawingTexture_;
 	Timer* durationTimer_;
+
+	bool coming_;
+	bool standing_;
+	bool leaving_;
+
+	int row;
+	int column;
+	int lastFrame;
+	int frameDuration;
 
 	SDL_Rect drawingArea_;
 	SDL_Rect clipArea_;
