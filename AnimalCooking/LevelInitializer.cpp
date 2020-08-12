@@ -52,7 +52,6 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_bin();
 	initialize_dishes();
 	initialize_gameManager();
-	initialize_bucket();
 	initialize_shelfs();
 	initialize_foodGivers();
 	initialize_feedback();
@@ -228,19 +227,6 @@ void LevelInitializer::initialize_walls()
 	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY);
 
 	sL->updateLength();
-}
-
-void LevelInitializer::initialize_bucket()
-{
-	//Bucket---------------------------------------------------
-	//bucket_ = new Bucket(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
-	/*if (bucket_ != nullptr) {
-		emPlaystate->addEntity(bucket_);
-		bucket_->addComponent<BucketViewer>(bucket_);
-		bucket_->addComponent<BucketMotion>(bucket_);
-		bucket_->setGameLogic(GETCMP2(gameManager, GameLogic));
-		emPlaystate->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
-	}*/
 }
 
 void LevelInitializer::initialize_firePool()
