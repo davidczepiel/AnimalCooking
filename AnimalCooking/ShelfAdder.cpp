@@ -4,12 +4,14 @@
 #include "Utensil.h"
 #include "UtensilsPool.h"
 #include "SDLRenderer.h"
+#include "BucketViewer.h"
+#include "BucketMotion.h"
 
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, Bucket* bucket_, const double casillaX, const double casillaY) :
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, Bucket* bucket_, GameLogic* gl, const double casillaX, const double casillaY) :
 	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaX(casillaX),casillaY(casillaY)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
@@ -21,7 +23,15 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 		jute::jValue shelf_ = jsonLevel["Shelfs"]["entities"][i]["content"];
 		//Si contiene un utensilio, hago ese utensilio
 		if (shelf_.size() > 0) {
-			if (shelf_[0].as_string() == "cubo") u = bucket_;
+			if (shelf_[0].as_string() == "cubo") {
+				bucket_ = new Bucket(GIVETRANSPORT);
+				emPlayState->addEntity(bucket_);
+				bucket_->addComponent<BucketViewer>(bucket_);
+				bucket_->addComponent<BucketMotion>(bucket_);
+				bucket_->setGameLogic(gl);
+				emPlayState->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+				u = bucket_;
+			}
 			else u = switchUtensil(shelf_[0].as_string(), pool_, player);
 		}
 

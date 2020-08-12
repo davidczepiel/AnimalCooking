@@ -29,7 +29,7 @@
 
 const string rutaNivel = "../AnimalCooking/resources/cfg/nivel";
 
-LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL)
+LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* sL) : emPlaystate(em), players(), sL(sL), bucket_(nullptr)
 {
 	string ruta_ = rutaNivel + std::to_string(level) + ".cfg";
 
@@ -131,7 +131,7 @@ void LevelInitializer::initialize_timerViewer()
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), bucket_, casillaX,casillaY);
+	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), bucket_, GETCMP2(gameManager, GameLogic), casillaX,casillaY);
 
 	GETCMP2(gameManager, GameLogic)->setUtensilsPool(GETCMP2(utensil, UtensilsPool));
 
@@ -233,12 +233,14 @@ void LevelInitializer::initialize_walls()
 void LevelInitializer::initialize_bucket()
 {
 	//Bucket---------------------------------------------------
-	bucket_ = new Bucket(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
-	emPlaystate->addEntity(bucket_);
-	bucket_->addComponent<BucketViewer>(bucket_);
-	bucket_->addComponent<BucketMotion>(bucket_);
-	bucket_->setGameLogic(GETCMP2(gameManager, GameLogic));
-	emPlaystate->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+	//bucket_ = new Bucket(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
+	/*if (bucket_ != nullptr) {
+		emPlaystate->addEntity(bucket_);
+		bucket_->addComponent<BucketViewer>(bucket_);
+		bucket_->addComponent<BucketMotion>(bucket_);
+		bucket_->setGameLogic(GETCMP2(gameManager, GameLogic));
+		emPlaystate->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+	}*/
 }
 
 void LevelInitializer::initialize_firePool()

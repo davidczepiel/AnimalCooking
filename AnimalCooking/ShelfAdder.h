@@ -9,13 +9,14 @@ class Utensil;
 class Bucket;
 class Pickable;
 class UtensilsPool;
+class GameLogic;
 class Shelf;
 class Interactive;
 class ShelfAdder
 {
 public:
 	ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, 
-		UtensilsPool* pool_, Bucket* bucket_, const double casillaX, const double casillaY);
+		UtensilsPool* pool_, Bucket* bucket_, GameLogic* gl, const double casillaX, const double casillaY);
 	~ShelfAdder() {}
 
 	std::vector<Interactive*>& getInteractives() { return interactives_; }
