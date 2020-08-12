@@ -51,4 +51,6 @@ private:
 	vector<Order*> currentOrders_; //Vector para guardar los Order
 
 	double msPerIng_;
+
+	double getTimePerOrder(Resources::FoodType finalProduct, int size);
 };

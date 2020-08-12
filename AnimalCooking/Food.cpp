@@ -136,7 +136,7 @@ void Food::feedback(int player)
 		feedbackVisual_->render(destRect);
 		if (showHelp && SDLGame::instance()->getOptions().showKeyToPress) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
 			else
 				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 		}

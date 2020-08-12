@@ -23,14 +23,14 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	int degrees = 7;
 	int nextLevelLimit = 45;
 
-	/*score = 120;
+	/*score = 120;		
 	maxScore = 150;*/
-
-	createButtons();
+					
+	createButtons();	
 	//createPlayers();
 	//Creamos la barra de carga con el texto
 	Entity* levelViewer = stage->addEntity();
-	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 85, (double)(score) / maxScore);
+	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 80, (double)(score) / maxScore);
 	stage->addToGroup(levelViewer, ecs::GroupID::ui);
 
 

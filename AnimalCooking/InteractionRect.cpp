@@ -10,6 +10,8 @@ InteractionRect::InteractionRect() : Component(ecs::InteractionRect), pos_(), di
 void InteractionRect::init()
 {
 	tr_ = GETCMP1_(Transform);	
+	//al principio se posiciona fuera de la pantalla para que no aparezca en la esquina sup izq
+	pos_.set(-100, -100);
 }
 
 void InteractionRect::update()
