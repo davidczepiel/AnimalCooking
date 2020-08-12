@@ -34,6 +34,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, UtensilTimerBackground,"../AnimalCooking/resources/images/gotaSinCarga.png"},
 	{Basic, UtensilTimerForeground,"../AnimalCooking/resources/images/gotaCarga.png"},
 	{Basic, ScoreBackground,"../AnimalCooking/resources/images/ScoreBackground.png"},
+	{Basic, PingUtensil,"../AnimalCooking/resources/images/ping.png"},
 
 	//----->EndState<---------
 	{Basic, BackgroundEndState,"../AnimalCooking/resources/images/EndState/background.png"},

@@ -91,7 +91,7 @@ void Utensil::render()const {
 		if (!dirty_ && !attacking_)
 			cleantexture_->render(rect); //EN caso de que solo este en la mano del jugador	
 		else if (!dirty_ && attacking_) {
-			attackTexture_->render(rect); //EN caso de estar atacando habr�a que hacer un renderFrame
+			attackTexture_->render(rect); //EN caso de estar atacando habria que hacer un renderFrame
 		}
 		else
 			dirtyTexture_->render(rect); //Cambiar si los ingredientes vienen todos en una misma textura para usar el clip	
@@ -187,7 +187,7 @@ Knife::Knife(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloFeedBack);
-	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ButtonConfig);
+	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
 	myType = Resources::UtensilType::Knife;
 	rangeX_ = config::KNIFE_RANGE * SDLGame::instance()->getCasillaX();
@@ -202,7 +202,7 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazaSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Maza);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MazoFeedBack);
-	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ButtonBin);
+	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
 	myType = Resources::UtensilType::Mace;
 	rangeX_ = config::MACE_RANGE * SDLGame::instance()->getCasillaX();
@@ -217,7 +217,7 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorSucio);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorFeedBack);
-	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ButtonBin);
+	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
 	myType = Resources::UtensilType::Grater;
 	rangeX_ = config::GRATER_RANGE * SDLGame::instance()->getCasillaX();
@@ -232,7 +232,7 @@ Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
 	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedFeedBack);
-	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::ButtonBin);
+	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
 	myType = Resources::UtensilType::Net;
 	rangeX_ = config::NET_RANGE * SDLGame::instance()->getCasillaX();

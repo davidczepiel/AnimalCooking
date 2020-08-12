@@ -38,6 +38,7 @@ public:
 		UtensilTimerBackground,
 		UtensilTimerForeground,
 		ScoreBackground,
+		PingUtensil,
 		//----->EndState<---------
 		BackgroundEndState,
 		BarBackgroundEndState,
