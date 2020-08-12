@@ -101,6 +101,7 @@ public:
 		RalladorSucio,
 		Red,
 		RedSucia,
+		Cubo,
 		Fregadero,
 		FregaderoON,
 		FregaderoFlip,
@@ -345,6 +346,8 @@ public:
 		Sausage,
 		Puerta,
 		FireOverHeated,
+		LightingStrike,
+		LightingExplosion,
 		MapRestaurantButton,
 		MapStatePlayButton,
 		Explosion,
@@ -380,7 +383,8 @@ public:
 		WarningAdversity,
 		PlaneShadow,
 		RainAdversity,
-		HookAdversity
+		HookAdversity,
+		PidgeonAdversity
 
 	};
 
@@ -571,6 +575,7 @@ public:
 		Food,
 		Dish,
 		Utensil,
+		Bucket,
 		none
 	};
 

@@ -52,14 +52,15 @@ enum CmpId : CmpIdType {
 
 	IngredientsPool, //Pools
 	UtensilsPool,
-
+	FirePool,
 
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
 	OrderServiceViewer,
 	SinkViewer,
-
+	BucketViewer,
+	BucketMotion,
 
 	CookerPool,		//Cookers
 	CookerViewer,	
@@ -144,7 +145,8 @@ enum AdversityID  {
 	PlaneAdversity,
 	CookersAdversity,
 	HookAdversity,
-	RainAdversity
+	RainAdversity,
+	PidgeonAdversity
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;

@@ -33,7 +33,7 @@ void Ingredient::onCollisionY() {
 	
 }
 
-void Ingredient::destroy(Resources::UtensilType utensilio)
+void Ingredient::destroy()
 {
 	ingredientPool_->deleteIngredient(it_);
 }

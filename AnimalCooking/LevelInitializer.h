@@ -8,6 +8,7 @@
 #include "DishPool.h"
 class EntityManager;
 class Entity;
+class Bucket;
 class ScreenLoader;
 class Interactive;
 class TimerViewer;
@@ -36,6 +37,8 @@ private:
 	void initialize_levelIngredients();
 	void initialize_clients();
 	void initialize_walls();
+	void initialize_bucket();
+	void initialize_firePool();
 	void initialize_adversities();
 
 	Entity* ingPoolEntity_;
@@ -43,9 +46,11 @@ private:
 	Entity* foodPool;
 	Entity* gameManager;
 	Entity* cookerPool;
+	Entity* firesPool;
 	ScreenLoader* sL;
 	TimerViewer* tv_;
 	DishPool* dp;
+	Bucket* bucket_;
 	EntityManager* emPlaystate;
 	jute::jValue jsonLevel;
 	jute::jValue jsonGeneral;

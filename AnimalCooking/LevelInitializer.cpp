@@ -21,6 +21,9 @@
 #include "MultipleAdversityManager.h"
 #include "SDLGame.h"
 #include "AdversityAdder.h"
+#include "FirePool.h"
+#include "BucketMotion.h"
+#include "BucketViewer.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -45,17 +48,19 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_utensilPool();
 	initialize_timerViewer();
 	initialize_cookersPool();
-	initialize_shelfs();
 	initialize_sinks();
 	initialize_bin();
 	initialize_dishes();
 	initialize_gameManager();
+	initialize_bucket();
+	initialize_shelfs();
 	initialize_foodGivers();
 	initialize_feedback();
 	initialize_levelIngredients();
 	initialize_clients();
 	initialize_colSystem();
 	initialize_walls();
+	initialize_firePool();
 	initialize_adversities();
 }
 
@@ -97,6 +102,7 @@ void LevelInitializer::initialize_utensilPool()
 	emPlaystate->addToGroup(utensil, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
 
 	UtensilsAdder(utensil, jsonLevel, jsonGeneral, players);
+
 	sL->updateLength();
 }
 
@@ -125,7 +131,9 @@ void LevelInitializer::initialize_timerViewer()
 
 void LevelInitializer::initialize_shelfs()
 {
-	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), casillaX,casillaY);
+	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), bucket_, casillaX,casillaY);
+
+	GETCMP2(gameManager, GameLogic)->setUtensilsPool(GETCMP2(utensil, UtensilsPool));
 
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
@@ -222,9 +230,31 @@ void LevelInitializer::initialize_walls()
 	sL->updateLength();
 }
 
+void LevelInitializer::initialize_bucket()
+{
+	//Bucket---------------------------------------------------
+	bucket_ = new Bucket(GETCMP2(players[0], Transport), GETCMP2(players[1], Transport));
+	emPlaystate->addEntity(bucket_);
+	bucket_->addComponent<BucketViewer>(bucket_);
+	bucket_->addComponent<BucketMotion>(bucket_);
+	bucket_->setGameLogic(GETCMP2(gameManager, GameLogic));
+	emPlaystate->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+}
+
+void LevelInitializer::initialize_firePool()
+{
+	firesPool = emPlaystate->addEntity();
+	firesPool->addComponent<FirePool>(GETCMP2(gameManager, CollisionsSystem), GETCMP2(gameManager, GameLogic));
+	emPlaystate->addToGroup(firesPool, ecs::GroupID::FoodLayer);
+
+	GETCMP2(gameManager, GameLogic)->setFirePool(GETCMP2(firesPool, FirePool));
+
+	sL->updateLength();
+}
+
 void LevelInitializer::initialize_adversities()
 {
-	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil);
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool);
 	
 	sL->updateLength();
 }

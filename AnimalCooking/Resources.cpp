@@ -104,6 +104,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, RalladorSucio,"../AnimalCooking/resources/images/Cocina/pickable/ralladorSucio.png"},
 	{AllLevels, Red,"../AnimalCooking/resources/images/Cocina/pickable/red.png"},
 	{AllLevels, RedSucia,"../AnimalCooking/resources/images/Cocina/pickable/redSucia.png"},
+	{AllLevels, Cubo,"../AnimalCooking/resources/images/Cocina/pickable/bucket.png"},
 
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
@@ -314,6 +315,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 	{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
 	{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
+	{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png" },
+
 
 		//creditState
 	{ Basic, woodCredits, "../AnimalCooking/resources/images/Menu/pauseStateEfecto.png" },
@@ -362,6 +365,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
+	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},
+	{Basic, LightingExplosion,"../AnimalCooking/resources/images/Adversities/explosion.png",1,7},
 	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 },
 	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 }

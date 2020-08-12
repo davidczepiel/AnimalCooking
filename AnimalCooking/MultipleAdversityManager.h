@@ -6,6 +6,7 @@
 #include "CookerPool.h"
 #include "UtensilsPool.h"
 #include "IngredientsPool.h"
+#include "FirePool.h"
 
 #include <queue>
 #include <tuple>
@@ -13,7 +14,7 @@
 class MultipleAdversityManager : public Component
 {
 public:
-	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up);
+	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp);
 	~MultipleAdversityManager() {
 		if (haptic1 != NULL) SDL_HapticClose(haptic1);
 		if (haptic2 != NULL) SDL_HapticClose(haptic2);
@@ -23,7 +24,6 @@ public:
 	void startAdvesities();
 	void playAdversity(ecs::AdversityID i) { activeAdversities_[i] = true; }
 	void stopAdversity(ecs::AdversityID i);
-	void setTimerTime(ecs::AdversityID id, int time);
 
 	void addAdversityToQueue(ecs::AdversityID type, int time);
 
@@ -43,39 +43,36 @@ public:
 		return utensilsPool_;
 	}
 
+	FirePool* getFirePool() {
+		return firePool_;
+	}
+
 private:
 	void seeTimers();
 	void seeAdversityWarning();
 	void playRumbles();
 
 	Texture* warningTexture_;
-	vector<Adversity*> adversities_;
-	vector<bool> activeAdversities_;
 	Transform* tP1_;
 	Transform* tP2_;
 	CookerPool* cookerPool_;
 	IngredientsPool* ingredientsPool_;
 	UtensilsPool* utensilsPool_;
-	AdversityTimer* rainTimer_;
-	AdversityTimer* rainWarning_;
-	AdversityTimer* planeTimer_;
-	AdversityTimer* planeWarning_;
-	AdversityTimer* hookTimer_;
-	AdversityTimer* hookWarning_;
-	AdversityTimer* burnCookerTimer_;
-	AdversityTimer* burnedCookerWarning_;
+	FirePool* firePool_;
 	AdversityTimer* adversityTimer_;
-
-	queue<int> planeQueue;
-	queue<int> rainQueue;
-	queue<int> cookerQueue;
-	queue<int> hookQueue;
 
 	int warningRate_;
 	bool playingWarning_;
 	bool active_;
 	bool playingAdversity_;
 	bool justStarted_;
+	bool finishedAdversities;
+
+	vector<Adversity*> adversities_;
+	vector<bool> activeAdversities_;
+	queue<tuple<int, ecs::AdversityID>> adversitiesQueue_;
+	AdversityTimer* nextAdversityTimer_;
+	AdversityTimer* nextWarningTimer_;
 
 	Uint32 startRumbleTime_, rumbleCadence_, lengthOfRumble_;
 	SDL_Haptic* haptic1 = nullptr, * haptic2 = nullptr;
