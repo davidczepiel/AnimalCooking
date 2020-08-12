@@ -21,8 +21,8 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 
 	drawingArea_.x = 0;
 	drawingArea_.y = 0;
-	drawingArea_.w = SDLGame::instance()->getWindowWidth() / 4;
-	drawingArea_.h = SDLGame::instance()->getWindowHeight() / 2;
+	drawingArea_.w = SDLGame::instance()->getWindowWidth() * 1.3 / 4;
+	drawingArea_.h = SDLGame::instance()->getWindowHeight() * 2/ 3;
 
 	column = 0;
 
@@ -36,7 +36,7 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 	clipArea_.w = 512;
 	clipArea_.h = 512;
 
-	numPidgeons = 2;
+	numPidgeons = 3;
 	pidgeonsSeen = 0;
 }
 
@@ -49,7 +49,7 @@ void PidgeonAdversity::update()
 	else if (durationTimer_->getProgress() > 0.90)move(1,0.10);
 
 	//La animacion va segun el timer, si hemos visitado todas las columnas significa que hemos terminado con esta paloma
-	if (column >= 21) {
+	if (column >= 20) {
 		pidgeonFinished();
 	}
 }
@@ -77,6 +77,7 @@ void PidgeonAdversity::reset()
 void PidgeonAdversity::start()
 {
 	locatePidgeon();
+	column = 0;
 	coming_ = true;
 	durationTimer_->timerReset();
 	durationTimer_->timerStart();
