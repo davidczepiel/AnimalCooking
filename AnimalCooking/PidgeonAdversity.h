@@ -19,9 +19,16 @@ public:
 	void start() ;
 private:
 
-	bool hasReached(double d);
+	struct pidgeonInfo {
+		int posX;
+		int posY;
+		int direction;
+	};
 	void locatePidgeon();
 	int posibleLocation(int a, int b);
+	int locateFrame();
+	void pidgeonFinished();
+	void move(double percent, double div);
 
 	Texture* drawingTexture_;
 	Timer* durationTimer_;
@@ -32,7 +39,8 @@ private:
 	bool standing_;
 	bool leaving_;
 
-	int row;
+	int numPidgeons;
+	int pidgeonsSeen;
 	int column;
 	int lastFrame;
 	int frameDuration;
@@ -40,5 +48,7 @@ private:
 
 	SDL_Rect drawingArea_;
 	SDL_Rect clipArea_;
+	SDL_RendererFlip flipVar;
+	pidgeonInfo lastPidgeon;
 };
 
