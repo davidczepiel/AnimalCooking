@@ -6,6 +6,8 @@
 #include "Timer.h"
 #include "SDLGame.h"
 
+#define EXPLOSION SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)
+
 class Food : public Pickable
 {
 public:
@@ -299,15 +301,15 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BreadHotDogFeedBack);
 	}
 };
-//Ensaldas-------------------------------------------------------------------------------------------------------------
+//Ensaladas-------------------------------------------------------------------------------------------------------------
 class Salad : public Food
 	{
 	public:
-		Salad(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad, p1, p2) {
+		Salad(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad, p1, p2, EXPLOSION) {
 			texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SaladT);
 			feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SaladFeedBack);
 		}
-		Salad() : Food(Resources::FoodType::Salad) {
+		Salad() : Food(Resources::FoodType::Salad, EXPLOSION) {
 			texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SaladT);
 			feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SaladFeedBack);
 		}
@@ -315,11 +317,11 @@ class Salad : public Food
 class Salad1 : public Food
 {
 public:
-	Salad1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad1, p1, p2) {
+	Salad1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad1, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad1FeedBack);
 	}
-	Salad1() : Food(Resources::FoodType::Salad1) {
+	Salad1() : Food(Resources::FoodType::Salad1, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad1FeedBack);
 	}
@@ -327,11 +329,11 @@ public:
 class Salad2 : public Food
 {
 public:
-	Salad2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad2, p1, p2) {
+	Salad2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad2, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad2FeedBack);
 	}
-	Salad2() : Food(Resources::FoodType::Salad2) {
+	Salad2() : Food(Resources::FoodType::Salad2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad2FeedBack);
 	}
@@ -339,7 +341,7 @@ public:
 class Salad3 : public Food
 {
 public:
-	Salad3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad3, p1, p2) {
+	Salad3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad3, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad3FeedBack);
 	}
@@ -351,11 +353,11 @@ public:
 class Salad4 : public Food
 {
 public:
-	Salad4(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad4, p1, p2) {
+	Salad4(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Salad4, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad4T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad4FeedBack);
 	}
-	Salad4() : Food(Resources::FoodType::Salad4) {
+	Salad4() : Food(Resources::FoodType::Salad4, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad4T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad4FeedBack);
 	}
@@ -366,11 +368,11 @@ public:
 class Burger : public Food
 {
 public:
-	Burger(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Burger(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BurgerT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BurgerFeedBack);
 	}
-	Burger() : Food(Resources::FoodType::Burger, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Burger() : Food(Resources::FoodType::Burger, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BurgerT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BurgerFeedBack);
 	}
@@ -378,11 +380,11 @@ public:
 class Burger1 : public Food
 {
 public:
-	Burger1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger1, p1, p2) {
+	Burger1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger1, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger1FeedBack);
 	}
-	Burger1() : Food(Resources::FoodType::Burger1) {
+	Burger1() : Food(Resources::FoodType::Burger1, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger1FeedBack);
 	}
@@ -390,11 +392,11 @@ public:
 class Burger2 : public Food
 {
 public:
-	Burger2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger2, p1, p2) {
+	Burger2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger2, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger2FeedBack);
 	}
-	Burger2() : Food(Resources::FoodType::Burger2) {
+	Burger2() : Food(Resources::FoodType::Burger2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger2FeedBack);
 	}
@@ -402,11 +404,11 @@ public:
 class Burger3 : public Food
 {
 public:
-	Burger3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger3, p1, p2) {
+	Burger3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger3, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger3FeedBack);
 	}
-	Burger3() : Food(Resources::FoodType::Burger3) {
+	Burger3() : Food(Resources::FoodType::Burger3, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger3FeedBack);
 	}
@@ -415,11 +417,11 @@ public:
 class Pizza : public Food
 {
 public:
-	Pizza(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Pizza, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Pizza(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Pizza, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PizzaT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PizzaFeedBack);
 	}
-	Pizza() : Food(Resources::FoodType::Pizza, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Pizza() : Food(Resources::FoodType::Pizza, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PizzaT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PizzaFeedBack);
 	}
@@ -428,11 +430,11 @@ public:
 class Roast : public Food
 {
 public:
-	Roast(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Roast, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Roast(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Roast, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RoastT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RoastFeedBack);
 	}
-	Roast() : Food(Resources::FoodType::Roast, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Roast() : Food(Resources::FoodType::Roast, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RoastT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RoastFeedBack);
 	}
@@ -441,11 +443,11 @@ public:
 class RiceDish : public Food
 {
 public:
-	RiceDish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceDish, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	RiceDish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceDish, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RiceDishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RiceDishFeedBack);
 	}
-	RiceDish() : Food(Resources::FoodType::RiceDish, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	RiceDish() : Food(Resources::FoodType::RiceDish, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RiceDishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RiceDishFeedBack);
 	}
@@ -454,11 +456,11 @@ public:
 class HotDog : public Food
 {
 public:
-	HotDog(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::HotDog, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	HotDog(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::HotDog, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HotDogT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::HotDogFeedBack);
 	}
-	HotDog() : Food(Resources::FoodType::HotDog, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	HotDog() : Food(Resources::FoodType::HotDog, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HotDogT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::HotDogFeedBack);
 	}
@@ -467,11 +469,11 @@ public:
 class Risotto : public Food
 {
 public:
-	Risotto(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Risotto, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Risotto(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Risotto, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RisottoT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RisottoFeedBack);
 	}
-	Risotto() : Food(Resources::FoodType::Risotto, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Risotto() : Food(Resources::FoodType::Risotto, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RisottoT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RisottoFeedBack);
 	}
@@ -480,11 +482,11 @@ public:
 class CookedFish : public Food
 {
 public:
-	CookedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedFish, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CookedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedFish, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CookedFishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedFishFeedBack);
 	}
-	CookedFish() : Food(Resources::FoodType::CookedFish, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CookedFish() : Food(Resources::FoodType::CookedFish, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CookedFishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedFishFeedBack);
 	}
@@ -493,11 +495,11 @@ public:
 class FriedVegs : public Food
 {
 public:
-	FriedVegs(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	FriedVegs(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegsFeedBack);
 	}
-	FriedVegs() : Food(Resources::FoodType::FriedVegs, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	FriedVegs() : Food(Resources::FoodType::FriedVegs, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegsFeedBack);
 	}
@@ -505,11 +507,11 @@ public:
 class FriedVegs1 : public Food
 {
 public:
-	FriedVegs1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs1, p1, p2) {
+	FriedVegs1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs1, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs1FeedBack);
 	}
-	FriedVegs1() : Food(Resources::FoodType::FriedVegs1) {
+	FriedVegs1() : Food(Resources::FoodType::FriedVegs1, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs1T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs1FeedBack);
 	}
@@ -517,11 +519,11 @@ public:
 class FriedVegs2 : public Food
 {
 public:
-	FriedVegs2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs2, p1, p2) {
+	FriedVegs2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FriedVegs2, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs2FeedBack);
 	}
-	FriedVegs2() : Food(Resources::FoodType::FriedVegs2) {
+	FriedVegs2() : Food(Resources::FoodType::FriedVegs2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FriedVegs2T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FriedVegs2FeedBack);
 	}
@@ -530,11 +532,11 @@ public:
 class BakedChicken : public Food
 {
 public:
-	BakedChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::BakedChicken, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	BakedChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::BakedChicken, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BakedChickenT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BakedChickenFeedBack);
 	}
-	BakedChicken() : Food(Resources::FoodType::BakedChicken, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	BakedChicken() : Food(Resources::FoodType::BakedChicken, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::BakedChickenT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::BakedChickenFeedBack);
 	}
@@ -543,11 +545,11 @@ public:
 class FrenchFries : public Food
 {
 public:
-	FrenchFries(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FrenchFries, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	FrenchFries(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::FrenchFries, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FrenchFriesT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FrenchFriesFeedBack);
 	}
-	FrenchFries() : Food(Resources::FoodType::FrenchFries, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	FrenchFries() : Food(Resources::FoodType::FrenchFries, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FrenchFriesT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FrenchFriesFeedBack);
 	}
@@ -556,11 +558,11 @@ public:
 class CookedClams : public Food
 {
 public:
-	CookedClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedClams, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CookedClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CookedClams, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CookedClamsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedClamsFeedBack);
 	}
-	CookedClams() : Food(Resources::FoodType::CookedClams, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CookedClams() : Food(Resources::FoodType::CookedClams, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CookedClamsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedClamsFeedBack);
 	}
@@ -569,11 +571,11 @@ public:
 class RiceAndClams : public Food
 {
 public:
-	RiceAndClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceAndClams, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	RiceAndClams(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::RiceAndClams, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RiceAndClamsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RiceAndClamsFeedBack);
 	}
-	RiceAndClams() : Food(Resources::FoodType::RiceAndClams, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	RiceAndClams() : Food(Resources::FoodType::RiceAndClams, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::RiceAndClamsT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RiceAndClamsFeedBack);
 	}
@@ -582,11 +584,11 @@ public:
 class MashedMeatSkillet : public Food
 {
 public:
-	MashedMeatSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::MashedMeatSkillet, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	MashedMeatSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::MashedMeatSkillet, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::MashedMeatSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedMeatSkilletFeedBack);
 	}
-	MashedMeatSkillet() : Food(Resources::FoodType::MashedMeatSkillet, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	MashedMeatSkillet() : Food(Resources::FoodType::MashedMeatSkillet, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::MashedMeatSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::MashedMeatSkilletFeedBack);
 	}
@@ -595,11 +597,11 @@ public:
 class CaughtSausageSkillet : public Food
 {
 public:
-	CaughtSausageSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CaughtSausageSkillet, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CaughtSausageSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::CaughtSausageSkillet, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CaughtSausageSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CaughtSausageSkilletFeedBack);
 	}
-	CaughtSausageSkillet() : Food(Resources::FoodType::CaughtSausageSkillet, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	CaughtSausageSkillet() : Food(Resources::FoodType::CaughtSausageSkillet, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::CaughtSausageSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CaughtSausageSkilletFeedBack);
 	}
@@ -608,11 +610,11 @@ public:
 class SlicedPotatoSkillet : public Food
 {
 public:
-	SlicedPotatoSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedPotatoSkillet, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	SlicedPotatoSkillet(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedPotatoSkillet, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedPotatoSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedPotatoSkilletFeedBack);
 	}
-	SlicedPotatoSkillet() : Food(Resources::FoodType::SlicedPotatoSkillet, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	SlicedPotatoSkillet() : Food(Resources::FoodType::SlicedPotatoSkillet, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedPotatoSkilletT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedPotatoSkilletFeedBack);
 	}
@@ -621,15 +623,18 @@ public:
 class Poop : public Food
 {
 public:
-	Poop(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Empty, p1, p2, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Poop(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Empty, p1, p2, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PoopT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PoopFeedBack);
 	}
-	Poop() : Food(Resources::FoodType::Empty, SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)) {
+	Poop() : Food(Resources::FoodType::Empty, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PoopT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PoopFeedBack);
 	}
 };
+
+
+//------------------------------------------------------------------------------------------------------------------------------
 
 class PizzaMass : public Food
 {
