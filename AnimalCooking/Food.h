@@ -345,7 +345,7 @@ public:
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad3FeedBack);
 	}
-	Salad3() : Food(Resources::FoodType::Salad3) {
+	Salad3() : Food(Resources::FoodType::Salad3, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad3FeedBack);
 	}
