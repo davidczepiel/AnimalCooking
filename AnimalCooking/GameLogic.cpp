@@ -50,7 +50,7 @@ void GameLogic::burnIngredients(SDL_Rect rect)
 			Resources::IngredientType ingType = ing->getType();
 			colSys_->removeCollider(ing);
 			ing->destroy();
-			GETCMP1_(GameControl)->newIngredient(ingType);
+			GETCMP1_(GameControl)->newIngredient();
 		}
 	}
 }

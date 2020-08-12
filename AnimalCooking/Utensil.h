@@ -44,7 +44,6 @@ protected:
 	Texture* attackTexture_;
 	Texture* iconTexture_;
 	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
-	GameLogic* gameLogic;
 
 	//Suciedad
 	int myDirt_;

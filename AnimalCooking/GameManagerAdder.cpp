@@ -17,7 +17,7 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager, EntityManager* em, jute:
 	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
 	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp, ip, jsonLevel["MaxIngredients"].as_int());
-	glogic->setUtensilsPool(utensilpool_);
+
 	glogic->setIngredientPool(ip);
 
 	ScoreViewer* sv = gameManager->addComponent<ScoreViewer>();

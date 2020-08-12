@@ -133,6 +133,8 @@ void LevelInitializer::initialize_shelfs()
 {
 	ShelfAdder sa = ShelfAdder(emPlaystate, jsonLevel, jsonGeneral, players, GETCMP2(utensil, UtensilsPool), bucket_, casillaX,casillaY);
 
+	GETCMP2(gameManager, GameLogic)->setUtensilsPool(GETCMP2(utensil, UtensilsPool));
+
 	interactives_.insert(interactives_.end(), sa.getInteractives().begin(), sa.getInteractives().end());
 
 	sL->updateLength();

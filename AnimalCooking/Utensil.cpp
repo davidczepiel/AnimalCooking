@@ -26,7 +26,6 @@ Utensil::Utensil(Transport* p1, Transport* p2) : Tool(p1, p2) {
 	attacking_ = false;
 	displayIcon_ = false;
 	lastFrameTick = 0;
-	gameLogic = nullptr;
 
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(dirtTimer_);
 }
