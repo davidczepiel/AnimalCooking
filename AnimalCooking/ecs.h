@@ -40,6 +40,7 @@ enum CmpId : CmpIdType {
 	DishStackViewer,
 	InOutFood,		//ELIMINAR SI NO SE IMPLEMENTA
 	DishFinisher,
+	DishFinisherViewer,
 	
 
 	FoodMotion,		//Food
@@ -125,6 +126,7 @@ enum CmpId : CmpIdType {
 
 enum GroupID : Group {
 	Layer1,
+	Layer12,
 	Layer2,
 	PlayerLayerAux,
 	Dishes,

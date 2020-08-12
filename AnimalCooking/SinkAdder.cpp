@@ -10,8 +10,29 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 	jute::jValue components = jsonLevel["Sink"]["components"];
 
 	for (int i = 0; i < sinks_.size(); ++i) {
+
+		Texture* t1 = nullptr;
+		Texture* t2 = nullptr;
+
+		//se escoje la textura del fregadero
+		if(sinks_[i]["texture"].as_string() == "flip") //mkrando hacia la derecha
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlip);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipON);
+		}
+		else if (sinks_[i]["texture"].as_string() == "down") //mirando hacia abajo
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAbajo);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAbajoON);
+		}
+		else //mirando hacia la izquierda
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Fregadero);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoON);
+		}
+
 		Sink* sink = new Sink(Vector2D(sinks_[i]["pos"]["x"].as_double() * casillaX, sinks_[i]["pos"]["y"].as_double() * casillaY),
-			GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em);
+			GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em,t1,t2);
 
 		sink->setSize(Vector2D(jsonGeneral["Sink"]["size"]["width"].as_double() * casillaX,
 			jsonGeneral["Sink"]["size"]["height"].as_double() * casillaY));
