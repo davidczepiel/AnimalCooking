@@ -345,9 +345,9 @@ public:
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad3FeedBack);
 	}
-	Salad() : Food(Resources::FoodType::Salad) {
-		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SaladT);
-		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SaladFeedBack);
+	Salad3() : Food(Resources::FoodType::Salad3) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Salad3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Salad3FeedBack);
 	}
 };
 class Salad4 : public Food
@@ -364,6 +364,7 @@ public:
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Hamburguesas------------------------------------------------------------------------------------------------
 class Burger : public Food
 {
 public:
@@ -490,7 +491,7 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CookedFishFeedBack);
 	}
 };
-
+// VERDURAS FRITAS--------------------------------------------------------------------------------------------------------
 class FriedVegs : public Food
 {
 public:

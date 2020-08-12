@@ -1,7 +1,7 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
+Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), lookingAt_(Orientation::Down), content(c) {
 	addComponent<ShelfViewer>(this, texture);
 	dishFinisher = addComponent<DishFinisher>(p1, p2);
 	position_ = pos;
@@ -21,8 +21,30 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 
 void Shelf::setContentPos()
 {
-	content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
+	//El punto medio de la repisa
+	Vector2D pos(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
+		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2));
+
+	switch (lookingAt_)
+	{
+	case Down: //Si mira hacia abajo, hay que subirlo
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	case Top: //Si mira hacia arriba, hay que subirlo
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+
+	case DownLeft: 
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	case DownRight: 
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	default:
+		break;
+	}
+
+	content->setPos(pos);
 	content->setCanInteract(false);
 }
 

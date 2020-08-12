@@ -1,12 +1,12 @@
 #include "Sink.h"
 #include "GameConfig.h"
 
-Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2,nullptr), 
+Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng, Texture* text, Texture* textOn) :Entity(SDLGame::instance(),mng), Interactive(p1, p2,nullptr),
            nTries(), lastTry(), channel(SDLGame::instance()->getAudioMngr()->channels() - 1), 
            maxTries(SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES)) 
 {
 
-	sV = addComponent<SinkViewer>(this);
+	sV = addComponent<SinkViewer>(this,text,textOn);
 	position_ = pos;	
 }
 
@@ -58,7 +58,7 @@ void Sink::feedback(int iDp)
 	else player = player2_;
 	if (player->getObjectTypeInHands() == Resources::PickableType::Utensil && static_cast<Utensil*>(player->getObjectInHands())->isDirty()) {
 		if (GPadController::instance()->playerControllerConnected(iDp))
-			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[iDp].PICKUP));
+			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[iDp].PICKUP), true);
 		else
 			SDLGame::instance()->renderFeedBack(position_, "Repeat to Clean", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[iDp].PICKUP));
 
