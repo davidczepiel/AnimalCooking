@@ -37,7 +37,6 @@ private:
 	void initialize_levelIngredients();
 	void initialize_clients();
 	void initialize_walls();
-	void initialize_bucket();
 	void initialize_firePool();
 	void initialize_adversities();
 
