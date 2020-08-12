@@ -30,6 +30,7 @@ public:
 	void changeDirtySpeed(int speedModifier);
 	Resources::UtensilType getUtensilType() { return myType; }
 	bool isDirty() { return dirty_; }
+	void setDisplayIcon(bool b) { displayIcon_ = b; }
 
 protected:
 	
@@ -41,6 +42,9 @@ protected:
 	Texture* cleantexture_;
 	Texture* dirtyTexture_;
 	Texture* attackTexture_;
+	Texture* iconTexture_;
+	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
+	GameLogic* gameLogic;
 
 	//Suciedad
 	int myDirt_;
@@ -59,6 +63,7 @@ protected:
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
+	bool displayIcon_;
 };
 
 /////////////////////////////////////////////Utensilios//////////////////////////////

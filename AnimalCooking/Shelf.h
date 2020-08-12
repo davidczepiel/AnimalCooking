@@ -12,6 +12,18 @@
 #include "Manager.h"
 #include "DishFinisher.h"
 
+enum Orientation : size_t {
+	Down,
+	Top,
+	Left,
+	Right,
+
+	DownLeft,
+	DownRight,
+	TopLeft,
+	TopRight
+};
+
 class Shelf : public Entity, public Interactive	
 {
 
@@ -31,7 +43,14 @@ public:
 	void setContentPos();
 	Pickable* getContent() { return content; }
 
+	void setOrientation(const Orientation& lookingAt) {
+		lookingAt_ = lookingAt;
+	}
+
 private:
+
+	Orientation lookingAt_;
+
 	DishFinisher* dishFinisher;
 	Pickable* content;
 	Resources::PickableType contentType;
