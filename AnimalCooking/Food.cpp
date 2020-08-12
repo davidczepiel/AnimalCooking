@@ -6,13 +6,16 @@
 #include "Entity.h"
 #include "GPadController.h"
 
-Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2) : Pickable(p1, p2, nullptr),
+Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2, Texture* explosion) : Pickable(p1, p2, nullptr),
 timer_(new FoodTimer()),
 canDraw(true),
 type_(type),
 foodPool_(nullptr),
 texture_(nullptr),
-showHelp(true)
+showHelp(true),
+explosion_(explosion),
+explosionFrame_(),
+lastFrameTime_()
 {
 	position_ = position;
 
@@ -23,12 +26,15 @@ showHelp(true)
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(timer_);
 }
 
-Food::Food(Resources::FoodType type) : Pickable(nullptr, nullptr, nullptr),
+Food::Food(Resources::FoodType type, Texture* explosion) : Pickable(nullptr, nullptr, nullptr),
 timer_(new FoodTimer()),
 type_(type),
 foodPool_(nullptr),
 canDraw(true),
-showHelp(true)
+showHelp(true),
+explosion_(explosion),
+explosionFrame_(),
+lastFrameTime_()
 {
 	position_ = Vector2D();
 	jute::jValue& jsonGeneral = SDLGame::instance()->getJsonGeneral();
@@ -65,6 +71,25 @@ void Food::draw()
 {
 	SDL_Rect destRect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
 	texture_->render(destRect);
+	if (explosion_ != nullptr && explosionFrame_ < explosion_->getNumCols())
+	{
+		int time = SDLGame::instance()->getTime();
+		if (time - lastFrameTime_ >= 160)
+		{
+			explosionFrame_++;
+			lastFrameTime_ = time;
+
+		}
+		destRect.w += .4 * destRect.w;
+		destRect.x -= .15 * destRect.w;
+		destRect.h += .2 * destRect.h;
+		explosion_->renderFrame(destRect, 0, explosionFrame_, 0);
+			/*if (explosionFrame_ == explosion_->getNumCols())
+			{
+				i->setHasToPlayExplosion(false);
+				explosionFrame_ = 0;
+			}*/
+	}
 }
 
 void Food::draw(SDL_Rect r)
