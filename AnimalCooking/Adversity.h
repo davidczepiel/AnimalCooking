@@ -10,6 +10,7 @@ public:
 	virtual void update() = 0;
 	virtual void draw() = 0;
 	virtual void reset() = 0;
+	virtual void start() {}
 
 protected:
 	AdversityManager* adversityMngr_;

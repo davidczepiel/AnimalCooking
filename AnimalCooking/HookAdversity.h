@@ -9,11 +9,12 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void reset();
+	void start();
 
 private:
 	void GoingUp();
 	void GoingDown();
-	void Start();
+	void StartAdversity();
 	void Move(bool down);
 
 	Transform* tP1;

@@ -4,24 +4,35 @@
 #include "Utensil.h"
 #include "UtensilsPool.h"
 #include "SDLRenderer.h"
+#include "BucketViewer.h"
+#include "BucketMotion.h"
 
 #define GIVETRANSPORT GETCMP2(player[0], Transport), GETCMP2(player[1], Transport)
 #define ADD(t) makeUtensil<t>(player, pool_)
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
-ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, const double casillaX, const double casillaY) :
+ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, std::array<Entity*, 2>& player, UtensilsPool* pool_, Bucket* bucket_, GameLogic* gl, const double casillaX, const double casillaY) :
 	emPlayState(emPlayState), jsonGeneral(jsonGeneral), casillaX(casillaX),casillaY(casillaY)
 {
 	jute::jValue shelfs_ = jsonLevel["Shelfs"]["entities"];
 	jute::jValue components = jsonLevel["Shelfs"]["components"];
 
 	for (int i = 0; i < shelfs_.size(); ++i) {
-		Utensil* u = nullptr;
+		Pickable* u = nullptr;
 
 		jute::jValue shelf_ = jsonLevel["Shelfs"]["entities"][i]["content"];
 		//Si contiene un utensilio, hago ese utensilio
 		if (shelf_.size() > 0) {
-			u = switchUtensil(shelf_[0].as_string(), pool_, player);
+			if (shelf_[0].as_string() == "cubo") {
+				bucket_ = new Bucket(GIVETRANSPORT);
+				emPlayState->addEntity(bucket_);
+				bucket_->addComponent<BucketViewer>(bucket_);
+				bucket_->addComponent<BucketMotion>(bucket_);
+				bucket_->setGameLogic(gl);
+				emPlayState->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
+				u = bucket_;
+			}
+			else u = switchUtensil(shelf_[0].as_string(), pool_, player);
 		}
 
 		shelf_ = jsonLevel["Shelfs"]["entities"][i];
@@ -70,7 +81,7 @@ Utensil* ShelfAdder::switchUtensil(const string& ing, UtensilsPool* pool_, std::
 	return u;
 }
 
-Shelf* ShelfAdder::makeShelf(Utensil* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
+Shelf* ShelfAdder::makeShelf(Pickable* u, std::array<Entity*, 2>& player, jute::jValue& jsonShelf)
 {
 	Orientation lookingAt = Orientation::Down;
 

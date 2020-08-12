@@ -13,8 +13,13 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual void reset();
+	void start();
 
 private:
+	void lightingUpdate();
+	void rainFrameUpdate();
+	void rainUpdate();
+
 	Texture* rainTexture_;
 	Timer* rainTimer_;	
 	vector<Utensil*>* utensilsPool_;
@@ -28,5 +33,21 @@ private:
 	int lastTick_;
 	int cadence_;
 	bool started_;
+
+	//-----------RAYOS---------
+	Texture* lightingTexture_;
+	Texture* explosionTexture_;
+	bool lightingStrike_, lightingStrikeDone_, explosionDone_;
+	int lightingFrameCadence_;
+	int lastLightingFrame_;
+	int explosionFrameCadence_;
+	int lastExplosionFrame_;
+	int maxLights;
+	int numLights;
+	Uint32 lastLightingTick_;
+	Uint32 lastExplosionTick_;
+
+	vector<SDL_Rect> rectLighting_;
+	vector<std::pair<Vector2D, bool>> lightingSpots_;
 };
 

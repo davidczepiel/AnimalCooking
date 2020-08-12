@@ -38,6 +38,7 @@ public:
 		UtensilTimerBackground,
 		UtensilTimerForeground,
 		ScoreBackground,
+		PingUtensil,
 		//----->EndState<---------
 		BackgroundEndState,
 		BarBackgroundEndState,
@@ -101,6 +102,7 @@ public:
 		RalladorSucio,
 		Red,
 		RedSucia,
+		Cubo,
 		Fregadero,
 		FregaderoON,
 		FregaderoFlip,
@@ -345,9 +347,11 @@ public:
 		Sausage,
 		Puerta,
 		FireOverHeated,
+		LightingStrike,
+		LightingExplosion,
 		MapRestaurantButton,
 		MapStatePlayButton,
-
+		Explosion,
 		// text
 		Back,
 		ToggleFullscreen,
@@ -380,7 +384,8 @@ public:
 		WarningAdversity,
 		PlaneShadow,
 		RainAdversity,
-		HookAdversity
+		HookAdversity,
+		PidgeonAdversity
 
 	};
 
@@ -571,6 +576,7 @@ public:
 		Food,
 		Dish,
 		Utensil,
+		Bucket,
 		none
 	};
 

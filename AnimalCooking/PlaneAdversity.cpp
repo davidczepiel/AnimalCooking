@@ -21,6 +21,8 @@ void PlaneAdversity::StartPlane() {
 	int width = SDLGame::instance()->getWindowWidth();
 
 	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow);
+	planeRect_.w = planeTexture_->getWidth();
+	planeRect_.h = planeTexture_->getHeight();
 
 	int n = rnd->nextInt(0, 8);
 	switch (n)
@@ -31,14 +33,14 @@ void PlaneAdversity::StartPlane() {
 		break;
 	case 1:
 		planeRect_.x = width;
-		planeRect_.y = height / 2 - planeRect_.y / 2;
+		planeRect_.y = height / 2 - planeRect_.h / 2;
 		break;
 	case 2:
 		planeRect_.x = width / 2 - planeRect_.w / 2;
-		planeRect_.y = 0 - planeRect_.h;
+		planeRect_.y = -planeRect_.h;
 		break;
 	case 3:
-		planeRect_.x = width / 2 - planeRect_.x / 2;
+		planeRect_.x = width / 2 - planeRect_.w / 2;
 		planeRect_.y = height;
 		break;
 	case 4:
@@ -50,24 +52,21 @@ void PlaneAdversity::StartPlane() {
 		planeRect_.y = 0 - planeRect_.h;
 		break;
 	case 6:
-		planeRect_.x = 0;
-		planeRect_.y = height + planeRect_.h / 2;
+		planeRect_.x = -planeRect_.w / 2;
+		planeRect_.y = height - planeRect_.h / 2;
 		break;
 	case 7:
-		planeRect_.x = width;
+		planeRect_.x = width - planeRect_.w / 2;
 		planeRect_.y = height;
 		break;
 	default:
 		break;
 	}
 
-	planeRect_.w = planeTexture_->getWidth();
-	planeRect_.h = planeTexture_->getHeight();
-
 	dir_ = dirs_[n];
 	angle_ = angles_[n];
 	velocity_ = 1;
-	force_ = 1.5;
+	force_ = 3;
 
 	state_ = Going;
 	if (!alreadyInitialized) {
@@ -75,7 +74,7 @@ void PlaneAdversity::StartPlane() {
 		alreadyInitialized = true;
 	}
 	internalTimer->timerReset();
-	internalTimer->setTime(8500);
+	internalTimer->setTime(3500);
 	internalTimer->timerStart();
 }
 
@@ -119,5 +118,10 @@ void PlaneAdversity::draw() {
 }
 
 void PlaneAdversity::reset() {
+	//StartPlane();
+}
+
+void PlaneAdversity::start()
+{
 	StartPlane();
 }
