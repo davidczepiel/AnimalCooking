@@ -36,11 +36,11 @@ void OrderManager::addOrder(Resources::FoodType finalProduct)
 					game_->getTextureMngr()->getTexture(Resources::Bocadillo - Resources::_FirstOfFoods_ + finalProduct), // OrderText
 					ings_.size(), // ingsSize
 					finalProduct, //Producto que da
-					getTimePerOrder(finalProduct, ings_.size()) //Tiempo que se mantiene en vigor 
+					msPerIng_ * ings_.size() //Tiempo que se mantiene en vigor
 				);
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::OrderRecieved, 0);
 			}
-		} 
+		}
 	}
 }
 
@@ -97,34 +97,6 @@ vector<Order*>::iterator OrderManager::getFirst(const list<vector<Order*>::itera
 		if (*it != nullptr && (*it)->getAnger() > (*first)->getAnger()) first = it;
 	}
 	return first;
-}
-
-double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
-{
-	double time = msPerIng_ * size;	//Tiempo por ingrediente* num ingredientes (cfg)
-	double timeCooking = 20.0;		//Tiempo que tarda en cocinar un ingrediente del pedido 
-	switch (finalProduct)
-	{
-	case Resources::FoodType::Burger: time += timeCooking;
-	case Resources::FoodType::Burger1: time += 2*timeCooking + 5;
-	case Resources::FoodType::Burger2: time += timeCooking + 5;
-	case Resources::FoodType::Burger3: time += timeCooking + 5;
-	case Resources::FoodType::Pizza: time += timeCooking;
-	case Resources::FoodType::RiceDish: time += timeCooking;
-	case Resources::FoodType::HotDog: time += timeCooking;
-	case Resources::FoodType::Risotto: time += timeCooking;
-	case Resources::FoodType::CookedFish: time += timeCooking;
-	case Resources::FoodType::FriedVegs: time += timeCooking;
-	case Resources::FoodType::FriedVegs1: time += timeCooking + 5;
-	case Resources::FoodType::FriedVegs2: time += timeCooking + 5;
-	case Resources::FoodType::BakedChicken: time += timeCooking;
-	case Resources::FoodType::FrenchFries: time += timeCooking;
-	case Resources::FoodType::CookedClams: time += timeCooking;
-	case Resources::FoodType::RiceAndClams: time += timeCooking;
-	default:
-		break;
-	}
-	return time;
 }
 
 bool OrderManager::someOneWantsThis(Resources::FoodType finalProduct) {

@@ -30,8 +30,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 	os->setSize(Vector2D(general["Clients"]["repisa"]["size"]["width"].as_double() * casillaX, general["Clients"]["repisa"]["size"]["height"].as_double() * casillaY));
 
 	os->setHitboxOffset(Vector2D(0, os->getSize().getY() * 0.25));
-	//----------------------------------se añade 400 para que ocupe todo--
-	os->setHitboxSize(Vector2D(os->getSize().getX() + 400, os->getSize().getY() * 0.75));
+	os->setHitboxSize(Vector2D(os->getSize().getX(), os->getSize().getY() * 0.75));
 
 
 	os->addComponent<OrderServiceViewer>(os);
@@ -79,29 +78,8 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("Salad"):
 		ADDPEDIDO(pedido, Resources::FoodType::Salad);
 		break;
-	case str2int("Salad1"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad1);
-		break;
-	case str2int("Salad2"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad2);
-		break;
-	case str2int("Salad3"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad3);
-		break;
-	case str2int("Salad4"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad4);
-		break;
 	case str2int("Burger"):
 		ADDPEDIDO(pedido, Resources::FoodType::Burger);
-		break;
-	case str2int("Burger1"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger1);
-		break;
-	case str2int("Burger2"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger2);
-		break;
-	case str2int("Burger3"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger3);
 		break;
 	case str2int("Pizza"):
 		ADDPEDIDO(pedido, Resources::FoodType::Pizza);
@@ -120,12 +98,6 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 		break;
 	case str2int("FriedVegs"):
 		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs);
-		break;
-	case str2int("FriedVegs1"):
-		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs1);
-		break;
-	case str2int("FriedVegs2"):
-		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs2);
 		break;
 	case str2int("BakedChicken"):
 		ADDPEDIDO(pedido, Resources::FoodType::BakedChicken);

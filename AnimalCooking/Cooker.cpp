@@ -6,16 +6,15 @@
 #include "GameConfig.h"
 #include "GPadController.h"
 
-Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e, string textureState_) :
+Cooker::Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : 
 	Interactive(t1, t2, nullptr),
-	state_(CookerStates::empty),
-	cookingTime_(5),
-	entity_(e),
-	timer_(nullptr),
+	state_(CookerStates::empty), 
+	cookingTime_(5), 
+	entity_(e), 
+	timer_(nullptr), 
 	texture_(nullptr),
 	lastTimeSound_(),
 	cookerType_(),
-	textureState(textureState_),
 	fireTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
 	smokeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::SmokeBurned)){
 		setPos(pos);
@@ -88,13 +87,13 @@ void Cooker::feedback(int player)
 	if (SDLGame::instance()->getOptions().showKeyToPress && state_ != CookerStates::overheated) {
 		if (state_ == CookerStates::empty) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Start Cooking", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 		}
 		else if (state_ != CookerStates::cooking) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
+				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP));
 			else
 				SDLGame::instance()->renderFeedBack(position_ + Vector2D(-30, -30), "Take dish", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
 
@@ -138,7 +137,7 @@ void Cooker::sound()
 	}
 }
 
-Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e,string textureState_) : Cooker(pos, size, rot, text, t1, t2, e,textureState_)
+Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text, t1, t2, e)
 {
 	cookingTime_ = config::SKILLET_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Skillet;
@@ -146,7 +145,7 @@ Skillet::Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Trans
 	setEmptyTexture();
 }
 
-Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e, string textureState_) : Cooker(pos, size, rot, text, t1, t2, e,textureState_)
+Oven::Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e) : Cooker(pos, size, rot, text, t1, t2, e)
 {
 	cookingTime_ = config::OVEN_SECONDS_TO_COOK * 1000;
 	cookerType_ = Resources::Cookers::Oven;

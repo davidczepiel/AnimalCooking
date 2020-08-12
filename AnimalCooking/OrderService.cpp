@@ -74,7 +74,7 @@ void OrderService::feedback(int id)
 
 				if (GPadController::instance()->playerControllerConnected(id))
 					SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order",
-						SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP), true);
+						SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[id].PICKUP));
 				else
 					SDLGame::instance()->renderFeedBack(position_ + Vector2D(0, -size_.getY() / 2), "Deliver Order",
 						SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[id].PICKUP));

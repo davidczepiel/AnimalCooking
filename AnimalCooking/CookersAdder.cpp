@@ -55,10 +55,8 @@ void CookersAdder::makeCooker(int type, int n) {
 	Vector2D size(general["Cookers"]["size"]["width"].as_double() * casillaX,
 		general["Cookers"]["size"]["height"].as_double() * casillaY);
 
-	string textureState = nivel["CookersPool"][type][1][n]["texture"].as_string();
-
 	Cooker* c = new T(pos, size, general["Cookers"]["rotation"].as_int(), nullptr,
-		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), cookersPool,textureState);
+		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), cookersPool);
 
 	c->setHitboxSize(Vector2D(c->getSize().getX(), c->getSize().getY()));
 

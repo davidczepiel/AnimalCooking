@@ -3,14 +3,14 @@
 
 
 
-SinkViewer::SinkViewer(Interactive* i, Texture* text_, Texture* textOn_) :Component(ecs::SinkViewer), entity(i), onAction(false),text(text_),textOn(textOn_){
+SinkViewer::SinkViewer(Interactive* i) :Component(ecs::SinkViewer), entity(i), onAction(false),text(nullptr),textOn(nullptr) {
 	recoverNormalState.setTime(2*config::SINK_CADENCE);
 }
 
 
 void SinkViewer::init() {
-	/*text = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fregadero);
-	textOn = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FregaderoON);*/
+	text = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fregadero);
+	textOn = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FregaderoON);
 
 }
 

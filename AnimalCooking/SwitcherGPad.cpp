@@ -27,12 +27,24 @@ void SwitcherGPad::draw()
 
 	backGround_->renderFrame(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()), 0, col, 0);
 
+	const string& cadena = string(SDL_GameControllerGetStringForButton(gPad_keyToChange));
+
 	Vector2D s = Vector2D(name_->getWidth() * (size_.getY() - 20) / name_->getHeight(), size_.getY() - 20);
 
-	Texture* c2 = SDLGame::instance()->getKeyShower().getTexture(string(SDL_GameControllerGetStringForButton(gPad_keyToChange)));
-	
-	name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (24), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
-	c2->render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (24), pos_.getY() + size_.getY() / 2 - s.getY() / 2, 48, 48));
+	if (cadena.length() == 1) {
+		Texture c2 = Texture(SDLGame::instance()->getRenderer(), cadena,
+			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL50), { COLOR(0x000000ff) });
+		Vector2D s2 = Vector2D(c2.getWidth() * (size_.getY() - 20) / c2.getHeight(), size_.getY() - 20);
+		name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
+		c2.render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + size_.getY() / 2 - s.getY() / 2, s2.getX(), s2.getY()));
+	}
+	else {
+		Texture c2 = Texture(SDLGame::instance()->getRenderer(), cadena,
+			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese70), { COLOR(0x000000ff) });
+		Vector2D s2 = Vector2D(c2.getWidth() * (size_.getY() - 20) / c2.getHeight(), size_.getY() - 20);
+		name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
+		c2.render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + size_.getY() / 2 - s.getY() / 2, s2.getX(), s2.getY()));
+	}
 
 	col = 1;
 }

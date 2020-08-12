@@ -12,7 +12,6 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 	levelIngType(), 
 	justStarted(true), 
 	indexType(0), 
-	ingToMake_(),
 	maxIngr(levelMaxIngredients)
 {
 	timer.setTime(config::ING_STARTING_DELTA_TIME);
@@ -27,12 +26,12 @@ void GameControl::init()
 void GameControl::update()
 {
 	if (justStarted) {
-		//Cuando empieza el nivel, al pasar x tiempo aparecen los ingredientes
+		//Cuando empieza el nivel,al pasar x tiempo aparecen los ingredientes
 		if (timer.isTimerEnd())
 		{
 			if (maxIngr > ingPool_->getPool().size()) {
-				if (indexType < levelIngType.size()) makeIngredient(newIngType((levelIngType[indexType])));
-				else makeIngredient(newIngType(chooseIng()));
+				if (indexType < levelIngType.size()) newIngredient(levelIngType[indexType]);
+				else newIngredient(chooseIng());
 				indexType++;
 			}
 			else justStarted = false;
@@ -41,32 +40,30 @@ void GameControl::update()
 		}
 		else timer.update();
 	}
-	else {
-		if (!ingToMake_.empty()) {
-			auto it = ingToMake_.begin();
-			while (it != ingToMake_.end()) {
-				if (game_->getTime() - *it > 5000) {
-					makeIngredient(newIngType(chooseIng()));
-					ingToMake_.erase(it++);
-				}
-				else ++it;
-			}
-		}
-	}
 }
 
 void GameControl::newIngredient()
 {
-	ingToMake_.push_back(game_->getTime());
+	Ingredient* ing = newIngType(chooseIng());
+
+	jute::jValue& jsonGeneral = game_->getJsonGeneral();
+	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(),
+		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
+
+	double y = game_->getRandGen()->nextInt(0, 5 * SDLGame::instance()->getCasillaY());
+
+	ing->setVel(Vector2D(-1, game_->getRandGen()->nextInt(-1, 1) / 2.0));
+	ing->setPos(Vector2D(game_->getWindowWidth() - jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(), y));
+	ing->setMaxVel(config::AI_INGREDIENT_MAX_VEL);
+	ingPool_->addIngredient(ing);
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
+	colSys_->addCollider(ing);
+	ing = nullptr;
 }
 
-//void GameControl::newIngredient(Resources::IngredientType i) 
-//{
-//	ingToMake_.push_back(game_->getTime(), i));
-//}
+void GameControl::newIngredient(Resources::IngredientType i) {
+	Ingredient* ing = newIngType(i);
 
-void GameControl::makeIngredient(Ingredient* ing)
-{
 	jute::jValue& jsonGeneral = game_->getJsonGeneral();
 	ing->setSize(jsonGeneral["Ingredientes"]["size"]["width"].as_double() * SDLGame::instance()->getCasillaX(),
 		jsonGeneral["Ingredientes"]["size"]["height"].as_double() * SDLGame::instance()->getCasillaY());
@@ -142,36 +139,32 @@ Resources::IngredientType GameControl::chooseIng()
 		++ingsInScene.find(ing->getType())->second;
 	}
 
-	Resources::IngredientType lessIng = levelIngType[0];
+
+	vector<Resources::IngredientType> lista;
+	lista.reserve(levelIngType.size());
+
 	//Buscar el ingrediente con menos apariciones
 	size_t min = SIZE_MAX;
 	for (auto ings : ingsInScene) {
 		if (ings.second < min) {
 			min = ings.second;
-			lessIng = ings.first;
 		}
 	}
-	if(min == 0) return lessIng; //Si no está ese ingrediente, aparece
-	else { //Si todos los ingredientes aparecen una vez, se elige de entre los que menos haya uno (con +1 de rango) al azar
-		vector<Resources::IngredientType> lista;
-		lista.reserve(levelIngType.size());
-
-		for (auto ings : ingsInScene) {
-			if (ings.second <= min + 1) {
-				lista.emplace_back(ings.first);
-			}
+	for (auto ings : ingsInScene) {
+		if (ings.second <= min + 1) {
+			lista.emplace_back(ings.first);
 		}
-
-		return lista[game_->getRandGen()->nextInt(0, lista.size())];
 	}
+
+	return lista[game_->getRandGen()->nextInt(0, lista.size())];
 }
 
-void GameControl::newFood(Food* f, Vector2D pos) {
+void GameControl::newFood(Food* f, Vector2D pos, Resources::IngredientType ingType) {
 	foodPool->AddFood(f);
 	f->onFloor();
 	f->setPos(pos);
 	f->setTransports(tP1, tP2);
-	newIngredient(); //al matar un ingrediente aparece otro
+	newIngredient(ingType); //al matar un ingrediente aparece otro
 }
 
 Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llamar al metodo foodpool para crear uno nuevo de tipo type y pos 

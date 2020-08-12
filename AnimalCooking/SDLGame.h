@@ -15,7 +15,6 @@
 #include "jute.h"
 #include "GameConfig.h"
 #include "MapConfig.h"
-#include "BubbleKeyShower.h"
 
 using namespace std;
 class FSM;
@@ -140,7 +139,6 @@ public:
 	inline void setCasillaX(const double& CasillaLength) { casillaX = CasillaLength; }
 	inline const double& getCasillaX() const { return casillaX; }
 
-	inline const BubbleKeyShower& getKeyShower() const { return keyShower_; }
 
 	void setCurrentLevel(int level) { currentLevel = level; }
 	void setScore(int nScore) { if(nScore>=0)score = nScore; }
@@ -156,7 +154,7 @@ public:
 
 	config::Options& getOptions() { return options_; }
 
-	inline void renderFeedBack(const Vector2D& pos, const string& msg, const string& key, const bool& gPadKey = false) { keyShower_.renderFeedBack(pos, msg, key, gPadKey); }
+	void renderFeedBack(const Vector2D& pos, const string& msg, const string& key);
 	inline const bool& getIfFullscreen() const { return imFullscreen; }
 
 private:
@@ -166,6 +164,7 @@ private:
 	void closeSDL(); // close SDL
 	void initResources(); // initialize the SDLResources object with the data at the top of this file
 	void closeResources(); // close the SDLResources object (frees all memory)
+
 protected:
 
 	FontsManager *fonts_;
@@ -195,9 +194,6 @@ protected:
 	vector<levelInfo*> levelInfos_;
 	config::Options options_;
 	bool imFullscreen;
-
-	BubbleKeyShower keyShower_;
-
 	static unique_ptr<SDLGame> instance_;
 
 };

@@ -15,19 +15,19 @@ public:
 	virtual void update();
 
 private:
-	static void restartCallback(AnimalCooking* ac);
-	static void optionsCallback(AnimalCooking* ac);
+	static void configCallback(AnimalCooking* ac);
+	static void menuCallback(AnimalCooking* ac);
 	static void resumeCallback(AnimalCooking* ac);
 	static void closeCallback(AnimalCooking* ac);
 
 	Entity* resumeButton = nullptr;
-	Entity* restartButton = nullptr;
-	Entity* optionsButton = nullptr;
+	Entity* configButton = nullptr;
+	Entity* menuButton = nullptr;
 	Entity* closeButton = nullptr;
 	Entity* padNavigation = nullptr;
 	Texture* resumeText_;
-	Texture* restartText_;
 	Texture* optionsText_;
+	Texture* menuText_;
 	Texture* closeText_;
 };
 

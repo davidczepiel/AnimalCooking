@@ -9,7 +9,7 @@
 class SinkViewer : public Component	
 {	
 public:
-	SinkViewer(Interactive* i,Texture* text_,Texture* textOn_);
+	SinkViewer(Interactive* i);
 	~SinkViewer() {}
 
 	void init()override;

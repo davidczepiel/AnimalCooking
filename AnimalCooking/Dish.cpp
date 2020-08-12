@@ -112,13 +112,13 @@ void Dish::feedback(int player)
 	else if (game_->getOptions().showKeyToPress && getFoodVector().size() > 0) {
 		if (getFoodVector().size() > 3) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				game_->renderFeedBack(position_, "Finish Dish", SDL_GameControllerGetStringForButton(game_->getOptions().players_gPadButtons[player].FINISHER), true);
+				game_->renderFeedBack(position_, "Finish Dish", SDL_GameControllerGetStringForButton(game_->getOptions().players_gPadButtons[player].FINISHER));
 			else
 				game_->renderFeedBack(position_, "Finish Dish", SDL_GetKeyName(game_->getOptions().players_keyboardKeys[player].FINISHER));
 		}
 		else {
 			if (GPadController::instance()->playerControllerConnected(player))
-				game_->renderFeedBack(position_, "View Content", SDL_GameControllerGetStringForButton(game_->getOptions().players_gPadButtons[player].OPEN), true);
+				game_->renderFeedBack(position_, "View Content", SDL_GameControllerGetStringForButton(game_->getOptions().players_gPadButtons[player].OPEN));
 			else
 				game_->renderFeedBack(position_, "View Content", SDL_GetKeyName(game_->getOptions().players_keyboardKeys[player].OPEN));
 		}

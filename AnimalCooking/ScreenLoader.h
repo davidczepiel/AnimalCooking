@@ -7,7 +7,7 @@ class ScreenLoader : public State
 {
 public:
 	ScreenLoader(int nivel, AnimalCooking* ac);
-	~ScreenLoader() { }
+	~ScreenLoader() { delete playTexture_; playTexture_ = nullptr; }
 	void resetResources(); // Resources::Nivel nivel: es un enum que indica que recursos cargar en memoria
 	void updateLength();
 
@@ -28,6 +28,7 @@ private:
 	Entity* buttonGo_;
 	Entity* padNavigation_;
 	EntityManager* emPlaystate;
+	Texture* playTexture_;
 
 	int level;
 };

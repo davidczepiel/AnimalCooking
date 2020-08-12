@@ -34,14 +34,9 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	data.push_back(Data(Vector2D(8 * casillaX + offsetX -10 ,0), //Arr hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 10, offsetY),
 		Resources::TextureId::Muro));
-	data.push_back(Data(Vector2D(0, 0), //Arr izq
-		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 30, offsetY),
-		Resources::TextureId::ParedCocina	));
-
 
 	
 	maker(data[5], casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba
-	maker(data[6], casillaX, casillaY, colSys_, mngr, offsetX, offsetY, ecs::GroupID::Layer12); //Valla arriba izq 
 	maker(data[0], casillaX, casillaY, colSys_, mngr, 64, 64); //Valla medio 1
 	maker(data[1], casillaX, casillaY, colSys_, mngr, 64, 64); //Final valla medio 1
 	maker(data[2], casillaX, casillaY, colSys_, mngr, 64, 64); //Inicio valla medio 2
@@ -55,7 +50,6 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
 	mngr->addToGroup(valla, ecs::Valla);
 
-	
 	//Suelos
 	Entity* cocina = mngr->addEntity();
 	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
@@ -66,7 +60,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
 	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
-	//Hacer esquinas 
+	//Hacer esquinas
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
 		Entity* corner = mngr->addEntity();
 		int t = Resources::TextureId::EsquinaSupDchaCopas + (2 * SDLGame::instance()->getRandGen()->nextInt(0, 3));
@@ -81,22 +75,6 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		corner->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
 		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int() - 1 ));
 		colSys_->addCollider(GETCMP2(corner, Transform), false);
-	}
-
-	//hacer repisas decorativas
-	for (int i = 0; i < nivel["Shelfs"]["decorativeShefls"].size(); ++i) {
-		Entity* shelf = mngr->addEntity();
-		int t = Resources::TextureId::EncimeraVConDecoracion;
-		
-		Transform* tr = shelf->addComponent<Transform>(Vector2D(nivel["Shelfs"]["decorativeShefls"][i]["pos"]["x"].as_double() * casillaX,
-			nivel["Shelfs"]["decorativeShefls"][i]["pos"]["y"].as_double() * casillaY), Vector2D(),
-			general["Shelf"]["size"]["width"].as_double() * casillaX, general["Shelf"]["size"]["height"].as_double() * casillaY);
-
-		tr->setHitboxSize(tr->getW(), tr->getH());
-
-		shelf->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
-		mngr->addToGroup(shelf, CASTID(general["Shelf"]["Layer"].as_int() - 1));
-		//colSys_->addCollider(GETCMP2(shelf, Transform), false);
 	}
 
 	//Hacer falsa barra de entregas
@@ -132,11 +110,11 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 
-void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id) 
+void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY)
 {
 	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX,casillaY,offsetX,mngr);
 
 	mngr->addEntity(w);
-	mngr->addToGroup(w, id);
+	mngr->addToGroup(w, ecs::GroupID::Layer2);
 	colSys_->addCollider(GETCMP2(w, Transform), false);
 }

@@ -18,6 +18,7 @@ GameLogic::GameLogic(TimerViewer* tv) :
 void GameLogic::init()
 {
 	colSys_ = GETCMP1_(CollisionsSystem);
+
 }
 
 void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
@@ -32,7 +33,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 			colSys_->removeCollider(ing);
 			ing->destroy();
 			Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
-			GETCMP1_(GameControl)->newFood(f, ingPos);
+			GETCMP1_(GameControl)->newFood(f, ingPos, ingType);
 			playHit(type);
 			break;
 		}
