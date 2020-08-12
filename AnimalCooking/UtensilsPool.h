@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "ObjectPool.h"
+#include "GPadController.h"
 #include "Utensil.h"
 class UtensilsPool: public Component
 {
@@ -25,5 +26,11 @@ public:
 	void SetGameLogic(GameLogic* gl);
 private:
 	vector<Utensil*> pool_;
+	void update() override; 
+	void changeDisplay(bool b);
+	bool displayIcons_;
+	int iconDisplayTime_;
+	int iconDisplayStart_;
+
 };
 

@@ -31,6 +31,7 @@ public:
 	void setGameLogic(GameLogic* glc) {	gameLogic = glc;}
 	Resources::UtensilType getUtensilType() { return myType; }
 	bool isDirty() { return dirty_; }
+	void setDisplayIcon(bool b) { displayIcon_ = b; }
 
 protected:
 	//Estado
@@ -47,6 +48,7 @@ protected:
 	Texture* cleantexture_;
 	Texture* dirtyTexture_;
 	Texture* attackTexture_;
+	Texture* iconTexture_;
 	//Rect que se usa para calcular las colisiones entre la hitbox de un ataque y los ingredientes
 	GameLogic* gameLogic;
 
@@ -67,6 +69,7 @@ protected:
 	int frameAttack;
 	int lastFrameTick;
 	bool attacking_;
+	bool displayIcon_;
 };
 
 /////////////////////////////////////////////Utensilios//////////////////////////////
