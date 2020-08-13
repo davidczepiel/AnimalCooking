@@ -26,7 +26,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Get the kitchens ready, the cooking conmpetition starts in Villa del Pun!";
 	auxiliar.lore[1] = "Your first opponents are your pastrycook neighbours...";
-	auxiliar.lore[2] = "can you beat them?";
+	auxiliar.lore[2] = "Can you beat them?";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);

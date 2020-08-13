@@ -2,9 +2,10 @@
 #include "Component.h"
 #include "MapConfig.h"
 #include "SDL_macros.h"
+#include "Transform.h"
 class MapInfoBoxViewer :public Component{
 public:
-	MapInfoBoxViewer();
+	MapInfoBoxViewer(Transform* buttonT);
 	~MapInfoBoxViewer();
 	void init() override;
 	void draw() override;
@@ -17,6 +18,8 @@ private:
 	Texture* boxText_;
 	Texture* gotStar_;
 	Texture* notGotStar_;
+
+	Transform* buttonT;
 
 	double casillaX_;
 	double casillaY_;
