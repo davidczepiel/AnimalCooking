@@ -19,12 +19,12 @@ MapState::MapState(AnimalCooking* ac) :
 	levelButtonsPool_(),
 	padNavigation_(nullptr),
 	bgText_(vector<Texture*>()),
-	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	chooser(nullptr),
 	profileAskers(),
 	maxLevels_(0),
 	currentLevel_(0),
+	levelPacks_(5),
 	lastLevel_(0),
 	playerName_("")
 {
@@ -35,7 +35,6 @@ MapState::MapState(AnimalCooking* ac) :
 	//Background textures
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
-	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
@@ -127,17 +126,14 @@ void MapState::draw()
 		if (transitionDirection_ < 0) {
 			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 			bgText_[currentMapScene_ - 1]->render(RECT(xTransition_ - game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
-			if (currentMapScene_ == 1) housesBackgroundText_->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
 		}
 		else {
 			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 			bgText_[currentMapScene_ + 1]->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
-			if (currentMapScene_ == 0) housesBackgroundText_->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
 		}
 	}
 	else {
 		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
-		if (currentMapScene_ == 0) housesBackgroundText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	}
 	State::draw();
 }
@@ -153,6 +149,9 @@ void MapState::update()
 			for (auto& e : levelButtonsPool_) {
 				GETCMP2(e, ButtonRendererHouse)->setActive(true);
 			}
+			GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
+			GETCMP2(returnButton_, ButtonRenderer)->setActive(true);
+			GETCMP2(playButton_, ButtonRendererHouse)->setActive(true);
 		}
 	}
 	else {
@@ -345,6 +344,9 @@ void MapState::nextScreen()
 	{
 		GETCMP2(e, ButtonRendererHouse)->setActive(false);
 	}
+	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
+	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -360,6 +362,9 @@ void MapState::previousScreen()
 	{
 		GETCMP2(e, ButtonRendererHouse)->setActive(false);
 	}
+	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
+	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
+	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -426,7 +431,7 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
 
-	for (int x = 0; x < 5; x++) {
+	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
 		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
 		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_->at(x));
@@ -457,9 +462,9 @@ void MapState::placeHousesAndButtons()
 void MapState::refreshHousesAndButtons()
 {
 	MapConfig aux(playerName_,false);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < levelPacks_; i++)
 	{
-		int newI = currentMapScene_ * 5 + i;
+		int newI = currentMapScene_ * levelPacks_ + i;
 		GETCMP2(levelButtonsPool_.at(i), ButtonBehaviourNC)->setLevelInfo(levelinfos_->at(newI));
 		Transform* levelITransform = GETCMP2(levelButtonsPool_.at(i), Transform);
 		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);

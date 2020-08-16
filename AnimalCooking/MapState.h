@@ -65,7 +65,6 @@ private:
 	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
 	vector<Texture*> bgText_;
-	Texture* housesBackgroundText_;
 	Texture* playButtonText_;
 	std::string playerName_;
 
@@ -74,13 +73,14 @@ private:
 	int currentLevel_;
 	int lastLevel_;
 	int maxLevels_;
+	int levelPacks_;
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;
 
 	bool transition_ = false;
 	int xTransition_ = 0;
-	float transitionVelocity_ = 10;
+	float transitionVelocity_ = 40;
 	int transitionDirection_ = 0;
 	int currentMapScene_ = 0;
 };
