@@ -22,6 +22,7 @@ GameControl::GameControl(Transport* p1, Transport* p2, UtensilsPool* u, FoodPool
 void GameControl::init()
 {
 	colSys_ = GETCMP1_(CollisionsSystem);
+	
 }
 
 void GameControl::update()
@@ -89,40 +90,40 @@ Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 	switch (iT)
 	{
 	case Resources::IngredientType::tomato:
-		i = new Tomato();
+		i = new Tomato(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::carrot:
-		i = new Carrot();
+		i = new Carrot(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::lettuce:
-		i = new Lettuce();
+		i = new Lettuce(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::mushroom:
-		i = new Mushroom();
+		i = new Mushroom(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::sausage:
-		i = new Sausage();
+		i = new Sausage(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::chicken:
-		i = new Chicken();
+		i = new Chicken(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::meat:
-		i = new Meat();
+		i = new Meat(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::potato:
-		i = new Potato();
+		i = new Potato(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::onion:
-		i = new Onion();
+		i = new Onion(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::clam:
-		i = new Clam();
+		i = new Clam(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::cheese:
-		i = new Cheese();
+		i = new Cheese(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	case Resources::IngredientType::fish:
-		i = new Fish();
+		i = new Fish(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
 	default:
 		break;
@@ -151,7 +152,7 @@ Resources::IngredientType GameControl::chooseIng()
 			lessIng = ings.first;
 		}
 	}
-	if(min == 0) return lessIng; //Si no está ese ingrediente, aparece
+	if(min == 0) return lessIng; //Si no estï¿½ ese ingrediente, aparece
 	else { //Si todos los ingredientes aparecen una vez, se elige de entre los que menos haya uno (con +1 de rango) al azar
 		vector<Resources::IngredientType> lista;
 		lista.reserve(levelIngType.size());

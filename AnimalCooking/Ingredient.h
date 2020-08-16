@@ -5,13 +5,16 @@
 #include "SDLGame.h"
 #include "IngredientsPool.h"
 #include "Timer.h"
+#include "Transform.h"
+#include "AIIngredient.h"
 
 enum IngredientState { Idle, Walking, Escaping };
 
 class Ingredient
 {
 public:
-	Ingredient(Resources::IngredientType type) : size_(0, 0), pos_(0, 0), vel_(0, 0), lastVel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), type_(type), state(Walking) {
+	Ingredient(Resources::IngredientType type,Transform* p1,Transform* p2) : size_(0, 0), pos_(0, 0), vel_(0, 0), lastVel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr),aiIngredient_(nullptr) ,type_(type), state(Walking)
+	,trPlayer1(p1),trPlayer2(p2){
 		internalTimer.setTime(5000);
 		internalTimer.timerStart();
 	} //2 de prueba
@@ -22,6 +25,7 @@ public:
 	virtual void onHit() {};
 	virtual void onCollisionX(); //Llamado por game manager
 	virtual void onCollisionY(); //Llamado por game manager
+	virtual void onCollisionXY(); //Llamado por game manager
 
 	void setTransform(double w, double h, Vector2D pos, Vector2D vel) {
 		size_.set(w, h);
@@ -35,7 +39,7 @@ public:
 	inline void setVel(Vector2D vel) { vel_.set(vel); }
 	inline void setTexture(Texture* tex) { texture_ = tex; }
 	inline void setLastVel(Vector2D v) { lastVel_ = v; }
-	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool) { it_ = i; ingredientPool_ = pool; }
+	void setInVector(std::vector<Ingredient*>::iterator i, IngredientsPool* pool, AIIngredient* ai) { it_ = i; ingredientPool_ = pool; aiIngredient_ = ai; }
 	void setIt(std::vector<Ingredient*>::iterator i) { it_ = i; }
 	void setState(IngredientState s) { state = s; }
 	inline void setMaxVel(double maxVel) { maxVel_ = maxVel; }
@@ -56,11 +60,13 @@ protected:
 	Vector2D size_, pos_, vel_, lastVel_;
 	Texture* texture_;
 	IngredientsPool* ingredientPool_;
+	AIIngredient* aiIngredient_;
 	std::vector<Ingredient*>::iterator it_;
 	Resources::IngredientType type_;
 	Timer internalTimer;
 	IngredientState state;
-
+	Transform* trPlayer1;
+	Transform* trPlayer2;
 	double maxVel_; //si maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
 };
 
@@ -69,7 +75,7 @@ protected:
 class Tomato : public Ingredient
 {
 public:
-	Tomato() : Ingredient(Resources::tomato) {
+	Tomato(Transform* p1, Transform* p2) : Ingredient(Resources::tomato,p1,p2) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Tomato);
 
 	}
@@ -79,77 +85,77 @@ public:
 class Carrot : public Ingredient
 {
 public:
-	Carrot() : Ingredient(Resources::carrot) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Carrot); }
+	Carrot(Transform* p1, Transform* p2) : Ingredient(Resources::carrot, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Carrot); }
 	~Carrot() {}
 };
 
 class Lettuce : public Ingredient
 {
 public:
-	Lettuce() : Ingredient(Resources::lettuce) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Lettuce); }
+	Lettuce(Transform* p1, Transform* p2) : Ingredient(Resources::lettuce, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Lettuce); }
 	~Lettuce() {}
 };
 
 class Mushroom : public Ingredient
 {
 public:
-	Mushroom() : Ingredient(Resources::mushroom) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mushroom); }
+	Mushroom(Transform* p1, Transform* p2) : Ingredient(Resources::mushroom, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Mushroom); }
 	~Mushroom() {}
 };
 
 class Sausage : public Ingredient
 {
 public:
-	Sausage() : Ingredient(Resources::sausage) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sausage); }
+	Sausage(Transform* p1, Transform* p2) : Ingredient(Resources::sausage, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sausage); }
 	~Sausage() {}
 };
 
 class Chicken : public Ingredient
 {
 public:
-	Chicken() : Ingredient(Resources::chicken) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Chicken); }
+	Chicken(Transform* p1, Transform* p2) : Ingredient(Resources::chicken, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Chicken); }
 	~Chicken() {}
 };
 
 class Meat : public Ingredient
 {
 public:
-	Meat() : Ingredient(Resources::meat) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Meat); }
+	Meat(Transform* p1, Transform* p2) : Ingredient(Resources::meat, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Meat); }
 	~Meat() {}
 };
 
 class Potato : public Ingredient
 {
 public:
-	Potato() : Ingredient(Resources::potato) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Potato); }
+	Potato(Transform* p1, Transform* p2) : Ingredient(Resources::potato, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Potato); }
 	~Potato() {}
 };
 
 class Onion : public Ingredient
 {
 public:
-	Onion() : Ingredient(Resources::onion) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Onion); }
+	Onion(Transform* p1, Transform* p2) : Ingredient(Resources::onion, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Onion); }
 	~Onion() {}
 };
 
 class Cheese : public Ingredient
 {
 public:
-	Cheese() : Ingredient(Resources::cheese) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cheese); }
+	Cheese(Transform* p1, Transform* p2) : Ingredient(Resources::cheese, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cheese); }
 	~Cheese() {}
 };
 
 class Clam : public Ingredient
 {
 public:
-	Clam() : Ingredient(Resources::clam) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Clam); }
+	Clam(Transform* p1, Transform* p2) : Ingredient(Resources::clam, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Clam); }
 	~Clam() {}
 };
 
 class Fish : public Ingredient
 {
 public:
-	Fish() : Ingredient(Resources::fish) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fish); }
+	Fish(Transform* p1, Transform* p2) : Ingredient(Resources::fish, p1,p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fish); }
 	~Fish() {}
 };
 

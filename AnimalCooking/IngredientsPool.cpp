@@ -1,5 +1,6 @@
 #include "IngredientsPool.h"
 #include "Ingredient.h"
+#include "Entity.h"
 
 IngredientsPool::~IngredientsPool()
 {
@@ -13,7 +14,7 @@ void IngredientsPool::addIngredient(Ingredient* i)
 	ingredients_.emplace_back(i);
 	std::vector<Ingredient*>::iterator it = ingredients_.end();
 	--it;
-	i->setInVector(it, this);
+	i->setInVector(it, this,GETCMP2(entity_,AIIngredient));
 }
 
 void IngredientsPool::clearIngredients()

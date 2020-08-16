@@ -32,6 +32,7 @@ void CollisionsSystem::update()
 	for (auto en : entidadesIng) {
 		if (en.second) {
 			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true);
+			tellIngredient(en.first, cT);
 		}
 	}
 }
@@ -241,8 +242,7 @@ void CollisionsSystem::tellIngredient(Ingredient* en, const ColisionType& colTyp
 		if (colType == ColisionType::horizontal) en->onCollisionX();
 		else if (colType == ColisionType::vertical) en->onCollisionY();
 		else if (colType == ColisionType::both) {
-			en->onCollisionX();
-			en->onCollisionY();
+			en->onCollisionXY();
 		}
 	}
 }
