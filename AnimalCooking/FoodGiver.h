@@ -15,7 +15,7 @@ public:
 	inline Vector2D getSize() { return size_; }
 
 protected:
-	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl,Texture* t);
 
 	Texture* texture_;
 	GameControl* gameControl_;
@@ -26,21 +26,21 @@ protected:
 class RiceGiver : public FoodGiver //Para arroz
 {
 public:
-	RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
 
 class BreadBurgerGiver : public FoodGiver //Para pan de hamburguesa
 {
 public:
-	BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
 
 class BreadHotDogGiver : public FoodGiver //Para pan de perrito
 {
 public:
-	BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
 
@@ -48,13 +48,13 @@ public:
 class DoughGiver : public FoodGiver //Para masa
 {
 public:
-	DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
 
 class DressingGiver : public FoodGiver //Para ali�ado/ketchup porque es lo mismo
 {
 public:
-	DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl);
+	DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
