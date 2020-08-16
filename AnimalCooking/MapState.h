@@ -17,6 +17,7 @@ public:
 	static void newGameCallback(AnimalCooking* ac);
 	static void loadGameCallback(AnimalCooking* ac);
 	static void nextScreenCallBack(AnimalCooking* ac);
+	static void previousScreenCallBack(AnimalCooking* ac);
 
 	void draw() override;
 	void update() override;
@@ -44,6 +45,7 @@ public:
 private:
 	void configPadNavigation();
 	void placeHousesAndButtons();
+	void refreshHousesAndButtons();
 
 	SDLGame* game_;
 	Entity* newGameButton_;
@@ -51,6 +53,7 @@ private:
 	Entity* infoBox_;
 	Entity* playButton_;
 	Entity* nextScreenButton_;
+	Entity* PreviousScreenButton_;
 	Entity* returnButton_;
 	Entity* chooser;
 	Entity* nameAsker;

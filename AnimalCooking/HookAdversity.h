@@ -26,7 +26,7 @@ private:
 	SDL_Rect drawingAreaHook2;
 	SDL_Rect clipArea;
 
-	//Posiciones y tamaño de los players
+	//Posiciones y tamaï¿½o de los players
 	Vector2D p1OriginalPos;
 	Vector2D p2OriginalPos;
 	Vector2D playerSize;

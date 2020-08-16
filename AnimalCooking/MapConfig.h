@@ -10,7 +10,8 @@ struct levelInfo {
 	int level = -1;
 	string name = "";
 	string lore [3];	
-	Vector2D housePosition = Vector2D();
+	Vector2D buttonPosition = Vector2D();
+	Vector2D buttonsSize = Vector2D();
 	unsigned int stars = 0;
 	bool unlocked = false;
 };
