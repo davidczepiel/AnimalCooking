@@ -13,10 +13,11 @@ MapState::MapState(AnimalCooking* ac) :
 	nameAsker(nullptr),
 	infoBox_(nullptr),
 	playButton_(nullptr),
+	nextScreenButton_(nullptr),
 	returnButton_(nullptr),
 	levelButtonsPool_(),
 	padNavigation_(nullptr),
-	bgText_(nullptr),
+	bgText_(vector<Texture*>()),
 	housesBackgroundText_(nullptr),
 	playButtonText_(nullptr),
 	chooser(nullptr),
@@ -31,7 +32,8 @@ MapState::MapState(AnimalCooking* ac) :
 	casillaX = game_->getCasillaX();
 	casillaY = game_->getCasillaY();
 	//Background textures
-	bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
@@ -119,8 +121,23 @@ void MapState::init() {
 
 void MapState::draw()
 {
-	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
-	housesBackgroundText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	if (transition_) {
+		SDL_Rect aux = RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight());
+		if (transitionDirection_ < 0) {
+			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			if (currentMapScene_ == 1) housesBackgroundText_->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			bgText_[currentMapScene_ - 1]->render(RECT(xTransition_ - game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+		}
+		else {
+			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			if (currentMapScene_ == 0) housesBackgroundText_->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			bgText_[currentMapScene_ + 1]->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+		}
+	}
+	else {
+		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+		if(currentMapScene_ == 0) housesBackgroundText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	}
 	State::draw();
 }
 
@@ -153,6 +170,13 @@ void MapState::update()
 	}
 	hasToBreak = false;
 
+	if (!transition_) return;
+
+	xTransition_ += transitionVelocity_ * transitionDirection_;
+	if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
+		xTransition_ = 0;
+		transition_ = false;
+	}
 }
 
 
@@ -295,6 +319,26 @@ void MapState::removeProfile(const string& name)
 	}
 }
 
+void MapState::nextScreen()
+{
+	if (currentMapScene_ >= bgText_.size() - 1) return;
+
+	transition_ = true;
+	transitionDirection_ = -1;
+	xTransition_ = game_->getWindowWidth();
+	currentMapScene_++;
+}
+
+void MapState::previousScreen()
+{
+	if (currentMapScene_ < 1) return;
+
+	transition_ = true;
+	transitionDirection_ = 1;
+	xTransition_ = -game_->getWindowWidth();
+	currentMapScene_--;
+}
+
 void MapState::setState() {
 	hasToBreak = true;
 	if (!profileAskers.empty())
@@ -365,6 +409,18 @@ void MapState::placeHousesAndButtons()
 		ButtonRendererHouse* br = levelButtonsPool_.back()->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr, levelinfos_->at(x));
 		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
 	}
+
+	nextScreenButton_ = stage->addEntity();
+	Texture* aux = game_->getTextureMngr()->getTexture(Resources::buttonGo);
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth() / 2, (game_->getWindowHeight() / 2) - (aux->getHeight() / 2)), Vector2D(0, 0), aux->getWidth() / 2, aux->getHeight() / 2);
+	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
+	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
+	bb->setButtonRenderer(br);
+	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
+	levelButtonsPool_.push_back(nextScreenButton_);
+	aux = nullptr;
+	bb = nullptr;
+	br = nullptr;
 }
 
 void MapState::hideChooseButtons()
@@ -411,6 +467,11 @@ void MapState::screenLoaderCallback(AnimalCooking* ac) {
 void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->popState();
+}
+
+void MapState::nextScreenCallBack(AnimalCooking* ac) {
+	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	ms->nextScreen();
 }
 
 void MapState::configPadNavigation() {
