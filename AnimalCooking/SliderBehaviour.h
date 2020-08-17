@@ -22,6 +22,7 @@ public:
 
 	inline void setFocused(const bool& b) { focused = b; }
 	inline bool getFocused() const { return focused; }
+	inline bool getActive() const { return active; }
 protected:
 	Transform* transform;
 	SDL_Rect rectMovePoint;

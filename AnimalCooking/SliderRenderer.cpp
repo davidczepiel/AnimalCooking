@@ -21,7 +21,7 @@ void SliderRenderer::draw()
 	else 
 		sliderBackground_->render(RECT(transform_->getPos().getX(), transform_->getPos().getY(), transform_->getW(), transform_->getH()));		
 	
-	if(sliderBehav_->getPadEnable())
+	if(sliderBehav_->getPadEnable() || sliderBehav_->getActive())
 		sliderSelectedMovePoint_->render(RECT(moveRect.x - (moveRect.w / 2), moveRect.y - (moveRect.h / 2), moveRect.w, moveRect.h));
 	else 
 		sliderMovePoint_->render(RECT(moveRect.x - (moveRect.w / 2), moveRect.y - (moveRect.h / 2), moveRect.w, moveRect.h));
