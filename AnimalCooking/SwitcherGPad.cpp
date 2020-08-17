@@ -12,6 +12,7 @@ void SwitcherGPad::update()
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		playerIsChoosing_ = true;
 		inSameFrame = true;
+		startedTime_ = SDLGame::instance()->getTime();
 	}
 	if (!inSameFrame && playerIsChoosing_ && gpad->isAnyButtonJustPressed()) {
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
@@ -23,7 +24,14 @@ void SwitcherGPad::update()
 
 void SwitcherGPad::draw()
 {
-	if (playerIsChoosing_) col = 2;
+	if (playerIsChoosing_) { 
+		col = 2; 
+		alpha_ = int(255 * (cos((SDLGame::instance()->getTime() - startedTime_) / 200.0) + 1) / 2.0);
+	}
+	else
+		alpha_ = 255;
+
+	backGround_->setAlpha(alpha_);
 
 	backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, col, 0);
 	name_->render(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth(), name_->getHeight()));

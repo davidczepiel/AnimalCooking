@@ -16,6 +16,7 @@ void SwitcherKeyboard::update()
 	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 		playerIsChoosing_ = aux;
 		if (playerIsChoosing_) {
+			startedTime_ = SDLGame::instance()->getTime();
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		}
 	}
@@ -31,7 +32,14 @@ void SwitcherKeyboard::update()
 void SwitcherKeyboard::draw()
 {
 	size_t aux = col;
-	if (playerIsChoosing_) aux = 2;
+	if (playerIsChoosing_) {
+		aux = 2;
+		alpha_ = int(255 * (cos((SDLGame::instance()->getTime() - startedTime_) / 200.0) + 1) / 2.0);
+	}
+	else 
+		alpha_ = 255;
+
+	backGround_->setAlpha(alpha_);
 
 	backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, aux, 0);
 

@@ -252,13 +252,14 @@ void ConfigState::initKeyModifiers()
 		Entity* e = stage->addEntity();
 		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
 		bp->onlyListenTo(0);
-		bp->AddButton(changeP1, nullptr, nullptr, salir, salir, true);
+		bp->AddButton(changeP1, nullptr, nullptr, salir, nullptr, true);
 		bp->AddButton(salir, nullptr, sliderTop, nullptr, changeP1);
 		bp->AddButton(res, sliderBot, helper, nullptr, changeP1);
 		bp->AddButton(helper, res, nullptr, nullptr, changeP1);
 		bp->AddButton(sliderTop, salir, sliderBot, nullptr, changeP1, true);
 		bp->AddButton(sliderBot, sliderTop, res, nullptr, changeP1, true);
-		GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
+
+
 	}
 	else {
 		changeP1->addComponent<KeyboardKeySwitcher>(0, 535, 105);
