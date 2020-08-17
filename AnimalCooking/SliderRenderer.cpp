@@ -4,8 +4,8 @@
 
 void SliderRenderer::init()
 {
-	sliderBackground_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SliderBackground);
-	sliderMovePoint_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SliderMovPoint);
+	sliderBackground_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Config_Slider);
+	sliderMovePoint_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Config_SliderMovPoint);
 	transform_ = GETCMP1_(Transform);
 	sliderBehav_ = GETCMP1_(SliderBehaviour);
 }

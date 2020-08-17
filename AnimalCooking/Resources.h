@@ -70,9 +70,26 @@ public:
 		GPad_back,
 
 		//---->Config<---------
-		SliderBackground,
-		SliderMovPoint,
-		ConfigBackground,
+		Config_BackButton,
+		Config_Background,
+		Config_CerdoClick,
+		Config_ChickenClick,
+		Config_FullscreenButton,
+		Config_ReminderButton,
+		Config_MusicIcon,
+		Config_MusicVolumeTitle,
+		Config_OptionsTitle,
+		Config_Panel,
+		Config_Player1,
+		Config_Player2,
+		Config_SliderMovPoint,
+		Config_SliderMovPointSelected,
+		Config_Slider,
+		Config_SliderSelected,
+		Config_SoundIcon,
+		Config_SoundVolumeTitle,
+
+
 		//---->Creditos<-----
 		LogoTenByTen,
 
@@ -296,10 +313,6 @@ public:
 
 		// text
 		Back,
-		ToggleFullscreen,
-		ToggleHelper,
-		MusicVolume,
-		SoundVolume,
 		PickUpText,
 		AttackText,
 		OpenText,
@@ -402,6 +415,7 @@ public:
 		ARIAL40,
 		QuarkCheese100,
 		QuarkCheese70,
+		QuarkCheese62,
 		QuarkCheese50
 	};
 

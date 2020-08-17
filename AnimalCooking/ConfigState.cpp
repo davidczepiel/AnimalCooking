@@ -15,7 +15,7 @@
 #include "ButtonChangeOnClick.h"
 
 
-ConfigState::ConfigState(AnimalCooking* ac) : State(ac), textSliderMusic(nullptr), textSliderSound(nullptr),
+ConfigState::ConfigState(AnimalCooking* ac) : State(ac),
 game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 {
 	initSliders();
@@ -27,8 +27,6 @@ game_(SDLGame::instance()), musicLastValue_(0.5), soundLastValue(0.5)
 ConfigState::~ConfigState()
 {
 	saveToFile();
-	delete textSliderMusic;
-	delete textSliderSound;
 }
 
 void ConfigState::saveToFile()
@@ -129,9 +127,51 @@ void ConfigState::update()
 
 void ConfigState::draw()
 {
-	SDL_Rect dest = RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight());
-	game_->getTextureMngr()->getTexture(Resources::ConfigBackground)->render(dest);
+	drawNoInteractuables();
 	State::draw();
+}
+
+void ConfigState::drawNoInteractuables()
+{
+	//Background
+	SDL_Rect dest = RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight());
+	game_->getTextureMngr()->getTexture(Resources::Config_Background)->render(dest);
+
+	//Options Title
+	dest = RECT(0, 0, game_->getWindowWidth(), 173);
+	game_->getTextureMngr()->getTexture(Resources::Config_OptionsTitle)->render(dest);
+
+	//Music Icon
+	dest = RECT(100, 410, 80, 88);
+	game_->getTextureMngr()->getTexture(Resources::Config_MusicIcon)->render(dest);
+
+	//Sounds Icon
+	dest = RECT(100, 530, 88, 78);
+	game_->getTextureMngr()->getTexture(Resources::Config_SoundIcon)->render(dest);
+
+	//Music Text
+	dest = RECT(200, 380, 164, 33);
+	game_->getTextureMngr()->getTexture(Resources::Config_MusicVolumeTitle)->render(dest);
+
+	//Sounds Text
+	dest = RECT(200, 500, 181, 32);
+	game_->getTextureMngr()->getTexture(Resources::Config_SoundVolumeTitle)->render(dest);
+
+	//Panel Izquierdo
+	dest = RECT(780, 235, 550, 794);
+	game_->getTextureMngr()->getTexture(Resources::Config_Panel)->render(dest);
+
+	//Panel Derecho
+	dest = RECT(1350, 235, 550, 794);
+	game_->getTextureMngr()->getTexture(Resources::Config_Panel)->render(dest);
+
+	//Player 1
+	dest = RECT(830, 210, 320, 140);
+	game_->getTextureMngr()->getTexture(Resources::Config_Player1)->render(dest);
+
+	//PLayer 2
+	dest = RECT(1400, 210, 332, 140);
+	game_->getTextureMngr()->getTexture(Resources::Config_Player2)->render(dest);
 }
 
 
@@ -141,35 +181,32 @@ void ConfigState::initButtons()
 	salir = stage->addEntity();
 	stage->addToGroup(salir, ecs::GroupID::ui);
 	salir->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+		Vector2D(90, 120),
+		Vector2D(), 275, 235, 0);
 	ButtonBehaviour* bb = salir->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
-		game_->getTextureMngr()->getTexture(Resources::Back));
+	ButtonRenderer* br = salir->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_BackButton), nullptr);
 	bb->setButtonRenderer(br);
 
 	//Toggle Window / Fullscreen
 	res = stage->addEntity();
 	stage->addToGroup(res, ecs::GroupID::ui);
 	res->addComponent<Transform>(
-		Vector2D((game_->getWindowWidth() * 2 / 5) - game_->getWindowWidth() / 10, 3 * game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+		Vector2D(175, 650),
+		Vector2D(), 499, 90, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	res->addComponent<ButtonChangeOnClick>(game_->getIfFullscreen());
-	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
-		game_->getTextureMngr()->getTexture(Resources::ToggleFullscreen));
+	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_FullscreenButton), nullptr);
 	bb->setButtonRenderer(br);
 
 	//Helper button
 	helper = stage->addEntity();
 	stage->addToGroup(helper, ecs::GroupID::ui);
 	helper->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 5 - game_->getWindowWidth() / 10, game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+		Vector2D(203, 750),
+		Vector2D(), 499, 90, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
 	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
-	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig),
-		game_->getTextureMngr()->getTexture(Resources::ToggleHelper));
+	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_ReminderButton), nullptr);
 	bb->setButtonRenderer(br);
 
 }
@@ -180,8 +217,8 @@ void ConfigState::initSliders()
 	sliderTop = stage->addEntity();
 	stage->addToGroup(sliderTop, ecs::GroupID::ui);
 	Transform* t = sliderTop->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 3 / 5 - game_->getWindowWidth() / 20, game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+		Vector2D(210, 440),
+		Vector2D(), 460, 30, 0);
 	sliderMusic_ = sliderTop->addComponent<SliderBehaviour>();
 	sliderTop->addComponent<SliderRenderer>();
 	sliderMusic_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.music_ / 128.0);
@@ -190,28 +227,11 @@ void ConfigState::initSliders()
 	sliderBot = stage->addEntity();
 	stage->addToGroup(sliderBot, ecs::GroupID::ui);
 	t = sliderBot->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 3 / 5 - game_->getWindowWidth() / 20, 3 * game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 5, game_->getWindowHeight() / 16, 0);
+		Vector2D(210, 560),
+		Vector2D(), 460, 30, 0);
 	sliderSound_ = sliderBot->addComponent<SliderBehaviour>();
 	sliderBot->addComponent<SliderRenderer>();
 	sliderSound_->getMovePointRect()->x = t->getPos().getX() + t->getW() * (game_->getOptions().volume.sounds_ / 128.0);
-
-	textSliderMusic = new Texture(game_->getRenderer(), "Music Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0xFFFFFFff) });
-	textSliderSound = new Texture(game_->getRenderer(), "Sound Volume", game_->getFontMngr()->getFont(Resources::QuarkCheese100), { COLOR(0xFFFFFFff) });
-
-	Entity* sliderText1 = stage->addEntity();
-	stage->addToGroup(sliderText1, ecs::GroupID::ui);
-	sliderText1->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 3.85 / 5, game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
-	sliderText1->addComponent<ImageViewer>(textSliderMusic);
-
-	Entity* sliderText2 = stage->addEntity();
-	stage->addToGroup(sliderText2, ecs::GroupID::ui);
-	sliderText2->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 3.85 / 5, 3 * game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() / 6, game_->getWindowHeight() / 16, 0);
-	sliderText2->addComponent<ImageViewer>(textSliderSound);
 }
 
 void ConfigState::initKeyModifiers()
@@ -222,41 +242,42 @@ void ConfigState::initKeyModifiers()
 	changeP1 = stage->addEntity();
 	stage->addToGroup(changeP1, ecs::GroupID::ui);
 	changeP1->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
+		Vector2D(808, 375),
+		Vector2D(), 535, 630, 0);
+
 	if (gpCont->playerControllerConnected(0)) {
-		changeP1->addComponent<GpadKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16, false);
-		changeP1->addComponent<GpadKeySwitcherViewer>();
+		changeP1->addComponent<GpadKeySwitcher>(0, 535, 105, false);
+		changeP1->addComponent<GpadKeySwitcherViewer>(game_->getTextureMngr()->getTexture(Resources::Config_CerdoClick));
 
 		Entity* e = stage->addEntity();
 		ButtonPadNavigation* bp = e->addComponent<ButtonPadNavigation>();
 		bp->onlyListenTo(0);
-		bp->AddButton(salir, nullptr, changeP1, sliderTop, helper);
-		bp->AddButton(res, helper, changeP1, sliderBot, sliderBot);
-		bp->AddButton(helper, nullptr, res, salir, sliderTop);
-		bp->AddButton(sliderTop, nullptr, sliderBot, helper, salir, true);
-		bp->AddButton(sliderBot, sliderTop, changeP1, res, res, true);
-		bp->AddButton(changeP1, res, nullptr, nullptr, nullptr, true);
+		bp->AddButton(changeP1, nullptr, nullptr, salir, salir, true);
+		bp->AddButton(salir, nullptr, sliderTop, nullptr, changeP1);
+		bp->AddButton(res, sliderBot, helper, nullptr, changeP1);
+		bp->AddButton(helper, res, nullptr, nullptr, changeP1);
+		bp->AddButton(sliderTop, salir, sliderBot, nullptr, changeP1, true);
+		bp->AddButton(sliderBot, sliderTop, res, nullptr, changeP1, true);
 		GETCMP2(salir, ButtonBehaviour)->setFocusByController(true);
 	}
 	else {
-		changeP1->addComponent<KeyboardKeySwitcher>(0, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		changeP1->addComponent<KeyboardKeySwitcherViewer>();
+		changeP1->addComponent<KeyboardKeySwitcher>(0, 535, 105);
+		changeP1->addComponent<KeyboardKeySwitcherViewer>(game_->getTextureMngr()->getTexture(Resources::Config_CerdoClick));
 	}
 
 	//Player2 Right
 	changeP2 = stage->addEntity();
 	stage->addToGroup(changeP2, ecs::GroupID::ui);
 	changeP2->addComponent<Transform>(
-		Vector2D(game_->getWindowWidth() * 2 / 3 - game_->getWindowWidth() / 5, 5 * game_->getWindowHeight() / 16),
-		Vector2D(), game_->getWindowWidth() * 2 / 5, game_->getWindowHeight() * 10 / 16, 0);
+		Vector2D(1378, 375),
+		Vector2D(), 535, 630, 0);
 	if (gpCont->playerControllerConnected(1)) {
-		changeP2->addComponent<GpadKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16, true);
-		changeP2->addComponent<GpadKeySwitcherViewer>();
+		changeP2->addComponent<GpadKeySwitcher>(1, 535, 105, true);
+		changeP2->addComponent<GpadKeySwitcherViewer>(game_->getTextureMngr()->getTexture(Resources::Config_ChickenClick));
 	}
 	else {
-		changeP2->addComponent<KeyboardKeySwitcher>(1, game_->getWindowWidth() / 4, game_->getWindowHeight() / 16);
-		changeP2->addComponent<KeyboardKeySwitcherViewer>();
+		changeP2->addComponent<KeyboardKeySwitcher>(1, 535, 105);
+		changeP2->addComponent<KeyboardKeySwitcherViewer>(game_->getTextureMngr()->getTexture(Resources::Config_ChickenClick));
 	}
 }
 

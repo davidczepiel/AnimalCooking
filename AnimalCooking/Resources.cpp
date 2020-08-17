@@ -8,7 +8,9 @@ vector<Resources::FontInfo> Resources::fonts_{
 	{Basic, ARIAL40, "../AnimalCooking/resources/fonts/ARIAL.ttf", 40 },
 	{Basic, QuarkCheese100, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 100 },
 	{Basic, QuarkCheese70, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 70 },
+	{Basic, QuarkCheese62, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 62 },
 	{Basic, QuarkCheese50, "../AnimalCooking/resources/fonts/QuarkCheese.otf", 50 }
+
 };
 
 
@@ -65,9 +67,20 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, GPad_back, "../AnimalCooking/resources/images/Menu/ButtonUIMando/selectButton.png" },
 
 	//---->Config<---------
-	{Basic, SliderBackground,"../AnimalCooking/resources/images/sliderBackground.png"},
-	{Basic, SliderMovPoint,"../AnimalCooking/resources/images/sliderMovepoint.png"},
-	{Basic, ConfigBackground,"../AnimalCooking/resources/images/Menu/config.png"},
+	
+	{Basic, Config_Background,"../AnimalCooking/resources/images/ConfigMenu/background.png"},
+	{Basic, Config_MusicIcon,"../AnimalCooking/resources/images/ConfigMenu/musicIcon.png"},
+	{Basic, Config_MusicVolumeTitle,"../AnimalCooking/resources/images/ConfigMenu/musicVolume.png"},
+	{Basic, Config_OptionsTitle,"../AnimalCooking/resources/images/ConfigMenu/options.png"},
+	{Basic, Config_Panel,"../AnimalCooking/resources/images/ConfigMenu/panel.png"},
+	{Basic, Config_Player1,"../AnimalCooking/resources/images/ConfigMenu/player1.png"},
+	{Basic, Config_Player2,"../AnimalCooking/resources/images/ConfigMenu/player2.png"},
+	{Basic, Config_SliderMovPoint,"../AnimalCooking/resources/images/ConfigMenu/selector.png"},
+	{Basic, Config_SliderMovPointSelected,"../AnimalCooking/resources/images/ConfigMenu/selectorSelect.png"},
+	{Basic, Config_Slider,"../AnimalCooking/resources/images/ConfigMenu/slider.png"},
+	{Basic, Config_SliderSelected,"../AnimalCooking/resources/images/ConfigMenu/sliderSelect.png"},
+	{Basic, Config_SoundIcon,"../AnimalCooking/resources/images/ConfigMenu/soundIcon.png"},
+	{Basic, Config_SoundVolumeTitle,"../AnimalCooking/resources/images/ConfigMenu/soundVolume.png"},
 
 	//CreditState-----------
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
@@ -286,19 +299,26 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, HomeIconMapState,"../AnimalCooking/resources/images/Mapstate/homeMapState.png",1,2},
 	{Basic, MapIcon,"../AnimalCooking/resources/images/EndState/MapProvisional.png",1,3},
 	{Basic, botonPauseState,"../AnimalCooking/resources/images/Menu/botonesPauseState.png",1,3},
+
+	{Basic, Config_BackButton,"../AnimalCooking/resources/images/ConfigMenu/backButton.png",1,3},
+	{Basic, Config_CerdoClick,"../AnimalCooking/resources/images/ConfigMenu/cerdoClick.png",1,3},
+	{Basic, Config_ChickenClick,"../AnimalCooking/resources/images/ConfigMenu/gallinaClick.png",1,3},
+	{Basic, Config_FullscreenButton,"../AnimalCooking/resources/images/ConfigMenu/fullScreenbutton.png",1,3},
+	{Basic, Config_ReminderButton,"../AnimalCooking/resources/images/ConfigMenu/keyRembutton.png",1,3},
+
 	//---------
 	{AllLevels, CircularTimer,"../AnimalCooking/resources/images/circleTimer.png", 1, 8},
 	{AllLevels, BurnedTimer,"../AnimalCooking/resources/images/burningTimer.png", 1, 8},
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 3, 1},
 	{AllLevels, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
 	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
-    {AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",20,8},
+	{AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",20,8},
 	{AllLevels, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",20,4},
 	{AllLevels, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",8,2},
 	{AllLevels, ChickenIdle, "../AnimalCooking/resources/images/Animaciones/Gallina/idle.png",20,8},
 	{AllLevels, ChickenWalk, "../AnimalCooking/resources/images/Animaciones/Gallina/andar.png",20,4},
 	{AllLevels, ChickenAttack, "../AnimalCooking/resources/images/Animaciones/Gallina/ataque.png",8,2},
-    {AllLevels, Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
+	{AllLevels, Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
 	{AllLevels, Potato,"../AnimalCooking/resources/images/Ingredientes/patata.png",3,2},
 	{AllLevels, Clam,"../AnimalCooking/resources/images/Ingredientes/vieira.png",3,2},
 	{AllLevels, Cheese,"../AnimalCooking/resources/images/Ingredientes/queso.png",3,2},
@@ -333,16 +353,13 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Go,"Go",hex2sdlcolor("#000000FF"),QuarkCheese50},
 
 	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},
-	{Basic, TextureId::ToggleFullscreen, "Toggle fullscreen", COLOR(0xffffffff), FontId::QuarkCheese100},
-	{Basic, TextureId::ToggleHelper, "Toggle key reminder", COLOR(0xffffffff), FontId::QuarkCheese100},
-	{Basic, TextureId::MusicVolume, "Music Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
-	{Basic, TextureId::SoundVolume, "Sound Effects Volume", COLOR(0x8811ffff), FontId::QuarkCheese100},
-	{Basic, TextureId::PickUpText, "Pick up : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::AttackText, "Attack : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::OpenText, "Open : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::FinishText, "Finish Dish : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::NextText, "Next Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100},
-	{Basic, TextureId::PreviousText, "Previous Ingredient : ", COLOR(0x000000ff), FontId::QuarkCheese100}
+
+	{Basic, TextureId::PickUpText, "Pick up", COLOR(0xcc636dff), FontId::QuarkCheese62},
+	{Basic, TextureId::AttackText, "Attack", COLOR(0xcc636dff), FontId::QuarkCheese62},
+	{Basic, TextureId::OpenText, "Open", COLOR(0xcc636dff), FontId::QuarkCheese62},
+	{Basic, TextureId::FinishText, "Finish Dish", COLOR(0xcc636dff), FontId::QuarkCheese62},
+	{Basic, TextureId::NextText, "Next", COLOR(0xcc636dff), FontId::QuarkCheese62},
+	{Basic, TextureId::PreviousText, "Previous", COLOR(0xcc636dff), FontId::QuarkCheese62}
 };
 
 
