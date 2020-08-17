@@ -6,7 +6,7 @@
 class SliderBehaviour : public Component
 {
 public:
-	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false), value(0.5), padNavEnable(false) {}
+	SliderBehaviour() : Component(ecs::SliderBehaviour), transform(nullptr), active(false), focused(false), value(0.5), padNavEnable(false) {}
 
 	void init() override;
 	void update() override;
@@ -16,13 +16,19 @@ public:
 
 	inline void move(int value) { rectMovePoint.x += value; }
 	void movePercentage(float value);
+
 	inline void setPadNavEnable(const bool& b) { padNavEnable = b; }
+	inline bool getPadEnable() const { return padNavEnable; }
+
+	inline void setFocused(const bool& b) { focused = b; }
+	inline bool getFocused() const { return focused; }
 protected:
 	Transform* transform;
 	SDL_Rect rectMovePoint;
 	float value;
 private:
 	bool active;
+	bool focused;
 	bool padNavEnable;
 };
 

@@ -258,8 +258,6 @@ void ConfigState::initKeyModifiers()
 		bp->AddButton(helper, res, nullptr, nullptr, changeP1);
 		bp->AddButton(sliderTop, salir, sliderBot, nullptr, changeP1, true);
 		bp->AddButton(sliderBot, sliderTop, res, nullptr, changeP1, true);
-
-
 	}
 	else {
 		changeP1->addComponent<KeyboardKeySwitcher>(0, 535, 105);
