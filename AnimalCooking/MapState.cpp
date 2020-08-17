@@ -537,12 +537,12 @@ void MapState::configPadNavigation() {
 		padNavigation_->resetNavigation();
 
 		int i = 0;
-		while (i < levelinfos_->size() && levelinfos_->at(i)->unlocked) {
+		while (i < levelPacks_ && levelinfos_->at(i)->unlocked) {
 			Entity* behind = nullptr;
 			Entity* forward = nullptr;
 			if (i > 0 && levelinfos_->at(i - 1)->unlocked)
 				behind = levelButtonsPool_.at(i - 1);
-			if (i < levelinfos_->size() - 1 && levelinfos_->at(i + 1)->unlocked)
+			if (i < levelPacks_ - 1 && levelinfos_->at(i + 1)->unlocked)
 				forward = levelButtonsPool_.at(i + 1);
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;
