@@ -1,12 +1,18 @@
 #include "Shelf.h"
 
 
-Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), content(c) {
+Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityManager* mng, Texture* texture) :Entity(SDLGame::instance(), mng), Interactive(p1, p2,nullptr), lookingAt_(Orientation::Down), content(c) {
 	addComponent<ShelfViewer>(this, texture);
-	dishFinisher=addComponent<DishFinisher>(p1,p2);
+	dishFinisher = addComponent<DishFinisher>(p1, p2);
 	position_ = pos;
+
 	if (content != nullptr) {
-		contentType = Resources::PickableType::Utensil;
+		Utensil* u = dynamic_cast<Utensil*>(c);
+		if (u != nullptr) {
+			contentType = Resources::PickableType::Utensil;
+		}
+		else contentType = Resources::PickableType::Bucket;
+
 		setContentPos();
 	}
 	else
@@ -15,8 +21,30 @@ Shelf::Shelf(Vector2D pos, Pickable* c, Transport* p1, Transport* p2, EntityMana
 
 void Shelf::setContentPos()
 {
-	content->setPos(Vector2D(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
-		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2)));
+	//El punto medio de la repisa
+	Vector2D pos(position_.getX() + (size_.getX() / 2 - content->getSize().getX() / 2),
+		position_.getY() + (size_.getY() / 2 - content->getSize().getY() / 2));
+
+	switch (lookingAt_)
+	{
+	case Down: //Si mira hacia abajo, hay que subirlo
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	case Top: //Si mira hacia arriba, hay que subirlo
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+
+	case DownLeft: 
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	case DownRight: 
+		pos.setY(pos.getY() - size_.getY() / 6);
+		break;
+	default:
+		break;
+	}
+
+	content->setPos(pos);
 	content->setCanInteract(false);
 }
 
@@ -99,16 +127,16 @@ void Shelf::action5(int id)
 {
 	if (contentType == Resources::PickableType::Dish)
 	{
-	  Dish* d = static_cast<Dish*>(content);
-      dishFinisher->finish(id,d);
-	  SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CompleteDish, 0);
+		Dish* d = static_cast<Dish*>(content);
+		dishFinisher->finish(id, d);
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::CompleteDish, 0);
 	}
-	
+
 }
 
 void Shelf::feedback(int player)
 {
-	if(content!=nullptr)
+	if (content != nullptr)
 		content->feedback(player);
 }
 
@@ -123,7 +151,7 @@ void Shelf::Swap(Transport* player, Resources::PickableType onPlayerHands) {
 		content = nullptr;
 		contentType = Resources::PickableType::none;
 		break;
-		//Si tiene comida. SI Y SOLO SI tengo un plato, lo a�ado a este y le digo al player que lo suelte
+		//Si tiene comida. SI Y SOLO SI tengo un plato, lo anado a este y le digo al player que lo suelte
 	case Resources::PickableType::Food:
 		if (contentType == Resources::PickableType::Dish) {
 			static_cast<Dish*>(content)->addFood(static_cast<Food*>(player->getObjectInHands()));

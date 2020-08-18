@@ -14,6 +14,7 @@ public:
 	void update();
 	void draw();
 	void reset();
+	void start();
 
 private:
 	enum state : int { Going, Pushing };

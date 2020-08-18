@@ -50,5 +50,10 @@ void BurnedCookerAdversity::draw() {
 }
 
 void BurnedCookerAdversity::reset() {
+	
+}
+
+void BurnedCookerAdversity::start()
+{
 	StartAdversity();
 }

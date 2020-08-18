@@ -24,9 +24,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Get the kitchens ready, the cooking conmpetition starts in Villa del Pun!";
+	auxiliar.lore[0] = "Get the kitchens ready, the cooking competition starts in Villa del Pun!";
 	auxiliar.lore[1] = "Your first opponents are your pastrycook neighbours...";
-	auxiliar.lore[2] = "can you beat them?";
+	auxiliar.lore[2] = "Can you beat them?";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -36,8 +36,8 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "The villagers find out about the cooking competition and that the best restaurant";
-	auxiliar.lore[1] = "in the village wants to challenge you to be the representative of the village in this one";	
+	auxiliar.lore[0] = "The villagers have found out about the cooking competition! But the best restaurant";
+	auxiliar.lore[1] = "in the village wants to challenge you to be the village representative.";	
 	auxiliar.lore[2] = "Show them what a gourmet dish is!";
 	auxiliar.housePosition = Vector2D(15, 15);
 
@@ -60,8 +60,8 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Wow! You start to gain fame after the challenges and you even";
-	auxiliar.lore[1] = "have your first fans,although these are friends and acquaintances.";		
+	auxiliar.lore[0] = "Wow! You start to gain fame after the challenges, and you even";
+	auxiliar.lore[1] = "have your first fans! Although these are friends and acquaintances.";		
 	auxiliar.lore[2] = "It's time to show that you're better at cooking than anything else.";
 	auxiliar.housePosition = Vector2D(15, 15);
 
@@ -74,7 +74,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
-	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.lore[2] = "THE  GRAND  FINAL!";
 	auxiliar.housePosition = Vector2D(15, 15);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -173,7 +173,7 @@ void MapConfig::save()
 		levelsRecipes_.at(it.first).stars = it.second;
 
 	}
-	for (int i = 0; i < unlocked_levels; i++)
+	for (int i = 0; i <= unlocked_levels; i++)
 	{
 		levelsRecipes_.at(i).unlocked = true;
 	}

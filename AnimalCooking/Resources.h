@@ -38,6 +38,7 @@ public:
 		UtensilTimerBackground,
 		UtensilTimerForeground,
 		ScoreBackground,
+		PingUtensil,
 		//----->EndState<---------
 		BackgroundEndState,
 		BarBackgroundEndState,
@@ -99,8 +100,11 @@ public:
 		Hierba,
 		OvenOFF,
 		SkilletOFF,
+		SkilletOFFEsquina,
+		SkilletOFFBorde,
 		Platera,
 		Muro,
+		ParedCocina,
 		Valla,
 		VallaFinal,
 		VallaInicio,
@@ -115,8 +119,13 @@ public:
 		RalladorSucio,
 		Red,
 		RedSucia,
+		Cubo,
 		Fregadero,
 		FregaderoON,
+		FregaderoFlip,
+		FregaderoFlipON,
+		FregaderoAbajo,
+		FregaderoAbajoON,
 		Panera,
 		Papelera,
 		CuadradoAux,
@@ -132,6 +141,9 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		barraScreenLoaderBack,
+		barraScreenLoader,
+		buttonGo,
 		//PauseState
 		pauseStateBackground,
 		botonPauseState,
@@ -152,6 +164,9 @@ public:
 			EncimeraVEsquinaInferiorDcha,
 			EncimeraVEsquinaSuperiorDcha,
 			EncimeraVEsquinaSuperiorIzda,
+			EncimeraVConDecoracion,
+			EncimeraHBordeDerecha,
+			EncimeraHBordeIzquierda,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -161,11 +176,20 @@ public:
 			EsquinaSupIzdaAgua,
 			EsquinaSupDchaVacia,
 			EsquinaSupIzdaVacia,
+			EsquinaInfIzqVaciaDecoracion,
+			EsquinaInfDerVaciaDecoracion,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,
 		SaladOrder,
+		Salad1Order,
+		Salad2Order,
+		Salad3Order,
+		Salad4Order,
 		BurgerOrder,
+		Burger1Order,
+		Burger2Order,
+		Burger3Order,
 		PizzaOrder,
 		RoastOrder,
 		RiceDishOrder,
@@ -173,6 +197,8 @@ public:
 		RisottoOrder,
 		CookedFishOrder,
 		FriedVegsOrder,
+		FriedVegsOrder1,
+		FriedVegsOrder2,
 		BakedChickenOrder,
 		FrenchFriesOrder,
 		CookedClamsOrder,
@@ -198,15 +224,29 @@ public:
 		BreadBurgerT,
 		BreadHotDogT,
 		PizzaMassT,
+
 		SaladT,
+		Salad1T,
+		Salad2T,
+		Salad3T,
+		Salad4T,
+
 		BurgerT,
+		Burger1T,
+		Burger2T,
+		Burger3T,
+
 		PizzaT,
 		RoastT,
 		RiceDishT,
 		HotDogT,
 		RisottoT,
 		CookedFishT,
+
 		FriedVegsT,
+		FriedVegs1T,
+		FriedVegs2T,
+
 		BakedChickenT,
 		FrenchFriesT,
 		CookedClamsT,
@@ -239,15 +279,29 @@ public:
 			BreadBurgerFeedBack,
 			BreadHotDogFeedBack,
 			PizzaMassFeedBack,
+
 			SaladFeedBack,
+			Salad1FeedBack,
+			Salad2FeedBack,
+			Salad3FeedBack,
+			Salad4FeedBack,
+
 			BurgerFeedBack,
+			Burger1FeedBack,
+			Burger2FeedBack,
+			Burger3FeedBack,
+
 			PizzaFeedBack,
 			RoastFeedBack,
 			RiceDishFeedBack,
 			HotDogFeedBack,
 			RisottoFeedBack,
 			CookedFishFeedBack,
+
 			FriedVegsFeedBack,
+			FriedVegs1FeedBack,
+			FriedVegs2FeedBack,
+
 			BakedChickenFeedBack,
 			FrenchFriesFeedBack,
 			CookedClamsFeedBack,
@@ -287,6 +341,8 @@ public:
 		HomeIconMapState,
 		MapIcon,
 		SkilletON,
+		SkilletONEsquina,
+		SkilletONBorde,
 		SmokeBurned,
 		PigIdle,
         PigWalk,
@@ -308,9 +364,11 @@ public:
 		Sausage,
 		Puerta,
 		FireOverHeated,
+		LightingStrike,
+		LightingExplosion,
 		MapRestaurantButton,
 		MapStatePlayButton,
-
+		Explosion,
 		// text
 		Back,
 		PickUpText,
@@ -339,7 +397,8 @@ public:
 		WarningAdversity,
 		PlaneShadow,
 		RainAdversity,
-		HookAdversity
+		HookAdversity,
+		PidgeonAdversity
 
 	};
 
@@ -414,6 +473,7 @@ public:
 		ARIAL50,
 		ARIAL40,
 		QuarkCheese100,
+		QuarkCheese200,
 		QuarkCheese70,
 		QuarkCheese62,
 		QuarkCheese50
@@ -501,7 +561,14 @@ public:
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
 		Salad,
+		Salad1,
+		Salad2,
+		Salad3,
+		Salad4,
 		Burger,
+		Burger1,
+		Burger2,
+		Burger3,
 		Pizza,
 		Roast,
 		RiceDish,
@@ -509,6 +576,8 @@ public:
 		Risotto,
 		CookedFish,
 		FriedVegs,
+		FriedVegs1,
+		FriedVegs2,
 		BakedChicken,
 		FrenchFries,
 		CookedClams,
@@ -521,6 +590,7 @@ public:
 		Food,
 		Dish,
 		Utensil,
+		Bucket,
 		none
 	};
 

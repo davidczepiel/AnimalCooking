@@ -3,53 +3,50 @@
 #include "PlaneAdversity.h"
 #include "HookAdversity.h"
 #include "RainAdversity.h"
+#include "PidgeonAdversity.h"
 #include "GPadController.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up) : 
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp) : 
 	Component(ecs::AdversityManager),
 	tP1_(tp1), 
 	tP2_(tp2), 
 	cookerPool_(cp), 
+	firePool_(fp),
 	ingredientsPool_(ip), 
 	utensilsPool_(up), 
 	active_(false), 
 	playingWarning_(false), 
+	playingAdversity_(false),
 	warningRate_(100), 
 	justStarted_(true), 
 	lengthOfRumble_(100), 
-	rumbleCadence_(333)	{
+	rumbleCadence_(333),
+	finishedAdversities(false)
+	{
+		warningTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::WarningAdversity);
+
+		adversityTimer_ = new AdversityTimer();
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(adversityTimer_);
+
 		adversities_.push_back(new PlaneAdversity(this));
 		adversities_.push_back(new BurnedCookerAdversity(this));
 		adversities_.push_back(new HookAdversity(this));
 		adversities_.push_back(new RainAdversity(this));
+		adversities_.push_back(new PidgeonAdversity(this));
 
-		warningTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::WarningAdversity);
+		for (int i = 0; i < adversities_.size(); ++i) activeAdversities_.push_back(false);
 
-		rainTimer_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(rainTimer_);
-		rainWarning_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(rainWarning_);
-		planeTimer_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(planeTimer_);
-		planeWarning_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(planeWarning_);
-		hookTimer_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(hookTimer_);
-		hookWarning_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(hookWarning_);
-		burnCookerTimer_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(burnCookerTimer_);
-		burnedCookerWarning_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(burnedCookerWarning_);
-		adversityTimer_ = new AdversityTimer();
-		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(adversityTimer_);
-
-		for (int i = 0; i < 4; ++i) activeAdversities_.push_back(false);
+		nextAdversityTimer_ = new AdversityTimer();
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(nextAdversityTimer_);
+		nextWarningTimer_ = new AdversityTimer();
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(nextWarningTimer_);
 }
 
 void MultipleAdversityManager::update()
 {
+	if (finishedAdversities) return;	
+
 	if (justStarted_) {
 		startAdvesities();
 		justStarted_ = false;
@@ -60,41 +57,15 @@ void MultipleAdversityManager::update()
 	seeAdversityWarning();
 
 	for (int i = 0; i < activeAdversities_.size(); ++i) {
-		if (activeAdversities_[i]) adversities_[i]->update();
+		if (activeAdversities_[i])
+			adversities_[i]->update();
 	}
 }
 
 void MultipleAdversityManager::seeAdversityWarning() {
-	planeWarning_->update();
-	if (planeWarning_->isTimerEnd()) {
-		planeWarning_->timerReset();
-		playingWarning_ = true;
-		adversityTimer_->timerReset();
-		adversityTimer_->setTime(warningRate_);
-		adversityTimer_->timerStart();
-		startRumbleTime_ = SDL_GetTicks();
-	}
-	hookWarning_->update();
-	if (hookWarning_->isTimerEnd()) {
-		hookWarning_->timerReset();
-		playingWarning_ = true;
-		adversityTimer_->timerReset();
-		adversityTimer_->setTime(warningRate_);
-		adversityTimer_->timerStart();
-		startRumbleTime_ = SDL_GetTicks();
-	}
-	rainWarning_->update();
-	if (rainWarning_->isTimerEnd()) {
-		rainWarning_->timerReset();
-		playingWarning_ = true;
-		adversityTimer_->timerReset();
-		adversityTimer_->setTime(warningRate_);
-		adversityTimer_->timerStart();
-		startRumbleTime_ = SDL_GetTicks();
-	}
-	burnedCookerWarning_->update();
-	if (burnedCookerWarning_->isTimerEnd()) {
-		burnedCookerWarning_->timerReset();
+	nextWarningTimer_->update();
+	if (nextWarningTimer_->isTimerEnd()) {
+		nextWarningTimer_->timerReset();
 		playingWarning_ = true;
 		adversityTimer_->timerReset();
 		adversityTimer_->setTime(warningRate_);
@@ -144,60 +115,23 @@ void MultipleAdversityManager::playRumbles()
 }
 
 void MultipleAdversityManager::seeTimers() {
-	planeTimer_->update();
-
-	if (planeTimer_->isTimerEnd()) {
-		planeTimer_->timerReset();
-		activeAdversities_.at(ecs::AdversityID::PlaneAdversity) = true;
-		SDLGame::instance()->getAudioMngr()->playChannel(Resources::PlaneSound, 0, -1);
-		adversities_.at(ecs::AdversityID::PlaneAdversity)->reset();
+	nextAdversityTimer_->update();
+	if (nextAdversityTimer_->isTimerEnd() && !adversitiesQueue_.empty()) {
+		activeAdversities_.at(std::get<1>(adversitiesQueue_.front())) = true;
+		adversities_.at(std::get<1>(adversitiesQueue_.front()))->start();
 		playingWarning_ = false;
 		active_ = false;
-		if (!planeQueue.empty()) {
-			setTimerTime(ecs::AdversityID::PlaneAdversity, planeQueue.front());
-			planeQueue.pop();
-		}
-	}
+		int lastTime = std::get<0>(adversitiesQueue_.front());
+		adversitiesQueue_.pop();
 
-	hookTimer_->update();
+		if (!adversitiesQueue_.empty()) {
+			nextAdversityTimer_->timerReset();
+			nextAdversityTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - lastTime);
+			nextAdversityTimer_->timerStart();
 
-	if (hookTimer_->isTimerEnd()) {
-		hookTimer_->timerReset();
-		activeAdversities_.at(ecs::AdversityID::HookAdversity) = true;
-		adversities_.at(ecs::AdversityID::HookAdversity)->reset();
-		playingWarning_ = false;
-		active_ = false;
-		if (!hookQueue.empty()) {
-			setTimerTime(ecs::AdversityID::HookAdversity, hookQueue.front());
-			hookQueue.pop();
-		}
-	}
-
-	rainTimer_->update();
-
-	if (rainTimer_->isTimerEnd()) {
-		rainTimer_->timerReset();
-		activeAdversities_.at(ecs::AdversityID::RainAdversity) = true;
-		adversities_.at(ecs::AdversityID::RainAdversity)->reset();
-		playingWarning_ = false;
-		active_ = false;
-		if (!rainQueue.empty()) {
-			setTimerTime(ecs::AdversityID::RainAdversity, rainQueue.front());
-			rainQueue.pop();
-		}
-	}
-
-	burnCookerTimer_->update();
-
-	if (burnCookerTimer_->isTimerEnd()) {
-		burnCookerTimer_->timerReset();
-		activeAdversities_.at(ecs::AdversityID::CookersAdversity) = true;
-		adversities_.at(ecs::AdversityID::CookersAdversity)->reset();
-		playingWarning_ = false;
-		active_ = false;
-		if (!cookerQueue.empty()) {
-			setTimerTime(ecs::AdversityID::CookersAdversity, cookerQueue.front());
-			cookerQueue.pop();
+			nextWarningTimer_->timerReset();
+			nextWarningTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - lastTime - 2000);
+			nextWarningTimer_->timerStart();
 		}
 	}
 
@@ -205,6 +139,8 @@ void MultipleAdversityManager::seeTimers() {
 
 void MultipleAdversityManager::draw()
 {
+	if (finishedAdversities) return;
+
 	for (int i = 0; i < activeAdversities_.size(); ++i) {
 		if (activeAdversities_[i]) adversities_[i]->draw();
 	}
@@ -213,72 +149,32 @@ void MultipleAdversityManager::draw()
 
 void MultipleAdversityManager::startAdvesities()
 {
-	if (!planeQueue.empty()) { setTimerTime(ecs::AdversityID::PlaneAdversity, planeQueue.front()); planeQueue.pop(); }
-	if (!rainQueue.empty()) { setTimerTime(ecs::AdversityID::RainAdversity, rainQueue.front()); rainQueue.pop(); }
-	if (!cookerQueue.empty()) { setTimerTime(ecs::AdversityID::CookersAdversity, cookerQueue.front()); cookerQueue.pop(); }
-	if (!hookQueue.empty()) { setTimerTime(ecs::AdversityID::HookAdversity, hookQueue.front()); hookQueue.pop(); }
+	if (adversitiesQueue_.empty()) return;
+
+	nextWarningTimer_->timerReset();
+	nextWarningTimer_->setTime(std::get<0>(adversitiesQueue_.front()) - 2000);
+	nextWarningTimer_->timerStart();
+
+	nextAdversityTimer_->timerReset();
+	nextAdversityTimer_->setTime(std::get<0>(adversitiesQueue_.front()));
+	nextAdversityTimer_->timerStart();
 }
 
 void MultipleAdversityManager::stopAdversity(ecs::AdversityID i)
 {
 	activeAdversities_[i] = false;
-}
+	adversities_[i]->reset();
 
-void MultipleAdversityManager::setTimerTime(ecs::AdversityID id, int time)
-{
-	switch (id) {
-	case ecs::AdversityID::RainAdversity:
-		rainWarning_->timerReset();
-		rainWarning_->setTime(time);
-		rainWarning_->timerStart();
-		rainTimer_->timerReset();
-		rainTimer_->setTime(time + 2000);
-		rainTimer_->timerStart();
-		break;
-	case ecs::AdversityID::HookAdversity:
-		hookWarning_->timerReset();
-		hookWarning_->setTime(time);
-		hookWarning_->timerStart();
-		hookTimer_->timerReset();
-		hookTimer_->setTime(time + 2000);
-		hookTimer_->timerStart();
-		break;
-	case ecs::AdversityID::PlaneAdversity:
-		planeWarning_->timerReset();
-		planeWarning_->setTime(time);
-		planeWarning_->timerStart();
-		planeTimer_->timerReset();
-		planeTimer_->setTime(time + 2000);
-		planeTimer_->timerStart();
-		break;
-	case ecs::AdversityID::CookersAdversity:
-		burnCookerTimer_->timerReset();
-		burnedCookerWarning_->setTime(time);
-		burnedCookerWarning_->timerStart();
-		burnCookerTimer_->timerReset();
-		burnCookerTimer_->setTime(time + 2000);
-		burnCookerTimer_->timerStart();
-		break;
+	if (!adversitiesQueue_.empty()) return;
+
+	for (int i = 0; i < activeAdversities_.size(); ++i) {
+		if (activeAdversities_[i]) return;
 	}
+	
+	finishedAdversities = true;
 }
 
 void MultipleAdversityManager::addAdversityToQueue(ecs::AdversityID type, int time)
 {
-	switch (type)
-	{
-	case ecs::AdversityID::PlaneAdversity:
-		planeQueue.push(time);
-		break;
-	case ecs::AdversityID::RainAdversity:
-		rainQueue.push(time);
-		break;
-	case ecs::AdversityID::HookAdversity:
-		hookQueue.push(time);
-		break;
-	case ecs::AdversityID::CookersAdversity:
-		cookerQueue.push(time);
-		break;
-	default:
-		break;
-	}
+	adversitiesQueue_.push(tuple<int, ecs::AdversityID>(time, type));
 }
