@@ -38,6 +38,10 @@ void ButtonPadNavigation::AddButton(Entity* e, Entity* up, Entity* down, Entity*
 		}
 		focus = buttons.at(buttons.size()-1);
 	}
+	//EN caso de que lo que esté metiendo es un Button...NC le paso el padNAvigation para que mas  tarde sepa cambiar el foco en caso de ser necesario
+	ButtonBehaviourNC* b = GETCMP2(buttons.at(buttons.size() - 1).e, ButtonBehaviourNC);
+	if (b != nullptr)b->setButtonPadNavigation(this);
+
 }
 
 void ButtonPadNavigation::update() {
@@ -204,6 +208,31 @@ void ButtonPadNavigation::resetNavigation()
 	focus.down = nullptr;
 	focus.right = nullptr;
 	focus.left = nullptr;
+}
+
+void ButtonPadNavigation::setFocusOn(Entity* e)
+{
+	if (e != nullptr) {
+		ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+		ButtonBehaviourNC* c = GETCMP2(focus.e, ButtonBehaviourNC);
+
+		//A mi focus actual le aviso de que ya no lo es
+		if (b != nullptr)b->setFocusByController(false);
+		if (c != nullptr)c->setFocusByController(false);
+
+		int i = 0;
+		while (i < buttons.size() && buttons.at(i).e != e) {
+			i++;
+		}
+		//Al nuevo focus, el que me ha llegado, le indico que ahora es el focus
+		if (i < buttons.size() && buttons.at(i).e != nullptr) {
+			focus = buttons.at(i);
+			b = GETCMP2(focus.e, ButtonBehaviour);
+			c = GETCMP2(focus.e, ButtonBehaviourNC);
+			if (b != nullptr)b->setFocusByController(true);
+			if (c != nullptr)c->setFocusByController(true);
+		}
+	}
 }
 
 void ButtonPadNavigation::stopFocusButton(button b)
