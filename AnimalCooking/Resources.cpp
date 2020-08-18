@@ -72,6 +72,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	//---->Config<---------
 	
 	{Basic, Config_Background,"../AnimalCooking/resources/images/ConfigMenu/background.png"},
+	{Basic, Config_FullscreenFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRemPink.png"},
+	{Basic, Config_FullscreenUnFocusedText,"../AnimalCooking/resources/images/ConfigMenu/fullScreen.png"},
+	{Basic, Config_ReminderFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRemPink.png"},
+	{Basic, Config_ReminderUnFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRem.png"},
+	{Basic, Config_Tick,"../AnimalCooking/resources/images/ConfigMenu/buttonwithTick.png"},
+	{Basic, Config_UnTicked,"../AnimalCooking/resources/images/ConfigMenu/button.png"},
 	{Basic, Config_MusicIcon,"../AnimalCooking/resources/images/ConfigMenu/musicIcon.png"},
 	{Basic, Config_MusicVolumeTitle,"../AnimalCooking/resources/images/ConfigMenu/musicVolume.png"},
 	{Basic, Config_OptionsTitle,"../AnimalCooking/resources/images/ConfigMenu/options.png"},
@@ -353,8 +359,6 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, Config_BackButton,"../AnimalCooking/resources/images/ConfigMenu/backButton.png",1,3},
 	{Basic, Config_CerdoClick,"../AnimalCooking/resources/images/ConfigMenu/cerdoClick.png",1,3},
 	{Basic, Config_ChickenClick,"../AnimalCooking/resources/images/ConfigMenu/gallinaClick.png",1,3},
-	{Basic, Config_FullscreenButton,"../AnimalCooking/resources/images/ConfigMenu/fullScreenbutton.png",1,3},
-	{Basic, Config_ReminderButton,"../AnimalCooking/resources/images/ConfigMenu/keyRembutton.png",1,3},
 
 	{Basic, buttonGo,"../AnimalCooking/resources/images/ScreenLoader/buttonGo.png",1,3},
 	//---------

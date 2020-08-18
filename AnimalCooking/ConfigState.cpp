@@ -13,6 +13,7 @@
 #include "ButtonPadNavigation.h"
 #include "ImageViewer.h"
 #include "ButtonChangeOnClick.h"
+#include "ButtonCheckRenderer.h"
 
 
 ConfigState::ConfigState(AnimalCooking* ac) : State(ac),
@@ -195,20 +196,21 @@ void ConfigState::initButtons()
 		Vector2D(), 499, 90, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	res->addComponent<ButtonChangeOnClick>(game_->getIfFullscreen());
-	br = res->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_FullscreenButton), nullptr);
-	bb->setButtonRenderer(br);
+	ButtonCheckRenderer* bcr = res->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_Tick), game_->getTextureMngr()->getTexture(Resources::Config_UnTicked),
+		game_->getTextureMngr()->getTexture(Resources::Config_FullscreenFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_FullscreenUnFocusedText));
+	bb->setButtonCheckRenderer(bcr);
 
 	//Helper button
 	helper = stage->addEntity();
 	stage->addToGroup(helper, ecs::GroupID::ui);
 	helper->addComponent<Transform>(
-		Vector2D(203, 750),
+		Vector2D(175, 750),
 		Vector2D(), 499, 90, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
 	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
-	br = helper->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_ReminderButton), nullptr);
-	bb->setButtonRenderer(br);
-
+	bcr = helper->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_Tick), game_->getTextureMngr()->getTexture(Resources::Config_UnTicked),
+		game_->getTextureMngr()->getTexture(Resources::Config_ReminderFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_ReminderUnFocusedText));
+	bb->setButtonCheckRenderer(bcr);
 }
 
 void ConfigState::initSliders()

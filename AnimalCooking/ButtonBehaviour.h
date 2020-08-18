@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Transform.h"
 class ButtonRenderer;
+class ButtonCheckRenderer;
 class AnimalCooking;
 class ButtonBehaviour : public Component
 {
@@ -14,6 +15,7 @@ public:
 	void action();
 
 	void setButtonRenderer(ButtonRenderer* bR) { bRenderer_ = bR; }	
+	void setButtonCheckRenderer(ButtonCheckRenderer* bcr) { bcRenderer_ = bcr; }
 	const bool& getFocusByMouse() { return focusedByMouse_; }
 	const bool& getFocusByController() { return focusedByController_; }
 	void setFocusByController(bool f) { focusedByController_ = f; }	
@@ -27,5 +29,6 @@ private:
 	Transform* ownerTransform_;
 	AnimalCooking* ac_;
 	ButtonRenderer* bRenderer_;
+	ButtonCheckRenderer* bcRenderer_;
 };
 
