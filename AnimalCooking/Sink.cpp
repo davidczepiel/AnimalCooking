@@ -1,12 +1,12 @@
 #include "Sink.h"
 #include "GameConfig.h"
 
-Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng) :Entity(SDLGame::instance(),mng), Interactive(p1, p2,nullptr), 
+Sink::Sink(Vector2D pos,Transport* p1, Transport* p2, EntityManager* mng, Texture* text, Texture* textOn) :Entity(SDLGame::instance(),mng), Interactive(p1, p2,nullptr),
            nTries(), lastTry(), channel(SDLGame::instance()->getAudioMngr()->channels() - 1), 
            maxTries(SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES)) 
 {
 
-	sV = addComponent<SinkViewer>(this);
+	sV = addComponent<SinkViewer>(this,text,textOn);
 	position_ = pos;	
 }
 
@@ -34,6 +34,12 @@ void Sink::action1(int iDp) {
 			sV->setOnAction(false);
 			maxTries = SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES);
 		}	
+		else if (nTries >= maxTries && player->getObjectTypeInHands() == Resources::PickableType::Bucket) {
+			static_cast<Bucket*>(player->getObjectInHands())->fillBucket();
+			nTries = 0;
+			sV->setOnAction(false);
+			maxTries = SDLGame::instance()->getRandGen()->nextInt(config::SINK_MIN_TRIES, config::SINK_MAX_TRIES);
+		}
 	}
 	else {
 		nTries = 0;

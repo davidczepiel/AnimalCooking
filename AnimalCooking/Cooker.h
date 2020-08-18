@@ -32,7 +32,7 @@ public:
 	inline int getCookerType() { return (int)cookerType_; };
 
 protected:
-	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
+	Cooker(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e,string textureState);
 	void initTimer();
 
 	Texture* texture_;
@@ -45,11 +45,12 @@ protected:
 	Uint32 cookingTime_;
 	Uint32 lastTimeSound_;
 	Resources::Cookers cookerType_;
+	string textureState;
 };
 
 class Oven : public Cooker {
 public:
-	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
+	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e, string textureState_);
 
 	virtual void setEmptyTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
@@ -59,10 +60,28 @@ public:
 
 class Skillet : public Cooker {
 public:
-	Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e);
+	Skillet(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e, string textureState_);
 
-	virtual void setEmptyTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF); };
-	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); };
-	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); };
+	virtual void setEmptyTexture() override 
+	{ 
+		if(textureState=="corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFEsquina);
+		else if(textureState == "borde") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBorde);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF);
+	};
+
+	virtual void setBurnedTexture() override 
+	{ 
+		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
+		else if(textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
+	};
+
+	virtual void setCookingTexture() override 
+	{ 
+		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
+		else if (textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
+	};
+
 	virtual void setOverHeatedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 };

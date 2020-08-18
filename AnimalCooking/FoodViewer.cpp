@@ -14,6 +14,7 @@ void FoodViewer::draw()
 	for (auto& f : fp) {
 		if (f->getCanDraw())
 			f->draw();
+		
 	}
 }
 
