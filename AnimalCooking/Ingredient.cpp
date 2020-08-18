@@ -16,7 +16,7 @@ void Ingredient::render() const
 		if (lastVel_.getX() < 0) texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 1, 0, SDL_FLIP_HORIZONTAL);
 		else texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 1, 0);
 	}
-	else if (state == IngredientState::Walking || state == IngredientState::Escaping)
+	else if (state == IngredientState::Walking || state == IngredientState::Escaping || state==IngredientState::WallScaping)
 	{
 		if (vel_.getX() < 0) texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 0, 0, SDL_FLIP_HORIZONTAL);
 		else texture_->renderFrame(rect, int(((SDLGame::instance()->getTime() / config::ANIM_SPEED) % texture_->getNumRows())), 0, 0);
@@ -31,7 +31,7 @@ void Ingredient::onCollisionX() {
 		(pos_.getY() + (size_.getY() / 2)) - (trPlayer2->getPos().getY() + (trPlayer2->getH() / 2)));
 	double angleP1 = atan2(p1toIngredient.getY(), p1toIngredient.getX()) * (180 / M_PI);
 	double angleP2 = atan2(p2toIngredient.getY(), p2toIngredient.getX() * (180 / M_PI));
-	aiIngredient_->NotCorner(angleP1, angleP2, p1toIngredient,p2toIngredient, trPlayer1->getPos(), trPlayer2->getPos(), pos_,vel_, this);
+	aiIngredient_->NotCorner(angleP1, angleP2, p1toIngredient,p2toIngredient, this);
 	
 }
 //Si colisiona en vertical; llamado por game manager
