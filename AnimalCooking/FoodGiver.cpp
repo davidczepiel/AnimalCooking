@@ -3,7 +3,7 @@
 #include "Dish.h"
 #include "GPadController.h"
 
-FoodGiver::FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) :
+FoodGiver::FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) :
 	Interactive(p1, p2, nullptr), gameControl_(gameControl) {
 	feedbackVisual_ = nullptr;
 	position_ = pos;
@@ -11,9 +11,10 @@ FoodGiver::FoodGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, 
 }
 
 //-----------------------------
-RiceGiver::RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+RiceGiver::RiceGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl,Texture* t) : FoodGiver(pos, size, p1, p2, gameControl,t)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Arroz);
+	//texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Arroz);
+	texture_ = t;
 }
 
 void RiceGiver::action1(int player) {
@@ -55,9 +56,10 @@ void RiceGiver::action1(int player) {
 }
 
 //-----------------------------
-BreadBurgerGiver::BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+BreadBurgerGiver::BreadBurgerGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) : FoodGiver(pos, size, p1, p2, gameControl,t)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+	//texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+	texture_ = t;
 }
 
 void BreadBurgerGiver::action1(int player) {
@@ -99,9 +101,10 @@ void BreadBurgerGiver::action1(int player) {
 }
 
 //-----------------------------
-BreadHotDogGiver::BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+BreadHotDogGiver::BreadHotDogGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) : FoodGiver(pos, size, p1, p2, gameControl,t)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+	//texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+	texture_ = t;
 }
 
 void BreadHotDogGiver::action1(int player) {
@@ -143,9 +146,10 @@ void BreadHotDogGiver::action1(int player) {
 }
 //-----------------------------
 
-DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+DoughGiver::DoughGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) : FoodGiver(pos, size, p1, p2, gameControl,t)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
+	//texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
+	texture_ = t;
 }
 
 void DoughGiver::action1(int player) {
@@ -188,9 +192,10 @@ void DoughGiver::action1(int player) {
 }
 
 //-----------------------------
-DressingGiver::DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl) : FoodGiver(pos, size, p1, p2, gameControl)
+DressingGiver::DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) : FoodGiver(pos, size, p1, p2, gameControl,t)
 {
-	texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Aceite);
+	//texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Aceite);
+	texture_ = t;
 }
 
 void DressingGiver::action1(int player) {

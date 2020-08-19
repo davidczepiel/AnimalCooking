@@ -4,11 +4,11 @@
 #include "GPadController.h"
 #include "Dish.h"
 
-DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp) :
+DishStack::DishStack(Vector2D pos, int maxDishes_, Transport* t1_, Transport* t2_, EntityManager* mng_, DishPool* dp, FoodPool* fp,Texture* t) :
 	Entity(SDLGame::instance(), mng_), Interactive(t1_, t2_, nullptr), maxDishes(maxDishes_), dishPool(dp), foodPool(fp), dishSize_()
 {
 	position_ = pos;
-	addComponent<DishStackViewer>(this);
+	addComponent<DishStackViewer>(this,t);
 }
 
 

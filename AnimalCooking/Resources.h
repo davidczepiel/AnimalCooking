@@ -106,7 +106,10 @@ public:
 		SkilletOFF,
 		SkilletOFFEsquina,
 		SkilletOFFBorde,
+		SkilletOFFArribaDecoracion,
+		SkilletOFFArriba,
 		Platera,
+		PlateraBordeDerecha,
 		Muro,
 		ParedCocina,
 		Valla,
@@ -130,6 +133,8 @@ public:
 		FregaderoFlipON,
 		FregaderoAbajo,
 		FregaderoAbajoON,
+		FregaderoBordeIzq,
+		FregaderoBordeIzqON,
 		Panera,
 		Papelera,
 		CuadradoAux,
@@ -171,6 +176,7 @@ public:
 			EncimeraVConDecoracion,
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
+			EncimeraVertAbajo,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -330,6 +336,8 @@ public:
 		// images level specific
 		Arroz,
 		Aceite,
+		AceiteBordeDer,
+		AceiteBordeIzq,
 		EncimeraMasa,
 
 		//CreditState
@@ -347,6 +355,8 @@ public:
 		SkilletON,
 		SkilletONEsquina,
 		SkilletONBorde,
+		SkilletONArribaDecoracion,
+		SkilletONArriba,
 		SmokeBurned,
 		PigIdle,
         PigWalk,
