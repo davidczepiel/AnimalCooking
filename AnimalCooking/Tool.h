@@ -40,6 +40,7 @@ public:
 	void onDrop(bool onFloor) override;
 	void updating() { Pickable::update(); }
 	void render();
+	int getwaterStacks() { return waterStacks_; }
 protected:
 	int waterStacks_, maxStacks_;
 
