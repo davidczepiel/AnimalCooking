@@ -72,7 +72,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	//---->Config<---------
 	
 	{Basic, Config_Background,"../AnimalCooking/resources/images/ConfigMenu/background.png"},
-	{Basic, Config_FullscreenFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRemPink.png"},
+	{Basic, Config_FullscreenFocusedText,"../AnimalCooking/resources/images/ConfigMenu/fullScreenPink.png"},
 	{Basic, Config_FullscreenUnFocusedText,"../AnimalCooking/resources/images/ConfigMenu/fullScreen.png"},
 	{Basic, Config_ReminderFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRemPink.png"},
 	{Basic, Config_ReminderUnFocusedText,"../AnimalCooking/resources/images/ConfigMenu/keyRem.png"},
