@@ -126,12 +126,18 @@ void PlayerViewer::draw()
 	case Animator::States::IdleWithDirtyGrater:
 		setIdle(dest, 12, 13);
 		break;
+	case Animator::States::IdleWithFillCube:
+		setIdle(dest, 20, 21);
+		break;
+	case Animator::States::IdleWithEmptyCube:
+		setIdle(dest, 22, 23);
+		break;
 
 	case Animator::States::Walk:
-		setWalkOrAttack(dest, walkSpritesheet_,0, 1);		
+		setWalkOrAttack(dest, walkSpritesheet_, 0, 1);		
 		break;
 	case Animator::States::WalkWithKnife:
-		setWalkOrAttack(dest, walkSpritesheet_,2,3);
+		setWalkOrAttack(dest, walkSpritesheet_, 2, 3);
 		break;
 	case Animator::States::WalkWithMace:
 		setWalkOrAttack(dest, walkSpritesheet_, 4, 5);
@@ -140,7 +146,7 @@ void PlayerViewer::draw()
 		setWalkOrAttack(dest, walkSpritesheet_, 8, 9);
 		break;
 	case Animator::States::WalkWithGrater:
-		setWalkOrAttack(dest, walkSpritesheet_,10,11);
+		setWalkOrAttack(dest, walkSpritesheet_, 10, 11);
 		break;
 	case Animator::States::WalkWithDishFood:
 		setWalkOrAttack(dest, walkSpritesheet_, 6, 7);
@@ -157,6 +163,12 @@ void PlayerViewer::draw()
 	case Animator::States::WalkWithDirtyGrater:
 		setWalkOrAttack(dest, walkSpritesheet_, 12, 13);
 		break;
+	case Animator::States::WalkWithFillCube:
+		setWalkOrAttack(dest, walkSpritesheet_, 22, 23);
+		break;
+	case Animator::States::WalkWithEmptyCube:
+		setWalkOrAttack(dest, walkSpritesheet_, 20, 21);
+		break;
 
 	case Animator::States::AttackWithKnife:
 		setWalkOrAttack(dest,attackSpritesheet_ ,0, 1);
@@ -169,6 +181,9 @@ void PlayerViewer::draw()
 		break;
 	case Animator::States::AttackWithGrater:
 		setWalkOrAttack(dest, attackSpritesheet_, 6, 7);
+		break;
+	case Animator::States::UseCube:
+		setWalkOrAttack(dest, attackSpritesheet_, 8, 9);
 		break;
 
 	default:

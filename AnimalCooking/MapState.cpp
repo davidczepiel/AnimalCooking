@@ -10,19 +10,21 @@
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
-	nameAsker(nullptr),
+	nameAsker(nullptr),	
 	infoBox_(nullptr),
 	playButton_(nullptr),
+	nextScreenButton_(nullptr),
+	PreviousScreenButton_(nullptr),
 	returnButton_(nullptr),
 	levelButtonsPool_(),
 	padNavigation_(nullptr),
-	bgText_(nullptr),
-	housesBackgroundText_(nullptr),
+	bgText_(vector<Texture*>()),
 	playButtonText_(nullptr),
 	chooser(nullptr),
 	profileAskers(),
 	maxLevels_(0),
 	currentLevel_(0),
+	levelPacks_(5),
 	lastLevel_(0),
 	playerName_("")
 {
@@ -31,8 +33,8 @@ MapState::MapState(AnimalCooking* ac) :
 	casillaX = game_->getCasillaX();
 	casillaY = game_->getCasillaY();
 	//Background textures
-	bgText_ = game_->getTextureMngr()->getTexture(Resources::MapStateBackground);
-	housesBackgroundText_ = game_->getTextureMngr()->getTexture(Resources::MapStateHousesBackground);
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
@@ -59,7 +61,7 @@ void MapState::chooseOption() {
 			Vector2D(),
 			6 * casillaX,
 			1.5 * casillaY,
-			0);		
+			0);
 		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
 		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
 		bb->setButtonRenderer(br);
@@ -94,9 +96,10 @@ void MapState::chooseOption() {
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
 	pad = stage->addEntity();
-	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
+
 
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
+		padNavigation_ = pad->addComponent<ButtonPadNavigation>();
 		if (newGameButton_ && loadGameButton_) {
 			padNavigation_->AddButton(loadGameButton_, exit, newGameButton_, exit, nullptr);
 			padNavigation_->AddButton(newGameButton_, loadGameButton_, nullptr, exit, nullptr);
@@ -119,40 +122,75 @@ void MapState::init() {
 
 void MapState::draw()
 {
-	bgText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
-	housesBackgroundText_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	if (transition_) {
+		SDL_Rect aux = RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight());
+		if (transitionDirection_ < 0) {
+			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			bgText_[currentMapScene_ - 1]->render(RECT(xTransition_ - game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+		}
+		else {
+			bgText_[currentMapScene_]->render(RECT(xTransition_, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+			bgText_[currentMapScene_ + 1]->render(RECT(xTransition_ + game_->getWindowWidth(), 0, game_->getWindowWidth(), game_->getWindowHeight()));
+		}
+	}
+	else {
+		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	}
 	State::draw();
 }
 
 void MapState::update()
 {
-	GPadController* gpad = GPadController::instance();
-	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+	if (transition_) {
 
-		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
-			if (playButton_ != nullptr)
-				GETCMP2(playButton_, ButtonBehaviour)->action();
-			else if (nameAsker != nullptr) {
-				NameAsker* na = GETCMP2(nameAsker, NameAsker);
-				if (na->getActive() && na->getName().size() > 1) {
-					na->setActive(false);
-					setName(na->getName());
-					setState();
+		xTransition_ += transitionVelocity_ * transitionDirection_;
+		if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
+			xTransition_ = 0;
+			transition_ = false;
+			for (auto& e : levelButtonsPool_) {
+				GETCMP2(e, ButtonRendererHouse)->setActive(true);
+			}
+			GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
+			GETCMP2(returnButton_, ButtonRenderer)->setActive(true);
+			GETCMP2(playButton_, ButtonRendererHouse)->setActive(true);
+		}
+	}
+	else {
+		GPadController* gpad = GPadController::instance();
+		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+
+			if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
+				if (playButton_ != nullptr)
+					GETCMP2(playButton_, ButtonBehaviour)->action();
+				else if (nameAsker != nullptr) {
+					NameAsker* na = GETCMP2(nameAsker, NameAsker);
+					if (na->getActive() && na->getName().size() > 1) {
+						na->setActive(false);
+						setName(na->getName());
+						setState();
+					}
 				}
 			}
-		}
-		else if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
-			backButtonCallback(getAnimalCooking());
-		}
+			else if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+				backButtonCallback(getAnimalCooking());
+			}
 
+		}
+		for (auto& e : stage->getEntites()) {
+			if (!hasToBreak)
+				e->update();
+			else break;
+		}
+		hasToBreak = false;
 	}
-	for (auto& e : stage->getEntites()) {
-		if (!hasToBreak)
-			e->update();
-		else break;
-	}
-	hasToBreak = false;
+	/*if (!transition_) return;
 
+
+	xTransition_ += transitionVelocity_ * transitionDirection_;
+	if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
+		xTransition_ = 0;
+		transition_ = false;
+	}*/
 }
 
 
@@ -167,7 +205,7 @@ void MapState::askProfile()
 {
 	MapConfig mapCFG = (playerName_);
 	vector<string> profiles = mapCFG.getProfiles();
-	padNavigation_->resetNavigation();
+	if(padNavigation_!= nullptr) padNavigation_->resetNavigation();
 	if (profiles.size() > 5) { // En dos columnas
 		for (int i = 0; i < profiles.size(); ++i) {
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
@@ -202,7 +240,7 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
-		prepareNavPadFewProfiles(true);
+		if (padNavigation_ != nullptr) prepareNavPadFewProfiles(true);
 	}
 	else { // Una columna
 		for (int i = 0; i < profiles.size(); ++i) {
@@ -233,7 +271,7 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
-		prepareNavPadFewProfiles(false);
+		if (padNavigation_ != nullptr) prepareNavPadFewProfiles(false);
 	}
 }
 
@@ -293,6 +331,42 @@ void MapState::removeProfile(const string& name)
 			GETCMP2(profileAskers[i - 1], ButtonRenderer)->setActive(false);
 		}
 	}
+}
+
+void MapState::nextScreen()
+{
+	if (currentMapScene_ >= bgText_.size() - 1) return;
+
+	transition_ = true;
+	transitionDirection_ = -1;
+	xTransition_ = game_->getWindowWidth();
+	currentMapScene_++;
+	for (auto& e:levelButtonsPool_)
+	{
+		GETCMP2(e, ButtonRendererHouse)->setActive(false);
+	}
+	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
+	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
+	refreshHousesAndButtons();
+}
+
+void MapState::previousScreen()
+{
+	if (currentMapScene_ < 1) return;
+
+	transition_ = true;
+	transitionDirection_ = 1;
+	xTransition_ = -game_->getWindowWidth();
+	currentMapScene_--;
+	for (auto& e : levelButtonsPool_)
+	{
+		GETCMP2(e, ButtonRendererHouse)->setActive(false);
+	}
+	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
+	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
+	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
+	refreshHousesAndButtons();
 }
 
 void MapState::setState() {
@@ -358,12 +432,45 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
 
-	for (int x = 0; x < levelinfos_->size(); x++) {
+	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
 		levelButtonsPool_.back()->addComponent<Transform>(transforms_[x]);
 		ButtonBehaviourNC* bb = levelButtonsPool_.back()->addComponent<ButtonBehaviourNC>(infoBox_, levelinfos_->at(x));
 		ButtonRendererHouse* br = levelButtonsPool_.back()->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapRestaurantButton), nullptr, levelinfos_->at(x));
 		stage->addToGroup(levelButtonsPool_.back(), ecs::GroupID::topLayer);
+	}
+
+	nextScreenButton_ = stage->addEntity();
+	Texture* aux = game_->getTextureMngr()->getTexture(Resources::buttonGo);
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth() / 2, (game_->getWindowHeight() / 2) - (aux->getHeight() / 2)), Vector2D(0, 0), aux->getWidth() / 2, aux->getHeight() / 2);
+	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
+	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
+	bb->setButtonRenderer(br);
+	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
+
+	PreviousScreenButton_ = stage->addEntity();
+	PreviousScreenButton_->addComponent<Transform>(Vector2D(0, (game_->getWindowHeight() / 2) - (aux->getHeight() / 2)), Vector2D(0, 0), aux->getWidth() / 2, aux->getHeight() / 2);
+	 bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
+	 br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
+	bb->setButtonRenderer(br);
+	stage->addToGroup(PreviousScreenButton_, ecs::GroupID::topLayer);
+
+	aux = nullptr;
+	bb = nullptr;
+	br = nullptr;
+}
+
+void MapState::refreshHousesAndButtons()
+{
+	MapConfig aux(playerName_,false);
+	for (int i = 0; i < levelPacks_; i++)
+	{
+		int newI = currentMapScene_ * levelPacks_ + i;
+		GETCMP2(levelButtonsPool_.at(i), ButtonBehaviourNC)->setLevelInfo(levelinfos_->at(newI));
+		Transform* levelITransform = GETCMP2(levelButtonsPool_.at(i), Transform);
+		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
+		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
+		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
 	}
 }
 
@@ -413,6 +520,17 @@ void MapState::backButtonCallback(AnimalCooking* ac) {
 	SDLGame::instance()->getFSM()->popState();
 }
 
+void MapState::nextScreenCallBack(AnimalCooking* ac) {
+	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	ms->nextScreen();
+}
+
+void MapState::previousScreenCallBack(AnimalCooking* ac)
+{
+	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
+	ms->previousScreen();
+}
+
 void MapState::configPadNavigation() {
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
 
@@ -420,12 +538,12 @@ void MapState::configPadNavigation() {
 		padNavigation_->resetNavigation();
 
 		int i = 0;
-		while (i < levelinfos_->size() && levelinfos_->at(i)->unlocked) {
+		while (i < levelPacks_ && levelinfos_->at(i)->unlocked) {
 			Entity* behind = nullptr;
 			Entity* forward = nullptr;
 			if (i > 0 && levelinfos_->at(i - 1)->unlocked)
 				behind = levelButtonsPool_.at(i - 1);
-			if (i < levelinfos_->size() - 1 && levelinfos_->at(i + 1)->unlocked)
+			if (i < levelPacks_ - 1 && levelinfos_->at(i + 1)->unlocked)
 				forward = levelButtonsPool_.at(i + 1);
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;

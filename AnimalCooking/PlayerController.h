@@ -31,7 +31,8 @@ private:
 	bool dpadArrosNotUsed();
 	void keyUpdate();
 	void setUtensilState(Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4);
-	void setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s, Animator::States u5, Animator::States u6, Animator::States u7, Animator::States u8);
+	void setAnimState(Animator::States d, Animator::States u1, Animator::States u2, Animator::States u3, Animator::States u4, Animator::States s, Animator::States u5, Animator::States u6, Animator::States u7, Animator::States u8, Animator::States b1, Animator::States b2);
+	void setBucketState(Animator::States b1, Animator::States b2);
 
 	MovementKeys movKeys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
