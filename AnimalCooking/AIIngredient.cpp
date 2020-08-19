@@ -37,9 +37,9 @@ void AIIngredient::updateIngredientState(Ingredient* i) {
 		i->setLastVel(vel);
 	}
 	else if (distance2 < rangeX && distance2 < rangeY && state != IngredientState::WallScaping) {
-		i->setState(Escaping);
-		vel = vel + Vector2D((i->getPos() - t2_->getPos()).normalize() * i->getMaxVel());
-		i->setLastVel(vel);
+i->setState(Escaping);
+vel = vel + Vector2D((i->getPos() - t2_->getPos()).normalize() * i->getMaxVel());
+i->setLastVel(vel);
 	}
 
 	if (state == IngredientState::Idle && timer.isTimerEnd()) {
@@ -88,7 +88,7 @@ Vector2D AIIngredient::calculateNewVel(Ingredient* i) {
 	return newVel;
 }
 
-void AIIngredient::NotCorner(double player1Angle, double player2Angle, Vector2D p1toIngredient, Vector2D p2toIngredient, Ingredient* ing)
+void AIIngredient::NotCorner(Vector2D p1toIngredient, Vector2D p2toIngredient, Ingredient* ing)
 {
 	if (ing->getIngredientState() != IngredientState::WallScaping) {
 		int winh = SDLGame::instance()->getWindowHeight();
@@ -106,65 +106,102 @@ void AIIngredient::NotCorner(double player1Angle, double player2Angle, Vector2D 
 		double distance2 = (player2Pos - ing->getPos()).magnitude();
 		if (ingPos.getX() >= 8 * casillaX && ingPos.getX() <= 9 * casillaX)//a la izquierda
 		{
-			if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) ||//el player 1 bloquea arriba a la derecha
-				((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea arriba a la derecha
+			if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)))//el player 1 bloquea arriba a la derecha
 			{
 				Vector2D abajo(0, 1);
 				fleeDir.set(abajo.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre abajo y la dirección hacia el player
 			}
-			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) || //el player 1 bloquea abajo a la derecha
-				((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea abajo a la derecha
+			else if ((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea arriba a la derecha
+			{
+				Vector2D abajo(0, 1);
+				fleeDir.set(abajo.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre abajo y la dirección hacia el player
+
+			}
+			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY))) //el player 1 bloquea abajo a la derecha
 			{
 				Vector2D arriba(0, -1);
 				fleeDir.set(arriba.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre arriba y la dirección hacia el player
 			}
+			else if ((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea abajo a la derecha
+			{
+				Vector2D arriba(0, -1);
+				fleeDir.set(arriba.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre arriba y la dirección hacia el player
 
+			}
 		}
 		else if (ingPos.getX() >= winw - casillaX && ingPos.getX() <= winw)//a la derecha
 		{
-			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) ||//el player 1 bloquea arriba a la izquierda
-				((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea arriba a la izquierda
+			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)))//el player 1 bloquea arriba a la izquierda
 			{
 				Vector2D abajo(0, 1);
 				fleeDir.set(abajo.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre abajo y la dirección hacia el player
 			}
-			else if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) || //el player 1 bloquea abajo a la izquierda
-				((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea abajo a la izquierda
+			else if ((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea arriba a la izquierda
+			{
+				Vector2D abajo(0, 1);
+				fleeDir.set(abajo.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre abajo y la dirección hacia el player
+
+}
+			else if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)))//el player 1 bloquea abajo a la izquierda
 			{
 				Vector2D arriba(0, -1);
 				fleeDir.set(arriba.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre arriba y la dirección hacia el player
 			}
+			else if ((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea abajo a la izquierda
+			{
+				Vector2D arriba(0, -1);
+				fleeDir.set(arriba.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre arriba y la dirección hacia el player
 
+			}
 
 		}
 		else if (ingPos.getY() < casillaY)//arriba
 		{
-			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) ||//el player 1 bloquea abajo a la izquierda
-				((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea abajoa la izquierda
+			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)))//el player 1 bloquea abajo a la izquierda
 			{
 				Vector2D derecha(1, 0);
 				fleeDir.set(derecha.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre derecha y la dirección hacia el player
 			}
-			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) || //el player 1 bloquea abajo a la derecha
-				((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea abajo a la derecha
+			else if ((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea abajoa la izquierda
+			{
+				Vector2D derecha(1, 0);
+				fleeDir.set(derecha.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre derecha y la dirección hacia el player
+			}
+			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() >= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY))) //el player 1 bloquea abajo a la derecha
 			{
 				Vector2D izquierda(-1, 0);
 				fleeDir.set(izquierda.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre izquierda y la dirección hacia el player
+			}
+			else if ((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() >= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)) {	//el player 2 bloquea abajo a la derecha
+				{
+					Vector2D izquierda(-1, 0);
+					fleeDir.set(izquierda.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre izquierda y la dirección hacia el playe
+				}
 			}
 		}
 		else if (ingPos.getY() > 6 * casillaY)//abajo
 		{
-			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) ||//el player 1 bloquea arriba a la izquierda
-				((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea arriba ala izquierda
+			if (((player1Pos.getX() <= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)))//el player 1 bloquea arriba a la izquierda
 			{
 				Vector2D derecha(1, 0);
 				fleeDir.set(derecha.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre derecha y la dirección hacia el player
 			}
-			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY)) || //el player 1 bloquea arriba a la derecha
-				((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)))	//el player 2 bloquea arriba a la derecha
+			else if ((player2Pos.getX() <= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY))	//el player 2 bloquea arriba ala izquierda
+			{
+				Vector2D derecha(1, 0);
+				fleeDir.set(derecha.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre derecha y la dirección hacia el player
+
+			}
+			else if (((player1Pos.getX() >= ingPos.getX() && player1Pos.getY() <= ingPos.getY()) && (distance1 <= rangeX && distance1 <= rangeY))) //el player 1 bloquea arriba a la derecha
 			{
 				Vector2D izquierda(-1, 0);
 				fleeDir.set(izquierda.normalize() + (p1toIngredient * -1).normalize());//bisectriz entre izquierda y la dirección hacia el player
+			}
+			else if ((player2Pos.getX() >= ingPos.getX() && player2Pos.getY() <= ingPos.getY()) && (distance2 <= rangeX && distance2 <= rangeY)) { //el player 2 bloquea arriba a la derecha
+
+				Vector2D izquierda(-1, 0);
+				fleeDir.set(izquierda.normalize() + (p2toIngredient * -1).normalize());//bisectriz entre izquierda y la dirección hacia el player
+
 			}
 		}
 		ing->setState(WallScaping);
@@ -173,6 +210,35 @@ void AIIngredient::NotCorner(double player1Angle, double player2Angle, Vector2D 
 	}
 }
 
-void AIIngredient::Corner()
+void AIIngredient::Corner(Ingredient* ing)
 {
+		Vector2D fleeDir(ing->getVel().normalize());
+		Vector2D p1Pos = t1_->getPos();
+		Vector2D p2Pos = t2_->getPos();
+		Vector2D ingPos = ing->getPos();
+		double distance1 = (p1Pos - ing->getPos()).magnitude();
+		double distance2 = (p2Pos - ing->getPos()).magnitude();
+		double casillaY = SDLGame::instance()->getCasillaY();
+		double casillaX = SDLGame::instance()->getCasillaX();
+		int winw = SDLGame::instance()->getWindowWidth();
+		//ingrediente esquina de arriba y el jugador tapa el acceso a la otra esquina de arriba
+		if (ingPos.getY() < casillaY && ((distance1 <= rangeX && distance1 <= rangeY) || (distance2 <= rangeX && distance2 <= rangeY)) && (p1Pos.getY() < 1.5 * casillaY || p2Pos.getY() < 1.5 * casillaY))
+			fleeDir.set(0, 1);
+		//ingrediente esquina de abajo y el jugador tapa el acceso a la otra esquina de abajo
+		else if (ingPos.getY() < casillaY && ((distance1 <= rangeX && distance1 <= rangeY) || (distance2 <= rangeX && distance2 <= rangeY)) && (p1Pos.getY() > 5.5 * casillaY || p2Pos.getY() > 5.5 * casillaY))
+			fleeDir.set(0, -1);
+		//íngrediente esquina izquierda y player en pared izquierda
+		else if ((ingPos.getX() >= 8 * casillaX && ingPos.getX() <= 9 * casillaX) && ((distance1 <= rangeX && distance1 <= rangeY) || (distance2 <= rangeX && distance2 <= rangeY))
+			&& ((p1Pos.getX() >= 8 * casillaX && p1Pos.getX() <= 9 * casillaX) || (p2Pos.getX() >= 8 * casillaX && p2Pos.getX() <= 9 * casillaX)))
+			fleeDir.set(1, 0);
+		//íngrediente esquina derecha y player en pared derecha
+		else if ((ingPos.getX() >= winw - casillaX && ingPos.getX() <= winw) && ((distance1 <= rangeX && distance1 <= rangeY) || (distance2 <= rangeX && distance2 <= rangeY))
+			&& ((p1Pos.getX() >= winw - casillaX && p1Pos.getX() <= winw) || (p2Pos.getX() >= winw - casillaX && p2Pos.getX() <= winw)))
+			fleeDir.set(-1, 0);
+		
+		ing->setState(WallScaping);
+		ing->getWallScapingTimer().timerStart();
+		ing->setVel(fleeDir * ing->getVel().magnitude());
+		cout << "hey" << endl;
 }
+

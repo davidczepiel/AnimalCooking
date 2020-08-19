@@ -29,9 +29,9 @@ void Ingredient::onCollisionX() {
 		(pos_.getY() + (size_.getY() / 2)) - (trPlayer1->getPos().getY() + (trPlayer1->getH() / 2)));
 	Vector2D p2toIngredient((pos_.getX() + (size_.getX() / 2)) - (trPlayer2->getPos().getX() + (trPlayer2->getW() / 2)),
 		(pos_.getY() + (size_.getY() / 2)) - (trPlayer2->getPos().getY() + (trPlayer2->getH() / 2)));
-	double angleP1 = atan2(p1toIngredient.getY(), p1toIngredient.getX()) * (180 / M_PI);
-	double angleP2 = atan2(p2toIngredient.getY(), p2toIngredient.getX() * (180 / M_PI));
-	aiIngredient_->NotCorner(angleP1, angleP2, p1toIngredient,p2toIngredient, this);
+	/*double angleP1 = atan2(p1toIngredient.getY(), p1toIngredient.getX()) * (180 / M_PI);
+	double angleP2 = atan2(p2toIngredient.getY(), p2toIngredient.getX() * (180 / M_PI));*/
+	aiIngredient_->NotCorner(p1toIngredient,p2toIngredient, this);
 	
 }
 //Si colisiona en vertical; llamado por game manager
@@ -41,7 +41,7 @@ void Ingredient::onCollisionY() {
 
 void Ingredient::onCollisionXY()
 {
-	aiIngredient_->Corner();
+	aiIngredient_->Corner(this);
 }
 
 void Ingredient::destroy(Resources::UtensilType utensilio)
