@@ -7,7 +7,7 @@
 class DishStackViewer : public Component
 {
 public:
-	DishStackViewer(Interactive* i);
+	DishStackViewer(Interactive* i, Texture* t);
 	~DishStackViewer() {}
 
 	void init()override;

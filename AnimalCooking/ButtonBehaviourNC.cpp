@@ -52,6 +52,8 @@ void ButtonBehaviourNC::update()
 		if (SDL_PointInRect(&mousePosition, &buttonRect)) {
 			focusedByMouse_ = true;
 			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
+				//En caso de que me de el raton hay que cambiar el foco de lugar
+				butPadNav_->setFocusOn(entity_);
 				action();
 				if (bRenderer_) bRenderer_->clicked();
 			}

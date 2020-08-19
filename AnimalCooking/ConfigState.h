@@ -17,6 +17,8 @@ public:
 	virtual void update();
 	virtual void draw();
 private:
+	void drawNoInteractuables();
+
 	void saveToFile();
 	void savePlayer(ofstream& f, Uint8 player, const config::Options& o);
 	void saveVolumeSetting(ofstream& f);
@@ -35,7 +37,6 @@ private:
 	static void helperButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
 
-	Texture* textSliderMusic, * textSliderSound;
 	Entity* salir, * helper, * res, * sliderTop, * sliderBot, * changeP1, * changeP2;
 
 

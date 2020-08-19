@@ -70,9 +70,30 @@ public:
 		GPad_back,
 
 		//---->Config<---------
-		SliderBackground,
-		SliderMovPoint,
-		ConfigBackground,
+		Config_BackButton,
+		Config_Background,
+		Config_CerdoClick,
+		Config_ChickenClick,
+		Config_FullscreenFocusedText,
+		Config_FullscreenUnFocusedText,
+		Config_ReminderFocusedText,
+		Config_ReminderUnFocusedText,
+		Config_Tick,
+		Config_UnTicked,
+		Config_MusicIcon,
+		Config_MusicVolumeTitle,
+		Config_OptionsTitle,
+		Config_Panel,
+		Config_Player1,
+		Config_Player2,
+		Config_SliderMovPoint,
+		Config_SliderMovPointSelected,
+		Config_Slider,
+		Config_SliderSelected,
+		Config_SoundIcon,
+		Config_SoundVolumeTitle,
+
+
 		//---->Creditos<-----
 		LogoTenByTen,
 
@@ -84,7 +105,10 @@ public:
 		SkilletOFF,
 		SkilletOFFEsquina,
 		SkilletOFFBorde,
+		SkilletOFFArribaDecoracion,
+		SkilletOFFArriba,
 		Platera,
+		PlateraBordeDerecha,
 		Muro,
 		ParedCocina,
 		Valla,
@@ -108,6 +132,8 @@ public:
 		FregaderoFlipON,
 		FregaderoAbajo,
 		FregaderoAbajoON,
+		FregaderoBordeIzq,
+		FregaderoBordeIzqON,
 		Panera,
 		Papelera,
 		CuadradoAux,
@@ -149,6 +175,7 @@ public:
 			EncimeraVConDecoracion,
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
+			EncimeraVertAbajo,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -308,6 +335,8 @@ public:
 		// images level specific
 		Arroz,
 		Aceite,
+		AceiteBordeDer,
+		AceiteBordeIzq,
 		EncimeraMasa,
 
 		//CreditState
@@ -325,6 +354,8 @@ public:
 		SkilletON,
 		SkilletONEsquina,
 		SkilletONBorde,
+		SkilletONArribaDecoracion,
+		SkilletONArriba,
 		SmokeBurned,
 		PigIdle,
         PigWalk,
@@ -353,10 +384,6 @@ public:
 		Explosion,
 		// text
 		Back,
-		ToggleFullscreen,
-		ToggleHelper,
-		MusicVolume,
-		SoundVolume,
 		PickUpText,
 		AttackText,
 		OpenText,
@@ -461,6 +488,7 @@ public:
 		QuarkCheese100,
 		QuarkCheese200,
 		QuarkCheese70,
+		QuarkCheese62,
 		QuarkCheese50
 	};
 

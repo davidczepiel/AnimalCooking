@@ -6,12 +6,13 @@
 class KeyboardKeySwitcherViewer : public Component
 {
 public:
-	KeyboardKeySwitcherViewer() : Component(ecs::KeyboardKeySwitcherViewer), t(nullptr), logic_(nullptr) {}
+	KeyboardKeySwitcherViewer(Texture* clickTexture) : Component(ecs::KeyboardKeySwitcherViewer), t(nullptr), logic_(nullptr), clickTexture_(clickTexture){}
 	void init() override;
 	void draw() override;
 private:
 	Transform* t;
 	KeyboardKeySwitcher* logic_;
+	Texture* clickTexture_;
 };
 
 

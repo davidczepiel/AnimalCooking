@@ -2,14 +2,14 @@
 #include"Entity.h"
 #include "SDL_macros.h"
 
-DishStackViewer::DishStackViewer(Interactive* i) : Component(ecs::DishStackViewer), entity(i)
+DishStackViewer::DishStackViewer(Interactive* i, Texture* t) : Component(ecs::DishStackViewer), entity(i)
 {
-
+	stack = t;
 }
 
 void DishStackViewer::init()
 {
-	stack = game_->getTextureMngr()->getTexture(Resources::Platera);
+	//stack = game_->getTextureMngr()->getTexture(Resources::Platera);
 }
 
 void DishStackViewer::draw()

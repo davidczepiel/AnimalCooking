@@ -25,10 +25,14 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 		initializeComponent(components[i].as_string(), poolPlatos);
 	}
 
+	Texture* t = nullptr;
+	if(jsonLevel["DishStack"]["texture"].as_string() == "BordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlateraBordeDerecha);
+	else t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Platera);
+
 	//DishStack
 	DishStack* dish = new DishStack(Vector2D(jsonLevel["DishStack"]["pos"]["x"].as_double() * casillaX,
 		jsonLevel["DishStack"]["pos"]["y"].as_double() * casillaY),
-		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp, fp);
+		jsonLevel["DishStack"]["maxDishes"].as_int(), GIVETRANSPORT, em, dp, fp,t);
 	em->addEntity(dish);
 	em->addToGroup(dish, CASTID(jsonGeneral["DishStack"]["Layer"].as_int()));
 

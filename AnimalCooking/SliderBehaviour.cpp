@@ -9,8 +9,8 @@ void SliderBehaviour::init()
 
 	rectMovePoint.x = transform->getPos().getX() + (transform->getW() / 2);
 	rectMovePoint.y = transform->getPos().getY() + (transform->getH() / 2);
-	rectMovePoint.w = (int)(transform->getW() / 5);
-	rectMovePoint.h = transform->getH() * 2;
+	rectMovePoint.w = 25;
+	rectMovePoint.h = 54;
 }
 
 void SliderBehaviour::update()

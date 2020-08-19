@@ -66,6 +66,8 @@ public:
 	{ 
 		if(textureState=="corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFEsquina);
 		else if(textureState == "borde") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBorde);
+		else if(textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArriba);
+		else if(textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArribaDecoracion);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF);
 	};
 
@@ -73,6 +75,8 @@ public:
 	{ 
 		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
 		else if(textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
+		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
+		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
@@ -80,6 +84,8 @@ public:
 	{ 
 		if (textureState == "corner")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquina);
 		else if (textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
+		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
+		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 

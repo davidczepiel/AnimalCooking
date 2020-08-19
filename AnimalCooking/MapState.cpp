@@ -395,7 +395,7 @@ void MapState::setState() {
 	playButton_->addComponent<ButtonRendererHouse>(game_->getTextureMngr()->getTexture(Resources::MapStatePlayButton), playButtonText_, game_->getLevelInfos()->at(0));
 	stage->addToGroup(playButton_, ecs::GroupID::topLayer);
 	stage->addToGroup(infoBox_, ecs::GroupID::ui);
-	infoBox_->addComponent<MapInfoBoxViewer>();
+	infoBox_->addComponent<MapInfoBoxViewer>(GETCMP2(playButton_, Transform));
 
 	//Exit button
 	returnButton_ = stage->addEntity();

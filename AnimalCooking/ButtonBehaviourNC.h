@@ -5,6 +5,7 @@
 #include <functional>
 class ButtonRenderer;
 class AnimalCooking;
+class ButtonPadNavigation;
 
 class ButtonBehaviourNC : public Component{
 public:
@@ -23,6 +24,7 @@ public:
 	inline bool isActive() { return active_; }
 	inline void setActive(bool active) { active_ = active; }
 	inline const string& getName() const { return name_; }
+	void setButtonPadNavigation(ButtonPadNavigation* b) { butPadNav_ = b; }
 
 private:
 	levelInfo* mapInfo_;
@@ -30,6 +32,7 @@ private:
 	Transform* ownerTransform_;
 	AnimalCooking* ac_;
 	ButtonRenderer* bRenderer_;
+	ButtonPadNavigation* butPadNav_;
 	string name_;
 
 	bool active_;
