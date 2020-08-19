@@ -174,6 +174,7 @@
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonChangeOnClick.h" />
+    <ClInclude Include="ButtonCheckRenderer.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="ButtonRendererHouse.h" />
@@ -336,6 +337,7 @@
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
+    <ClCompile Include="ButtonCheckRenderer.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="ButtonRendererHouse.cpp" />

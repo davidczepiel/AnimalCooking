@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "AnimalCooking.h"
 #include "ButtonRenderer.h"
+#include "ButtonCheckRenderer.h"
 
 ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback,AnimalCooking* ac) : Component(ecs::ButtonBehaviour)
 {
@@ -13,6 +14,7 @@ ButtonBehaviour::ButtonBehaviour(CallBackOnClick* callback,AnimalCooking* ac) : 
 	focusedByController_ = false;
 	ac_ = ac;
 	bRenderer_ = nullptr;
+	bcRenderer_ = nullptr;
 }
 
 void ButtonBehaviour::init()
@@ -44,5 +46,6 @@ void ButtonBehaviour::update()
 //este metodo es llamado por el mando, cuando el boton esta siendo seleccionado y el mando le da a la A
 void ButtonBehaviour::action() {
 	if (bRenderer_) bRenderer_->clicked();
+	else if (bcRenderer_) bcRenderer_->clicked();
 	callback_(ac_); 
 }

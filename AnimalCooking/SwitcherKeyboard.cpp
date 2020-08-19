@@ -16,6 +16,7 @@ void SwitcherKeyboard::update()
 	if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 		playerIsChoosing_ = aux;
 		if (playerIsChoosing_) {
+			startedTime_ = SDLGame::instance()->getTime();
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		}
 	}
@@ -31,26 +32,21 @@ void SwitcherKeyboard::update()
 void SwitcherKeyboard::draw()
 {
 	size_t aux = col;
-	if (playerIsChoosing_) aux = 2;
+	if (playerIsChoosing_) {
+		aux = 2;
+		alpha_ = int(255 * (cos((SDLGame::instance()->getTime() - startedTime_) / 200.0) + 1) / 2.0);
+	}
+	else 
+		alpha_ = 255;
 
-	backGround_->renderFrame(RECT(pos_.getX(), pos_.getY(), size_.getX(), size_.getY()), 0, aux, 0);
+	backGround_->setAlpha(alpha_);
+
+	backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, aux, 0);
 
 	const string& cadena = string(SDL_GetKeyName(keyToChange_));
 
-	Vector2D s = Vector2D(name_->getWidth() * (size_.getY() - 20) / name_->getHeight(), size_.getY() - 20);
-
-	if (cadena.length() == 1) {
-		Texture c2 = Texture(SDLGame::instance()->getRenderer(), cadena,
-			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::ARIAL50), { COLOR(0x000000ff) });
-		Vector2D s2 = Vector2D(c2.getWidth() * (size_.getY() - 20) / c2.getHeight(), size_.getY() - 20);
-		name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
-		c2.render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + size_.getY() / 2 - s.getY() / 2, s2.getX(), s2.getY()));
-	}
-	else {
-		Texture c2 = Texture(SDLGame::instance()->getRenderer(), cadena,
-			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese70), { COLOR(0x000000ff) });
-		Vector2D s2 = Vector2D(c2.getWidth() * (size_.getY() - 20) / c2.getHeight(), size_.getY() - 20);
-		name_->render(RECT(pos_.getX() + (size_.getX() / 2) - (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + (size_.getY() / 2) - (s.getY() / 2), s.getX(), s.getY()));
-		c2.render(RECT(pos_.getX() + (size_.getX() / 2) + (s.getX() / 2) - (s2.getX() / 2), pos_.getY() + size_.getY() / 2 - s.getY() / 2, s2.getX(), s2.getY()));
-	}
+	Texture c2 = Texture(SDLGame::instance()->getRenderer(), cadena,
+		SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese70), { COLOR(0xcc636dff) });
+	name_->render(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth(), name_->getHeight()));
+	c2.render(RECT(pos_.getX() + size_.getX() - c2.getWidth() - 50, pos_.getY() + 20, c2.getWidth(), c2.getHeight()));
 }
