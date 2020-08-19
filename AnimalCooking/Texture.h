@@ -60,6 +60,8 @@ public:
 
 	void close();
 
+	void setAlpha(Uint8 alpha);
+
 private:
 	SDL_Texture* texture_;
 	SDL_Renderer* renderer_;
