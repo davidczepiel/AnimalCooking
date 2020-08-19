@@ -40,6 +40,22 @@ void ButtonRenderer::draw()
 		Vector2D pos = ownerTransform_->getPos();
 
 		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+
+		if (buttonOnClick_ != nullptr) {
+			size_t i = buttonOnClick_->getState();
+			switch (i)
+			{
+			case 0: //0 es de-activado
+				state_ = ButtonState::Unfocushed;
+				break;
+			case 1: //1 es activado
+				state_ = ButtonState::Focushed;
+				break;
+			default:
+				break;
+			}
+		}
+
 		background_->renderFrame(dest, 0, state_, ownerTransform_->getRot());
 			
 		if (text_ != nullptr)
@@ -49,12 +65,10 @@ void ButtonRenderer::draw()
 				s = Vector2D(ownerTransform_->getW() - 100, text_->getHeight());
 			}
 
-			if (buttonOnClick_ != nullptr) {
-				size_t i = buttonOnClick_->getState(); //0 es de-activado
-				text_->renderWithTint(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()), (1 - i) * 200, i * 100, (1 - i) * 51);
-			}
-			else text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()));		
+			text_->render(RECT(dest.x + (dest.w / 2 - s.getX() / 2), dest.y + dest.h / 2 - s.getY() / 2, s.getX(), s.getY()));
 		}
+
+		
 	}	
 }
 

@@ -33,6 +33,11 @@ void Texture::close() {
 	}
 }
 
+void Texture::setAlpha(Uint8 alpha)
+{
+	SDL_SetTextureAlphaMod(texture_, alpha);
+}
+
 bool Texture::loadFromImg(SDL_Renderer *renderer, const string& fileName) {
 	SDL_Surface *surface = IMG_Load(fileName.c_str());
 	if (surface != nullptr) {
