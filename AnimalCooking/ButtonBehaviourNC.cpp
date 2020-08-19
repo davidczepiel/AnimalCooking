@@ -36,6 +36,7 @@ ButtonBehaviourNC::ButtonBehaviourNC(bool profilechooser, const string& name) :
 
 void ButtonBehaviourNC::init()
 {
+	butPadNav_ = nullptr;
 	ownerTransform_ = GETCMP1_(Transform);
 }
 
@@ -53,7 +54,7 @@ void ButtonBehaviourNC::update()
 			focusedByMouse_ = true;
 			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 				//En caso de que me de el raton hay que cambiar el foco de lugar
-				butPadNav_->setFocusOn(entity_);
+				if(butPadNav_!= nullptr) butPadNav_->setFocusOn(entity_);
 				action();
 				if (bRenderer_) bRenderer_->clicked();
 			}

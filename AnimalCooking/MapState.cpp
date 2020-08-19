@@ -10,7 +10,7 @@
 
 MapState::MapState(AnimalCooking* ac) :
 	State(ac),
-	nameAsker(nullptr),
+	nameAsker(nullptr),	
 	infoBox_(nullptr),
 	playButton_(nullptr),
 	nextScreenButton_(nullptr),
@@ -96,9 +96,10 @@ void MapState::chooseOption() {
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
 	pad = stage->addEntity();
-	padNavigation_ = pad->addComponent<ButtonPadNavigation>();
+
 
 	if (GPadController::instance()->playerControllerConnected(0) || GPadController::instance()->playerControllerConnected(1)) {
+		padNavigation_ = pad->addComponent<ButtonPadNavigation>();
 		if (newGameButton_ && loadGameButton_) {
 			padNavigation_->AddButton(loadGameButton_, exit, newGameButton_, exit, nullptr);
 			padNavigation_->AddButton(newGameButton_, loadGameButton_, nullptr, exit, nullptr);
@@ -204,7 +205,7 @@ void MapState::askProfile()
 {
 	MapConfig mapCFG = (playerName_);
 	vector<string> profiles = mapCFG.getProfiles();
-	padNavigation_->resetNavigation();
+	if(padNavigation_!= nullptr) padNavigation_->resetNavigation();
 	if (profiles.size() > 5) { // En dos columnas
 		for (int i = 0; i < profiles.size(); ++i) {
 			profileAskers.push_back(stage->addEntity()); // Boton de meterte en partida
@@ -239,7 +240,7 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
-		prepareNavPadFewProfiles(true);
+		if (padNavigation_ != nullptr) prepareNavPadFewProfiles(true);
 	}
 	else { // Una columna
 		for (int i = 0; i < profiles.size(); ++i) {
@@ -270,7 +271,7 @@ void MapState::askProfile()
 			bb->setButtonRenderer(br);
 			stage->addToGroup(profileAskers.back(), ecs::GroupID::topLayer);
 		}
-		prepareNavPadFewProfiles(false);
+		if (padNavigation_ != nullptr) prepareNavPadFewProfiles(false);
 	}
 }
 

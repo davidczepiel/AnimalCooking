@@ -17,7 +17,7 @@ public:
 	void setFocusOn(Entity* e);
 
 private:
-	struct button {
+	struct button {                                                         
 		Entity* e=nullptr;
 		Entity* up=nullptr;
 		Entity* down=nullptr;

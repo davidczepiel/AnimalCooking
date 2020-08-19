@@ -48,7 +48,7 @@ private:
 	void refreshHousesAndButtons();
 
 	SDLGame* game_;
-	Entity* newGameButton_;
+	Entity* newGameButton_;	
 	Entity* loadGameButton_;
 	Entity* infoBox_;
 	Entity* playButton_;
@@ -58,6 +58,7 @@ private:
 	Entity* chooser;
 	Entity* nameAsker;
 	Entity* exit;
+
 	vector <Entity*> profileAskers;
 	vector <Texture*> profileTextures;
 	vector <Entity*> levelButtonsPool_;
