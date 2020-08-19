@@ -16,6 +16,8 @@ public:
 	static void backButtonCallback(AnimalCooking* ac);
 	static void newGameCallback(AnimalCooking* ac);
 	static void loadGameCallback(AnimalCooking* ac);
+	static void nextScreenCallBack(AnimalCooking* ac);
+	static void previousScreenCallBack(AnimalCooking* ac);
 
 	void draw() override;
 	void update() override;
@@ -33,6 +35,8 @@ public:
 		currentLevel_ = nl;
 		GETCMP2(playButton_, ButtonRendererHouse)->setLevel(levelinfos_->at(nl));
 	}
+	void nextScreen();
+	void previousScreen();
 	inline int getCurrentLevel() { return currentLevel_; }
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
@@ -41,12 +45,15 @@ public:
 private:
 	void configPadNavigation();
 	void placeHousesAndButtons();
+	void refreshHousesAndButtons();
 
 	SDLGame* game_;
 	Entity* newGameButton_;
 	Entity* loadGameButton_;
 	Entity* infoBox_;
 	Entity* playButton_;
+	Entity* nextScreenButton_;
+	Entity* PreviousScreenButton_;
 	Entity* returnButton_;
 	Entity* chooser;
 	Entity* nameAsker;
@@ -57,8 +64,7 @@ private:
 	vector<levelInfo*>* levelinfos_;
 	Entity* pad;
 	ButtonPadNavigation* padNavigation_;
-	Texture* bgText_;
-	Texture* housesBackgroundText_;
+	vector<Texture*> bgText_;
 	Texture* playButtonText_;
 	std::string playerName_;
 
@@ -67,7 +73,14 @@ private:
 	int currentLevel_;
 	int lastLevel_;
 	int maxLevels_;
+	int levelPacks_;
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;
+
+	bool transition_ = false;
+	int xTransition_ = 0;
+	float transitionVelocity_ = 40;
+	int transitionDirection_ = 0;
+	int currentMapScene_ = 0;
 };

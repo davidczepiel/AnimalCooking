@@ -51,7 +51,6 @@ public:
 		//MapState
 		NameAsker,
 		MapStateBackground,
-		MapStateHousesBackground,
 		MapStateInfoBox,
 
 		//Botones del mando
