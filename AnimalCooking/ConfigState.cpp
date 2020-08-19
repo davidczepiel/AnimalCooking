@@ -201,8 +201,7 @@ void ConfigState::initButtons()
 		Vector2D(), 499, 90, 0);
 	bb = res->addComponent<ButtonBehaviour>(resButtonCallback, app);
 	res->addComponent<ButtonChangeOnClick>(game_->getIfFullscreen());
-	ButtonCheckRenderer* bcr = res->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_Tick), game_->getTextureMngr()->getTexture(Resources::Config_UnTicked),
-		game_->getTextureMngr()->getTexture(Resources::Config_FullscreenFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_FullscreenUnFocusedText));
+	ButtonCheckRenderer* bcr = res->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_FullscreenFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_FullscreenUnFocusedText));
 	bb->setButtonCheckRenderer(bcr);
 
 	//Helper button
@@ -213,8 +212,7 @@ void ConfigState::initButtons()
 		Vector2D(), 499, 90, 0);
 	bb = helper->addComponent<ButtonBehaviour>(helperButtonCallback, app);
 	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
-	bcr = helper->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_Tick), game_->getTextureMngr()->getTexture(Resources::Config_UnTicked),
-		game_->getTextureMngr()->getTexture(Resources::Config_ReminderFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_ReminderUnFocusedText));
+	bcr = helper->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_ReminderFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_ReminderUnFocusedText));
 	bb->setButtonCheckRenderer(bcr);
 }
 

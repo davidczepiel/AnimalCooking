@@ -5,10 +5,12 @@
 #include "Entity.h"
 #include "SDL_macros.h"
 
-ButtonCheckRenderer::ButtonCheckRenderer(Texture* checked, Texture* unChecked, Texture* textFocused, Texture* textUnFocused) : Component(ecs::ButtonCheckRenderer),
-	active(true), checked_(checked), unChecked_(unChecked), textFocused_(textFocused), textUnFocused_(textUnFocused),
+ButtonCheckRenderer::ButtonCheckRenderer(Texture* textFocused, Texture* textUnFocused) : Component(ecs::ButtonCheckRenderer),
+	active(true), textFocused_(textFocused), textUnFocused_(textUnFocused),
 	ownerTransform_(nullptr), buttonBehaviour_(nullptr), buttonBehaviourNC_(nullptr), buttonOnClick_(nullptr)
 {
+	checked_ = game_->getTextureMngr()->getTexture(Resources::Config_Tick);
+	unChecked_ = game_->getTextureMngr()->getTexture(Resources::Config_UnTicked);
 }
 
 void ButtonCheckRenderer::init()
