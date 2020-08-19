@@ -14,6 +14,7 @@ public:
 	void AddButton(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, bool posibleFocus = false);	
 	void onlyListenTo(int player) { playerToListen = player; }
 	void resetNavigation();
+	void setFocusOn(Entity* e);
 
 private:
 	struct button {
