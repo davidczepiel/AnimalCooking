@@ -8,7 +8,7 @@ class ButtonChangeOnClick;
 class ButtonCheckRenderer : public Component
 {
 public:
-	ButtonCheckRenderer(Texture* checked, Texture* unChecked, Texture* textFocused, Texture* textUnFocused);
+	ButtonCheckRenderer(Texture* textFocused, Texture* textUnFocused);
 	void init() override;
 	void draw() override;
 
