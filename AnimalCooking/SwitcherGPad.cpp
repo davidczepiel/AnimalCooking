@@ -18,6 +18,7 @@ void SwitcherGPad::update()
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 		SDL_GameControllerButton buttonHitted = gpad->buttonJustPressed();
 		if (gPad_keyToChange != buttonHitted) gPad_keyToChange = buttonHitted;
+		gpad->setIsAnyButtonJustPressed();
 		playerIsChoosing_ = false;
 	}
 }

@@ -124,6 +124,11 @@ void ConfigState::update()
 
 	musicLastValue_ = musicValue;
 	soundLastValue = soundValue;
+
+	GPadController* gpad = GPadController::instance();
+	if (gpad->isAnyButtonJustPressed() && (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+		backButtonCallback(app);
+	}
 }
 
 void ConfigState::draw()
