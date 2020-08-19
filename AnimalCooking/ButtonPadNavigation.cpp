@@ -125,28 +125,45 @@ void ButtonPadNavigation::horizontalMove(double xValue)
 				if (focus.left != nullptr) {
 					changeFocus(focus.left);
 					GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
-					if (s != nullptr) s->setFocushed(0);
+					if (s != nullptr) s->setFocushed(-1);
 				}
 			}
 			else {
 				if (focus.right != nullptr) {
 					changeFocus(focus.right);
 					GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
-					if (s != nullptr) s->setFocushed(0);
+					if (s != nullptr) s->setFocushed(-1);
 				}
 			}
 		}
 	}
 	else {
-
 		if (xValue < 0) {
-			if (focus.left != nullptr) {
+			if (focus.left != nullptr) {	
+
+				if (focus.posibleFocus) {
+					SliderBehaviour* b = GETCMP2(focus.e, SliderBehaviour);
+					if (b != nullptr) b->setFocused(true);
+				}
+
+				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
+				if (s != nullptr) s->setFocushed(-1);
+
 				stopFocusButton(focus);
 				changeFocus(focus.left);
 			}
 		}
 		else {
 			if (focus.right != nullptr) {
+
+				if (focus.posibleFocus) {
+					SliderBehaviour* b = GETCMP2(focus.e, SliderBehaviour);
+					if (b != nullptr) b->setFocused(false);
+				}
+
+				GpadKeySwitcher* s = GETCMP2(focus.right, GpadKeySwitcher);
+				if (s != nullptr) s->setFocushed(-1);
+
 				stopFocusButton(focus);
 				changeFocus(focus.right);
 			}
@@ -159,14 +176,6 @@ void ButtonPadNavigation::verticalMove(double yValue)
 	if (focus.posibleFocus) {
 		GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
 		if (s != nullptr) {
-			if (s->onTop()) {
-				if (yValue < 0) {
-					changeFocus(focus.up);
-					s->setFocushed(-1);
-					focushing = false;
-				}
-				else focushing = true;
-			}
 			s->addFocushed(yValue);
 		}
 		else {
@@ -174,21 +183,32 @@ void ButtonPadNavigation::verticalMove(double yValue)
 			if (b != nullptr) {
 				if (yValue > 0 && focus.down) changeFocus(focus.down);
 				else if (yValue < 0 && focus.up) changeFocus(focus.up);
+				b->setFocused(false);
 			}
+			b = GETCMP2(focus.e, SliderBehaviour);
+			if (b != nullptr) b->setFocused(true);
 		}
 	}
 	else {
 
 		if (yValue > 0) {
 			if (focus.down != nullptr) {
+				SliderBehaviour* b = GETCMP2(focus.down, SliderBehaviour);
+				if (b != nullptr) {
+					b->setFocused(true);
+				}
+
 				stopFocusButton(focus);
 				changeFocus(focus.down);
-				GpadKeySwitcher* s = GETCMP2(focus.e, GpadKeySwitcher);
-				if (s != nullptr) s->setFocushed(0);
 			}
 		}
 		else if (yValue < 0) {
 			if (focus.up != nullptr) {
+				SliderBehaviour* b = GETCMP2(focus.up, SliderBehaviour);
+				if (b != nullptr) {
+					b->setFocused(true);
+				}
+
 				stopFocusButton(focus);
 				changeFocus(focus.up);
 			}
