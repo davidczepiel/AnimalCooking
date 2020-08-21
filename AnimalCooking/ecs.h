@@ -76,6 +76,7 @@ enum CmpId : CmpIdType {
 	BinViewer,
 	BackGroundViewer,
 	DoorRenderer,
+	WallOpacityManager,
 
 	GameManager, //Utils
 	ScoreManager,

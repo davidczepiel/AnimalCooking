@@ -18,7 +18,7 @@ class CollisionsSystem :
 {
 public:
 	CollisionsSystem(const double casillaX, const double casillaY, const size_t leftBorder, const size_t bottomBorder) :
-		Component(ecs::CollisionsSystem), flexibilityX(casillaX / 20), flexibilityY(casillaY / 20), leftBorder(leftBorder), bottomBorder(bottomBorder) { }
+		Component(ecs::CollisionsSystem), flexibilityX(casillaX / 20), flexibilityY(casillaY / 20), leftBorder(leftBorder), bottomBorder(bottomBorder), twoIngCollided_(false){ }
 
 	void addCollider(Transform* t, bool isMovable = true) { entidadesTr.push_back(std::make_pair(t, isMovable)); }
 	void addCollider(Interactive* i) { entidadesInt.push_back(std::make_pair(i, false)); }
@@ -28,16 +28,7 @@ public:
 
 private:
 
-	int flexibilityX;
-	int flexibilityY;
-
-	size_t leftBorder, bottomBorder;
-
-	list<std::pair<Transform*, bool>> entidadesTr;
-	list<std::pair<Interactive*, bool>> entidadesInt;
-	list<std::pair<Ingredient*, bool>> entidadesIng;
-
-	list<SDL_Rect> collisions(SDL_Rect body);
+	list<SDL_Rect> collisions(SDL_Rect body, const bool imIng);
 
 	void changeBackCol(std::list<SDL_Rect>& collisions, const SDL_Rect& col);
 
@@ -50,5 +41,17 @@ private:
 	void horizontalCollision(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const SDL_Rect& col);
 
 	void tellIngredient(Ingredient* en, const ColisionType& colType);
+
+	int flexibilityX;
+	int flexibilityY;
+
+	size_t leftBorder, bottomBorder;
+
+	bool twoIngCollided_;
+
+	list<std::pair<Transform*, bool>> entidadesTr;
+	list<std::pair<Interactive*, bool>> entidadesInt;
+	list<std::pair<Ingredient*, bool>> entidadesIng;
+
 };
 

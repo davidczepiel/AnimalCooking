@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "SDL_macros.h"
 
-SDLRenderer::SDLRenderer(Texture* t, Vector2D size) : Component(ecs::SDLRenderer), t(t), size(size)
+SDLRenderer::SDLRenderer(Texture* t, Vector2D size) : Component(ecs::SDLRenderer), t(t), size(size), alpha_(255)
 {
 }
 
