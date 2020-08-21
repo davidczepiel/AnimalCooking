@@ -4,7 +4,7 @@
 
 void WallOpacityManager::init()
 {
-	renderer_ = GETCMP1_(SDLRenderer);
+	renderer_ = GETCMP1_(ImageViewer);
 	tr_ = GETCMP1_(Transform);
 }
 
@@ -17,5 +17,6 @@ void WallOpacityManager::update()
 				return; //Parar si 1 cumple la condicion
 			}
 		}
+		renderer_->setOpacity(255);
 	}
 }

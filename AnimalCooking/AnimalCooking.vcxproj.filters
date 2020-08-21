@@ -452,6 +452,7 @@
     <ClCompile Include="BucketMotion.cpp" />
     <ClCompile Include="BubbleKeyShower.cpp" />
     <ClCompile Include="ButtonCheckRenderer.cpp" />
+    <ClCompile Include="WallOpacityManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -971,6 +972,7 @@
     <ClInclude Include="BucketViewer.h" />
     <ClInclude Include="BubbleKeyShower.h" />
     <ClInclude Include="ButtonCheckRenderer.h" />
+    <ClInclude Include="WallOpacityManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

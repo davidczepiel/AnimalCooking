@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "IngredientsPool.h"
-#include "SDLRenderer.h"
+#include "ImageViewer.h"
 class WallOpacityManager : public Component
 {
 public:
@@ -10,7 +10,7 @@ public:
 	void update() override;
 private:
 	IngredientsPool* ingPool_;
-	SDLRenderer* renderer_;
+	ImageViewer* renderer_;
 	Transform* tr_;
 };
 
