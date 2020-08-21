@@ -101,6 +101,7 @@ public:
 		Plato,
 		Suelo,
 		Hierba,
+		Hierba2,
 		OvenOFF,
 		SkilletOFF,
 		SkilletOFFEsquina,
