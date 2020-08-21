@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Transport.h"
 #include "Dish.h"
+#include "Animator.h"
 
 class DishFinisher : public Component {
 public:
@@ -13,4 +14,5 @@ public:
 private:
 	Transport* tr1_;
 	Transport* tr2_;
+	Animator* animator_;
 };

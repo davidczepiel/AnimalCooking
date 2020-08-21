@@ -7,6 +7,7 @@
 #include "GameControl.h"
 #include "CollisionsSystem.h"
 #include "TimerViewer.h"
+#include "FirePool.h"
 
 class GameLogic : public Component
 {
@@ -18,8 +19,13 @@ public:
 
 	void setIngredientPool(IngredientsPool* p) { ingPool = p; }
 	void setUtensilsPool(UtensilsPool* u) { utensilPool = u; utensilPool->SetGameLogic(this); }
-	void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
 	void setLevelTimer(Uint32 time, Vector2D pos, Vector2D size);
+	void setFirePool(FirePool* fp) { firePool_ = fp; }
+
+	void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
+	void burnIngredients(SDL_Rect rect);
+	void hitFire(SDL_Rect rect);
+
 	int getLevelTime() { return levelTimer_->getTime(); }
 
 private:
@@ -31,4 +37,5 @@ private:
 	UtensilsPool* utensilPool;
 	TimerViewer* tv;
 	LevelTimer* levelTimer_;
+	FirePool* firePool_;
 };

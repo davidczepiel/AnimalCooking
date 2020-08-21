@@ -33,7 +33,7 @@ public:
 		pos_.set(pos);
 		vel_.set(vel);
 	}
-	virtual void destroy(Resources::UtensilType utensilio);	//utensilio es un enum y debe devolver otro enum (pendiente de hacer)
+	virtual void destroy();	
 
 	//No se si van a hacer falta todos pero por si acaso, si no se borran
 	inline void setPos(Vector2D pos) { pos_.set(pos); }

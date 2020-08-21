@@ -49,9 +49,18 @@ FoodGiver* FoodGiverAdder::SwitchFG(const string& fgName, int type, int n) {
 template <typename T>
 FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 {
+	Texture* t = nullptr;
+
+	if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "alinoIzq")t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::AceiteBordeIzq);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "alinoDer")t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::AceiteBordeDer);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "alino")t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Aceite);
+	else if(nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arroz" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Arroz);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "panera" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "encimeraMasa") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
+
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casillaX, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casillaY),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casillaX, general["Givers"]["size"]["height"].as_double() * casillaY),
-		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), GETCMP2(gameManager, GameControl));
+		GETCMP2(players[0], Transport), GETCMP2(players[1], Transport), GETCMP2(gameManager, GameControl),t);
 
 	fg->setHitboxSize(Vector2D(fg->getSize().getX(), fg->getSize().getY()));
 

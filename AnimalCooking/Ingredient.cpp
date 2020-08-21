@@ -44,7 +44,7 @@ void Ingredient::onCollisionXY()
 	aiIngredient_->Corner(this);
 }
 
-void Ingredient::destroy(Resources::UtensilType utensilio)
+void Ingredient::destroy()
 {
 	ingredientPool_->deleteIngredient(it_);
 }

@@ -40,6 +40,7 @@ enum CmpId : CmpIdType {
 	DishStackViewer,
 	InOutFood,		//ELIMINAR SI NO SE IMPLEMENTA
 	DishFinisher,
+	DishFinisherViewer,
 	
 
 	FoodMotion,		//Food
@@ -51,14 +52,15 @@ enum CmpId : CmpIdType {
 
 	IngredientsPool, //Pools
 	UtensilsPool,
-
+	FirePool,
 
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
 	ShelfViewer,
 	OrderServiceViewer,
 	SinkViewer,
-
+	BucketViewer,
+	BucketMotion,
 
 	CookerPool,		//Cookers
 	CookerViewer,	
@@ -98,6 +100,7 @@ enum CmpId : CmpIdType {
 	MainMenuPadNavigation,
 	ButtonPadNavigation,
 	ButtonChangeOnClick,
+	ButtonCheckRenderer,
 
 	SliderBehaviour,	//Sliders
 	SliderRenderer,
@@ -144,7 +147,8 @@ enum AdversityID  {
 	PlaneAdversity,
 	CookersAdversity,
 	HookAdversity,
-	RainAdversity
+	RainAdversity,
+	PidgeonAdversity
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;

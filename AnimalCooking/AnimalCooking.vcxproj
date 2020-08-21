@@ -167,11 +167,14 @@
     <ClInclude Include="BinAdder.h" />
     <ClInclude Include="BinEntity.h" />
     <ClInclude Include="BinViewer.h" />
+    <ClInclude Include="BucketMotion.h" />
+    <ClInclude Include="BucketViewer.h" />
     <ClInclude Include="BubbleKeyShower.h" />
     <ClInclude Include="BurnedCookerAdversity.h" />
     <ClInclude Include="ButtonBehaviour.h" />
     <ClInclude Include="ButtonBehaviourNC.h" />
     <ClInclude Include="ButtonChangeOnClick.h" />
+    <ClInclude Include="ButtonCheckRenderer.h" />
     <ClInclude Include="ButtonPadNavigation.h" />
     <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="ButtonRendererHouse.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FeedBack.h" />
+    <ClInclude Include="FirePool.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="Food.h" />
@@ -262,6 +266,7 @@
     <ClInclude Include="OrderViewer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="Pickable.h" />
+    <ClInclude Include="PidgeonAdversity.h" />
     <ClInclude Include="PlaneAdversity.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="PlayerMotion.h" />
@@ -301,6 +306,7 @@
     <ClInclude Include="TexturesManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerViewer.h" />
+    <ClInclude Include="Tool.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="Utensil.h" />
@@ -325,10 +331,13 @@
     <ClCompile Include="BinAdder.cpp" />
     <ClCompile Include="BinEntity.cpp" />
     <ClCompile Include="BinViewer.cpp" />
+    <ClCompile Include="BucketMotion.cpp" />
+    <ClCompile Include="BucketViewer.cpp" />
     <ClCompile Include="BubbleKeyShower.cpp" />
     <ClCompile Include="BurnedCookerAdversity.cpp" />
     <ClCompile Include="ButtonBehaviour.cpp" />
     <ClCompile Include="ButtonBehaviourNC.cpp" />
+    <ClCompile Include="ButtonCheckRenderer.cpp" />
     <ClCompile Include="ButtonPadNavigation.cpp" />
     <ClCompile Include="ButtonRenderer.cpp" />
     <ClCompile Include="ButtonRendererHouse.cpp" />
@@ -355,6 +364,7 @@
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FeedBack.cpp" />
+    <ClCompile Include="FirePool.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="Food.cpp" />
@@ -414,6 +424,7 @@
     <ClCompile Include="OrderViewer.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Pickable.cpp" />
+    <ClCompile Include="PidgeonAdversity.cpp" />
     <ClCompile Include="PlaneAdversity.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="PlayerMotion.cpp" />
@@ -451,6 +462,7 @@
     <ClCompile Include="TexturesManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerViewer.cpp" />
+    <ClCompile Include="Tool.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="Utensil.cpp" />
