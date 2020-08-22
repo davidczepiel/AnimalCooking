@@ -149,6 +149,7 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		levelExtra1,
 		level5Menu,
 		level6Menu,
 		level7Menu,

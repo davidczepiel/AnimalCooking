@@ -75,89 +75,46 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 {
 	switch (str2int(p.c_str()))
 	{
-	case str2int("Salad"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad);
-		break;
-	case str2int("Salad1"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad1);
-		break;
-	case str2int("Salad2"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad2);
-		break;
-	case str2int("Salad3"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad3);
-		break;
-	case str2int("Salad4"):
-		ADDPEDIDO(pedido, Resources::FoodType::Salad4);
-		break;
-	case str2int("Burger"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger);
-		break;
-	case str2int("Burger1"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger1);
-		break;
-	case str2int("Burger2"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger2);
-		break;
-	case str2int("Burger3"):
-		ADDPEDIDO(pedido, Resources::FoodType::Burger3);
-		break;
-	case str2int("Pizza"):
-		ADDPEDIDO(pedido, Resources::FoodType::Pizza);
-		break;
-	case str2int("Roast"):
-		ADDPEDIDO(pedido, Resources::FoodType::Roast);
-		break;
-	case str2int("Roast1"):
-		ADDPEDIDO(pedido, Resources::FoodType::Roast1);
-		break;
-	case str2int("Roast2"):
-		ADDPEDIDO(pedido, Resources::FoodType::Roast2);
-		break;
-	case str2int("Roast3"):
-		ADDPEDIDO(pedido, Resources::FoodType::Roast3);
-		break;
-	case str2int("RiceDish"):
-		ADDPEDIDO(pedido, Resources::FoodType::RiceDish);
-		break;
-	case str2int("HotDog"):
-		ADDPEDIDO(pedido, Resources::FoodType::HotDog);
-		break;
-	case str2int("Risotto"):
-		ADDPEDIDO(pedido, Resources::FoodType::Risotto);
-		break;
-	case str2int("CookedFish"):
-		ADDPEDIDO(pedido, Resources::FoodType::CookedFish);
-		break;
-	case str2int("FriedVegs"):
-		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs);
-		break;
-	case str2int("FriedVegs1"):
-		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs1);
-		break;
-	case str2int("FriedVegs2"):
-		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs2);
-		break;
-	case str2int("BakedChicken"):
-		ADDPEDIDO(pedido, Resources::FoodType::BakedChicken);
-		break;
-	case str2int("BakedChicken1"):
-		ADDPEDIDO(pedido, Resources::FoodType::BakedChicken1);
-		break;
-	case str2int("BakedChicken2"):
-		ADDPEDIDO(pedido, Resources::FoodType::BakedChicken2);
-		break;
-	case str2int("FrenchFries"):
-		ADDPEDIDO(pedido, Resources::FoodType::FrenchFries);
-		break;
-	case str2int("CookedClams"):
-		ADDPEDIDO(pedido, Resources::FoodType::CookedClams);
-		break;
-	case str2int("RiceAndClams"):
-		ADDPEDIDO(pedido, Resources::FoodType::RiceAndClams);
-		break;
-	default:
-		break;
+	case str2int("Salad"): 			ADDPEDIDO(pedido, Resources::FoodType::Salad);			break;
+	case str2int("Salad1"):			ADDPEDIDO(pedido, Resources::FoodType::Salad1);			break;
+	case str2int("Salad2"):			ADDPEDIDO(pedido, Resources::FoodType::Salad2);			break;
+	case str2int("Salad3"):			ADDPEDIDO(pedido, Resources::FoodType::Salad3);			break;
+	case str2int("Salad4"):			ADDPEDIDO(pedido, Resources::FoodType::Salad4);			break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Burger"):			ADDPEDIDO(pedido, Resources::FoodType::Burger);			break;
+	case str2int("Burger1"):		ADDPEDIDO(pedido, Resources::FoodType::Burger1);		break;
+	case str2int("Burger2"):		ADDPEDIDO(pedido, Resources::FoodType::Burger2);		break;
+	case str2int("Burger3"):		ADDPEDIDO(pedido, Resources::FoodType::Burger3);		break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Pizza"):			ADDPEDIDO(pedido, Resources::FoodType::Pizza);			break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Roast"):			ADDPEDIDO(pedido, Resources::FoodType::Roast);			break;
+	case str2int("Roast1"):			ADDPEDIDO(pedido, Resources::FoodType::Roast1);			break;
+	case str2int("Roast2"):			ADDPEDIDO(pedido, Resources::FoodType::Roast2);			break;
+	case str2int("Roast3"):			ADDPEDIDO(pedido, Resources::FoodType::Roast3);			break;
+	//-----------------------------------------------------------------------------------
+	case str2int("RiceDish"):		ADDPEDIDO(pedido, Resources::FoodType::RiceDish);		break;
+	//-----------------------------------------------------------------------------------
+	case str2int("HotDog"):			ADDPEDIDO(pedido, Resources::FoodType::HotDog);			break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Risotto"):		ADDPEDIDO(pedido, Resources::FoodType::Risotto);		break;
+	//-----------------------------------------------------------------------------------
+	case str2int("CookedFish"):		ADDPEDIDO(pedido, Resources::FoodType::CookedFish);		break;
+	//-----------------------------------------------------------------------------------
+	case str2int("FriedVegs"):		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs);		break;
+	case str2int("FriedVegs1"):		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs1);		break;
+	case str2int("FriedVegs2"):		ADDPEDIDO(pedido, Resources::FoodType::FriedVegs2);		break;
+	//-----------------------------------------------------------------------------------
+	case str2int("BakedChicken"):	ADDPEDIDO(pedido, Resources::FoodType::BakedChicken);	break;
+	case str2int("BakedChicken1"):	ADDPEDIDO(pedido, Resources::FoodType::BakedChicken1);	break;
+	case str2int("BakedChicken2"):	ADDPEDIDO(pedido, Resources::FoodType::BakedChicken2);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("FrenchFries"):	ADDPEDIDO(pedido, Resources::FoodType::FrenchFries);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("CookedClams"):	ADDPEDIDO(pedido, Resources::FoodType::CookedClams);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("RiceAndClams"):	ADDPEDIDO(pedido, Resources::FoodType::RiceAndClams);	break;
+	default:																				break;
 	}
 }
 

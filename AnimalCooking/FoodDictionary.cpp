@@ -75,9 +75,9 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::Pizza:			return new Pizza();			break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::Roast:			return new Roast();			break;
-	case Resources::FoodType::Roast1:			return new Roast();			break;
-	case Resources::FoodType::Roast2:			return new Roast();			break;
-	case Resources::FoodType::Roast3:			return new Roast();			break;
+	case Resources::FoodType::Roast1:			return new Roast1();		break;
+	case Resources::FoodType::Roast2:			return new Roast2();		break;
+	case Resources::FoodType::Roast3:			return new Roast3();		break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::RiceDish:			return new RiceDish();		break;
 	//---------------------------------------------------------------------------
@@ -86,8 +86,8 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::CookedFish:		return new CookedFish();	break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::BakedChicken:		return new BakedChicken();	break;
-	case Resources::FoodType::BakedChicken1:	return new BakedChicken();	break;
-	case Resources::FoodType::BakedChicken2:	return new BakedChicken();	break;
+	case Resources::FoodType::BakedChicken1:	return new BakedChicken1();	break;
+	case Resources::FoodType::BakedChicken2:	return new BakedChicken2();	break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::FriedVegs:		return new FriedVegs();		break;
 	case Resources::FoodType::FriedVegs1:		return new FriedVegs1();	break;
