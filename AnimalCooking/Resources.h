@@ -149,6 +149,11 @@ public:
 		level2Menu,
 		level3Menu,
 		level4Menu,
+		level5Menu,
+		level6Menu,
+		level7Menu,
+		level8Menu,
+		level9Menu,
 		barraScreenLoaderBack,
 		barraScreenLoader,
 		buttonGo,
@@ -201,6 +206,9 @@ public:
 		Burger3Order,
 		PizzaOrder,
 		RoastOrder,
+		Roast1Order,
+		Roast2Order,
+		Roast3Order,
 		RiceDishOrder,
 		HotDogOrder,
 		RisottoOrder,
@@ -209,6 +217,8 @@ public:
 		FriedVegsOrder1,
 		FriedVegsOrder2,
 		BakedChickenOrder,
+		BakedChicken1Order,
+		BakedChicken2Order,
 		FrenchFriesOrder,
 		CookedClamsOrder,
 		RiceAndClamsOrder,
@@ -246,7 +256,12 @@ public:
 		Burger3T,
 
 		PizzaT,
+
 		RoastT,
+		Roast1T,
+		Roast2T,
+		Roast3T,
+
 		RiceDishT,
 		HotDogT,
 		RisottoT,
@@ -257,6 +272,9 @@ public:
 		FriedVegs2T,
 
 		BakedChickenT,
+		BakedChicken1T,
+		BakedChicken2T,
+
 		FrenchFriesT,
 		CookedClamsT,
 		RiceAndClamsT,
@@ -301,7 +319,12 @@ public:
 			Burger3FeedBack,
 
 			PizzaFeedBack,
+
 			RoastFeedBack,
+			Roast1FeedBack,
+			Roast2FeedBack,
+			Roast3FeedBack,
+
 			RiceDishFeedBack,
 			HotDogFeedBack,
 			RisottoFeedBack,
@@ -312,6 +335,9 @@ public:
 			FriedVegs2FeedBack,
 
 			BakedChickenFeedBack,
+			BakedChicken1FeedBack,
+			BakedChicken2FeedBack,
+
 			FrenchFriesFeedBack,
 			CookedClamsFeedBack,
 			RiceAndClamsFeedBack,
@@ -584,6 +610,9 @@ public:
 		Burger3,
 		Pizza,
 		Roast,
+		Roast1,
+		Roast2,
+		Roast3,
 		RiceDish,
 		HotDog,
 		Risotto,
@@ -592,6 +621,8 @@ public:
 		FriedVegs1,
 		FriedVegs2,
 		BakedChicken,
+		BakedChicken1,
+		BakedChicken2,
 		FrenchFries,
 		CookedClams,
 		RiceAndClams

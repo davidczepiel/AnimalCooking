@@ -77,9 +77,19 @@ void FoodConfig::fill()
 	// OVEN  RECIPES    //  -------------------------------------> SET <------------------------------------------------------      ----------> RESULT <-------------
 	//////////////////////
 	cTrans.push_back({ { Resources::FoodType::MashedTomato, Resources::FoodType::PizzaMass, Resources::FoodType::GratedCheese, Resources::FoodType::Dress },	Resources::FoodType::Pizza });
+
 	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast });
+	//ROAST---------------------------------
+	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedMushroom,  Resources::FoodType::Dress },	Resources::FoodType::Roast2 });
+	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedTomato},	Resources::FoodType::Roast3 });
+
 	cTrans.push_back({ { Resources::FoodType::CaughtFish, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedPotato, Resources::FoodType::Dress },	Resources::FoodType::CookedFish });
+	//CHICKEN-------------------------------
 	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedChicken},	Resources::FoodType::BakedChicken });
+	cTrans.push_back({ { Resources::FoodType::SlicedMushroom, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedChicken},	Resources::FoodType::BakedChicken1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedPotato, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedChicken},	Resources::FoodType::BakedChicken2 });
+	
 	cTrans.push_back({ { Resources::FoodType::CaughtClam, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::CookedClams });
 
 
