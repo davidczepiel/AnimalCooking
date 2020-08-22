@@ -24,7 +24,7 @@ MapState::MapState(AnimalCooking* ac) :
 	profileAskers(),
 	maxLevels_(0),
 	currentLevel_(0),
-	levelPacks_(5),
+	levelPacks_(6),
 	lastLevel_(0),
 	playerName_("")
 {
@@ -431,6 +431,7 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
+	transforms_.push_back(Transform(Vector2D(1008, 420), Vector2D(), 70, 35));
 
 	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
