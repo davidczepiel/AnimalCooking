@@ -153,7 +153,6 @@ public:
 		level6Menu,
 		level7Menu,
 		level8Menu,
-		level9Menu,
 		barraScreenLoaderBack,
 		barraScreenLoader,
 		buttonGo,
