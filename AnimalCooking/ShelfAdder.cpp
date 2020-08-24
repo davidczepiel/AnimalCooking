@@ -63,20 +63,11 @@ Utensil* ShelfAdder::switchUtensil(const string& ing, UtensilsPool* pool_, std::
 	Utensil* u = nullptr;
 	switch (str2int(ing.c_str()))
 	{
-	case str2int("knife"):
-		u = ADD(Knife);
-		break;
-	case str2int("mace"):
-		u = ADD(Mace);
-		break;
-	case str2int("grater"):
-		u = ADD(Grater);
-		break;
-	case str2int("net"):
-		u = ADD(Net);
-		break;
-	default:
-		break;
+	case str2int("knife"):		u = ADD(Knife);		break;
+	case str2int("mace"):		u = ADD(Mace);		break;
+	case str2int("grater"):		u = ADD(Grater);	break;
+	case str2int("net"):		u = ADD(Net);		break;
+	default:										break;
 	}
 	return u;
 }
