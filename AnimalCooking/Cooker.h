@@ -52,9 +52,28 @@ class Oven : public Cooker {
 public:
 	Oven(Vector2D& pos, Vector2D& size, double rot, Texture* text, Transport* t1, Transport* t2, Entity* e, string textureState_);
 
-	virtual void setEmptyTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
-	virtual void setBurnedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
-	virtual void setCookingTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); };
+	virtual void setEmptyTexture() override 
+	{ 
+		if(textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerOFF);
+		else if(textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqOFF);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF);
+		 
+	};
+
+	virtual void setBurnedTexture() override 
+	{ 
+		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
+		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); 
+	};
+
+	virtual void setCookingTexture() override 
+	{ 
+		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
+		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
+		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON);
+	};
+
 	virtual void setOverHeatedTexture() override { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF); };
 };
 

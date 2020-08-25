@@ -102,6 +102,8 @@ public:
 		Suelo,
 		Hierba,
 		OvenOFF,
+		OvenDerOFF,
+		OvenIzqOFF,
 		SkilletOFF,
 		SkilletOFFEsquina,
 		SkilletOFFBorde,
@@ -134,7 +136,10 @@ public:
 		FregaderoAbajoON,
 		FregaderoBordeIzq,
 		FregaderoBordeIzqON,
+		FregaderoEsqDchaArr,
+		FregaderoEsqDchaArrON,
 		Panera,
+		PaneraVerSinDer,
 		Papelera,
 		CuadradoAux,
 		//Barra de entregas
@@ -181,6 +186,8 @@ public:
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
+			EncimeraVertSin_SinBordeIzq,
+			EncimeraVEsquinaSuperior_SinBordeDer,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -192,6 +199,7 @@ public:
 			EsquinaSupIzdaVacia,
 			EsquinaInfIzqVaciaDecoracion,
 			EsquinaInfDerVaciaDecoracion,
+			EsquinaSupIzqSinBordeDer,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,
@@ -363,6 +371,9 @@ public:
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
+	    AceiteVertical,
+		AceiteVerSinIzq,
+		AceiteSin,
 		EncimeraMasa,
 
 		//CreditState
@@ -374,6 +385,8 @@ public:
 		CircularTimer,
 		BurnedTimer,
 		OvenON,
+		OvenDerON,
+		OvenIzqON,
 		HomeIconEndState,
 		HomeIconMapState,
 		MapIcon,
