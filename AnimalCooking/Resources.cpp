@@ -142,6 +142,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, FregaderoEsqDchaArrON,"../AnimalCooking/resources/images/Cocina/fregaderoEsqDchaArrOn.png" },
 
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
+	{AllLevels, PaneraVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/paneraVerticalsinDcha.png" },
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
 	{AllLevels, CuadradoAux,"../AnimalCooking/resources/images/cuadrado.png"},
 	//Barra entregas
@@ -361,6 +362,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, AceiteBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoDcha.png" },
 	    { AllLevels, AceiteBordeIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoIzq.png" },
 	    { AllLevels, AceiteVertical,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVertical.png" },
+		{ AllLevels, AceiteVerSinIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinIzq.png" },
 	    { AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},

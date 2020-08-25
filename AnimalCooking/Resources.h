@@ -139,6 +139,7 @@ public:
 		FregaderoEsqDchaArr,
 		FregaderoEsqDchaArrON,
 		Panera,
+		PaneraVerSinDer,
 		Papelera,
 		CuadradoAux,
 		//Barra de entregas
@@ -368,6 +369,7 @@ public:
 		AceiteBordeDer,
 		AceiteBordeIzq,
 	    AceiteVertical,
+		AceiteVerSinIzq,
 		AceiteSin,
 		EncimeraMasa,
 
