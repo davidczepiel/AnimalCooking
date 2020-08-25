@@ -186,6 +186,8 @@ public:
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
+			EncimeraVertSin_SinBordeIzq,
+			EncimeraVEsquinaSuperior_SinBordeDer,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -197,6 +199,7 @@ public:
 			EsquinaSupIzdaVacia,
 			EsquinaInfIzqVaciaDecoracion,
 			EsquinaInfDerVaciaDecoracion,
+			EsquinaSupIzqSinBordeDer,
 
 		//Pedidos------------------------------------------------------
 		Bocadillo,

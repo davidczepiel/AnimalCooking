@@ -190,6 +190,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraHBordeDerecha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizBordeDcha.png" },
 	{AllLevels,EncimeraHBordeIzquierda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizBordeIzq.png" },
 	{AllLevels,EncimeraVertAbajo,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertAbajo.png" },
+	{ AllLevels,EncimeraVertSin_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeIzq.png" },
+	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeDer.png" },
 
 
 	//Esquinas
@@ -203,6 +205,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EsquinaSupIzdaVacia,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-2.png"},
 	{ AllLevels,EsquinaInfIzqVaciaDecoracion,"../AnimalCooking/resources/images/Cocina/esquinas/esquina-abajo.png" },
 	{ AllLevels,EsquinaInfDerVaciaDecoracion,"../AnimalCooking/resources/images/Cocina/esquinas/esquina-abajo-2.png" },
+	{ AllLevels,EsquinaSupIzqSinBordeDer,"../AnimalCooking/resources/images/Cocina/esquinas/esquina4-2_SinBordeDer.png" },
+
 
 	//Pedidos--------------------------------------------------------------
 	{Basic,Bocadillo,"../AnimalCooking/resources/images/Pedidos/bocadillo.png"},
