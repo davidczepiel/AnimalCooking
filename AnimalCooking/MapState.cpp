@@ -24,7 +24,7 @@ MapState::MapState(AnimalCooking* ac) :
 	profileAskers(),
 	maxLevels_(0),
 	currentLevel_(0),
-	levelPacks_(5),
+	levelPacks_(6),
 	lastLevel_(0),
 	playerName_("")
 {
@@ -160,8 +160,12 @@ void MapState::update()
 		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 
 			if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
-				if (playButton_ != nullptr)
-					GETCMP2(playButton_, ButtonBehaviour)->action();
+				if (playButton_ != nullptr) {
+					Entity* e = padNavigation_->getObjectInFocus();
+					if ( e!= nullptr && GETCMP2(e, ButtonBehaviourNC) != nullptr) {
+						GETCMP2(playButton_, ButtonBehaviour)->action();
+					}
+				}
 				else if (nameAsker != nullptr) {
 					NameAsker* na = GETCMP2(nameAsker, NameAsker);
 					if (na->getActive() && na->getName().size() > 1) {
@@ -431,6 +435,7 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
+	transforms_.push_back(Transform(Vector2D(1050, 460), Vector2D(), 46, 23));
 
 	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
@@ -548,5 +553,7 @@ void MapState::configPadNavigation() {
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;
 		}
+		padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_,nullptr,nullptr,nullptr,levelButtonsPool_.at(0), levelButtonsPool_.at(0),2);
+		padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr,levelButtonsPool_.at(i-1),nullptr, levelButtonsPool_.at(i - 1),3);
 	}
 }

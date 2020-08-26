@@ -40,139 +40,71 @@ Food* FoodDictionary::bind(const int& c) const
 	switch (c)
 	{
 		// Poop
-	case -1:
-		return new Poop();
-		break;
+	case -1:		return new Poop();		break;
 
-		//Ingredientes
-	case Resources::FoodType::SlicedTomato:
-		return new SlicedTomato;
-		break;
-	case Resources::FoodType::MashedTomato:
-		return new MashedTomato;
-		break;
-	case Resources::FoodType::SlicedLettuce:
-		return new SlicedLettuce;
-		break;
-	case Resources::FoodType::SlicedOnion:
-		return new SlicedOnion;
-		break;
-	case Resources::FoodType::SlicedMeat:
-		return new SlicedMeat;
-		break;
-	case Resources::FoodType::MashedMeat:
-		return new MashedMeat;
-		break;
-	case Resources::FoodType::SlicedCheese:
-		return new SlicedCheese;
-		break;
-	case Resources::FoodType::GratedCheese:
-		return new GratedCheese;
-		break;
-	case Resources::FoodType::SlicedPotato:
-		return new SlicedPotato;
-		break;
-	case Resources::FoodType::SlicedSausage:
-		return new SlicedSausage;
-		break;
-	case Resources::FoodType::SlicedCarrot:
-		return new SlicedCarrot;
-		break;
-	case Resources::FoodType::CaughtSausage:
-		return new CaughtSausage;
-		break;
-	case Resources::FoodType::SlicedMushroom:
-		return new SlicedMushroom;
-		break;
-	case Resources::FoodType::CaughtFish:
-		return new CaughtFish;
-		break;
-	case Resources::FoodType::SlicedChicken:
-		return new SlicedChicken;
-		break;
-	case Resources::FoodType::CaughtClam:
-		return new CaughtClam;
-		break;
+	//Ingredientes
+	case Resources::FoodType::SlicedTomato:		return new SlicedTomato;	break;
+	case Resources::FoodType::MashedTomato:		return new MashedTomato;	break;
+	case Resources::FoodType::SlicedLettuce:	return new SlicedLettuce;	break;
+	case Resources::FoodType::SlicedOnion:		return new SlicedOnion;		break;
+	case Resources::FoodType::SlicedMeat:		return new SlicedMeat;		break;
+	case Resources::FoodType::MashedMeat:		return new MashedMeat;		break;
+	case Resources::FoodType::SlicedCheese:		return new SlicedCheese;	break;
+	case Resources::FoodType::GratedCheese:		return new GratedCheese;	break;
+	case Resources::FoodType::SlicedPotato:		return new SlicedPotato;	break;
+	case Resources::FoodType::SlicedSausage:	return new SlicedSausage;	break;
+	case Resources::FoodType::SlicedCarrot:		return new SlicedCarrot;	break;
+	case Resources::FoodType::CaughtSausage:	return new CaughtSausage;	break;
+	case Resources::FoodType::SlicedMushroom:	return new SlicedMushroom;	break;
+	case Resources::FoodType::CaughtFish:		return new CaughtFish;		break;
+	case Resources::FoodType::SlicedChicken:	return new SlicedChicken;	break;
+	case Resources::FoodType::CaughtClam:		return new CaughtClam;		break;
 
-		// Platos enteros :
-	case Resources::FoodType::Salad:
-		return new Salad();
-		break;
-	case Resources::FoodType::Salad1:
-		return new Salad1();
-		break;
-	case Resources::FoodType::Salad2:
-		return new Salad2();
-		break;
-	case Resources::FoodType::Salad3:
-		return new Salad3();
-		break;
-	case Resources::FoodType::Salad4:
-		return new Salad4();
-		break;
-	case Resources::FoodType::Burger:
-		return new Burger();
-		break;
-	case Resources::FoodType::Burger1:
-		return new Burger1();
-		break;
-	case Resources::FoodType::Burger2:
-		return new Burger2();
-		break;
-	case Resources::FoodType::Burger3:
-		return new Burger3();
-		break;
-	case Resources::FoodType::Pizza:
-		return new Pizza();
-		break;
-	case Resources::FoodType::Roast:
-		return new Roast();
-		break;
-	case Resources::FoodType::RiceDish:
-		return new RiceDish();
-		break;
-	case Resources::FoodType::Risotto:
-		return new Risotto();
-		break;
-	case Resources::FoodType::CookedFish:
-		return new CookedFish();
-		break;
-	case Resources::FoodType::BakedChicken:
-		return new BakedChicken();
-		break;
-	case Resources::FoodType::FriedVegs:
-		return new FriedVegs();
-		break;
-	case Resources::FoodType::FriedVegs1:
-		return new FriedVegs1();
-		break;
-	case Resources::FoodType::FriedVegs2:
-		return new FriedVegs2();
-		break;
-	case Resources::FoodType::FrenchFries:
-		return new FrenchFries();
-		break;
-	case Resources::FoodType::CookedClams:
-		return new CookedClams();
-		break;
-	case Resources::FoodType::RiceAndClams:
-		return new RiceAndClams();
-		break;
+	//Platos enteros :
+	case Resources::FoodType::Salad:			return new Salad();			break;
+	case Resources::FoodType::Salad1:			return new Salad1();		break;
+	case Resources::FoodType::Salad2:			return new Salad2();		break;
+	case Resources::FoodType::Salad3:			return new Salad3();		break;
+	case Resources::FoodType::Salad4:			return new Salad4();		break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Burger:			return new Burger();		break;
+	case Resources::FoodType::Burger1:			return new Burger1();		break;
+	case Resources::FoodType::Burger2:			return new Burger2();		break;
+	case Resources::FoodType::Burger3:			return new Burger3();		break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Pizza:			return new Pizza();			break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Roast:			return new Roast();			break;
+	case Resources::FoodType::Roast1:			return new Roast1();		break;
+	case Resources::FoodType::Roast2:			return new Roast2();		break;
+	case Resources::FoodType::Roast3:			return new Roast3();		break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::RiceDish:			return new RiceDish();		break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Risotto:			return new Risotto();		break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::CookedFish:		return new CookedFish();	break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::BakedChicken:		return new BakedChicken();	break;
+	case Resources::FoodType::BakedChicken1:	return new BakedChicken1();	break;
+	case Resources::FoodType::BakedChicken2:	return new BakedChicken2();	break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::FriedVegs:		return new FriedVegs();		break;
+	case Resources::FoodType::FriedVegs1:		return new FriedVegs1();	break;
+	case Resources::FoodType::FriedVegs2:		return new FriedVegs2();	break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::FrenchFries:		return new FrenchFries();	break;
+		//---------------------------------------------------------------------------
+	case Resources::FoodType::CookedClams:		return new CookedClams();	break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::RiceAndClams:		return new RiceAndClams();	break;
 
 		// Alimentos individuales : 
 
-	case Resources::FoodType::MashedMeatSkillet:
-		return new MashedMeatSkillet();
-		break;
-	case Resources::FoodType::CaughtSausageSkillet:
-		return new CaughtSausageSkillet();
-		break;
-	case Resources::FoodType::SlicedPotatoSkillet:
-		return new SlicedPotatoSkillet();
-		break;
-	default:
-		return new Poop();
-		break;
+	case Resources::FoodType::MashedMeatSkillet:	return new MashedMeatSkillet();		break;
+	case Resources::FoodType::CaughtSausageSkillet:	return new CaughtSausageSkillet();	break;
+	case Resources::FoodType::SlicedPotatoSkillet:	return new SlicedPotatoSkillet();	break;
+	default:										return new Poop();					break;
 	}
 }
 

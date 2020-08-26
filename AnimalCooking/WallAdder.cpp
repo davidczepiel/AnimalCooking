@@ -124,7 +124,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	//Hacer falsa barra de entregas
 	Entity* e;
 	int posX = nivel["Clients"]["repisaFalsa"]["pos"]["x"].as_int();
-	int posY = nivel["Clients"]["repisaFalsa"]["pos"]["y"].as_int();
+	double posY = nivel["Clients"]["repisaFalsa"]["pos"]["y"].as_double();
 	int size = general["Clients"]["repisaFalsa"]["size"]["width"].as_int();
 	for (int i = 0; i < size; i++) {
 		e = mngr->addEntity();

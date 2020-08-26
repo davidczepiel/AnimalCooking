@@ -255,6 +255,40 @@ void ButtonPadNavigation::setFocusOn(Entity* e)
 	}
 }
 
+void ButtonPadNavigation::addButtonToAnExistingOne(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, Entity* wich, int fromWhere)
+{
+	//Creo el nuevo botón que quiero añadir
+	button nuevo;
+	nuevo.e = e; 
+	nuevo.up = up;
+	nuevo.down = down;
+	nuevo.left = left;
+	nuevo.right = right;
+	nuevo.posibleFocus = false;
+	buttons.push_back(nuevo);
+
+	//Busco el boton existente al que lo quiero unir y le aviso de que lo voy a conectar con uno nuevo
+	int i = 0;
+	while (i < buttons.size() && buttons.at(i).e != wich) {
+		i++;
+	}
+	switch (fromWhere){
+	case 0 ://Arriba
+		buttons.at(i).up = e;
+		break;
+	case 1://Abajo
+		buttons.at(i).down = e;
+		break;
+	case 2: //Izquierda
+		buttons.at(i).left = e;
+		break;
+	case 3://Derecha
+		buttons.at(i).right = e;
+		break;
+	}
+
+}
+
 void ButtonPadNavigation::stopFocusButton(button b)
 {
 	if (b.e != nullptr) {
