@@ -24,6 +24,8 @@
 
 void CollisionsSystem::update()
 {
+	twoIngCollided_ = false;
+
 	//Resolvemos las colisiones si el objeto es movible
 	for (auto en : entidadesTr) {
 		if (en.second) resolveCollisions(en.first->getPosReference(), en.first->getHitboxOffset(), en.first->getHitboxSize(), en.first->getVel());
@@ -32,11 +34,12 @@ void CollisionsSystem::update()
 	for (auto en : entidadesIng) {
 		if (en.second) {
 			ColisionType cT = resolveCollisions(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), true);
+			tellIngredient(en.first, cT);
 		}
 	}
 }
 
-list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
+list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body, const bool imIng)
 {
 	list<SDL_Rect> collisions;
 	for (auto en : entidadesTr) {
@@ -58,6 +61,7 @@ list<SDL_Rect> CollisionsSystem::collisions(SDL_Rect body)
 			SDL_Rect col = RECT(collisions.back().x, collisions.back().y, DIVIDEROUNDUP(w), DIVIDEROUNDUP(h));
 			ColisionType cT = singleCollision(en.first->getPosReference(), Vector2D(), Vector2D(en.first->getWidth(), en.first->getHeight()), en.first->getVel(), col);
 			changeBackCol(collisions, col);
+			if (imIng) twoIngCollided_ = true;
 		}
 	}
 
@@ -97,7 +101,7 @@ bool CollisionsSystem::checkCollision(const SDL_Rect& body, const SDL_Rect& othe
 
 ColisionType CollisionsSystem::resolveCollisions(Vector2D& pos, const Vector2D& offset, const Vector2D& size, const Vector2D& vel, const bool imIng)
 {
-	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX() + offset.getX(), pos.getY() + offset.getY(), size.getX(), size.getY()));
+	list<SDL_Rect> collisions_ = collisions(RECT(pos.getX() + offset.getX(), pos.getY() + offset.getY(), size.getX(), size.getY()), imIng);
 	ColisionType cT = ColisionType::noColision;
 
 	cT = worldCollision(pos, offset, size, vel, imIng);
@@ -237,12 +241,21 @@ void CollisionsSystem::horizontalCollision(Vector2D& pos, const Vector2D& offset
 
 void CollisionsSystem::tellIngredient(Ingredient* en, const ColisionType& colType)
 {
-	if (colType != ColisionType::noColision) {
-		if (colType == ColisionType::horizontal) en->onCollisionX();
-		else if (colType == ColisionType::vertical) en->onCollisionY();
-		else if (colType == ColisionType::both) {
-			en->onCollisionX();
-			en->onCollisionY();
-		}
+	if (twoIngCollided_)
+		return;
+
+	switch (colType)
+	{
+	case horizontal:
+		en->onCollisionX();
+		break;
+	case vertical:
+		en->onCollisionY();
+		break;
+	case both:
+		en->onCollisionXY();
+		break;
+	default:
+		break;
 	}
 }

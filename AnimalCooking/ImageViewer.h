@@ -13,6 +13,7 @@ public:
 
 	virtual void init() override;
 	virtual void draw() override;
+	void setOpacity(Uint8 opacity) { texture_->setAlpha(opacity); }
 private:
 	Texture* texture_;
 	Transform* transform_;

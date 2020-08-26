@@ -1,6 +1,7 @@
 #include "Wall.h"
 #include "Transform.h"
 #include "SDLRenderer.h"
+#include "WallOpacityManager.h"
 
 Wall::Wall(Vector2D pos, Vector2D size, Texture* texture, double casillaX, const double casillaY, double thickness, EntityManager* mn) : Entity(SDLGame::instance(), mn)
 {

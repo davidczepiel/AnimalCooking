@@ -317,6 +317,7 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallAdder.h" />
+    <ClInclude Include="WallOpacityManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdversityAdder.cpp" />
@@ -473,6 +474,7 @@
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallAdder.cpp" />
+    <ClCompile Include="WallOpacityManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AnimalCooking.rc" />

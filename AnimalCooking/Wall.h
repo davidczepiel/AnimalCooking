@@ -2,7 +2,7 @@
 
 #include "Manager.h"
 #include "Entity.h"
-
+#include "IngredientsPool.h"
 class Wall : public Entity
 {
 public:

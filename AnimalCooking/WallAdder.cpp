@@ -6,12 +6,14 @@
 #include "Door.h"
 #include "SDLRenderer.h"
 #include "ImageViewer.h"
+#include "IngredientsPool.h"
+#include "WallOpacityManager.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 
 WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, 
-	std::array<Entity*, 2>& players, const double casillaX, const double casillaY, const double offsetX, const double offsetY)
+	std::array<Entity*, 2>& players, const double casillaX, const double casillaY, const double offsetX, const double offsetY, IngredientsPool* pool)
 {
 	//Paredes
 	vector<Data> data; 
@@ -73,8 +75,8 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	valla->addComponent<Transform>(Vector2D(8 * casillaX , 7 * casillaY - 100),
 								   Vector2D(),	1000, 100);
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
+	valla->addComponent<WallOpacityManager>(pool);
 	mngr->addToGroup(valla, ecs::Valla);
-
 	
 	//Suelos
 	Entity* cocina = mngr->addEntity();
@@ -152,7 +154,8 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 
-void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id) 
+void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_,
+	EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id)
 {
 	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX,casillaY,offsetX,mngr);
 
