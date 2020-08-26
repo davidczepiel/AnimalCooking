@@ -8,7 +8,7 @@
 #include "jute.h"
 #include "Timer.h"
 #include "CollisionsSystem.h"
-
+#define GETTRANSFORM(pl) pl->getPlayerTransform()
 class GameControl : public Component
 {
 public:

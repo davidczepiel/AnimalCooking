@@ -224,7 +224,7 @@ void LevelInitializer::initialize_clients()
 
 void LevelInitializer::initialize_walls()
 {
-	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY);
+	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY, GETCMP2(ingPoolEntity_, IngredientsPool));
 
 	sL->updateLength();
 }

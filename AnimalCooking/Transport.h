@@ -15,10 +15,12 @@ public:
 	void update() override;
 
 	Pickable* getObjectInHands() { return objInHands_; }
+	Transform* getPlayerTransform() { return playerTransform_; }
 	Resources::PickableType getObjectTypeInHands() { return objType_; }
 	void setObjectInHands(Pickable* p) { objInHands_ = p; }
 	void setObjectTypeInHands(Resources::PickableType p) { objType_ = p; }
 	void setDir(const Vector2D& v) { dir = v; }
+
 
 private:
 	void swap(Pickable* obj, Resources::PickableType objType, bool inFloor = true);
