@@ -160,8 +160,12 @@ void MapState::update()
 		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 
 			if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_A) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_A))) {
-				if (playButton_ != nullptr)
-					GETCMP2(playButton_, ButtonBehaviour)->action();
+				if (playButton_ != nullptr) {
+					Entity* e = padNavigation_->getObjectInFocus();
+					if ( e!= nullptr && GETCMP2(e, ButtonBehaviourNC) != nullptr) {
+						GETCMP2(playButton_, ButtonBehaviour)->action();
+					}
+				}
 				else if (nameAsker != nullptr) {
 					NameAsker* na = GETCMP2(nameAsker, NameAsker);
 					if (na->getActive() && na->getName().size() > 1) {
@@ -549,5 +553,7 @@ void MapState::configPadNavigation() {
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;
 		}
+		padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_,nullptr,nullptr,nullptr,levelButtonsPool_.at(0), levelButtonsPool_.at(0),2);
+		padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr,levelButtonsPool_.at(i-1),nullptr, levelButtonsPool_.at(i - 1),3);
 	}
 }

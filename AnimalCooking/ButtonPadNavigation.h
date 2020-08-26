@@ -15,6 +15,8 @@ public:
 	void onlyListenTo(int player) { playerToListen = player; }
 	void resetNavigation();
 	void setFocusOn(Entity* e);
+	void addButtonToAnExistingOne(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, Entity* wich,int fromWhere);
+	Entity* getObjectInFocus() { return focus.e; }
 
 private:
 	struct button {                                                         
