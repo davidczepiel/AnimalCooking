@@ -138,6 +138,8 @@ public:
 		FregaderoBordeIzqON,
 		FregaderoEsqDchaArr,
 		FregaderoEsqDchaArrON,
+		FregaderoFlipBordeArriba,
+		FregaderoFlipONBordeArriba,
 		Panera,
 		PaneraVerSinDer,
 		Papelera,
