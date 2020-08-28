@@ -51,7 +51,10 @@ public:
 		//MapState
 		NameAsker,
 		MapStateBackground,
+		MapState2Background,
 		MapStateInfoBox,
+		ButtonNext,
+		ButtonPrev,
 
 		//Botones del mando
 		GPad_a,
