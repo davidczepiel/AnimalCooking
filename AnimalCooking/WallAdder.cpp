@@ -84,8 +84,13 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	Entity* campo = mngr->addEntity();
 	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
-	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
+
+	Texture* hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba);
+	if(nivel["Hierba"].as_string() == "otono") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaOtono);
+
+	campo->addComponent<SDLRenderer>(hierba, Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
+
 	//Hacer esquinas 
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
 		Entity* corner = mngr->addEntity();

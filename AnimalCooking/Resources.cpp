@@ -101,6 +101,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
+	{AllLevels, HierbaOtono,"../AnimalCooking/resources/images/Cocina/sueloHierbaOtono.jpg"},
 	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
 	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
 	{AllLevels, SkilletOFFEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffEsquina.png"},
