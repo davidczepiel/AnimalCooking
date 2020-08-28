@@ -10,11 +10,11 @@
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
 
-WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_,
-	std::array<Entity*, 2>& players, const double casillaX, const double casillaY, const double offsetX, const double offsetY, int level)
+WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& general, CollisionsSystem* colSys_, 
+	std::array<Entity*, 2>& players, const double casillaX, const double casillaY, const double offsetX, const double offsetY)
 {
 	//Paredes
-	vector<Data> data;
+	vector<Data> data; 
 
 	jute::jValue vallas = nivel["Valla"]["entities"];
 
@@ -35,8 +35,8 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 		Vector2D(64, casillaY),
 		Resources::TextureId::VallaInicio));
 
-	data.push_back(Data(Vector2D(8 * casillaX, 6.75 * casillaY),	//Medio 2 ver
-		Vector2D(44, 0.25 * casillaY),
+	data.push_back(Data(Vector2D(8 * casillaX, 6.75 * casillaY ),	//Medio 2 ver
+		Vector2D(44, 0.25*casillaY),
 		Resources::TextureId::Collider));
 	data.push_back(Data(Vector2D(8 * casillaX + offsetX, 7 * casillaY - offsetY), //Aba hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), offsetY),
@@ -51,7 +51,7 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 		Resources::TextureId::ParedCocina);
 
 
-
+	
 	maker(dataMuro, casillaX, casillaY, colSys_, mngr, offsetX, offsetY); //Valla arriba
 	maker(dataParedCocina, casillaX, casillaY, colSys_, mngr, offsetX, offsetY, ecs::GroupID::Layer12); //Valla arriba izq 
 
@@ -70,12 +70,12 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 
 	//Hacer falsa valla
 	Entity* valla = mngr->addEntity();
-	valla->addComponent<Transform>(Vector2D(8 * casillaX, 7 * casillaY - 100),
-		Vector2D(), 1000, 100);
+	valla->addComponent<Transform>(Vector2D(8 * casillaX , 7 * casillaY - 100),
+								   Vector2D(),	1000, 100);
 	valla->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::VallaAbajo));
 	mngr->addToGroup(valla, ecs::Valla);
 
-
+	
 	//Suelos
 	Entity* cocina = mngr->addEntity();
 	cocina->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 8 * casillaX + offsetX, 9 * casillaY);
@@ -84,8 +84,7 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 
 	Entity* campo = mngr->addEntity();
 	campo->addComponent<Transform>(Vector2D(8 * casillaX + offsetX, 0), Vector2D(), SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), 7 * casillaY);
-	//level/levelPacks nos da la zona en la que estamos
-	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba + ((level -1)/ SDLGame::instance()->getLevelPack())), Vector2D(casillaX, casillaY));
+	campo->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba), Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);
 	//Hacer esquinas 
 	for (int i = 0; i < nivel["Shelfs"]["corners"].size(); ++i) {
@@ -100,7 +99,7 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 		tr->setHitboxSize(tr->getW(), tr->getH());
 
 		corner->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(t), Vector2D(casillaX, casillaY));
-		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int() - 1));
+		mngr->addToGroup(corner, CASTID(general["Shelf"]["Layer"].as_int() - 1 ));
 		colSys_->addCollider(GETCMP2(corner, Transform), false);
 	}
 
@@ -108,7 +107,7 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 	for (int i = 0; i < nivel["Shelfs"]["decorativeShefls"].size(); ++i) {
 		Entity* shelf = mngr->addEntity();
 		int t = Resources::TextureId::EncimeraVConDecoracion;
-
+		
 		Transform* tr = shelf->addComponent<Transform>(Vector2D(nivel["Shelfs"]["decorativeShefls"][i]["pos"]["x"].as_double() * casillaX,
 			nivel["Shelfs"]["decorativeShefls"][i]["pos"]["y"].as_double() * casillaY), Vector2D(),
 			general["Shelf"]["size"]["width"].as_double() * casillaX, general["Shelf"]["size"]["height"].as_double() * casillaY);
@@ -128,11 +127,11 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 	for (int i = 0; i < size; i++) {
 		e = mngr->addEntity();
 		e->addComponent<Transform>(Vector2D((posX + i) * casillaX, posY * casillaY), Vector2D(), casillaX, casillaY);
-
-		if (i == 0)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraIzda), Vector2D(casillaX, casillaY));
-		else if (i == size - 1)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraDcha), Vector2D(casillaX, casillaY));
+		
+		if(i==0)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraIzda), Vector2D(casillaX, casillaY));
+		else if(i == size-1)e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraDcha), Vector2D(casillaX, casillaY));
 		else e->addComponent<SDLRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::BarraCentro), Vector2D(casillaX, casillaY));
-
+		
 		mngr->addToGroup(e, CASTID(general["Shelf"]["Layer"].as_int()));
 	}
 
@@ -153,9 +152,9 @@ WallAdder::WallAdder(EntityManager* mngr, jute::jValue& nivel, jute::jValue& gen
 	ScoreBackground->addComponent<ImageViewer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::ScoreBackground));
 }
 
-void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id)
+void WallAdder::maker(const Data& d, const double casillaX, const double casillaY, CollisionsSystem* colSys_, EntityManager* mngr, const double offsetX, const double offsetY, ecs::GroupID id) 
 {
-	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX, casillaY, offsetX, mngr);
+	Wall* w = new Wall(d.pos, d.size, SDLGame::instance()->getTextureMngr()->getTexture(d.t), casillaX,casillaY,offsetX,mngr);
 
 	mngr->addEntity(w);
 	mngr->addToGroup(w, id);

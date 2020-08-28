@@ -58,7 +58,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_levelIngredients();
 	initialize_clients();
 	initialize_colSystem();
-	initialize_walls(level);
+	initialize_walls();
 	initialize_firePool();
 	initialize_adversities();
 }
@@ -222,9 +222,9 @@ void LevelInitializer::initialize_clients()
 	sL->updateLength();
 }
 
-void LevelInitializer::initialize_walls(int level)
+void LevelInitializer::initialize_walls()
 {
-	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY,level);
+	WallAdder(emPlaystate, jsonLevel, jsonGeneral, GETCMP2(gameManager, CollisionsSystem), players, casillaX,casillaY, offsetX,offsetY);
 
 	sL->updateLength();
 }

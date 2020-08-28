@@ -36,7 +36,7 @@ private:
 	void initialize_feedback();
 	void initialize_levelIngredients();
 	void initialize_clients();
-	void initialize_walls(int level);
+	void initialize_walls();
 	void initialize_firePool();
 	void initialize_adversities();
 

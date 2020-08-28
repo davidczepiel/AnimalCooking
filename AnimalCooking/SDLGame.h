@@ -84,10 +84,6 @@ public:
 		return unlockedLevels;
 	}
 
-	inline int getLevelPack()const {
-		return levelPacks;
-	}
-
 	inline void setCurrentUnlockLevel(int a) {
 		unlockedLevels = a;
 	}
@@ -103,7 +99,6 @@ public:
 	inline void setMaxLevels(int a) {
 		maxLevels = a;
 	}
-	inline void setLevelPacks(int nLevelPack) { levelPacks = nLevelPack; }
 
 	inline void toggleFullScreen() {
 		int flags = SDL_GetWindowFlags(window_);
@@ -190,7 +185,6 @@ protected:
 	int maxLevels;
 	int score;
 	int maxScore;
-	int levelPacks;
 	double casillaX;
 	double casillaY;
 	Entity* timersViewer_;

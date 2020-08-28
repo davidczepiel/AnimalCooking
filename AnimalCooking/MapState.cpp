@@ -29,7 +29,6 @@ MapState::MapState(AnimalCooking* ac) :
 	playerName_("")
 {
 	game_ = SDLGame::instance();
-	game_->setLevelPacks(levelPacks_);
 	maxLevels_ = game_->getMaxLevels();
 	casillaX = game_->getCasillaX();
 	casillaY = game_->getCasillaY();
