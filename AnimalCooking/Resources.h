@@ -101,6 +101,7 @@ public:
 		Plato,
 		Suelo,
 		Hierba,
+		HierbaOtono,
 		OvenOFF,
 		OvenDerOFF,
 		OvenIzqOFF,
