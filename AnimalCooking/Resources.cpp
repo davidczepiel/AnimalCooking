@@ -105,14 +105,17 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, OvenOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoOff.png"},
 	{AllLevels, OvenDerOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoDchaOff.png"},
 	{AllLevels, OvenIzqOFF,"../AnimalCooking/resources/images/Cocina/cookers/hornoIzqOff.png"},
+	{AllLevels, OvenOFFBordes,"../AnimalCooking/resources/images/Cocina/cookers/hornoOffBordes.png"},
 	{AllLevels, SkilletOFF,"../AnimalCooking/resources/images/Cocina/cookers/sartenOff.png"},
 	{AllLevels, SkilletOFFEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffEsquina.png"},
 	{AllLevels, SkilletOFFBorde,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffBorde.png"},
 	{AllLevels, SkilletOFFArribaDecoracion,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffAba.png"},
 	{AllLevels, SkilletOFFArriba,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffArr.png"},
+	{AllLevels, SkilletOFFBordeAmbos,"../AnimalCooking/resources/images/Cocina/cookers/sartenOffBordeAmbos.png"},
 
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, PlateraBordeDerecha,"../AnimalCooking/resources/images/Cocina/platosDcha.png"},
+	{AllLevels, PlatosBordes,"../AnimalCooking/resources/images/Cocina/platosBordes.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, ParedCocina,"../AnimalCooking/resources/images/Cocina/paredCocina.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -195,7 +198,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraVertAbajo,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertAbajo.png" },
 	{ AllLevels,EncimeraVertSin_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeIzq.png" },
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeDer.png" },
-
+	{ AllLevels,EncimeraHorizConBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizConBordes.png" },
 
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
@@ -441,11 +444,13 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, OvenON,"../AnimalCooking/resources/images/Cocina/cookers/hornoOn.png", 4, 1},
 	{AllLevels, OvenDerON,"../AnimalCooking/resources/images/Cocina/cookers/hornoDchaOn.png", 4, 1},
 	{AllLevels, OvenIzqON,"../AnimalCooking/resources/images/Cocina/cookers/hornoIzqOn.png", 4, 1},
+	{AllLevels, OvenONBordes,"../AnimalCooking/resources/images/Cocina/cookers/hornoOnBordes.png", 4, 1},
 	{AllLevels, SkilletON,"../AnimalCooking/resources/images/Cocina/cookers/sartenOn.png", 3, 1},
 	{AllLevels, SkilletONEsquina,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnEsqiuna.png", 3, 1},
 	{AllLevels, SkilletONBorde,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnBorde.png", 3, 1},
 	{AllLevels, SkilletONArribaDecoracion,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnAba.png", 3, 1},
 	{AllLevels, SkilletONArriba,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnArrpng.png", 3, 1},
+	{AllLevels, SkilletONBordeAmbos,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnBordeAmbos.png", 3, 1},
 
 	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
 	{AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",24,8},

@@ -56,6 +56,7 @@ public:
 	{ 
 		if(textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerOFF);
 		else if(textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqOFF);
+		else if("HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFFBordes);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF);
 		 
 	};
@@ -64,6 +65,7 @@ public:
 	{ 
 		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
 		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
+		else if ("HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenONBordes);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); 
 	};
 
@@ -71,6 +73,7 @@ public:
 	{ 
 		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
 		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
+		else if ("HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenONBordes);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON);
 	};
 
@@ -87,6 +90,7 @@ public:
 		else if(textureState == "borde") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBorde);
 		else if(textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArriba);
 		else if(textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArribaDecoracion);
+		else if(textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBordeAmbos);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF);
 	};
 
@@ -96,6 +100,7 @@ public:
 		else if(textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
 		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
 		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
+		else if (textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBordeAmbos);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
@@ -105,6 +110,7 @@ public:
 		else if (textureState == "borde")texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBorde);
 		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
 		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
+		else if (textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBordeAmbos);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
