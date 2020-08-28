@@ -51,7 +51,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 
-	
+
 	//Botones del mando
 	{ Basic, GPad_a, "../AnimalCooking/resources/images/Menu/ButtonUIMando/aButton.png" },
 	{ Basic, GPad_b,"../AnimalCooking/resources/images/Menu/ButtonUIMando/bButton.png" },
@@ -69,7 +69,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, GPad_back, "../AnimalCooking/resources/images/Menu/ButtonUIMando/selectButton.png" },
 
 	//---->Config<---------
-	
+
 	{Basic, Config_Background,"../AnimalCooking/resources/images/ConfigMenu/background.png"},
 	{Basic, Config_FullscreenFocusedText,"../AnimalCooking/resources/images/ConfigMenu/fullScreenPink.png"},
 	{Basic, Config_FullscreenUnFocusedText,"../AnimalCooking/resources/images/ConfigMenu/fullScreen.png"},
@@ -133,7 +133,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregaderoOn.png"},
 	{AllLevels, FregaderoFlip, "../AnimalCooking/resources/images/Cocina/fregaderoFlip.png" },
-    {AllLevels, FregaderoFlipON,"../AnimalCooking/resources/images/Cocina/fregaderoFlipOn.png" },
+	{AllLevels, FregaderoFlipON,"../AnimalCooking/resources/images/Cocina/fregaderoFlipOn.png" },
 	{AllLevels, FregaderoAbajo,"../AnimalCooking/resources/images/Cocina/fregaderoAbajo.png" },
 	{AllLevels, FregaderoAbajoON,"../AnimalCooking/resources/images/Cocina/fregaderoAbajoOn.png" },
 	{AllLevels, FregaderoBordeIzq,"../AnimalCooking/resources/images/Cocina/fregaderoIzq.png" },
@@ -291,7 +291,22 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::CaughtSausageSkilletT,"../AnimalCooking/resources/images/Foods/salchichaSarten.png"},
 	{AllLevels, TextureId::SlicedPotatoSkilletT,"../AnimalCooking/resources/images/Foods/patatasSarten.png"},
 	{AllLevels, TextureId::DressT,"../AnimalCooking/resources/images/Foods/dress.png"},
-	{AllLevels, TextureId::MashedTomatoT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png"},
+	{ AllLevels, TextureId::MashedTomatoT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::FishSkilletT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::FishOnStickT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::FishAndChipsT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::FishBurgerT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::Rice1T,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::Rice2T,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IceT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedCookedFishT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedFishOnStickT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedFishAndChipsT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedFishBurgerT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedRice1T,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedRice2T,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{ AllLevels, TextureId::IcedRiceAndClamsT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png" },
+	{AllLevels, TextureId::IcedRiceDishT,"../AnimalCooking/resources/images/Foods/tomateAplastado.png"},
 
 
 
@@ -347,36 +362,51 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, CaughtSausageSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/salchichaSarten.png"},
 		{AllLevels, SlicedPotatoSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/patatasSarten.png"},
 		{AllLevels, DressFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/dress.png"},
-		{AllLevels, MashedTomatoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
+		{ AllLevels, MashedTomatoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, FishSkilletFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, FishOnStickFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, FishAndChipsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, FishBurgerFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, Rice1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, Rice2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{AllLevels, IceFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
+		{ AllLevels, IcedCookedFishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedFishOnStickFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedFishAndChipsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedFishBurgerFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedRice1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedRice2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{ AllLevels, IcedRiceAndClamsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png" },
+		{AllLevels, IcedRiceDishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/tomateAplastado.png"},
 
-	//Utensil
-	{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
-	{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
-	{AllLevels, RedFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/redFeedBack.png"},
-	{AllLevels, RalladorFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/ralladorFeedBack.png"},
-	//General
-	{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
-	{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
-	{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
-	{AllLevels, BordeTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaBorde.png"},
-	{AllLevels, RellenoTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaRelleno.png"},
+		//Utensil
+		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
+		{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
+		{AllLevels, RedFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/redFeedBack.png"},
+		{AllLevels, RalladorFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/ralladorFeedBack.png"},
+		//General
+		{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
+		{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},
+		{AllLevels, Panel,"../AnimalCooking/resources/images/FeedBack/General/panel.png"},
+		{AllLevels, BordeTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaBorde.png"},
+		{AllLevels, RellenoTeclaFeedBack,"../AnimalCooking/resources/images/FeedBack/General/TeclaRelleno.png"},
 
 		// images level specific
 		{AllLevels, Aceite,"../AnimalCooking/resources/images/Cocina/foodgivers/alino.png"},
-	    { AllLevels, AceiteBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoDcha.png" },
-	    { AllLevels, AceiteBordeIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoIzq.png" },
-	    { AllLevels, AceiteVertical,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVertical.png" },
+		{ AllLevels, AceiteBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoDcha.png" },
+		{ AllLevels, AceiteBordeIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoIzq.png" },
+		{ AllLevels, AceiteVertical,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVertical.png" },
 		{ AllLevels, AceiteVerSinIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinIzq.png" },
-	    { AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
+		{ AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
-	// Adversities
-	{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
-	{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
-	{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
-	{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
-	{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png" },
+		// Adversities
+		{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
+		{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
+		{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
+		{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
+		{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png" },
 
 
 		//creditState
@@ -415,13 +445,13 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, SkilletONArriba,"../AnimalCooking/resources/images/Cocina/cookers/sartenOnArrpng.png", 3, 1},
 
 	{AllLevels, SmokeBurned,"../AnimalCooking/resources/images/Cocina/cookers/Humo.png", 1, 3},
-    {AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",24,8},
+	{AllLevels, PigIdle, "../AnimalCooking/resources/images/Animaciones/Cerdo/idle.png",24,8},
 	{AllLevels, PigWalk, "../AnimalCooking/resources/images/Animaciones/Cerdo/andar.png",24,4},
 	{AllLevels, PigAttack, "../AnimalCooking/resources/images/Animaciones/Cerdo/ataque.png",10,2},
 	{AllLevels, ChickenIdle, "../AnimalCooking/resources/images/Animaciones/Gallina/idle.png",24,8},
 	{AllLevels, ChickenWalk, "../AnimalCooking/resources/images/Animaciones/Gallina/andar.png",24,4},
 	{AllLevels, ChickenAttack, "../AnimalCooking/resources/images/Animaciones/Gallina/ataque.png",10,2},
-    {AllLevels, Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
+	{AllLevels, Tomato,"../AnimalCooking/resources/images/Ingredientes/tomate.png",3,2},
 	{AllLevels, Potato,"../AnimalCooking/resources/images/Ingredientes/patata.png",3,2},
 	{AllLevels, Clam,"../AnimalCooking/resources/images/Ingredientes/vieira.png",3,2},
 	{AllLevels, Cheese,"../AnimalCooking/resources/images/Ingredientes/queso.png",3,2},
@@ -433,6 +463,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
+	{AllLevels, Snowman,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
 	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},
