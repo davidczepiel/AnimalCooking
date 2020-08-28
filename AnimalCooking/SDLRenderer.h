@@ -11,6 +11,7 @@ public:
 	void draw() override;
 private:
 	void renderColumn(size_t x, size_t restX);
+
 	Vector2D size;
 	Transform* tr;
 	Texture* t;
