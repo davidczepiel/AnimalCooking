@@ -146,6 +146,8 @@ public:
 		FregaderoEsqDchaArrON,
 		FregaderoFlipBordeArriba,
 		FregaderoFlipONBordeArriba,
+		FregaderoFlipSinIzq,
+		FregaderoFlipSinIzqON,
 		Panera,
 		PaneraVerSinDer,
 		Papelera,
@@ -195,6 +197,8 @@ public:
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
 			EncimeraVertSin_SinBordeIzq,
+			EncimeraVertSin_SinBordeDer,
+			EncimeraVEsquinaSuperior_SinBordeIzq,
 			EncimeraVEsquinaSuperior_SinBordeDer,
 			EncimeraHorizConBordes,
 			//Esquinas
@@ -418,6 +422,7 @@ public:
 		AceiteBordeIzq,
 	    AceiteVertical,
 		AceiteVerSinIzq,
+		AceiteVerSinDer,
 		AceiteSin,
 		EncimeraMasa,
 
