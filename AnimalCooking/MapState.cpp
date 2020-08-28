@@ -447,14 +447,14 @@ void MapState::placeHousesAndButtons()
 
 	nextScreenButton_ = stage->addEntity();
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
-	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 20, aux->getHeight());
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
 	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
 
 	PreviousScreenButton_ = stage->addEntity();
-	PreviousScreenButton_->addComponent<Transform>(Vector2D(0, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 20, aux->getHeight());
+	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
 	bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
 	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
