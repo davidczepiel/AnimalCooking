@@ -114,6 +114,21 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("CookedClams"):	ADDPEDIDO(pedido, Resources::FoodType::CookedClams);	break;
 	//-----------------------------------------------------------------------------------
 	case str2int("RiceAndClams"):	ADDPEDIDO(pedido, Resources::FoodType::RiceAndClams);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("FishOnStick"):	ADDPEDIDO(pedido, Resources::FoodType::FishOnStick);	break;
+	case str2int("FishAndChips"):	ADDPEDIDO(pedido, Resources::FoodType::FishAndChips);	break;
+	case str2int("FishBurger"):	ADDPEDIDO(pedido, Resources::FoodType::FishBurger);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Rice1"):	ADDPEDIDO(pedido, Resources::FoodType::Rice1);	break;
+	case str2int("Rice2"):	ADDPEDIDO(pedido, Resources::FoodType::Rice2);	break;
+	//-----------------------------------------------------------------------------------
+	case str2int("IcedCookedFish"):	ADDPEDIDO(pedido, Resources::FoodType::IcedCookedFish);	break;
+	case str2int("IcedFishOnStick"):	ADDPEDIDO(pedido, Resources::FoodType::IcedFishOnStick);	break;
+	case str2int("IcedFishAndChips"):	ADDPEDIDO(pedido, Resources::FoodType::IcedFishAndChips);	break;
+	case str2int("IcedFishBurger"):	ADDPEDIDO(pedido, Resources::FoodType::IcedFishBurger);	break;
+	case str2int("IcedRice1"):	ADDPEDIDO(pedido, Resources::FoodType::IcedRice1);	break;
+	case str2int("IcedRice2"):	ADDPEDIDO(pedido, Resources::FoodType::IcedRice2);	break;
+
 	default:																				break;
 	}
 }
