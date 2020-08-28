@@ -59,6 +59,8 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::CaughtFish:		return new CaughtFish;		break;
 	case Resources::FoodType::SlicedChicken:	return new SlicedChicken;	break;
 	case Resources::FoodType::CaughtClam:		return new CaughtClam;		break;
+	case Resources::FoodType::SlicedFish:		return new SlicedFish;		break;
+	case Resources::FoodType::Ice:		return new Ice();	break;
 
 	//Platos enteros :
 	case Resources::FoodType::Salad:			return new Salad();			break;
@@ -107,7 +109,6 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::Rice1:		return new Rice1();	break;
 	case Resources::FoodType::Rice2:		return new Rice2();	break;
 	//---------------------------------------------------------------------------
-	case Resources::FoodType::Ice:		return new Ice();	break;
 	case Resources::FoodType::IcedCookedFish:		return new IcedCookedFish();	break;
 	case Resources::FoodType::IcedFishOnStick:		return new IcedFishOnStick();	break;
 	case Resources::FoodType::IcedFishAndChips:		return new IcedFishAndChips();	break;
