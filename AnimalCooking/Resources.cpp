@@ -146,6 +146,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, FregaderoEsqDchaArrON,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoEsqDchaArrOn.png" },
 	{ AllLevels, FregaderoFlipBordeArriba, "../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipBordeArriba.png" },
 	{ AllLevels, FregaderoFlipONBordeArriba,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipOnBordeArriba.png" },
+	{ AllLevels, FregaderoFlipSinIzq,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipSinIzq.png" },
+	{ AllLevels, FregaderoFlipSinIzqON,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipOnSinIzq.png" },
+
 
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
 	{AllLevels, PaneraVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/paneraVerticalsinDcha.png" },
@@ -197,6 +200,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraHBordeIzquierda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizBordeIzq.png" },
 	{AllLevels,EncimeraVertAbajo,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertAbajo.png" },
 	{ AllLevels,EncimeraVertSin_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeIzq.png" },
+	{ AllLevels,EncimeraVertSin_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeDer.png" },
+	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeIzq.png" },
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeDer.png" },
 	{ AllLevels,EncimeraHorizConBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizConBordes.png" },
 
@@ -403,6 +408,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, AceiteBordeIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoIzq.png" },
 		{ AllLevels, AceiteVertical,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVertical.png" },
 		{ AllLevels, AceiteVerSinIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinIzq.png" },
+	    { AllLevels, AceiteVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinDer.png" },
 		{ AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
