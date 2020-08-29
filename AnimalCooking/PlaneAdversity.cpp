@@ -4,7 +4,8 @@
 
 PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) : 
 	Adversity(mam), 
-	planeTexture_(nullptr),
+	planeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow)),	
+	blizzardTexture_(nullptr),	//Cuando haya textura de ventisca ponerla aqui
 	internalTimer(new Timer()),
 	dir_(),
 	planeRect_(),
@@ -12,6 +13,7 @@ PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) :
 	angle_(),
 	force_(),
 	velocity_(),
+	isBlizzard_(false),
 	alreadyInitialized(false){
 }
 
@@ -20,9 +22,14 @@ void PlaneAdversity::StartPlane() {
 	int height = SDLGame::instance()->getWindowHeight();
 	int width = SDLGame::instance()->getWindowWidth();
 
-	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow);
-	planeRect_.w = planeTexture_->getWidth();
-	planeRect_.h = planeTexture_->getHeight();
+	if (isBlizzard_) {
+		planeRect_.w = planeTexture_->getWidth();
+		planeRect_.h = planeTexture_->getHeight();
+	}
+	else {
+		planeRect_.w = blizzardTexture_->getWidth();
+		planeRect_.h = blizzardTexture_->getHeight();
+	}
 
 	int n = rnd->nextInt(0, 8);
 	switch (n)
@@ -114,11 +121,12 @@ void PlaneAdversity::update() {
 }
 
 void PlaneAdversity::draw() {
-	planeTexture_->render(planeRect_, angle_);
+	if (!isBlizzard_) planeTexture_->render(planeRect_, angle_);
+	else blizzardTexture_->render(planeRect_, angle_);
 }
 
 void PlaneAdversity::reset() {
-	//StartPlane();
+	isBlizzard_ = false;
 }
 
 void PlaneAdversity::start()
