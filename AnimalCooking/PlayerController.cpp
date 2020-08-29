@@ -24,7 +24,6 @@ void PlayerController::joystickUpdate()
 {
 	GPadController* gpad = GPadController::instance();
 	double x = 0, y = 0;	
-	double speed = 0.6;
 
 	//Axis------------------------
 	double Xvalue = GPadController::instance()->getAxis(id_, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX);
@@ -145,7 +144,6 @@ void PlayerController::keyUpdate()
 {
 	InputHandler* keyboard = InputHandler::instance();
 
-	double speed = 0.6;
 	int x = 0, y = 0;
 
 	if (keyboard->keyDownEvent()) {
