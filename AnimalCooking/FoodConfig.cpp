@@ -115,6 +115,9 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs2 });
 
 	cTrans.push_back({ { Resources::FoodType::CaughtFish},	Resources::FoodType::FishSkillet });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::MashedTomato},	Resources::FoodType::Rice1 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::SlicedFish,Resources::FoodType::Dress},	Resources::FoodType::Rice2 });
+
 
 	//Adding Skillet recipes
 	cookersRecipes_.push_back({ Resources::Skillet, cTrans });
@@ -140,8 +143,6 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
 	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet,Resources::FoodType::FishSkillet },	Resources::FoodType::FishAndChips });
 	cTrans.push_back({ { Resources::FoodType::Dress,Resources::FoodType::FishSkillet,Resources::FoodType::SlicedLettuce,Resources::FoodType::BreadBurger },	Resources::FoodType::FishBurger });
-	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::MashedTomato},	Resources::FoodType::Rice1 });
-	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::FishSkillet,Resources::FoodType::Dress},	Resources::FoodType::Rice2 });
 	cTrans.push_back({ { Resources::FoodType::CookedFish,Resources::FoodType::Ice},	Resources::FoodType::IcedCookedFish });
 	cTrans.push_back({ { Resources::FoodType::FishOnStick,Resources::FoodType::Ice},	Resources::FoodType::IcedFishOnStick });
 	cTrans.push_back({ { Resources::FoodType::FishAndChips,Resources::FoodType::Ice},	Resources::FoodType::IcedFishAndChips });

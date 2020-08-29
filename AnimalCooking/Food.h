@@ -641,7 +641,18 @@ public:
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RiceAndClamsFeedBack);
 	}
 };
-
+class SlicedFish : public Food
+{
+public:
+	SlicedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedFish, p1, p2, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedFishT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedFishFeedBack);
+	}
+	SlicedFish() : Food(Resources::FoodType::SlicedFish, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedFishT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedFishFeedBack);
+	}
+};
 class FishSkillet : public Food
 {
 public:

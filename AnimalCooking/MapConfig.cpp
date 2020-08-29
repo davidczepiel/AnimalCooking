@@ -143,6 +143,7 @@ void MapConfig::fill()
 
 	levelsRecipes_.push_back(auxiliar);
 
+
 	/////////////////////////////////////
    ///////		 EXTRA 2   		  //////
   /////////////////////////////////////
@@ -155,7 +156,64 @@ void MapConfig::fill()
 	auxiliar.buttonsSize = Vector2D(46, 23);
 
 	levelsRecipes_.push_back(auxiliar);
+	//11
+	
+	auxiliar.name = "";
+	auxiliar.lore[0] = "11 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1093, 720);
+	auxiliar.buttonsSize = Vector2D(70, 35);
 
+	levelsRecipes_.push_back(auxiliar);
+	//12
+	auxiliar.name = "";
+	auxiliar.lore[0] = "12 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1193, 720);
+	auxiliar.buttonsSize = Vector2D(70, 35);
+
+	levelsRecipes_.push_back(auxiliar);
+	//13
+	auxiliar.name = "";
+	auxiliar.lore[0] = "13 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1293, 720);
+	auxiliar.buttonsSize = Vector2D(70, 35);
+
+	levelsRecipes_.push_back(auxiliar);
+	//14
+	auxiliar.name = "";
+	auxiliar.lore[0] = "14 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1393, 720);
+	auxiliar.buttonsSize = Vector2D(70, 35);
+
+	levelsRecipes_.push_back(auxiliar);
+	//15
+	auxiliar.name = "";
+	auxiliar.lore[0] = "15 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1493, 720);
+	auxiliar.buttonsSize = Vector2D(70, 35);
+
+	levelsRecipes_.push_back(auxiliar);
+	/////////////////////////////////////
+	///////		 EXTRA 3  		  //////
+	///////////////////////////////////
+
+	auxiliar.name = "";
+	auxiliar.lore[0] = "Extra 2. Extra 2. Extra 2. Extra 2.";
+	auxiliar.lore[1] = "Extra 2. Extra 2. Extra 2. Extra 2.";
+	auxiliar.lore[2] = "Extra 2. Extra 2. Extra 2. Extra 2.";
+	auxiliar.buttonPosition = Vector2D(912, 270);
+	auxiliar.buttonsSize = Vector2D(46, 23);
+
+	levelsRecipes_.push_back(auxiliar);
 	//Cargar resto de datos
 	if (!newGame_) load();
 	else {
