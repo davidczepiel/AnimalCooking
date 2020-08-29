@@ -412,7 +412,9 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, AceiteVerSinIzq,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinIzq.png" },
 	    { AllLevels, AceiteVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinDer.png" },
 		{ AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
+	    { AllLevels, AceiteVerticalBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalBordeSup.png" },
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
+	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
 		// Adversities
