@@ -117,6 +117,7 @@ public:
 		Platera,
 		PlateraBordeDerecha,
 		PlatosBordes,
+		PlatosVer,
 		Muro,
 		ParedCocina,
 		Valla,
@@ -418,6 +419,7 @@ public:
 		// images level specific
 		Arroz,
 		ArrozBordeSup,
+		ArrozSinBordeDer,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,

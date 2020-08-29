@@ -61,6 +61,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "aceiteVerticalBordeSup")t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::AceiteVerticalBordeSup);
 	else if(nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arroz" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Arroz);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arrozBordeSup") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArrozBordeSup);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arrozSinBordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArrozSinBordeDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "panera" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraVerSinDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraVerSinDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "encimeraMasa") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);

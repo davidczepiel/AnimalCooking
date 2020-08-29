@@ -116,6 +116,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Platera,"../AnimalCooking/resources/images/Cocina/platos.png"},
 	{AllLevels, PlateraBordeDerecha,"../AnimalCooking/resources/images/Cocina/platosDcha.png"},
 	{AllLevels, PlatosBordes,"../AnimalCooking/resources/images/Cocina/platosBordes.png"},
+	{AllLevels, PlatosVer,"../AnimalCooking/resources/images/Cocina/platosVer.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, ParedCocina,"../AnimalCooking/resources/images/Cocina/paredCocina.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
@@ -415,6 +416,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, AceiteVerticalBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalBordeSup.png" },
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
+	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
 		// Adversities
