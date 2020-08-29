@@ -431,6 +431,7 @@ public:
 			RellenoTeclaFeedBack,
 		// images level specific
 		Arroz,
+		ArrozBordeSup,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -438,6 +439,7 @@ public:
 		AceiteVerSinIzq,
 		AceiteVerSinDer,
 		AceiteSin,
+		AceiteVerticalBordeSup,
 		EncimeraMasa,
 
 		//CreditState
