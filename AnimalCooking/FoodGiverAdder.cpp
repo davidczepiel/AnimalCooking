@@ -64,6 +64,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arrozSinBordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArrozSinBordeDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "panera" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraVerSinDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraVerSinDer);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraBordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraBordeDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "encimeraMasa") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
 
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casillaX, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casillaY),

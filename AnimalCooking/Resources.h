@@ -152,6 +152,7 @@ public:
 		FregaderoFlipSinIzqON,
 		Panera,
 		PaneraVerSinDer,
+		PaneraBordeDer,
 		Papelera,
 		CuadradoAux,
 		//Barra de entregas
