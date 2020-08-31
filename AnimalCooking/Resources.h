@@ -52,6 +52,7 @@ public:
 		NameAsker,
 		MapStateBackground,
 		MapState2Background,
+		MapState3Background,
 		MapStateInfoBox,
 		ButtonNext,
 		ButtonPrev,
