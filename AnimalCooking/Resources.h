@@ -204,6 +204,9 @@ public:
 			EncimeraVEsquinaSuperior_SinBordeIzq,
 			EncimeraVEsquinaSuperior_SinBordeDer,
 			EncimeraHorizConBordes,
+			EncimeraDerVertCon,
+			EncimeraIzqVertCon,
+			EncimeraVEsquinaSuperior_SinBordes,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
