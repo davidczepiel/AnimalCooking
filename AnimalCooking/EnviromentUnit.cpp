@@ -70,8 +70,8 @@ void Ice::act()
 	if (playerAffectedNow == 0) {
 		p = tP1;
 		Vector2D vel;
-		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60)/10);
-		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60)/10);
+		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60)/2);
+		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60)/2);
 		p1Pos = p->getPos();
 		p1Pos = p1Pos + vel;
 	}
@@ -88,9 +88,12 @@ void Ice::update()
 		envC->enterIceZone(0,tP1->getVel());
 		affectingP1 = true;
 		playerAffectedNow = 0;
+		p1Pos = tP1->getPos();
 	}
 	else if (affectingP1 && Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
+		tP1->setPos(p1Pos);// envC->getPlayerForceX()
 		playerAffectedNow = 0;
+		envC->playerIsMoving(0,tP1->getVel());
 		act();
 		tP1->setPos(p1Pos);// envC->getPlayerForceX()
 	}

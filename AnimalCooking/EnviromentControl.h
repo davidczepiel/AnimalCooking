@@ -17,6 +17,7 @@ public:
 	void playerMoved(int p, double moveX, double moveY);
 	void playerExit(int p);
 	void isThereForce();
+	void playerIsMoving(int p, Vector2D v);
 private:
 	Vector2D p1Force;
 	Vector2D p2Force;
