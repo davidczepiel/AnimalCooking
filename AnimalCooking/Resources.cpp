@@ -208,6 +208,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeIzq.png" },
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeDer.png" },
 	{ AllLevels,EncimeraHorizConBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizConBordes.png" },
+	{ AllLevels,EncimeraDerVertCon,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraDerVertCon.png" },
+	{ AllLevels,EncimeraIzqVertCon,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraIzqVertCon.png" },
+	{ AllLevels,EncimeraVEsquinaSuperior_SinBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordes.png" },
 
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
