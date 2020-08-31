@@ -70,13 +70,18 @@ void Ice::act()
 	if (playerAffectedNow == 0) {
 		p = tP1;
 		Vector2D vel;
-		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60)/2);
-		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60)/2);
+		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60)/2.75);
+		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60)/2.75);
 		p1Pos = p->getPos();
 		p1Pos = p1Pos + vel;
 	}
 	else {
-
+		p = tP2;
+		Vector2D vel;
+		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60) / 2.75);
+		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60) / 2.75);
+		p2Pos = p->getPos();
+		p2Pos = p2Pos + vel;
 	}
 
 
@@ -84,6 +89,8 @@ void Ice::act()
 
 void Ice::update()
 {
+
+	//PARA EL PLAYER 1
 	if (!affectingP1 && Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
 		envC->enterIceZone(0,tP1->getVel());
 		affectingP1 = true;
@@ -91,36 +98,34 @@ void Ice::update()
 		p1Pos = tP1->getPos();
 	}
 	else if (affectingP1 && Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
-		tP1->setPos(p1Pos);// envC->getPlayerForceX()
+		tP1->setPos(p1Pos);
 		playerAffectedNow = 0;
 		envC->playerIsMoving(0,tP1->getVel());
 		act();
-		tP1->setPos(p1Pos);// envC->getPlayerForceX()
+		tP1->setPos(p1Pos);
 	}
 	else if (affectingP1 && !Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
-
 		playerAffectedNow = -1;
 		affectingP1 = false;
 	}
 
-	//if (!affectingP2 && Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
-	//	playerAffectedNow = 1;
-	//	if (!affectingP2) {
-	//		affectingP2 = true;
-	//		p2Pos = tP2->getPos();
-	//		p2Vel = tP2->getVel();
-	//		p2Vel.setX(p2Vel.getX() * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60));
-	//		p2Vel.setY(p2Vel.getY() * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60));
-	//	}
-	//	act();
-	//}
-	//else if (affectingP2 && Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
-	//	playerAffectedNow=1;
-	//	act();
-	//}
-	//else  {
-	//	playerAffectedNow = -1;
-	//	//pC2->resetSpeed();
-	//	affectingP2 = false;
-	
+
+	//PARA EL PLAYER 2
+	if (!affectingP2 && Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
+		envC->enterIceZone(0, tP2->getVel());
+		affectingP2 = true;
+		playerAffectedNow = 1;
+		p2Pos = tP2->getPos();
+	}
+	else if (affectingP2 && Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
+		tP2->setPos(p2Pos);
+		playerAffectedNow = 1;
+		envC->playerIsMoving(0, tP2->getVel());
+		act();
+		tP2->setPos(p2Pos);
+	}
+	else if (affectingP2 && !Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
+		playerAffectedNow = -1;
+		affectingP2 = false;
+	}
 }

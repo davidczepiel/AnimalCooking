@@ -4,8 +4,11 @@ EnviromentControl::EnviromentControl():Component(ecs::EnviromentControl)
 {
 	lastP1Entered = 0;
 	lastP2Entered = 0;
+	accelerationIce = 30;
 }
 
+
+//Cada tick le quitamos para que vayan perdiendo inercia y en caso de que no tenga o sea insigniicante se pone a 0
 void EnviromentControl::update()
 {
 	if (p1Force.getX() > 0)p1Force.setX(p1Force.getX()-5); else if(p1Force.getX() < 0) p1Force.setX(p1Force.getX() + 5);
@@ -16,53 +19,51 @@ void EnviromentControl::update()
 	isThereForce();
 }
 
+
+//Si el entra el jugador pero hace poco ha estado en en hielo significa que ha pasado de un bloque de hielo a otro
+//Sino acaba de entrar al hielo
 void EnviromentControl::enterIceZone(int player, Vector2D vel)
 {
-	if (player == 0 && SDL_GetTicks()-lastP1Entered >2000) {
+	if (player == 0 && SDL_GetTicks()-lastP1Entered >500) {
 		p1Force.setX(vel.getX() * 1000);
 		p1Force.setY(vel.getY()*1000);
 		lastP1Entered = SDL_GetTicks();
 	}
-	else if(player==1 && SDL_GetTicks() - lastP2Entered > 2000){
+	else if(player==1 && SDL_GetTicks() - lastP2Entered > 500){
 		p2Force.setX(vel.getX() * 1000);
 		p2Force.setY(vel.getY() * 1000);
-		lastP1Entered = SDL_GetTicks();
+		lastP2Entered = SDL_GetTicks();
 	}
 }
 
+
+//Obtener las "velocidades de cada player en cada direccion
 double EnviromentControl::getPlayerForceX(int p)
 {
-	if (p == 0)return (p1Force.getX()/1000);
-	else return (p2Force.getX() / 1000);
+	if (p == 0) {
+		if (p1Force.getX() > 1000)return 1;
+		else return (p1Force.getX() / 1000);
+	}
+	else {
+		if (p2Force.getX() > 1000)return 1;
+		else return (p2Force.getX() / 1000);
+	}
 }
 
 double EnviromentControl::getPlayerForceY(int p)
 {
-	if (p == 0)return (p1Force.getY() / 1000);
-	else return (p2Force.getY() / 1000);
-}
-
-void EnviromentControl::playerMoved(int p, double moveX, double moveY)
-{
 	if (p == 0) {
-		if (moveX < 0) p1Force.setX(p1Force.getX()-1);
-		else if (moveX>0) p1Force.setX(p1Force.getX() + 1);
-
-		if (moveY < 0) p1Force.setY(p1Force.getY() - 1);
-		else if (moveY > 0) p1Force.setY(p1Force.getY() + 1);
+		if (p1Force.getY() > 1000)return 1;
+		else return (p1Force.getY() / 1000);
 	}
-	else
-	{
-
+	else {
+		if (p2Force.getY() > 1000)return 1;
+		else return (p2Force.getY() / 1000);
 	}
 }
 
-void EnviromentControl::playerExit(int p)
-{
-	/*if (p == 0)lastP1Entered = SDL_GetTicks();
-	else lastP2Entered = SDL_GetTicks();*/
-}
 
+//Si la fuerza es insignificante la pongo a 0
 void EnviromentControl::isThereForce()
 {
 	if (p1Force.getX() > -10 && p1Force.getX() < 10) p1Force.setX(0);
@@ -72,15 +73,28 @@ void EnviromentControl::isThereForce()
 
 }
 
+//Si el player se ha movido en el hielo vamos a aplicar una fuerza en la direccion en la que se ha movido
+//asi acumulamos inercia
 void EnviromentControl::playerIsMoving(int p, Vector2D v)
 {
+	//Player 1
 	if (p == 0) {
 		double x = v.getX();
 		double y = v.getY();
-		if (x < 0)p1Force.setX(p1Force.getX()-30);
-		else  if (x>0) p1Force.setX(p1Force.getX() + 30);
+		if (x < 0)p1Force.setX(p1Force.getX()-accelerationIce);
+		else  if (x>0) p1Force.setX(p1Force.getX() + accelerationIce);
 
-		if (y < 0)p1Force.setY(p1Force.getY() - 30);
-		else if (y > 0) p1Force.setY(p1Force.getY() + 30);
+		if (y < 0)p1Force.setY(p1Force.getY() - accelerationIce);
+		else if (y > 0) p1Force.setY(p1Force.getY() + accelerationIce);
+	}
+	//PLayer 2
+	else {
+		double x = v.getX();
+		double y = v.getY();
+		if (x < 0)p2Force.setX(p2Force.getX() - accelerationIce);
+		else  if (x > 0) p2Force.setX(p2Force.getX() + accelerationIce);
+
+		if (y < 0)p2Force.setY(p2Force.getY() - accelerationIce);
+		else if (y > 0) p2Force.setY(p2Force.getY() + accelerationIce);
 	}
 }
