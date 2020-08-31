@@ -42,16 +42,16 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 
 void PidgeonAdversity::update()
 {
+	//La animacion va segun el timer, si hemos visitado todas las columnas significa que hemos terminado con esta paloma
+	if (column >= 20) {
+		pidgeonFinished();
+	}
+
 	durationTimer_->update();
 	locateFrame();
 	//Cuando este en estos intervalos de tiempo llamo a move para que calcule su posicion exacta y que entre y salga de pantalla
 	if (durationTimer_->getProgress() < 0.10)move(0.10,0.10);
 	else if (durationTimer_->getProgress() > 0.90)move(1,0.10);
-
-	//La animacion va segun el timer, si hemos visitado todas las columnas significa que hemos terminado con esta paloma
-	if (column >= 20) {
-		pidgeonFinished();
-	}
 }
 
 
@@ -138,7 +138,7 @@ int PidgeonAdversity::posibleLocation(int a, int b)
 
 int PidgeonAdversity::locateFrame()
 {
-	column = (durationTimer_->getProgress() * 21);
+	column = (durationTimer_->getProgress() * 20);
 	return 0;
 }
 
