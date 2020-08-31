@@ -16,6 +16,10 @@ EnviromentAdder::EnviromentAdder(jute::jValue& nivel, EntityManager* mngr, std::
 			envP->addEnvUnit(pos,100,100,"Nieve");
 		}
 
+		if (nivel["Enviroment"][i]["Tipo"].as_string() == "Hielo") {
+			envP->addEnvUnit(pos, 100, 100, "Hielo");
+		}
+
 	}
 
 		mngr->addToGroup(enviromentManager, ecs::GroupID::topLayer);

@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "Transform.h"
 #include "PlayerController.h"
+#include "EnviromentControl.h"
 
 
 class EnviromentPool: public Component
@@ -20,10 +21,7 @@ private:
 	Transform* tF2;
 	PlayerController* pC1;
 	PlayerController* pC2;
-	bool player1Affected;
-	bool player2Affected;
-
-
+	EnviromentControl* envC;
 	vector<EnviromentUnit*> pool_;
 };
 

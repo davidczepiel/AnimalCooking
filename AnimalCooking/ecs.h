@@ -123,6 +123,7 @@ enum CmpId : CmpIdType {
 	MapInfoBoxViewer,
 
 	EnviromentViewer, //Enviroment
+	EnviromentControl,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

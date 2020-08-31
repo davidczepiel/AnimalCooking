@@ -457,6 +457,7 @@
     <ClCompile Include="EnviromentPool.cpp" />
     <ClCompile Include="EnviromentUnit.cpp" />
     <ClCompile Include="EnviromentViewer.cpp" />
+    <ClCompile Include="EnviromentControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -981,6 +982,7 @@
     <ClInclude Include="EnviromentPool.h" />
     <ClInclude Include="EnviromentUnit.h" />
     <ClInclude Include="EnviromentViewer.h" />
+    <ClInclude Include="EnviromentControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

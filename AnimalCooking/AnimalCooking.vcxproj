@@ -203,6 +203,7 @@
     <ClInclude Include="EndState.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EnviromentAdder.h" />
+    <ClInclude Include="EnviromentControl.h" />
     <ClInclude Include="EnviromentPool.h" />
     <ClInclude Include="EnviromentUnit.h" />
     <ClInclude Include="EnviromentViewer.h" />
@@ -369,6 +370,7 @@
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EnviromentAdder.cpp" />
+    <ClCompile Include="EnviromentControl.cpp" />
     <ClCompile Include="EnviromentPool.cpp" />
     <ClCompile Include="EnviromentUnit.cpp" />
     <ClCompile Include="EnviromentViewer.cpp" />
