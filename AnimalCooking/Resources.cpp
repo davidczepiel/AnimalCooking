@@ -502,7 +502,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Chicken,"../AnimalCooking/resources/images/Ingredientes/pollo.png",3,2},
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
-	{AllLevels, Snowman,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
+	{AllLevels, Snowman,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
 	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},
