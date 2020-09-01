@@ -17,6 +17,7 @@ struct Fire {
 		tr->setPos(Vector2D(rect.x, rect.y));
 		tr->setWH(rect.w, rect.h);
 		id = -1;
+		extinguish = false;
 	}
 
 	SDL_Rect rect;
@@ -25,6 +26,7 @@ struct Fire {
 	bool active;
 	Uint32 lastAnimTick;
 	int id;
+	bool extinguish;
 };
 
 class FirePool : public Component
@@ -35,7 +37,9 @@ public:
 		cs_(collSys),
 		gl_(gameLgc),
 		fireTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::FireOverHeated)),
+		smokeTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Explosion)), //poner animacion de humo aqui
 		animationFrameRate_(100),
+		animationFrameRateExt_(100),
 		poolFires_(20),
 		idCount(0)
 		{
@@ -63,7 +67,9 @@ public:
 	void desactivateFire(int id_) {
 		for (Fire* f : fires_) {
 			if (f->id == id_) {
-				f->active = false;
+				f->extinguish = true;
+				f->frame = 0;
+				f->lastAnimTick = SDL_GetTicks();
 				cs_->removeCollider(f->tr);
 			}
 		}
@@ -71,18 +77,27 @@ public:
 
 	void update() override {
 		for (Fire* f : fires_) {
-			if (f->active && (SDL_GetTicks() - f->lastAnimTick >= animationFrameRate_)) {
-				f->lastAnimTick = SDL_GetTicks();
-				f->frame++;
-				if(f->frame >= 3) f->frame = 0;
+			if (f->active) {
+				if (!f->extinguish && (SDL_GetTicks() - f->lastAnimTick >= animationFrameRate_)) {
+					f->lastAnimTick = SDL_GetTicks();
+					f->frame++;
+					if (f->frame >= fireTexture->getNumCols()) f->frame = 0;
+				}
+				else if (f->extinguish && (SDL_GetTicks() - f->lastAnimTick >= animationFrameRateExt_)) {
+					f->lastAnimTick = SDL_GetTicks();
+					f->frame++;
+					if (f->frame >= smokeTexture->getNumCols()) f->active = false;
+				}
 			}
 		}
 	}
 
 	void draw() override {
 		for (Fire* f : fires_) {
-			if (f->active) 
+			if (f->active) {
 				fireTexture->renderFrame(f->rect, 0, f->frame, 0);
+				if (f->extinguish) smokeTexture->renderFrame(f->rect, 0, f->frame, 0);
+			}
 		}
 	}
 private:
@@ -90,8 +105,10 @@ private:
 	GameLogic* gl_;
 
 	Texture* fireTexture;
+	Texture* smokeTexture;
 	std::vector<Fire*> fires_;
 	int animationFrameRate_;
+	int animationFrameRateExt_;
 	int poolFires_;
 
 	int idCount;

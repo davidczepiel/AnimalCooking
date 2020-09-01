@@ -13,6 +13,7 @@ Fire* FirePool::activateSingleFire(SDL_Rect rect_, int id_, bool hitbox) {
 	fires_[i]->tr->setHitboxSize(Vector2D(rect_.w - 10, rect_.h - 10));
 	fires_[i]->active = true;
 	fires_[i]->id = id_;
+	fires_[i]->extinguish = false;
 
 	if (hitbox) {
 		gl_->burnIngredients(fires_[i]->rect);
