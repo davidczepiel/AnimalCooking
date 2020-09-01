@@ -34,6 +34,9 @@ AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::ar
 		else if (nivel["Adversities"][i]["Tipo"].as_string() == "Paloma") {
 			adversitiesList.emplace_back(tuple<ecs::AdversityID, int>(ecs::AdversityID::PidgeonAdversity, tiempo));
 		}
+		else if (nivel["Adversities"][i]["Tipo"].as_string() == "Ventisca") {
+			adversitiesList.emplace_back(tuple<ecs::AdversityID, int>(ecs::AdversityID::BlizzardAdversity, tiempo));
+		}
 	}
 
 	if (!adversitiesList.empty()) {

@@ -117,6 +117,12 @@ void MultipleAdversityManager::playRumbles()
 void MultipleAdversityManager::seeTimers() {
 	nextAdversityTimer_->update();
 	if (nextAdversityTimer_->isTimerEnd() && !adversitiesQueue_.empty()) {
+
+		if (std::get<1>(adversitiesQueue_.front()) == ecs::AdversityID::BlizzardAdversity) {	//Caso ventisca
+			std::get<1>(adversitiesQueue_.front()) = ecs::AdversityID::PlaneAdversity;	//Lo cambio a planeAdversity para activarlo despues en el vector de booleanos
+			static_cast<PlaneAdversity*>(adversities_.at(ecs::AdversityID::PlaneAdversity))->setMode(true);	//Se pone el modo ventisca de la adversidad plane
+		}
+
 		activeAdversities_.at(std::get<1>(adversitiesQueue_.front())) = true;
 		adversities_.at(std::get<1>(adversitiesQueue_.front()))->start();
 		playingWarning_ = false;

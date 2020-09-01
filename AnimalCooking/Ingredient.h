@@ -162,4 +162,10 @@ public:
 	Fish(Transform* p1, Transform* p2) : Ingredient(Resources::fish, p1, p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fish); }
 	~Fish() {}
 };
+class SnowMan : public Ingredient
+{
+public:
+	SnowMan(Transform* p1, Transform* p2) : Ingredient(Resources::snowman, p1, p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::snowman); }
+	~SnowMan() {}
+};
 

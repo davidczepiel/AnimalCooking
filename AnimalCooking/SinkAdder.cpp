@@ -35,6 +35,16 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoEsqDchaArr);
 			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoEsqDchaArrON);
 		}
+		else if (sinks_[i]["texture"].as_string() == "FregaderoFlipBordeArriba")
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipBordeArriba);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipONBordeArriba);
+		}
+		else if (sinks_[i]["texture"].as_string() == "FregaderoFlipSinIzq")
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipSinIzq);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoFlipSinIzqON);
+		}
 		else //mirando hacia la izquierda
 		{
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Fregadero);

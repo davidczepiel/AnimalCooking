@@ -51,7 +51,10 @@ public:
 		//MapState
 		NameAsker,
 		MapStateBackground,
+		MapState2Background,
 		MapStateInfoBox,
+		ButtonNext,
+		ButtonPrev,
 
 		//Botones del mando
 		GPad_a,
@@ -105,13 +108,16 @@ public:
 		OvenOFF,
 		OvenDerOFF,
 		OvenIzqOFF,
+		OvenOFFBordes,
 		SkilletOFF,
 		SkilletOFFEsquina,
 		SkilletOFFBorde,
 		SkilletOFFArribaDecoracion,
 		SkilletOFFArriba,
+		SkilletOFFBordeAmbos,
 		Platera,
 		PlateraBordeDerecha,
+		PlatosBordes,
 		Muro,
 		ParedCocina,
 		Valla,
@@ -139,6 +145,10 @@ public:
 		FregaderoBordeIzqON,
 		FregaderoEsqDchaArr,
 		FregaderoEsqDchaArrON,
+		FregaderoFlipBordeArriba,
+		FregaderoFlipONBordeArriba,
+		FregaderoFlipSinIzq,
+		FregaderoFlipSinIzqON,
 		Panera,
 		PaneraVerSinDer,
 		Papelera,
@@ -188,7 +198,10 @@ public:
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
 			EncimeraVertSin_SinBordeIzq,
+			EncimeraVertSin_SinBordeDer,
+			EncimeraVEsquinaSuperior_SinBordeIzq,
 			EncimeraVEsquinaSuperior_SinBordeDer,
+			EncimeraHorizConBordes,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -248,6 +261,8 @@ public:
 		CaughtFishT,
 		SlicedChickenT,
 		CaughtClamT,
+		SlicedFishT,
+		IceT, 
 		RiceT,
 		BreadBurgerT,
 		BreadHotDogT,
@@ -292,6 +307,20 @@ public:
 		SlicedPotatoSkilletT,
 		DressT,
 		MashedTomatoT,
+		FishSkilletT,
+		FishOnStickT,
+		FishAndChipsT,
+		FishBurgerT,
+		Rice1T,
+		Rice2T,
+		IcedCookedFishT,
+		IcedFishOnStickT,
+		IcedFishAndChipsT,
+		IcedFishBurgerT,
+		IcedRice1T,
+		IcedRice2T, 
+		IcedRiceAndClamsT,
+		IcedRiceDishT,
 
 		//FeedBackImages---------------------------------------------
 			//Food
@@ -311,6 +340,8 @@ public:
 			CaughtFishFeedBack,
 			SlicedChickenFeedBack,
 			CaughtClamFeedBack,
+			SlicedFishFeedBack,
+			IceFeedBack, 
 			RiceFeedBack,
 			BreadBurgerFeedBack,
 			BreadHotDogFeedBack,
@@ -350,12 +381,30 @@ public:
 			FrenchFriesFeedBack,
 			CookedClamsFeedBack,
 			RiceAndClamsFeedBack,
+
+			FishSkilletFeedBack,
+			FishOnStickFeedBack,
+			FishAndChipsFeedBack,
+			FishBurgerFeedBack,
+			
+			Rice1FeedBack,
+			Rice2FeedBack,
+
+			IcedCookedFishFeedBack, 
+			IcedFishOnStickFeedBack,
+			IcedFishAndChipsFeedBack,
+			IcedFishBurgerFeedBack,
+			IcedRice1FeedBack,
+			IcedRice2FeedBack,
+			IcedRiceAndClamsFeedBack,
+			IcedRiceDishFeedBack,
+
 			MashedMeatSkilletFeedBack,
 			CaughtSausageSkilletFeedBack,
 			SlicedPotatoSkilletFeedBack,
 			DressFeedBack,
 			MashedTomatoFeedBack,
-
+			
 			//Utensils
 			CuchilloFeedBack,
 			MazoFeedBack,
@@ -374,6 +423,7 @@ public:
 		AceiteBordeIzq,
 	    AceiteVertical,
 		AceiteVerSinIzq,
+		AceiteVerSinDer,
 		AceiteSin,
 		EncimeraMasa,
 
@@ -388,6 +438,7 @@ public:
 		OvenON,
 		OvenDerON,
 		OvenIzqON,
+		OvenONBordes,
 		HomeIconEndState,
 		HomeIconMapState,
 		MapIcon,
@@ -396,6 +447,7 @@ public:
 		SkilletONBorde,
 		SkilletONArribaDecoracion,
 		SkilletONArriba,
+		SkilletONBordeAmbos,
 		SmokeBurned,
 		PigIdle,
         PigWalk,
@@ -415,6 +467,7 @@ public:
 		Chicken,
 		Carrot,
 		Sausage,
+		Snowman,
 		Puerta,
 		FireOverHeated,
 		LightingStrike,
@@ -481,7 +534,8 @@ public:
 		onion,
 		clam,
 		cheese,
-		fish
+		fish,
+		snowman
 	};
 
 	enum AudioId : std::size_t {
@@ -598,6 +652,8 @@ public:
 		CaughtFish,
 		SlicedChicken,
 		CaughtClam,
+		SlicedFish,
+		Ice,
 		///
 		Rice,
 		BreadBurger,
@@ -610,6 +666,7 @@ public:
 		MashedMeatSkillet,
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
+		FishSkillet,
 		///
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
@@ -639,7 +696,20 @@ public:
 		BakedChicken2,
 		FrenchFries,
 		CookedClams,
-		RiceAndClams
+		RiceAndClams,
+		FishOnStick,
+		FishAndChips,
+		FishBurger,
+		Rice1,
+		Rice2, 
+		IcedCookedFish,
+		IcedFishOnStick,
+		IcedFishAndChips,
+		IcedFishBurger, 
+		IcedRice1,
+		IcedRice2,
+		IcedRiceAndClams,
+		IcedRiceDish,
 		///
 
 	};
