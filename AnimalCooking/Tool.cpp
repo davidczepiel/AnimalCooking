@@ -3,7 +3,7 @@
 
 Bucket::Bucket(Transport* p1, Transport* p2) : Tool(p1, p2)
 {
-	waterStacks_ = 3;
+	waterStacks_ = 0;
 	maxStacks_ = 3;
 	lastAttack_ = SDL_GetTicks();
 	attackRate_ = 700;

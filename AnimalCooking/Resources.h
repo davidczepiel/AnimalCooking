@@ -153,6 +153,7 @@ public:
 		FregaderoFlipSinIzq,
 		FregaderoFlipSinIzqON,
 		Panera,
+		PaneraVer,
 		PaneraVerSinDer,
 		PaneraBordeDer,
 		Papelera,
