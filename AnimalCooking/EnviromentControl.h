@@ -12,6 +12,7 @@ public:
 	~EnviromentControl() {}
 	virtual void update();
 	void enterIceZone(int player, Vector2D vel);
+	void exitedIceZone(int p);
 	double getPlayerForceX(int p);
 	double getPlayerForceY(int p);
 	void isThereForce();
@@ -19,8 +20,9 @@ public:
 private:
 	Vector2D p1Force;
 	Vector2D p2Force;
-	double lastP1Entered;
-	double lastP2Entered;
+	int p1NumBlocksStepping;
+	int p2NumBlocksStepping;
+
 	double accelerationIce;
 
 };
