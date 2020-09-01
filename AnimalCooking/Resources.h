@@ -536,7 +536,8 @@ public:
 		PlaneShadow,
 		RainAdversity,
 		HookAdversity,
-		PidgeonAdversity
+		PidgeonAdversity,
+		Blizzard
 
 	};
 
