@@ -155,6 +155,7 @@ vector<Resources::ImageInfo> Resources::images_{
 
 
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
+	{ AllLevels, PaneraVer,"../AnimalCooking/resources/images/Cocina/foodgivers/paneraVerticalBordes.png" },
 	{ AllLevels, PaneraVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/paneraVerticalsinDcha.png" },
 	{AllLevels, PaneraBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/paneraBordeDerecha.png" },
 	{AllLevels, Papelera,"../AnimalCooking/resources/images/Cocina/basura.png"},
