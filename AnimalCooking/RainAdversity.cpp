@@ -99,13 +99,14 @@ void RainAdversity::start()
 	lastExplosionFrame_ = 0;
 	numLights = SDLGame::instance()->getRandGen()->nextInt(1, maxLights);
 
+	int rnd = SDLGame::instance()->getRandGen()->nextInt(0, lightingSpots_.size());
 	for (int i = 0; i <= numLights; ++i) {
-		int rnd = SDLGame::instance()->getRandGen()->nextInt(0, lightingSpots_.size());
-
 		rectLighting_[i].x = lightingSpots_[rnd].first.getX();
 		rectLighting_[i].y = lightingSpots_[rnd].first.getY();
 		rectLighting_[i].h = 157 * 4;
 		rectLighting_[i].w = 40 * 4;
+
+		rnd = (rnd + 1) % lightingSpots_.size();
 	}
 }
 
