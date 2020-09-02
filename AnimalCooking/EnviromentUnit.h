@@ -29,9 +29,9 @@ protected:
 	
 };
 
-class Snow : public EnviromentUnit {
+class SlowUnit : public EnviromentUnit {
 public:
-	Snow(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC);
+	SlowUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC);
 private:
 	virtual void act();
 	virtual void update();
@@ -39,9 +39,11 @@ private:
 
 };
 
-class Ice : public EnviromentUnit {
+
+
+class SlipperyUnit: public EnviromentUnit {
 public:
-	Ice(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC);
+	SlipperyUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC);
 private:
 	virtual void act();
 	virtual void update();

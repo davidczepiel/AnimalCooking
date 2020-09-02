@@ -12,12 +12,12 @@ EnviromentAdder::EnviromentAdder(jute::jValue& nivel, EntityManager* mngr, std::
 
 		Vector2D pos =Vector2D( nivel["Enviroment"][i]["pos"]["x"].as_int()*casillaX, nivel["Enviroment"][i]["pos"]["y"].as_int() * casillaY);
 
-		if (nivel["Enviroment"][i]["Tipo"].as_string() == "Nieve") {
-			envP->addEnvUnit(pos,100,100,"Nieve");
+		if (nivel["Enviroment"][i]["Tipo"].as_string() == "Slow") {
+			envP->addEnvUnit(pos,100,100,"Slow");
 		}
 
-		if (nivel["Enviroment"][i]["Tipo"].as_string() == "Hielo") {
-			envP->addEnvUnit(pos, 100, 100, "Hielo");
+		if (nivel["Enviroment"][i]["Tipo"].as_string() == "Resbalar") {
+			envP->addEnvUnit(pos, 100, 100, "Resbalar");
 		}
 
 	}

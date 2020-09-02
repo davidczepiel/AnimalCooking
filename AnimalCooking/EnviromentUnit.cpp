@@ -16,14 +16,14 @@ void EnviromentUnit::render() const
 
 
 
-Snow::Snow(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
+SlowUnit::SlowUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
 	EnviromentUnit(pos, width, height, tP1, tP2, pC1, pC2, envC)
 {
 	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fregadero);
 }
 
 
-void Snow::update()
+void SlowUnit::update()
 {
 	if (!affectingP1 && Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
 		playerAffectedNow = 0;
@@ -47,7 +47,7 @@ void Snow::update()
 	}
 }
 
-void Snow::act()
+void SlowUnit::act()
 {
 	PlayerController* pC = nullptr;
 	if (playerAffectedNow == 0)pC = pC1;
@@ -58,13 +58,13 @@ void Snow::act()
 
 
 
-Ice::Ice(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
+SlipperyUnit::SlipperyUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
 	EnviromentUnit(pos, width, height, tP1, tP2, pC1, pC2, envC)
 {
 	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dish);
 }
 
-void Ice::act()
+void SlipperyUnit::act()
 {
 	Transform* p = nullptr;
 	if (playerAffectedNow == 0) {
@@ -79,7 +79,7 @@ void Ice::act()
 	}
 }
 
-void Ice::update()
+void SlipperyUnit::update()
 {
 
 	//PARA EL PLAYER 1

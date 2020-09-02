@@ -17,11 +17,11 @@ void EnviromentPool::addEnvUnit(Vector2D pos, double width, double height,string
 {
 	if(envC == nullptr)	envC=entity_->addComponent<EnviromentControl>(pC1,pC2,tF1,tF2);
 
-	if(type=="Nieve"){
-		pool_.push_back(new Snow(pos, width, height, tF1, tF2, pC1, pC2,envC));
+	if(type=="Slow"){
+		pool_.push_back(new SlowUnit(pos, width, height, tF1, tF2, pC1, pC2,envC));
 	}
-	else if (type == "Hielo") {
-		pool_.push_back(new Ice(pos, width, height, tF1, tF2, pC1, pC2,envC));
+	else if (type == "Resbalar") {
+		pool_.push_back(new SlipperyUnit(pos, width, height, tF1, tF2, pC1, pC2,envC));
 	}
 }
 
