@@ -39,6 +39,7 @@ private:
 	void initialize_walls();
 	void initialize_firePool();
 	void initialize_adversities();
+	void initialize_enviroment();
 
 	Entity* ingPoolEntity_;
 	Entity* utensil;

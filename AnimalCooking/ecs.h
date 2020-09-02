@@ -53,6 +53,7 @@ enum CmpId : CmpIdType {
 	IngredientsPool, //Pools
 	UtensilsPool,
 	FirePool,
+	EnviromentPool,
 
 	UtensilsViewer, //Utensils
 	UtensilsMotion,
@@ -120,6 +121,9 @@ enum CmpId : CmpIdType {
 	NameAsker,//MapState
 	MapInfoBox,
 	MapInfoBoxViewer,
+
+	EnviromentViewer, //Enviroment
+	EnviromentControl,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

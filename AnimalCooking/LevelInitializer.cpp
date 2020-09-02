@@ -21,6 +21,7 @@
 #include "MultipleAdversityManager.h"
 #include "SDLGame.h"
 #include "AdversityAdder.h"
+#include "EnviromentAdder.h"
 #include "FirePool.h"
 #include "BucketMotion.h"
 #include "BucketViewer.h"
@@ -69,6 +70,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_walls();
 	initialize_firePool();
 	initialize_adversities();
+	initialize_enviroment();
 }
 
 void LevelInitializer::initialize_players()
@@ -252,6 +254,12 @@ void LevelInitializer::initialize_adversities()
 {
 	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool);
 	
+	sL->updateLength();
+}
+
+void LevelInitializer::initialize_enviroment()
+{
+	EnviromentAdder(jsonLevel, emPlaystate, players, casillaX, casillaY);
 	sL->updateLength();
 }
 
