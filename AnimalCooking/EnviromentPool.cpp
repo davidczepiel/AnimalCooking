@@ -13,7 +13,7 @@ EnviromentPool::~EnviromentPool()
 	}
 }
 
-void EnviromentPool::addEnvUnit(Vector2D pos, double width, double height,string type)
+void EnviromentPool::addEnvUnit(Vector2D pos, double width, double height,string type, string texture)
 {
 	if(envC == nullptr)	envC=entity_->addComponent<EnviromentControl>(pC1,pC2,tF1,tF2);
 
@@ -23,6 +23,10 @@ void EnviromentPool::addEnvUnit(Vector2D pos, double width, double height,string
 	else if (type == "Resbalar") {
 		pool_.push_back(new SlipperyUnit(pos, width, height, tF1, tF2, pC1, pC2,envC));
 	}
+	else pool_.push_back(new TextureUnit(pos, width, height, envC,selectTexture(texture)));	//Nieve sin colision
+	
+		
+	
 }
 
 void EnviromentPool::update()
@@ -30,5 +34,12 @@ void EnviromentPool::update()
 	for (EnviromentUnit* u : pool_) {
 		u->update();
 	}
+}
+
+Texture* EnviromentPool::selectTexture(string file)
+{
+	if (file == "islaPeq")				return game_->getTextureMngr()->getTexture(Resources::IslaPequeñaNieve);
+	else if (file == "islaGran")		return game_->getTextureMngr()->getTexture(Resources::IslaGrandeNieve);
+	else								return nullptr;
 }
 
