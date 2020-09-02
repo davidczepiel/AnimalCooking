@@ -125,6 +125,9 @@ Ingredient* GameControl::newIngType(const Resources::IngredientType& iT) {
 	case Resources::IngredientType::fish:
 		i = new Fish(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
 		break;
+	case Resources::IngredientType::snowman:
+		i = new SnowMan(GETTRANSFORM(tP1), GETTRANSFORM(tP2));
+		break;
 	default:
 		break;
 	}

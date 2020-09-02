@@ -28,6 +28,9 @@ DishAdder::DishAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 	Texture* t = nullptr;
 	if(jsonLevel["DishStack"]["texture"].as_string() == "BordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlateraBordeDerecha);
 	else if (jsonLevel["DishStack"]["texture"].as_string() == "PlatosBordes") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatosBordes);
+	else if (jsonLevel["DishStack"]["texture"].as_string() == "PlatosVer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatosVer);
+	else if(jsonLevel["DishStack"]["texture"].as_string() == "PlatosVerDosBordes") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlatosVerDosBordes);
+	else if (jsonLevel["DishStack"]["texture"].as_string() == "PlatosBordeSoloDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlateraBordeSoloDerecha);
 	else t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Platera);
 
 	//DishStack

@@ -52,6 +52,7 @@ public:
 		NameAsker,
 		MapStateBackground,
 		MapState2Background,
+		MapState3Background,
 		MapStateInfoBox,
 		ButtonNext,
 		ButtonPrev,
@@ -117,7 +118,10 @@ public:
 		SkilletOFFBordeAmbos,
 		Platera,
 		PlateraBordeDerecha,
+		PlateraBordeSoloDerecha,
 		PlatosBordes,
+		PlatosVer,
+		PlatosVerDosBordes,
 		Muro,
 		ParedCocina,
 		Valla,
@@ -150,7 +154,9 @@ public:
 		FregaderoFlipSinIzq,
 		FregaderoFlipSinIzqON,
 		Panera,
+		PaneraVer,
 		PaneraVerSinDer,
+		PaneraBordeDer,
 		Papelera,
 		CuadradoAux,
 		//Barra de entregas
@@ -170,6 +176,14 @@ public:
 		level6Menu,
 		level7Menu,
 		level8Menu,
+		level9Menu,
+		levelExtra2Menu,
+		level10Menu,
+		level11Menu,
+		level12Menu,
+		level13Menu,
+		level14Menu,
+		level15Menu,
 		barraScreenLoaderBack,
 		barraScreenLoader,
 		buttonGo,
@@ -202,6 +216,9 @@ public:
 			EncimeraVEsquinaSuperior_SinBordeIzq,
 			EncimeraVEsquinaSuperior_SinBordeDer,
 			EncimeraHorizConBordes,
+			EncimeraDerVertCon,
+			EncimeraIzqVertCon,
+			EncimeraVEsquinaSuperior_SinBordes,
 			//Esquinas
 			EsquinaSupDchaCopas,
 			EsquinaSupIzdaCopas,
@@ -244,6 +261,19 @@ public:
 		FrenchFriesOrder,
 		CookedClamsOrder,
 		RiceAndClamsOrder,
+		FishOnStickOrder,
+		FishAndChipsOrder,
+		FishBurgerOrder,
+		Rice1Order,
+		Rice2Order,
+		IcedCookedFishOrder,
+		IcedFishOnStickOrder,
+		IcedFishAndChipsOrder,
+		IcedFishBurgerOrder,
+		IcedRice1Order,
+		IcedRice2Order,
+		IcedRiceAndClamsOrder,
+		IcedRiceDishOrder,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -418,6 +448,8 @@ public:
 			RellenoTeclaFeedBack,
 		// images level specific
 		Arroz,
+		ArrozBordeSup,
+		ArrozSinBordeDer,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -425,6 +457,7 @@ public:
 		AceiteVerSinIzq,
 		AceiteVerSinDer,
 		AceiteSin,
+		AceiteVerticalBordeSup,
 		EncimeraMasa,
 
 		//CreditState
@@ -504,7 +537,8 @@ public:
 		PlaneShadow,
 		RainAdversity,
 		HookAdversity,
-		PidgeonAdversity
+		PidgeonAdversity,
+		Blizzard
 
 	};
 

@@ -23,6 +23,7 @@ private:
 
 	void StartPlane();
 	bool isPlaneOut();
+	void moveEntities();
 
 	Texture* planeTexture_;
 	Texture* blizzardTexture_;
@@ -39,5 +40,9 @@ private:
 	bool alreadyInitialized;
 
 	bool isBlizzard_;
+	Uint32 blizzardDuration_;
+	Uint32 blizzardLastAnimTick_;
+	int blizzardFrameRate_;
+	int blizzardFrame_;
 };
 

@@ -165,7 +165,7 @@ public:
 class SnowMan : public Ingredient
 {
 public:
-	SnowMan(Transform* p1, Transform* p2) : Ingredient(Resources::snowman, p1, p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::snowman); }
+	SnowMan(Transform* p1, Transform* p2) : Ingredient(Resources::snowman, p1, p2) { texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Snowman); }
 	~SnowMan() {}
 };
 

@@ -25,6 +25,7 @@ void FoodConfig::fill()
 	uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotato });
 	uTrans.push_back({ Resources::IngredientType::sausage,	Resources::FoodType::SlicedSausage });
 	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType::SlicedTomato });
+	uTrans.push_back({ Resources::IngredientType::fish,	Resources::FoodType::SlicedFish});
 	uTrans.push_back({ Resources::IngredientType::snowman,	Resources::FoodType::Ice });
 
 
@@ -114,8 +115,8 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::SlicedCarrot, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs1 });
 	cTrans.push_back({ { Resources::FoodType::SlicedTomato, Resources::FoodType::SlicedOnion, Resources::FoodType::SlicedMushroom },	Resources::FoodType::FriedVegs2 });
 
-	cTrans.push_back({ { Resources::FoodType::CaughtFish},	Resources::FoodType::FishSkillet });
-	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::MashedTomato},	Resources::FoodType::Rice1 });
+	cTrans.push_back({ { Resources::FoodType::SlicedFish},	Resources::FoodType::FishSkillet });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::MashedTomato},	Resources::FoodType:: Rice1});		
 	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::SlicedFish,Resources::FoodType::Dress},	Resources::FoodType::Rice2 });
 
 
@@ -141,7 +142,8 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet, Resources::FoodType::BreadBurger, Resources::FoodType::MashedTomato, Resources::FoodType::SlicedCheese},	Resources::FoodType::HotDog });
 	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet, Resources::FoodType::Dress},	Resources::FoodType::FrenchFries });
 	cTrans.push_back({ { Resources::FoodType::Rice, Resources::FoodType::SlicedSausage, Resources::FoodType::SlicedCarrot, Resources::FoodType::MashedTomato },	Resources::FoodType::RiceDish });
-	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet,Resources::FoodType::FishSkillet },	Resources::FoodType::FishAndChips });
+	
+	cTrans.push_back({ { Resources::FoodType::FrenchFries,Resources::FoodType::FishSkillet },	Resources::FoodType::FishAndChips });
 	cTrans.push_back({ { Resources::FoodType::Dress,Resources::FoodType::FishSkillet,Resources::FoodType::SlicedLettuce,Resources::FoodType::BreadBurger },	Resources::FoodType::FishBurger });
 	cTrans.push_back({ { Resources::FoodType::CookedFish,Resources::FoodType::Ice},	Resources::FoodType::IcedCookedFish });
 	cTrans.push_back({ { Resources::FoodType::FishOnStick,Resources::FoodType::Ice},	Resources::FoodType::IcedFishOnStick });
