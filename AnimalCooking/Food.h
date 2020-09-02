@@ -644,11 +644,11 @@ public:
 class SlicedFish : public Food
 {
 public:
-	SlicedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedFish, p1, p2, EXPLOSION) {
+	SlicedFish(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedFish, p1, p2) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedFishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedFishFeedBack);
 	}
-	SlicedFish() : Food(Resources::FoodType::SlicedFish, EXPLOSION) {
+	SlicedFish() : Food(Resources::FoodType::SlicedFish) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedFishT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedFishFeedBack);
 	}
@@ -728,11 +728,11 @@ public:
 class Ice : public Food
 {
 public:
-	Ice(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Ice, p1, p2, EXPLOSION) {
+	Ice(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Ice, p1, p2) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::IceT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::IceFeedBack);
 	}
-	Ice() : Food(Resources::FoodType::Ice, EXPLOSION) {
+	Ice() : Food(Resources::FoodType::Ice) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::IceT);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::IceFeedBack);
 	}

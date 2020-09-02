@@ -4,7 +4,8 @@
 
 PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) : 
 	Adversity(mam), 
-	planeTexture_(nullptr),
+	planeTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow)),	
+	blizzardTexture_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Blizzard)),
 	internalTimer(new Timer()),
 	dir_(),
 	planeRect_(),
@@ -12,6 +13,11 @@ PlaneAdversity::PlaneAdversity(MultipleAdversityManager* mam) :
 	angle_(),
 	force_(),
 	velocity_(),
+	isBlizzard_(false),
+	blizzardDuration_(7000),
+	blizzardLastAnimTick_(SDL_GetTicks()),
+	blizzardFrameRate_(150),
+	blizzardFrame_(0),
 	alreadyInitialized(false){
 }
 
@@ -20,8 +26,7 @@ void PlaneAdversity::StartPlane() {
 	int height = SDLGame::instance()->getWindowHeight();
 	int width = SDLGame::instance()->getWindowWidth();
 
-	planeTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PlaneShadow);
-	planeRect_.w = planeTexture_->getWidth();
+	planeRect_.w = isBlizzard_ ? SDLGame::instance()->getWindowWidth() : planeTexture_->getWidth();
 	planeRect_.h = planeTexture_->getHeight();
 
 	int n = rnd->nextInt(0, 8);
@@ -84,7 +89,31 @@ bool PlaneAdversity::isPlaneOut()
 	return (SDL_IntersectRect(&planeRect_, &windowRect, &windowRect) == SDL_FALSE);
 }
 
+void PlaneAdversity::moveEntities()
+{
+	for (Ingredient* i : multipleAdversityMngr_->getIngredientsPool()->getPool()) {
+		i->setPos(i->getPos() + dir_ * force_);
+	}
+
+	Transform* playerTr_ = multipleAdversityMngr_->getTransformPlayer(Resources::Player1);
+	playerTr_->setPos(playerTr_->getPos() + dir_ * force_);
+
+	playerTr_ = multipleAdversityMngr_->getTransformPlayer(Resources::Player2);
+	playerTr_->setPos(playerTr_->getPos() + dir_ * force_);
+}
+
 void PlaneAdversity::update() {
+	//----------------caso ventisca------------------
+	if (isBlizzard_) {
+		Uint32 time = SDL_GetTicks();
+		if (time - blizzardLastAnimTick_ >= blizzardFrameRate_) {
+			blizzardLastAnimTick_ = time;
+			blizzardFrame_++;
+			if (blizzardFrame_ >= blizzardTexture_->getNumCols()) blizzardFrame_ = 0;
+		}
+	}
+	//-------------------------------------------------
+
 	internalTimer->update();
 
 	if (internalTimer->isTimerEnd() && state_ == Going) {
@@ -102,23 +131,16 @@ void PlaneAdversity::update() {
 
 	if (isPlaneOut()) multipleAdversityMngr_->stopAdversity(ecs::PlaneAdversity);
 
-	for (Ingredient* i : multipleAdversityMngr_->getIngredientsPool()->getPool()) {
-		i->setPos(i->getPos() + dir_ * force_);		
-	}
-
-	Transform* playerTr_ = multipleAdversityMngr_->getTransformPlayer(Resources::Player1);
-	playerTr_->setPos(playerTr_->getPos() + dir_ * force_);
-
-	playerTr_ = multipleAdversityMngr_->getTransformPlayer(Resources::Player2);
-	playerTr_->setPos(playerTr_->getPos() + dir_ * force_);
+	moveEntities();
 }
 
 void PlaneAdversity::draw() {
-	planeTexture_->render(planeRect_, angle_);
+	if (!isBlizzard_) planeTexture_->render(planeRect_, angle_);
+	else blizzardTexture_->renderFrame(planeRect_, 0, blizzardFrame_, 0);
 }
 
 void PlaneAdversity::reset() {
-	//StartPlane();
+	isBlizzard_ = false;
 }
 
 void PlaneAdversity::start()

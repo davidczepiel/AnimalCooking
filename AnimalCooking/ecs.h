@@ -144,11 +144,14 @@ enum GroupID : Group {
 };
 
 enum AdversityID  {
+	//----------Adversidades principales---------------
 	PlaneAdversity,
 	CookersAdversity,
 	HookAdversity,
 	RainAdversity,
-	PidgeonAdversity
+	PidgeonAdversity,
+	//-----------Variantes de adversidades-------------
+	BlizzardAdversity
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;
