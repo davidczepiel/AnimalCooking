@@ -113,14 +113,37 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::RiceDish: time += timeCooking;
 	case Resources::FoodType::HotDog: time += timeCooking;
 	case Resources::FoodType::Risotto: time += timeCooking;
+
+	case Resources::FoodType::Roast: time += timeCooking;
+	case Resources::FoodType::Roast1: time += timeCooking;
+	case Resources::FoodType::Roast2: time += timeCooking;
+	case Resources::FoodType::Roast3: time += timeCooking;
+
 	case Resources::FoodType::CookedFish: time += timeCooking;
+	case Resources::FoodType::FishAndChips: time += timeCooking;
+	case Resources::FoodType::FishOnStick: time += timeCooking;
+	case Resources::FoodType::FishBurger: time += timeCooking;
+	case Resources::FoodType::IcedCookedFish: time += timeCooking;
+	case Resources::FoodType::IcedFishOnStick: time += timeCooking;
+	case Resources::FoodType::IcedFishAndChips: time += timeCooking;
+
+	case Resources::FoodType::Rice1: time += timeCooking;
+	case Resources::FoodType::Rice2: time += timeCooking;
+	case Resources::FoodType::IcedRice1: time += timeCooking;
+	case Resources::FoodType::IcedRice2: time += timeCooking;
+
 	case Resources::FoodType::FriedVegs: time += timeCooking;
 	case Resources::FoodType::FriedVegs1: time += timeCooking + 5;
 	case Resources::FoodType::FriedVegs2: time += timeCooking + 5;
 	case Resources::FoodType::BakedChicken: time += timeCooking;
+	case Resources::FoodType::BakedChicken1: time += timeCooking;
+	case Resources::FoodType::BakedChicken2: time += timeCooking;
 	case Resources::FoodType::FrenchFries: time += timeCooking;
 	case Resources::FoodType::CookedClams: time += timeCooking;
 	case Resources::FoodType::RiceAndClams: time += timeCooking;
+	case Resources::FoodType::IcedRiceAndClams: time += timeCooking;
+	case Resources::FoodType::IcedRiceDish: time += timeCooking;
+
 	default:
 		break;
 	}
