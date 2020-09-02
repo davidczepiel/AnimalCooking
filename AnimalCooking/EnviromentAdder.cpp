@@ -22,5 +22,5 @@ EnviromentAdder::EnviromentAdder(jute::jValue& nivel, EntityManager* mngr, std::
 
 	}
 
-		mngr->addToGroup(enviromentManager, ecs::GroupID::topLayer);
+		mngr->addToGroup(enviromentManager, ecs::GroupID::Layer12);
 }

@@ -1,6 +1,7 @@
 #include "EnviromentControl.h"
 
-EnviromentControl::EnviromentControl() :Component(ecs::EnviromentControl), accelerationIce(30), p1NumBlocksStepping(0), p2NumBlocksStepping(0)
+EnviromentControl::EnviromentControl(PlayerController* p1, PlayerController* p2, Transform* p1T, Transform* p2T) :Component(ecs::EnviromentControl)
+, accelerationIce(25), p1NumBlocksStepping(0), p2NumBlocksStepping(0),pC1(p1),pC2(p2), pT1(p1T),pT2(p2T)
 {
 
 }
@@ -26,6 +27,7 @@ void EnviromentControl::enterIceZone(int player, Vector2D vel)
 		if (p1NumBlocksStepping==0) {
 			p1Force.setX(vel.getX() * 1000);
 			p1Force.setY(vel.getY() * 1000);
+			pC1->setAbleToMove(false);
 		}
 		p1NumBlocksStepping++;
 	}
@@ -33,6 +35,7 @@ void EnviromentControl::enterIceZone(int player, Vector2D vel)
 		if (p2NumBlocksStepping == 0) {
 			p2Force.setX(vel.getX() * 1000);
 			p2Force.setY(vel.getY() * 1000);
+			pC2->setAbleToMove(false);
 		}
 		p2NumBlocksStepping++;
 	}
@@ -46,6 +49,7 @@ void EnviromentControl::exitedIceZone(int p)
 			p1Force.setX(0);
 			p1Force.setY(0);
 			p1NumBlocksStepping = 0;
+			pC1->setAbleToMove(true);
 		}
 	}
 	else {
@@ -54,6 +58,7 @@ void EnviromentControl::exitedIceZone(int p)
 			p2Force.setX(0);
 			p2Force.setY(0);
 			p2NumBlocksStepping = 0;
+			pC2->setAbleToMove(true);
 		}
 	}
 }

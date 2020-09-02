@@ -69,22 +69,14 @@ void Ice::act()
 	Transform* p = nullptr;
 	if (playerAffectedNow == 0) {
 		p = tP1;
-		Vector2D vel;
-		vel.setX(envC->getPlayerForceX(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60)/2.75);
-		vel.setY(envC->getPlayerForceY(0) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60)/2.75);
-		p1Pos = p->getPos();
-		p1Pos = p1Pos + vel;
+		p1Vel.setX(envC->getPlayerForceX(0) /2.75 );
+		p1Vel.setY(envC->getPlayerForceY(0) /2.75);
 	}
 	else {
 		p = tP2;
-		Vector2D vel;
-		vel.setX(envC->getPlayerForceX(1) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaX() / 60) / 2.75);
-		vel.setY(envC->getPlayerForceY(1) * (config::PLAYER_SPEED * SDLGame::instance()->getCasillaY() / 60) / 2.75);
-		p2Pos = p->getPos();
-		p2Pos = p2Pos + vel;
+		p2Vel.setX(envC->getPlayerForceX(1) / 2.75);
+		p2Vel.setY(envC->getPlayerForceY(1) / 2.75);
 	}
-
-
 }
 
 void Ice::update()
@@ -95,20 +87,17 @@ void Ice::update()
 		envC->enterIceZone(0,tP1->getVel());
 		affectingP1 = true;
 		playerAffectedNow = 0;
-		p1Pos = tP1->getPos();
 	}
 	else if (affectingP1 && Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
-		tP1->setPos(p1Pos);
 		playerAffectedNow = 0;
-		envC->playerIsMoving(0,tP1->getVel());
+		envC->playerIsMoving(0,pC1->getinput());
 		act();
-		tP1->setPos(p1Pos);
+		tP1->setVel(p1Vel);
 	}
 	else if (affectingP1 && !Collisions::collides(pos, width, height, tP1->getPos(), tP1->getW(), tP1->getH())) {
 		playerAffectedNow = -1;
 		affectingP1 = false;
 		envC->exitedIceZone(0);
-
 	}
 
 
@@ -117,14 +106,12 @@ void Ice::update()
 		envC->enterIceZone(1, tP2->getVel());
 		affectingP2 = true;
 		playerAffectedNow = 1;
-		p2Pos = tP2->getPos();
 	}
 	else if (affectingP2 && Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
-		tP2->setPos(p2Pos);
 		playerAffectedNow = 1;
-		envC->playerIsMoving(1, tP2->getVel());
+		envC->playerIsMoving(1, pC2->getinput());
 		act();
-		tP2->setPos(p2Pos);
+		tP2->setVel(p2Vel);
 	}
 	else if (affectingP2 && !Collisions::collides(pos, width, height, tP2->getPos(), tP2->getW(), tP2->getH())) {
 		playerAffectedNow = -1;

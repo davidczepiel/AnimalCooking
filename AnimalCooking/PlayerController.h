@@ -14,13 +14,15 @@
 class PlayerController : public Component {
 public:
 	PlayerController(int id = 0) :Component(ecs::PlayerController),id_(id), 
-		keys(SDLGame::instance()->getOptions().players_keyboardKeys[id_]), speed(0.6),
+		keys(SDLGame::instance()->getOptions().players_keyboardKeys[id_]), speed(0.6),ableToMove(true),
 		buttons(SDLGame::instance()->getOptions().players_gPadButtons[id_]) {}
 
 	void init() override;
 	void update() override;
 	void setSpeed(double s) { speed = s; }
 	void resetSpeed() { speed = 0.6; }
+	void setAbleToMove(bool b) { ableToMove = b; }
+	Vector2D getinput() { return inputVel; }
 private:
 	struct MovementKeys {
 		bool up;
@@ -53,4 +55,6 @@ private:
 	bool ableToPress = true;
 	bool dpadArrowsUsed = true;
 	double speed;
+	bool ableToMove;
+	Vector2D inputVel;
 };

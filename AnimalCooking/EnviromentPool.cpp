@@ -15,7 +15,7 @@ EnviromentPool::~EnviromentPool()
 
 void EnviromentPool::addEnvUnit(Vector2D pos, double width, double height,string type)
 {
-	if(envC == nullptr)	envC=entity_->addComponent<EnviromentControl>();
+	if(envC == nullptr)	envC=entity_->addComponent<EnviromentControl>(pC1,pC2,tF1,tF2);
 
 	if(type=="Nieve"){
 		pool_.push_back(new Snow(pos, width, height, tF1, tF2, pC1, pC2,envC));

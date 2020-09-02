@@ -2,13 +2,14 @@
 #include "Component.h"
 #include "Transform.h"
 #include "PlayerController.h"
+#include "Transform.h"
 
 class EnviromentControl :
 	public Component
 {
 
 public:
-	EnviromentControl();
+	EnviromentControl(PlayerController* p1, PlayerController* p2, Transform* p1T, Transform* p2T);
 	~EnviromentControl() {}
 	virtual void update();
 	void enterIceZone(int player, Vector2D vel);
@@ -22,8 +23,11 @@ private:
 	Vector2D p2Force;
 	int p1NumBlocksStepping;
 	int p2NumBlocksStepping;
-
 	double accelerationIce;
+	PlayerController* pC1;
+	PlayerController* pC2;
+	Transform* pT1;
+	Transform* pT2;
 
 };
 

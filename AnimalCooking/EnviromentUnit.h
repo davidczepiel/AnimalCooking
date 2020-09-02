@@ -45,9 +45,7 @@ public:
 private:
 	virtual void act();
 	virtual void update();
-	bool alreadyEntered(Vector2D p, Vector2D v);
-	Vector2D p1Pos;
-	Vector2D p2Pos;
+
 	Vector2D p1Vel;
 	Vector2D p2Vel;
 
