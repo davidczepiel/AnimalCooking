@@ -453,6 +453,11 @@
     <ClCompile Include="BubbleKeyShower.cpp" />
     <ClCompile Include="ButtonCheckRenderer.cpp" />
     <ClCompile Include="WallOpacityManager.cpp" />
+    <ClCompile Include="EnviromentAdder.cpp" />
+    <ClCompile Include="EnviromentPool.cpp" />
+    <ClCompile Include="EnviromentUnit.cpp" />
+    <ClCompile Include="EnviromentViewer.cpp" />
+    <ClCompile Include="EnviromentControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -973,6 +978,11 @@
     <ClInclude Include="BubbleKeyShower.h" />
     <ClInclude Include="ButtonCheckRenderer.h" />
     <ClInclude Include="WallOpacityManager.h" />
+    <ClInclude Include="EnviromentAdder.h" />
+    <ClInclude Include="EnviromentPool.h" />
+    <ClInclude Include="EnviromentUnit.h" />
+    <ClInclude Include="EnviromentViewer.h" />
+    <ClInclude Include="EnviromentControl.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
