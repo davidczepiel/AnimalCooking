@@ -456,6 +456,7 @@ public:
 		Arroz,
 		ArrozBordeSup,
 		ArrozSinBordeDer,
+		ArrozHor,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
