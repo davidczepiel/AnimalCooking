@@ -123,10 +123,10 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 
 	case Resources::FoodType::CookedFish: time += timeCooking;
 	case Resources::FoodType::FishAndChips: time += 3*timeCooking+10;
-	case Resources::FoodType::FishOnStick: time += timeCooking;
+	case Resources::FoodType::FishOnStick: time += timeCooking+5;
 	case Resources::FoodType::FishBurger: time += 10+timeCooking;
 	case Resources::FoodType::IcedCookedFish: time += timeCooking + iceDelay;
-	case Resources::FoodType::IcedFishOnStick: time += timeCooking + iceDelay;
+	case Resources::FoodType::IcedFishOnStick: time += timeCooking + iceDelay+5;
 	case Resources::FoodType::IcedFishAndChips: time += 3*timeCooking + iceDelay+10;
 	case Resources::FoodType::IcedFishBurger: time += timeCooking + iceDelay + 10;
 
