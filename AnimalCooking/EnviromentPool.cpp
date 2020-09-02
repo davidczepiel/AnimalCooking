@@ -38,7 +38,7 @@ void EnviromentPool::update()
 
 Texture* EnviromentPool::selectTexture(string file)
 {
-	if (file == "islaPeq")				return game_->getTextureMngr()->getTexture(Resources::IslaPequeñaNieve);
+	if (file == "islaPeq")				return game_->getTextureMngr()->getTexture(Resources::IslaPequenaNieve);
 	else if (file == "islaGran")		return game_->getTextureMngr()->getTexture(Resources::IslaGrandeNieve);
 	else								return nullptr;
 }

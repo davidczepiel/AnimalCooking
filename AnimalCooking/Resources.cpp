@@ -104,7 +104,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, NieveCollider,"../AnimalCooking/resources/images/Cocina/nieve.png"},
 	{AllLevels, Hielo,"../AnimalCooking/resources/images/Cocina/hielo.png"},
-	{AllLevels, IslaPequeñaNieve,"../AnimalCooking/resources/images/Cocina/Nieve/islotePequeno.png"},
+	{AllLevels, IslaPequenaNieve,"../AnimalCooking/resources/images/Cocina/Nieve/islotePequeno.png"},
 	{AllLevels, IslaGrandeNieve,"../AnimalCooking/resources/images/Cocina/Nieve/isloteGrande.png"},
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
 	{AllLevels, HierbaOtono,"../AnimalCooking/resources/images/Cocina/sueloHierbaOtono.jpg"},

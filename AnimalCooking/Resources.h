@@ -108,7 +108,7 @@ public:
 		HierbaOtono,
 		HierbaInvierno,
 		NieveCollider,
-		IslaPequeñaNieve,
+		IslaPequenaNieve,
 		IslaGrandeNieve,
 		Hielo,
 		OvenOFF,
