@@ -347,7 +347,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, TextureId::IcedFishAndChipsT,"../AnimalCooking/resources/images/Foods/fishChipsHielo.png" },
 	{ AllLevels, TextureId::IcedFishBurgerT,"../AnimalCooking/resources/images/Foods/hamburguesaPescadoHielo.png" },
 	{ AllLevels, TextureId::IcedRice1T,"../AnimalCooking/resources/images/Foods/arrozContomateHielo.png" },
-	{ AllLevels, TextureId::IcedRice2T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::IcedRice2T,"../AnimalCooking/resources/images/Foods/arrozPescadoHielo.png" },
 	{ AllLevels, TextureId::IcedRiceAndClamsT,"../AnimalCooking/resources/images/Foods/mariscoConArrozHielo.png" },
 	{AllLevels, TextureId::IcedRiceDishT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png"},
 
@@ -370,6 +370,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, SlicedMushroomFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/champinonCortada.png"},
 		{AllLevels, CaughtFishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/rescadoRed.png"},
 		{AllLevels, SlicedChickenFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/polloCortado.png"},
+	    { AllLevels, CaughtClamFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/vieraRed.png" },
 		{ AllLevels, SlicedFishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pescadoCortado.png" },
 		{AllLevels, IceFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/hielo.png"},
 		{AllLevels, RiceFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arroz.png"},
