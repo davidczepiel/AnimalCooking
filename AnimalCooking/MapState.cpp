@@ -34,7 +34,8 @@ MapState::MapState(AnimalCooking* ac) :
 	casillaY = game_->getCasillaY();
 	//Background textures
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
-	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
@@ -435,7 +436,7 @@ void MapState::placeHousesAndButtons()
 	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
 	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
 	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
-	transforms_.push_back(Transform(Vector2D(1050, 460), Vector2D(), 46, 23));
+	transforms_.push_back(Transform(Vector2D(950, 500), Vector2D(), 46, 23));
 
 	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
@@ -446,17 +447,17 @@ void MapState::placeHousesAndButtons()
 	}
 
 	nextScreenButton_ = stage->addEntity();
-	Texture* aux = game_->getTextureMngr()->getTexture(Resources::buttonGo);
-	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth() / 2, (game_->getWindowHeight() / 2) - (aux->getHeight() / 2)), Vector2D(0, 0), aux->getWidth() / 2, aux->getHeight() / 2);
+	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
-	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
+	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
 
 	PreviousScreenButton_ = stage->addEntity();
-	PreviousScreenButton_->addComponent<Transform>(Vector2D(0, (game_->getWindowHeight() / 2) - (aux->getHeight() / 2)), Vector2D(0, 0), aux->getWidth() / 2, aux->getHeight() / 2);
-	 bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
-	 br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::buttonGo), nullptr);
+	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
+	bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
+	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(PreviousScreenButton_, ecs::GroupID::topLayer);
 

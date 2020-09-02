@@ -16,6 +16,8 @@ public:
 	void reset();
 	void start();
 
+	inline void setMode(bool mode) { isBlizzard_ = mode; }
+
 private:
 	enum state : int { Going, Pushing };
 
@@ -23,6 +25,7 @@ private:
 	bool isPlaneOut();
 
 	Texture* planeTexture_;
+	Texture* blizzardTexture_;
 	Timer* internalTimer;
 	vector<Vector2D> dirs_{ Vector2D(1, 0), Vector2D(-1, 0), Vector2D(0, 1), Vector2D(0, -1), Vector2D(1, 1), Vector2D(-1, 1), Vector2D(1, -1), Vector2D(-1, -1) };
 	vector<double> angles_{ 90.0, -90.0, 180, 0, 135, 225, 45, -45 };
@@ -34,5 +37,7 @@ private:
 	float force_;
 	int velocity_;	
 	bool alreadyInitialized;
+
+	bool isBlizzard_;
 };
 
