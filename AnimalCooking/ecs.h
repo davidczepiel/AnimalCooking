@@ -154,8 +154,10 @@ enum AdversityID  {
 	HookAdversity,
 	RainAdversity,
 	PidgeonAdversity,
+	IngredientsdeathAdversity,
 	//-----------Variantes de adversidades-------------
 	BlizzardAdversity
+
 };
 
 constexpr std::size_t maxComponents = _LastCmptId_;

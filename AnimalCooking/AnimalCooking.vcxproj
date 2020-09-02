@@ -237,6 +237,7 @@
     <ClInclude Include="Ingredient.h" />
     <ClInclude Include="IngredientInitializer.h" />
     <ClInclude Include="IngredientMotion.h" />
+    <ClInclude Include="IngredientsDeathAdversity.h" />
     <ClInclude Include="IngredientsPool.h" />
     <ClInclude Include="IngredientViewer.h" />
     <ClInclude Include="InputHandler.h" />
@@ -402,6 +403,7 @@
     <ClCompile Include="Ingredient.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
+    <ClCompile Include="IngredientsDeathAdversity.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
     <ClCompile Include="IngredientViewer.cpp" />
     <ClCompile Include="InputHandler.cpp" />
