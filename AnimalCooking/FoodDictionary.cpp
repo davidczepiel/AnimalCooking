@@ -60,7 +60,10 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::SlicedChicken:	return new SlicedChicken;	break;
 	case Resources::FoodType::CaughtClam:		return new CaughtClam;		break;
 	case Resources::FoodType::SlicedFish:		return new SlicedFish;		break;
-	case Resources::FoodType::Ice:		return new Ice();	break;
+	case Resources::FoodType::Ice:				return new Ice();			break;
+	case Resources::FoodType::SlicedSalmon:		return new SlicedSalmon();	break;
+	case Resources::FoodType::SlicedAvocado:	return new SlicedAvocado();	break;
+	case Resources::FoodType::GratedChicken:	return new GratedChicken();	break;
 
 	//Platos enteros :
 	case Resources::FoodType::Salad:			return new Salad();			break;
@@ -117,6 +120,17 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::IcedRice2:		return new IcedRice2();	break;
 	case Resources::FoodType::IcedRiceAndClams:		return new IcedRiceAndClams();	break;
 	case Resources::FoodType::IcedRiceDish:		return new IcedRiceDish();	break;
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Sushi1:		return new Sushi1();	break;
+	case Resources::FoodType::Sushi2:		return new Sushi2();	break;
+	case Resources::FoodType::Sushi3:		return new Sushi3();	break;
+	case Resources::FoodType::Sushi4:		return new Sushi4();	break;
+	case Resources::FoodType::Sushi5:		return new Sushi5();	break;
+	case Resources::FoodType::Onigiri:		return new Onigiri();	break;
+	case Resources::FoodType::Teriyaki1:		return new Teriyaki1();	break;
+	case Resources::FoodType::Teriyaki2:		return new Teriyaki2();	break;
+	case Resources::FoodType::Teriyaki3:		return new Teriyaki3();	break;
+	case Resources::FoodType::Teriyaki4:		return new Teriyaki4();	break;
 
 		// Alimentos individuales : 
 

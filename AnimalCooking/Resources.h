@@ -352,6 +352,21 @@ public:
 		IcedRiceAndClamsT,
 		IcedRiceDishT,
 
+		NoriT,
+		SlicedSalmonT,
+		SlicedAvocadoT,
+		GratedChickenT,
+		Sushi1T,
+		Sushi2T,
+		Sushi3T,
+		Sushi4T,
+		Sushi5T,
+		OnigiriT,
+		Teriyaki1T,
+		Teriyaki2T,
+		Teriyaki3T,
+		Teriyaki4T,
+
 		//FeedBackImages---------------------------------------------
 			//Food
 			PoopFeedBack,
@@ -434,6 +449,21 @@ public:
 			SlicedPotatoSkilletFeedBack,
 			DressFeedBack,
 			MashedTomatoFeedBack,
+
+			NoriFeedBack,
+			SlicedSalmonFeedBack,
+			SlicedAvocadoFeedBack,
+			GratedChickenFeedBack,
+			Sushi1FeedBack,
+			Sushi2FeedBack,
+			Sushi3FeedBack,
+			Sushi4FeedBack,
+			Sushi5FeedBack,
+			OnigiriFeedBack,
+			Teriyaki1FeedBack,
+			Teriyaki2FeedBack,
+			Teriyaki3FeedBack,
+			Teriyaki4FeedBack,
 			
 			//Utensils
 			CuchilloFeedBack,
@@ -745,7 +775,20 @@ public:
 		IcedRiceAndClams,
 		IcedRiceDish,
 		///
-
+		Nori,
+		SlicedSalmon,
+		SlicedAvocado,
+		GratedChicken,
+		Sushi1,
+		Sushi2,
+		Sushi3,
+		Sushi4,
+		Sushi5,
+		Onigiri,
+		Teriyaki1,
+		Teriyaki2,
+		Teriyaki3,
+		Teriyaki4
 	};
 
 	enum PickableType : std::size_t {

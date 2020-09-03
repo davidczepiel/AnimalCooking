@@ -25,8 +25,10 @@ void FoodConfig::fill()
 	uTrans.push_back({ Resources::IngredientType::potato,	Resources::FoodType::SlicedPotato });
 	uTrans.push_back({ Resources::IngredientType::sausage,	Resources::FoodType::SlicedSausage });
 	uTrans.push_back({ Resources::IngredientType::tomato,	Resources::FoodType::SlicedTomato });
-	uTrans.push_back({ Resources::IngredientType::fish,	Resources::FoodType::SlicedFish});
+	uTrans.push_back({ Resources::IngredientType::fish,		Resources::FoodType::SlicedFish});
 	uTrans.push_back({ Resources::IngredientType::snowman,	Resources::FoodType::Ice });
+	uTrans.push_back({ Resources::IngredientType::salmon,	Resources::FoodType::SlicedSalmon });
+	uTrans.push_back({ Resources::IngredientType::avocado,	Resources::FoodType::SlicedAvocado });
 
 
 	//Adding Knife recipes
@@ -50,6 +52,7 @@ void FoodConfig::fill()
 	//////////////////////	
 
 	uTrans.push_back({ Resources::IngredientType::cheese,	Resources::FoodType::GratedCheese }); //
+	uTrans.push_back({ Resources::IngredientType::chicken,	Resources::FoodType::GratedChicken }); //
 
 
 	//Adding Grater recipes
@@ -154,6 +157,16 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::RiceAndClams,Resources::FoodType::Ice},	Resources::FoodType::IcedRiceAndClams });
 	cTrans.push_back({ { Resources::FoodType::RiceDish,Resources::FoodType::Ice},	Resources::FoodType::IcedRiceDish});
 
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori,Resources::FoodType::SlicedFish},	Resources::FoodType::Sushi1 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori,Resources::FoodType::SlicedSalmon},	Resources::FoodType::Sushi2 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori,Resources::FoodType::SlicedFish,Resources::FoodType::SlicedLettuce},	Resources::FoodType::Sushi3 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori,Resources::FoodType::SlicedSalmon,Resources::FoodType::SlicedLettuce},	Resources::FoodType::Sushi4 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori,Resources::FoodType::SlicedSalmon,Resources::FoodType::SlicedAvocado},	Resources::FoodType::Sushi5 });
+	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::Nori},	Resources::FoodType::Onigiri });
+	cTrans.push_back({ { Resources::FoodType::GratedChicken,Resources::FoodType::Rice,Resources::FoodType::Dress},	Resources::FoodType::Teriyaki1 });
+	cTrans.push_back({ { Resources::FoodType::GratedChicken,Resources::FoodType::Rice,Resources::FoodType::Salad1},	Resources::FoodType::Teriyaki2 });
+	cTrans.push_back({ { Resources::FoodType::GratedChicken,Resources::FoodType::Rice,Resources::FoodType::FriedVegs},	Resources::FoodType::Teriyaki3 });
+	cTrans.push_back({ { Resources::FoodType::GratedChicken,Resources::FoodType::Rice,Resources::FoodType::SlicedAvocado},	Resources::FoodType::Teriyaki4 });
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Hands, cTrans });
