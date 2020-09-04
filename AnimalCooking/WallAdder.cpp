@@ -44,13 +44,13 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), offsetY),
 		Resources::TextureId::Collider));
 
-	Texture* muro = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Muro);
-	if (nivel["Muro"].as_string() == "invierno") muro = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Muro1);
+	Resources::TextureId muro = Resources::TextureId::Muro;
+	if (nivel["Muro"].as_string() == "invierno") muro = Resources::TextureId::Muro1;
 
 	//Muros de arriba
 	Data dataMuro = Data(Vector2D(8 * casillaX + offsetX - 10, 0), //Arr hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 10, offsetY),
-		Resources::TextureId::Muro);
+		muro);
 	Data dataParedCocina = Data(Vector2D(0, 0), //Arr izq
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 30, offsetY),
 		Resources::TextureId::ParedCocina);
