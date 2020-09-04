@@ -214,6 +214,65 @@ void MapConfig::fill()
 	auxiliar.buttonsSize = Vector2D(46, 23);
 
 	levelsRecipes_.push_back(auxiliar);
+
+	//16
+
+	auxiliar.name = "";
+	auxiliar.lore[0] = "16 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(415, 650);
+	auxiliar.buttonsSize = Vector2D(50, 25);
+
+	levelsRecipes_.push_back(auxiliar);
+	//17
+	auxiliar.name = "";
+	auxiliar.lore[0] = "17 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(725, 1015);
+	auxiliar.buttonsSize = Vector2D(70, 35);
+
+	levelsRecipes_.push_back(auxiliar);
+	//18
+	auxiliar.name = "";
+	auxiliar.lore[0] = "18 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1140, 770);
+	auxiliar.buttonsSize = Vector2D(60, 30);
+
+	levelsRecipes_.push_back(auxiliar);
+	//19
+	auxiliar.name = "";
+	auxiliar.lore[0] = "19 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1510, 810);
+	auxiliar.buttonsSize = Vector2D(55, 27);
+
+	levelsRecipes_.push_back(auxiliar);
+	//20
+	auxiliar.name = "";
+	auxiliar.lore[0] = "20 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1600, 500);
+	auxiliar.buttonsSize = Vector2D(50, 25);
+
+	levelsRecipes_.push_back(auxiliar);
+	/////////////////////////////////////
+	///////		 EXTRA 4  		  //////
+	///////////////////////////////////
+
+	auxiliar.name = "";
+	auxiliar.lore[0] = "Extra 4. Extra 4. Extra 4. Extra 4.";
+	auxiliar.lore[1] = "Extra 4. Extra 4. Extra 4. Extra 4.";
+	auxiliar.lore[2] = "Extra 4. Extra 4. Extra 4. Extra 4.";
+	auxiliar.buttonPosition = Vector2D(917, 465);
+	auxiliar.buttonsSize = Vector2D(46, 23);
+
+	levelsRecipes_.push_back(auxiliar);
 	//Cargar resto de datos
 	if (!newGame_) load();
 	else {
