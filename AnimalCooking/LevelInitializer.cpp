@@ -43,6 +43,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	}
 
 	jsonLevel = jute::parser::parse_file(ruta_); // json con la informacion del nivel (pos, componentes extras particulares, etc...)
+	SDLGame::instance()->setJsonCurrentLevel(jsonLevel);
 	jsonGeneral = SDLGame::instance()->getJsonGeneral();
 	
 	casillaX = SDLGame::instance()->getCasillaX();
