@@ -27,6 +27,7 @@ public:
 
 private:
 	void draw() override;
+	void update() override;
 	void playMenuCallback();
 	void optionsMenuCallback();
 	void creditsMenuCallback();

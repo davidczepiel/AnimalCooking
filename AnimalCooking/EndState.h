@@ -21,6 +21,7 @@ private:
 	void createButtons();
 	void createPlayers();
 	void draw() override;
+	void update() override;
 
 	Texture* background = nullptr;
 

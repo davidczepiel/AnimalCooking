@@ -51,6 +51,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapStateBackground, "../AnimalCooking/resources/images/Mapstate/mapState.png" },
 	{ Basic, MapState2Background, "../AnimalCooking/resources/images/Mapstate/mapState2.png" },
 	{ Basic, MapState3Background, "../AnimalCooking/resources/images/Mapstate/mapState3.png" },
+	{ Basic, MapState4Background, "../AnimalCooking/resources/images/Mapstate/mapState3.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 
 
@@ -104,7 +105,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, NieveCollider,"../AnimalCooking/resources/images/Cocina/nieve.png"},
 	{AllLevels, Hielo,"../AnimalCooking/resources/images/Cocina/hielo.png"},
-	{AllLevels, IslaPequeñaNieve,"../AnimalCooking/resources/images/Cocina/Nieve/islotePequeno.png"},
+	{AllLevels, IslaPequenaNieve,"../AnimalCooking/resources/images/Cocina/Nieve/islotePequeno.png"},
 	{AllLevels, IslaGrandeNieve,"../AnimalCooking/resources/images/Cocina/Nieve/isloteGrande.png"},
 	{AllLevels, Hierba,"../AnimalCooking/resources/images/Cocina/sueloHierba.png"},
 	{AllLevels, HierbaOtono,"../AnimalCooking/resources/images/Cocina/sueloHierbaOtono.jpg"},
@@ -454,6 +455,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
+	    { AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 
 		// Adversities
