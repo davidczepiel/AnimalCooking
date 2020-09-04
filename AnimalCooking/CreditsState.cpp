@@ -45,5 +45,8 @@ void CreditsState::update()
 			GoBackMenu(getAnimalCooking());
 		}
 	}
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		GoBackMenu(getAnimalCooking());
+	}
 	State::update();
 }

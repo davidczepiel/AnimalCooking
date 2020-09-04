@@ -189,14 +189,10 @@ void MapState::update()
 		}
 		hasToBreak = false;
 	}
-	/*if (!transition_) return;
 
-
-	xTransition_ += transitionVelocity_ * transitionDirection_;
-	if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
-		xTransition_ = 0;
-		transition_ = false;
-	}*/
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		backButtonCallback(app);
+	}
 }
 
 

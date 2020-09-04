@@ -129,7 +129,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, PlatosVer,"../AnimalCooking/resources/images/Cocina/platosVer.png" },
 	{AllLevels, PlatosVerDosBordes,"../AnimalCooking/resources/images/Cocina/platosVerDosBordes.png"},
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
-	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro1.png"},
+	{AllLevels, Muro1,"../AnimalCooking/resources/images/Cocina/muro1.png"},
 	{AllLevels, ParedCocina,"../AnimalCooking/resources/images/Cocina/paredCocina.png"},
 	{AllLevels, Valla,"../AnimalCooking/resources/images/Cocina/valla.png"},
 	{AllLevels, VallaFinal,"../AnimalCooking/resources/images/Cocina/vallaFinal.png"},

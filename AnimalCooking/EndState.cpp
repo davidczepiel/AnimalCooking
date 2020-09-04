@@ -208,3 +208,10 @@ void EndState::draw()
 	background->render(RECT(0, 0, gameInstance->getWindowWidth(), gameInstance->getWindowHeight()));
 	State::draw();
 }
+
+void EndState::update() {
+	State::update();
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		goToMapState(app);
+	}
+}
