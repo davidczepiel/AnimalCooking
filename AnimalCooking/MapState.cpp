@@ -36,6 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState3Background));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
