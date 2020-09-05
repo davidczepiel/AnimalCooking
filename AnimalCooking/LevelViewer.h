@@ -29,5 +29,7 @@ private:
 	int scoreTime_;
 	int barTime_;
 	int timeSpan_;
+
+	bool firstStar, secondStar, thirdStar;
 };
 

@@ -39,8 +39,6 @@ private:
 
 };
 
-
-
 class SlipperyUnit: public EnviromentUnit {
 public:
 	SlipperyUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC);
@@ -50,6 +48,17 @@ private:
 
 	Vector2D p1Vel;
 	Vector2D p2Vel;
+};
+
+
+
+class TextureUnit : public EnviromentUnit {
+public:
+	TextureUnit(Vector2D pos, double width, double height, EnviromentControl* envC, Texture* texture);
+		
+private:
+	virtual void act() {};
+	virtual void update () {};
 
 };
 

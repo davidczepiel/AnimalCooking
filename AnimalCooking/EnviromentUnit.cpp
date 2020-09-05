@@ -19,7 +19,7 @@ void EnviromentUnit::render() const
 SlowUnit::SlowUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
 	EnviromentUnit(pos, width, height, tP1, tP2, pC1, pC2, envC)
 {
-	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Fregadero);
+	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::NieveCollider);
 }
 
 
@@ -61,7 +61,7 @@ void SlowUnit::act()
 SlipperyUnit::SlipperyUnit(Vector2D pos, double width, double height, Transform* tP1, Transform* tP2, PlayerController* pC1, PlayerController* pC2, EnviromentControl* envC) :
 	EnviromentUnit(pos, width, height, tP1, tP2, pC1, pC2, envC)
 {
-	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Dish);
+	texture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Hielo);
 }
 
 void SlipperyUnit::act()
@@ -118,4 +118,10 @@ void SlipperyUnit::update()
 		affectingP2 = false;
 		envC->exitedIceZone(1);
 	}
+}
+
+TextureUnit::TextureUnit(Vector2D pos, double width, double height, EnviromentControl* envC, Texture* t): 
+	EnviromentUnit(pos, width, height, nullptr, nullptr, nullptr, nullptr, envC)
+{
+	texture = t;
 }
