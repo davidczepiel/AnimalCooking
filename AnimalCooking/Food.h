@@ -966,6 +966,19 @@ public:
 	}
 };
 
+class GratedSkilletChicken : public Food
+{
+public:
+	GratedSkilletChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::GratedSkilletChicken, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedSkilletChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+	GratedSkilletChicken() : Food(Resources::FoodType::GratedSkilletChicken) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedSkilletChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+};
+
 class Sushi1 : public Food
 {
 public:

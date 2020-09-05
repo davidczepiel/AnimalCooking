@@ -64,6 +64,7 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::SlicedSalmon:		return new SlicedSalmon();	break;
 	case Resources::FoodType::SlicedAvocado:	return new SlicedAvocado();	break;
 	case Resources::FoodType::GratedChicken:	return new GratedChicken();	break;
+	case Resources::FoodType::GratedSkilletChicken:	return new GratedSkilletChicken();	break;
 
 	//Platos enteros :
 	case Resources::FoodType::Salad:			return new Salad();			break;

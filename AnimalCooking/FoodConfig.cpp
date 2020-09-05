@@ -122,6 +122,7 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::MashedTomato},	Resources::FoodType:: Rice1});		
 	cTrans.push_back({ { Resources::FoodType::Rice,Resources::FoodType::SlicedFish,Resources::FoodType::Dress},	Resources::FoodType::Rice2 });
 
+	cTrans.push_back({ { Resources::FoodType::GratedChicken},	Resources::FoodType::GratedSkilletChicken });
 
 	//Adding Skillet recipes
 	cookersRecipes_.push_back({ Resources::Skillet, cTrans });

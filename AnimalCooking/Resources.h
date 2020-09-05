@@ -356,6 +356,7 @@ public:
 		SlicedSalmonT,
 		SlicedAvocadoT,
 		GratedChickenT,
+		GratedSkilletChickenT,
 		Sushi1T,
 		Sushi2T,
 		Sushi3T,
@@ -454,6 +455,7 @@ public:
 			SlicedSalmonFeedBack,
 			SlicedAvocadoFeedBack,
 			GratedChickenFeedBack,
+			GratedSkilletChickenFeedBack,
 			Sushi1FeedBack,
 			Sushi2FeedBack,
 			Sushi3FeedBack,
@@ -531,6 +533,8 @@ public:
 		Carrot,
 		Sausage,
 		Snowman,
+		Salmon,
+		Avocado,
 		Puerta,
 		FireOverHeated,
 		LightingStrike,
@@ -599,7 +603,9 @@ public:
 		clam,
 		cheese,
 		fish,
-		snowman
+		snowman,
+		salmon,
+		avocado
 	};
 
 	enum AudioId : std::size_t {
@@ -779,6 +785,7 @@ public:
 		SlicedSalmon,
 		SlicedAvocado,
 		GratedChicken,
+		GratedSkilletChicken,
 		Sushi1,
 		Sushi2,
 		Sushi3,
