@@ -609,6 +609,8 @@ public:
 		IngredientSpawned,
 		OrderRecieved,
 		PlaneSound,
+		RainSound,
+		ThunderSound,
 
 		Tecla1, //Variaciones que suenan al pulsar un boton
 		Tecla2,
