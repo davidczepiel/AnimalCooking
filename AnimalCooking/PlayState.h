@@ -13,7 +13,6 @@ public:
 	void resumeTimers();
 	void resetTimers();
 	void goToEndState(AnimalCooking* ac);
-	EntityManager* getEntityManager() { return stage; }
 private:
 	TimerViewer* timerViewer_;
 };
