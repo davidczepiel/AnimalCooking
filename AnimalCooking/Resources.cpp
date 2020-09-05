@@ -466,7 +466,6 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
 		{ AllLevels, RainAdversity, "../AnimalCooking/resources/images/Adversities/lluvia.png" },
 		{ AllLevels, HookAdversity, "../AnimalCooking/resources/images/Adversities/gancho.png" },
-		{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png" },
 
 
 		//creditState
@@ -536,6 +535,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, ButtonPrev, "../AnimalCooking/resources/images/Mapstate/prevButton.png",1,3 },					//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 },
 	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 },
+	{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png",1,21 },
 	{AllLevels, Blizzard, "../AnimalCooking/resources/images/Adversities/ventisca.png", 1,4}
 };
 

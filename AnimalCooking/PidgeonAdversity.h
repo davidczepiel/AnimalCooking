@@ -47,7 +47,6 @@ private:
 	int angle;
 
 	SDL_Rect drawingArea_;
-	SDL_Rect clipArea_;
 	SDL_RendererFlip flipVar;
 	pidgeonInfo lastPidgeon;
 };
