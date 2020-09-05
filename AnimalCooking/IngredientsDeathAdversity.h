@@ -39,9 +39,9 @@ private:
 	SDL_Rect src;
 	double timeToDeath;
 	double timePostDeath;
-	int numKills;
-	//int killsDone;
-	//double percentagePerKill;
+	double numKills;
+	int killsDone;
+	double percentagePerKill;
 	vector<Ingredientinfo> ingInfo;
 	vector<Ingredient*> ingredients;
 	vector<int> indexIngredients;

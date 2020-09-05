@@ -56,6 +56,8 @@ void IngredientsDeathAdversity::start()
 	deathTimer->timerReset();
 	deathTimer->setTime(5000);
 	deathTimer->timerStart();
+	killsDone = 0;
+	percentagePerKill = 1/(numKills+1);
 }
 
 void IngredientsDeathAdversity::killIngredients()
