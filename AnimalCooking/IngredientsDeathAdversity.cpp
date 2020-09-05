@@ -4,7 +4,7 @@
 
 IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* mAdvMng) :Adversity(mAdvMng)
 {
-	mTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bin);
+	preparationTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bin);
 	deathTimer = new Timer();
 	deathTimer->setTime(5000);
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
@@ -20,56 +20,87 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 void IngredientsDeathAdversity::update()
 {
 	deathTimer->update();
+	inspectIngredients();
+	if (deathTimer->getProgress() > ((killsDone + 1) * percentagePerKill)) {
+		killIngredient();
+	}
 	if (deathTimer->isTimerEnd()) {
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::IngredientsdeathAdversity);
 		reset();
-		killIngredients();
+		//killIngredients();
 	}
 }
 
 void IngredientsDeathAdversity::draw()
 {
 	if (deathTimer->isStarted() && !deathTimer->isTimerEnd()) {
-		for (int i = 0; i < indexIngredients.size(); i++) {
-			getPosIngredient(i);
-			mTexture->render(dest, src);
+		for (int i = 0; i < ingInfo.size(); i++) {
+			if (ingInfo.at(i).ing != nullptr) {
+				getPosIngredient(i);
+				preparationTexture->render(dest, src);
+			}
 		}
 	}
 }
 
 void IngredientsDeathAdversity::reset()
 {
-	//deathTimer->setTime(timeToDeath);
+	ingInfo.clear();
 }
 
 void IngredientsDeathAdversity::start()
 {
+	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
 	numKills = ingredients.size() / 2;
-	while (indexIngredients.size() < numKills) {
+	percentagePerKill = 1/(numKills+1);
+	//Me quedo con unos cuants ingredientes aleatorios
+	while (ingInfo.size() < numKills) {
 		int i = getNumber();
 		while (alreadyTaken(i)) {
 			i = getNumber();
 		}
-		indexIngredients.push_back(i);
+		//Me quedo con la información del ingrediente escogido y me lo guardo en el vector 
+		Ingredientinfo info;
+		info.ing = ingredients.at(i);
+		info.animationTimer = new Timer();
+		info.animationTimer->setTime(deathTimer->getTime()*percentagePerKill);
+		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(info.animationTimer);
+		ingInfo.push_back(info);
 	}
 	deathTimer->timerReset();
 	deathTimer->setTime(5000);
 	deathTimer->timerStart();
 	killsDone = 0;
-	percentagePerKill = 1/(numKills+1);
+	ingInfo.at(0).animationTimer->timerStart();
 }
 
 void IngredientsDeathAdversity::killIngredients()
 {
-	for (int i = 0; i < indexIngredients.size(); i++) {
-		multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingredients.at(indexIngredients.at(i))->getIt());
+	for (int i = 0; i < ingInfo.size(); i++) {
+		multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(i).ing->getIt());
+	}
+}
+
+void IngredientsDeathAdversity::killIngredient()
+{
+	multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
+	ingInfo.at(killsDone).ing = nullptr;
+	killsDone++;
+	if(killsDone<ingInfo.size())
+	ingInfo.at(killsDone).animationTimer->timerStart();
+}
+
+void IngredientsDeathAdversity::inspectIngredients()
+{
+	for (int i = 0; i < ingInfo.size(); i++) {
+		ingInfo.at(i).animationTimer->update();
 	}
 }
 
 void IngredientsDeathAdversity::getPosIngredient(int i)
 {
-	Vector2D pos = ingredients.at(indexIngredients.at(i))->getPos();
+	Vector2D pos = ingInfo.at(i).ing->getPos();
 	dest.x = pos.getX();
 	dest.y = pos.getY();
 }
@@ -83,8 +114,8 @@ bool IngredientsDeathAdversity::alreadyTaken(int number)
 {
 	bool taken = false;
 	int i = 0;
-	while (i < indexIngredients.size() && !taken) {
-		if (indexIngredients.at(i) == number) taken = true;
+	while (i < ingInfo.size() && !taken) {
+		if (ingInfo.at(i).ing == ingredients.at(number)) taken = true;
 		i++;
 	}
 	return taken;
