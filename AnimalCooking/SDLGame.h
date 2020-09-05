@@ -107,7 +107,7 @@ public:
 			SDL_GetCurrentDisplayMode(0, &DM);
 			SDL_SetWindowSize(window_, DM.w, DM.h - 60);
 			SDL_SetWindowFullscreen(window_, 0);
-			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);	
+			SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 			imFullscreen = false;
 		}
 		else {
@@ -130,6 +130,8 @@ public:
 
 	inline int getMaxScore() { return maxScore; }
 	inline jute::jValue& getJsonGeneral() { return json_general; }
+	inline jute::jValue& getJsonCurrentLevel() { return json_currentLevel; }
+	inline void setJsonCurrentLevel(jute::jValue& l) { json_currentLevel = l; }
 
 	void setTimersViewer(Entity* timersViewer) { timersViewer_ = timersViewer; }
 	inline Entity* getTimersViewer() { return timersViewer_; }
@@ -143,7 +145,7 @@ public:
 	inline const BubbleKeyShower& getKeyShower() const { return keyShower_; }
 
 	void setCurrentLevel(int level) { currentLevel = level; }
-	void setScore(int nScore) { if(nScore>=0)score = nScore; }
+	void setScore(int nScore) { if (nScore >= 0)score = nScore; }
 	void setMaxScore(int nMaxScore) { if (nMaxScore >= 0)maxScore = nMaxScore; }
 	void addStarsPerLevel(int stars, int level);
 	inline const map<int, int>& getUnlockedStars() { return unlockedStarsPerLevel; }
@@ -168,14 +170,15 @@ private:
 	void closeResources(); // close the SDLResources object (frees all memory)
 protected:
 
-	FontsManager *fonts_;
-	TexturesManager *textures_;
-	AudioManager *audio_;
-	RandomNumberGenerator *random_;
+	FontsManager* fonts_;
+	TexturesManager* textures_;
+	AudioManager* audio_;
+	RandomNumberGenerator* random_;
 	FSM* fsm_;
 	jute::jValue json_general;
-	SDL_Window *window_; // the window
-	SDL_Renderer *renderer_;  // the renderer
+	jute::jValue json_currentLevel;
+	SDL_Window* window_; // the window
+	SDL_Renderer* renderer_;  // the renderer
 
 	string windowTitle_; // window title
 	int width_; // window width
@@ -189,9 +192,9 @@ protected:
 	double casillaY;
 	Entity* timersViewer_;
 	string name;
-	
+
 	//key = level, value = stars
-	map<int,int>unlockedStarsPerLevel;
+	map<int, int>unlockedStarsPerLevel;
 	vector<levelInfo*> levelInfos_;
 	config::Options options_;
 	bool imFullscreen;

@@ -23,15 +23,23 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	int degrees = 7;
 	int nextLevelLimit = 45;
 
-	/*score = 120;		
+	/*score = 120;
 	maxScore = 150;*/
-					
-	createButtons();	
+
+	createButtons();
 	//createPlayers();
 	//Creamos la barra de carga con el texto
 	Entity* levelViewer = stage->addEntity();
-	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, 60, 80, (double)(score) / maxScore);
+	int twoStarsPerc = 60;
+	int threeStarsPerc = 80;
+	jute::jValue& json = SDLGame::instance()->getJsonCurrentLevel();
+	if (json.hasKey("TwoStars"))
+		twoStarsPerc = json["TwoStars"].as_int();
+	if (json.hasKey("ThreeStars"))
+		threeStarsPerc = json["ThreeStars"].as_int();
+	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, twoStarsPerc, threeStarsPerc, (double)(score) / maxScore);
 	stage->addToGroup(levelViewer, ecs::GroupID::ui);
+
 
 
 }

@@ -90,7 +90,8 @@ public:
 		else if(textureState == "borde") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBorde);
 		else if(textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArriba);
 		else if(textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFArribaDecoracion);
-		else if(textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBordeAmbos);
+		else if (textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFBordeAmbos);
+		else if(textureState == "SartenEsqIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFFEsquinaIzq);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletOFF);
 	};
 
@@ -101,6 +102,7 @@ public:
 		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
 		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
 		else if (textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBordeAmbos);
+		else if (textureState == "SartenEsqIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquinaIzq);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
@@ -111,6 +113,7 @@ public:
 		else if (textureState == "Arriba") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArriba);
 		else if (textureState == "ArribaDecoracion") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONArribaDecoracion);
 		else if (textureState == "SartenBordeAmbos") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONBordeAmbos);
+		else if (textureState == "SartenEsqIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletONEsquinaIzq);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SkilletON); 
 	};
 
