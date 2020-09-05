@@ -914,4 +914,197 @@ public:
 	}
 };
 
+class Nori : public Food
+{
+public:
+	Nori(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Nori, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::NoriT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::NoriFeedBack);
+	}
+	Nori() : Food(Resources::FoodType::Nori) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::NoriT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::NoriFeedBack);
+	}
+};
 
+class SlicedSalmon : public Food
+{
+public:
+	SlicedSalmon(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedSalmon, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedSalmonT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedSalmonFeedBack);
+	}
+	SlicedSalmon() : Food(Resources::FoodType::SlicedSalmon) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedSalmonT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedSalmonFeedBack);
+	}
+};
+
+class SlicedAvocado : public Food
+{
+public:
+	SlicedAvocado(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::SlicedAvocado, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedAvocadoT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedAvocadoFeedBack);
+	}
+	SlicedAvocado() : Food(Resources::FoodType::SlicedAvocado) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::SlicedAvocadoT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::SlicedAvocadoFeedBack);
+	}
+};
+
+class GratedChicken : public Food
+{
+public:
+	GratedChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::GratedChicken, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+	GratedChicken() : Food(Resources::FoodType::GratedChicken) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+};
+
+class GratedSkilletChicken : public Food
+{
+public:
+	GratedSkilletChicken(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::GratedSkilletChicken, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedSkilletChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+	GratedSkilletChicken() : Food(Resources::FoodType::GratedSkilletChicken) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::GratedSkilletChickenT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::GratedChickenFeedBack);
+	}
+};
+
+class Sushi1 : public Food
+{
+public:
+	Sushi1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Sushi1, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi1FeedBack);
+	}
+	Sushi1() : Food(Resources::FoodType::Sushi1) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi1FeedBack);
+	}
+};
+
+class Sushi2 : public Food
+{
+public:
+	Sushi2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Sushi2, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi2FeedBack);
+	}
+	Sushi2() : Food(Resources::FoodType::Sushi2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi2FeedBack);
+	}
+};
+
+class Sushi3 : public Food
+{
+public:
+	Sushi3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Sushi3, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi3FeedBack);
+	}
+	Sushi3() : Food(Resources::FoodType::Sushi3) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi3FeedBack);
+	}
+};
+
+class Sushi4 : public Food
+{
+public:
+	Sushi4(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Sushi4, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi4FeedBack);
+	}
+	Sushi4() : Food(Resources::FoodType::Sushi4) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi4FeedBack);
+	}
+};
+
+class Sushi5 : public Food
+{
+public:
+	Sushi5(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Sushi5, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi5T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi5FeedBack);
+	}
+	Sushi5() : Food(Resources::FoodType::Sushi5) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Sushi5T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Sushi5FeedBack);
+	}
+};
+
+class Onigiri : public Food
+{
+public:
+	Onigiri(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Onigiri, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::OnigiriT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OnigiriFeedBack);
+	}
+	Onigiri() : Food(Resources::FoodType::Onigiri) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::OnigiriT);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OnigiriFeedBack);
+	}
+};
+
+class Teriyaki1 : public Food
+{
+public:
+	Teriyaki1(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Teriyaki1, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki1FeedBack);
+	}
+	Teriyaki1() : Food(Resources::FoodType::Teriyaki1) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki1FeedBack);
+	}
+};
+
+class Teriyaki2 : public Food
+{
+public:
+	Teriyaki2(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Teriyaki2, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki2FeedBack);
+	}
+	Teriyaki2() : Food(Resources::FoodType::Teriyaki2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki2T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki2FeedBack);
+	}
+};
+
+class Teriyaki3 : public Food
+{
+public:
+	Teriyaki3(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Teriyaki3, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki1T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki3FeedBack);
+	}
+	Teriyaki3() : Food(Resources::FoodType::Teriyaki3) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki3T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki3FeedBack);
+	}
+};
+
+class Teriyaki4 : public Food
+{
+public:
+	Teriyaki4(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Teriyaki4, p1, p2) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki4FeedBack);
+	}
+	Teriyaki4() : Food(Resources::FoodType::Teriyaki4) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Teriyaki4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Teriyaki4FeedBack);
+	}
+};

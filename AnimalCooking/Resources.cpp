@@ -359,9 +359,23 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, TextureId::IcedRice1T,"../AnimalCooking/resources/images/Foods/arrozContomateHielo.png" },
 	{ AllLevels, TextureId::IcedRice2T,"../AnimalCooking/resources/images/Foods/arrozPescadoHielo.png" },
 	{ AllLevels, TextureId::IcedRiceAndClamsT,"../AnimalCooking/resources/images/Foods/mariscoConArrozHielo.png" },
-	{AllLevels, TextureId::IcedRiceDishT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png"},
+	{ AllLevels, TextureId::IcedRiceDishT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png"},
 
-
+	{ AllLevels, TextureId::NoriT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::SlicedSalmonT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::SlicedAvocadoT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::GratedChickenT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::GratedSkilletChickenT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Sushi1T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Sushi2T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Sushi3T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Sushi4T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Sushi5T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::OnigiriT,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Teriyaki1T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Teriyaki2T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Teriyaki3T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
+	{ AllLevels, TextureId::Teriyaki4T,"../AnimalCooking/resources/images/Foods/arrozDeLaCasaHielo.png" },
 
 	//FeedBack---------------------------------------------------------------
 		//Food
@@ -433,6 +447,22 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, IcedRice2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozDeLaCasaHielo.png" },
 		{ AllLevels, IcedRiceAndClamsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/mariscoConArrozHielo.png" },
 		{AllLevels, IcedRiceDishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png"},
+
+		{ AllLevels, NoriFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, SlicedSalmonFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, GratedChickenFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, GratedSkilletChickenFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, SlicedAvocadoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Sushi1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Sushi2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Sushi3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Sushi4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Sushi5FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, OnigiriFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Teriyaki1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Teriyaki2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Teriyaki3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
+		{ AllLevels, Teriyaki4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozPescadoHielo.png" },
 
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
@@ -526,6 +556,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Snowman,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
+	{AllLevels, Salmon,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
+	{AllLevels, Avocado,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},
 	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},

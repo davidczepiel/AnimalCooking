@@ -128,6 +128,17 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("IcedFishBurger"):	ADDPEDIDO(pedido, Resources::FoodType::IcedFishBurger);			break;
 	case str2int("IcedRice1"):	ADDPEDIDO(pedido, Resources::FoodType::IcedRice1);					break;
 	case str2int("IcedRice2"):	ADDPEDIDO(pedido, Resources::FoodType::IcedRice2);					break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Sushi1"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi1);					break;
+	case str2int("Sushi2"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi2);					break;
+	case str2int("Sushi3"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi3);					break;
+	case str2int("Sushi4"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi4);					break;
+	case str2int("Sushi5"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi5);					break;
+	case str2int("Onigiri"):	ADDPEDIDO(pedido, Resources::FoodType::Onigiri);					break;
+	case str2int("Teriyaki1"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki1);					break;
+	case str2int("Teriyaki2"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki2);					break;
+	case str2int("Teriyaki3"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki3);					break;
+	case str2int("Teriyaki4"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki4);					break;
 
 	default:																						break;
 	}
