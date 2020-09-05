@@ -4,7 +4,7 @@
 
 IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* mAdvMng) :Adversity(mAdvMng)
 {
-	mTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuchilloSucio);
+	mTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bin);
 	deathTimer = new Timer();
 	deathTimer->setTime(5000);
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
@@ -13,6 +13,7 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 	src.x = 0; src.y = 0;
 	dest.x = 0; dest.y = 0;
 	dest.w = 100; dest.h = 100;
+	timeToDeath = 3000;
 
 }
 
@@ -22,45 +23,51 @@ void IngredientsDeathAdversity::update()
 	if (deathTimer->isTimerEnd()) {
 		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::IngredientsdeathAdversity);
 		reset();
+		killIngredients();
 	}
 }
 
 void IngredientsDeathAdversity::draw()
 {
-	for (int i = 0; i < indexIngredients.size(); i++) {
-		getPosIngredient(i);
-		mTexture->render(dest, src);
+	if (deathTimer->isStarted() && !deathTimer->isTimerEnd()) {
+		for (int i = 0; i < indexIngredients.size(); i++) {
+			getPosIngredient(i);
+			mTexture->render(dest, src);
+		}
 	}
 }
 
 void IngredientsDeathAdversity::reset()
 {
-	deathTimer->setTime(timeToDeath);
+	//deathTimer->setTime(timeToDeath);
 }
 
 void IngredientsDeathAdversity::start()
 {
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	while (indexIngredients.size() < ingredients.size() / 2) {
+	numKills = ingredients.size() / 2;
+	while (indexIngredients.size() < numKills) {
 		int i = getNumber();
 		while (alreadyTaken(i)) {
 			i = getNumber();
 		}
 		indexIngredients.push_back(i);
 	}
+	deathTimer->timerReset();
+	deathTimer->setTime(5000);
 	deathTimer->timerStart();
 }
 
 void IngredientsDeathAdversity::killIngredients()
 {
-	for (int i = 0; i < ingredients.size(); i++) {
-		//ingPool->deleteIngredient(*(ingredients.at(i)));
+	for (int i = 0; i < indexIngredients.size(); i++) {
+		multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingredients.at(indexIngredients.at(i))->getIt());
 	}
 }
 
 void IngredientsDeathAdversity::getPosIngredient(int i)
 {
-	Vector2D pos = ingredients.at(i)->getPos();
+	Vector2D pos = ingredients.at(indexIngredients.at(i))->getPos();
 	dest.x = pos.getX();
 	dest.y = pos.getY();
 }

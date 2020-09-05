@@ -22,7 +22,14 @@ public:
 	void start();
 private:
 
+	struct Ingredientinfo {
+		Ingredient* ing=nullptr;
+		double timeToStart=0;
+		double timeToFinish=0;
+	};
+
 	void killIngredients();
+	void killIngredient();
 	void getPosIngredient(int i);
 	int getNumber();
 	bool alreadyTaken(int i);
@@ -32,9 +39,13 @@ private:
 	SDL_Rect src;
 	double timeToDeath;
 	double timePostDeath;
+	int numKills;
+	//int killsDone;
+	//double percentagePerKill;
+	vector<Ingredientinfo> ingInfo;
 	vector<Ingredient*> ingredients;
 	vector<int> indexIngredients;
-	IngredientsPool* ingPool;
+	
 	
 };
 
