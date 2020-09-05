@@ -508,6 +508,7 @@ public:
 		MapRestaurantButton,
 		MapStatePlayButton,
 		Explosion,
+		Ghost,
 		// text
 		Back,
 		PickUpText,

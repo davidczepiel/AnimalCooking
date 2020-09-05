@@ -9,7 +9,7 @@
 #include "ButtonPadNavigation.h"
 #include "ImageViewer.h"
 
-constexpr double step_ = 1.0 / 25.0; //25 es el numero de pasos (6 de carga de recursos + 18 de carga de nivel)
+constexpr double step_ = 1.0 / 26.0; //26 es el numero de pasos (6 de carga de recursos + 20 de carga de nivel)
 
 ScreenLoader::ScreenLoader(int nivel, AnimalCooking* ac) :State(ac), emPlaystate(nullptr), level(nivel)
 {
