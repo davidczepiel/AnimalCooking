@@ -46,6 +46,7 @@ private:
 	int numLights;
 	Uint32 lastLightingTick_;
 	Uint32 lastExplosionTick_;
+	bool firstTimeLighting;
 
 	vector<SDL_Rect> rectLighting_;
 	vector<std::pair<Vector2D, bool>> lightingSpots_;

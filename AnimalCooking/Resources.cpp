@@ -592,6 +592,11 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
 	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
 	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
+	{Basic, RainSound,"../AnimalCooking/resources/sounds/rainSound.wav"},
+	{Basic, ThunderSound,"../AnimalCooking/resources/sounds/thunderSound.wav"},
+	{Basic, star1Sound,"../AnimalCooking/resources/sounds/1star.wav"},
+	{Basic, star2Sound,"../AnimalCooking/resources/sounds/2star.wav"},
+	{Basic, star3Sound,"../AnimalCooking/resources/sounds/3star.wav"},
 
 	{Basic, Tecla1,"../AnimalCooking/resources/sounds/tecla1.ogg" },
 	{Basic, Tecla2,"../AnimalCooking/resources/sounds/tecla2.ogg" },
