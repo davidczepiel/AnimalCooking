@@ -13,6 +13,9 @@ LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarP
 	barBackground(nullptr), 
 	yellowStar(nullptr), 
 	timeSpan_(0),
+	firstStar(false),
+	secondStar(false),
+	thirdStar(false),
 	startedTick_(SDLGame::instance()->getTime()),
 	levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
 	twoStarPerc_(twoStarPerc), threeStarPerc_(threeStarPerc), scorePercentage_(scorePercentage) {
@@ -73,13 +76,22 @@ void LevelViewer::draw()
 		double starSizeX = casillaX / 2.5;
 		double starSizeY = casillaY / 2.5;
 		//casilla - casilla / 2.5 porque está en la y casilla y casilla/2.5 es la mitad de casilla/5
-		if (scoreProgress_ * 100 >= oneStarPerc_)
+		if (scoreProgress_ * 100 >= oneStarPerc_) {
+			if (!firstStar) {
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star1Sound, 0, 7);
+				firstStar = true;
+			}
 			yellowStar->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+		}
 		else
 			star->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 
 		//dos estrellas
 		if (scoreProgress_ * 100 >= twoStarPerc_) {
+			if (!secondStar) {
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star2Sound, 0, 7);
+				secondStar = true;
+			}
 			yellowStar->render(RECT(tsp - starSizeX, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			yellowStar->render(RECT(tsp, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 
@@ -92,6 +104,10 @@ void LevelViewer::draw()
 
 		//tres estrellas
 		if (scoreProgress_ * 100 >= threeStarPerc_) {
+			if (!thirdStar) {
+				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star3Sound, 0, 7);
+				thirdStar = true;
+			}
 			yellowStar->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			yellowStar->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
 			yellowStar->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
