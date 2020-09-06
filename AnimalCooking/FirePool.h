@@ -74,7 +74,7 @@ public:
 
 				if(activeFires == 1) SDLGame::instance()->getAudioMngr()->haltChannel(4);
 				activeFires--;
-				cout << activeFires << endl;
+
 				cs_->removeCollider(f->tr);
 			}
 		}
