@@ -48,6 +48,7 @@ private:
 	Entity* gameManager;
 	Entity* cookerPool;
 	Entity* firesPool;
+	Entity* ghostPool;
 	ScreenLoader* sL;
 	TimerViewer* tv_;
 	DishPool* dp;

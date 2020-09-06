@@ -70,9 +70,9 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_colSystem();
 	initialize_walls();
 	initialize_firePool();
+	initialize_ghostPool();
 	initialize_adversities();
 	initialize_enviroment();
-	initialize_ghostPool();
 }
 
 void LevelInitializer::initialize_players()
@@ -254,7 +254,7 @@ void LevelInitializer::initialize_firePool()
 
 void LevelInitializer::initialize_adversities()
 {
-	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool);
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool, GETCMP2(ghostPool, GhostPool));
 	
 	sL->updateLength();
 }
@@ -267,10 +267,10 @@ void LevelInitializer::initialize_enviroment()
 
 void LevelInitializer::initialize_ghostPool()
 {
-	Entity* gP = emPlaystate->addEntity();
-	emPlaystate->addToGroup(gP, ecs::GroupID::topLayer);
+	ghostPool = emPlaystate->addEntity();
+	emPlaystate->addToGroup(ghostPool, ecs::GroupID::topLayer);
 
-	GhostPool* gPool = gP->addComponent<GhostPool>();
+	GhostPool* gPool = ghostPool->addComponent<GhostPool>();
 	GETCMP2(gameManager, GameLogic)->setGhostPool(gPool);
 
 	sL->updateLength();

@@ -2,7 +2,7 @@
 #include "MultipleAdversityManager.h"
 
 AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::array<Entity*, 2>& players, 
-	Entity* cookersPool, Entity* ingredientsPool, Entity* utensilsPool, Entity* firesPool)
+	Entity* cookersPool, Entity* ingredientsPool, Entity* utensilsPool, Entity* firesPool, GhostPool* ghostPool)
 {
 	Entity* adversityManager = mngr->addEntity();
 	MultipleAdversityManager* mam = adversityManager->addComponent<MultipleAdversityManager>(
@@ -11,7 +11,8 @@ AdversityAdder::AdversityAdder(jute::jValue& nivel, EntityManager* mngr, std::ar
 		GETCMP2(cookersPool, CookerPool), 
 		GETCMP2(ingredientsPool, IngredientsPool),
 		GETCMP2(utensilsPool, UtensilsPool),
-		GETCMP2(firesPool, FirePool));
+		GETCMP2(firesPool, FirePool), 
+		ghostPool);
 
 	vector<tuple<ecs::AdversityID, int>> adversitiesList;	
 

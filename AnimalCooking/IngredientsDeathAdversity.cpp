@@ -84,6 +84,7 @@ void IngredientsDeathAdversity::killIngredients()
 
 void IngredientsDeathAdversity::killIngredient()
 {
+	multipleAdversityMngr_->getGhostPool()->activateGhost(ingInfo.at(killsDone).ing->getPos());
 	multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
 	ingInfo.at(killsDone).ing = nullptr;
 	killsDone++;
