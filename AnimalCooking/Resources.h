@@ -502,6 +502,7 @@ public:
 		AceiteSin,
 		AceiteVerticalBordeSup,
 		EncimeraMasa,
+		NoriFoodGiver,
 
 		//CreditState
 		woodCredits,

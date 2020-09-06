@@ -201,6 +201,9 @@ Food* GameControl::newFood(Resources::FoodType type, Vector2D pos) {     //llama
 	case(Resources::FoodType::Dress):
 		f = new Dress(pos, tP1, tP2);
 		break;
+	case(Resources::FoodType::Nori):
+		f = new Nori(pos, tP1, tP2);
+		break;
 		//////////////EMPTY
 	default:
 		f = nullptr;

@@ -41,6 +41,9 @@ FoodGiver* FoodGiverAdder::SwitchFG(const string& fgName, int type, int n) {
 	case str2int("Rice"):
 		ADD(RiceGiver);
 		break;
+	case str2int("Nori"):
+		ADD(NoriGiver);
+		break;
 	default:
 		break;
 	}
@@ -68,6 +71,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraVer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraVer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraBordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraBordeDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "encimeraMasa") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
+	else if(nivel["FoodGivers"][type][1][n]["texture"].as_string() == "algas") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::NoriFoodGiver);
 
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casillaX, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casillaY),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casillaX, general["Givers"]["size"]["height"].as_double() * casillaY),
