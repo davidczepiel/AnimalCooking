@@ -650,6 +650,7 @@ public:
 		PlaneSound,
 		RainSound,
 		ThunderSound,
+		burningFireSound,
 		star1Sound,
 		star2Sound,
 		star3Sound,

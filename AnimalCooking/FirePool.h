@@ -41,7 +41,8 @@ public:
 		animationFrameRate_(100),
 		animationFrameRateExt_(100),
 		poolFires_(20),
-		idCount(0)
+		idCount(0),
+		activeFires(0)
 		{
 			for (int i = 0; i < poolFires_; ++i) {
 				fires_.push_back(new Fire(SDLGame::instance()->getRandGen()->nextInt(0, 3), false, 0));
@@ -66,10 +67,14 @@ public:
 
 	void desactivateFire(int id_) {
 		for (Fire* f : fires_) {
-			if (f->id == id_) {
+			if (f->id == id_ && f->active && !f->extinguish) {
 				f->extinguish = true;
 				f->frame = 0;
 				f->lastAnimTick = SDL_GetTicks();
+
+				if(activeFires == 1) SDLGame::instance()->getAudioMngr()->haltChannel(4);
+				activeFires--;
+				cout << activeFires << endl;
 				cs_->removeCollider(f->tr);
 			}
 		}
@@ -109,7 +114,7 @@ private:
 	std::vector<Fire*> fires_;
 	int animationFrameRate_;
 	int animationFrameRateExt_;
-	int poolFires_;
+	int poolFires_, activeFires;
 
 	int idCount;
 };
