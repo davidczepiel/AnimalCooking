@@ -163,6 +163,8 @@ public:
 		FregaderoFlipONBordeArriba,
 		FregaderoFlipSinIzq,
 		FregaderoFlipSinIzqON,
+		FregaderoAislado,
+		FregaderoAisladoON,
 		Panera,
 		PaneraVer,
 		PaneraVerSinDer,
