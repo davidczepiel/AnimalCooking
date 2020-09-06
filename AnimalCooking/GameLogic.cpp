@@ -1,6 +1,9 @@
 #include "GameLogic.h"
 #include "Ingredient.h"
 #include "FoodDictionary.h"
+#include "Ghost.h"
+#include "PlayState.h"
+#include "FSM.h"
 
 GameLogic::GameLogic(TimerViewer* tv) : 
 	Component(ecs::GameLogic), 
@@ -34,6 +37,9 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 			Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
 			GETCMP1_(GameControl)->newFood(f, ingPos);
 			playHit(type);
+
+			ghostPool_->activateGhost(ingPos);
+
 			break;
 		}
 	}

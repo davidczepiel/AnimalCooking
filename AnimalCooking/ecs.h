@@ -74,7 +74,6 @@ enum CmpId : CmpIdType {
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,
-	StaticRenderer,
 	IngredientViewer,
 	BinViewer,
 	BackGroundViewer,
@@ -124,6 +123,9 @@ enum CmpId : CmpIdType {
 
 	EnviromentViewer, //Enviroment
 	EnviromentControl,
+
+	GhostLife, //Ghost
+	GhostPool,
 
 	//
 	// don't touch the rest of this enum, it is to identify the max

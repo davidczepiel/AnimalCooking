@@ -228,6 +228,9 @@
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManagerAdder.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="GhostLife.h" />
+    <ClInclude Include="GhostPool.h" />
     <ClInclude Include="GPadController.h" />
     <ClInclude Include="GpadKeySwitcher.h" />
     <ClInclude Include="GpadKeySwitcherViewer.h" />
@@ -290,6 +293,7 @@
     <ClInclude Include="SDLFontsManager.h" />
     <ClInclude Include="SDLGame.h" />
     <ClInclude Include="SDLRenderer.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
     <ClInclude Include="SDLTexturesManager.h" />
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Selector.h" />
@@ -394,6 +398,9 @@
     <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManagerAdder.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GhostLife.cpp" />
+    <ClCompile Include="GhostPool.cpp" />
     <ClCompile Include="GPadController.cpp" />
     <ClCompile Include="GpadKeySwitcher.cpp" />
     <ClCompile Include="GpadKeySwitcherViewer.cpp" />
@@ -454,6 +461,7 @@
     <ClCompile Include="SDLFontsManager.cpp" />
     <ClCompile Include="SDLGame.cpp" />
     <ClCompile Include="SDLRenderer.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
     <ClCompile Include="SDLTexturesManager.cpp" />
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Selector.cpp" />
