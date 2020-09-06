@@ -3,15 +3,15 @@
 #include<string>
 
 LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarPerc, int twoStarPerc, int threeStarPerc, double scorePercentage)
-	: Component(ecs::levelViewer), 
-	bar(nullptr), 
-	limitSign(nullptr), 
-	star(nullptr), 
-	casillaX(0), 
-	casillaY(0), 
-	scoreProgress_(0), 
-	barBackground(nullptr), 
-	yellowStar(nullptr), 
+	: Component(ecs::levelViewer),
+	bar(nullptr),
+	limitSign(nullptr),
+	star(nullptr),
+	casillaX(0),
+	casillaY(0),
+	scoreProgress_(0),
+	barBackground(nullptr),
+	yellowStar(nullptr),
 	timeSpan_(0),
 	firstStar(false),
 	secondStar(false),
@@ -19,16 +19,16 @@ LevelViewer::LevelViewer(int levelTime, int ScoreTime, int barTime, int oneStarP
 	startedTick_(SDLGame::instance()->getTime()),
 	levelTime_(levelTime), scoreTime_(ScoreTime), barTime_(barTime), oneStarPerc_(oneStarPerc),
 	twoStarPerc_(twoStarPerc), threeStarPerc_(threeStarPerc), scorePercentage_(scorePercentage) {
-		if (scorePercentage_ > 1.0)
-			scorePercentage_ = 1.0;
-		int stars = 0;
-		if (scorePercentage_ * 100 >= threeStarPerc_)
-			stars = 3;
-		else if (scorePercentage_ * 100 >= twoStarPerc_)
-			stars = 2;
-		else if (scorePercentage_ * 100 >= oneStarPerc_)
-			stars = 1;
-		SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
+	if (scorePercentage_ > 1.0)
+		scorePercentage_ = 1.0;
+	int stars = 0;
+	if (scorePercentage_ * 100 >= threeStarPerc_)
+		stars = 3;
+	else if (scorePercentage_ * 100 >= twoStarPerc_)
+		stars = 2;
+	else if (scorePercentage_ * 100 >= oneStarPerc_)
+		stars = 1;
+	SDLGame::instance()->addStarsPerLevel(stars, SDLGame::instance()->getCurrentLevel());
 }
 
 void LevelViewer::draw()
@@ -69,9 +69,9 @@ void LevelViewer::draw()
 		double tsp = casillaX * 1.8 + (twoStarPerc_ / 100) * w - casillaX / 10;
 		double thsp = casillaX * 1.8 + (threeStarPerc_ / 100) * w - casillaX / 10;
 
-		limitSign->render(RECT(osp, casillaY, casillaX / 10, casillaY / 5));
+		limitSign->render(RECT(osp, 3 * casillaY, casillaX / 10, casillaY / 5));
 		limitSign->render(RECT(tsp, casillaY, casillaX / 10, casillaY / 5));
-		limitSign->render(RECT(thsp, casillaY, casillaX / 10, casillaY / 5));
+		limitSign->render(RECT(thsp, 3 * casillaY, casillaX / 10, casillaY / 5));
 
 		double starSizeX = casillaX / 2.5;
 		double starSizeY = casillaY / 2.5;
@@ -81,10 +81,10 @@ void LevelViewer::draw()
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star1Sound, 0, 7);
 				firstStar = true;
 			}
-			yellowStar->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(osp - starSizeX / 2, (3 * casillaY) - casillaY / 2.5, starSizeX, starSizeY));
 		}
 		else
-			star->render(RECT(osp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(osp - starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
 
 		//dos estrellas
 		if (scoreProgress_ * 100 >= twoStarPerc_) {
@@ -108,16 +108,16 @@ void LevelViewer::draw()
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star3Sound, 0, 7);
 				thirdStar = true;
 			}
-			yellowStar->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
-			yellowStar->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
-			yellowStar->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(thsp - 3 * starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(thsp - starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(thsp + starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
 
 		}
 		else
 		{
-			star->render(RECT(thsp - 3 * starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
-			star->render(RECT(thsp - starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
-			star->render(RECT(thsp + starSizeX / 2, casillaY - casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(thsp - 3 * starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(thsp - starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
+			star->render(RECT(thsp + starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
 		}
 	}
 }

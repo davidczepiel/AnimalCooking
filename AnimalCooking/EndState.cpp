@@ -22,6 +22,9 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	int winWidth = game->getWindowWidth();
 	int degrees = 7;
 	int nextLevelLimit = 45;
+	jute::jValue& nivel = game->getJsonCurrentLevel();
+	if (nivel.hasKey("OneStar"))
+		nextLevelLimit = nivel["OneStar"].as_int();
 
 	/*score = 120;
 	maxScore = 150;*/
