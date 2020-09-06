@@ -523,6 +523,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, ButtonPrev, "../AnimalCooking/resources/images/Mapstate/prevButton.png",1,3 },					//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 },
 	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 },
+	{AllLevels, Ghost, "../AnimalCooking/resources/images/Animaciones/Otro/ghost.png",1,9 },
 	{AllLevels, Blizzard, "../AnimalCooking/resources/images/Adversities/ventisca.png", 1,4}
 };
 

@@ -458,6 +458,10 @@
     <ClCompile Include="EnviromentUnit.cpp" />
     <ClCompile Include="EnviromentViewer.cpp" />
     <ClCompile Include="EnviromentControl.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
+    <ClCompile Include="GhostLife.cpp" />
+    <ClCompile Include="GhostPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -983,6 +987,10 @@
     <ClInclude Include="EnviromentUnit.h" />
     <ClInclude Include="EnviromentViewer.h" />
     <ClInclude Include="EnviromentControl.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
+    <ClInclude Include="GhostLife.h" />
+    <ClInclude Include="GhostPool.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
