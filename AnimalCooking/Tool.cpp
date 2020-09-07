@@ -41,6 +41,37 @@ void Bucket::onPick()
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
 }
 
+void Bucket::action1(int player)
+{
+	if (myState == State::floor) {
+		Transport* playerT = nullptr;
+		if (player == 0)
+			playerT = player1_;
+		else
+			playerT = player2_;
+
+		if (playerT->getObjectTypeInHands() != Resources::PickableType::Dish)
+		{
+			onPick();
+			playerT->pick(this, Resources::PickableType::Bucket);
+		}
+	}
+}
+
+void Bucket::feedback(int player)
+{
+	SDL_Rect rect = RECT(position_.getX(), position_.getY(), size_.getX(), size_.getY());
+	if (myState != State::playerHand) {
+		if (SDLGame::instance()->getOptions().showKeyToPress) {
+			if (GPadController::instance()->playerControllerConnected(player))
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
+			else
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+		}
+		feedbackVisual_->render(rect);
+	}
+}
+
 void Bucket::onDrop(bool onFloor)
 {
 	if (onFloor) {

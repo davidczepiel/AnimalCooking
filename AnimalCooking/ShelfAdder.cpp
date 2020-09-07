@@ -28,6 +28,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 				emPlayState->addEntity(bucket_);
 				bucket_->addComponent<BucketViewer>(bucket_);
 				bucket_->addComponent<BucketMotion>(bucket_);
+				bucket_->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect), GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), bucket_);
 				bucket_->setGameLogic(gl);
 				emPlayState->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
 				u = bucket_;

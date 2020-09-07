@@ -37,6 +37,8 @@ public:
 		waterStacks_ = maxStacks_; 
 	}
 	void onPick() override;
+	void action1(int player) override;
+	void feedback(int player) override;
 	void onDrop(bool onFloor) override;
 	void updating() { Pickable::update(); }
 	void render();
