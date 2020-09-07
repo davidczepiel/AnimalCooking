@@ -16,6 +16,7 @@ Bucket::Bucket(Transport* p1, Transport* p2) : Tool(p1, p2)
 	size_.setY(0.5 * SDLGame::instance()->getCasillaY());
 
 	bucketTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cubo);
+	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuboFeedBack);
 }
 
 void Bucket::attack(Vector2D dir)
@@ -31,8 +32,16 @@ void Bucket::attack(Vector2D dir)
 			ataque.h = attackHitBoxHeight_;
 			gameLogic->hitFire(ataque);
 			waterStacks_--;
+
+			if(waterStacks_ == 0) bucketTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cubo);
 		}
 	}
+}
+
+void Bucket::fillBucket()
+{
+	waterStacks_ = maxStacks_;
+	bucketTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::CuboLleno);
 }
 
 void Bucket::onPick()

@@ -146,6 +146,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, Red,"../AnimalCooking/resources/images/Cocina/pickable/red.png"},
 	{AllLevels, RedSucia,"../AnimalCooking/resources/images/Cocina/pickable/redSucia.png"},
 	{AllLevels, Cubo,"../AnimalCooking/resources/images/Cocina/pickable/bucket.png"},
+	{AllLevels, CuboLleno,"../AnimalCooking/resources/images/Cocina/pickable/bucketFill.png"},
 
 	{AllLevels, Fregadero,"../AnimalCooking/resources/images/Cocina/fregadero/fregadero.png"},
 	{AllLevels, FregaderoON,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoOn.png"},
@@ -483,6 +484,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
 		{AllLevels, RedFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/redFeedBack.png"},
 		{AllLevels, RalladorFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/ralladorFeedBack.png"},
+		{AllLevels, CuboFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/bucketFeedback.png"},
 		//General
 		{AllLevels, PapeleraFeedBack,"../AnimalCooking/resources/images/FeedBack/General/papeleraFeedBack.png"},
 		{AllLevels, PlatoFeedBack,"../AnimalCooking/resources/images/FeedBack/General/platoFeedBack.png"},

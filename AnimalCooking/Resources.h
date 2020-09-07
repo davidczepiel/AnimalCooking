@@ -147,6 +147,7 @@ public:
 		Red,
 		RedSucia,
 		Cubo,
+		CuboLleno,
 		Fregadero,
 		FregaderoON,
 		FregaderoFlip,
@@ -495,6 +496,7 @@ public:
 			MazoFeedBack,
 			RedFeedBack,
 			RalladorFeedBack,
+			CuboFeedBack,
 			//General
 			Panel,
 			PlatoFeedBack,

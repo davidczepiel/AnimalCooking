@@ -33,9 +33,7 @@ public:
 	~Bucket() {}
 
 	void attack(Vector2D dir) override;
-	inline void fillBucket() { 
-		waterStacks_ = maxStacks_; 
-	}
+	void fillBucket();
 	void onPick() override;
 	void action1(int player) override;
 	void feedback(int player) override;
