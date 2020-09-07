@@ -72,6 +72,10 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
 			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedRiceDish)
 				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::Teriyaki2)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::Teriyaki3)
+				scoreManager_->addScore(6 * config::SCORE_MANAGER_SERVED_BONUS);
 			else
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
@@ -166,6 +170,8 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::RiceAndClams: time += timeCooking;
 	case Resources::FoodType::IcedRiceAndClams: time += timeCooking + iceDelay;
 	case Resources::FoodType::IcedRiceDish: time += timeCooking + iceDelay;
+	case Resources::FoodType::Teriyaki2: time += 2*timeCooking;
+	case Resources::FoodType::Teriyaki3: time += 3*timeCooking +10000;
 
 	default:
 		break;

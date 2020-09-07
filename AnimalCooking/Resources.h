@@ -286,6 +286,16 @@ public:
 		IcedRice2Order,
 		IcedRiceAndClamsOrder,
 		IcedRiceDishOrder,
+		Sushi1Order,
+		Sushi2Order,
+		Sushi3Order,
+		Sushi4Order,
+		Sushi5Order,
+		OnigiriOrder,
+		Teriyaki1Order,
+		Teriyaki2Order,
+		Teriyaki3Order,
+		Teriyaki4Order,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -652,6 +662,7 @@ public:
 		RainSound,
 		ThunderSound,
 		burningFireSound,
+		pigeonSound,
 		star1Sound,
 		star2Sound,
 		star3Sound,
@@ -759,6 +770,12 @@ public:
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
 		FishSkillet,
+		Nori,
+		SlicedSalmon,
+		SlicedAvocado,
+		GratedChicken,
+		GratedSkilletChicken,
+
 		///
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
@@ -803,11 +820,6 @@ public:
 		IcedRiceAndClams,
 		IcedRiceDish,
 		///
-		Nori,
-		SlicedSalmon,
-		SlicedAvocado,
-		GratedChicken,
-		GratedSkilletChicken,
 		Sushi1,
 		Sushi2,
 		Sushi3,
