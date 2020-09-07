@@ -192,6 +192,18 @@ Shelf* ShelfAdder::makeShelf(Pickable* u, std::array<Entity*, 2>& player, jute::
 	    lookingAt = Orientation::Down;
 	    t = Resources::TextureId::EncimeraVEsquinaSuperior_SinBordes;
     }
+	else if (jsonShelf["texture"].as_string() == "EncimeraAbajoSinMantel")
+	{
+	lookingAt = Orientation::Right;
+	t = Resources::TextureId::EncimeraAbajoSinMantel;
+	}
+	else if (jsonShelf["texture"].as_string() == "EncimeraAbajoCont")
+	{
+	lookingAt = Orientation::Right;
+	t = Resources::TextureId::EncimeraAbajoCont;
+	}
+	
+	
 	else { //CornerLeft
 		lookingAt = Orientation::Down;
 		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;

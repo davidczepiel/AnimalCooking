@@ -223,6 +223,7 @@ public:
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
+			EncimeraAbajoCont,
 			EncimeraVertSin_SinBordeIzq,
 			EncimeraVertSin_SinBordeDer,
 			EncimeraVEsquinaSuperior_SinBordeIzq,
@@ -516,6 +517,7 @@ public:
 		AceiteVerticalBordeSup,
 		EncimeraMasa,
 		NoriFoodGiver,
+		algasVDcha,
 
 		//CreditState
 		woodCredits,
