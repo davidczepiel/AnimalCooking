@@ -38,8 +38,12 @@ void LevelViewer::draw()
 
 	if (timeSpan_ >= levelTime_)
 	{
+		
+
 		int lv = SDLGame::instance()->getCurrentLevel() + 1;
-		string lvs = "level " + std::to_string(lv);
+		string lvs = "";
+		if (lv % 6 == 0) lvs = "Extra Level " + std::to_string(lv/6);
+		else lvs = "level " + std::to_string(lv-(lv/6));
 		Texture(SDLGame::instance()->getRenderer(), lvs,
 			SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor(
 				"#000000FF")).render(RECT(

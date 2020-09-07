@@ -570,7 +570,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{AllLevels, Carrot,"../AnimalCooking/resources/images/Ingredientes/zanahoria.png",3,2},
 	{AllLevels, Sausage,"../AnimalCooking/resources/images/Ingredientes/salchicha.png",3,2},
 	{AllLevels, Snowman,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
-	{AllLevels, Salmon,"../AnimalCooking/resources/images/Ingredientes/frosty.png",3,2},
+	{AllLevels, Salmon,"../AnimalCooking/resources/images/Ingredientes/salmon.png",3,2},
 	{AllLevels, Avocado,"../AnimalCooking/resources/images/Ingredientes/aguacate.png",3,2},
 	{AllLevels, Puerta,"../AnimalCooking/resources/images/Cocina/puerta2.png",1,4},
 	{Basic, FireOverHeated,"../AnimalCooking/resources/images/Adversities/fuegoAdv.png",1,3},

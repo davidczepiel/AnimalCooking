@@ -68,6 +68,9 @@ Resources::IngredientType IngredientInitializer::newIngType(const string& s) {
 	case str2int("Avocado"):
 		i = Resources::IngredientType::avocado;
 		break;
+	case str2int("Salmon"):
+		i = Resources::IngredientType::salmon;
+		break;
 	default:
 		break;
 	}
