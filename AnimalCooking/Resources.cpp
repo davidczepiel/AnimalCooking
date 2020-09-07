@@ -225,7 +225,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,EncimeraVConDecoracion,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertDecoracion.png" },
 	{AllLevels,EncimeraHBordeDerecha,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizBordeDcha.png" },
 	{AllLevels,EncimeraHBordeIzquierda,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizBordeIzq.png" },
-	{AllLevels,EncimeraVertAbajo,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertAbajo.png" },
+	{ AllLevels,EncimeraVertAbajo,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertAbajo.png" },
+	{AllLevels,EncimeraAbajoCont,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraAbajoCont.png" },
+		
 	{ AllLevels,EncimeraVertSin_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeIzq.png" },
 	{ AllLevels,EncimeraVertSin_SinBordeDer,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVertSin_SinBordeDer.png" },
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordeIzq,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordeIzq.png" },
@@ -504,7 +506,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, ArroceraAislada,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraAislada.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
-
+		{ AllLevels, algasVDcha,"../AnimalCooking/resources/images/Cocina/foodgivers/algasVDcha.png" },
+			
 		// Adversities
 		{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
 		{AllLevels, PlaneShadow, "../AnimalCooking/resources/images/Adversities/plane.png"},
