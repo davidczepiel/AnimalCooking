@@ -641,6 +641,7 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{Basic, RainSound,"../AnimalCooking/resources/sounds/rainSound.wav"},
 	{Basic, ThunderSound,"../AnimalCooking/resources/sounds/thunderSound.wav"},
 	{Basic, burningFireSound,"../AnimalCooking/resources/sounds/burningFireSound.wav"},
+	{Basic, pigeonSound,"../AnimalCooking/resources/sounds/pigeonSound.wav"},
 	{Basic, star1Sound,"../AnimalCooking/resources/sounds/1star.wav"},
 	{Basic, star2Sound,"../AnimalCooking/resources/sounds/2star.wav"},
 	{Basic, star3Sound,"../AnimalCooking/resources/sounds/3star.wav"},
