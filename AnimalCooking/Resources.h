@@ -651,6 +651,7 @@ public:
 		RainSound,
 		ThunderSound,
 		burningFireSound,
+		pigeonSound,
 		star1Sound,
 		star2Sound,
 		star3Sound,

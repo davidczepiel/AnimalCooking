@@ -45,7 +45,10 @@ void PidgeonAdversity::update()
 	durationTimer_->update();
 	locateFrame();
 	//Cuando este en estos intervalos de tiempo llamo a move para que calcule su posicion exacta y que entre y salga de pantalla
-	if (durationTimer_->getProgress() < 0.10)move(0.10, 0.10);
+	if (durationTimer_->getProgress() < 0.10) {
+		move(0.10, 0.10);
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::pigeonSound, 0, 5);
+	}
 	else if (durationTimer_->getProgress() > 0.90)move(1, 0.10);
 }
 
