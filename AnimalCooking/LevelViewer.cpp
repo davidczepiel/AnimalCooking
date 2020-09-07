@@ -81,7 +81,7 @@ void LevelViewer::draw()
 				SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::star1Sound, 0, 7);
 				firstStar = true;
 			}
-			yellowStar->render(RECT(osp - starSizeX / 2, (3 * casillaY) - casillaY / 2.5, starSizeX, starSizeY));
+			yellowStar->render(RECT(osp - starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));
 		}
 		else
 			star->render(RECT(osp - starSizeX / 2, (3 * casillaY) + casillaY / 2.5, starSizeX, starSizeY));

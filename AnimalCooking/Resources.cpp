@@ -290,7 +290,17 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels,IcedRice1Order,"../AnimalCooking/resources/images/Pedidos/arrozConTomateHielo.png" },
 	{ AllLevels,IcedRice2Order,"../AnimalCooking/resources/images/Pedidos/arrozPescadoHielo.png" },
 	{ AllLevels,IcedRiceAndClamsOrder,"../AnimalCooking/resources/images/Pedidos/mariscoConArrozHielo.png" },
-	{AllLevels,IcedRiceDishOrder,"../AnimalCooking/resources/images/Pedidos/arrozCasaHielo.png"},
+	{ AllLevels,IcedRiceDishOrder,"../AnimalCooking/resources/images/Pedidos/arrozCasaHielo.png" },
+	{ AllLevels,Sushi1Order,"../AnimalCooking/resources/images/Pedidos/sushi1.png" },
+	{ AllLevels,Sushi2Order,"../AnimalCooking/resources/images/Pedidos/sushi2.png" },
+	{ AllLevels,Sushi3Order,"../AnimalCooking/resources/images/Pedidos/sushi3.png" },
+	{ AllLevels,Sushi4Order,"../AnimalCooking/resources/images/Pedidos/sushi4.png" },
+	{ AllLevels,Sushi5Order,"../AnimalCooking/resources/images/Pedidos/sushi45.png" },
+	{ AllLevels,OnigiriOrder,"../AnimalCooking/resources/images/Pedidos/onigiri.png" },
+	{ AllLevels,Teriyaki1Order,"../AnimalCooking/resources/images/Pedidos/teriyaki1.png" },
+	{ AllLevels,Teriyaki2Order,"../AnimalCooking/resources/images/Pedidos/teriyaki2.png" },
+	{ AllLevels,Teriyaki3Order,"../AnimalCooking/resources/images/Pedidos/teriyaki3.png" },
+	{AllLevels,Teriyaki4Order,"../AnimalCooking/resources/images/Pedidos/teriyaki4.png"},
 
 
 	//Foods-----------------------------------------------------------------
