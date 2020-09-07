@@ -34,7 +34,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 		clipArea_.w = 202;
 		clipArea_.h = 149;
 		dirtSpeedUp_ = -700;
-		rainTimer_->setTime(2000);
+		rainTimer_->setTime(10000);
 		lastFrame_ = 0;
 		frameTime_ = 75;
 		started_ = false;

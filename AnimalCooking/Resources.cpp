@@ -163,6 +163,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, FregaderoFlipONBordeArriba,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipOnBordeArriba.png" },
 	{ AllLevels, FregaderoFlipSinIzq,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipSinIzq.png" },
 	{ AllLevels, FregaderoFlipSinIzqON,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoFlipOnSinIzq.png" },
+	{ AllLevels, FregaderoAislado,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoAislado.png" },
+	{ AllLevels, FregaderoAisladoON,"../AnimalCooking/resources/images/Cocina/fregadero/fregaderoAisladoON.png" },
 
 
 	{AllLevels, Panera,"../AnimalCooking/resources/images/Cocina/foodgivers/panera.png"},
@@ -488,8 +490,10 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
-	    { AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
+		{ AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
+		{ AllLevels, ArroceraAislada,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraAislada.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
 
 		// Adversities
 		{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
@@ -626,6 +630,7 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
 	{Basic, RainSound,"../AnimalCooking/resources/sounds/rainSound.wav"},
 	{Basic, ThunderSound,"../AnimalCooking/resources/sounds/thunderSound.wav"},
+	{Basic, burningFireSound,"../AnimalCooking/resources/sounds/burningFireSound.wav"},
 	{Basic, star1Sound,"../AnimalCooking/resources/sounds/1star.wav"},
 	{Basic, star2Sound,"../AnimalCooking/resources/sounds/2star.wav"},
 	{Basic, star3Sound,"../AnimalCooking/resources/sounds/3star.wav"},

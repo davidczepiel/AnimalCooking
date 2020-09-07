@@ -163,6 +163,8 @@ public:
 		FregaderoFlipONBordeArriba,
 		FregaderoFlipSinIzq,
 		FregaderoFlipSinIzqON,
+		FregaderoAislado,
+		FregaderoAisladoON,
 		Panera,
 		PaneraVer,
 		PaneraVerSinDer,
@@ -493,6 +495,7 @@ public:
 		ArrozBordeSup,
 		ArrozSinBordeDer,
 		ArrozHor,
+		ArroceraAislada,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -502,6 +505,7 @@ public:
 		AceiteSin,
 		AceiteVerticalBordeSup,
 		EncimeraMasa,
+		NoriFoodGiver,
 
 		//CreditState
 		woodCredits,
@@ -647,6 +651,7 @@ public:
 		PlaneSound,
 		RainSound,
 		ThunderSound,
+		burningFireSound,
 		star1Sound,
 		star2Sound,
 		star3Sound,

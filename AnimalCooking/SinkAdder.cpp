@@ -50,7 +50,11 @@ SinkAdder::SinkAdder(EntityManager* em, jute::jValue& jsonLevel, jute::jValue& j
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::fregaderoAbajoEsq);
 			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::fregaderoAbajoEsqON);
 		}
-		
+		else if (sinks_[i]["texture"].as_string() == "FregaderoAislado")
+		{
+			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAislado);
+			t2 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::FregaderoAisladoON);
+		}
 		else //mirando hacia la izquierda
 		{
 			t1 = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Fregadero);

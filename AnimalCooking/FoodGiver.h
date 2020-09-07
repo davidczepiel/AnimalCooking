@@ -58,3 +58,10 @@ public:
 	DressingGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
 	void action1(int player);
 };
+
+class NoriGiver : public FoodGiver //Para algas
+{
+public:
+	NoriGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t);
+	void action1(int player);
+};
