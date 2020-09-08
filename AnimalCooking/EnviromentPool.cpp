@@ -40,6 +40,9 @@ Texture* EnviromentPool::selectTexture(string file)
 {
 	if (file == "islaPeq")				return game_->getTextureMngr()->getTexture(Resources::IslaPequenaNieve);
 	else if (file == "islaGran")		return game_->getTextureMngr()->getTexture(Resources::IslaGrandeNieve);
+	else if (file == "islaMdiana")		return game_->getTextureMngr()->getTexture(Resources::IslaMedianaNieve);
+	else if (file == "nieve")			return game_->getTextureMngr()->getTexture(Resources::SoloNieve);
+	else if (file == "hielo")			return game_->getTextureMngr()->getTexture(Resources::SoloHielo);
 	else								return nullptr;
 }
 
