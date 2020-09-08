@@ -5,6 +5,7 @@
 IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* mAdvMng) :Adversity(mAdvMng)
 {
 	preparationTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bin);
+	deathTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite);
 	deathTimer = new Timer();
 	deathTimer->setTime(5000);
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
@@ -37,7 +38,11 @@ void IngredientsDeathAdversity::draw()
 		for (int i = 0; i < ingInfo.size(); i++) {
 			if (ingInfo.at(i).ing != nullptr) {
 				getPosIngredient(i);
-				preparationTexture->render(dest, src);
+				//Dependiendo de si el contador específico de el ingrediente ha empezado o no renderizo la animacion de que va a morir o la de que está muriendo
+				if (ingInfo.at(i).animationTimer->isStarted())
+					deathTexture->render(dest, src);
+				else
+					preparationTexture->render(dest, src);
 			}
 		}
 	}
@@ -52,8 +57,8 @@ void IngredientsDeathAdversity::start()
 {
 	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	numKills = ingredients.size() / 2;
-	percentagePerKill = 1/(numKills+1);
+	numKills = (ingredients.size() / 2);
+	percentagePerKill = 1 / (numKills + 1);
 	//Me quedo con unos cuants ingredientes aleatorios
 	while (ingInfo.size() < numKills) {
 		int i = getNumber();
@@ -64,7 +69,7 @@ void IngredientsDeathAdversity::start()
 		Ingredientinfo info;
 		info.ing = ingredients.at(i);
 		info.animationTimer = new Timer();
-		info.animationTimer->setTime(deathTimer->getTime()*percentagePerKill);
+		info.animationTimer->setTime(deathTimer->getTime() * percentagePerKill);
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(info.animationTimer);
 		ingInfo.push_back(info);
 	}
@@ -84,12 +89,14 @@ void IngredientsDeathAdversity::killIngredients()
 
 void IngredientsDeathAdversity::killIngredient()
 {
-	multipleAdversityMngr_->getGhostPool()->activateGhost(ingInfo.at(killsDone).ing->getPos());
-	multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
-	ingInfo.at(killsDone).ing = nullptr;
-	killsDone++;
-	if(killsDone<ingInfo.size())
-	ingInfo.at(killsDone).animationTimer->timerStart();
+	if (killsDone < numKills) {
+		multipleAdversityMngr_->getGhostPool()->activateGhost(ingInfo.at(killsDone).ing->getPos());
+		multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
+		ingInfo.at(killsDone).ing = nullptr;
+		killsDone++;
+		if (killsDone < ingInfo.size())
+			ingInfo.at(killsDone).animationTimer->timerStart();
+	}
 }
 
 void IngredientsDeathAdversity::inspectIngredients()
