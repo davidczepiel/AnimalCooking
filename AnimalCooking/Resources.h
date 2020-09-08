@@ -132,6 +132,7 @@ public:
 		PlatosBordes,
 		PlatosVer,
 		PlatosVerDosBordes,
+		PlatosEsqSupDer,
 		Muro,
 		Muro1,
 		ParedCocina,
