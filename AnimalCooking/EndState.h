@@ -18,7 +18,7 @@ private:
 	static void goToMenuState(AnimalCooking* ac);
 	static void resetLevel(AnimalCooking* ac);
 
-	void createButtons();
+	void createButtons(int nextLevelLimit);
 	void createPlayers();
 	void draw() override;
 	void update() override;

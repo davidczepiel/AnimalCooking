@@ -21,20 +21,20 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	int winHeight = game->getWindowHeight();
 	int winWidth = game->getWindowWidth();
 	int degrees = 7;
-	int nextLevelLimit = 45;
+	int nextLevelLimit = 45.0;
 	jute::jValue& nivel = game->getJsonCurrentLevel();
 	if (nivel.hasKey("OneStar"))
 		nextLevelLimit = nivel["OneStar"].as_int();
 
-	/*score = 120;
-	maxScore = 150;*/
+	//maxScore = 150;
+	//score = 150*.45;
 
-	createButtons();
+	createButtons(nextLevelLimit);
 	//createPlayers();
 	//Creamos la barra de carga con el texto
 	Entity* levelViewer = stage->addEntity();
-	int twoStarsPerc = 60;
-	int threeStarsPerc = 80;
+	int twoStarsPerc = 60.0;
+	int threeStarsPerc = 80.0;
 	jute::jValue& json = SDLGame::instance()->getJsonCurrentLevel();
 	if (json.hasKey("TwoStars"))
 		twoStarsPerc = json["TwoStars"].as_int();
@@ -78,7 +78,7 @@ void EndState::resetLevel(AnimalCooking* ac)
 	gameInstance->setScore(0);
 }
 
-void EndState::createButtons()
+void EndState::createButtons(int nextLevelLimit)
 {
 	SDLGame* gameInstance = SDLGame::instance();
 
@@ -86,7 +86,6 @@ void EndState::createButtons()
 	double casillaY = gameInstance->getCasillaY();
 	int winHeight = gameInstance->getWindowHeight();
 	int winWidth = gameInstance->getWindowWidth();
-	int nextLevelLimit = 50;
 	int degrees = 7;
 
 	Entity* buttonPadNavigation = stage->addEntity();
@@ -122,7 +121,7 @@ void EndState::createButtons()
 	//------------------>Siguiente nivel<---------------------
 	//Si el score es el suficiente para pasar al siguiente nivel
 	Entity* NextLevelButton = nullptr;
-	if (score >= (double)(maxScore * nextLevelLimit / 100.0)) {
+	if (score >= (maxScore * nextLevelLimit / 100)) {
 		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel()) {
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}

@@ -140,6 +140,6 @@ void LevelViewer::init()
 void LevelViewer::update()
 {
 	timeSpan_ = SDLGame::instance()->getTime() - startedTick_;
-	if (timeSpan_ > barTime_&& scoreProgress_ < scorePercentage_)
+	if (timeSpan_ > barTime_&& scoreProgress_ <= scorePercentage_)
 		scoreProgress_ += .01;
 }
