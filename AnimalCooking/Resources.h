@@ -663,6 +663,7 @@ public:
 		// music
 		MenuInicio,
 		Level1,
+		Level10,
 		Beat,
 		Cheer,
 		Boooo,

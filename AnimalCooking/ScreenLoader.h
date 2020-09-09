@@ -12,6 +12,7 @@ public:
 	void updateLength();
 
 	EntityManager* getEntityManager() { return emPlaystate; }
+	const int getLevel() const { return level; }
 
 private:
 	static void goToPlayState(AnimalCooking* ac);

@@ -202,8 +202,15 @@ void ScreenLoader::initialize()
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
-	SDLGame::instance()->getFSM()->changeState(new PlayState(static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState())->getEntityManager(),
+	ScreenLoader* sL = static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState());
+	SDLGame::instance()->getFSM()->changeState(new PlayState(sL->getEntityManager(),
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac), []() {
 			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resetTimers();
 		});
+	int level = sL->getLevel() - 1;
+	level -= level / 6;
+	if(level > 10)
+		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level10);
+	else 
+		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level1);
 }

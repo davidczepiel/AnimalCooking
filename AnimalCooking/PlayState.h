@@ -7,7 +7,7 @@ class PlayState : public State
 {
 public:
 	PlayState(EntityManager* em, TimerViewer* timers, AnimalCooking* ac) : State(em, ac), timerViewer_(timers) {
-		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level1);
+		
 	}
 	void pauseTimers();
 	void resumeTimers();
