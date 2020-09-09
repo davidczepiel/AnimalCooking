@@ -3,7 +3,7 @@
 #include "SDL_macros.h"
 
 
-BubbleKeyShower::BubbleKeyShower(SDLGame* game)
+BubbleKeyShower::BubbleKeyShower(SDLGame* game):keyToTexture_()
 {
 	fillMap(game);
 }
