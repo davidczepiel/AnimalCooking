@@ -204,7 +204,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic,level14Menu,"../AnimalCooking/resources/images/ScreenLoader/level14Menu.png" },
 	{ Basic,LevelExtra3,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png" },
 	{Basic,level15Menu,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png"},
-	{ Basic,level16Menu,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png" },
+	{ Basic,level16Menu,"../AnimalCooking/resources/images/ScreenLoader/level2Menu.png" },
 	{ Basic,level17Menu,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png" },
 	{ Basic,level18Menu,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png" },
 	{ Basic,level19Menu,"../AnimalCooking/resources/images/ScreenLoader/level8Menu.png" },
