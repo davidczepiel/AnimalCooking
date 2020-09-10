@@ -29,7 +29,7 @@ private:
 	void initialize_shelfs();
 	void initialize_sinks();
 	void initialize_bin();
-	void initialize_dishes();
+	void initialize_dishes();	
 	void initialize_gameManager();
 	void initialize_foodGivers();
 	void initialize_colSystem();
@@ -40,6 +40,7 @@ private:
 	void initialize_firePool();
 	void initialize_adversities();
 	void initialize_enviroment();
+	void initialize_ghostPool();
 
 	Entity* ingPoolEntity_;
 	Entity* utensil;
@@ -47,6 +48,7 @@ private:
 	Entity* gameManager;
 	Entity* cookerPool;
 	Entity* firesPool;
+	Entity* ghostPool;
 	ScreenLoader* sL;
 	TimerViewer* tv_;
 	DishPool* dp;
