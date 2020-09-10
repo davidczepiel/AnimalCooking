@@ -463,6 +463,7 @@
     <ClCompile Include="SDLRendererFrame.cpp" />
     <ClCompile Include="GhostLife.cpp" />
     <ClCompile Include="GhostPool.cpp" />
+    <ClCompile Include="IntroState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -993,6 +994,7 @@
     <ClInclude Include="SDLRendererFrame.h" />
     <ClInclude Include="GhostLife.h" />
     <ClInclude Include="GhostPool.h" />
+    <ClInclude Include="IntroState.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

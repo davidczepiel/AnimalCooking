@@ -8,7 +8,7 @@ class SDLGame;
 class BubbleKeyShower
 {
 public:
-	BubbleKeyShower() {}
+	BubbleKeyShower():keyToTexture_() {}
 	BubbleKeyShower(SDLGame* game);
 	void renderFeedBack(const Vector2D& pos, const string& msg, const string& key, const bool& gPadKey);
 

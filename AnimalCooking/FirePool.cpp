@@ -15,6 +15,10 @@ Fire* FirePool::activateSingleFire(SDL_Rect rect_, int id_, bool hitbox) {
 	fires_[i]->id = id_;
 	fires_[i]->extinguish = false;
 
+	if (activeFires == 0) SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::burningFireSound, -1, 4);
+
+	activeFires++;
+
 	if (hitbox) {
 		gl_->burnIngredients(fires_[i]->rect);
 		cs_->addCollider(fires_[i]->tr, false);

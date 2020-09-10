@@ -36,6 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState3Background));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
@@ -188,14 +189,10 @@ void MapState::update()
 		}
 		hasToBreak = false;
 	}
-	/*if (!transition_) return;
 
-
-	xTransition_ += transitionVelocity_ * transitionDirection_;
-	if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
-		xTransition_ = 0;
-		transition_ = false;
-	}*/
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		backButtonCallback(app);
+	}
 }
 
 

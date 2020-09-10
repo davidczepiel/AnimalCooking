@@ -44,10 +44,13 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 		Vector2D(SDLGame::instance()->getWindowWidth() - (6 * casillaX + offsetX), offsetY),
 		Resources::TextureId::Collider));
 
+	Resources::TextureId muro = Resources::TextureId::Muro;
+	if (nivel["Muro"].as_string() == "invierno") muro = Resources::TextureId::Muro1;
+
 	//Muros de arriba
 	Data dataMuro = Data(Vector2D(8 * casillaX + offsetX - 10, 0), //Arr hor
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 10, offsetY),
-		Resources::TextureId::Muro);
+		muro);
 	Data dataParedCocina = Data(Vector2D(0, 0), //Arr izq
 		Vector2D(SDLGame::instance()->getWindowWidth() - (8 * casillaX + offsetX) + 30, offsetY),
 		Resources::TextureId::ParedCocina);
@@ -89,6 +92,8 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 
 	Texture* hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba);
 	if(nivel["Hierba"].as_string() == "otono") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaOtono);
+	if(nivel["Hierba"].as_string() == "invierno") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaInvierno);
+	if(nivel["Hierba"].as_string() == "primavera") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaPrimavera);
 
 	campo->addComponent<SDLRenderer>(hierba, Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);

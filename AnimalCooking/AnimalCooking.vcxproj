@@ -247,6 +247,7 @@
     <ClInclude Include="InsertExpel.h" />
     <ClInclude Include="InteractionRect.h" />
     <ClInclude Include="Interactive.h" />
+    <ClInclude Include="IntroState.h" />
     <ClInclude Include="jute.h" />
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="KeyboardKeySwitcher.h" />
@@ -417,6 +418,7 @@
     <ClCompile Include="InsertExpel.cpp" />
     <ClCompile Include="InteractionRect.cpp" />
     <ClCompile Include="Interactive.cpp" />
+    <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="jute.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="KeyboardKeySwitcher.cpp" />

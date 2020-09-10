@@ -13,6 +13,7 @@
 #include "ButtonRenderer.h"
 #include "GPadController.h"
 #include "PauseState.h"
+#include "IntroState.h"
 
 
 using namespace std;

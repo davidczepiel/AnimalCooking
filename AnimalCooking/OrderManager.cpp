@@ -53,6 +53,30 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 		scoreManager_->setMaxScore(scoreManager_->getMaxScore() + (*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 
 		if (playerDidIt) {
+			if ((*it)->getFinalProduct() == Resources::FoodType::FishAndChips)
+				scoreManager_->addScore(3 * config::SCORE_MANAGER_SERVED_BONUS);
+
+			if ((*it)->getFinalProduct() == Resources::FoodType::IcedCookedFish)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if((*it)->getFinalProduct() == Resources::FoodType::IcedFishAndChips)
+				scoreManager_->addScore(4 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedFishBurger)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedFishOnStick)
+				scoreManager_->addScore(3 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedRice1)
+				scoreManager_->addScore(3 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedRice2)
+				scoreManager_->addScore(4 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedRiceAndClams)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::IcedRiceDish)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::Teriyaki2)
+				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::Teriyaki3)
+				scoreManager_->addScore(6 * config::SCORE_MANAGER_SERVED_BONUS);
+			else
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
 		}
@@ -103,6 +127,8 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 {
 	double time = msPerIng_ * size;	//Tiempo por ingrediente* num ingredientes (cfg)
 	double timeCooking = 20.0;		//Tiempo que tarda en cocinar un ingrediente del pedido 
+	double iceDelay = 1000;
+
 	switch (finalProduct)
 	{
 	case Resources::FoodType::Burger: time += timeCooking;
@@ -120,17 +146,18 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::Roast3: time += timeCooking;
 
 	case Resources::FoodType::CookedFish: time += timeCooking;
-	case Resources::FoodType::FishAndChips: time += timeCooking;
-	case Resources::FoodType::FishOnStick: time += timeCooking;
-	case Resources::FoodType::FishBurger: time += timeCooking;
-	case Resources::FoodType::IcedCookedFish: time += timeCooking;
-	case Resources::FoodType::IcedFishOnStick: time += timeCooking;
-	case Resources::FoodType::IcedFishAndChips: time += timeCooking;
+	case Resources::FoodType::FishAndChips: time += 3*timeCooking+10;
+	case Resources::FoodType::FishOnStick: time += timeCooking+5;
+	case Resources::FoodType::FishBurger: time += timeCooking -1000;
+	case Resources::FoodType::IcedCookedFish: time += timeCooking + iceDelay;
+	case Resources::FoodType::IcedFishOnStick: time += timeCooking + iceDelay+5000;
+	case Resources::FoodType::IcedFishAndChips: time += 3*timeCooking + iceDelay+10;
+	case Resources::FoodType::IcedFishBurger: time += timeCooking + iceDelay -1000;
 
 	case Resources::FoodType::Rice1: time += timeCooking;
 	case Resources::FoodType::Rice2: time += timeCooking;
-	case Resources::FoodType::IcedRice1: time += timeCooking;
-	case Resources::FoodType::IcedRice2: time += timeCooking;
+	case Resources::FoodType::IcedRice1: time += timeCooking + iceDelay;
+	case Resources::FoodType::IcedRice2: time += timeCooking + iceDelay;
 
 	case Resources::FoodType::FriedVegs: time += timeCooking;
 	case Resources::FoodType::FriedVegs1: time += timeCooking + 5;
@@ -141,8 +168,10 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::FrenchFries: time += timeCooking;
 	case Resources::FoodType::CookedClams: time += timeCooking;
 	case Resources::FoodType::RiceAndClams: time += timeCooking;
-	case Resources::FoodType::IcedRiceAndClams: time += timeCooking;
-	case Resources::FoodType::IcedRiceDish: time += timeCooking;
+	case Resources::FoodType::IcedRiceAndClams: time += timeCooking + iceDelay;
+	case Resources::FoodType::IcedRiceDish: time += timeCooking + iceDelay;
+	case Resources::FoodType::Teriyaki2: time += 2*timeCooking;
+	case Resources::FoodType::Teriyaki3: time += 3*timeCooking +25000;
 
 	default:
 		break;
