@@ -25,6 +25,10 @@ private:
 	struct Ingredientinfo {
 		Ingredient* ing=nullptr;
 		Timer* animationTimer;
+		int row;
+		int col;
+		bool dead;
+		Vector2D pos;
 	};
 
 	void killIngredients();
@@ -32,15 +36,15 @@ private:
 	void inspectIngredients();
 	void getPosIngredient(int i);
 	int getNumber();
+	bool allCompleted();
 	bool alreadyTaken(int i);
-	Texture* preparationTexture;
 	Texture* deathTexture;
 	Timer* deathTimer;
 	SDL_Rect dest;
 	SDL_Rect src;
-	double timeToDeath;
 	double timePostDeath;
 	double numKills;
+	double animationSpeed;
 	int killsDone;
 	double percentagePerKill;
 	vector<Ingredientinfo> ingInfo;

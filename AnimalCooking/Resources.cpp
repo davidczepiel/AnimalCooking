@@ -607,7 +607,9 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 },
 	{AllLevels, Ghost, "../AnimalCooking/resources/images/Animaciones/Otro/ghost.png",1,9 },
 	{ AllLevels, PidgeonAdversity, "../AnimalCooking/resources/images/Adversities/palomaSP.png",1,21 },
-	{AllLevels, Blizzard, "../AnimalCooking/resources/images/Adversities/ventisca.png", 1,6}
+	{AllLevels, Blizzard, "../AnimalCooking/resources/images/Adversities/ventisca.png", 1,6},
+	{AllLevels, FlowerAdversity, "../AnimalCooking/resources/images/Adversities/flores.png", 2,7}
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_{

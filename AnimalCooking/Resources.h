@@ -627,7 +627,8 @@ public:
 		RainAdversity,
 		HookAdversity,
 		PidgeonAdversity,
-		Blizzard
+		Blizzard,
+		FlowerAdversity
 
 	};
 

@@ -4,17 +4,16 @@
 
 IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* mAdvMng) :Adversity(mAdvMng)
 {
-	preparationTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Bin);
-	deathTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Aceite);
+	deathTexture = SDLGame::instance()->getTextureMngr()->getTexture(Resources::FlowerAdversity);
 	deathTimer = new Timer();
 	deathTimer->setTime(5000);
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(deathTimer);
-	src.w = 100; src.h = 100;
-	src.x = 0; src.y = 0;
+	src.w = 116; src.h = 116;
+	src.x = 0; src.y = 116;
 	dest.x = 0; dest.y = 0;
-	dest.w = 100; dest.h = 100;
-	timeToDeath = 3000;
+	dest.w = 150; dest.h = 150;
+	animationSpeed = 2000;
 
 }
 
@@ -26,9 +25,10 @@ void IngredientsDeathAdversity::update()
 		killIngredient();
 	}
 	if (deathTimer->isTimerEnd()) {
-		multipleAdversityMngr_->stopAdversity(ecs::AdversityID::IngredientsdeathAdversity);
-		reset();
-		//killIngredients();
+		if (allCompleted()) {
+			multipleAdversityMngr_->stopAdversity(ecs::AdversityID::IngredientsdeathAdversity);
+			reset();
+		}
 	}
 }
 
@@ -36,13 +36,13 @@ void IngredientsDeathAdversity::draw()
 {
 	if (deathTimer->isStarted() && !deathTimer->isTimerEnd()) {
 		for (int i = 0; i < ingInfo.size(); i++) {
-			if (ingInfo.at(i).ing != nullptr) {
+			if (ingInfo.at(i).ing != nullptr) 
 				getPosIngredient(i);
 				//Dependiendo de si el contador específico de el ingrediente ha empezado o no renderizo la animacion de que va a morir o la de que está muriendo
-				if (ingInfo.at(i).animationTimer->isStarted())
-					deathTexture->render(dest, src);
-				else
-					preparationTexture->render(dest, src);
+			if (ingInfo.at(i).animationTimer->isStarted()) {
+				dest.x = ingInfo.at(i).pos.getX() ;
+				dest.y = ingInfo.at(i).pos.getY()  ;
+				deathTexture->renderFrame(dest, ingInfo.at(i).row, ingInfo.at(i).col, 0);
 			}
 		}
 	}
@@ -70,6 +70,9 @@ void IngredientsDeathAdversity::start()
 		info.ing = ingredients.at(i);
 		info.animationTimer = new Timer();
 		info.animationTimer->setTime(deathTimer->getTime() * percentagePerKill);
+		info.col = 0;
+		info.row = 0;
+		info.dead = false;
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(info.animationTimer);
 		ingInfo.push_back(info);
 	}
@@ -93,6 +96,11 @@ void IngredientsDeathAdversity::killIngredient()
 		multipleAdversityMngr_->getGhostPool()->activateGhost(ingInfo.at(killsDone).ing->getPos());
 		multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
 		ingInfo.at(killsDone).ing = nullptr;
+		ingInfo.at(killsDone).dead = true;
+		ingInfo.at(killsDone).row = 1;
+		ingInfo.at(killsDone).animationTimer->timerReset();
+		ingInfo.at(killsDone).animationTimer->setTime(deathTimer->getTime() * percentagePerKill);
+		ingInfo.at(killsDone).animationTimer->timerStart();
 		killsDone++;
 		if (killsDone < ingInfo.size())
 			ingInfo.at(killsDone).animationTimer->timerStart();
@@ -103,19 +111,30 @@ void IngredientsDeathAdversity::inspectIngredients()
 {
 	for (int i = 0; i < ingInfo.size(); i++) {
 		ingInfo.at(i).animationTimer->update();
+		ingInfo.at(i).col = 6* ingInfo.at(i).animationTimer->getProgress();
+		if (ingInfo.at(i).animationTimer->isTimerEnd()) ingInfo.at(i).animationTimer->timerReset();
 	}
 }
 
 void IngredientsDeathAdversity::getPosIngredient(int i)
 {
-	Vector2D pos = ingInfo.at(i).ing->getPos();
-	dest.x = pos.getX();
-	dest.y = pos.getY();
+	ingInfo.at(i).pos = ingInfo.at(i).ing->getPos() - Vector2D(dest.w/4,dest.h/4);
 }
 
 int IngredientsDeathAdversity::getNumber()
 {
 	return SDLGame::instance()->getRandGen()->nextInt(0, ingredients.size() - 1);
+}
+
+bool IngredientsDeathAdversity::allCompleted()
+{
+	bool completed = true;
+	int i = 0;
+	while (i < ingInfo.size() && completed ) {
+		if (!ingInfo.at(i).dead || !ingInfo.at(i).animationTimer->isTimerEnd()) completed = false;
+		i++;
+	}
+	return completed;
 }
 
 bool IngredientsDeathAdversity::alreadyTaken(int number)
