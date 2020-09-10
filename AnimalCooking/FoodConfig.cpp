@@ -99,6 +99,13 @@ void FoodConfig::fill()
 	//FISH-------------------------------
 	cTrans.push_back({ {Resources::FoodType::CaughtFish,Resources::FoodType::Dress},Resources::FoodType::FishOnStick });
 
+	//PIZZA-------------------------------
+	cTrans.push_back({ { Resources::FoodType::MashedTomato,Resources::FoodType::GratedCheese,Resources::FoodType::PizzaMass,Resources::FoodType::SlicedCheese},	Resources::FoodType::Pizza1 });
+	cTrans.push_back({ { Resources::FoodType::MashedTomato,Resources::FoodType::GratedCheese,Resources::FoodType::PizzaMass,Resources::FoodType::SlicedOnion},	Resources::FoodType::Pizza2 });
+	cTrans.push_back({ { Resources::FoodType::MashedTomato,Resources::FoodType::GratedCheese,Resources::FoodType::PizzaMass,Resources::FoodType::GratedChicken},Resources::FoodType::Pizza3 });
+	cTrans.push_back({ { Resources::FoodType::MashedTomato,Resources::FoodType::GratedCheese,Resources::FoodType::PizzaMass,Resources::FoodType::SlicedMushroom,Resources::FoodType::GratedMeat},Resources::FoodType::Pizza4 });
+	cTrans.push_back({ { Resources::FoodType::MashedTomato,Resources::FoodType::PizzaMass,Resources::FoodType::SlicedMushroom,Resources::FoodType::GratedMeat,Resources::FoodType::GratedChicken},Resources::FoodType::Pizza4 });
+
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Oven, cTrans });
 	cTrans.clear();
@@ -170,6 +177,11 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::GratedSkilletChicken,Resources::FoodType::Dress,Resources::FoodType::Salad1},	Resources::FoodType::Teriyaki2 });
 	cTrans.push_back({ { Resources::FoodType::GratedSkilletChicken,Resources::FoodType::Dress,Resources::FoodType::FriedVegs},	Resources::FoodType::Teriyaki3 });
 	cTrans.push_back({ { Resources::FoodType::GratedSkilletChicken,Resources::FoodType::Dress,Resources::FoodType::SlicedAvocado},	Resources::FoodType::Teriyaki4 });
+
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::GratedCheese,Resources::FoodType::MashedTomato},	Resources::FoodType::Perrito });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog},	Resources::FoodType::Perrito1 });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::SlicedOnion},	Resources::FoodType::Perrito2 });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::FrenchFries},	Resources::FoodType::Perrito3 });
 
 	//Adding Oven recipes
 	cookersRecipes_.push_back({ Resources::Hands, cTrans });
