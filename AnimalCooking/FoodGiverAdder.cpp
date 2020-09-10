@@ -67,6 +67,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "arrozSinBordeDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArrozSinBordeDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "ArrozHor") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArrozHor);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "ArroceraAislada") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArroceraAislada);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "ArroceraBordes") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::ArroceraBordes);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "panera" ) t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Panera);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraVerSinDer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraVerSinDer);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "paneraVer") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::PaneraVer);
@@ -74,6 +75,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "encimeraMasa") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::EncimeraMasa);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "algas") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::NoriFoodGiver);
 	else if(nivel["FoodGivers"][type][1][n]["texture"].as_string() == "algasVDcha") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::algasVDcha);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "algasHBordes") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::algasHBordes);
 
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casillaX, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casillaY),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casillaX, general["Givers"]["size"]["height"].as_double() * casillaY),

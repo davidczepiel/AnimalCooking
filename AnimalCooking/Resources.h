@@ -108,6 +108,7 @@ public:
 		Hierba,
 		HierbaOtono,
 		HierbaInvierno,
+		HierbaPrimavera,
 		NieveCollider,
 		IslaPequenaNieve,
 		IslaGrandeNieve,
@@ -551,6 +552,7 @@ public:
 		ArrozSinBordeDer,
 		ArrozHor,
 		ArroceraAislada,
+		ArroceraBordes,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -562,6 +564,7 @@ public:
 		EncimeraMasa,
 		NoriFoodGiver,
 		algasVDcha,
+		algasHBordes,
 
 		//CreditState
 		woodCredits,
