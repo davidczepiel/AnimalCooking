@@ -96,11 +96,6 @@ vector<Resources::ImageInfo> Resources::images_{
 	//CreditState-----------
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
 
-
-
-	//---->Creditos<-----
-	{Basic, LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},
-
 	{AllLevels, Plato,"../AnimalCooking/resources/images/Cocina/pickable/plato.png"},
 	{AllLevels, Suelo,"../AnimalCooking/resources/images/Cocina/sueloCocina.png"},
 	{AllLevels, NieveCollider,"../AnimalCooking/resources/images/Cocina/nieve.png"},
