@@ -93,6 +93,7 @@ WallAdder::WallAdder(EntityManager* mngr,  jute::jValue& nivel, jute::jValue& ge
 	Texture* hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Hierba);
 	if(nivel["Hierba"].as_string() == "otono") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaOtono);
 	if(nivel["Hierba"].as_string() == "invierno") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaInvierno);
+	if(nivel["Hierba"].as_string() == "primavera") hierba = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::HierbaPrimavera);
 
 	campo->addComponent<SDLRenderer>(hierba, Vector2D(casillaX, casillaY));
 	mngr->addToGroup(campo, ecs::GroupID::Layer1);

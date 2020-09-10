@@ -108,6 +108,7 @@ public:
 		Hierba,
 		HierbaOtono,
 		HierbaInvierno,
+		HierbaPrimavera,
 		NieveCollider,
 		IslaPequenaNieve,
 		IslaGrandeNieve,
