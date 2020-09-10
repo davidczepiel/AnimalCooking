@@ -27,7 +27,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 		nextLevelLimit = nivel["OneStar"].as_int();
 
 	//maxScore = 150;
-	//score = 150*.45;
+	//score = 150*.60;
 
 	createButtons(nextLevelLimit);
 	//createPlayers();
@@ -122,7 +122,7 @@ void EndState::createButtons(int nextLevelLimit)
 	//Si el score es el suficiente para pasar al siguiente nivel
 	Entity* NextLevelButton = nullptr;
 	if (score >= (maxScore * nextLevelLimit / 100)) {
-		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel()) {
+		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel() && SDLGame::instance()->getCurrenUnlockLevel() < config::NUM_LEVELS-1) {
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
 

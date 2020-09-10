@@ -10,6 +10,7 @@ void start() {
 }
 
 int main(int ac, char **av) {
+
 	try {
 		start();
 	} catch (std::string &e) { // catch errors thrown as strings

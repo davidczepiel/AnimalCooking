@@ -611,6 +611,7 @@ public:
 		MapRestaurantButton,
 		MapStatePlayButton,
 		Explosion,
+		Ghost,
 		// text
 		Back,
 		PickUpText,
@@ -641,7 +642,8 @@ public:
 		RainAdversity,
 		HookAdversity,
 		PidgeonAdversity,
-		Blizzard
+		Blizzard,
+		FlowerAdversity
 
 	};
 

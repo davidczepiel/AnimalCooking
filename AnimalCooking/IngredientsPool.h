@@ -19,6 +19,8 @@ public:
 	void clearIngredients();
 
 	inline const std::vector<Ingredient*>& getPool() { return ingredients_; }
+	//inline const std::vector<Ingredient*>& getPool() { return ingredients_; }
+
 
 private:
 	std::vector<Ingredient*> ingredients_;
