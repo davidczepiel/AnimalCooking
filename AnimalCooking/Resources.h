@@ -72,6 +72,9 @@ public:
 		GPad_l3,
 		GPad_start,
 		GPad_back,
+		GPad_circle,
+		GPad_box,
+		GPad_triangle,
 
 		//---->Config<---------
 		Config_BackButton,

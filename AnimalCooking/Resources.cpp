@@ -69,6 +69,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, GPad_l3, "../AnimalCooking/resources/images/Menu/ButtonUIMando/lsButton.png" },
 	{ Basic, GPad_start, "../AnimalCooking/resources/images/Menu/ButtonUIMando/startButton.png" },
 	{ Basic, GPad_back, "../AnimalCooking/resources/images/Menu/ButtonUIMando/selectButton.png" },
+	{ Basic, GPad_circle, "../AnimalCooking/resources/images/Menu/ButtonUIMando/bButton.png" },
+	{ Basic, GPad_box,"../AnimalCooking/resources/images/Menu/ButtonUIMando/aButton.png" },
+	{ Basic, GPad_triangle, "../AnimalCooking/resources/images/Menu/ButtonUIMando/yButton.png" },
 
 	//---->Config<---------
 

@@ -36,8 +36,6 @@ Texture* BubbleKeyShower::getTexture(const string& s, const int player) const
 
 void BubbleKeyShower::fillMap(SDLGame* game)
 {
-	//TODO: poner las texturas
-
 	keyToTexture_[0].insert({ //Map con todos los nombres asociados a cada textura XBOX
 		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_a) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_b) }, 
 		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_y) },
@@ -49,8 +47,8 @@ void BubbleKeyShower::fillMap(SDLGame* game)
 		});
 
 	keyToTexture_[1].insert({ //Map con todos los nombres asociados a cada textura PS4
-		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_a) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_b) },
-		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_y) },
+		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_circle) },
+		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_box) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_triangle) },
 		{ "start", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_start) }, { "back", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_back) },
 		{ "rightstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r3) }, { "leftstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l3) },
 		{ "leftshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r1) }, { "rightshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l1) },
