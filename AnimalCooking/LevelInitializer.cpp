@@ -25,6 +25,7 @@
 #include "FirePool.h"
 #include "BucketMotion.h"
 #include "BucketViewer.h"
+#include "GhostPool.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 
@@ -70,6 +71,7 @@ LevelInitializer::LevelInitializer(EntityManager* em, int level, ScreenLoader* s
 	initialize_colSystem();
 	initialize_walls();
 	initialize_firePool();
+	initialize_ghostPool();
 	initialize_adversities();
 	initialize_enviroment();
 }
@@ -181,7 +183,7 @@ void LevelInitializer::initialize_gameManager()
 {
 	gameManager = emPlaystate->addEntity();
 	GameManagerAdder(gameManager, emPlaystate, jsonLevel, jsonGeneral, players,
-		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool), casillaX,casillaY, offsetX,offsetY, tv_);
+		GETCMP2(utensil, UtensilsPool), GETCMP2(foodPool, FoodPool), GETCMP2(ingPoolEntity_, IngredientsPool),casillaX,casillaY, offsetX,offsetY, tv_);
 
 	emPlaystate->addToGroup(gameManager, CASTID(jsonGeneral["LevelTimer"]["Layer"].as_int()));
 
@@ -253,7 +255,7 @@ void LevelInitializer::initialize_firePool()
 
 void LevelInitializer::initialize_adversities()
 {
-	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool);
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool, GETCMP2(ghostPool, GhostPool));
 	
 	sL->updateLength();
 }
@@ -264,3 +266,13 @@ void LevelInitializer::initialize_enviroment()
 	sL->updateLength();
 }
 
+void LevelInitializer::initialize_ghostPool()
+{
+	ghostPool = emPlaystate->addEntity();
+	emPlaystate->addToGroup(ghostPool, ecs::GroupID::topLayer);
+
+	GhostPool* gPool = ghostPool->addComponent<GhostPool>();
+	GETCMP2(gameManager, GameLogic)->setGhostPool(gPool);
+
+	sL->updateLength();
+}

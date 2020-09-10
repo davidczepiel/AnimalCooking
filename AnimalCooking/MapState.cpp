@@ -428,12 +428,12 @@ void MapState::placeHousesAndButtons()
 	mInfo->setCurrentInfoLevel(levelinfos_->at(0));
 
 	vector<Transform> transforms_;
-	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
-	transforms_.push_back(Transform(Vector2D(594, 590), Vector2D(), 40, 20));
-	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
-	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
-	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
-	transforms_.push_back(Transform(Vector2D(950, 500), Vector2D(), 46, 23));
+	transforms_.push_back(Transform(Vector2D(350, 800), Vector2D(), 80, 100));
+	transforms_.push_back(Transform(Vector2D(594, 570), Vector2D(), 40, 50));
+	transforms_.push_back(Transform(Vector2D(1000, 780), Vector2D(), 80, 100));
+	transforms_.push_back(Transform(Vector2D(1380, 530), Vector2D(), 40, 50));
+	transforms_.push_back(Transform(Vector2D(1693, 690), Vector2D(), 70, 88));
+	transforms_.push_back(Transform(Vector2D(950, 470), Vector2D(), 46, 58));
 
 	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
@@ -445,14 +445,14 @@ void MapState::placeHousesAndButtons()
 
 	nextScreenButton_ = stage->addEntity();
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
-	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight()/3);
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
 	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
 
 	PreviousScreenButton_ = stage->addEntity();
-	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
+	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
 	bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
 	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
