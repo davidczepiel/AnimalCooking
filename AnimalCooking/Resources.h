@@ -530,6 +530,7 @@ public:
 		ArrozSinBordeDer,
 		ArrozHor,
 		ArroceraAislada,
+		ArroceraBordes,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -541,6 +542,7 @@ public:
 		EncimeraMasa,
 		NoriFoodGiver,
 		algasVDcha,
+		algasHBordes,
 
 		//CreditState
 		woodCredits,
@@ -663,6 +665,7 @@ public:
 		// music
 		MenuInicio,
 		Level1,
+		Level10,
 		Beat,
 		Cheer,
 		Boooo,
