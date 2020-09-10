@@ -413,6 +413,16 @@ public:
 		Teriyaki2T,
 		Teriyaki3T,
 		Teriyaki4T,
+		GratedMeatT,
+		Pizza1T,
+		Pizza2T,
+		Pizza3T,
+		Pizza4T,
+		Pizza5T,
+		PerritoT,
+		Perrito1T,
+		Perrito2T,
+		Perrito3T,
 
 		//FeedBackImages---------------------------------------------
 			//Food
@@ -512,6 +522,17 @@ public:
 			Teriyaki2FeedBack,
 			Teriyaki3FeedBack,
 			Teriyaki4FeedBack,
+
+			GratedMeatFeedBack,
+			Pizza1FeedBack,
+			Pizza2FeedBack,
+			Pizza3FeedBack,
+			Pizza4FeedBack,
+			Pizza5FeedBack,
+			PerritoFeedBack,
+			Perrito1FeedBack,
+			Perrito2FeedBack,
+			Perrito3FeedBack,
 			
 			//Utensils
 			CuchilloFeedBack,
@@ -804,6 +825,7 @@ public:
 		SlicedAvocado,
 		GratedChicken,
 		GratedSkilletChicken,
+		GratedMeat,
 
 		///
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
@@ -858,7 +880,17 @@ public:
 		Teriyaki1,
 		Teriyaki2,
 		Teriyaki3,
-		Teriyaki4
+		Teriyaki4,
+		///
+		Pizza1,
+		Pizza2,
+		Pizza3,
+		Pizza4,
+		Pizza5,
+		Perrito,
+		Perrito1,
+		Perrito2,
+		Perrito3
 	};
 
 	enum PickableType : std::size_t {
