@@ -342,6 +342,7 @@ public:
 		BreadBurgerT,
 		BreadHotDogT,
 		PizzaMassT,
+		GratedMeatT, 
 
 		SaladT,
 		Salad1T,
@@ -416,7 +417,6 @@ public:
 		Teriyaki2T,
 		Teriyaki3T,
 		Teriyaki4T,
-		GratedMeatT,
 		
 		PerritoT,
 		Perrito1T,
@@ -447,6 +447,7 @@ public:
 			BreadBurgerFeedBack,
 			BreadHotDogFeedBack,
 			PizzaMassFeedBack,
+			GratedMeatFeedBack,
 
 			SaladFeedBack,
 			Salad1FeedBack,
@@ -460,6 +461,11 @@ public:
 			Burger3FeedBack,
 
 			PizzaFeedBack,
+			Pizza1FeedBack,
+			Pizza2FeedBack,
+			Pizza3FeedBack,
+			Pizza4FeedBack,
+			Pizza5FeedBack,
 
 			RoastFeedBack,
 			Roast1FeedBack,
@@ -520,8 +526,6 @@ public:
 			Teriyaki2FeedBack,
 			Teriyaki3FeedBack,
 			Teriyaki4FeedBack,
-
-			GratedMeatFeedBack,
 			
 			PerritoFeedBack,
 			Perrito1FeedBack,

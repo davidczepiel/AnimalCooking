@@ -345,6 +345,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels, TextureId::BreadBurgerT,"../AnimalCooking/resources/images/Foods/panHamburguesa.png"},
 	{AllLevels, TextureId::BreadHotDogT,"../AnimalCooking/resources/images/Foods/panPerrito.png"},
 	{AllLevels, TextureId::PizzaMassT,"../AnimalCooking/resources/images/Foods/masa.png"},
+	{ AllLevels, TextureId::GratedMeatT,"../AnimalCooking/resources/images/Foods/carneRallador.png" },
 	{AllLevels, TextureId::SaladT,"../AnimalCooking/resources/images/Foods/ensalada.png"},
 	{AllLevels, TextureId::Salad1T,"../AnimalCooking/resources/images/Foods/ensalada1.png"},
 	{AllLevels, TextureId::Salad2T,"../AnimalCooking/resources/images/Foods/ensalada2.png"},
@@ -412,12 +413,12 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, TextureId::Teriyaki3T,"../AnimalCooking/resources/images/Foods/teriyaki3.png" },
 	{ AllLevels, TextureId::Teriyaki4T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
 
-	{ AllLevels, TextureId::GratedMeatT,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	
 
 	{ AllLevels, TextureId::PerritoT,"../AnimalCooking/resources/images/Foods/perritoCaliente.png" },
 	{ AllLevels, TextureId::Perrito1T,"../AnimalCooking/resources/images/Foods/perritoCaliente1.png" },
 	{ AllLevels, TextureId::Perrito2T,"../AnimalCooking/resources/images/Foods/perritoCaliente2.png" },
-	{ AllLevels, TextureId::Perrito3T,"../AnimalCooking/resources/images/Foods/perritoCaliente4.png" },
+	{ AllLevels, TextureId::Perrito3T,"../AnimalCooking/resources/images/Foods/perritoCaliente3.png" },
 
 	//FeedBack---------------------------------------------------------------
 		//Food
@@ -443,6 +444,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, BreadBurgerFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/panHamburguesa.png"},
 		{AllLevels, BreadHotDogFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/panPerrito.png"},
 		{AllLevels, PizzaMassFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/masa.png"},
+	    { AllLevels, GratedMeatFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/carneRallador.png" },
 		{AllLevels, SaladFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/ensalada.png"},
 		{AllLevels, Salad1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/ensalada1.png"},
 		{AllLevels, Salad2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/ensalada2.png"},
@@ -453,15 +455,16 @@ vector<Resources::ImageInfo> Resources::images_{
 		{AllLevels, Burger2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/hamburguesa2.png"},
 		{AllLevels, Burger3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/hamburguesa3.png"},
 		{AllLevels, PizzaFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png"},
+	    { AllLevels, Pizza1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png" },
+	    { AllLevels, Pizza2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png" },
+	    { AllLevels, Pizza3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png" },
+	    { AllLevels, Pizza4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png" },
+	    { AllLevels, Pizza5FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pizza.png" },
 		{AllLevels, RoastFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/asado.png"},
 		{AllLevels, Roast1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/asado1.png"},
 		{AllLevels, Roast2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/asado2.png"},
 		{AllLevels, Roast3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/asado3.png"},
 		{AllLevels, RiceDishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/arrozDeLaCasa.png"},
-		{ AllLevels, PerritoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente.png" },
-		{ AllLevels, Perrito1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente.png" },
-		{ AllLevels, Perrito2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente2.png" },
-		{ AllLevels, Perrito3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente3.png" },
 		{AllLevels, RisottoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/risotto.png"},
 		{AllLevels, CookedFishFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/pescadoAlHorno.png"},
 		{AllLevels, FriedVegsFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/verdurasFritas.png"},
@@ -508,8 +511,10 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, Teriyaki2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki2.png" },
 		{ AllLevels, Teriyaki3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki3.png" },
 		{ AllLevels, Teriyaki4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
-
-		{ AllLevels, GratedMeatFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+	    { AllLevels, PerritoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente.png" },
+	    { AllLevels, Perrito1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente.png" },
+	    { AllLevels, Perrito2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente2.png" },
+	    { AllLevels, Perrito3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/perritoCaliente3.png" },
 
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
