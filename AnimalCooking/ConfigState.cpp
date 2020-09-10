@@ -214,6 +214,30 @@ void ConfigState::initButtons()
 	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
 	bcr = helper->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_ReminderFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_ReminderUnFocusedText));
 	bb->setButtonCheckRenderer(bcr);
+
+	//Symbol 1 button
+	symbolPlayer1 = stage->addEntity();
+	stage->addToGroup(symbolPlayer1, ecs::GroupID::ui);
+	symbolPlayer1->addComponent<Transform>(
+		Vector2D(1225, 290),
+		Vector2D(), 50, 50, 0);
+	bb = symbolPlayer1->addComponent<ButtonBehaviour>(symbolCallback1, app);
+	symbolPlayer1->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[0]);
+	bcr = symbolPlayer1->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
+	//bcr->setCheckedAndUncheckedTextures(left, right);
+	bb->setButtonCheckRenderer(bcr);
+
+	//Symbol 1 button
+	symbolPlayer2 = stage->addEntity();
+	stage->addToGroup(symbolPlayer2, ecs::GroupID::ui);
+	symbolPlayer2->addComponent<Transform>(
+		Vector2D(1795, 290),
+		Vector2D(), 50, 50, 0);
+	bb = symbolPlayer2->addComponent<ButtonBehaviour>(symbolCallback2, app);
+	symbolPlayer2->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[1]);
+	bcr = symbolPlayer2->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
+	//bcr->setCheckedAndUncheckedTextures(left, right);
+	bb->setButtonCheckRenderer(bcr);
 }
 
 void ConfigState::initSliders()
@@ -301,4 +325,16 @@ void ConfigState::resButtonCallback(AnimalCooking* ac)
 {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->toggleFullScreen();
+}
+
+void ConfigState::symbolCallback1(AnimalCooking* ac)
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getOptions().usePS4_symbols_[0] = !SDLGame::instance()->getOptions().usePS4_symbols_[0];
+}
+
+void ConfigState::symbolCallback2(AnimalCooking* ac)
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getOptions().usePS4_symbols_[1] = !SDLGame::instance()->getOptions().usePS4_symbols_[1];
 }

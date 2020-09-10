@@ -134,6 +134,7 @@ namespace config {
 		Volume volume;
 
 		bool showKeyToPress = true;
+		std::array<bool, 2> usePS4_symbols_{false, false};
 	};
 }
 

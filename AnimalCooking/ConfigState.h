@@ -36,8 +36,10 @@ private:
 	static void backButtonCallback(AnimalCooking* ac);
 	static void helperButtonCallback(AnimalCooking* ac);
 	static void resButtonCallback(AnimalCooking* ac);
+	static void symbolCallback1(AnimalCooking* ac);
+	static void symbolCallback2(AnimalCooking* ac);
 
-	Entity* salir, * helper, * res, * sliderTop, * sliderBot, * changeP1, * changeP2;
+	Entity* salir, * helper, * res, * sliderTop, * sliderBot, * changeP1, * changeP2, *symbolPlayer1, *symbolPlayer2;
 
 
 	SDLGame* game_;

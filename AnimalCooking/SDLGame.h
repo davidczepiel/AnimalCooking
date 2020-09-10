@@ -156,7 +156,9 @@ public:
 
 	config::Options& getOptions() { return options_; }
 
-	inline void renderFeedBack(const Vector2D& pos, const string& msg, const string& key, const bool& gPadKey = false) { keyShower_.renderFeedBack(pos, msg, key, gPadKey); }
+	inline void renderFeedBack(const Vector2D& pos, const string& msg, const string& key, const int player, const bool& gPadKey = false) {
+		keyShower_.renderFeedBack(pos, msg, key, player, gPadKey);
+	}
 	inline const bool& getIfFullscreen() const { return imFullscreen; }
 
 private:

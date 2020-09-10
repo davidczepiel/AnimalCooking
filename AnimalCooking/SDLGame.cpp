@@ -49,7 +49,7 @@ void SDLGame::removeLevelInfos()
 }
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),score(0),maxScore(0), unlockedLevels(0), maxLevels(0),
-		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen(){
+		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen(), keyShower_(){
 	initSDL();
 	initResources();
 	
