@@ -134,12 +134,22 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("Sushi3"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi3);					break;
 	case str2int("Sushi4"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi4);					break;
 	case str2int("Sushi5"):	ADDPEDIDO(pedido, Resources::FoodType::Sushi5);					break;
-	case str2int("Onigiri"):	ADDPEDIDO(pedido, Resources::FoodType::Onigiri);					break;
-	case str2int("Teriyaki1"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki1);					break;
-	case str2int("Teriyaki2"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki2);					break;
-	case str2int("Teriyaki3"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki3);					break;
-	case str2int("Teriyaki4"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki4);					break;
-
+	case str2int("Onigiri"):	ADDPEDIDO(pedido, Resources::FoodType::Onigiri);			break;
+	case str2int("Teriyaki1"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki1);			break;
+	case str2int("Teriyaki2"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki2);			break;
+	case str2int("Teriyaki3"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki3);			break;
+	case str2int("Teriyaki4"):	ADDPEDIDO(pedido, Resources::FoodType::Teriyaki4);			break;
+	//-----------------------------------------------------------------------------------
+	case str2int("Pizza1"):	ADDPEDIDO(pedido, Resources::FoodType::Pizza1);					break;
+	case str2int("Pizza2"):	ADDPEDIDO(pedido, Resources::FoodType::Pizza2);					break;
+	case str2int("Pizza3"):	ADDPEDIDO(pedido, Resources::FoodType::Pizza3);					break;
+	case str2int("Pizza4"):	ADDPEDIDO(pedido, Resources::FoodType::Pizza4);					break;
+	case str2int("Pizza5"):	ADDPEDIDO(pedido, Resources::FoodType::Pizza5);					break;
+	case str2int("Perrito"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito);			break;
+	case str2int("Perrito1"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito1);			break;
+	case str2int("Perrito2"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito2);			break;
+	case str2int("Perrito3"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito3);			break;
+	//-----------------------------------------------------------------------------------
 	default:																						break;
 	}
 }

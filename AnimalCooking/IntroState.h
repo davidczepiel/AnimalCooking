@@ -13,9 +13,11 @@ public:
 
 		animPart_ = AnimPart::arriving;
 
-		logoSpeedArriving_ = 20;
-		logoSpeedMiddle_ = 10;
-		logoSpeedLeaving_ = 20;
+		logoSpeedArriving_ = 24;
+		logoSpeedMiddle_ = 3;
+		logoSpeedLeaving_ = 24;
+
+		firstBeep_ = false;
 	}
 	~IntroState() {}
 private:
@@ -31,5 +33,6 @@ private:
 	int logoSpeedArriving_;
 	int logoSpeedMiddle_;
 	int logoSpeedLeaving_;
+	bool firstBeep_;
 };
 

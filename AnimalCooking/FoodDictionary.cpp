@@ -65,6 +65,7 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::SlicedAvocado:	return new SlicedAvocado();	break;
 	case Resources::FoodType::GratedChicken:	return new GratedChicken();	break;
 	case Resources::FoodType::GratedSkilletChicken:	return new GratedSkilletChicken();	break;
+	case Resources::FoodType::GratedMeat:	return new GratedMeat();		break;
 
 	//Platos enteros :
 	case Resources::FoodType::Salad:			return new Salad();			break;
@@ -132,8 +133,19 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::Teriyaki2:		return new Teriyaki2();	break;
 	case Resources::FoodType::Teriyaki3:		return new Teriyaki3();	break;
 	case Resources::FoodType::Teriyaki4:		return new Teriyaki4();	break;
-
-		// Alimentos individuales : 
+	//---------------------------------------------------------------------------
+	case Resources::FoodType::Pizza1:		return new Pizza1();	break;
+	case Resources::FoodType::Pizza2:		return new Pizza2();	break;
+	case Resources::FoodType::Pizza3:		return new Pizza3();	break;
+	case Resources::FoodType::Pizza4:		return new Pizza4();	break;
+	case Resources::FoodType::Pizza5:		return new Pizza5();	break;
+	case Resources::FoodType::Perrito:		return new Perrito();	break;
+	case Resources::FoodType::Perrito1:		return new Perrito1();	break;
+	case Resources::FoodType::Perrito2:		return new Perrito2();	break;
+	case Resources::FoodType::Perrito3:		return new Perrito3();	break;
+	//---------------------------------------------------------------------------
+		
+	// Alimentos individuales : 
 
 	case Resources::FoodType::MashedMeatSkillet:	return new MashedMeatSkillet();		break;
 	case Resources::FoodType::CaughtSausageSkillet:	return new CaughtSausageSkillet();	break;

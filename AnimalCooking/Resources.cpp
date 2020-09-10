@@ -409,6 +409,17 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, TextureId::Teriyaki3T,"../AnimalCooking/resources/images/Foods/teriyaki3.png" },
 	{ AllLevels, TextureId::Teriyaki4T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
 
+	{ AllLevels, TextureId::GratedMeatT,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Pizza1T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Pizza2T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Pizza3T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Pizza4T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Pizza5T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::PerritoT,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Perrito1T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Perrito2T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+	{ AllLevels, TextureId::Perrito3T,"../AnimalCooking/resources/images/Foods/teriyaki4.png" },
+
 	//FeedBack---------------------------------------------------------------
 		//Food
 		{AllLevels, PoopFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/caca.png"},
@@ -496,6 +507,17 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, Teriyaki3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki3.png" },
 		{ AllLevels, Teriyaki4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
 
+		{ AllLevels, GratedMeatFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Pizza1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Pizza2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Pizza3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Pizza4FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Pizza5FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, PerritoFeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Perrito1FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Perrito2FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+		{ AllLevels, Perrito3FeedBack,"../AnimalCooking/resources/images/FeedBack/Food/teriyaki4.png" },
+
 		//Utensil
 		{AllLevels, CuchilloFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/cuchilloFeedBack.png"},
 		{AllLevels, MazoFeedBack,"../AnimalCooking/resources/images/FeedBack/Utensil/mazaFeedBack.png"},
@@ -518,13 +540,14 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, AceiteVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinDer.png" },
 		{ AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
 	    { AllLevels, AceiteVerticalBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalBordeSup.png" },
-		{AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
+		{ AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
 		{ AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
 		{ AllLevels, ArroceraAislada,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraAislada.png" },
+
 		{ AllLevels, ArroceraBordes,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraBordes.png" },
-		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
+		{ AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
 		{ AllLevels, algasVDcha,"../AnimalCooking/resources/images/Cocina/foodgivers/algasVDcha.png" },
 		{ AllLevels, algasHBordes,"../AnimalCooking/resources/images/Cocina/foodgivers/algaHBordes.png" },
@@ -660,8 +683,8 @@ vector<Resources::SoundInfo> Resources::sounds_{
 	{AllLevels, AttackMiss,"../AnimalCooking/resources/sounds/Golpe fallido 3.wav" },
 	{AllLevels, BurnedBeep,"../AnimalCooking/resources/sounds/Microondas Temporizador.wav" },
 	{AllLevels, CookedFood,"../AnimalCooking/resources/sounds/Microondas Beep.wav" },
-	{AllLevels, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
-	{AllLevels, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
+	{Basic, IngredientSpawned,"../AnimalCooking/resources/sounds/Aparece Ingrediente 2-Poly.wav" },
+	{Basic, OrderRecieved,"../AnimalCooking/resources/sounds/Timbre 2.wav" },
 	{Basic, PlaneSound,"../AnimalCooking/resources/sounds/planeSound.wav"},
 	{Basic, RainSound,"../AnimalCooking/resources/sounds/rainSound.wav"},
 	{Basic, ThunderSound,"../AnimalCooking/resources/sounds/thunderSound.wav"},
