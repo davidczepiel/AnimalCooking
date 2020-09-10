@@ -28,6 +28,7 @@ private:
 		int row;
 		int col;
 		bool dead;
+		bool end;
 		Vector2D pos;
 	};
 
@@ -37,6 +38,7 @@ private:
 	void getPosIngredient(int i);
 	int getNumber();
 	bool allCompleted();
+	void startIngredient(int i);
 	bool alreadyTaken(int i);
 	Texture* deathTexture;
 	Timer* deathTimer;
@@ -46,6 +48,7 @@ private:
 	double numKills;
 	double animationSpeed;
 	int killsDone;
+	int killsStarted;
 	double percentagePerKill;
 	vector<Ingredientinfo> ingInfo;
 	vector<Ingredient*> ingredients;
