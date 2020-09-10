@@ -527,9 +527,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
 		{ AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
 		{ AllLevels, ArroceraAislada,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraAislada.png" },
+		{ AllLevels, ArroceraBordes,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraBordes.png" },
 		{AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
 		{ AllLevels, algasVDcha,"../AnimalCooking/resources/images/Cocina/foodgivers/algasVDcha.png" },
+		{ AllLevels, algasHBordes,"../AnimalCooking/resources/images/Cocina/foodgivers/algaHBordes.png" },
 			
 		// Adversities
 		{AllLevels, WarningAdversity, "../AnimalCooking/resources/images/Adversities/WarningAdversity.png"},
