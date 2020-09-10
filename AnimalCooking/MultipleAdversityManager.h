@@ -10,11 +10,12 @@
 
 #include <queue>
 #include <tuple>
+#include "GhostPool.h"
 
 class MultipleAdversityManager : public Component
 {
 public:
-	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp);
+	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP);
 	~MultipleAdversityManager() {
 		if (haptic1 != NULL) SDL_HapticClose(haptic1);
 		if (haptic2 != NULL) SDL_HapticClose(haptic2);
@@ -47,6 +48,10 @@ public:
 		return firePool_;
 	}
 
+	GhostPool* getGhostPool() {
+		return ghostPool_;
+	}
+
 private:
 	void seeTimers();
 	void seeAdversityWarning();
@@ -59,6 +64,7 @@ private:
 	IngredientsPool* ingredientsPool_;
 	UtensilsPool* utensilsPool_;
 	FirePool* firePool_;
+	GhostPool* ghostPool_;
 	AdversityTimer* adversityTimer_;
 
 	int warningRate_;

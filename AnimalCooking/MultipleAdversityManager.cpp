@@ -4,15 +4,17 @@
 #include "HookAdversity.h"
 #include "RainAdversity.h"
 #include "PidgeonAdversity.h"
+#include "IngredientsDeathAdversity.h"
 #include "GPadController.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp) : 
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP) :
 	Component(ecs::AdversityManager),
 	tP1_(tp1), 
 	tP2_(tp2), 
 	cookerPool_(cp), 
 	firePool_(fp),
+	ghostPool_(gP),
 	ingredientsPool_(ip), 
 	utensilsPool_(up), 
 	active_(false), 
@@ -34,6 +36,8 @@ MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp
 		adversities_.push_back(new HookAdversity(this));
 		adversities_.push_back(new RainAdversity(this));
 		adversities_.push_back(new PidgeonAdversity(this));
+		adversities_.push_back(new IngredientsDeathAdversity(this));
+
 
 		for (int i = 0; i < adversities_.size(); ++i) activeAdversities_.push_back(false);
 

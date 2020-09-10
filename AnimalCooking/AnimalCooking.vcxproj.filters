@@ -458,6 +458,11 @@
     <ClCompile Include="EnviromentUnit.cpp" />
     <ClCompile Include="EnviromentViewer.cpp" />
     <ClCompile Include="EnviromentControl.cpp" />
+    <ClCompile Include="IngredientsDeathAdversity.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="SDLRendererFrame.cpp" />
+    <ClCompile Include="GhostLife.cpp" />
+    <ClCompile Include="GhostPool.cpp" />
     <ClCompile Include="IntroState.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -984,6 +989,11 @@
     <ClInclude Include="EnviromentUnit.h" />
     <ClInclude Include="EnviromentViewer.h" />
     <ClInclude Include="EnviromentControl.h" />
+    <ClInclude Include="IngredientsDeathAdversity.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="SDLRendererFrame.h" />
+    <ClInclude Include="GhostLife.h" />
+    <ClInclude Include="GhostPool.h" />
     <ClInclude Include="IntroState.h" />
   </ItemGroup>
   <ItemGroup>
