@@ -13,7 +13,7 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 	src.x = 0; src.y = 116;
 	dest.x = 0; dest.y = 0;
 	dest.w = 150; dest.h = 150;
-	animationSpeed = 10000;
+	animationSpeed = 1000;
 	killsStarted = 0;
 	gl = multipleAdversityMngr_->getGameLogic();
 }
@@ -54,14 +54,18 @@ void IngredientsDeathAdversity::draw()
 
 void IngredientsDeathAdversity::reset()
 {
+	killsDone = 0;
+	numKills = 0;
+	killsStarted = 0;
 	ingInfo.clear();
 }
 
 void IngredientsDeathAdversity::start()
 {
+	reset();
 	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	numKills = (ingredients.size()-1);
+	numKills = (ingredients.size()/2);
 	percentagePerKill = 1 / (numKills + 1);
 	//Me quedo con unos cuants ingredientes aleatorios
 	while (ingInfo.size() < numKills) {
