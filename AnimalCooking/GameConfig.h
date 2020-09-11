@@ -99,6 +99,8 @@ namespace config {
 			players_keyboardKeys[1].PREVIOUS = SDLK_i;
 			players_keyboardKeys[1].NEXT = SDLK_o;
 			players_keyboardKeys[1].FINISHER = SDLK_RSHIFT;
+			players_keyboardKeys[1].INFOUTENSILS = SDLK_m;
+
 		}
 
 		struct KeyboardKeys {
@@ -113,6 +115,8 @@ namespace config {
 			SDL_Keycode PREVIOUS = SDLK_q;
 			SDL_Keycode NEXT = SDLK_e;
 			SDL_Keycode FINISHER = SDLK_SPACE;
+			SDL_Keycode INFOUTENSILS = SDLK_c;
+
 		};
 		struct GPadButtons {
 			//PlayerController 1
@@ -122,6 +126,7 @@ namespace config {
 			SDL_GameControllerButton PREVIOUS = SDL_CONTROLLER_BUTTON_DPAD_LEFT;
 			SDL_GameControllerButton NEXT = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
 			SDL_GameControllerButton FINISHER = SDL_CONTROLLER_BUTTON_Y;
+			SDL_GameControllerButton INFOUTENSILS = SDL_CONTROLLER_BUTTON_LEFTSHOULDER;
 		};
 
 		struct Volume {
