@@ -13,15 +13,16 @@ public:
 
 		animPart_ = AnimPart::arriving;
 
-		logoSpeedArriving_ = 24;
-		logoSpeedMiddle_ = 3;
-		logoSpeedLeaving_ = 24;
+		logoSpeedArriving_ = 60;
+		logoSpeedMiddle_ = 6;
+		logoSpeedLeaving_ = 60;
 
 		firstBeep_ = false;
+		fade_ = 0;
 	}
 	~IntroState() {}
 private:
-	enum AnimPart { arriving, middle, leaving};
+	enum AnimPart { arriving, middle, stay, leaving};
 
 	void update() override;
 	void draw() override;
@@ -34,5 +35,6 @@ private:
 	int logoSpeedMiddle_;
 	int logoSpeedLeaving_;
 	bool firstBeep_;
+	int fade_;
 };
 

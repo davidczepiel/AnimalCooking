@@ -8,7 +8,7 @@
 #include "GPadController.h"
 
 
-MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP) :
+MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP, GameLogic* gl) :
 	Component(ecs::AdversityManager),
 	tP1_(tp1), 
 	tP2_(tp2), 
@@ -24,7 +24,8 @@ MultipleAdversityManager::MultipleAdversityManager(Transform* tp1, Transform* tp
 	justStarted_(true), 
 	lengthOfRumble_(100), 
 	rumbleCadence_(333),
-	finishedAdversities(false)
+	finishedAdversities(false),
+	gLogic_(gl)
 	{
 		warningTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::WarningAdversity);
 

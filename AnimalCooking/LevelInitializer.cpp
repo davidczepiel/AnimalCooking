@@ -255,7 +255,7 @@ void LevelInitializer::initialize_firePool()
 
 void LevelInitializer::initialize_adversities()
 {
-	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool, GETCMP2(ghostPool, GhostPool));
+	AdversityAdder(jsonLevel, emPlaystate, players,cookerPool, ingPoolEntity_, utensil, firesPool, GETCMP2(ghostPool, GhostPool), GETCMP2(gameManager, GameLogic));
 	
 	sL->updateLength();
 }
