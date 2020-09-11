@@ -32,5 +32,10 @@ private:
 	int iconDisplayTime_;
 	int iconDisplayStart_;
 
+	config::Options::KeyboardKeys& keys1;
+	config::Options::GPadButtons& buttons1;
+	config::Options::KeyboardKeys& keys2;
+	config::Options::GPadButtons& buttons2;
+
 };
 

@@ -29,6 +29,7 @@ public:
 	void hitIngredient(SDL_Rect rect, Resources::UtensilType type);
 	void burnIngredients(SDL_Rect rect);
 	void hitFire(SDL_Rect rect);
+	void ingredientDeath(Ingredient* ing);
 
 	int getLevelTime() { return levelTimer_->getTime(); }
 
