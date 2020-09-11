@@ -13,18 +13,37 @@ void IntroState::update()
 	if (animPart_ == AnimPart::arriving) {
 		logoRect_.x += logoSpeedArriving_;
 
-		if (logoRect_.x >= SDLGame::instance()->getWindowWidth() / 2) animPart_ = AnimPart::middle;
+		if (fade_ <= 255) {
+			fade_ += 6;
+			if (fade_ > 255) fade_ = 255;
+		}
+
+		if (logoRect_.x >= SDLGame::instance()->getWindowWidth() / 2 - (logoRect_.w / 2)) {
+			animPart_ = AnimPart::middle;
+			fade_ = 255;
+		}
 	}
 	else if (animPart_ == AnimPart::middle) {
 		logoRect_.x -= logoSpeedMiddle_;
 
 		if (logoRect_.x <= (SDLGame::instance()->getWindowWidth() / 2) - (logoRect_.w * 0.75) ) {
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::IngredientSpawned, 0, 2);
+			animPart_ = AnimPart::stay;
+			time_ = SDL_GetTicks();
+		}
+	}
+	else if (animPart_ == AnimPart::stay) {
+		if (SDL_GetTicks() > time_ + 250) {
 			animPart_ = AnimPart::leaving;
 		}
 	}
 	else if (animPart_ == AnimPart::leaving) {
 		logoRect_.x += logoSpeedLeaving_;
+
+		if (fade_ >= 0) {
+			fade_ -= 14;
+			if (fade_ < 0) fade_ = 0;
+		}
 
 		if (logoRect_.x >= SDLGame::instance()->getWindowWidth()) SDLGame::instance()->getFSM()->changeState(new MenuState(app));
 	}
@@ -32,5 +51,5 @@ void IntroState::update()
 
 void IntroState::draw()
 {
-	logoTexture_->render(logoRect_);
+	logoTexture_->renderWithTint(logoRect_, fade_, fade_, fade_);
 }

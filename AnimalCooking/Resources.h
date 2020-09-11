@@ -280,12 +280,16 @@ public:
 		Burger2Order,
 		Burger3Order,
 		PizzaOrder,
+		Pizza1Order,
+		Pizza2Order,
+		Pizza3Order,
+		Pizza4Order,
+		Pizza5Order,
 		RoastOrder,
 		Roast1Order,
 		Roast2Order,
 		Roast3Order,
 		RiceDishOrder,
-		HotDogOrder,
 		RisottoOrder,
 		CookedFishOrder,
 		FriedVegsOrder,
@@ -343,6 +347,7 @@ public:
 		BreadBurgerT,
 		BreadHotDogT,
 		PizzaMassT,
+		GratedMeatT, 
 
 		SaladT,
 		Salad1T,
@@ -356,6 +361,11 @@ public:
 		Burger3T,
 
 		PizzaT,
+		Pizza1T,
+		Pizza2T,
+		Pizza3T,
+		Pizza4T,
+		Pizza5T,
 
 		RoastT,
 		Roast1T,
@@ -363,7 +373,6 @@ public:
 		Roast3T,
 
 		RiceDishT,
-		HotDogT,
 		RisottoT,
 		CookedFishT,
 
@@ -413,12 +422,7 @@ public:
 		Teriyaki2T,
 		Teriyaki3T,
 		Teriyaki4T,
-		GratedMeatT,
-		Pizza1T,
-		Pizza2T,
-		Pizza3T,
-		Pizza4T,
-		Pizza5T,
+		
 		PerritoT,
 		Perrito1T,
 		Perrito2T,
@@ -448,6 +452,7 @@ public:
 			BreadBurgerFeedBack,
 			BreadHotDogFeedBack,
 			PizzaMassFeedBack,
+			GratedMeatFeedBack,
 
 			SaladFeedBack,
 			Salad1FeedBack,
@@ -461,6 +466,11 @@ public:
 			Burger3FeedBack,
 
 			PizzaFeedBack,
+			Pizza1FeedBack,
+			Pizza2FeedBack,
+			Pizza3FeedBack,
+			Pizza4FeedBack,
+			Pizza5FeedBack,
 
 			RoastFeedBack,
 			Roast1FeedBack,
@@ -468,7 +478,6 @@ public:
 			Roast3FeedBack,
 
 			RiceDishFeedBack,
-			HotDogFeedBack,
 			RisottoFeedBack,
 			CookedFishFeedBack,
 
@@ -522,13 +531,7 @@ public:
 			Teriyaki2FeedBack,
 			Teriyaki3FeedBack,
 			Teriyaki4FeedBack,
-
-			GratedMeatFeedBack,
-			Pizza1FeedBack,
-			Pizza2FeedBack,
-			Pizza3FeedBack,
-			Pizza4FeedBack,
-			Pizza5FeedBack,
+			
 			PerritoFeedBack,
 			Perrito1FeedBack,
 			Perrito2FeedBack,
@@ -842,12 +845,16 @@ public:
 		Burger2,
 		Burger3,
 		Pizza,
+		Pizza1,
+		Pizza2,
+		Pizza3,
+		Pizza4,
+		Pizza5,
 		Roast,
 		Roast1,
 		Roast2,
 		Roast3,
 		RiceDish,
-		HotDog,
 		Risotto,
 		CookedFish,
 		FriedVegs,
@@ -884,15 +891,11 @@ public:
 		Teriyaki3,
 		Teriyaki4,
 		///
-		Pizza1,
-		Pizza2,
-		Pizza3,
-		Pizza4,
-		Pizza5,
+		
 		Perrito,
 		Perrito1,
 		Perrito2,
-		Perrito3
+		Perrito3,
 	};
 
 	enum PickableType : std::size_t {

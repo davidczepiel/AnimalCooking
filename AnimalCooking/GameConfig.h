@@ -3,6 +3,10 @@
 #include <array>
 
 namespace config {
+
+	//NUMBER OF LEVELS
+	constexpr int NUM_LEVELS = 24;
+
 	//AI CLIENT
 	//constexpr int AI_CLIENT_DELTA_TIME_PER_ORDER = 25;
 	constexpr int AI_CLIENT_SECONDS_PER_ING = 5;
