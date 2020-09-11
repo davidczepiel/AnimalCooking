@@ -6,6 +6,7 @@ void IntroState::update()
 {
 	State::update();
 	if (!firstBeep_) {
+		SDLGame::instance()->getAudioMngr()->setChannelVolume(10, 1);
 		SDLGame::instance()->getAudioMngr()->playChannel(Resources::OrderRecieved, 0, 1);
 		firstBeep_ = true;
 	}
@@ -27,6 +28,7 @@ void IntroState::update()
 		logoRect_.x -= logoSpeedMiddle_;
 
 		if (logoRect_.x <= (SDLGame::instance()->getWindowWidth() / 2) - (logoRect_.w * 0.75) ) {
+			SDLGame::instance()->getAudioMngr()->setChannelVolume(10, 2);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::IngredientSpawned, 0, 2);
 			animPart_ = AnimPart::stay;
 			time_ = SDL_GetTicks();
