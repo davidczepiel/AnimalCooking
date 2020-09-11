@@ -155,6 +155,25 @@ void MapState::update()
 			GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
 			GETCMP2(returnButton_, ButtonRenderer)->setActive(true);
 			GETCMP2(playButton_, ButtonRendererHouse)->setActive(true);
+
+			//-----Activar/desactivar botones de desplazamiento del mapstate------------
+			if (currentMapScene_ == 0) {
+				GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
+				GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setActive(false);
+			}
+			else {
+				GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(true);
+				GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setActive(true);
+			}
+
+			if (currentMapScene_ == bgText_.size() - 1) {
+				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
+			}
+			else {
+				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(true);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+			}
 		}
 	}
 	else {
@@ -350,6 +369,8 @@ void MapState::nextScreen()
 	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
 	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
+	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -368,6 +389,8 @@ void MapState::previousScreen()
 	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
 	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
 	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -450,6 +473,10 @@ void MapState::placeHousesAndButtons()
 	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
+	if (currentMapScene_ == bgText_.size() - 1) {
+		br->setActive(false);
+		bb->setActive(false);
+	}
 
 	PreviousScreenButton_ = stage->addEntity();
 	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
@@ -457,6 +484,10 @@ void MapState::placeHousesAndButtons()
 	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(PreviousScreenButton_, ecs::GroupID::topLayer);
+	if (currentMapScene_ == 0) {
+		br->setActive(false); 
+		bb->setActive(false);
+	}
 
 	aux = nullptr;
 	bb = nullptr;
