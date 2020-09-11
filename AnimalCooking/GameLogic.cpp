@@ -5,14 +5,14 @@
 #include "PlayState.h"
 #include "FSM.h"
 
-GameLogic::GameLogic(TimerViewer* tv) : 
-	Component(ecs::GameLogic), 
-	ingPool(nullptr), 
+GameLogic::GameLogic(TimerViewer* tv) :
+	Component(ecs::GameLogic),
+	ingPool(nullptr),
 	utensilPool(nullptr),
-	foodPool(nullptr), 
+	foodPool(nullptr),
 	colSys_(nullptr),
 	firePool_(nullptr),
-	levelTimer_(new LevelTimer()), 
+	levelTimer_(new LevelTimer()),
 	tv(tv)
 {
 	tv->addTimer(levelTimer_);
@@ -69,6 +69,15 @@ void GameLogic::hitFire(SDL_Rect rect)
 			//playHit(type);    <--SONIDO CUBO AGUA
 		}
 	}
+}
+
+void GameLogic::ingredientDeath(Ingredient* ing)
+{
+	Vector2D ingPos = ing->getPos();
+	colSys_->removeCollider(ing);
+	ing->destroy();
+	ghostPool_->activateGhost(ingPos);
+	GETCMP1_(GameControl)->newIngredient();
 }
 
 void GameLogic::playHit(Resources::UtensilType type) {

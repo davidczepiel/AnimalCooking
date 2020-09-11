@@ -94,7 +94,7 @@ void SDLGame::initSDL() {
 	SDL_SetWindowResizable(window_, SDL_TRUE);
 
 	// Clear screen (background color).
-	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 0, 100, 100,
+	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 15, 0, 0,
 		255);  // Dark grey.
 	assert(sdlSetDrawColor_ret != -1);
 	int sdlRenderClear_ret = SDL_RenderClear(renderer_);

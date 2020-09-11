@@ -9,6 +9,14 @@ void MenuState::draw()
 	State::draw();
 }
 
+void MenuState::update()
+{
+	State::update();
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		closeGame();
+	}
+}
+
 void MenuState::leftState()
 {
 	switch (state) {

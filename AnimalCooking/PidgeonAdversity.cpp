@@ -14,7 +14,7 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 	standing_ = false;
 	leaving_ = false;
 	durationTimer_ = new Timer();
-	durationTimer_->setTime(3000);
+	durationTimer_->setTime(2300);
 	GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(durationTimer_);
 
 	drawingTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PidgeonAdversity);
@@ -22,7 +22,7 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 	drawingArea_.x = 0;
 	drawingArea_.y = 0;
 	drawingArea_.w = SDLGame::instance()->getWindowWidth() * 1.3 / 4;
-	drawingArea_.h = SDLGame::instance()->getWindowHeight() * 2/ 3;
+	drawingArea_.h = SDLGame::instance()->getWindowHeight() * 2 / 3;
 
 	column = 0;
 
@@ -31,11 +31,6 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 	lastFrame = 0;
 	frameDuration = 200;
 
-	clipArea_.x = 512 * column;
-	clipArea_.y = 0;
-	clipArea_.w = 512;
-	clipArea_.h = 512;
-
 	numPidgeons = 3;
 	pidgeonsSeen = 0;
 }
@@ -43,23 +38,24 @@ PidgeonAdversity::PidgeonAdversity(MultipleAdversityManager* mam) :Adversity(mam
 void PidgeonAdversity::update()
 {
 	//La animacion va segun el timer, si hemos visitado todas las columnas significa que hemos terminado con esta paloma
-	if (column >= 20) {
+	if (column > drawingTexture_->getNumCols() - 1) {
 		pidgeonFinished();
 	}
 
 	durationTimer_->update();
 	locateFrame();
 	//Cuando este en estos intervalos de tiempo llamo a move para que calcule su posicion exacta y que entre y salga de pantalla
-	if (durationTimer_->getProgress() < 0.10)move(0.10,0.10);
-	else if (durationTimer_->getProgress() > 0.90)move(1,0.10);
+	if (durationTimer_->getProgress() < 0.10) {
+		move(0.10, 0.10);
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::pigeonSound, 0, 5);
+	}
+	else if (durationTimer_->getProgress() > 0.90)move(1, 0.10);
 }
 
 
 void PidgeonAdversity::draw()
 {
-	clipArea_.x = column * 512;
-	clipArea_.y = 0;
-	drawingTexture_->render(drawingArea_, angle, clipArea_,flipVar);
+	drawingTexture_->renderFrame(drawingArea_, 0, column, angle, flipVar);
 }
 
 void PidgeonAdversity::reset()
@@ -138,7 +134,9 @@ int PidgeonAdversity::posibleLocation(int a, int b)
 
 int PidgeonAdversity::locateFrame()
 {
-	column = (durationTimer_->getProgress() * 20);
+	if (drawingTexture_->getNumCols() > 0)
+		column = (durationTimer_->getProgress() * (drawingTexture_->getNumCols() - 1));
+	else column = 0;
 	return 0;
 }
 
@@ -164,12 +162,12 @@ void PidgeonAdversity::pidgeonFinished()
 //Muevo a la paloma hacia el centro de la pantalla o hago que salga de esta
 void PidgeonAdversity::move(double c, double div)
 {
-	double a = ((c-durationTimer_->getProgress())/div);
+	double a = ((c - durationTimer_->getProgress()) / div);
 	if (c > 0.5) a = 1 - a;
 	switch (lastPidgeon.direction) {
 	case 0:
 		drawingArea_.y = lastPidgeon.posY - (a * drawingArea_.h);
-	break;
+		break;
 	case 1:
 		drawingArea_.x = lastPidgeon.posX + (a * drawingArea_.w);
 		break;

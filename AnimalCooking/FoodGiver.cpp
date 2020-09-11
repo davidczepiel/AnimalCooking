@@ -236,6 +236,52 @@ void DressingGiver::action1(int player) {
 
 }
 
+NoriGiver::NoriGiver(Vector2D pos, Vector2D size, Transport* p1, Transport* p2, GameControl* gameControl, Texture* t) : FoodGiver(pos, size, p1, p2, gameControl, t)
+{
+	texture_ = t;
+}
+
+void NoriGiver::action1(int player)
+{
+
+	if (player == Resources::Player::Player1)
+	{
+		Food* f = nullptr;
+
+		if (player1_->getObjectInHands() == nullptr)
+		{
+			f = gameControl_->newFood(Resources::FoodType::Nori, position_);
+			player1_->pick(f, Resources::PickableType::Food);
+		}
+		else if (player1_->getObjectTypeInHands() == Resources::Dish)
+		{
+			Dish* d = static_cast<Dish*>(player1_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Nori, position_);
+			d->addFood(f);
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
+		}
+	}
+	else if (player == Resources::Player::Player2) {
+
+		Food* f = nullptr;
+
+		if (player2_->getObjectInHands() == nullptr)
+		{
+			f = gameControl_->newFood(Resources::FoodType::Nori, position_);
+			player2_->pick(f, Resources::PickableType::Food);
+		}
+		else if (player2_->getObjectTypeInHands() == Resources::Dish)
+		{
+			Dish* d = static_cast<Dish*>(player2_->getObjectInHands());
+			f = gameControl_->newFood(Resources::FoodType::Nori, position_);
+			d->addFood(f);
+			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::PickUp, 0);
+		}
+	}
+
+}
+
+
 void FoodGiver::feedback(int player)
 {
 	if (!SDLGame::instance()->getOptions().showKeyToPress)
@@ -252,3 +298,5 @@ void FoodGiver::feedback(int player)
 			SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP), player);
 	}
 }
+
+

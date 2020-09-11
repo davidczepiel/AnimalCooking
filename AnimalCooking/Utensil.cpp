@@ -215,7 +215,7 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorSucio);
-	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorFeedBack);
 	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
@@ -230,7 +230,7 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Red);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
-	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedFeedBack);
 	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 

@@ -18,6 +18,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 	lastExplosionFrame_(),
 	lastExplosionTick_(),
 	maxLights(4),
+	firstTimeLighting(true),
 	numLights()
 	{
 		rainTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RainAdversity);
@@ -33,7 +34,7 @@ RainAdversity::RainAdversity(MultipleAdversityManager* mam) :
 		clipArea_.w = 202;
 		clipArea_.h = 149;
 		dirtSpeedUp_ = -700;
-		rainTimer_->setTime(2000);
+		rainTimer_->setTime(10000);
 		lastFrame_ = 0;
 		frameTime_ = 75;
 		started_ = false;
@@ -86,10 +87,12 @@ void RainAdversity::draw()
 }
 void RainAdversity::reset() {
 	rainTimer_->timerReset();
+	SDLGame::instance()->getAudioMngr()->haltChannel(3);
 }
 
 void RainAdversity::start()
 {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::RainSound, -1, 3);
 	rainTimer_->timerReset();
 	rainTimer_->timerStart();
 	lightingStrike_ = false;
@@ -112,6 +115,11 @@ void RainAdversity::start()
 
 void RainAdversity::lightingUpdate()
 {
+	if (firstTimeLighting) {
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::ThunderSound, 0, 4);
+		firstTimeLighting = false;
+	}
+
 	if (!lightingStrikeDone_ && SDL_GetTicks() - lastLightingTick_ >= lightingFrameCadence_) {
 		lastLightingTick_ = SDL_GetTicks();
 		lastLightingFrame_++;

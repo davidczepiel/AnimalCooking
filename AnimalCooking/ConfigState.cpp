@@ -129,6 +129,9 @@ void ConfigState::update()
 	if (gpad->isAnyButtonJustPressed() && (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
 		backButtonCallback(app);
 	}
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		backButtonCallback(app);
+	}
 }
 
 void ConfigState::draw()

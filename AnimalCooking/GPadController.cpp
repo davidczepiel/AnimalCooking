@@ -6,9 +6,13 @@ unique_ptr<GPadController> GPadController::instance_;
 
 GPadController::GPadController() :player1_(nullptr),
 player2_(nullptr)
-{}
+{
+	sleepTimer = new Timer();
+}
 
 void GPadController::update(SDL_Event& event) {
+	sleepTimer->update();
+	if (sleepTimer->isTimerEnd())sleepTimer->timerReset();
 	//Si se ha a�adido un mando se lo asigno al player que le falte
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
@@ -90,4 +94,11 @@ bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
 		return SDL_GameControllerGetButton(c, button);
 	else
 		return false;
+}
+
+void GPadController::sleep(double time)
+{
+	sleepTimer->timerReset();
+	sleepTimer->setTime(time);
+	sleepTimer->timerStart();
 }

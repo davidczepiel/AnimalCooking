@@ -12,7 +12,7 @@ class EnviromentPool: public Component
 public:
 	EnviromentPool(Transform* tF1, Transform* tF2, PlayerController* tP1, PlayerController* tP2);
 	~EnviromentPool();
-	void addEnvUnit(Vector2D pos,double width, double height,string type);
+	void addEnvUnit(Vector2D pos,double width, double height,string type, string texture ="");
 	vector<EnviromentUnit*>& getPool() { return pool_; }private:
 
 private:
@@ -23,5 +23,7 @@ private:
 	PlayerController* pC2;
 	EnviromentControl* envC;
 	vector<EnviromentUnit*> pool_;
+
+	Texture* selectTexture(string file);
 };
 

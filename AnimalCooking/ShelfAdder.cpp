@@ -28,6 +28,7 @@ ShelfAdder::ShelfAdder(EntityManager* emPlayState, jute::jValue& jsonLevel, jute
 				emPlayState->addEntity(bucket_);
 				bucket_->addComponent<BucketViewer>(bucket_);
 				bucket_->addComponent<BucketMotion>(bucket_);
+				bucket_->addComponent<SelectorPopUpEntity>(GETCMP2(player[0], InteractionRect), GETCMP2(player[1], InteractionRect), GETCMP2(player[0], Selector), GETCMP2(player[1], Selector), bucket_);
 				bucket_->setGameLogic(gl);
 				emPlayState->addToGroup(bucket_, CASTID(jsonGeneral["Utensils"]["Layer"].as_int()));
 				u = bucket_;
@@ -191,6 +192,18 @@ Shelf* ShelfAdder::makeShelf(Pickable* u, std::array<Entity*, 2>& player, jute::
 	    lookingAt = Orientation::Down;
 	    t = Resources::TextureId::EncimeraVEsquinaSuperior_SinBordes;
     }
+	else if (jsonShelf["texture"].as_string() == "EncimeraAbajoSinMantel")
+	{
+	lookingAt = Orientation::Right;
+	t = Resources::TextureId::EncimeraAbajoSinMantel;
+	}
+	else if (jsonShelf["texture"].as_string() == "EncimeraAbajoCont")
+	{
+	lookingAt = Orientation::Right;
+	t = Resources::TextureId::EncimeraAbajoCont;
+	}
+	
+	
 	else { //CornerLeft
 		lookingAt = Orientation::Down;
 		t = Resources::TextureId::EncimeraVEsquinaSuperiorDcha;

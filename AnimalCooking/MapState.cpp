@@ -36,6 +36,7 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapStateBackground));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState3Background));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 	chooseOption();
@@ -154,6 +155,25 @@ void MapState::update()
 			GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
 			GETCMP2(returnButton_, ButtonRenderer)->setActive(true);
 			GETCMP2(playButton_, ButtonRendererHouse)->setActive(true);
+
+			//-----Activar/desactivar botones de desplazamiento del mapstate------------
+			if (currentMapScene_ == 0) {
+				GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
+				GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setActive(false);
+			}
+			else {
+				GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(true);
+				GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setActive(true);
+			}
+
+			if (currentMapScene_ == bgText_.size() - 1) {
+				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
+			}
+			else {
+				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(true);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+			}
 		}
 	}
 	else {
@@ -188,14 +208,10 @@ void MapState::update()
 		}
 		hasToBreak = false;
 	}
-	/*if (!transition_) return;
 
-
-	xTransition_ += transitionVelocity_ * transitionDirection_;
-	if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
-		xTransition_ = 0;
-		transition_ = false;
-	}*/
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		backButtonCallback(app);
+	}
 }
 
 
@@ -353,6 +369,8 @@ void MapState::nextScreen()
 	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
 	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
+	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -371,6 +389,8 @@ void MapState::previousScreen()
 	GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(false);
 	GETCMP2(playButton_, ButtonRendererHouse)->setActive(false);
 	GETCMP2(returnButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
+	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 }
 
@@ -431,12 +451,12 @@ void MapState::placeHousesAndButtons()
 	mInfo->setCurrentInfoLevel(levelinfos_->at(0));
 
 	vector<Transform> transforms_;
-	transforms_.push_back(Transform(Vector2D(415, 807), Vector2D(), 80, 40));
-	transforms_.push_back(Transform(Vector2D(594, 590), Vector2D(), 40, 20));
-	transforms_.push_back(Transform(Vector2D(1008, 820), Vector2D(), 80, 40));
-	transforms_.push_back(Transform(Vector2D(1380, 560), Vector2D(), 40, 20));
-	transforms_.push_back(Transform(Vector2D(1693, 720), Vector2D(), 70, 35));
-	transforms_.push_back(Transform(Vector2D(950, 500), Vector2D(), 46, 23));
+	transforms_.push_back(Transform(Vector2D(350, 800), Vector2D(), 80, 100));
+	transforms_.push_back(Transform(Vector2D(594, 570), Vector2D(), 40, 50));
+	transforms_.push_back(Transform(Vector2D(1000, 780), Vector2D(), 80, 100));
+	transforms_.push_back(Transform(Vector2D(1380, 530), Vector2D(), 40, 50));
+	transforms_.push_back(Transform(Vector2D(1693, 690), Vector2D(), 70, 88));
+	transforms_.push_back(Transform(Vector2D(950, 470), Vector2D(), 46, 58));
 
 	for (int x = 0; x < levelPacks_; x++) {
 		levelButtonsPool_.push_back(stage->addEntity());
@@ -448,18 +468,26 @@ void MapState::placeHousesAndButtons()
 
 	nextScreenButton_ = stage->addEntity();
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
-	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
+	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight()/3);
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
 	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
+	if (currentMapScene_ == bgText_.size() - 1) {
+		br->setActive(false);
+		bb->setActive(false);
+	}
 
 	PreviousScreenButton_ = stage->addEntity();
-	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight());
+	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
 	bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
 	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(PreviousScreenButton_, ecs::GroupID::topLayer);
+	if (currentMapScene_ == 0) {
+		br->setActive(false); 
+		bb->setActive(false);
+	}
 
 	aux = nullptr;
 	bb = nullptr;

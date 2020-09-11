@@ -72,15 +72,18 @@ void PauseState::draw()
 
 void PauseState::update()
 {
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
+		resumeCallback(app);
+	}
 
-		GPadController* gpad = GPadController::instance();
-		if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
+	GPadController* gpad = GPadController::instance();
+	if ((gpad->playerControllerConnected(0) || gpad->playerControllerConnected(1)) && gpad->isAnyButtonJustPressed()) {
 
-			if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
-				resumeCallback(getAnimalCooking());
-			}
+		if ((gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+			resumeCallback(getAnimalCooking());
 		}
-		State::update();
+	}
+	State::update();
 }
 
 void PauseState::optionsCallback(AnimalCooking* ac)
