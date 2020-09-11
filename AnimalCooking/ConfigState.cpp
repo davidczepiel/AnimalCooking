@@ -227,7 +227,7 @@ void ConfigState::initButtons()
 		bb = symbolPlayer1->addComponent<ButtonBehaviour>(symbolCallback1, app);
 		symbolPlayer1->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[0]);
 		bcr = symbolPlayer1->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
-		//bcr->setCheckedAndUncheckedTextures(left, right);
+		bcr->setCheckedAndUncheckedTextures(Resources::TextureId::Config_XBoxIcon, Resources::TextureId::Config_Ps4Icon);
 		bb->setButtonCheckRenderer(bcr);
 	}
 
@@ -242,7 +242,7 @@ void ConfigState::initButtons()
 		bb = symbolPlayer2->addComponent<ButtonBehaviour>(symbolCallback2, app);
 		symbolPlayer2->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[1]);
 		bcr = symbolPlayer2->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
-		//bcr->setCheckedAndUncheckedTextures(left, right);
+		bcr->setCheckedAndUncheckedTextures(Resources::TextureId::Config_XBoxIcon, Resources::TextureId::Config_Ps4Icon);
 		bb->setButtonCheckRenderer(bcr);
 	}
 }

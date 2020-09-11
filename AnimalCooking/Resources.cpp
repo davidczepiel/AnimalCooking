@@ -94,6 +94,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, Config_SliderSelected,"../AnimalCooking/resources/images/ConfigMenu/sliderSelect.png"},
 	{Basic, Config_SoundIcon,"../AnimalCooking/resources/images/ConfigMenu/soundIcon.png"},
 	{Basic, Config_SoundVolumeTitle,"../AnimalCooking/resources/images/ConfigMenu/soundVolume.png"},
+	{Basic, Config_XBoxIcon,"../AnimalCooking/resources/images/ConfigMenu/button.png"},
+	{Basic, Config_Ps4Icon,"../AnimalCooking/resources/images/ConfigMenu/buttonwithTick.png"},
 
 	//CreditState-----------
 	{Basic,LogoTenByTen,"../AnimalCooking/resources/images/1010.png"},

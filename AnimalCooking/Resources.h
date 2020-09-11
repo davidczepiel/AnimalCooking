@@ -99,7 +99,8 @@ public:
 		Config_SliderSelected,
 		Config_SoundIcon,
 		Config_SoundVolumeTitle,
-
+		Config_XBoxIcon,
+		Config_Ps4Icon,
 
 		//---->Creditos<-----
 		LogoTenByTen,
