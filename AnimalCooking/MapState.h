@@ -68,6 +68,12 @@ private:
 	vector<Texture*> bgText_;
 	Texture* playButtonText_;
 	std::string playerName_;
+	Texture* starScore_;
+	Texture* starScoreBackground_;
+	Texture* totalStars_;
+	SDL_Rect starScoreRect_;
+	SDL_Rect TotalStarsRect_;
+	SDL_Rect starScoreBackGroundRect_;
 
 	double casillaX;
 	double casillaY;
@@ -78,6 +84,7 @@ private:
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;
+	bool inMap = false;
 
 	bool transition_ = false;
 	int xTransition_ = 0;

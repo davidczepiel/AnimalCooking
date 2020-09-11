@@ -26,7 +26,8 @@ MapState::MapState(AnimalCooking* ac) :
 	currentLevel_(0),
 	levelPacks_(6),
 	lastLevel_(0),
-	playerName_("")
+	playerName_(""),
+	totalStars_(nullptr)
 {
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
@@ -40,14 +41,19 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
+	starScore_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
+	starScoreBackground_ = game_->getTextureMngr()->getTexture(Resources::Star);
+	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
+	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
+	TotalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
 	chooseOption();
-
 }
 
 MapState::~MapState() {
 	for (auto t : profileTextures) {
 		delete t; t = nullptr;
 	}
+	if (totalStars_ != nullptr) delete totalStars_;
 	delete playButtonText_; playButtonText_ = nullptr;
 	game_->removeLevelInfos();
 }
@@ -139,6 +145,12 @@ void MapState::draw()
 	else {
 		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	}
+	if (inMap) {
+		starScoreBackground_->render(starScoreBackGroundRect_);
+		starScore_->render(starScoreRect_);
+		totalStars_->render(TotalStarsRect_);
+	}
+	
 	State::draw();
 }
 
@@ -437,8 +449,12 @@ void MapState::setState() {
 	bb->setButtonRenderer(br);
 	stage->addToGroup(returnButton_, ecs::GroupID::topLayer);
 
-	placeHousesAndButtons();
+	inMap = true;
+	if (totalStars_ != nullptr) delete totalStars_;
+	totalStars_ = new Texture(game_->getRenderer(), to_string(game_->getNumStars()), game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
 
+	placeHousesAndButtons();
+	
 	configPadNavigation();
 
 	MapConfig mpCFG;
