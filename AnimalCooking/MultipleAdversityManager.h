@@ -15,7 +15,7 @@
 class MultipleAdversityManager : public Component
 {
 public:
-	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP);
+	MultipleAdversityManager(Transform* tp1, Transform* tp2, CookerPool* cp, IngredientsPool* ip, UtensilsPool* up, FirePool* fp, GhostPool* gP, GameLogic* gl);
 	~MultipleAdversityManager() {
 		if (haptic1 != NULL) SDL_HapticClose(haptic1);
 		if (haptic2 != NULL) SDL_HapticClose(haptic2);
@@ -52,6 +52,8 @@ public:
 		return ghostPool_;
 	}
 
+	GameLogic* getGameLogic() { return gLogic_; }
+
 private:
 	void seeTimers();
 	void seeAdversityWarning();
@@ -65,6 +67,7 @@ private:
 	UtensilsPool* utensilsPool_;
 	FirePool* firePool_;
 	GhostPool* ghostPool_;
+	GameLogic* gLogic_;
 	AdversityTimer* adversityTimer_;
 
 	int warningRate_;

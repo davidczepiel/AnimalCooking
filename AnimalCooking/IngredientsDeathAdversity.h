@@ -6,6 +6,7 @@
 #include "SDL_macros.h"
 #include "Ingredient.h"
 #include "Timer.h"
+#include "GameLogic.h"
 #include "TimerViewer.h"
 
 class MultipleAdversityManager;
@@ -52,6 +53,7 @@ private:
 	double percentagePerKill;
 	vector<Ingredientinfo> ingInfo;
 	vector<Ingredient*> ingredients;
+	GameLogic* gl;
 	
 	
 };

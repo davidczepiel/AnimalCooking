@@ -13,9 +13,9 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 	src.x = 0; src.y = 116;
 	dest.x = 0; dest.y = 0;
 	dest.w = 150; dest.h = 150;
-	animationSpeed = 1000;
+	animationSpeed = 10000;
 	killsStarted = 0;
-
+	gl = multipleAdversityMngr_->getGameLogic();
 }
 
 void IngredientsDeathAdversity::update()
@@ -61,7 +61,7 @@ void IngredientsDeathAdversity::start()
 {
 	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	numKills = (ingredients.size() / 2);
+	numKills = (ingredients.size()-1);
 	percentagePerKill = 1 / (numKills + 1);
 	//Me quedo con unos cuants ingredientes aleatorios
 	while (ingInfo.size() < numKills) {
@@ -99,9 +99,8 @@ void IngredientsDeathAdversity::killIngredients()
 void IngredientsDeathAdversity::killIngredient()
 {
 	if (killsDone < numKills) {
-		multipleAdversityMngr_->getGhostPool()->activateGhost(ingInfo.at(killsDone).pos);
 		if (ingInfo.at(killsDone).ing != nullptr) {
-			multipleAdversityMngr_->getIngredientsPool()->deleteIngredient(ingInfo.at(killsDone).ing->getIt());
+			gl->ingredientDeath(ingInfo.at(killsDone).ing);
 			ingInfo.at(killsDone).ing = nullptr;
 		}
 		ingInfo.at(killsDone).dead = true;
