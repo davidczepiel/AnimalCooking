@@ -156,6 +156,8 @@ MenuState::MenuState(AnimalCooking* ac) : State(ac), state(SelectionState::Play)
 		bool v;
 		f >> v; if (!v) SDLGame::instance()->toggleFullScreen();
 		f >> v; SDLGame::instance()->getOptions().showKeyToPress = v;
+		f >> v; SDLGame::instance()->getOptions().usePS4_symbols_[0] = v;
+		f >> v; SDLGame::instance()->getOptions().usePS4_symbols_[1] = v;
 
 		loadPlayer(f, 0, SDLGame::instance()->getOptions());
 		loadPlayer(f, 1, SDLGame::instance()->getOptions());

@@ -7,12 +7,12 @@ class GpadKeySwitcher : public Component
 {
 public:
 	GpadKeySwitcher(int player, int buttonWidth, int buttonHeight, bool navEnabled) : Component(ecs::GpadKeySwitcher),
-		focus(0), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight), navEnabled(navEnabled), update_(true) {}
+		focus(1), switchers_(), player_(player), buttonWidth_(buttonWidth), buttonHeight_(buttonHeight), navEnabled(navEnabled), update_(true) {}
 	~GpadKeySwitcher() {
-		for (SwitcherGPad* s : switchers_)
+		for (KeySwitcher* s : switchers_)
 			delete s;
 	}
-	const vector<SwitcherGPad*>& getSwitchers() const { return switchers_; }
+	const vector<KeySwitcher*>& getSwitchers() const { return switchers_; }
 	const int& getPlayer() const { return player_; }
 	inline const bool& onTop() { return focus == 0; }
 
@@ -24,7 +24,7 @@ public:
 	void addFocushed(const int& delta);
 
 private:
-	vector<SwitcherGPad*> switchers_;
+	vector<KeySwitcher*> switchers_;
 	bool navEnabled, update_;
 	int focus;
 	int player_;

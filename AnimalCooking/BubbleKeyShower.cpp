@@ -122,18 +122,25 @@ void BubbleKeyShower::renderFeedBackImage(const Vector2D& position, const string
 
 	auto itFind = keyToTexture_[0].find(key);
 
+	Texture* keyText = itFind->second;
+
 	if (!SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
 		//xbox
-		itFind = keyToTexture_[1].find(key);
-	}
-	
+		auto itFind2 = keyToTexture_[1].find(key);
 
-	if (itFind == keyToTexture_[0].end() || itFind == keyToTexture_[1].end() || itFind->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
+		if (itFind2 == keyToTexture_[1].end() || itFind2->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
+			renderFeedBackText(position, msg, key);
+			return;
+		}
+		else 
+			keyText = itFind2->second;
+	}
+	else if (itFind == keyToTexture_[0].end() || itFind->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
 		renderFeedBackText(position, msg, key);
 		return;
 	}
 
-	Texture* keyText = itFind->second;
+	
 
 	Texture name = Texture(SDLGame::instance()->getRenderer(), msg + "  ",
 		SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese50), { COLOR(0x000000ff) });

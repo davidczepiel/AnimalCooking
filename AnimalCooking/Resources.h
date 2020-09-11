@@ -100,8 +100,7 @@ public:
 		Config_SliderSelected,
 		Config_SoundIcon,
 		Config_SoundVolumeTitle,
-		Config_XBoxIcon,
-		Config_Ps4Icon,
+		Config_XBoxOrPs4Icon,
 
 		//---->Creditos<-----
 		LogoTenByTen,

@@ -76,7 +76,8 @@ void ConfigState::saveVolumeSetting(ofstream& f)
 
 void ConfigState::saveBooleansSetting(ofstream& f)
 {
-	f << game_->getIfFullscreen() << " " << game_->getOptions().showKeyToPress << endl;
+	f << game_->getIfFullscreen() << " " << game_->getOptions().showKeyToPress << " " 
+		<< game_->getOptions().usePS4_symbols_[0] << " " << game_->getOptions().usePS4_symbols_[1] << endl;
 }
 
 void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
@@ -110,6 +111,8 @@ void ConfigState::loadBooleansSetting(ifstream& f)
 	bool value;
 	f >> value; if (value && !game_->getIfFullscreen()) game_->toggleFullScreen();
 	f >> value; game_->getOptions().showKeyToPress = value;
+	f >> value; game_->getOptions().usePS4_symbols_[0] = value;
+	f >> value; game_->getOptions().usePS4_symbols_[1] = value;
 }
 
 
@@ -217,37 +220,6 @@ void ConfigState::initButtons()
 	helper->addComponent<ButtonChangeOnClick>(game_->getOptions().showKeyToPress);
 	bcr = helper->addComponent<ButtonCheckRenderer>(game_->getTextureMngr()->getTexture(Resources::Config_ReminderFocusedText), game_->getTextureMngr()->getTexture(Resources::Config_ReminderUnFocusedText));
 	bb->setButtonCheckRenderer(bcr);
-
-	//Symbol 1 button
-	GPadController* gpCont = GPadController::instance();
-	symbolPlayer1 = nullptr;
-	if (gpCont->playerControllerConnected(0)) {
-		symbolPlayer1 = stage->addEntity();
-		stage->addToGroup(symbolPlayer1, ecs::GroupID::ui);
-		symbolPlayer1->addComponent<Transform>(
-			Vector2D(1225, 290),
-			Vector2D(), 50, 50, 0);
-		bb = symbolPlayer1->addComponent<ButtonBehaviour>(symbolCallback1, app);
-		symbolPlayer1->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[0]);
-		bcr = symbolPlayer1->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
-		bcr->setCheckedAndUncheckedTextures(Resources::TextureId::Config_XBoxIcon, Resources::TextureId::Config_Ps4Icon);
-		bb->setButtonCheckRenderer(bcr);
-	}
-
-	//Symbol 2 button
-	symbolPlayer2 = nullptr;
-	if (gpCont->playerControllerConnected(1)) {
-		symbolPlayer2 = stage->addEntity();
-		stage->addToGroup(symbolPlayer2, ecs::GroupID::ui);
-		symbolPlayer2->addComponent<Transform>(
-			Vector2D(1795, 290),
-			Vector2D(), 50, 50, 0);
-		bb = symbolPlayer2->addComponent<ButtonBehaviour>(symbolCallback2, app);
-		symbolPlayer2->addComponent<ButtonChangeOnClick>(game_->getOptions().usePS4_symbols_[1]);
-		bcr = symbolPlayer2->addComponent<ButtonCheckRenderer>(nullptr, nullptr);
-		bcr->setCheckedAndUncheckedTextures(Resources::TextureId::Config_XBoxIcon, Resources::TextureId::Config_Ps4Icon);
-		bb->setButtonCheckRenderer(bcr);
-	}
 }
 
 void ConfigState::initSliders()
