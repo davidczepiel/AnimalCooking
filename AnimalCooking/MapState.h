@@ -71,7 +71,9 @@ private:
 	Texture* starScore_;
 	Texture* starScoreBackground_;
 	Texture* totalStars_;
+	Texture* panelStars_;
 	SDL_Rect starScoreRect_;
+	SDL_Rect starPanelRect_;
 	SDL_Rect TotalStarsRect_;
 	SDL_Rect starScoreBackGroundRect_;
 

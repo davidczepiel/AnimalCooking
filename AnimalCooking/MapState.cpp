@@ -41,11 +41,16 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
+	//Estrellas y panel estrellas
 	starScore_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
 	starScoreBackground_ = game_->getTextureMngr()->getTexture(Resources::Star);
+	panelStars_ = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
+	//
 	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
 	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
 	TotalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
+	starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
+
 	chooseOption();
 }
 
@@ -146,6 +151,7 @@ void MapState::draw()
 		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	}
 	if (inMap) {
+		panelStars_->render(starPanelRect_);
 		starScoreBackground_->render(starScoreBackGroundRect_);
 		starScore_->render(starScoreRect_);
 		totalStars_->render(TotalStarsRect_);
