@@ -22,14 +22,14 @@ Texture* BubbleKeyShower::getTexture(const string& s, const int player) const
 {
 	if (!SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
 		//xbox
-		auto itFind = keyToTexture_[1].find(s);
-		return (itFind == keyToTexture_[1].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
+		auto itFind = keyToTexture_[0].find(s);
+		return (itFind == keyToTexture_[0].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
 			itFind->second; //Devuelvo la textura si existe
 	}
 	else {
 		//ps4
-		auto itFind = keyToTexture_[0].find(s);
-		return (itFind == keyToTexture_[0].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
+		auto itFind = keyToTexture_[1].find(s);
+		return (itFind == keyToTexture_[1].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
 			itFind->second; //Devuelvo la textura si existe
 	}
 }
@@ -124,16 +124,15 @@ void BubbleKeyShower::renderFeedBackImage(const Vector2D& position, const string
 
 	Texture* keyText = itFind->second;
 
-	if (!SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
-		//xbox
+	if (SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
+		//ps4
 		auto itFind2 = keyToTexture_[1].find(key);
 
 		if (itFind2 == keyToTexture_[1].end() || itFind2->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
 			renderFeedBackText(position, msg, key);
 			return;
 		}
-		else 
-			keyText = itFind2->second;
+		else keyText = itFind2->second;
 	}
 	else if (itFind == keyToTexture_[0].end() || itFind->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
 		renderFeedBackText(position, msg, key);
