@@ -34,21 +34,22 @@ void ButtonCheckRenderer::draw()
 			else
 				checked_->render(dest);
 		}
+		if (textFocused_ != nullptr && textUnFocused_ != nullptr) { //Si hay textos
+			//Texto
+			dest.x = dest.x + dest.w + 20;
+			dest.w = textFocused_->getWidth();
+			dest.h = textFocused_->getHeight();
 
-		//Texto
-		dest.x = dest.x + dest.w + 20;
-		dest.w = textFocused_->getWidth();
-		dest.h = textFocused_->getHeight();
+			ButtonState state_ = ButtonState::Unfocushed;
+			if (buttonBehaviour_ && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()) ||
+				buttonBehaviourNC_ && (buttonBehaviourNC_->getFocusByController() || buttonBehaviourNC_->getFocusByMouse()))
+				state_ = ButtonState::Focushed;
 
-		ButtonState state_ = ButtonState::Unfocushed;
-		if (buttonBehaviour_ && (buttonBehaviour_->getFocusByController() || buttonBehaviour_->getFocusByMouse()) ||
-			buttonBehaviourNC_ && (buttonBehaviourNC_->getFocusByController() || buttonBehaviourNC_->getFocusByMouse()))
-			state_ = ButtonState::Focushed;
-
-		if (state_ == ButtonState::Unfocushed)
-			textUnFocused_->render(dest);
-		else
-			textFocused_->render(dest);	
+			if (state_ == ButtonState::Unfocushed)
+				textUnFocused_->render(dest);
+			else
+				textFocused_->render(dest);	
+		}
 	}
 }
 

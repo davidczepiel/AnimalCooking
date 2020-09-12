@@ -73,6 +73,9 @@ public:
 		GPad_l3,
 		GPad_start,
 		GPad_back,
+		GPad_circle,
+		GPad_box,
+		GPad_triangle,
 
 		//---->Config<---------
 		Config_BackButton,
@@ -97,7 +100,7 @@ public:
 		Config_SliderSelected,
 		Config_SoundIcon,
 		Config_SoundVolumeTitle,
-
+		Config_XBoxOrPs4Icon,
 
 		//---->Creditos<-----
 		LogoTenByTen,
@@ -695,6 +698,7 @@ public:
 		MenuInicio,
 		Level1,
 		Level10,
+		Level15,
 		Beat,
 		Cheer,
 		Boooo,

@@ -70,6 +70,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, GPad_l3, "../AnimalCooking/resources/images/Menu/ButtonUIMando/lsButton.png" },
 	{ Basic, GPad_start, "../AnimalCooking/resources/images/Menu/ButtonUIMando/startButton.png" },
 	{ Basic, GPad_back, "../AnimalCooking/resources/images/Menu/ButtonUIMando/selectButton.png" },
+	{ Basic, GPad_circle, "../AnimalCooking/resources/images/Menu/ButtonUIMando/circleButton.png" },
+	{ Basic, GPad_box,"../AnimalCooking/resources/images/Menu/ButtonUIMando/squareButton.png" },
+	{ Basic, GPad_triangle, "../AnimalCooking/resources/images/Menu/ButtonUIMando/triangleButton.png" },
 
 	//---->Config<---------
 
@@ -584,6 +587,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, Config_BackButton,"../AnimalCooking/resources/images/ConfigMenu/backButton.png",1,3},
 	{Basic, Config_CerdoClick,"../AnimalCooking/resources/images/ConfigMenu/cerdoClick.png",1,3},
 	{Basic, Config_ChickenClick,"../AnimalCooking/resources/images/ConfigMenu/gallinaClick.png",1,3},
+	{Basic, Config_XBoxOrPs4Icon,"../AnimalCooking/resources/images/ConfigMenu/XBOXorPS4.png", 1, 4},
 
 	{Basic, buttonGo,"../AnimalCooking/resources/images/ScreenLoader/buttonGo.png",1,3},
 	//---------
@@ -671,7 +675,8 @@ vector<Resources::MusicInfo> Resources::musics_{
 	//
 	{Basic, MenuInicio, "../AnimalCooking/resources/sounds/Menu_inicio.ogg"},
 	{AllLevels, Level1, "../AnimalCooking/resources/sounds/Ingame piano.ogg"},
-	{AllLevels, Level10, "../AnimalCooking/resources/sounds/Animal cooking winter.ogg"}
+	{AllLevels, Level10, "../AnimalCooking/resources/sounds/Animal cooking winter.ogg"},
+	{AllLevels, Level15, "../AnimalCooking/resources/sounds/Animal cooking japan.ogg"}
 };
 
 vector<Resources::SoundInfo> Resources::sounds_{
