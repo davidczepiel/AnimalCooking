@@ -2,6 +2,7 @@
 #include <vector>
 #include <SDL_joystick.h>
 #include "Vector2D.h"
+#include "Timer.h"
 #include <SDL.h>
 using namespace std;
 
@@ -25,6 +26,7 @@ public:
 	bool playerPressed(int player, SDL_GameControllerButton button);
 	const bool& isAnyButtonJustPressed() { return lastButtonPressed_.first; }
 	const SDL_GameControllerButton& buttonJustPressed() { return lastButtonPressed_.second; }
+	void sleep(double time);
 
 	void setIsAnyButtonJustPressed() { lastButtonPressed_.first = false; }
 
@@ -41,5 +43,6 @@ private:
 	std::pair<bool, SDL_GameControllerButton> lastButtonPressed_;
 	bool lastButtonIsBeingPressed = false;
 	static const int m_joystickDeadZone = 10000;
+	Timer* sleepTimer;
 };
 

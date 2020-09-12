@@ -53,6 +53,7 @@ public:
 		MapStateBackground,
 		MapState2Background,
 		MapState3Background,
+		MapState4Background,
 		MapStateInfoBox,
 		ButtonNext,
 		ButtonPrev,
@@ -72,6 +73,9 @@ public:
 		GPad_l3,
 		GPad_start,
 		GPad_back,
+		GPad_circle,
+		GPad_box,
+		GPad_triangle,
 
 		//---->Config<---------
 		Config_BackButton,
@@ -96,7 +100,7 @@ public:
 		Config_SliderSelected,
 		Config_SoundIcon,
 		Config_SoundVolumeTitle,
-
+		Config_XBoxOrPs4Icon,
 
 		//---->Creditos<-----
 		LogoTenByTen,
@@ -106,12 +110,22 @@ public:
 		Suelo,
 		Hierba,
 		HierbaOtono,
+		HierbaInvierno,
+		HierbaPrimavera,
+		NieveCollider,
+		IslaPequenaNieve,
+		IslaGrandeNieve,
+		IslaMedianaNieve,
+		SoloNieve,
+		SoloHielo,
+		Hielo,
 		OvenOFF,
 		OvenDerOFF,
 		OvenIzqOFF,
 		OvenOFFBordes,
 		SkilletOFF,
 		SkilletOFFEsquina,
+		SkilletOFFEsquinaIzq,
 		SkilletOFFBorde,
 		SkilletOFFArribaDecoracion,
 		SkilletOFFArriba,
@@ -122,7 +136,9 @@ public:
 		PlatosBordes,
 		PlatosVer,
 		PlatosVerDosBordes,
+		PlatosEsqSupDer,
 		Muro,
+		Muro1,
 		ParedCocina,
 		Valla,
 		VallaFinal,
@@ -139,12 +155,15 @@ public:
 		Red,
 		RedSucia,
 		Cubo,
+		CuboLleno,
 		Fregadero,
 		FregaderoON,
 		FregaderoFlip,
 		FregaderoFlipON,
 		FregaderoAbajo,
 		FregaderoAbajoON,
+		fregaderoAbajoEsq,
+		fregaderoAbajoEsqON,
 		FregaderoBordeIzq,
 		FregaderoBordeIzqON,
 		FregaderoEsqDchaArr,
@@ -153,6 +172,8 @@ public:
 		FregaderoFlipONBordeArriba,
 		FregaderoFlipSinIzq,
 		FregaderoFlipSinIzqON,
+		FregaderoAislado,
+		FregaderoAisladoON,
 		Panera,
 		PaneraVer,
 		PaneraVerSinDer,
@@ -183,7 +204,24 @@ public:
 		level12Menu,
 		level13Menu,
 		level14Menu,
+		LevelExtra3,
 		level15Menu,
+		level16Menu,
+		level17Menu,
+		level18Menu,
+		level19Menu,
+		levelExtra4Menu,
+		level20Menu,
+		level21Menu,
+		level22Menu,
+		level23Menu,
+		level24Menu,
+		levelExtra5Menu,
+		level26Menu,
+		level25Menu,
+		level27Menu,
+		level28Menu,
+	    level29Menu,
 		barraScreenLoaderBack,
 		barraScreenLoader,
 		buttonGo,
@@ -211,6 +249,7 @@ public:
 			EncimeraHBordeDerecha,
 			EncimeraHBordeIzquierda,
 			EncimeraVertAbajo,
+			EncimeraAbajoCont,
 			EncimeraVertSin_SinBordeIzq,
 			EncimeraVertSin_SinBordeDer,
 			EncimeraVEsquinaSuperior_SinBordeIzq,
@@ -244,12 +283,16 @@ public:
 		Burger2Order,
 		Burger3Order,
 		PizzaOrder,
+		Pizza1Order,
+		Pizza2Order,
+		Pizza3Order,
+		Pizza4Order,
+		Pizza5Order,
 		RoastOrder,
 		Roast1Order,
 		Roast2Order,
 		Roast3Order,
 		RiceDishOrder,
-		HotDogOrder,
 		RisottoOrder,
 		CookedFishOrder,
 		FriedVegsOrder,
@@ -274,6 +317,16 @@ public:
 		IcedRice2Order,
 		IcedRiceAndClamsOrder,
 		IcedRiceDishOrder,
+		Sushi1Order,
+		Sushi2Order,
+		Sushi3Order,
+		Sushi4Order,
+		Sushi5Order,
+		OnigiriOrder,
+		Teriyaki1Order,
+		Teriyaki2Order,
+		Teriyaki3Order,
+		Teriyaki4Order,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -297,6 +350,7 @@ public:
 		BreadBurgerT,
 		BreadHotDogT,
 		PizzaMassT,
+		GratedMeatT, 
 
 		SaladT,
 		Salad1T,
@@ -310,6 +364,11 @@ public:
 		Burger3T,
 
 		PizzaT,
+		Pizza1T,
+		Pizza2T,
+		Pizza3T,
+		Pizza4T,
+		Pizza5T,
 
 		RoastT,
 		Roast1T,
@@ -317,7 +376,6 @@ public:
 		Roast3T,
 
 		RiceDishT,
-		HotDogT,
 		RisottoT,
 		CookedFishT,
 
@@ -352,6 +410,27 @@ public:
 		IcedRiceAndClamsT,
 		IcedRiceDishT,
 
+		NoriT,
+		SlicedSalmonT,
+		SlicedAvocadoT,
+		GratedChickenT,
+		GratedSkilletChickenT,
+		Sushi1T,
+		Sushi2T,
+		Sushi3T,
+		Sushi4T,
+		Sushi5T,
+		OnigiriT,
+		Teriyaki1T,
+		Teriyaki2T,
+		Teriyaki3T,
+		Teriyaki4T,
+		
+		PerritoT,
+		Perrito1T,
+		Perrito2T,
+		Perrito3T,
+
 		//FeedBackImages---------------------------------------------
 			//Food
 			PoopFeedBack,
@@ -376,6 +455,7 @@ public:
 			BreadBurgerFeedBack,
 			BreadHotDogFeedBack,
 			PizzaMassFeedBack,
+			GratedMeatFeedBack,
 
 			SaladFeedBack,
 			Salad1FeedBack,
@@ -389,6 +469,11 @@ public:
 			Burger3FeedBack,
 
 			PizzaFeedBack,
+			Pizza1FeedBack,
+			Pizza2FeedBack,
+			Pizza3FeedBack,
+			Pizza4FeedBack,
+			Pizza5FeedBack,
 
 			RoastFeedBack,
 			Roast1FeedBack,
@@ -396,7 +481,6 @@ public:
 			Roast3FeedBack,
 
 			RiceDishFeedBack,
-			HotDogFeedBack,
 			RisottoFeedBack,
 			CookedFishFeedBack,
 
@@ -434,12 +518,34 @@ public:
 			SlicedPotatoSkilletFeedBack,
 			DressFeedBack,
 			MashedTomatoFeedBack,
+
+			NoriFeedBack,
+			SlicedSalmonFeedBack,
+			SlicedAvocadoFeedBack,
+			GratedChickenFeedBack,
+			GratedSkilletChickenFeedBack,
+			Sushi1FeedBack,
+			Sushi2FeedBack,
+			Sushi3FeedBack,
+			Sushi4FeedBack,
+			Sushi5FeedBack,
+			OnigiriFeedBack,
+			Teriyaki1FeedBack,
+			Teriyaki2FeedBack,
+			Teriyaki3FeedBack,
+			Teriyaki4FeedBack,
+			
+			PerritoFeedBack,
+			Perrito1FeedBack,
+			Perrito2FeedBack,
+			Perrito3FeedBack,
 			
 			//Utensils
 			CuchilloFeedBack,
 			MazoFeedBack,
 			RedFeedBack,
 			RalladorFeedBack,
+			CuboFeedBack,
 			//General
 			Panel,
 			PlatoFeedBack,
@@ -450,6 +556,9 @@ public:
 		Arroz,
 		ArrozBordeSup,
 		ArrozSinBordeDer,
+		ArrozHor,
+		ArroceraAislada,
+		ArroceraBordes,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
@@ -459,6 +568,9 @@ public:
 		AceiteSin,
 		AceiteVerticalBordeSup,
 		EncimeraMasa,
+		NoriFoodGiver,
+		algasVDcha,
+		algasHBordes,
 
 		//CreditState
 		woodCredits,
@@ -477,6 +589,7 @@ public:
 		MapIcon,
 		SkilletON,
 		SkilletONEsquina,
+		SkilletONEsquinaIzq,
 		SkilletONBorde,
 		SkilletONArribaDecoracion,
 		SkilletONArriba,
@@ -501,6 +614,8 @@ public:
 		Carrot,
 		Sausage,
 		Snowman,
+		Salmon,
+		Avocado,
 		Puerta,
 		FireOverHeated,
 		LightingStrike,
@@ -539,7 +654,8 @@ public:
 		RainAdversity,
 		HookAdversity,
 		PidgeonAdversity,
-		Blizzard
+		Blizzard,
+		FlowerAdversity
 
 	};
 
@@ -570,13 +686,16 @@ public:
 		clam,
 		cheese,
 		fish,
-		snowman
+		snowman,
+		salmon,
+		avocado
 	};
 
 	enum AudioId : std::size_t {
 		// music
 		MenuInicio,
 		Level1,
+		Level10,
 		Beat,
 		Cheer,
 		Boooo,
@@ -598,6 +717,13 @@ public:
 		IngredientSpawned,
 		OrderRecieved,
 		PlaneSound,
+		RainSound,
+		ThunderSound,
+		burningFireSound,
+		pigeonSound,
+		star1Sound,
+		star2Sound,
+		star3Sound,
 
 		Tecla1, //Variaciones que suenan al pulsar un boton
 		Tecla2,
@@ -702,6 +828,13 @@ public:
 		CaughtSausageSkillet,
 		SlicedPotatoSkillet,
 		FishSkillet,
+		Nori,
+		SlicedSalmon,
+		SlicedAvocado,
+		GratedChicken,
+		GratedSkilletChicken,
+		GratedMeat,
+
 		///
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
@@ -715,12 +848,16 @@ public:
 		Burger2,
 		Burger3,
 		Pizza,
+		Pizza1,
+		Pizza2,
+		Pizza3,
+		Pizza4,
+		Pizza5,
 		Roast,
 		Roast1,
 		Roast2,
 		Roast3,
 		RiceDish,
-		HotDog,
 		Risotto,
 		CookedFish,
 		FriedVegs,
@@ -746,7 +883,22 @@ public:
 		IcedRiceAndClams,
 		IcedRiceDish,
 		///
-
+		Sushi1,
+		Sushi2,
+		Sushi3,
+		Sushi4,
+		Sushi5,
+		Onigiri,
+		Teriyaki1,
+		Teriyaki2,
+		Teriyaki3,
+		Teriyaki4,
+		///
+		
+		Perrito,
+		Perrito1,
+		Perrito2,
+		Perrito3,
 	};
 
 	enum PickableType : std::size_t {

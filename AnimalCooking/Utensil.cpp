@@ -150,9 +150,9 @@ void Utensil::feedback(int player)
 	if (myState != State::playerHand) {
 		if (SDLGame::instance()->getOptions().showKeyToPress) {
 			if (GPadController::instance()->playerControllerConnected(player))
-				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), true);
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GameControllerGetStringForButton(SDLGame::instance()->getOptions().players_gPadButtons[player].PICKUP), player, true);
 			else
-				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP));
+				SDLGame::instance()->renderFeedBack(position_, "Pick up", SDL_GetKeyName(SDLGame::instance()->getOptions().players_keyboardKeys[player].PICKUP), player);
 		}
 		feedbackVisual_->render(rect);
 	}
@@ -215,7 +215,7 @@ Mace::Mace(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorSucio);
-	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Rallador);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RalladorFeedBack);
 	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 
@@ -230,7 +230,7 @@ Grater::Grater(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 Net::Net(Transport* p1, Transport* p2) :Utensil(p1, p2) {
 	cleantexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Red);
 	dirtyTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
-	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Cuchillo);
+	attackTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedSucia);
 	feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::RedFeedBack);
 	iconTexture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::PingUtensil);
 

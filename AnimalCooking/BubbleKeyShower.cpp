@@ -3,26 +3,40 @@
 #include "SDL_macros.h"
 
 
-BubbleKeyShower::BubbleKeyShower(SDLGame* game)
+BubbleKeyShower::BubbleKeyShower(SDLGame* game):keyToTexture_()
 {
 	fillMap(game);
 }
 
-void BubbleKeyShower::renderFeedBack(const Vector2D& position, const string& msg, const string& key, const bool& gPadKey)
+void BubbleKeyShower::renderFeedBack(const Vector2D& position, const string& msg, const string& key, const int player, const bool& gPadKey)
 {
 	if (gPadKey) { //Hay que usar una imagen
-		renderFeedBackImage(position, msg, key);
+		renderFeedBackImage(position, msg, key, player);
 	}
 	else { //Hay que usar texto
 		renderFeedBackText(position, msg, key);
 	}
 }
 
+Texture* BubbleKeyShower::getTexture(const string& s, const int player) const
+{
+	if (!SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
+		//xbox
+		auto itFind = keyToTexture_[0].find(s);
+		return (itFind == keyToTexture_[0].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
+			itFind->second; //Devuelvo la textura si existe
+	}
+	else {
+		//ps4
+		auto itFind = keyToTexture_[1].find(s);
+		return (itFind == keyToTexture_[1].end()) ? nullptr : //Devuelvo nulo si no ha sido posible encontrarla
+			itFind->second; //Devuelvo la textura si existe
+	}
+}
+
 void BubbleKeyShower::fillMap(SDLGame* game)
 {
-	//TODO: poner las texturas
-
-	keyToTexture_.insert({ //Map con todos los nombres asociados a cada textura
+	keyToTexture_[0].insert({ //Map con todos los nombres asociados a cada textura XBOX
 		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_a) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_b) }, 
 		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_y) },
 		{ "start", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_start) }, { "back", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_back) },
@@ -32,6 +46,15 @@ void BubbleKeyShower::fillMap(SDLGame* game)
 		{ "dpleft", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_left) }, { "dpright", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_right) },
 		});
 
+	keyToTexture_[1].insert({ //Map con todos los nombres asociados a cada textura PS4
+		{ "a", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_x) }, { "b", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_circle) },
+		{ "x", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_box) }, { "y", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_triangle) },
+		{ "start", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_start) }, { "back", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_back) },
+		{ "rightstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r3) }, { "leftstick", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l3) },
+		{ "leftshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_r1) }, { "rightshoulder", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_l1) },
+		{ "dpup", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_up) }, { "dpdown", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_down) },
+		{ "dpleft", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_left) }, { "dpright", game->getTextureMngr()->getTexture(Resources::TextureId::GPad_right) },
+		});
 }
 
 void BubbleKeyShower::renderFeedBackText(const Vector2D& position, const string& msg, const string& key)
@@ -94,16 +117,29 @@ void BubbleKeyShower::renderFeedBackText(const Vector2D& position, const string&
 	keyText.render(keyRect);
 }
 
-void BubbleKeyShower::renderFeedBackImage(const Vector2D& position, const string& msg, const string& key)
+void BubbleKeyShower::renderFeedBackImage(const Vector2D& position, const string& msg, const string& key, const int player)
 {
-	auto itFind = keyToTexture_.find(key);
 
-	if (itFind == keyToTexture_.end() || itFind->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
+	auto itFind = keyToTexture_[0].find(key);
+
+	Texture* keyText = itFind->second;
+
+	if (SDLGame::instance()->getOptions().usePS4_symbols_[player]) { //Miro si tengo que buscar en el map de xbox o el de ps4
+		//ps4
+		auto itFind2 = keyToTexture_[1].find(key);
+
+		if (itFind2 == keyToTexture_[1].end() || itFind2->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
+			renderFeedBackText(position, msg, key);
+			return;
+		}
+		else keyText = itFind2->second;
+	}
+	else if (itFind == keyToTexture_[0].end() || itFind->second == nullptr) { //Si no hay una imagen que corresponda, renderizo su nombre
 		renderFeedBackText(position, msg, key);
 		return;
 	}
 
-	Texture* keyText = itFind->second;
+	
 
 	Texture name = Texture(SDLGame::instance()->getRenderer(), msg + "  ",
 		SDLGame::instance()->getFontMngr()->getFont(Resources::FontId::QuarkCheese50), { COLOR(0x000000ff) });

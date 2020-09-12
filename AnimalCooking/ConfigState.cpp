@@ -76,7 +76,8 @@ void ConfigState::saveVolumeSetting(ofstream& f)
 
 void ConfigState::saveBooleansSetting(ofstream& f)
 {
-	f << game_->getIfFullscreen() << " " << game_->getOptions().showKeyToPress << endl;
+	f << game_->getIfFullscreen() << " " << game_->getOptions().showKeyToPress << " " 
+		<< game_->getOptions().usePS4_symbols_[0] << " " << game_->getOptions().usePS4_symbols_[1] << endl;
 }
 
 void ConfigState::loadPlayer(ifstream& f, Uint8 player, config::Options& o)
@@ -110,6 +111,8 @@ void ConfigState::loadBooleansSetting(ifstream& f)
 	bool value;
 	f >> value; if (value && !game_->getIfFullscreen()) game_->toggleFullScreen();
 	f >> value; game_->getOptions().showKeyToPress = value;
+	f >> value; game_->getOptions().usePS4_symbols_[0] = value;
+	f >> value; game_->getOptions().usePS4_symbols_[1] = value;
 }
 
 
@@ -127,6 +130,9 @@ void ConfigState::update()
 
 	GPadController* gpad = GPadController::instance();
 	if (gpad->isAnyButtonJustPressed() && (gpad->playerPressed(0, SDL_CONTROLLER_BUTTON_B) || gpad->playerPressed(1, SDL_CONTROLLER_BUTTON_B))) {
+		backButtonCallback(app);
+	}
+	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
 		backButtonCallback(app);
 	}
 }
@@ -301,4 +307,16 @@ void ConfigState::resButtonCallback(AnimalCooking* ac)
 {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->toggleFullScreen();
+}
+
+void ConfigState::symbolCallback1(AnimalCooking* ac)
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getOptions().usePS4_symbols_[0] = !SDLGame::instance()->getOptions().usePS4_symbols_[0];
+}
+
+void ConfigState::symbolCallback2(AnimalCooking* ac)
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getOptions().usePS4_symbols_[1] = !SDLGame::instance()->getOptions().usePS4_symbols_[1];
 }

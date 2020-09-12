@@ -49,7 +49,7 @@ void SDLGame::removeLevelInfos()
 }
 
 SDLGame::SDLGame(string windowTitle, int width, int height) :currentLevel(0),score(0),maxScore(0), unlockedLevels(0), maxLevels(0),
-		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen(){
+		windowTitle_(windowTitle), width_(width), height_(height), timersViewer_(nullptr), options_(), imFullscreen(), keyShower_(){
 	initSDL();
 	initResources();
 	
@@ -94,7 +94,7 @@ void SDLGame::initSDL() {
 	SDL_SetWindowResizable(window_, SDL_TRUE);
 
 	// Clear screen (background color).
-	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 0, 100, 100,
+	int sdlSetDrawColor_ret = SDL_SetRenderDrawColor(renderer_, 15, 0, 0,
 		255);  // Dark grey.
 	assert(sdlSetDrawColor_ret != -1);
 	int sdlRenderClear_ret = SDL_RenderClear(renderer_);

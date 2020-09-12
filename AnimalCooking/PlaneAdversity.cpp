@@ -136,7 +136,7 @@ void PlaneAdversity::update() {
 
 void PlaneAdversity::draw() {
 	if (!isBlizzard_) planeTexture_->render(planeRect_, angle_);
-	else blizzardTexture_->renderFrame(planeRect_, 0, blizzardFrame_, 0);
+	else blizzardTexture_->renderFrame(planeRect_, 0, blizzardFrame_, angle_);
 }
 
 void PlaneAdversity::reset() {

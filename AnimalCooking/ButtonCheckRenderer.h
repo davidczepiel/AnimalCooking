@@ -16,6 +16,11 @@ public:
 
 	inline void setActive(bool val) { active = val; }
 
+	void setCheckedAndUncheckedTextures(Resources::TextureId checked, Resources::TextureId unChecked) {
+		checked_ = game_->getTextureMngr()->getTexture(checked);
+		unChecked_ = game_->getTextureMngr()->getTexture(unChecked);
+	}
+
 private:
 	enum ButtonState : size_t {
 		Focushed,

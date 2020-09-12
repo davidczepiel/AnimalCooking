@@ -37,9 +37,35 @@ void SwitcherGPad::draw()
 	backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, col, 0);
 	name_->render(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth(), name_->getHeight()));
 
-	Texture* c2 = SDLGame::instance()->getKeyShower().getTexture(string(SDL_GameControllerGetStringForButton(gPad_keyToChange)));
+	Texture* c2 = SDLGame::instance()->getKeyShower().getTexture(string(SDL_GameControllerGetStringForButton(gPad_keyToChange)), player_);
 
 	c2->render(RECT(pos_.getX() + size_.getX() - 70 - 50, pos_.getY() + 20, 70, 70)); //70 Es el size del boton del mando
 
 	col = 1;
+}
+
+void SwitcherGPad_Boolean::update()
+{
+	focused_ = true;
+	GPadController* gpad = GPadController::instance();
+	if (gpad->isAnyButtonJustPressed()) {
+		SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+		SDL_GameControllerButton buttonHitted = gpad->buttonJustPressed();
+		if (buttonHitted == SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_A) { 
+			gPad_boolToChange = !gPad_boolToChange; 
+			state = State((state + 2) % 4);
+		}
+	}
+}
+
+void SwitcherGPad_Boolean::draw()
+{
+	int s = state;
+	if (focused_) {
+		s++;
+		//backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, 0, 0);
+	}
+	name_->renderFrame(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth() / 4, name_->getHeight()), 0, s, 0);
+	
+	focused_ = false;
 }

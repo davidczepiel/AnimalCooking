@@ -13,6 +13,7 @@
 #include "ButtonRenderer.h"
 #include "GPadController.h"
 #include "PauseState.h"
+#include "IntroState.h"
 
 
 using namespace std;
@@ -33,7 +34,7 @@ void AnimalCooking::initGame() {
 	GPadController::instance()->getPlayerGPADS();
 	//game_->toggleFullScreen();
 	//game_->getFSM()->pushState(new PlayState());
-	game_->getFSM()->pushState(new MenuState /*EndState*/(this));
+	game_->getFSM()->pushState(new IntroState /*EndState*/(this));
 	//game_->getFSM()->pushState(new MapState (this));
 	game_->getFSM()->refresh();
 
