@@ -65,7 +65,7 @@ void SwitcherGPad_Boolean::draw()
 		s++;
 		//backGround_->renderFrame(RECT(pos_.getX() - 145, pos_.getY() - 80, 550, 172), 0, 0, 0);
 	}
-	name_->renderFrame(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth() / 4, name_->getHeight()), 0, state, 0);
+	name_->renderFrame(RECT(pos_.getX() + 80, pos_.getY() + 20, name_->getWidth() / 4, name_->getHeight()), 0, s, 0);
 	
 	focused_ = false;
 }
