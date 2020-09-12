@@ -458,6 +458,8 @@ void MapState::setState() {
 	inMap = true;
 	if (totalStars_ != nullptr) delete totalStars_;
 	totalStars_ = new Texture(game_->getRenderer(), to_string(game_->getNumStars()), game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
+	if (game_->getNumStars() < 10) TotalStarsRect_.w = 97;
+	else TotalStarsRect_.w = 195;
 
 	placeHousesAndButtons();
 	

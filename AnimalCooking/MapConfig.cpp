@@ -221,7 +221,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "16 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(50, 580);
+	auxiliar.buttonPosition = Vector2D(200, 580);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
 	levelsRecipes_.push_back(auxiliar);
