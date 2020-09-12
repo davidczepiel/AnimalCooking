@@ -696,6 +696,7 @@ public:
 		MenuInicio,
 		Level1,
 		Level10,
+		Level15,
 		Beat,
 		Cheer,
 		Boooo,
