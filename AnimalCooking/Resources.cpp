@@ -329,6 +329,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels,Teriyaki2Order,"../AnimalCooking/resources/images/Pedidos/teriyaki2.png" },
 	{ AllLevels,Teriyaki3Order,"../AnimalCooking/resources/images/Pedidos/teriyaki3.png" },
 	{AllLevels,Teriyaki4Order,"../AnimalCooking/resources/images/Pedidos/teriyaki4.png"},
+	{ AllLevels,PerritoOrder,"../AnimalCooking/resources/images/Pedidos/hotdog.png" },
+	{ AllLevels,Perrito1Order,"../AnimalCooking/resources/images/Pedidos/hotdog1.png" },
+	{ AllLevels,Perrito2Order,"../AnimalCooking/resources/images/Pedidos/hotdog2.png" },
+	{ AllLevels,Perrito3Order,"../AnimalCooking/resources/images/Pedidos/hotdog3.png" },
 
 
 	//Foods-----------------------------------------------------------------
