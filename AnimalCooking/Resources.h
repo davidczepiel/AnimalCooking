@@ -329,6 +329,10 @@ public:
 		Teriyaki2Order,
 		Teriyaki3Order,
 		Teriyaki4Order,
+		PerritoOrder,
+		Perrito1Order,
+		Perrito2Order,
+		Perrito3Order,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
