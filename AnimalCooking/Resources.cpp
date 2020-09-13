@@ -132,6 +132,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels, PlatosVer,"../AnimalCooking/resources/images/Cocina/platosVer.png" },
 	{AllLevels, PlatosVerDosBordes,"../AnimalCooking/resources/images/Cocina/platosVerDosBordes.png"},
 	{ AllLevels, PlatosEsqSupDer,"../AnimalCooking/resources/images/Cocina/platosEsqSD.png" },
+	{ AllLevels, PlatosAislados,"../AnimalCooking/resources/images/Cocina/PlatosAislado.png" },
 	{AllLevels, Muro,"../AnimalCooking/resources/images/Cocina/muro.png"},
 	{AllLevels, Muro1,"../AnimalCooking/resources/images/Cocina/muro1.png"},
 	{AllLevels, ParedCocina,"../AnimalCooking/resources/images/Cocina/paredCocina.png"},
@@ -552,8 +553,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
 		{ AllLevels, ArrozHor,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraHor.png" },
 		{ AllLevels, ArroceraAislada,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraAislada.png" },
-
 		{ AllLevels, ArroceraBordes,"../AnimalCooking/resources/images/Cocina/foodgivers/ArroceraBordes.png" },
+		
+		{ AllLevels, horDogHBordeD,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogHBordeD.png" },
 		{ AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
 		{ AllLevels, algasVDcha,"../AnimalCooking/resources/images/Cocina/foodgivers/algasVDcha.png" },
