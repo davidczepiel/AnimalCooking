@@ -24,6 +24,7 @@ public:
 	bool playerControllerConnected(int id);
 	double getAxis(int player, SDL_GameControllerAxis axis);
 	bool playerPressed(int player, SDL_GameControllerButton button);
+	void sleepController(int player, int time);
 	const bool& isAnyButtonJustPressed() { return lastButtonPressed_.first; }
 	const SDL_GameControllerButton& buttonJustPressed() { return lastButtonPressed_.second; }
 	void sleep(double time);
@@ -43,6 +44,7 @@ private:
 	std::pair<bool, SDL_GameControllerButton> lastButtonPressed_;
 	bool lastButtonIsBeingPressed = false;
 	static const int m_joystickDeadZone = 10000;
-	Timer* sleepTimer;
+	Timer* sleepTimerP1;
+	Timer* sleepTimerP2;
 };
 

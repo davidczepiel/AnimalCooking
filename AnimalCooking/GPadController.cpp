@@ -7,12 +7,21 @@ unique_ptr<GPadController> GPadController::instance_;
 GPadController::GPadController() :player1_(nullptr),
 player2_(nullptr)
 {
-	sleepTimer = new Timer();
+	sleepTimerP1 = new Timer();
+	sleepTimerP2 = new Timer();
+	//GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(sleepTimerP1);
+	//GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer)->addTimer(sleepTimerP2);
+
 }
 
 void GPadController::update(SDL_Event& event) {
-	sleepTimer->update();
-	if (sleepTimer->isTimerEnd())sleepTimer->timerReset();
+
+	sleepTimerP1->update();
+	sleepTimerP2->update();
+
+	if (sleepTimerP1->isTimerEnd())sleepTimerP1->timerReset();
+	if (sleepTimerP2->isTimerEnd())sleepTimerP2->timerReset();
+
 	//Si se ha a�adido un mando se lo asigno al player que le falte
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 		if (player1_ == nullptr) {
@@ -87,18 +96,38 @@ double ::GPadController::getAxis(int player, SDL_GameControllerAxis axis) {
 bool GPadController::playerPressed(int id, SDL_GameControllerButton button) {
 	//Me hago con el mando que me interesa
 	SDL_GameController* c;
-	if (id == 0)c = player1_;
-	else c = player2_;
+	Timer* t;
+	if (id == 0) {
+		c = player1_;
+		t = sleepTimerP1;
+	}
+	else {
+		c = player2_;
+		t = sleepTimerP2;
+	}
 	//Si hay un mando asi conectado pregunto por la tecla, si no hay mando, no hay pulsaci�n
-	if (c != nullptr && c != NULL)
+	if (c != nullptr && c != NULL && !t->isStarted())
 		return SDL_GameControllerGetButton(c, button);
 	else
 		return false;
 }
 
+void GPadController::sleepController(int player, int time)
+{
+	Timer* t;
+	if (player == 0) {
+		t = sleepTimerP1;
+	}
+	else {
+		t = sleepTimerP2;
+	}
+	t->setTime(time);
+	t->timerStart();
+}
+
 void GPadController::sleep(double time)
 {
-	sleepTimer->timerReset();
-	sleepTimer->setTime(time);
-	sleepTimer->timerStart();
+	sleepTimerP1->timerReset();
+	sleepTimerP1->setTime(time);
+	sleepTimerP1->timerStart();
 }
