@@ -17,5 +17,7 @@ private:
 	TutorialManager* tutorialManager;
 
 	Texture* backGround_;
+
+	Entity* goLeftButton, *goRightButton;
 };
 

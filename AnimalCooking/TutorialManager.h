@@ -5,7 +5,7 @@
 class TutorialManager : public Component
 {
 public:
-	TutorialManager() : Component(ecs::TutorialManager), rect_(), background_(nullptr), images_(), index_(images_.begin()) {}
+	TutorialManager() : Component(ecs::TutorialManager), rect_(), background_(nullptr), images_(), index_() {}
 
 	void init() override;
 	void draw() override;

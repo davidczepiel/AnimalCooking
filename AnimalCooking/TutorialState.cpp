@@ -15,7 +15,7 @@ TutorialState::TutorialState(AnimalCooking* ac): State(ac),
 	stage->addToGroup(imagesManagerEntity, ecs::GroupID::Layer1);
 	imagesManagerEntity->addComponent<Transform>(
 		Vector2D(108, 192),
-		Vector2D(), 864, 1536, 0);
+		Vector2D(), 1536, 864, 0);
 	tutorialManager = imagesManagerEntity->addComponent<TutorialManager>();
 
 //Exit
@@ -34,22 +34,22 @@ TutorialState::TutorialState(AnimalCooking* ac): State(ac),
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
 	goLeftButton->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
 	bb = goLeftButton->addComponent<ButtonBehaviour>(moveLeft, app);
-	br = goLeftButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
+	br = goLeftButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 
 //Right
 	Entity* goRightButton = stage->addEntity();
 	stage->addToGroup(goRightButton, ecs::GroupID::topLayer);
-	goRightButton->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
+	goRightButton->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), game_->getWindowHeight() / 2), Vector2D(), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
 	bb = goRightButton->addComponent<ButtonBehaviour>(moveRight, app);
-	br = goRightButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
+	br = goRightButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 
 //PadNavigation
 	Entity* padNavigation = stage->addEntity();
 	ButtonPadNavigation* bp = padNavigation->addComponent<ButtonPadNavigation>();
 	bp->onlyListenTo(0);
-	bp->AddButton(exitButton, nullptr, goLeftButton, nullptr, nullptr);
+	bp->AddButton(exitButton, nullptr, goLeftButton, goLeftButton, goRightButton);
 	bp->AddButton(goLeftButton, exitButton, nullptr, nullptr, goRightButton);
 	bp->AddButton(goRightButton, exitButton, nullptr, goLeftButton, nullptr);
 }

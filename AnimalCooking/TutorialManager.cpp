@@ -9,15 +9,16 @@ void TutorialManager::init()
 
 	rect_ = RECT(tr_->getPos().getX(), tr_->getPos().getX(), tr_->getW(), tr_->getH());
 
-	background_ = game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImageBackground*/ 0);
+	background_ = game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImageBackground);
 
-	images_ = { game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage0*/ 0),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage1*/ 1),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage2*/ 2),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage3*/ 3),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage4*/ 4),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage5*/ 5),
-				game_->getTextureMngr()->getTexture(/*Resources::TextureId::TutorialImage6*/ 6)};
+	images_ = { game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage0),
+				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage1),
+				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage2),
+				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage3),
+				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage4),
+				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage5)};
+
+	index_ = images_.begin();
 }
 
 void TutorialManager::draw()
