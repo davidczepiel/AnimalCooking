@@ -77,6 +77,8 @@ private:
 	SDL_Rect TotalStarsRect_;
 	SDL_Rect starScoreBackGroundRect_;
 
+	jute::jValue& jsonGeneral;
+
 	double casillaX;
 	double casillaY;
 	int currentLevel_;

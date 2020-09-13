@@ -77,3 +77,20 @@ void ButtonRenderer::clicked()
 	clickedTime_ = game_->getTime(); 
 	if (buttonOnClick_) buttonOnClick_->changeState();
 }
+
+void ButtonRendererMapArrow::init()
+{
+	ButtonRenderer::init();
+}
+
+void ButtonRendererMapArrow::draw()
+{
+	if (!available && active) {
+		Vector2D pos = ownerTransform_->getPos();
+		SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
+
+		background_->renderFrame(dest, 0, 3, ownerTransform_->getRot());
+		return;
+	}
+	ButtonRenderer::draw();
+}

@@ -15,7 +15,7 @@ public:
 	void clicked();
 	inline void setActive(bool val) { active = val; }
 
-private:
+protected:
 	enum ButtonState : size_t {
 		Focushed,
 		Unfocushed,
@@ -31,5 +31,19 @@ private:
 
 	Uint32 clickedTime_, clickedTimeCD_;
 	bool active;
+};
+
+class ButtonRendererMapArrow : public ButtonRenderer
+{
+public: 
+	ButtonRendererMapArrow(Texture* background, Texture* text) : ButtonRenderer(background, text), available(true) {}
+	~ButtonRendererMapArrow() {}
+
+	void init() override;
+	void draw() override;
+
+	inline void setAvailable(bool av_) { available = av_; }
+private:
+	bool available;
 };
 

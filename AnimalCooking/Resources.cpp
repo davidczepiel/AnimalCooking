@@ -633,7 +633,7 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	{Basic, LightingStrike,"../AnimalCooking/resources/images/Adversities/lighting.png",1,8},
 	{Basic, LightingExplosion,"../AnimalCooking/resources/images/Adversities/explosion.png",1,7},
 	{Basic, MapRestaurantButton, "../AnimalCooking/resources/images/Mapstate/MapStateBotones.png",1,3 },	//Mapstate
-	{Basic, ButtonNext, "../AnimalCooking/resources/images/Mapstate/nextButton.png",1,3 },					//Mapstate
+	{Basic, ButtonNext, "../AnimalCooking/resources/images/Mapstate/nextButton.png",1,4 },					//Mapstate
 	{Basic, ButtonPrev, "../AnimalCooking/resources/images/Mapstate/prevButton.png",1,3 },					//Mapstate
 	{Basic, TextureId::MapStatePlayButton, "../AnimalCooking/resources/images/Mapstate/mapStatePlayButton.png",1,3 },
 	{Basic, Explosion, "../AnimalCooking/resources/images/Animaciones/Otro/humillo.png",1,7 },

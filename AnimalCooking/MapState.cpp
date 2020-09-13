@@ -27,7 +27,8 @@ MapState::MapState(AnimalCooking* ac) :
 	levelPacks_(6),
 	lastLevel_(0),
 	playerName_(""),
-	totalStars_(nullptr)
+	totalStars_(nullptr),
+	jsonGeneral(SDLGame::instance()->getJsonGeneral())
 {
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
@@ -165,7 +166,7 @@ void MapState::update()
 	if (transition_) {
 
 		xTransition_ += transitionVelocity_ * transitionDirection_;
-		if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
+		if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {	//Termina la transicion
 			xTransition_ = 0;
 			transition_ = false;
 			for (auto& e : levelButtonsPool_) {
@@ -192,6 +193,11 @@ void MapState::update()
 			else {
 				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(true);
 				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+			}
+
+			if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+				static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
 			}
 		}
 	}
@@ -495,11 +501,15 @@ void MapState::placeHousesAndButtons()
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
 	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight()/3);
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
-	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
+	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRendererMapArrow>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
 	if (currentMapScene_ == bgText_.size() - 1) {
 		br->setActive(false);
+		bb->setActive(false);
+	}
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+		static_cast<ButtonRendererMapArrow*>(br)->setAvailable(false);
 		bb->setActive(false);
 	}
 
@@ -530,6 +540,14 @@ void MapState::refreshHousesAndButtons()
 		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
 		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
 		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
+	}
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
+	}
+	else {
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(true);
+		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
 	}
 }
 
