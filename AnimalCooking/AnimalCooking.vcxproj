@@ -320,6 +320,8 @@
     <ClInclude Include="Tool.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Transport.h" />
+    <ClInclude Include="TutorialManager.h" />
+    <ClInclude Include="TutorialState.h" />
     <ClInclude Include="Utensil.h" />
     <ClInclude Include="UtensilsAdder.h" />
     <ClInclude Include="UtensilsMotion.h" />
@@ -488,6 +490,8 @@
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="TutorialManager.cpp" />
+    <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Utensil.cpp" />
     <ClCompile Include="UtensilsAdder.cpp" />
     <ClCompile Include="UtensilsMotion.cpp" />

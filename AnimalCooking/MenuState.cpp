@@ -32,6 +32,10 @@ void MenuState::leftState()
 		state = Play;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
 		break;
+	case Tutorial:
+		state = Tutorial;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuTutorialButton));
+		break;
 	case Exit:
 		state = Credits;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuCreditsButton));
@@ -55,6 +59,10 @@ void MenuState::rightState()
 		state = Credits;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuCreditsButton));
 		break;
+	case Tutorial:
+		state = Tutorial;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuTutorialButton));
+		break;
 	case Credits:
 		state = Exit;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuExitButton));
@@ -75,6 +83,9 @@ void MenuState::selectedState()
 	case Play:
 		playMenuCallback();
 		break;
+	case Tutorial:
+		tutorialMenuCallback();
+		break;
 	case Exit:
 		closeGame();
 		break;
@@ -92,6 +103,12 @@ void MenuState::optionsMenuCallback() {
 }
 
 void MenuState::creditsMenuCallback() {
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
+}
+
+void MenuState::tutorialMenuCallback()
+{
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
 }

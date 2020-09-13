@@ -30,6 +30,7 @@ public:
 		MainMenuArrowR,
 		MainMenuPlayButton,
 		MainMenuConfigButton,
+		MainMenuTutorialButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
 		//----->InGame<--------------

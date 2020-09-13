@@ -38,7 +38,6 @@ enum CmpId : CmpIdType {
 	DishViewer,
 	DishStack,
 	DishStackViewer,
-	InOutFood,		//ELIMINAR SI NO SE IMPLEMENTA
 	DishFinisher,
 	DishFinisherViewer,
 	
@@ -120,6 +119,8 @@ enum CmpId : CmpIdType {
 	NameAsker,//MapState
 	MapInfoBox,
 	MapInfoBoxViewer,
+
+	TutorialManager, //Tutorial
 
 	EnviromentViewer, //Enviroment
 	EnviromentControl,

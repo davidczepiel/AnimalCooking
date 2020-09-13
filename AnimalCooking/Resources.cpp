@@ -27,6 +27,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuArrowR,"../AnimalCooking/resources/images/Menu/Boton/flechar.png"},
 	{Basic, MainMenuPlayButton,"../AnimalCooking/resources/images/Menu/Boton/playButton.png"},
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
+	{Basic, MainMenuTutorialButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
