@@ -6,7 +6,9 @@
 #include "ButtonPadNavigation.h"
 
 
-TutorialState::TutorialState(AnimalCooking* ac): State(ac), game_(SDLGame::instance())
+TutorialState::TutorialState(AnimalCooking* ac): State(ac), 
+	game_(SDLGame::instance()), 
+	backGround_(SDLGame::instance()->getTextureMngr()->getTexture(Resources::pauseStateBackground))
 {
 //Manager
 	Entity* imagesManagerEntity = stage->addEntity();
@@ -65,6 +67,12 @@ void TutorialState::update()
 		GoBackMenu(app);
 	}
 	State::update();
+}
+
+void TutorialState::draw()
+{
+	backGround_->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
+	State::draw();
 }
 
 void TutorialState::GoBackMenu(AnimalCooking* ac)

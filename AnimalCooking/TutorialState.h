@@ -7,7 +7,7 @@ class TutorialState : public State
 public:
 	TutorialState(AnimalCooking* ac);
 	virtual void update();
-
+	virtual void draw();
 	TutorialManager* getTutorialManager() const { return tutorialManager; }
 private:
 	static void GoBackMenu(AnimalCooking* ac);
@@ -15,5 +15,7 @@ private:
 	static void moveRight(AnimalCooking* ac);
 	SDLGame* game_;
 	TutorialManager* tutorialManager;
+
+	Texture* backGround_;
 };
 
