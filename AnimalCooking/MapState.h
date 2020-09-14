@@ -41,6 +41,7 @@ public:
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
 	inline bool isCurrentLevelUnlocked() { return levelinfos_->at(currentLevel_)->unlocked; }
+	void notEnoughStarsWarning();
 
 private:
 	void configPadNavigation();
@@ -74,8 +75,13 @@ private:
 	Texture* panelStars_;
 	SDL_Rect starScoreRect_;
 	SDL_Rect starPanelRect_;
-	SDL_Rect TotalStarsRect_;
+	SDL_Rect totalStarsRect_;
+	SDL_Rect totalStarsRectAux_;
 	SDL_Rect starScoreBackGroundRect_;
+
+	Uint32 auxTime_;
+	bool starsWarningActive_;
+	bool phase_;
 
 	jute::jValue& jsonGeneral;
 

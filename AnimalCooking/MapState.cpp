@@ -28,6 +28,7 @@ MapState::MapState(AnimalCooking* ac) :
 	lastLevel_(0),
 	playerName_(""),
 	totalStars_(nullptr),
+	starsWarningActive_(false),
 	jsonGeneral(SDLGame::instance()->getJsonGeneral())
 {
 	game_ = SDLGame::instance();
@@ -49,7 +50,7 @@ MapState::MapState(AnimalCooking* ac) :
 	//
 	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
 	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
-	TotalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
+	totalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
 	starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
 
 	chooseOption();
@@ -155,7 +156,7 @@ void MapState::draw()
 		panelStars_->render(starPanelRect_);
 		starScoreBackground_->render(starScoreBackGroundRect_);
 		starScore_->render(starScoreRect_);
-		totalStars_->render(TotalStarsRect_);
+		totalStars_->render(totalStarsRect_);
 	}
 	
 	State::draw();
@@ -232,6 +233,33 @@ void MapState::update()
 			else break;
 		}
 		hasToBreak = false;
+	}
+
+	if(starsWarningActive_) {
+		if (phase_) {
+			starScoreRect_.x--; starScoreRect_.w++; starScoreRect_.h++;
+			starPanelRect_.x--; starPanelRect_.w++; starPanelRect_.h++;
+			totalStarsRect_.x--; totalStarsRect_.w++; totalStarsRect_.h++;
+			starScoreBackGroundRect_.x--; starScoreBackGroundRect_.w++; starScoreBackGroundRect_.h++;
+			if (game_->getTime() - auxTime_ >= 250) {
+				phase_ = false;
+				auxTime_ = game_->getTime();
+			}
+		}
+		else {
+			starScoreRect_.x++; starScoreRect_.w--; starScoreRect_.h--;
+			starPanelRect_.x++; starPanelRect_.w--; starPanelRect_.h--;
+			totalStarsRect_.x++; totalStarsRect_.w--; totalStarsRect_.h--;
+			starScoreBackGroundRect_.x++; starScoreBackGroundRect_.w--; starScoreBackGroundRect_.h--;
+			if (game_->getTime() - auxTime_ >= 250) {
+				phase_ = true;
+				starsWarningActive_ = false;
+				starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
+				starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
+				totalStarsRect_ = totalStarsRectAux_;
+				starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
+			}
+		}
 	}
 
 	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
@@ -464,8 +492,8 @@ void MapState::setState() {
 	inMap = true;
 	if (totalStars_ != nullptr) delete totalStars_;
 	totalStars_ = new Texture(game_->getRenderer(), to_string(game_->getNumStars()), game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
-	if (game_->getNumStars() < 10) TotalStarsRect_.w = 97;
-	else TotalStarsRect_.w = 195;
+	if (game_->getNumStars() < 10) totalStarsRect_.w = 97;
+	else totalStarsRect_.w = 195;
 
 	placeHousesAndButtons();
 	
@@ -609,6 +637,14 @@ void MapState::previousScreenCallBack(AnimalCooking* ac)
 {
 	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	ms->previousScreen();
+}
+
+void MapState::notEnoughStarsWarning()
+{
+	if (starsWarningActive_) return;
+	starsWarningActive_ = true;
+	auxTime_ = game_->getTime();
+	totalStarsRectAux_ = totalStarsRect_;
 }
 
 void MapState::configPadNavigation() {

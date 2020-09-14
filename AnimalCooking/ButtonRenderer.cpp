@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "ButtonBehaviourNC.h"
 #include "ButtonChangeOnClick.h"
+#include "FSM.h"
+#include "MapState.h"
 
 ButtonRenderer::ButtonRenderer(Texture* background, Texture* text) : Component(ecs::ButtonRenderer), active(true)
 {
@@ -99,6 +101,10 @@ void ButtonRendererMapArrow::draw()
 		SDL_Rect buttonRect = RECT(buttonPos.getX(), buttonPos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 
 		if (SDL_PointInRect(&mousePosition, &buttonRect) || buttonBehaviour_->getFocusByController()) {
+			if (ih->getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
+				static_cast<MapState*>(game_->getFSM()->currentState())->notEnoughStarsWarning();
+			}
+
 			Vector2D pos = ownerTransform_->getPos();
 			SDL_Rect dest = RECT(pos.getX(), pos.getY(), ownerTransform_->getW(), ownerTransform_->getH());
 
