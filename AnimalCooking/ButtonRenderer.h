@@ -2,6 +2,8 @@
 #include "Component.h"
 #include "Transform.h"
 #include "ButtonBehaviour.h"
+#include "SDL_macros.h"
+#include "Entity.h"
 
 class ButtonBehaviourNC;
 class ButtonChangeOnClick;
@@ -36,14 +38,25 @@ protected:
 class ButtonRendererMapArrow : public ButtonRenderer
 {
 public: 
-	ButtonRendererMapArrow(Texture* background, Texture* text) : ButtonRenderer(background, text), available(true) {}
+	ButtonRendererMapArrow(Texture* background, Texture* text) : ButtonRenderer(background, text), available(true) {
+		starsRequiredImage_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
+		starsRequiredText_ = nullptr;
+		panel_ = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
+	}
 	~ButtonRendererMapArrow() {}
 
 	void init() override;
 	void draw() override;
+	void updateText(int value);
 
 	inline void setAvailable(bool av_) { available = av_; }
 private:
 	bool available;
+	Texture* starsRequiredImage_;
+	Texture* starsRequiredText_;
+	Texture* panel_;
+	SDL_Rect starsRequiredImageRect_;
+	SDL_Rect starsRequiredTextRect_;
+	SDL_Rect panelRect_;
 };
 

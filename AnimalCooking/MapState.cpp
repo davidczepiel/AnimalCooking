@@ -512,6 +512,7 @@ void MapState::placeHousesAndButtons()
 		static_cast<ButtonRendererMapArrow*>(br)->setAvailable(false);
 		bb->setActive(false);
 	}
+	static_cast<ButtonRendererMapArrow*>(br)->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
 
 	PreviousScreenButton_ = stage->addEntity();
 	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
@@ -541,8 +542,10 @@ void MapState::refreshHousesAndButtons()
 		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
 		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
 	}
+
 	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
 		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
 		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
 	}
 	else {
