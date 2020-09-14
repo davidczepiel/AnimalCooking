@@ -13,17 +13,10 @@ private:
 	static void GoBackMenu(AnimalCooking* ac);
 	static void moveLeft(AnimalCooking* ac);
 	static void moveRight(AnimalCooking* ac);
-
-	static void goTo1(AnimalCooking* ac);
-	static void goTo2(AnimalCooking* ac);
-	static void goTo3(AnimalCooking* ac);
-	static void goTo4(AnimalCooking* ac);
-	static void goTo5(AnimalCooking* ac);
-	static void goTo6(AnimalCooking* ac);
 	SDLGame* game_;
 	TutorialManager* tutorialManager;
 
-	Texture* backGround_;
+	Texture* backGround_, *tutorialBar_;
 
 	Entity* goLeftButton, *goRightButton;
 };

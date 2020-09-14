@@ -27,7 +27,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuArrowR,"../AnimalCooking/resources/images/Menu/Boton/flechar.png"},
 	{Basic, MainMenuPlayButton,"../AnimalCooking/resources/images/Menu/Boton/playButton.png"},
 	{Basic, MainMenuConfigButton,"../AnimalCooking/resources/images/Menu/Boton/configButton.png"},
-	{Basic, MainMenuTutorialButton,"../AnimalCooking/resources/images/Menu/Boton/boton.png"},
+	{Basic, MainMenuTutorialButton,"../AnimalCooking/resources/images/Menu/Boton/howToPlay.png"},
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
@@ -36,8 +36,9 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, TutorialImage1,"../AnimalCooking/resources/images/Tutorial/tuto2.png"},
 	{Basic, TutorialImage2,"../AnimalCooking/resources/images/Tutorial/tuto3.png"},
 	{Basic, TutorialImage3,"../AnimalCooking/resources/images/Tutorial/tuto4.png"},
-	{Basic, TutorialImage4,"../AnimalCooking/resources/images/Mapstate/mapState.png"},
-	{Basic, TutorialImage5,"../AnimalCooking/resources/images/Mapstate/mapState2.png"},
+	{Basic, TutorialImage4,"../AnimalCooking/resources/images/Tutorial/tuto5.png"},
+	{Basic, TutorialImage5,"../AnimalCooking/resources/images/Tutorial/tuto6.png"},
+	{Basic, TutorialBarra,"../AnimalCooking/resources/images/Tutorial/tutorial.png"},
 
 	//----->InGame<--------------
 	{Basic, LevelTimerBackground,"../AnimalCooking/resources/images/barraSinCargar.png"},
