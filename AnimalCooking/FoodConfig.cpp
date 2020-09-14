@@ -178,7 +178,7 @@ void FoodConfig::fill()
 	cTrans.push_back({ { Resources::FoodType::GratedSkilletChicken,Resources::FoodType::Dress,Resources::FoodType::FriedVegs},	Resources::FoodType::Teriyaki3 });
 	cTrans.push_back({ { Resources::FoodType::GratedSkilletChicken,Resources::FoodType::Dress,Resources::FoodType::SlicedAvocado},	Resources::FoodType::Teriyaki4 });
 
-	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::GratedCheese,Resources::FoodType::MashedTomato},	Resources::FoodType::Perrito });
+	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::SlicedCheese,Resources::FoodType::MashedTomato},	Resources::FoodType::Perrito });
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog},	Resources::FoodType::Perrito1 });
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::SlicedOnion},	Resources::FoodType::Perrito2 });
 	cTrans.push_back({ { Resources::FoodType::CaughtSausageSkillet,Resources::FoodType::BreadHotDog,Resources::FoodType::FrenchFries},	Resources::FoodType::Perrito3 });
