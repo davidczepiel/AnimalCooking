@@ -41,6 +41,7 @@ public:
 		TutorialImage3,
 		TutorialImage4,
 		TutorialImage5,
+		TutorialBarra,
 
 		//----->InGame<--------------
 		LevelTimerBackground,

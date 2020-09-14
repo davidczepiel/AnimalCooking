@@ -17,10 +17,12 @@ void TutorialManager::init()
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage3),
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage4),
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage5)};
+
+	index_ = images_.begin();
 }
 
 void TutorialManager::draw()
 {
-	images_[index_]->render(rect_);
+	(*index_)->render(rect_);
 	background_->render(rect_);
 }
