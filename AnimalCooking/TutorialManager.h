@@ -11,18 +11,17 @@ public:
 	void draw() override;
 
 	inline void goRight() { 
-		++index_; 
-		if (index_ == images_.end()) index_ = images_.begin();
+		index_ = (index_ + 1) % images_.size();
 	}
 	inline void goLeft() { 
-		if (index_ == images_.begin()) index_ = --images_.end();
-		--index_; 
+		index_ = (index_ + images_.size() - 1) % images_.size(); 
 	}
+	inline void go(size_t n) { index_ = n % images_.size(); }
 
 private:
 	SDL_Rect rect_;
 	Texture* background_;
-	list<Texture*> images_;
-	list<Texture*>::iterator index_;
+	vector<Texture*> images_;
+	size_t index_;
 };
 

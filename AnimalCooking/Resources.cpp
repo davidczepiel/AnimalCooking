@@ -31,11 +31,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	{Basic, MainMenuExitButton,"../AnimalCooking/resources/images/Menu/Boton/exitButton.png"},
 	{Basic, MainMenuCreditsButton,"../AnimalCooking/resources/images/Menu/Boton/creditsButton.png"},
 
-	{Basic, TutorialImageBackground,"../AnimalCooking/resources/images/ScreenLoader/barraSin.png"},
-	{Basic, TutorialImage0,"../AnimalCooking/resources/images/Mapstate/mapState.png"},
-	{Basic, TutorialImage1,"../AnimalCooking/resources/images/Mapstate/mapState2.png"},
-	{Basic, TutorialImage2,"../AnimalCooking/resources/images/Mapstate/mapState3.png"},
-	{Basic, TutorialImage3,"../AnimalCooking/resources/images/Mapstate/mapState4.png"},
+	{Basic, TutorialImageBackground,"../AnimalCooking/resources/images/Tutorial/marco.png"},
+	{Basic, TutorialImage0,"../AnimalCooking/resources/images/Tutorial/tuto1.png"},
+	{Basic, TutorialImage1,"../AnimalCooking/resources/images/Tutorial/tuto2.png"},
+	{Basic, TutorialImage2,"../AnimalCooking/resources/images/Tutorial/tuto3.png"},
+	{Basic, TutorialImage3,"../AnimalCooking/resources/images/Tutorial/tuto4.png"},
 	{Basic, TutorialImage4,"../AnimalCooking/resources/images/Mapstate/mapState.png"},
 	{Basic, TutorialImage5,"../AnimalCooking/resources/images/Mapstate/mapState2.png"},
 

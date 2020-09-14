@@ -7,7 +7,7 @@ void TutorialManager::init()
 {
 	Transform* tr_ = GETCMP1_(Transform);
 
-	rect_ = RECT(tr_->getPos().getX(), tr_->getPos().getX(), tr_->getW(), tr_->getH());
+	rect_ = RECT(tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), tr_->getH());
 
 	background_ = game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImageBackground);
 
@@ -17,12 +17,10 @@ void TutorialManager::init()
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage3),
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage4),
 				game_->getTextureMngr()->getTexture(Resources::TextureId::TutorialImage5)};
-
-	index_ = images_.begin();
 }
 
 void TutorialManager::draw()
 {
-	(*index_)->render(rect_);
+	images_[index_]->render(rect_);
 	background_->render(rect_);
 }
