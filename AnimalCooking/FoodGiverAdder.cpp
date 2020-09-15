@@ -78,6 +78,7 @@ FoodGiver* FoodGiverAdder::makeFoodGiver(int type, int n)
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "algasHBordes") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::algasHBordes);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "horDogHBordeD") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::horDogHBordeD);
 	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "horDogHBordeI") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::horDogHBordeI);
+	else if (nivel["FoodGivers"][type][1][n]["texture"].as_string() == "horDogH") t = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::horDogH);
 
 	FoodGiver* fg = new T(Vector2D(nivel["FoodGivers"][type][1][n]["pos"]["x"].as_double() * casillaX, nivel["FoodGivers"][type][1][n]["pos"]["y"].as_double() * casillaY),
 		Vector2D(general["Givers"]["size"]["width"].as_double() * casillaX, general["Givers"]["size"]["height"].as_double() * casillaY),

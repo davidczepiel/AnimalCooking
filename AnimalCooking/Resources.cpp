@@ -561,6 +561,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		
 		{ AllLevels, horDogHBordeD,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogHBordeD.png" },
 		{ AllLevels, horDogHBordeI,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogHBordeI.png" },
+		{ AllLevels, horDogH,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogH.png" },
 		{ AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
 		{ AllLevels, algasVDcha,"../AnimalCooking/resources/images/Cocina/foodgivers/algasVDcha.png" },

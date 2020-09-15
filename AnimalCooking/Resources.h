@@ -567,6 +567,7 @@ public:
 		ArroceraBordes,
 		horDogHBordeD,
 		horDogHBordeI,
+		horDogH,
 		Aceite,
 		AceiteBordeDer,
 		AceiteBordeIzq,
