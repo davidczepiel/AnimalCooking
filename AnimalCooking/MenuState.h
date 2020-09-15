@@ -15,7 +15,7 @@
 
 class MenuState: public State
 {
-	enum SelectionState { Config, Play, Credits, Exit};
+	enum SelectionState { Config, Play, Tutorial, Credits, Exit};
 
 public:
 	MenuState(AnimalCooking* ac);
@@ -31,6 +31,7 @@ private:
 	void playMenuCallback();
 	void optionsMenuCallback();
 	void creditsMenuCallback();
+	void tutorialMenuCallback();
 	void closeGame();
 
 	Texture* background;

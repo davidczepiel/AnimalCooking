@@ -464,6 +464,8 @@
     <ClCompile Include="GhostLife.cpp" />
     <ClCompile Include="GhostPool.cpp" />
     <ClCompile Include="IntroState.cpp" />
+    <ClCompile Include="TutorialState.cpp" />
+    <ClCompile Include="TutorialManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -995,6 +997,8 @@
     <ClInclude Include="GhostLife.h" />
     <ClInclude Include="GhostPool.h" />
     <ClInclude Include="IntroState.h" />
+    <ClInclude Include="TutorialState.h" />
+    <ClInclude Include="TutorialManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
