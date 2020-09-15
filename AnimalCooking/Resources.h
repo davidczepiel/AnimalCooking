@@ -577,6 +577,7 @@ public:
 		AceiteSin,
 		AceiteVerticalBordeSup,
 		EncimeraMasa,
+		EncimeraMasaV,
 		NoriFoodGiver,
 		algasVDcha,
 		algasHBordes,
