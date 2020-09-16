@@ -62,6 +62,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapState2Background, "../AnimalCooking/resources/images/Mapstate/mapState2.png" },
 	{ Basic, MapState3Background, "../AnimalCooking/resources/images/Mapstate/mapState3.png" },
 	{ Basic, MapState4Background, "../AnimalCooking/resources/images/Mapstate/mapState4.png" },
+	{ Basic, MapState5Background, "../AnimalCooking/resources/images/Mapstate/mapState5.png" },
+	{ Basic, MapState6Background, "../AnimalCooking/resources/images/Mapstate/mapState6.png" },
 	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
 
 

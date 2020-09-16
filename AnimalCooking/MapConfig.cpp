@@ -332,6 +332,18 @@ void MapConfig::fill()
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
 	levelsRecipes_.push_back(auxiliar);
+
+	/////////////////////////////////////
+	///////		 Nivel final  	  //////
+	///////////////////////////////////
+	auxiliar.name = "";
+	auxiliar.lore[0] = "Nivel final.Nivel final. Nivel final. Nivel final.";
+	auxiliar.lore[1] = "Nivel final";
+	auxiliar.lore[2] = "Nivel final";
+	auxiliar.buttonPosition = Vector2D(1135, 450);
+	auxiliar.buttonsSize = Vector2D(46, 58);
+
+	levelsRecipes_.push_back(auxiliar);
 	//Cargar resto de datos
 	if (!newGame_) load();
 	else {
