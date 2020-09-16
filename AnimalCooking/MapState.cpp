@@ -47,7 +47,7 @@ MapState::MapState(AnimalCooking* ac) :
 	//Estrellas y panel estrellas
 	starScore_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
 	starScoreBackground_ = game_->getTextureMngr()->getTexture(Resources::Star);
-	panelStars_ = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
+	panelStars_ = game_->getTextureMngr()->getTexture(Resources::MapStateStarBox);
 	//
 	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
 	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
