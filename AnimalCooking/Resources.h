@@ -30,8 +30,19 @@ public:
 		MainMenuArrowR,
 		MainMenuPlayButton,
 		MainMenuConfigButton,
+		MainMenuTutorialButton,
 		MainMenuExitButton,
 		MainMenuCreditsButton,
+
+		TutorialImageBackground,
+		TutorialImage0,
+		TutorialImage1,
+		TutorialImage2,
+		TutorialImage3,
+		TutorialImage4,
+		TutorialImage5,
+		TutorialBarra,
+
 		//----->InGame<--------------
 		LevelTimerBackground,
 		LevelTimerForeground,

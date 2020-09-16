@@ -1,5 +1,6 @@
 #include "MenuState.h"
 #include "SDL_macros.h"
+#include "TutorialState.h"
 
 void MenuState::draw()
 {
@@ -21,8 +22,8 @@ void MenuState::leftState()
 {
 	switch (state) {
 	case Credits:
-		state = Config;
-		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
+		state = Tutorial;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuTutorialButton));
 		break;
 	case Play:
 		state = Exit;
@@ -31,6 +32,10 @@ void MenuState::leftState()
 	case Config:
 		state = Play;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuPlayButton));
+		break;
+	case Tutorial:
+		state = Config;
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
 		break;
 	case Exit:
 		state = Credits;
@@ -52,6 +57,10 @@ void MenuState::rightState()
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuConfigButton));
 		break;
 	case Config:
+		state = Tutorial; 
+		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuTutorialButton));
+		break;
+	case Tutorial:
 		state = Credits;
 		selectionButton_->getComponent<MenuButtonRenderer>(ecs::MenuButtonRenderer)->setTexture(SDLGame::instance()->getTextureMngr()->getTexture(Resources::MainMenuCreditsButton));
 		break;
@@ -75,6 +84,9 @@ void MenuState::selectedState()
 	case Play:
 		playMenuCallback();
 		break;
+	case Tutorial:
+		tutorialMenuCallback();
+		break;
 	case Exit:
 		closeGame();
 		break;
@@ -94,6 +106,12 @@ void MenuState::optionsMenuCallback() {
 void MenuState::creditsMenuCallback() {
 	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
 	SDLGame::instance()->getFSM()->pushState(new CreditsState(app));
+}
+
+void MenuState::tutorialMenuCallback()
+{
+	SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::Tecla1 + SDLGame::instance()->getRandGen()->nextInt(0, 6), 0);
+	SDLGame::instance()->getFSM()->pushState(new TutorialState(app));
 }
 
 void MenuState::closeGame() {
