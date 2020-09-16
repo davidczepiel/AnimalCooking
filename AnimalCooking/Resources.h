@@ -230,11 +230,8 @@ public:
 		level23Menu,
 		level24Menu,
 		levelExtra5Menu,
-		level26Menu,
 		level25Menu,
-		level27Menu,
-		level28Menu,
-	    level29Menu,
+	
 		barraScreenLoaderBack,
 		barraScreenLoader,
 		buttonGo,
