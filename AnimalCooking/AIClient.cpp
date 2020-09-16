@@ -8,7 +8,7 @@ AIClient::AIClient() : AIClient(45, 45, nullptr)
 }
 
 AIClient::AIClient(Uint32 deltaTimePerOrder, Uint32 deltaTimeFirstOrder, TimerViewer* tv) : Component(ecs::AIClient),
-	orMngr_(nullptr), availableOrders_(), initialOrders_(), allOrders_(false), group({ Resources::_FirstOfFoods_ + 1, Resources::_LastOfFoods_ })
+	orMngr_(nullptr), availableOrders_(), initialOrders_(), allOrders_(false), group({ Resources::_FirstOfFoods_ + 1, Resources::Perrito3 })
 {
 	t = new Timer();
 	t->setTime(deltaTimeFirstOrder);
@@ -58,7 +58,7 @@ void AIClient::checkNewOrder()
 Resources::FoodType AIClient::chooseRandomOrder()
 {
 	return (allOrders_) ? 
-		(Resources::FoodType)game_->getRandGen()->nextInt(group.first, group.second)
+		(Resources::FoodType)game_->getRandGen()->nextInt(group.first, group.second + 1)
 		: 
 		availableOrders_[game_->getRandGen()->nextInt() % availableOrders_.size()];
 }

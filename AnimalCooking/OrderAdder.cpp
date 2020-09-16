@@ -161,7 +161,7 @@ void OrderAdder::initializeComponent(const string& component, Entity* entity)
 	switch (str2int(component.c_str()))
 	{
 	case str2int("Changer"):
-		entity->addComponent<OrderAIChanger>(initializer_list<int>{50, 120, 210, 320}, tv_);
+		entity->addComponent<OrderAIChanger>(initializer_list<int>{70, 140, 230, 350}, tv_);
 		break;
 	default:
 		break;

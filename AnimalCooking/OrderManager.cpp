@@ -7,7 +7,7 @@ OrderManager::OrderManager() : OrderManager(2, 100, { 100, 700 })
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager) : Component(ecs::OrderManager),
 currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
-distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager), msPerIng_(), availableOrders_()
+distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager), msPerIng_(), availableOrders_(), allOrders_()
 {
 }
 
@@ -25,7 +25,7 @@ void OrderManager::setMaxOrders(size_t size)
 
 void OrderManager::addOrder(Resources::FoodType finalProduct)
 {
-	if (availableOrders_.find(finalProduct) != availableOrders_.end()) { //Si es posible meter este pedido
+	if (availableOrders_.find(finalProduct) != availableOrders_.end() || allOrders_) { //Si es posible meter este pedido
 		vector<Order*>::iterator it = getFreePos();
 		if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va		
 			set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido

@@ -34,13 +34,14 @@ public:
 	//Los puntos que se a�aden = numIngs del Order * 15
 	bool removeOrder(Resources::FoodType finalProduct, bool playerDidIt);
 	void fillPosibleOrders(vector<Resources::FoodType>& lista) {
+		allOrders_ = lista.empty();
 		for (auto elem : lista) {
 			availableOrders_.insert(elem);
 		}
 	}
 
 private:
-
+	bool allOrders_;
 	size_t distXBetweenOrders_;
 	Vector2D position_;
 	ScoreManager* scoreManager_;
