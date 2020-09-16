@@ -270,6 +270,7 @@
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderAdder.h" />
+    <ClInclude Include="OrderAIChanger.h" />
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderService.h" />
     <ClInclude Include="OrderServiceViewer.h" />
@@ -442,6 +443,7 @@
     <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
+    <ClCompile Include="OrderAIChanger.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderService.cpp" />
     <ClCompile Include="OrderServiceViewer.cpp" />

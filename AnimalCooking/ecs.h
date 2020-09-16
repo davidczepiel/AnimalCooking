@@ -70,6 +70,7 @@ enum CmpId : CmpIdType {
 	AIClient,
 	OrderManager,	//Clients
 	OrderViewer,
+	OrderAIChanger,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,

@@ -466,6 +466,7 @@
     <ClCompile Include="IntroState.cpp" />
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="TutorialManager.cpp" />
+    <ClCompile Include="OrderAIChanger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -999,6 +1000,7 @@
     <ClInclude Include="IntroState.h" />
     <ClInclude Include="TutorialState.h" />
     <ClInclude Include="TutorialManager.h" />
+    <ClInclude Include="OrderAIChanger.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">

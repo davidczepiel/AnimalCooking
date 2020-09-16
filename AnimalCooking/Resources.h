@@ -922,6 +922,8 @@ public:
 		Perrito1,
 		Perrito2,
 		Perrito3,
+
+		_LastOfFoods_, //Debe estar siempre justo al final
 	};
 
 	enum PickableType : std::size_t {

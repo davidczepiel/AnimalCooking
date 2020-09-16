@@ -9,6 +9,7 @@
 #include "InteractionRect.h"
 #include "TimerViewer.h"
 #include "DishPool.h"
+#include "OrderAIChanger.h"
 
 #define CASTID(t) static_cast<ecs::GroupID>(t - 1)
 #define ADDPEDIDO(p, t) p.push_back(t)
@@ -18,6 +19,7 @@ OrderAdder::OrderAdder(EntityManager* em, jute::jValue& nivel, jute::jValue& gen
 {
 	OrderService* os = new OrderService(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), em, dp);
 
+	tv_ = tv;
 
 	em->addEntity(os);
 	em->addToGroup(os, CASTID(general["Clients"]["Layer"].as_int()));
@@ -147,8 +149,10 @@ void OrderAdder::switchPedido(const string& p, vector<Resources::FoodType>& pedi
 	case str2int("Perrito1"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito1);			break;
 	case str2int("Perrito2"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito2);			break;
 	case str2int("Perrito3"):	ADDPEDIDO(pedido, Resources::FoodType::Perrito3);			break;
+
+	case str2int("All"):		/* Dejar vacio : vacio significa todos */					break;
 	//-----------------------------------------------------------------------------------
-	default:																						break;
+	default:																				break;
 	}
 }
 
@@ -156,7 +160,8 @@ void OrderAdder::initializeComponent(const string& component, Entity* entity)
 {
 	switch (str2int(component.c_str()))
 	{
-	case str2int("AdvEffect"):
+	case str2int("Changer"):
+		entity->addComponent<OrderAIChanger>(initializer_list<int>{50, 120, 210, 320}, tv_);
 		break;
 	default:
 		break;
