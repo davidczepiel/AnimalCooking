@@ -62,6 +62,9 @@ void EndState::goToMapState(AnimalCooking* ac) {
 	{
 		fsm->popState();
 	}
+
+	MapConfig m;
+	m.save();
 }
 void EndState::goToMenuState(AnimalCooking* ac) {
 	goToMapState(ac);

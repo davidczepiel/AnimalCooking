@@ -406,12 +406,14 @@ void MapState::transitionEnd()
 		levelITransform->setW(aux.getLevelInfoRecipes().back().buttonsSize.getX());
 		levelITransform->setH(aux.getLevelInfoRecipes().back().buttonsSize.getY());
 	}
+	
 
 
 	if (currentMapScene_ != 5)
 	{
 		for (auto& e : levelButtonsPool_) {
 			GETCMP2(e, ButtonRendererHouse)->setActive(true);
+			GETCMP2(e, ButtonBehaviourNC)->setActive(true);
 		}
 	}
 
