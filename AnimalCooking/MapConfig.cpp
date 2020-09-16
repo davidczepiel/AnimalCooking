@@ -280,8 +280,8 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "21 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(50, 580);
-	auxiliar.buttonsSize = Vector2D(70, 88);
+	auxiliar.buttonPosition = Vector2D(700, 650);
+	auxiliar.buttonsSize = Vector2D(60, 75);
 
 	levelsRecipes_.push_back(auxiliar);
 	//22
@@ -289,7 +289,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "22 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(720, 660);
+	auxiliar.buttonPosition = Vector2D(200, 940);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -298,7 +298,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "23 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(590, 970);
+	auxiliar.buttonPosition = Vector2D(850, 900);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -307,8 +307,8 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "24 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(1370, 810);
-	auxiliar.buttonsSize = Vector2D(60, 75);
+	auxiliar.buttonPosition = Vector2D(1210, 900);
+	auxiliar.buttonsSize = Vector2D(80, 100);
 
 	levelsRecipes_.push_back(auxiliar);
 	//25
@@ -316,7 +316,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "25 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(1610, 580);
+	auxiliar.buttonPosition = Vector2D(1610, 280);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -328,7 +328,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "Extra 5. Extra 5. Extra 5. Extra 5.";
 	auxiliar.lore[1] = "Extra 5. Extra 5. Extra 5. Extra 5.";
 	auxiliar.lore[2] = "Extra 5. Extra 5. Extra 5. Extra 5.";
-	auxiliar.buttonPosition = Vector2D(1135, 450);
+	auxiliar.buttonPosition = Vector2D(1200, 480);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -340,7 +340,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "Nivel final.Nivel final. Nivel final. Nivel final.";
 	auxiliar.lore[1] = "Nivel final";
 	auxiliar.lore[2] = "Nivel final";
-	auxiliar.buttonPosition = Vector2D(1135, 450);
+	auxiliar.buttonPosition = Vector2D(930, 570);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
 	levelsRecipes_.push_back(auxiliar);
