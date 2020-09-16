@@ -221,7 +221,7 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "16 Ingredients...ready. Utensils... ready.";
 	auxiliar.lore[1] = "Get prepared, because you have reached";
 	auxiliar.lore[2] = "THE GRAND FINAL!";
-	auxiliar.buttonPosition = Vector2D(50, 580);
+	auxiliar.buttonPosition = Vector2D(200, 580);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
 	levelsRecipes_.push_back(auxiliar);
@@ -269,6 +269,65 @@ void MapConfig::fill()
 	auxiliar.lore[0] = "Extra 4. Extra 4. Extra 4. Extra 4.";
 	auxiliar.lore[1] = "Extra 4. Extra 4. Extra 4. Extra 4.";
 	auxiliar.lore[2] = "Extra 4. Extra 4. Extra 4. Extra 4.";
+	auxiliar.buttonPosition = Vector2D(1135, 450);
+	auxiliar.buttonsSize = Vector2D(46, 58);
+
+	levelsRecipes_.push_back(auxiliar);
+
+	//21
+
+	auxiliar.name = "";
+	auxiliar.lore[0] = "21 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(50, 580);
+	auxiliar.buttonsSize = Vector2D(70, 88);
+
+	levelsRecipes_.push_back(auxiliar);
+	//22
+	auxiliar.name = "";
+	auxiliar.lore[0] = "22 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(720, 660);
+	auxiliar.buttonsSize = Vector2D(80, 100);
+
+	levelsRecipes_.push_back(auxiliar);
+	//23
+	auxiliar.name = "";
+	auxiliar.lore[0] = "23 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(590, 970);
+	auxiliar.buttonsSize = Vector2D(80, 100);
+
+	levelsRecipes_.push_back(auxiliar);
+	//24
+	auxiliar.name = "";
+	auxiliar.lore[0] = "24 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1370, 810);
+	auxiliar.buttonsSize = Vector2D(60, 75);
+
+	levelsRecipes_.push_back(auxiliar);
+	//25
+	auxiliar.name = "";
+	auxiliar.lore[0] = "25 Ingredients...ready. Utensils... ready.";
+	auxiliar.lore[1] = "Get prepared, because you have reached";
+	auxiliar.lore[2] = "THE GRAND FINAL!";
+	auxiliar.buttonPosition = Vector2D(1610, 580);
+	auxiliar.buttonsSize = Vector2D(60, 75);
+
+	levelsRecipes_.push_back(auxiliar);
+	/////////////////////////////////////
+	///////		 EXTRA 5  		  //////
+	///////////////////////////////////
+
+	auxiliar.name = "";
+	auxiliar.lore[0] = "Extra 5. Extra 5. Extra 5. Extra 5.";
+	auxiliar.lore[1] = "Extra 5. Extra 5. Extra 5. Extra 5.";
+	auxiliar.lore[2] = "Extra 5. Extra 5. Extra 5. Extra 5.";
 	auxiliar.buttonPosition = Vector2D(1135, 450);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 

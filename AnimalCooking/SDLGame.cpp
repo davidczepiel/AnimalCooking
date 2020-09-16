@@ -29,10 +29,12 @@ void SDLGame::addStarsPerLevel(int stars, int level)
 
 void SDLGame::setLevelInfos(const vector<levelInfo> infos)
 {
+	totalStars_ = 0;
 	for (int i = 0; i < infos.size(); ++i)
 	{
 		levelInfos_.push_back(new levelInfo(infos.at(i)));
 		unlockedStarsPerLevel.insert(std::make_pair(infos.at(i).level, infos.at(i).stars));
+		totalStars_ += infos.at(i).stars;
 		if (infos.at(i).unlocked)
 			unlockedLevels = i;
 	}

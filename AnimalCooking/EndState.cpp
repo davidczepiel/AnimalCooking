@@ -30,6 +30,9 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 	//score = 150*.60;
 
 	createButtons(nextLevelLimit);
+	GPadController::instance()->sleepController(0, 3000);
+	GPadController::instance()->sleepController(1, 3000);
+
 	//createPlayers();
 	//Creamos la barra de carga con el texto
 	Entity* levelViewer = stage->addEntity();
@@ -42,8 +45,6 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 		threeStarsPerc = json["ThreeStars"].as_int();
 	levelViewer->addComponent<LevelViewer>(500, 1000, 1500, nextLevelLimit, twoStarsPerc, threeStarsPerc, (double)(score) / maxScore);
 	stage->addToGroup(levelViewer, ecs::GroupID::ui);
-
-
 
 }
 void EndState::goToLoadState(AnimalCooking* ac) {

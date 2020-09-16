@@ -76,6 +76,8 @@ bool OrderManager::removeOrder(Resources::FoodType finalProduct, bool playerDidI
 				scoreManager_->addScore(5 * config::SCORE_MANAGER_SERVED_BONUS);
 			else if ((*it)->getFinalProduct() == Resources::FoodType::Teriyaki3)
 				scoreManager_->addScore(6 * config::SCORE_MANAGER_SERVED_BONUS);
+			else if ((*it)->getFinalProduct() == Resources::FoodType::Perrito3)
+				scoreManager_->addScore(4 * config::SCORE_MANAGER_SERVED_BONUS);
 			else
 			scoreManager_->addScore((*it)->getNumIngs() * config::SCORE_MANAGER_SERVED_BONUS);
 			SDLGame::instance()->getAudioMngr()->playChannel(Resources::AudioId::IngredientSpawned, 0);
@@ -135,7 +137,6 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::Burger1: time += 2*timeCooking + 5;
 	case Resources::FoodType::Burger2: time += timeCooking + 5;
 	case Resources::FoodType::Burger3: time += timeCooking + 5;
-	case Resources::FoodType::Pizza: time += timeCooking;
 	case Resources::FoodType::RiceDish: time += timeCooking;
 	case Resources::FoodType::Risotto: time += timeCooking;
 
@@ -170,7 +171,17 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::IcedRiceAndClams: time += timeCooking + iceDelay;
 	case Resources::FoodType::IcedRiceDish: time += timeCooking + iceDelay;
 	case Resources::FoodType::Teriyaki2: time += 2*timeCooking;
-	case Resources::FoodType::Teriyaki3: time += 3*timeCooking +25000;
+	case Resources::FoodType::Teriyaki3: time += 3 * timeCooking + 25000;
+	case Resources::FoodType::Pizza: time += timeCooking;
+	case Resources::FoodType::Pizza1: time +=  timeCooking;
+	case Resources::FoodType::Pizza2: time += timeCooking;
+	case Resources::FoodType::Pizza3: time += timeCooking;
+	case Resources::FoodType::Pizza4: time += timeCooking +2000;
+	case Resources::FoodType::Pizza5: time += timeCooking;
+	case Resources::FoodType::Perrito: time += timeCooking;
+	case Resources::FoodType::Perrito1: time += timeCooking+1000;
+	case Resources::FoodType::Perrito2: time += timeCooking;
+	case Resources::FoodType::Perrito3: time += 2*timeCooking;
 
 	default:
 		break;

@@ -41,6 +41,7 @@ public:
 	inline void isNewGame() { isNewGame_ = true; }
 	inline void isNotNewGame() { isNewGame_ = false; }
 	inline bool isCurrentLevelUnlocked() { return levelinfos_->at(currentLevel_)->unlocked; }
+	void notEnoughStarsWarning();
 
 private:
 	void configPadNavigation();
@@ -68,6 +69,21 @@ private:
 	vector<Texture*> bgText_;
 	Texture* playButtonText_;
 	std::string playerName_;
+	Texture* starScore_;
+	Texture* starScoreBackground_;
+	Texture* totalStars_;
+	Texture* panelStars_;
+	SDL_Rect starScoreRect_;
+	SDL_Rect starPanelRect_;
+	SDL_Rect totalStarsRect_;
+	SDL_Rect totalStarsRectAux_;
+	SDL_Rect starScoreBackGroundRect_;
+
+	Uint32 auxTime_;
+	bool starsWarningActive_;
+	bool phase_;
+
+	jute::jValue& jsonGeneral;
 
 	double casillaX;
 	double casillaY;
@@ -78,6 +94,7 @@ private:
 	bool hasToBreak = false;
 	bool isNewGame_ = true;
 	bool gameStarted = false;
+	bool inMap = false;
 
 	bool transition_ = false;
 	int xTransition_ = 0;

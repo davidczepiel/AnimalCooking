@@ -142,6 +142,8 @@ public:
 	inline void setCasillaX(const double& CasillaLength) { casillaX = CasillaLength; }
 	inline const double& getCasillaX() const { return casillaX; }
 
+	inline int getNumStars() const { return totalStars_; }
+
 	inline const BubbleKeyShower& getKeyShower() const { return keyShower_; }
 
 	void setCurrentLevel(int level) { currentLevel = level; }
@@ -194,6 +196,8 @@ protected:
 	double casillaY;
 	Entity* timersViewer_;
 	string name;
+
+	int totalStars_;
 
 	//key = level, value = stars
 	map<int, int>unlockedStarsPerLevel;

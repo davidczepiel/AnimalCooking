@@ -26,7 +26,10 @@ MapState::MapState(AnimalCooking* ac) :
 	currentLevel_(0),
 	levelPacks_(6),
 	lastLevel_(0),
-	playerName_("")
+	playerName_(""),
+	totalStars_(nullptr),
+	starsWarningActive_(false),
+	jsonGeneral(SDLGame::instance()->getJsonGeneral())
 {
 	game_ = SDLGame::instance();
 	maxLevels_ = game_->getMaxLevels();
@@ -37,16 +40,27 @@ MapState::MapState(AnimalCooking* ac) :
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState2Background));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState3Background));
 	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
+	bgText_.push_back(game_->getTextureMngr()->getTexture(Resources::MapState4Background));
 	//Play and return buttons textures
 	playButtonText_ = new Texture(game_->getRenderer(), "PLAY", game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
-	chooseOption();
+	//Estrellas y panel estrellas
+	starScore_ = game_->getTextureMngr()->getTexture(Resources::YellowStar);
+	starScoreBackground_ = game_->getTextureMngr()->getTexture(Resources::Star);
+	panelStars_ = game_->getTextureMngr()->getTexture(Resources::MapStateInfoBox);
+	//
+	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
+	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
+	totalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
+	starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
 
+	chooseOption();
 }
 
 MapState::~MapState() {
 	for (auto t : profileTextures) {
 		delete t; t = nullptr;
 	}
+	if (totalStars_ != nullptr) delete totalStars_;
 	delete playButtonText_; playButtonText_ = nullptr;
 	game_->removeLevelInfos();
 }
@@ -138,6 +152,13 @@ void MapState::draw()
 	else {
 		bgText_[currentMapScene_]->render(RECT(0, 0, game_->getWindowWidth(), game_->getWindowHeight()));
 	}
+	if (inMap) {
+		panelStars_->render(starPanelRect_);
+		starScoreBackground_->render(starScoreBackGroundRect_);
+		starScore_->render(starScoreRect_);
+		totalStars_->render(totalStarsRect_);
+	}
+	
 	State::draw();
 }
 
@@ -146,7 +167,7 @@ void MapState::update()
 	if (transition_) {
 
 		xTransition_ += transitionVelocity_ * transitionDirection_;
-		if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {
+		if ((transitionDirection_ == 1 && xTransition_ >= 0) || (transitionDirection_ == -1 && xTransition_ <= 0)) {	//Termina la transicion
 			xTransition_ = 0;
 			transition_ = false;
 			for (auto& e : levelButtonsPool_) {
@@ -173,6 +194,11 @@ void MapState::update()
 			else {
 				GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(true);
 				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+			}
+
+			if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+				static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
 			}
 		}
 	}
@@ -207,6 +233,33 @@ void MapState::update()
 			else break;
 		}
 		hasToBreak = false;
+	}
+
+	if(starsWarningActive_) {
+		if (phase_) {
+			starScoreRect_.x--; starScoreRect_.w++; starScoreRect_.h++;
+			starPanelRect_.x--; starPanelRect_.w++; starPanelRect_.h++;
+			totalStarsRect_.x--; totalStarsRect_.w++; totalStarsRect_.h++;
+			starScoreBackGroundRect_.x--; starScoreBackGroundRect_.w++; starScoreBackGroundRect_.h++;
+			if (game_->getTime() - auxTime_ >= 250) {
+				phase_ = false;
+				auxTime_ = game_->getTime();
+			}
+		}
+		else {
+			starScoreRect_.x++; starScoreRect_.w--; starScoreRect_.h--;
+			starPanelRect_.x++; starPanelRect_.w--; starPanelRect_.h--;
+			totalStarsRect_.x++; totalStarsRect_.w--; totalStarsRect_.h--;
+			starScoreBackGroundRect_.x++; starScoreBackGroundRect_.w--; starScoreBackGroundRect_.h--;
+			if (game_->getTime() - auxTime_ >= 250) {
+				phase_ = true;
+				starsWarningActive_ = false;
+				starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
+				starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
+				totalStarsRect_ = totalStarsRectAux_;
+				starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
+			}
+		}
 	}
 
 	if (InputHandler::instance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_ESCAPE)) {
@@ -436,8 +489,14 @@ void MapState::setState() {
 	bb->setButtonRenderer(br);
 	stage->addToGroup(returnButton_, ecs::GroupID::topLayer);
 
-	placeHousesAndButtons();
+	inMap = true;
+	if (totalStars_ != nullptr) delete totalStars_;
+	totalStars_ = new Texture(game_->getRenderer(), to_string(game_->getNumStars()), game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
+	if (game_->getNumStars() < 10) totalStarsRect_.w = 97;
+	else totalStarsRect_.w = 195;
 
+	placeHousesAndButtons();
+	
 	configPadNavigation();
 
 	MapConfig mpCFG;
@@ -470,13 +529,18 @@ void MapState::placeHousesAndButtons()
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
 	nextScreenButton_->addComponent<Transform>(Vector2D(game_->getWindowWidth() - aux->getWidth(), (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight()/3);
 	ButtonBehaviour* bb = nextScreenButton_->addComponent<ButtonBehaviour>(nextScreenCallBack, app);
-	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
+	ButtonRenderer* br = nextScreenButton_->addComponent<ButtonRendererMapArrow>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(nextScreenButton_, ecs::GroupID::topLayer);
 	if (currentMapScene_ == bgText_.size() - 1) {
 		br->setActive(false);
 		bb->setActive(false);
 	}
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+		static_cast<ButtonRendererMapArrow*>(br)->setAvailable(false);
+		bb->setActive(false);
+	}
+	static_cast<ButtonRendererMapArrow*>(br)->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
 
 	PreviousScreenButton_ = stage->addEntity();
 	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
@@ -505,6 +569,16 @@ void MapState::refreshHousesAndButtons()
 		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
 		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
 		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
+	}
+
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
+		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
+	}
+	else {
+		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(true);
+		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
 	}
 }
 
@@ -563,6 +637,14 @@ void MapState::previousScreenCallBack(AnimalCooking* ac)
 {
 	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	ms->previousScreen();
+}
+
+void MapState::notEnoughStarsWarning()
+{
+	if (starsWarningActive_) return;
+	starsWarningActive_ = true;
+	auxTime_ = game_->getTime();
+	totalStarsRectAux_ = totalStarsRect_;
 }
 
 void MapState::configPadNavigation() {

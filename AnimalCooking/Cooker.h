@@ -56,7 +56,8 @@ public:
 	{ 
 		if(textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerOFF);
 		else if(textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqOFF);
-		else if(textureState == "HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFFBordes);
+		else if (textureState == "HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFFBordes);
+		else if(textureState == "OvenBordeDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenBordeDerOFF);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenOFF);
 		 
 	};
@@ -66,6 +67,7 @@ public:
 		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
 		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
 		else if (textureState == "HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenONBordes);
+		else if (textureState == "OvenBordeDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenBordeDerON);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON); 
 	};
 
@@ -74,6 +76,7 @@ public:
 		if (textureState == "HornoDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenDerON);
 		else if (textureState == "HornoIzq") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenIzqON);
 		else if (textureState == "HornoBordes") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenONBordes);
+		else if (textureState == "OvenBordeDer") texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenBordeDerON);
 		else texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::OvenON);
 	};
 
