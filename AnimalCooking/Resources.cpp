@@ -62,7 +62,8 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ Basic, MapState2Background, "../AnimalCooking/resources/images/Mapstate/mapState2.png" },
 	{ Basic, MapState3Background, "../AnimalCooking/resources/images/Mapstate/mapState3.png" },
 	{ Basic, MapState4Background, "../AnimalCooking/resources/images/Mapstate/mapState4.png" },
-	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
+	{ Basic, MapStateStarBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo.png" },
+	{ Basic, MapStateInfoBox, "../AnimalCooking/resources/images/Mapstate/panelMapInfo2.png" },
 
 
 	//Botones del mando

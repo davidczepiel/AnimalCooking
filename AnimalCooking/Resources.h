@@ -65,6 +65,7 @@ public:
 		MapState2Background,
 		MapState3Background,
 		MapState4Background,
+		MapStateStarBox,
 		MapStateInfoBox,
 		ButtonNext,
 		ButtonPrev,
