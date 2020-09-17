@@ -861,6 +861,7 @@ public:
 		///
 		_FirstOfFoods_, //Debe estar siempre justo debajo de la primera comida finalizada
 		///
+
 		Salad,
 		Salad1,
 		Salad2,
@@ -870,22 +871,17 @@ public:
 		Burger1,
 		Burger2,
 		Burger3,
-		Pizza,
-		Pizza1,
-		Pizza2,
-		Pizza3,
-		Pizza4,
-		Pizza5,
+		FriedVegs,
+		FriedVegs1,
+		FriedVegs2,
 		Roast,
 		Roast1,
 		Roast2,
 		Roast3,
+
 		RiceDish,
 		Risotto,
 		CookedFish,
-		FriedVegs,
-		FriedVegs1,
-		FriedVegs2,
 		BakedChicken,
 		BakedChicken1,
 		BakedChicken2,
@@ -897,6 +893,7 @@ public:
 		FishBurger,
 		Rice1,
 		Rice2, 
+
 		IcedCookedFish,
 		IcedFishOnStick,
 		IcedFishAndChips,
@@ -905,7 +902,6 @@ public:
 		IcedRice2,
 		IcedRiceAndClams,
 		IcedRiceDish,
-		///
 		Sushi1,
 		Sushi2,
 		Sushi3,
@@ -918,6 +914,13 @@ public:
 		Teriyaki4,
 		///
 		
+
+		Pizza,
+		Pizza1,
+		Pizza2,
+		Pizza3,
+		Pizza4,
+		Pizza5,
 		Perrito,
 		Perrito1,
 		Perrito2,
