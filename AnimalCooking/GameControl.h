@@ -23,6 +23,9 @@ public:
 	void newFood(Food* f, Vector2D pos);
 
 	vector<Resources::IngredientType>& getLevelIngType() { return levelIngType; }
+
+	inline void setIngs(const vector<Resources::IngredientType>& ings) { levelIngType = ings; }
+
 	inline Timer* getAdversityTime() { return &adversityTimer; }
 
 private:

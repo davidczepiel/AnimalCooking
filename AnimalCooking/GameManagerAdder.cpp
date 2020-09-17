@@ -8,6 +8,7 @@
 #include "ScoreManager.h"
 #include "ScoreViewer.h"
 #include "TimerViewer.h"
+#include "GameControlLevelIngredientsChanger.h"
 
 GameManagerAdder::GameManagerAdder(Entity* gameManager, EntityManager* em, jute::jValue& jsonLevel, jute::jValue& jsonGeneral,
 	std::array<Entity*, 2>& player, UtensilsPool* utensilpool_, FoodPool* fp, IngredientsPool* ip, int casillaX, int casillaY, const double offsetX, const double offsetY, TimerViewer* tv)
@@ -16,7 +17,10 @@ GameManagerAdder::GameManagerAdder(Entity* gameManager, EntityManager* em, jute:
 
 	gameManager->addComponent<ScoreManager>();
 	GameLogic* glogic = gameManager->addComponent<GameLogic>(tv);
-	gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp, ip, jsonLevel["MaxIngredients"].as_int());
+	GameControl* gControl = gameManager->addComponent<GameControl>(GETCMP2(player[0], Transport), GETCMP2(player[1], Transport), utensilpool_, fp, ip, jsonLevel["MaxIngredients"].as_int());
+
+	GameControlLevelIngredientsChanger* changer_ = GETCMP2(ip->getEntity(), GameControlLevelIngredientsChanger);
+	if (changer_ != nullptr) changer_->setGameControl(gControl);
 
 	glogic->setIngredientPool(ip);
 

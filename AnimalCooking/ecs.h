@@ -13,6 +13,7 @@ enum CmpId : CmpIdType {
 	GPadController, //Controls
 	KeyBoardController,
 	IngredientMotion,
+	GameControlLevelIngredientsChanger,
 
 	AIIngredient, //AI
 

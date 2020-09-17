@@ -226,6 +226,7 @@
     <ClInclude Include="FSM.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
+    <ClInclude Include="GameControlLevelIngredientsChanger.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="Ghost.h" />
@@ -400,6 +401,7 @@
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="GameControlLevelIngredientsChanger.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="Ghost.cpp" />

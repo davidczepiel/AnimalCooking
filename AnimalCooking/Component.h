@@ -29,6 +29,8 @@ public:
 		id_ = id;
 	}
 
+	Entity* getEntity() const { return entity_; }
+
 	ecs::CmpId getId() const {
 		return id_;
 	}

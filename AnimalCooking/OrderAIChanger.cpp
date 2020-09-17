@@ -18,16 +18,20 @@ OrderAIChanger::OrderAIChanger(const initializer_list<int>& times, TimerViewer* 
 void OrderAIChanger::init()
 {
 	aiClient_ = GETCMP1_(AIClient);
-	aiClient_->changeOrderGroup(groups_.front()); groups_.pop();
+	aiClient_->changeOrderGroup(groups_.front()); 
+	groups_.pop();
 }
 
 void OrderAIChanger::update()
 {
 	timer->update();
 	if (timer->isTimerEnd()) {
-		if (!groups_.empty()) { aiClient_->changeOrderGroup(groups_.front()); groups_.pop(); }
+		if (!groups_.empty()) { 
+			aiClient_->changeOrderGroup(groups_.front());
+			groups_.pop(); 
+		}
 		if (!times_.empty()) {
-			timer->setTime(times_.front()); times_.pop();
+			timer->setTime(times_.front() * 1000); times_.pop();
 			timer->timerReset();
 			timer->timerStart();
 		}
