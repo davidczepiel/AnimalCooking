@@ -27,7 +27,7 @@ EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::in
 		nextLevelLimit = nivel["OneStar"].as_int();
 
 	//maxScore = 150;
-	//score = 150*.60;
+	//score = 150*.10;
 
 	createButtons(nextLevelLimit);
 	GPadController::instance()->sleepController(0, 3000);
@@ -63,7 +63,7 @@ void EndState::goToMapState(AnimalCooking* ac) {
 		fsm->popState();
 	}
 
-	MapConfig m;
+	MapConfig m(SDLGame::instance()->getName(),false);
 	m.save();
 }
 void EndState::goToMenuState(AnimalCooking* ac) {
