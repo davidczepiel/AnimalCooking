@@ -34,7 +34,7 @@ void IngAdder::initializeComponent(const string& component, Entity* entity)
 	switch (str2int(component.c_str()))
 	{
 	case str2int("Changer"):
-		entity->addComponent<GameControlLevelIngredientsChanger>(initializer_list<int>{60, 120, 180}, tv_);
+		entity->addComponent<GameControlLevelIngredientsChanger>(initializer_list<int>{120, 240, 360}, tv_);
 		break;
 	default:
 		break;

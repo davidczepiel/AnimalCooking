@@ -889,7 +889,6 @@ public:
 		BakedChicken1,
 		BakedChicken2,
 		FrenchFries,
-		CookedClams,
 		RiceAndClams,
 		FishOnStick,
 		FishAndChips,
@@ -930,6 +929,7 @@ public:
 		Perrito3,
 
 		Risotto,
+		CookedClams,
 	};
 
 	enum PickableType : std::size_t {

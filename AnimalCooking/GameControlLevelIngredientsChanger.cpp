@@ -19,7 +19,7 @@ groups_(), gControl_(nullptr), timer(nullptr), times_(times)
 		Resources::IngredientType::lettuce });
 	
 	groups_.push({ Resources::IngredientType::tomato, Resources::IngredientType::cheese, Resources::IngredientType::onion, Resources::IngredientType::chicken,
-		Resources::IngredientType::mushroom, Resources::IngredientType::meat, Resources::IngredientType::sausage, Resources::IngredientType::potato });
+		Resources::IngredientType::mushroom, Resources::IngredientType::meat, Resources::IngredientType::sausage, Resources::IngredientType::potato});
 
 	timer = new Timer();
 	timer->setTime(times_.front() * 1000); times_.pop();
