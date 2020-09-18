@@ -16,6 +16,7 @@ public:
 	inline void setActive(bool val) { active = val; }
 	inline void setLevel(levelInfo* l) { info = l; }
 
+
 private:
 	enum ButtonState : size_t {
 		Unfocushed,

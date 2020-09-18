@@ -466,6 +466,8 @@ void MapState::nextScreen()
 	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
+	configPadNavigation();
+
 }
 
 void MapState::previousScreen()
@@ -486,6 +488,8 @@ void MapState::previousScreen()
 	GETCMP2(nextScreenButton_, ButtonRenderer)->setActive(false);
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
+	configPadNavigation();
+
 }
 
 void MapState::setState() {
@@ -609,7 +613,10 @@ void MapState::refreshHousesAndButtons()
 		for (int i = 0; i < levelPacks_; i++)
 		{
 			int newI = currentMapScene_ * levelPacks_ + i;
-			GETCMP2(levelButtonsPool_.at(i), ButtonBehaviourNC)->setLevelInfo(levelinfos_->at(newI));
+			//me quedo con el nivel que lo0 toca al boton y se lo paso a sus componentes para que se adapten si esta desbloqueado o no
+			levelInfo* actualLevel = levelinfos_->at(newI);
+			GETCMP2(levelButtonsPool_.at(i), ButtonBehaviourNC)->setLevelInfo(actualLevel);
+			GETCMP2(levelButtonsPool_.at(i), ButtonRendererHouse)->setLevel(actualLevel);
 			Transform* levelITransform = GETCMP2(levelButtonsPool_.at(i), Transform);
 			levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
 			levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
@@ -625,6 +632,7 @@ void MapState::refreshHousesAndButtons()
 			static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(true);
 			GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
 		}
+
 	}
 	
 
@@ -703,17 +711,19 @@ void MapState::configPadNavigation() {
 		padNavigation_->resetNavigation();
 
 		int i = 0;
-		while (i < levelPacks_ && levelinfos_->at(i)->unlocked) {
+		while (i < levelPacks_ && levelinfos_->at((currentMapScene_ * levelPacks_)+i)->unlocked) {
 			Entity* behind = nullptr;
 			Entity* forward = nullptr;
-			if (i > 0 && levelinfos_->at(i - 1)->unlocked)
+			if (i > 0 && levelinfos_->at((currentMapScene_*levelPacks_)+ i - 1)->unlocked)
 				behind = levelButtonsPool_.at(i - 1);
-			if (i < levelPacks_ - 1 && levelinfos_->at(i + 1)->unlocked)
+			if (i < levelPacks_ - 1 && levelinfos_->at((currentMapScene_ * levelPacks_) + i + 1)->unlocked)
 				forward = levelButtonsPool_.at(i + 1);
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;
 		}
+		if(currentMapScene_>0)
 		padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_,nullptr,nullptr,nullptr,levelButtonsPool_.at(0), levelButtonsPool_.at(0),2);
+		if(currentMapScene_<5 && GETCMP2(levelButtonsPool_.at(i - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked)
 		padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr,levelButtonsPool_.at(i-1),nullptr, levelButtonsPool_.at(i - 1),3);
 	}
 }
