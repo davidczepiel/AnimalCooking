@@ -292,7 +292,7 @@ public:
 		Salad3Order,
 		Salad4Order,
 		BurgerOrder,
-		Burger1Order,
+		/*Burger1Order,*/
 		Burger2Order,
 		Burger3Order,
 		FriedVegsOrder,
@@ -303,8 +303,7 @@ public:
 		Roast2Order,
 		Roast3Order,
 
-		RiceDishOrder,
-		RisottoOrder,
+		RiceDishOrder,	
 		CookedFishOrder,
 		BakedChickenOrder,
 		BakedChicken1Order,
@@ -347,6 +346,8 @@ public:
 		Perrito1Order,
 		Perrito2Order,
 		Perrito3Order,
+
+		RisottoOrder,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -871,7 +872,7 @@ public:
 		Salad3,
 		Salad4,
 		Burger,
-		Burger1,
+		/*Burger1,*/
 		Burger2,
 		Burger3,
 		FriedVegs,
@@ -883,7 +884,6 @@ public:
 		Roast3,
 
 		RiceDish,
-		Risotto,
 		CookedFish,
 		BakedChicken,
 		BakedChicken1,
@@ -928,6 +928,8 @@ public:
 		Perrito1,
 		Perrito2,
 		Perrito3,
+
+		Risotto,
 	};
 
 	enum PickableType : std::size_t {
