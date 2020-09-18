@@ -303,8 +303,7 @@ public:
 		Roast2Order,
 		Roast3Order,
 
-		RiceDishOrder,
-		RisottoOrder,
+		RiceDishOrder,	
 		CookedFishOrder,
 		BakedChickenOrder,
 		BakedChicken1Order,
@@ -347,6 +346,8 @@ public:
 		Perrito1Order,
 		Perrito2Order,
 		Perrito3Order,
+
+		RisottoOrder,
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
