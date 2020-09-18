@@ -149,7 +149,8 @@ Resources::IngredientType GameControl::chooseIng()
 		ingsInScene.insert(make_pair(type, 0));
 	}
 	for (auto ing : ingPool_->getPool()) {
-		++ingsInScene.find(ing->getType())->second;
+
+		if(ingsInScene.find(ing->getType()) != ingsInScene.end()) ++ingsInScene.find(ing->getType())->second;		
 	}
 
 	Resources::IngredientType lessIng = levelIngType[0];

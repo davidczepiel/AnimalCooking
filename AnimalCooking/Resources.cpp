@@ -292,7 +292,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,Salad3Order,"../AnimalCooking/resources/images/Pedidos/ensalada3.png"},
 	{AllLevels,Salad4Order,"../AnimalCooking/resources/images/Pedidos/ensalada4.png"},
 	{AllLevels,BurgerOrder,"../AnimalCooking/resources/images/Pedidos/hamburguesa.png"},
-	{AllLevels,Burger1Order,"../AnimalCooking/resources/images/Pedidos/hamburguesa1.png"},
+	/*{AllLevels,Burger1Order,"../AnimalCooking/resources/images/Pedidos/hamburguesa1.png"},*/
 	{AllLevels,Burger2Order,"../AnimalCooking/resources/images/Pedidos/hamburguesa2.png"},
 	{AllLevels,Burger3Order,"../AnimalCooking/resources/images/Pedidos/hamburguesa3.png"},
 	{AllLevels,FriedVegsOrder,"../AnimalCooking/resources/images/Pedidos/verdurasFritas.png"},
