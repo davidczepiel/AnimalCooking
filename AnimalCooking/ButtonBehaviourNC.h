@@ -18,6 +18,7 @@ public:
 
 	void setButtonRenderer(ButtonRenderer* bR) { bRenderer_ = bR; }
 	void setLevelInfo(levelInfo* info) { mapInfo_ = info; }
+	levelInfo* getLevelInfo() { return mapInfo_; }
 	const bool& getFocusByMouse() { return focusedByMouse_; }
 	const bool& getFocusByController() { return focusedByController_; }
 	void setFocusByController(bool f);
