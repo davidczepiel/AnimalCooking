@@ -196,7 +196,7 @@ void MapState::update()
 				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
 			}
 
-			if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+			if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars() || !GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {	//si aun no se han superado el minimo de estrellas se desactiva
 				static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
 				GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
 			}
@@ -409,7 +409,7 @@ void MapState::removeProfile(const string& name)
 
 void MapState::nextScreen()
 {
-	if (currentMapScene_ >= bgText_.size() - 1) return;
+	if (currentMapScene_ >= bgText_.size() - 1 || jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) return;
 
 	transition_ = true;
 	transitionDirection_ = -1;
@@ -536,7 +536,7 @@ void MapState::placeHousesAndButtons()
 		br->setActive(false);
 		bb->setActive(false);
 	}
-	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars() || !GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {	//si aun no se han superado el minimo de estrellas se desactiva
 		static_cast<ButtonRendererMapArrow*>(br)->setAvailable(false);
 		bb->setActive(false);
 	}
@@ -571,7 +571,7 @@ void MapState::refreshHousesAndButtons()
 		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
 	}
 
-	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars()) {	//si aun no se han superado el minimo de estrellas se desactiva
+	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars() || !GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {	//si aun no se han superado el minimo de estrellas se desactiva
 		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
 		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
 		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
