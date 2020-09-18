@@ -269,6 +269,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels,EncimeraDerVertCon,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraDerVertCon.png" },
 	{ AllLevels,EncimeraIzqVertCon,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraIzqVertCon.png" },
 	{ AllLevels,EncimeraVEsquinaSuperior_SinBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraVEsquinaSuperior_SinBordes.png" },
+	{ AllLevels,Encimera,"../AnimalCooking/resources/images/Cocina/encimeras/encimera.png" },
+	{ AllLevels,EncimeraHorizSinBordes,"../AnimalCooking/resources/images/Cocina/encimeras/encimeraHorizSinBordes.png" },
+
+
 
 	//Esquinas
 	{AllLevels,EsquinaSupDchaCopas,"../AnimalCooking/resources/images/Cocina/esquinas/esquina1-1.png"},
@@ -568,6 +572,7 @@ vector<Resources::ImageInfo> Resources::images_{
 	    { AllLevels, AceiteVerSinDer,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalsinDer.png" },
 		{ AllLevels, AceiteSin,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoSin.png" },
 	    { AllLevels, AceiteVerticalBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVerticalBordeSup.png" },
+		{ AllLevels, AlinoVAbajo,"../AnimalCooking/resources/images/Cocina/foodgivers/alinoVAbajo.png" },
 		{ AllLevels, Arroz,"../AnimalCooking/resources/images/Cocina/foodgivers/arrocera.png"},
 	    { AllLevels, ArrozBordeSup,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraBordeSup.png" },
 	    { AllLevels, ArrozSinBordeDer,"../AnimalCooking/resources/images/Cocina/foodgivers/arroceraSinBordeDer.png" },
@@ -578,6 +583,7 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ AllLevels, horDogHBordeD,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogHBordeD.png" },
 		{ AllLevels, horDogHBordeI,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogHBordeI.png" },
 		{ AllLevels, horDogH,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogH.png" },
+		{ AllLevels, horDogV,"../AnimalCooking/resources/images/Cocina/foodgivers/horDogV.png" },
 		{ AllLevels, EncimeraMasa,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasa.png"},
 		{ AllLevels, EncimeraMasaV,"../AnimalCooking/resources/images/Cocina/foodgivers/encimeraMasaV.png" },
 		{ AllLevels, NoriFoodGiver,"../AnimalCooking/resources/images/Cocina/foodgivers/algas.png" },
