@@ -13,7 +13,7 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 	src.x = 0; src.y = 116;
 	dest.x = 0; dest.y = 0;
 	dest.w = 150; dest.h = 150;
-	animationSpeed = 1000;
+	animationSpeed = 1500;
 	killsStarted = 0;
 	gl = multipleAdversityMngr_->getGameLogic();
 }
@@ -65,7 +65,7 @@ void IngredientsDeathAdversity::start()
 	reset();
 	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	numKills = (ingredients.size()/2);
+	numKills =  (ingredients.size() / 2);
 	percentagePerKill = 1 / (numKills + 1);
 	//Me quedo con unos cuants ingredientes aleatorios
 	while (ingInfo.size() < numKills) {
@@ -90,6 +90,7 @@ void IngredientsDeathAdversity::start()
 	deathTimer->timerStart();
 	killsDone = 0;
 	ingInfo.at(0).animationTimer->timerStart();
+	ingInfo.at(0).ing->setInvincible(true);
 	killsStarted = 1;
 }
 
@@ -103,9 +104,11 @@ void IngredientsDeathAdversity::killIngredients()
 void IngredientsDeathAdversity::killIngredient()
 {
 	if (killsDone < numKills) {
-		if (ingInfo.at(killsDone).ing != nullptr) {
+		if (ingInfo.at(killsDone).ing != nullptr && std::find(multipleAdversityMngr_->getIngredientsPool()->getPool().begin(),
+			multipleAdversityMngr_->getIngredientsPool()->getPool().end(), ingInfo.at(killsDone).ing) != multipleAdversityMngr_->getIngredientsPool()->getPool().end()) {
+			
 			gl->ingredientDeath(ingInfo.at(killsDone).ing);
-			ingInfo.at(killsDone).ing = nullptr;
+			//ingInfo.at(killsDone).ing = nullptr;
 		}
 		ingInfo.at(killsDone).dead = true;
 		ingInfo.at(killsDone).row = 1;
@@ -159,6 +162,7 @@ void IngredientsDeathAdversity::startIngredient(int i)
 	if (killsStarted < numKills) {
 		if (killsStarted < ingInfo.size()) {
 			ingInfo.at(killsStarted).animationTimer->timerStart();
+			ingInfo.at(killsStarted).ing->setInvincible(true);
 			killsStarted++;
 		}
 	}

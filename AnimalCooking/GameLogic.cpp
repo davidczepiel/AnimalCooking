@@ -28,7 +28,7 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 	bool hit = false;
 	for (Ingredient* ing : ingPool->getPool()) {
 		//Si le doy a algo genero su resultado y reproduzco el sonido adecuado 
-		if (Collisions::collides(Vector2D(rect.x, rect.y), rect.w, rect.h, ing->getPos(), ing->getWidth(), ing->getHeight())) {
+		if (!ing->isInvincible() && Collisions::collides(Vector2D(rect.x, rect.y), rect.w, rect.h, ing->getPos(), ing->getWidth(), ing->getHeight())) {
 			hit = true;
 			Vector2D ingPos = ing->getPos();
 			Resources::IngredientType ingType = ing->getType();
