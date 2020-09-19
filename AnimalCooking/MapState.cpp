@@ -723,7 +723,7 @@ void MapState::configPadNavigation() {
 		}
 		if(currentMapScene_>0)
 		padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_,nullptr,nullptr,nullptr,levelButtonsPool_.at(0), levelButtonsPool_.at(0),2);
-		if(currentMapScene_<5 && GETCMP2(levelButtonsPool_.at(i - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked)
+		if(currentMapScene_<5 && GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked)
 		padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr,levelButtonsPool_.at(i-1),nullptr, levelButtonsPool_.at(i - 1),3);
 	}
 }
