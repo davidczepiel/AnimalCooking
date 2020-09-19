@@ -467,7 +467,7 @@ void MapState::nextScreen()
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 	configPadNavigation();
-	if (currentMapScene_ < 5 && GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {
+	if (currentMapScene_ < 5 && padNavigation_!= nullptr && GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {
 		padNavigation_->setFocusOn(nextScreenButton_);
 		GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setFocusByController(false);
 	}
@@ -494,7 +494,7 @@ void MapState::previousScreen()
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 	configPadNavigation();
-	if (currentMapScene_ > 0) {
+	if (currentMapScene_ > 0 && padNavigation_ != nullptr) {
 		padNavigation_->setFocusOn(PreviousScreenButton_);
 		GETCMP2(nextScreenButton_, ButtonBehaviour)->setFocusByController(false);
 	}
