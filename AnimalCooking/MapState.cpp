@@ -397,6 +397,7 @@ void MapState::transitionEnd()
 		ButtonBehaviourNC* bnc = GETCMP2(levelButtonsPool_.at(0), ButtonBehaviourNC);
 		bnc->setActive(true);
 		bnc->setLevelInfo(levelinfos_->back());
+		GETCMP2(infoBox_, MapInfoBoxViewer)->setCurrentInfoLevel(levelinfos_->back());
 
 		ButtonRendererHouse* brh = GETCMP2(levelButtonsPool_.at(0), ButtonRendererHouse);
 		brh->setActive(true);
