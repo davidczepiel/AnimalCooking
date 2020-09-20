@@ -137,6 +137,8 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	/*case Resources::FoodType::Burger1: time += 2*timeCooking + 5;*/
 	case Resources::FoodType::Burger2: time += timeCooking + 5;
 	case Resources::FoodType::Burger3: time += timeCooking + 5;
+	case Resources::FoodType::Burger4: time += timeCooking + 5;
+	case Resources::FoodType::Burger5: time += timeCooking + 5;
 	case Resources::FoodType::RiceDish: time += timeCooking;
 	case Resources::FoodType::Risotto: time += timeCooking;
 

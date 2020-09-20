@@ -297,6 +297,7 @@ public:
 		/*Burger1Order,*/
 		Burger2Order,
 		Burger3Order,
+		Burger4Order,
 		FriedVegsOrder,
 		FriedVegsOrder1,
 		FriedVegsOrder2,
@@ -311,7 +312,6 @@ public:
 		BakedChicken1Order,
 		BakedChicken2Order,
 		FrenchFriesOrder,
-		CookedClamsOrder,
 		RiceAndClamsOrder,
 		FishOnStickOrder,
 		FishAndChipsOrder,
@@ -350,6 +350,8 @@ public:
 		Perrito3Order,
 
 		RisottoOrder,
+		CookedClamsOrder,
+
 		//Food---------------------------------------------------------
 		PoopT,
 		SlicedTomatoT,
@@ -385,6 +387,8 @@ public:
 		Burger1T,
 		Burger2T,
 		Burger3T,
+		Burger4T,
+		Burger5T,
 
 		PizzaT,
 		Pizza1T,
@@ -490,6 +494,8 @@ public:
 			Burger1FeedBack,
 			Burger2FeedBack,
 			Burger3FeedBack,
+			Burger4FeedBack,
+			Burger5FeedBack,
 
 			PizzaFeedBack,
 			Pizza1FeedBack,
@@ -879,6 +885,8 @@ public:
 		/*Burger1,*/
 		Burger2,
 		Burger3,
+		Burger4,
+		Burger5,
 		FriedVegs,
 		FriedVegs1,
 		FriedVegs2,

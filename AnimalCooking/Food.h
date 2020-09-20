@@ -412,6 +412,33 @@ public:
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger3T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger3FeedBack);
 	}
+
+};
+class Burger4 : public Food
+{
+public:
+	Burger4(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger4, p1, p2, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger4FeedBack);
+	}
+	Burger4() : Food(Resources::FoodType::Burger4, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger4T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger4FeedBack);
+	}
+
+};
+class Burger5 : public Food
+{
+public:
+	Burger5(Vector2D position, Transport* p1, Transport* p2) : Food(position, Resources::FoodType::Burger5, p1, p2, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger5T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger5FeedBack);
+	}
+	Burger5() : Food(Resources::FoodType::Burger3, EXPLOSION) {
+		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger5T);
+		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger5FeedBack);
+	}
+
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //--------------------------------------------------Pizza------------------------------------------------------------

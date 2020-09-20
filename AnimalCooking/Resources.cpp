@@ -308,13 +308,11 @@ vector<Resources::ImageInfo> Resources::images_{
 	{AllLevels,Roast3Order,"../AnimalCooking/resources/images/Pedidos/asado3.png"},
 
 	{AllLevels,RiceDishOrder,"../AnimalCooking/resources/images/Pedidos/arrozCasa.png"},
-	{AllLevels,RisottoOrder,"../AnimalCooking/resources/images/Pedidos/risotto.png"},
 	{AllLevels,CookedFishOrder,"../AnimalCooking/resources/images/Pedidos/pescadoAlHorno.png"},
 	{AllLevels,BakedChickenOrder,"../AnimalCooking/resources/images/Pedidos/polloAsado.png"},
 	{AllLevels,BakedChicken1Order,"../AnimalCooking/resources/images/Pedidos/polloAsado1.png"},
 	{AllLevels,BakedChicken2Order,"../AnimalCooking/resources/images/Pedidos/polloAsado2.png"},
 	{AllLevels,FrenchFriesOrder,"../AnimalCooking/resources/images/Pedidos/patatasFristas.png"},
-	{AllLevels,CookedClamsOrder,"../AnimalCooking/resources/images/Pedidos/vieira.png"},
 	{ AllLevels,RiceAndClamsOrder,"../AnimalCooking/resources/images/Pedidos/mariscoConArroz.png" },
 	{ AllLevels,FishOnStickOrder,"../AnimalCooking/resources/images/Pedidos/pescadoPalo.png" },
 	{ AllLevels,FishAndChipsOrder,"../AnimalCooking/resources/images/Pedidos/fishChips.png" },
@@ -351,6 +349,10 @@ vector<Resources::ImageInfo> Resources::images_{
 	{ AllLevels,Perrito1Order,"../AnimalCooking/resources/images/Pedidos/hotdog1.png" },
 	{ AllLevels,Perrito2Order,"../AnimalCooking/resources/images/Pedidos/hotdog2.png" },
 	{ AllLevels,Perrito3Order,"../AnimalCooking/resources/images/Pedidos/hotdog3.png" },
+
+	{ AllLevels,RisottoOrder,"../AnimalCooking/resources/images/Pedidos/risotto.png" },
+	{ AllLevels,CookedClamsOrder,"../AnimalCooking/resources/images/Pedidos/vieira.png" },
+
 
 
 	//Foods-----------------------------------------------------------------
