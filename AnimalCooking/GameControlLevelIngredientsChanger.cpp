@@ -7,7 +7,7 @@ groups_(), gControl_(nullptr), timer(nullptr), times_(times)
 {
 
 	groups_.push({ Resources::IngredientType::tomato, Resources::IngredientType::lettuce, Resources::IngredientType::carrot, Resources::IngredientType::onion, 
-		Resources::IngredientType::meat, Resources::IngredientType::mushroom, Resources::IngredientType::potato });
+		Resources::IngredientType::meat, Resources::IngredientType::mushroom, Resources::IngredientType::potato,Resources::IngredientType::cheese });
 	
 	groups_.push({ Resources::IngredientType::sausage, Resources::IngredientType::tomato, Resources::IngredientType::fish, Resources::IngredientType::carrot, 
 		Resources::IngredientType::onion, Resources::IngredientType::cheese, Resources::IngredientType::mushroom, Resources::IngredientType::potato, 
