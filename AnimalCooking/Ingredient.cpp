@@ -47,4 +47,5 @@ void Ingredient::onCollisionXY()
 void Ingredient::destroy()
 {
 	ingredientPool_->deleteIngredient(it_);
+	
 }

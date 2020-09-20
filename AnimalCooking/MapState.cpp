@@ -397,6 +397,7 @@ void MapState::transitionEnd()
 		ButtonBehaviourNC* bnc = GETCMP2(levelButtonsPool_.at(0), ButtonBehaviourNC);
 		bnc->setActive(true);
 		bnc->setLevelInfo(levelinfos_->back());
+		//GETCMP2(infoBox_, MapInfoBoxViewer)->setCurrentInfoLevel(levelinfos_->back());
 
 		ButtonRendererHouse* brh = GETCMP2(levelButtonsPool_.at(0), ButtonRendererHouse);
 		brh->setActive(true);
@@ -467,6 +468,11 @@ void MapState::nextScreen()
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 	configPadNavigation();
+	if (currentMapScene_ < 5 && padNavigation_!= nullptr && GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {
+		padNavigation_->setFocusOn(nextScreenButton_);
+		GETCMP2(PreviousScreenButton_, ButtonBehaviour)->setFocusByController(false);
+	}
+
 
 }
 
@@ -489,6 +495,11 @@ void MapState::previousScreen()
 	GETCMP2(PreviousScreenButton_, ButtonRenderer)->setActive(false);
 	refreshHousesAndButtons();
 	configPadNavigation();
+	if (currentMapScene_ > 0 && padNavigation_ != nullptr) {
+		padNavigation_->setFocusOn(PreviousScreenButton_);
+		GETCMP2(nextScreenButton_, ButtonBehaviour)->setFocusByController(false);
+	}
+
 
 }
 
@@ -634,6 +645,17 @@ void MapState::refreshHousesAndButtons()
 		}
 
 	}
+	else if (currentMapScene_ == 5) {
+		int newI = currentMapScene_ * levelPacks_ ;
+		//me quedo con el nivel que lo0 toca al boton y se lo paso a sus componentes para que se adapten si esta desbloqueado o no
+		levelInfo* actualLevel = levelinfos_->at(newI);
+		GETCMP2(levelButtonsPool_.at(0), ButtonBehaviourNC)->setLevelInfo(actualLevel);
+		GETCMP2(levelButtonsPool_.at(0), ButtonRendererHouse)->setLevel(actualLevel);
+		Transform* levelITransform = GETCMP2(levelButtonsPool_.at(0), Transform);
+		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
+		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
+		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
+	}
 	
 
 		
@@ -694,6 +716,7 @@ void MapState::previousScreenCallBack(AnimalCooking* ac)
 {
 	MapState* ms = static_cast<MapState*>(SDLGame::instance()->getFSM()->currentState());
 	ms->previousScreen();
+	
 }
 
 void MapState::notEnoughStarsWarning()
@@ -711,19 +734,21 @@ void MapState::configPadNavigation() {
 		padNavigation_->resetNavigation();
 
 		int i = 0;
-		while (i < levelPacks_ && levelinfos_->at((currentMapScene_ * levelPacks_)+i)->unlocked) {
+		while (i < levelPacks_ && (((currentMapScene_ * levelPacks_) + i)<levelinfos_->size()) && levelinfos_->at((currentMapScene_ * levelPacks_)+i)->unlocked) {
 			Entity* behind = nullptr;
 			Entity* forward = nullptr;
 			if (i > 0 && levelinfos_->at((currentMapScene_*levelPacks_)+ i - 1)->unlocked)
 				behind = levelButtonsPool_.at(i - 1);
-			if (i < levelPacks_ - 1 && levelinfos_->at((currentMapScene_ * levelPacks_) + i + 1)->unlocked)
+			if (i < levelPacks_ - 1 && (((currentMapScene_ * levelPacks_) + i + 1)<levelinfos_->size()) && levelinfos_->at((currentMapScene_ * levelPacks_) + i + 1)->unlocked)
 				forward = levelButtonsPool_.at(i + 1);
 			padNavigation_->AddButton(levelButtonsPool_.at(i), nullptr, nullptr, behind, forward);
 			i++;
 		}
-		if(currentMapScene_>0)
-		padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_,nullptr,nullptr,nullptr,levelButtonsPool_.at(0), levelButtonsPool_.at(0),2);
-		if(currentMapScene_<5 && GETCMP2(levelButtonsPool_.at(i - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked)
-		padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr,levelButtonsPool_.at(i-1),nullptr, levelButtonsPool_.at(i - 1),3);
+		if (currentMapScene_ > 0) {
+			padNavigation_->addButtonToAnExistingOne(PreviousScreenButton_, nullptr, nullptr, nullptr, levelButtonsPool_.at(0), levelButtonsPool_.at(0), 2);
+		}
+		if (currentMapScene_ < 5 && GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {
+			padNavigation_->addButtonToAnExistingOne(nextScreenButton_, nullptr, nullptr, levelButtonsPool_.at(i - 1), nullptr, levelButtonsPool_.at(i - 1), 3);
+		}
 	}
 }
