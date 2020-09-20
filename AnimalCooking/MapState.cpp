@@ -397,7 +397,7 @@ void MapState::transitionEnd()
 		ButtonBehaviourNC* bnc = GETCMP2(levelButtonsPool_.at(0), ButtonBehaviourNC);
 		bnc->setActive(true);
 		bnc->setLevelInfo(levelinfos_->back());
-		GETCMP2(infoBox_, MapInfoBoxViewer)->setCurrentInfoLevel(levelinfos_->back());
+		//GETCMP2(infoBox_, MapInfoBoxViewer)->setCurrentInfoLevel(levelinfos_->back());
 
 		ButtonRendererHouse* brh = GETCMP2(levelButtonsPool_.at(0), ButtonRendererHouse);
 		brh->setActive(true);
@@ -644,6 +644,17 @@ void MapState::refreshHousesAndButtons()
 			GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
 		}
 
+	}
+	else if (currentMapScene_ == 5) {
+		int newI = currentMapScene_ * levelPacks_ ;
+		//me quedo con el nivel que lo0 toca al boton y se lo paso a sus componentes para que se adapten si esta desbloqueado o no
+		levelInfo* actualLevel = levelinfos_->at(newI);
+		GETCMP2(levelButtonsPool_.at(0), ButtonBehaviourNC)->setLevelInfo(actualLevel);
+		GETCMP2(levelButtonsPool_.at(0), ButtonRendererHouse)->setLevel(actualLevel);
+		Transform* levelITransform = GETCMP2(levelButtonsPool_.at(0), Transform);
+		levelITransform->setPos(aux.getLevelInfoRecipes().at(newI).buttonPosition);
+		levelITransform->setW(aux.getLevelInfoRecipes().at(newI).buttonsSize.getX());
+		levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
 	}
 	
 
