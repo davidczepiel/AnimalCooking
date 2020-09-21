@@ -298,6 +298,7 @@ public:
 		Burger2Order,
 		Burger3Order,
 		Burger4Order,
+		Burger5Order,
 		FriedVegsOrder,
 		FriedVegsOrder1,
 		FriedVegsOrder2,

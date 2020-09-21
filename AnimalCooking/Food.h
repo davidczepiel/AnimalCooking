@@ -434,7 +434,7 @@ public:
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger5T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger5FeedBack);
 	}
-	Burger5() : Food(Resources::FoodType::Burger3, EXPLOSION) {
+	Burger5() : Food(Resources::FoodType::Burger5, EXPLOSION) {
 		texture_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::TextureId::Burger5T);
 		feedbackVisual_ = SDLGame::instance()->getTextureMngr()->getTexture(Resources::Burger5FeedBack);
 	}
