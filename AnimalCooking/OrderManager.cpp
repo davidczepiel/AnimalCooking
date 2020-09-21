@@ -183,7 +183,7 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::Pizza5: time += timeCooking;
 	case Resources::FoodType::Perrito: time += timeCooking;
 	case Resources::FoodType::Perrito1: time += timeCooking+1000;
-	case Resources::FoodType::Perrito2: time += timeCooking+1000;
+	case Resources::FoodType::Perrito2: time += timeCooking+2000;
 	case Resources::FoodType::Perrito3: time += 2*timeCooking+1000;
 
 	default:
