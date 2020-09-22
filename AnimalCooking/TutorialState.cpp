@@ -30,21 +30,21 @@ TutorialState::TutorialState(AnimalCooking* ac): State(ac),
 
 //Left
 	Entity* goLeftButton = stage->addEntity();
-	stage->addToGroup(goLeftButton, ecs::GroupID::topLayer);
+	stage->addToGroup(goLeftButton, ecs::GroupID::FeedBackLayer);
 	Texture* aux = game_->getTextureMngr()->getTexture(Resources::ButtonNext);
 	goLeftButton->addComponent<Transform>(
-		Vector2D(imagenesTr_->getPos().getX() - 134, imagenesTr_->getPos().getY() + imagenesTr_->getH()/2 - aux->getHeight()/2), 
-		Vector2D(), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
+		Vector2D(imagenesTr_->getPos().getX() - aux->getWidth()/3 , imagenesTr_->getPos().getY() + imagenesTr_->getH()/2 - aux->getHeight()/2),
+		Vector2D(), aux->getWidth()/3, aux->getHeight() + aux->getHeight() / 3);
 	bb = goLeftButton->addComponent<ButtonBehaviour>(moveLeft, app);
-	br = goLeftButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
+	br = goLeftButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::TextureId::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 
 //Right
 	Entity* goRightButton = stage->addEntity();
-	stage->addToGroup(goRightButton, ecs::GroupID::topLayer);
+	stage->addToGroup(goRightButton, ecs::GroupID::FeedBackLayer);
 	goRightButton->addComponent<Transform>(
-		Vector2D(imagenesTr_->getPos().getX() + imagenesTr_->getW() + 16, imagenesTr_->getPos().getY() + imagenesTr_->getH() / 2 - aux->getHeight() / 2), 
-		Vector2D(), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
+		Vector2D(imagenesTr_->getPos().getX() + imagenesTr_->getW() + 20, imagenesTr_->getPos().getY() + imagenesTr_->getH() / 2 - aux->getHeight() / 2),
+		Vector2D(), aux->getWidth()/3, aux->getHeight() + aux->getHeight() / 3);
 	bb = goRightButton->addComponent<ButtonBehaviour>(moveRight, app);
 	br = goRightButton->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonNext), nullptr);
 	bb->setButtonRenderer(br);

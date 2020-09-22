@@ -29,6 +29,7 @@ public:
 	void prepareNavPadFewProfiles(bool many);
 	void askProfile();
 	void removeProfile(const string& name);
+	void transitionEnd();
 
 	inline void setName(const string& n) { playerName_ = n; game_->setName(n); }
 	inline void setCurrentLevel(int nl) {
