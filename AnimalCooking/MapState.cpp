@@ -601,8 +601,8 @@ void MapState::placeHousesAndButtons()
 
 void MapState::refreshHousesAndButtons()
 {
-	MapConfig aux(playerName_,false);
-	
+	MapConfig aux(playerName_, false);
+
 
 	if (currentMapScene_ < 5)
 	{
@@ -616,18 +616,18 @@ void MapState::refreshHousesAndButtons()
 			levelITransform->setH(aux.getLevelInfoRecipes().at(newI).buttonsSize.getY());
 		}
 
-	if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars() ||
-		!GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {	//si aun no se han superado el minimo de estrellas se desactiva
-		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
-		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
-		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
-	}
-	else {
-		static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(true);
-		GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+		if (jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int() > SDLGame::instance()->getNumStars() ||
+			!GETCMP2(levelButtonsPool_.at(levelButtonsPool_.size() - 1), ButtonBehaviourNC)->getLevelInfo()->unlocked) {	//si aun no se han superado el minimo de estrellas se desactiva
+			static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(false);
+			static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->updateText(jsonGeneral["MapStars"][to_string(currentMapScene_ + 1)].as_int());
+			GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(false);
+		}
+		else {
+			static_cast<ButtonRendererMapArrow*>(GETCMP2(nextScreenButton_, ButtonRenderer))->setAvailable(true);
+			GETCMP2(nextScreenButton_, ButtonBehaviour)->setActive(true);
+		}
 	}
 }
-
 void MapState::hideChooseButtons()
 {
 	if (newGameButton_) {
