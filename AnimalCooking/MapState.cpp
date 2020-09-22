@@ -173,9 +173,8 @@ void MapState::update()
 			for (auto& e : levelButtonsPool_) {
 				GETCMP2(e, ButtonRendererHouse)->setActive(true);
 			}
-			GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(true);
+			setActiveInfoBox(true);
 			GETCMP2(returnButton_, ButtonRenderer)->setActive(true);
-			GETCMP2(playButton_, ButtonRendererHouse)->setActive(true);
 
 			//-----Activar/desactivar botones de desplazamiento del mapstate------------
 			if (currentMapScene_ == 0) {
@@ -545,7 +544,7 @@ void MapState::placeHousesAndButtons()
 	PreviousScreenButton_ = stage->addEntity();
 	PreviousScreenButton_->addComponent<Transform>(Vector2D(30, (game_->getWindowHeight() / 2)), Vector2D(0, 0), aux->getWidth() - 60, aux->getHeight() + aux->getHeight() / 3);
 	bb = PreviousScreenButton_->addComponent<ButtonBehaviour>(previousScreenCallBack, app);
-	br = PreviousScreenButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
+	br = PreviousScreenButton_->addComponent<ButtonRendererMapArrow>(game_->getTextureMngr()->getTexture(Resources::ButtonPrev), nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(PreviousScreenButton_, ecs::GroupID::topLayer);
 	if (currentMapScene_ == 0) {
@@ -645,6 +644,12 @@ void MapState::notEnoughStarsWarning()
 	starsWarningActive_ = true;
 	auxTime_ = game_->getTime();
 	totalStarsRectAux_ = totalStarsRect_;
+}
+
+void MapState::setActiveInfoBox(bool b)
+{
+	if (infoBox_ != nullptr) GETCMP2(infoBox_, MapInfoBoxViewer)->setActive(b);
+	if (playButton_ != nullptr) GETCMP2(playButton_, ButtonRendererHouse)->setActive(b);
 }
 
 void MapState::configPadNavigation() {
