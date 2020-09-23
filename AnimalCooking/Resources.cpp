@@ -615,6 +615,8 @@ vector<Resources::SpritesheetInfo> Resources::spritesheets_{
 	//Botones
 	{Basic, Button,"../AnimalCooking/resources/images/Menu/botones.png", 1, 3},
 	{Basic, ButtonConfig,"../AnimalCooking/resources/images/Menu/botonesConfig.png", 1, 3},
+	{Basic, NewPlayButton,"../AnimalCooking/resources/images/Menu/newGameButton.png", 1, 3},
+	{Basic, LoadButton,"../AnimalCooking/resources/images/Menu/loadGameButton.png", 1, 3},
 	{Basic, ButtonBin,"../AnimalCooking/resources/images/Menu/botonesPapelera.png", 1, 3},
 	{Basic, ReplayIcon,"../AnimalCooking/resources/images/EndState/ReplayProvisional.png", 1, 3},
 	{Basic, NextLevelIcon,"../AnimalCooking/resources/images/EndState/PlayProvisional.png",1,3},
@@ -695,8 +697,6 @@ vector<Resources::TextMsgInfo> Resources::messages_{
 	{Basic,Pablo,"Pablo Villapun Martin",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 	{Basic,Sandra,"Sandra Mondragon Lazaro",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 	{Basic,Tatiana,"Tatiana Duarte Balvis",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
-	{Basic,TextureId::MapNewGameButton,"New Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
-	{Basic,TextureId::MapLoadGameButton,"Load Game",hex2sdlcolor("#FFFFFFFF"),QuarkCheese100},
 	{Basic,Go,"Go",hex2sdlcolor("#000000FF"),QuarkCheese50},
 
 	{Basic, TextureId::Back, "Return", COLOR(0xffffffff), FontId::QuarkCheese100},

@@ -613,6 +613,8 @@ public:
 		//spritesheets
 		Button,
 		ButtonConfig,
+		NewPlayButton,
+		LoadButton,
 		ButtonBin,
 		CircularTimer,
 		BurnedTimer,
@@ -681,8 +683,6 @@ public:
 		Pablo,
 		Sandra,
 		Tatiana,
-		MapNewGameButton,
-		MapLoadGameButton,
 		Go,
 
 		//Adversities

@@ -71,44 +71,50 @@ void MapState::chooseOption() {
 	stage->addToGroup(chooser, ecs::GroupID::topLayer);
 
 	MapConfig mapCFG(playerName_);
+	//----------------------------------------------New Game Button--------------------------------
+	//Guardamos la textura para usar el tamaño de la misma en elTransform
+	Texture* auxTexture = game_->getTextureMngr()->getTexture(Resources::NewPlayButton);
 	if (mapCFG.getProfiles().size() < 10) {
 		newGameButton_ = stage->addEntity();
 		newGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 4.5 * casillaY),
+			Vector2D(game_->getWindowWidth()/2 - auxTexture->getWidth()/6, 4.5 * casillaY),
 			Vector2D(),
-			6 * casillaX,
-			1.5 * casillaY,
+			auxTexture->getWidth()/3,
+			auxTexture->getHeight(),
 			0);
 		ButtonBehaviour* bb = newGameButton_->addComponent<ButtonBehaviour>(newGameCallback, app);
-		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapNewGameButton));
+		ButtonRenderer* br = newGameButton_->addComponent<ButtonRenderer>(auxTexture, nullptr);
 		bb->setButtonRenderer(br);
 		stage->addToGroup(newGameButton_, ecs::GroupID::topLayer);
 	}
 	else newGameButton_ = nullptr;
+	//--------------------------------------------------Load Button-------------------------------------------
 	if (mapCFG.getProfiles().size() > 0) {
 		loadGameButton_ = stage->addEntity();
+		auxTexture = game_->getTextureMngr()->getTexture(Resources::LoadButton); //Ponemos la textura correspondiente
 		loadGameButton_->addComponent<Transform>(
-			Vector2D(5 * casillaX, 2.5 * casillaY),
+			Vector2D(game_->getWindowWidth() / 2 - auxTexture->getWidth() / 6, 2.5 * casillaY),
 			Vector2D(),
-			6 * casillaX,
-			1.5 * casillaY,
+			auxTexture->getWidth() / 3,
+			auxTexture->getHeight(),
 			0);
 		ButtonBehaviour* bb = loadGameButton_->addComponent<ButtonBehaviour>(loadGameCallback, app);
-		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::MapLoadGameButton));
+		ButtonRenderer* br = loadGameButton_->addComponent<ButtonRenderer>(auxTexture, nullptr);
 		bb->setButtonRenderer(br);
 		stage->addToGroup(loadGameButton_, ecs::GroupID::topLayer);
 	}
 	else loadGameButton_ = nullptr;
-
+	//------------------------------------------------------Back Button--------------------------------------------
 	exit = stage->addEntity();
+	auxTexture = game_->getTextureMngr()->getTexture(Resources::Config_BackButton);
 	exit->addComponent<Transform>(
 		Vector2D(10, 10),
 		Vector2D(),
-		2 * casillaX,
-		1.5 * casillaY,
+		auxTexture->getWidth() / 3,
+		auxTexture->getHeight(),
 		0);
 	ButtonBehaviour* bb = exit->addComponent<ButtonBehaviour>(backButtonCallback, app);
-	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(game_->getTextureMngr()->getTexture(Resources::ButtonConfig), game_->getTextureMngr()->getTexture(Resources::Back));
+	ButtonRenderer* br = exit->addComponent<ButtonRenderer>(auxTexture, nullptr);
 	bb->setButtonRenderer(br);
 	stage->addToGroup(exit, ecs::GroupID::topLayer);
 
