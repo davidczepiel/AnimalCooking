@@ -57,6 +57,9 @@ void ButtonBehaviourNC::update()
 				if(butPadNav_!= nullptr) butPadNav_->setFocusOn(entity_);
 				action();
 				if (bRenderer_) bRenderer_->clicked();
+				//Activo el panel de InfoBox del mapstate
+				State* s = game_->getFSM()->currentState();
+				if (static_cast<MapState*>(s) != nullptr) static_cast<MapState*>(s)->setActiveInfoBox(true);
 			}
 		}
 		else focusedByMouse_ = false;

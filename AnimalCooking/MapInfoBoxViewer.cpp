@@ -45,30 +45,30 @@ void MapInfoBoxViewer::draw()
 		buttonT->setPosX(size - 1.5 * casillaX_);
 
 		for (int i = 0; i < 3; i++) { //Se usa i para calcular la y
-			loreLines[i]->render(RECT(70 + size / 2 - loreLines[i]->getWidth() / 2, 63 + i * casillaY_ * lineaHeight, loreLines[i]->getWidth(), lineaHeight * casillaY_));
+			loreLines[i]->render(RECT(70 + size / 2 - loreLines[i]->getWidth() / 2, 70 + i * casillaY_ * lineaHeight, loreLines[i]->getWidth(), lineaHeight * casillaY_));
 		}
 			
 		switch (info_->stars)
 		{
 		case 0:
-			notGotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			notGotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			notGotStar_->render(RECT(60, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			notGotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
 			break;
 		case 1:
-			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			notGotStar_->render(RECT(60 + 1.1* casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			notGotStar_->render(RECT(60 + 1.1* casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
 			break;
 		case 2:
-			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			notGotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
 			break;
 		case 3:
-			gotStar_->render(RECT(60, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
-			gotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 20, casillaX_, casillaY_));
+			gotStar_->render(RECT(60, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			gotStar_->render(RECT(60 + 1.1 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
+			gotStar_->render(RECT(60 + 2.2 * casillaX_, 2 * casillaY_ + 50, casillaX_ - 10, casillaY_ - 10));
 
 			break;
 		default:

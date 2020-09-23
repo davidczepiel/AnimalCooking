@@ -3,6 +3,8 @@
 #include "SliderBehaviour.h"
 #include "ButtonBehaviourNC.h"
 #include "ButtonBehaviour.h"
+#include "FSM.h"
+#include "MapState.h"
 
 ButtonPadNavigation::ButtonPadNavigation() :Component(ecs::ButtonPadNavigation),
 	xAxisMoved(false), 
@@ -310,12 +312,20 @@ void ButtonPadNavigation::changeFocus(Entity* e) {
 	while (i < buttons.size() && buttons.at(i)->e != e)
 		i++;
 	focus = buttons.at(i);
-	ButtonBehaviour* b = GETCMP2(focus->e, ButtonBehaviour);
-	if (b) b->setFocusByController(true);
-	else {
-		ButtonBehaviourNC* nc = GETCMP2(focus->e, ButtonBehaviourNC);
-		if (nc) nc->setFocusByController(true);
+	ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
+	ButtonRenderer* br = GETCMP2(focus.e, ButtonRenderer);
+	State* s = game_->getFSM()->currentState();
+	if (b) {
+		b->setFocusByController(true);
+		if (dynamic_cast<ButtonRendererMapArrow*>(br) != nullptr) {	//Si es una flecha
+			if (static_cast<MapState*>(s) != nullptr) static_cast<MapState*>(s)->setActiveInfoBox(false);	//desactivas el panel
+		}
 	}
-
-
+	else {
+		ButtonBehaviourNC* nc = GETCMP2(focus.e, ButtonBehaviourNC);
+		if (nc) {
+			nc->setFocusByController(true); 
+			if (static_cast<MapState*>(s) != nullptr) static_cast<MapState*>(s)->setActiveInfoBox(true);	//si no es una flecha activas el panel
+		}
+	}
 }
