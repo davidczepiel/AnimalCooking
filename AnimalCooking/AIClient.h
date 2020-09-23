@@ -3,6 +3,7 @@
 #include <vector>
 #include "Resources.h"
 #include <queue>
+#include <list>
 #include "TimerViewer.h"
 
 class OrderManager;
@@ -16,14 +17,17 @@ public:
 	void update() override;
 
 	inline void setAvailableOrders(vector<Resources::FoodType>& lista) {
+		allOrders_ = lista.empty();
 		availableOrders_.insert(availableOrders_.end(), lista.begin(), lista.end());
 	}
 
-	inline void setInitialOrders(vector<Resources::FoodType>& lista) {
+	inline void setInitialOrders(vector<Resources::FoodType>& lista) {	
 		for (auto elem : lista) {
 			initialOrders_.push(elem);
 		}
 	}
+
+	inline void changeOrderGroup(const std::pair<int, int>& g) { group = g; }
 
 private:
 	void checkNewOrder();
@@ -35,6 +39,9 @@ private:
 	queue<Resources::FoodType> initialOrders_;
 	vector<Resources::FoodType> availableOrders_; // posibles platos en este nivel
 
+	std::pair<int, int> group;
+
 	Uint32 deltaTimePerOrder_;
 	bool firstOrder_;
+	bool allOrders_;
 };

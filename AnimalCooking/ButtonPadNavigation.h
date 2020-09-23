@@ -16,7 +16,7 @@ public:
 	void resetNavigation();
 	void setFocusOn(Entity* e);
 	void addButtonToAnExistingOne(Entity* e, Entity* up, Entity* down, Entity* left, Entity* right, Entity* wich,int fromWhere);
-	Entity* getObjectInFocus() { return focus.e; }
+	Entity* getObjectInFocus() { return focus->e; }
 
 private:
 	struct button {                                                         
@@ -25,17 +25,17 @@ private:
 		Entity* down=nullptr;
 		Entity* left=nullptr;
 		Entity* right=nullptr;
-		bool posibleFocus;
+		bool posibleFocus=false;
 	};
-	void stopFocusButton(button b);
+	void stopFocusButton(button* b);
 	void changeFocus(Entity* e);
 	void action();
 	void horizontalInput();
 	void verticalInput();
 	void horizontalMove(double xValue);
 	void verticalMove(double yValue);
-	button focus;
-	vector<button> buttons;
+	button* focus;
+	vector<button*> buttons;
 
 	int playerToListen;
 	bool xAxisMoved;

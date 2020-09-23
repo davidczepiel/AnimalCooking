@@ -84,8 +84,8 @@ void FoodConfig::fill()
 	//////////////////////
 	cTrans.push_back({ { Resources::FoodType::MashedTomato, Resources::FoodType::PizzaMass, Resources::FoodType::GratedCheese, Resources::FoodType::Dress },	Resources::FoodType::Pizza });
 
-	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast });
 	//ROAST---------------------------------
+	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedPotato, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast });
 	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::MashedTomato, Resources::FoodType::Dress },	Resources::FoodType::Roast1 });
 	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedMushroom,  Resources::FoodType::Dress },	Resources::FoodType::Roast2 });
 	cTrans.push_back({ { Resources::FoodType::SlicedMeat, Resources::FoodType::SlicedOnion, Resources::FoodType::MashedTomato},	Resources::FoodType::Roast3 });
@@ -153,6 +153,8 @@ void FoodConfig::fill()
 	/*cTrans.push_back({ { Resources::FoodType::MashedMeatSkillet, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger1 });*/
 	cTrans.push_back({ { Resources::FoodType::SlicedLettuce, Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger2 });
 	cTrans.push_back({ { Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet }, Resources::FoodType::Burger3 });
+	cTrans.push_back({ { Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet ,Resources::FoodType::SlicedCheese}, Resources::FoodType::Burger4 });
+	cTrans.push_back({ { Resources::FoodType::BreadBurger, Resources::FoodType::MashedMeatSkillet,Resources::FoodType::SlicedLettuce,Resources::FoodType::SlicedTomato,Resources::FoodType::SlicedCheese }, Resources::FoodType::Burger5 });
 	cTrans.push_back({ { Resources::FoodType::SlicedPotatoSkillet, Resources::FoodType::Dress},	Resources::FoodType::FrenchFries });
 	
 	

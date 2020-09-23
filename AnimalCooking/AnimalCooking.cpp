@@ -56,8 +56,8 @@ void AnimalCooking::start() {
 		render();
 
 		Uint32 frameTime = game_->getTime() - startTime;
-		if (frameTime < 10)
-			SDL_Delay(10 - frameTime);
+		if (frameTime < 100.0 / 6.0)
+			SDL_Delay(100.0 / 6.0 - frameTime);
 	}
 }
 

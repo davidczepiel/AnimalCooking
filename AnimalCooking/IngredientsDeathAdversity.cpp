@@ -13,7 +13,7 @@ IngredientsDeathAdversity::IngredientsDeathAdversity(MultipleAdversityManager* m
 	src.x = 0; src.y = 116;
 	dest.x = 0; dest.y = 0;
 	dest.w = 150; dest.h = 150;
-	animationSpeed = 1000;
+	animationSpeed = 1500;
 	killsStarted = 0;
 	gl = multipleAdversityMngr_->getGameLogic();
 }
@@ -42,7 +42,7 @@ void IngredientsDeathAdversity::draw()
 			if (ingInfo.at(i).ing != nullptr)
 				getPosIngredient(i);
 
-				//Dependiendo de si el contador específico de el ingrediente ha empezado o no renderizo la animacion de que va a morir o la de que está muriendo
+				//Dependiendo de si el contador especï¿½fico de el ingrediente ha empezado o no renderizo la animacion de que va a morir o la de que estï¿½ muriendo
 			if ( ingInfo.at(i).animationTimer->isStarted()) {
 				dest.x = ingInfo.at(i).pos.getX() ;
 				dest.y = ingInfo.at(i).pos.getY()  ;
@@ -65,7 +65,7 @@ void IngredientsDeathAdversity::start()
 	reset();
 	//Me quedo con la pool de los ingredientes y digo cuantos voy a matar
 	ingredients = multipleAdversityMngr_->getIngredientsPool()->getPool();
-	numKills = (ingredients.size()/2);
+	numKills =  (ingredients.size() / 2);
 	percentagePerKill = 1 / (numKills + 1);
 	//Me quedo con unos cuants ingredientes aleatorios
 	while (ingInfo.size() < numKills) {
@@ -73,7 +73,7 @@ void IngredientsDeathAdversity::start()
 		while (alreadyTaken(i)) {
 			i = getNumber();
 		}
-		//Me quedo con la información del ingrediente escogido y me lo guardo en el vector 
+		//Me quedo con la informaciï¿½n del ingrediente escogido y me lo guardo en el vector 
 		Ingredientinfo info;
 		info.ing = ingredients.at(i);
 		info.animationTimer = new Timer();
@@ -90,6 +90,7 @@ void IngredientsDeathAdversity::start()
 	deathTimer->timerStart();
 	killsDone = 0;
 	ingInfo.at(0).animationTimer->timerStart();
+	ingInfo.at(0).ing->setInvincible(true);
 	killsStarted = 1;
 }
 
@@ -103,9 +104,11 @@ void IngredientsDeathAdversity::killIngredients()
 void IngredientsDeathAdversity::killIngredient()
 {
 	if (killsDone < numKills) {
-		if (ingInfo.at(killsDone).ing != nullptr) {
+		if (ingInfo.at(killsDone).ing != nullptr && std::find(multipleAdversityMngr_->getIngredientsPool()->getPool().begin(),
+			multipleAdversityMngr_->getIngredientsPool()->getPool().end(), ingInfo.at(killsDone).ing) != multipleAdversityMngr_->getIngredientsPool()->getPool().end()) {
+			
 			gl->ingredientDeath(ingInfo.at(killsDone).ing);
-			ingInfo.at(killsDone).ing = nullptr;
+			//ingInfo.at(killsDone).ing = nullptr;
 		}
 		ingInfo.at(killsDone).dead = true;
 		ingInfo.at(killsDone).row = 1;
@@ -120,7 +123,7 @@ void IngredientsDeathAdversity::inspectIngredients()
 		ingInfo.at(i).animationTimer->update();
 		ingInfo.at(i).col = 14* ingInfo.at(i).animationTimer->getProgress();
 		ingInfo.at(i).col %= 7;
-		//Si el timer ya está contando y ha sobrepasado la mitad de su tiempo este ingrediente ha muerto
+		//Si el timer ya estï¿½ contando y ha sobrepasado la mitad de su tiempo este ingrediente ha muerto
 		if (!ingInfo.at(i).dead && ingInfo.at(i).animationTimer->isStarted() && ingInfo.at(i).animationTimer->getProgress() > 0.50) {
 			killIngredient();
 		}
@@ -159,6 +162,7 @@ void IngredientsDeathAdversity::startIngredient(int i)
 	if (killsStarted < numKills) {
 		if (killsStarted < ingInfo.size()) {
 			ingInfo.at(killsStarted).animationTimer->timerStart();
+			ingInfo.at(killsStarted).ing->setInvincible(true);
 			killsStarted++;
 		}
 	}

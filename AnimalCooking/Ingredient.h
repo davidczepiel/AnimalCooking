@@ -14,7 +14,7 @@ class Ingredient
 {
 public:
 	Ingredient(Resources::IngredientType type, Transform* p1, Transform* p2) : size_(0, 0), pos_(0, 0), vel_(0, 0), lastVel_(0, 0), texture_(nullptr), maxVel_(2), ingredientPool_(nullptr), aiIngredient_(nullptr), type_(type), state(Walking)
-		, trPlayer1(p1), trPlayer2(p2) {
+		, trPlayer1(p1), trPlayer2(p2),invincible(false) {
 		internalTimer.setTime(5000);
 		internalTimer.timerStart();
 		wallScapingTimer_.setTime(1000);
@@ -57,6 +57,8 @@ public:
 	inline double getWidth() { return size_.getX(); }
 	inline double getHeight() { return size_.getY(); }
 	inline double getMaxVel() { return maxVel_; }
+	inline void setInvincible(bool b) { invincible = b; }
+	inline const bool isInvincible() const { return invincible; }
 
 
 protected:
@@ -72,6 +74,7 @@ protected:
 	Transform* trPlayer1;
 	Transform* trPlayer2;
 	double maxVel_; //si maxVel es para todos el mismo se pone en los personajes y se pasa como parametro
+	bool invincible;
 };
 
 //<----------------------------------------------------------Clases Ingredientes-------------------------------------------------------------------------->

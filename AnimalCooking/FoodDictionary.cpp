@@ -75,9 +75,11 @@ Food* FoodDictionary::bind(const int& c) const
 	case Resources::FoodType::Salad4:			return new Salad4();		break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::Burger:			return new Burger();		break;
-	case Resources::FoodType::Burger1:			return new Burger1();		break;
+	/*case Resources::FoodType::Burger1:			return new Burger1();		break;*/
 	case Resources::FoodType::Burger2:			return new Burger2();		break;
 	case Resources::FoodType::Burger3:			return new Burger3();		break;
+	case Resources::FoodType::Burger4:			return new Burger4();		break;
+	case Resources::FoodType::Burger5:			return new Burger5();		break;
 	//---------------------------------------------------------------------------
 	case Resources::FoodType::Pizza:			return new Pizza();			break;
 	//---------------------------------------------------------------------------

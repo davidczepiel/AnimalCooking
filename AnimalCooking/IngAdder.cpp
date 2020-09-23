@@ -4,9 +4,10 @@
 #include "IngredientViewer.h"
 #include "IngredientMotion.h"
 #include "AIIngredient.h"
+#include "GameControlLevelIngredientsChanger.h"
 
-IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, Transform* t1, Transform* t2/*, const double casillaLength*/) :
-	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral)/*, casillaLength(casillaLength)*/
+IngAdder::IngAdder(Entity* ing, jute::jValue& jsonLevel, jute::jValue& jsonGeneral, Transform* t1, Transform* t2, TimerViewer* tv) :
+	ingPoolEntity_(ing), jsonLevel(jsonLevel), jsonGeneral(jsonGeneral), tv_(tv)
 {
 	ingPoolEntity_->addComponent<IngredientsPool>();
 	ingPoolEntity_->addComponent<IngredientViewer>();
@@ -32,7 +33,8 @@ void IngAdder::initializeComponent(const string& component, Entity* entity)
 {
 	switch (str2int(component.c_str()))
 	{
-	case str2int("AdvEffect"):
+	case str2int("Changer"):
+		entity->addComponent<GameControlLevelIngredientsChanger>(initializer_list<int>{120, 120, 120}, tv_);
 		break;
 	default:
 		break;

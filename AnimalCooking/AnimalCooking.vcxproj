@@ -226,6 +226,7 @@
     <ClInclude Include="FSM.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameControl.h" />
+    <ClInclude Include="GameControlLevelIngredientsChanger.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManagerAdder.h" />
     <ClInclude Include="Ghost.h" />
@@ -270,6 +271,7 @@
     <ClInclude Include="AnimalCooking.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderAdder.h" />
+    <ClInclude Include="OrderAIChanger.h" />
     <ClInclude Include="OrderManager.h" />
     <ClInclude Include="OrderService.h" />
     <ClInclude Include="OrderServiceViewer.h" />
@@ -399,6 +401,7 @@
     <ClCompile Include="FoodViewer.cpp" />
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="GameControlLevelIngredientsChanger.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManagerAdder.cpp" />
     <ClCompile Include="Ghost.cpp" />
@@ -442,6 +445,7 @@
     <ClCompile Include="NameAsker.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderAdder.cpp" />
+    <ClCompile Include="OrderAIChanger.cpp" />
     <ClCompile Include="OrderManager.cpp" />
     <ClCompile Include="OrderService.cpp" />
     <ClCompile Include="OrderServiceViewer.cpp" />

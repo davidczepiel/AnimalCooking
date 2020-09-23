@@ -210,10 +210,20 @@ void ScreenLoader::goToPlayState(AnimalCooking* ac) {
 	int level = sL->getLevel() - 1;
 	level -= level / 6;
 
-	if(level > 15)
-		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level15);
-	else if(level > 10)
-		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level10);
-	else
-		SDLGame::instance()->getAudioMngr()->playMusic(Resources::AudioId::Level1);
+	level--;
+	level /= 5;
+
+	Resources::AudioId music = Resources::AudioId::Level1;
+	switch (level)
+	{
+	case 0: music = Resources::AudioId::Level1; break;
+	case 1: music = Resources::AudioId::Level1; break;
+	case 2: music = Resources::AudioId::Level10; break;
+	case 3: music = Resources::AudioId::Level15; break;
+	case 4: music = Resources::AudioId::Level1; break;
+	case 5: music = Resources::AudioId::Level10; break;
+	default:
+		break;
+	}
+	SDLGame::instance()->getAudioMngr()->playMusic(music);
 }

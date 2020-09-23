@@ -126,27 +126,30 @@ void EndState::createButtons(int nextLevelLimit)
 	//Si el score es el suficiente para pasar al siguiente nivel
 	Entity* NextLevelButton = nullptr;
 	if (score >= (maxScore * nextLevelLimit / 100)) {
-		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel() && SDLGame::instance()->getCurrenUnlockLevel() < config::NUM_LEVELS-1) {
+		if (SDLGame::instance()->getCurrentLevel() == SDLGame::instance()->getCurrenUnlockLevel() && SDLGame::instance()->getCurrenUnlockLevel() < config::NUM_LEVELS - 1) {
 			SDLGame::instance()->addCurrentUnlockLevel();
 		}
 
-		NextLevelButton = stage->addEntity();
-		stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
-		NextLevelButton->addComponent<Transform>(Vector2D
-		(winWidth - 2.5 * casillaX +
-			casillaX / 2,
-			winHeight - 5 * casillaY -
-			casillaY / 2 + sin(degrees)),
-			Vector2D(),
-			casillaX / 1.3,
-			casillaY / 1.3,
-			degrees);
-		buttonBehaviour = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
-		buttonRenderer = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
-		buttonBehaviour->setButtonRenderer(buttonRenderer);
+		if (gameInstance->getCurrentLevel() < config::NUM_LEVELS - 1)
+		{
+			NextLevelButton = stage->addEntity();
+			stage->addToGroup(NextLevelButton, ecs::GroupID::Layer1);
+			NextLevelButton->addComponent<Transform>(Vector2D
+			(winWidth - 2.5 * casillaX +
+				casillaX / 2,
+				winHeight - 5 * casillaY -
+				casillaY / 2 + sin(degrees)),
+				Vector2D(),
+				casillaX / 1.3,
+				casillaY / 1.3,
+				degrees);
+			buttonBehaviour = NextLevelButton->addComponent<ButtonBehaviour>(goToLoadState, app);
+			buttonRenderer = NextLevelButton->addComponent<ButtonRenderer>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::NextLevelIcon), nullptr);
+			buttonBehaviour->setButtonRenderer(buttonRenderer);
+			padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
+		}
 		//Ponemos la m�sica de ganar
 		gameInstance->getAudioMngr()->playChannel(Resources::AudioId::End_Win, 0);
-		padNav->AddButton(NextLevelButton, nullptr, returnToMapButton, ResetLevelButton, nullptr);                   //NextLevel
 
 	}
 	else {

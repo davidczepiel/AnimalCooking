@@ -5,7 +5,7 @@
 namespace config {
 
 	//NUMBER OF LEVELS
-	constexpr int NUM_LEVELS = 24;
+	constexpr int NUM_LEVELS = 31;
 
 	//AI CLIENT
 	//constexpr int AI_CLIENT_DELTA_TIME_PER_ORDER = 25;

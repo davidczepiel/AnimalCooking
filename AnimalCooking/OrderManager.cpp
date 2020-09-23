@@ -7,7 +7,7 @@ OrderManager::OrderManager() : OrderManager(2, 100, { 100, 700 })
 
 OrderManager::OrderManager(size_t maxOrders, size_t deltaPosXBetweenOrder, Vector2D position, ScoreManager* scoreManager) : Component(ecs::OrderManager),
 currentOrders_(maxOrders, nullptr), //Inicializa los vectores con su size a sus valores por defecto
-distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager), msPerIng_(), availableOrders_()
+distXBetweenOrders_(deltaPosXBetweenOrder), position_(position), scoreManager_(scoreManager), msPerIng_(), availableOrders_(), allOrders_()
 {
 }
 
@@ -25,7 +25,7 @@ void OrderManager::setMaxOrders(size_t size)
 
 void OrderManager::addOrder(Resources::FoodType finalProduct)
 {
-	if (availableOrders_.find(finalProduct) != availableOrders_.end()) { //Si es posible meter este pedido
+	if (availableOrders_.find(finalProduct) != availableOrders_.end() || allOrders_) { //Si es posible meter este pedido
 		vector<Order*>::iterator it = getFreePos();
 		if (it != currentOrders_.end()) { //Si hay hueco se mete el pedido, y si no hay, el cliente se va		
 			set<int> ings_ = FoodDictionary::instance()->getIngsForFood(finalProduct); //Recibe los ingredientes que usa ese pedido
@@ -134,9 +134,11 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	switch (finalProduct)
 	{
 	case Resources::FoodType::Burger: time += timeCooking;
-	case Resources::FoodType::Burger1: time += 2*timeCooking + 5;
+	/*case Resources::FoodType::Burger1: time += 2*timeCooking + 5;*/
 	case Resources::FoodType::Burger2: time += timeCooking + 5;
 	case Resources::FoodType::Burger3: time += timeCooking + 5;
+	case Resources::FoodType::Burger4: time += timeCooking + 5;
+	case Resources::FoodType::Burger5: time += timeCooking + 5;
 	case Resources::FoodType::RiceDish: time += timeCooking;
 	case Resources::FoodType::Risotto: time += timeCooking;
 
@@ -170,6 +172,7 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::RiceAndClams: time += timeCooking;
 	case Resources::FoodType::IcedRiceAndClams: time += timeCooking + iceDelay;
 	case Resources::FoodType::IcedRiceDish: time += timeCooking + iceDelay;
+	case Resources::FoodType::Teriyaki1: time += 2 * timeCooking+1000;
 	case Resources::FoodType::Teriyaki2: time += 2*timeCooking;
 	case Resources::FoodType::Teriyaki3: time += 3 * timeCooking + 25000;
 	case Resources::FoodType::Pizza: time += timeCooking;
@@ -180,8 +183,8 @@ double OrderManager::getTimePerOrder(Resources::FoodType finalProduct, int size)
 	case Resources::FoodType::Pizza5: time += timeCooking;
 	case Resources::FoodType::Perrito: time += timeCooking;
 	case Resources::FoodType::Perrito1: time += timeCooking+1000;
-	case Resources::FoodType::Perrito2: time += timeCooking;
-	case Resources::FoodType::Perrito3: time += 2*timeCooking;
+	case Resources::FoodType::Perrito2: time += timeCooking+2000;
+	case Resources::FoodType::Perrito3: time += 2*timeCooking+1000;
 
 	default:
 		break;

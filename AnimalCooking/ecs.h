@@ -13,6 +13,7 @@ enum CmpId : CmpIdType {
 	GPadController, //Controls
 	KeyBoardController,
 	IngredientMotion,
+	GameControlLevelIngredientsChanger,
 
 	AIIngredient, //AI
 
@@ -70,6 +71,7 @@ enum CmpId : CmpIdType {
 	AIClient,
 	OrderManager,	//Clients
 	OrderViewer,
+	OrderAIChanger,
 
 	SDLRenderer, //Renderer
 	SDLRendererFrame,

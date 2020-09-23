@@ -18,6 +18,7 @@ public:
 
 	void setButtonRenderer(ButtonRenderer* bR) { bRenderer_ = bR; }
 	void setLevelInfo(levelInfo* info) { mapInfo_ = info; }
+	levelInfo* getLevelInfo() { return mapInfo_; }
 	const bool& getFocusByMouse() { return focusedByMouse_; }
 	const bool& getFocusByController() { return focusedByController_; }
 	void setFocusByController(bool f);
@@ -25,7 +26,6 @@ public:
 	inline void setActive(bool active) { active_ = active; }
 	inline const string& getName() const { return name_; }
 	void setButtonPadNavigation(ButtonPadNavigation* b) { butPadNav_ = b; }
-	levelInfo* getLevelInfo() { return mapInfo_; }
 
 private:
 	levelInfo* mapInfo_;

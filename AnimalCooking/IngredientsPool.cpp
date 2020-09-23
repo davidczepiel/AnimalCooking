@@ -31,5 +31,6 @@ void IngredientsPool::deleteIngredient(vector<Ingredient*>::iterator it) {
 	Ingredient* i = *(--ingredients_.end());
 	i->setIt(it);
 	iter_swap(it, --ingredients_.end());
+	delete ingredients_.back();
 	ingredients_.pop_back();
 }
