@@ -26,7 +26,6 @@ public:
 	inline void setActive(bool active) { active_ = active; }
 	inline const string& getName() const { return name_; }
 	void setButtonPadNavigation(ButtonPadNavigation* b) { butPadNav_ = b; }
-	levelInfo* getLevelInfo() { return mapInfo_; }
 
 private:
 	levelInfo* mapInfo_;

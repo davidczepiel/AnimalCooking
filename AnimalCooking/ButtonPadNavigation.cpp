@@ -312,8 +312,8 @@ void ButtonPadNavigation::changeFocus(Entity* e) {
 	while (i < buttons.size() && buttons.at(i)->e != e)
 		i++;
 	focus = buttons.at(i);
-	ButtonBehaviour* b = GETCMP2(focus.e, ButtonBehaviour);
-	ButtonRenderer* br = GETCMP2(focus.e, ButtonRenderer);
+	ButtonBehaviour* b = GETCMP2(focus->e, ButtonBehaviour);
+	ButtonRenderer* br = GETCMP2(focus->e, ButtonRenderer);
 	State* s = game_->getFSM()->currentState();
 	if (b) {
 		b->setFocusByController(true);
@@ -322,7 +322,7 @@ void ButtonPadNavigation::changeFocus(Entity* e) {
 		}
 	}
 	else {
-		ButtonBehaviourNC* nc = GETCMP2(focus.e, ButtonBehaviourNC);
+		ButtonBehaviourNC* nc = GETCMP2(focus->e, ButtonBehaviourNC);
 		if (nc) {
 			nc->setFocusByController(true); 
 			if (static_cast<MapState*>(s) != nullptr) static_cast<MapState*>(s)->setActiveInfoBox(true);	//si no es una flecha activas el panel
