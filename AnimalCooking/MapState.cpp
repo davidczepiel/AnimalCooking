@@ -50,8 +50,8 @@ MapState::MapState(AnimalCooking* ac) :
 	panelStars_ = game_->getTextureMngr()->getTexture(Resources::MapStateStarBox);
 	//
 	starScoreRect_ = RECT(game_->getWindowWidth() - 300, 10, 100, 100);
-	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 5, 110, 110);
-	totalStarsRect_ = RECT(game_->getWindowWidth() - 195, 5, 195, 110);
+	starScoreBackGroundRect_ = RECT(game_->getWindowWidth() - 305, 20, 100, 100);
+	totalStarsRect_ = RECT(game_->getWindowWidth() - 195, 40, 130, 70);
 	starPanelRect_ = RECT(game_->getWindowWidth() - 310, 0, 310, 120);
 
 	chooseOption();
@@ -548,8 +548,8 @@ void MapState::setState() {
 	inMap = true;
 	if (totalStars_ != nullptr) delete totalStars_;
 	totalStars_ = new Texture(game_->getRenderer(), to_string(game_->getNumStars()), game_->getFontMngr()->getFont(Resources::FontId::QuarkCheese100), hex2sdlcolor("#ffffffff"));
-	if (game_->getNumStars() < 10) totalStarsRect_.w = 97;
-	else totalStarsRect_.w = 195;
+	if (game_->getNumStars() < 10) totalStarsRect_.w = 65;
+	else totalStarsRect_.w = 130;
 
 	placeHousesAndButtons();
 	
