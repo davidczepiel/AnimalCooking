@@ -170,13 +170,18 @@ void PlayerController::keyUpdate()
 
 		//--------------------Botones
 
-		if (keyboard->isKeyDown(keys.PICKUP) && selector_ != nullptr)
+		if(keyboard->isKeyDown(keys.PICKUP) && (SDLGame::instance()->getTime() - timerPickUp) > 150){
+			pickAble = true; //Control de pickUp
+			timerPickUp = SDLGame::instance()->getTime(); //Cogemos el timepo actual
+		}
+		if (pickAble && selector_ != nullptr)
 		{
 			Interactive* i = selector_->getSelect();
 			if (i != nullptr)
 			{
 				i->action1(id_);
-				i = nullptr;
+				i = nullptr;		//Reseteamos interactuable
+				pickAble = false;
 			}
 		}
 
@@ -234,6 +239,7 @@ void PlayerController::keyUpdate()
 			}
 		}
 	}
+	//Reseteamos control de tecla
 	if (keyboard->keyUpEvent()) {
 		if (keyboard->isKeyUp(keys.UP)) {
 			movKeys.up = false;
@@ -246,6 +252,9 @@ void PlayerController::keyUpdate()
 		}
 		if (keyboard->isKeyUp(keys.LEFT)) {
 			movKeys.left = false;
+		}
+		if (keyboard->isKeyUp(keys.PICKUP)) {
+			pickAble = false;	
 		}
 	}
 

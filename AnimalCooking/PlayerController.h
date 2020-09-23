@@ -13,7 +13,7 @@
 
 class PlayerController : public Component {
 public:
-	PlayerController(int id = 0) :Component(ecs::PlayerController),id_(id), 
+	PlayerController(int id = 0) :Component(ecs::PlayerController),id_(id),timerPickUp(),
 		keys(SDLGame::instance()->getOptions().players_keyboardKeys[id_]), speed(0.6),ableToMove(true),
 		buttons(SDLGame::instance()->getOptions().players_gPadButtons[id_]) {}
 
@@ -40,6 +40,7 @@ private:
 
 	MovementKeys movKeys;
 	int id_;		//ID del mando {0,1,....n} siendo n=numero de mandos, a -1 si no hay mandos y se quiere con teclado
+	Uint32 timerPickUp; //timer para el control de input PickUp ->para portatil<-
 
 	config::Options::KeyboardKeys& keys;
 	config::Options::GPadButtons& buttons;
@@ -54,6 +55,7 @@ private:
 	bool idle=true;
 	bool ableToPress = true;
 	bool dpadArrowsUsed = true;
+	bool pickAble = false;
 	double speed;
 	bool ableToMove;
 	Vector2D inputVel;
