@@ -49,7 +49,9 @@ public:
 	void draw() override;
 	void updateText(int value);
 
-	inline void setAvailable(bool av_) { available = av_; }
+	inline void setAvailable(bool av_) { 
+		available = av_;
+	}
 private:
 	bool available;
 	Texture* starsRequiredImage_;

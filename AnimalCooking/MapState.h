@@ -43,6 +43,7 @@ public:
 	inline void isNotNewGame() { isNewGame_ = false; }
 	inline bool isCurrentLevelUnlocked() { return levelinfos_->at(currentLevel_)->unlocked; }
 	void notEnoughStarsWarning();
+	void setActiveInfoBox(bool b);
 
 private:
 	void configPadNavigation();
