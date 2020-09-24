@@ -36,7 +36,7 @@ void MapInfoBoxViewer::draw()
 		//height casillas/6 porque es heightcasillas/2 (para que todo ocupe la mitad) /3(para que sean 3 líneas)
 		double lineaHeight = heightCasillas / 6;
 
-		int size = 0;
+		int size = 700;
 		for (auto& line : loreLines) {
 			if (line->getWidth() > size) size = line->getWidth();
 		}

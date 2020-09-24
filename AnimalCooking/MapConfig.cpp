@@ -39,7 +39,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Czepielan’s restaurant need a pair of chefs.";
 	auxiliar.lore[1] = "Are our chefs ready for such an opportunity?";	
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(594, 570);
 	auxiliar.buttonsSize = Vector2D(40, 50);
 	levelsRecipes_.push_back(auxiliar);
@@ -51,7 +51,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Rumors arise of a cooking contest being around the corner.";
 	auxiliar.lore[1] = "Celebration parties are starting to show themselves. . .";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1000, 780);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -77,7 +77,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "A lot of chefs have auditioned for the contest.";
 	auxiliar.lore[1] = "We can’t wait to see the future participants.";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1693, 690);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
@@ -91,7 +91,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "“Stars are born, not made.";
 	auxiliar.lore[1] = "We’ll beat everyone if we get into the contest”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(950, 470);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
@@ -101,7 +101,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Kevin and Chick have arrived to the casting!";
 	auxiliar.lore[1] = "Will their habilities be good enough?";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(490, 930);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -128,7 +128,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Pun Village people are starting to cheer";
 	auxiliar.lore[1] = "and believe it’s their opportunity to shine.";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1520, 760);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
@@ -150,8 +150,8 @@ void MapConfig::fill()
 
 	auxiliar.name = "";
 	auxiliar.lore[0] = "“The real storm was";
-	auxiliar.lore[1] = "all the dishes that we had to do”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[1] = "all the dishes that we had to do.”";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(912, 250);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
@@ -169,7 +169,7 @@ void MapConfig::fill()
 	//12
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The contest is definitely harder for them now.";
-	auxiliar.lore[1] = "";
+	auxiliar.lore[1] = " ";
 	auxiliar.lore[2] = "And yeah, ice slips";
 	auxiliar.buttonPosition = Vector2D(725, 970);
 	auxiliar.buttonsSize = Vector2D(80, 100);
@@ -177,9 +177,9 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//13
 	auxiliar.name = "";
-	auxiliar.lore[0] = "";
+	auxiliar.lore[0] = " ";
 	auxiliar.lore[1] = "“C-Cold, It’s t-too cold”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1140, 745);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
@@ -197,7 +197,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "A blizzard will strike the contest, but it will continue!";
 	auxiliar.lore[1] = "How will our participants perform?";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1600, 475);
 	auxiliar.buttonsSize = Vector2D(50, 63);
 
@@ -227,9 +227,9 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//17
 	auxiliar.name = "";
-	auxiliar.lore[0] = "";
+	auxiliar.lore[0] = " ";
 	auxiliar.lore[1] = "Pun Village traditional dishes return!";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(720, 660);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -256,7 +256,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Shock in the contest as some assure to have seen";
 	auxiliar.lore[1] = "someone plant strange seeds in the orchard.";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1610, 580);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
@@ -266,9 +266,9 @@ void MapConfig::fill()
 	///////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "";
+	auxiliar.lore[0] = " ";
 	auxiliar.lore[1] = "“Since when plants invade your kitchen?!”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1135, 450);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
@@ -286,9 +286,9 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//22
 	auxiliar.name = "";
-	auxiliar.lore[0] = "";
+	auxiliar.lore[0] = " ";
 	auxiliar.lore[1] = "“We miss salads”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(200, 940);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -297,7 +297,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "- Hello everyone! We have hotdogs, ";
 	auxiliar.lore[1] = "with whatever you’d like to!";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(850, 900);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -306,7 +306,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The grand finale is coming closer";
 	auxiliar.lore[1] = "and with it the fear of losing.";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1210, 900);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -325,9 +325,9 @@ void MapConfig::fill()
 	///////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "";
+	auxiliar.lore[0] = " ";
 	auxiliar.lore[1] = "“We need to calm down!!!!”";
-	auxiliar.lore[2] = "";
+	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1580, 330);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
