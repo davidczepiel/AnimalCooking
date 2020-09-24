@@ -24,9 +24,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Attention everyone! Kevin Bacon and Chick Norris";
-	auxiliar.lore[1] = "have begun a new business. . .";
-	auxiliar.lore[2] = "Reserve chefs are very trendy!";
+	auxiliar.lore[0] = "Attention everyone! Kevin Bacon and Cluck Norris,";
+	auxiliar.lore[1] = "from Villa del Pun, have started a new business.";
+	auxiliar.lore[2] = "Food trucks are very trendy!";
 	auxiliar.buttonPosition = Vector2D(350, 800);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -37,9 +37,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Czepielan’s restaurant need a pair of chefs.";
-	auxiliar.lore[1] = "Are our chefs ready for such an opportunity?";	
-	auxiliar.lore[2] = " ";
+	auxiliar.lore[0] = "Czepielan’s restaurant needs a pair of";
+	auxiliar.lore[1] = "chefs for a special event. Are our chefs";	
+	auxiliar.lore[2] = "ready for such an opportunity?";
 	auxiliar.buttonPosition = Vector2D(594, 570);
 	auxiliar.buttonsSize = Vector2D(40, 50);
 	levelsRecipes_.push_back(auxiliar);
@@ -49,9 +49,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Rumors arise of a cooking contest being around the corner.";
-	auxiliar.lore[1] = "Celebration parties are starting to show themselves. . .";
-	auxiliar.lore[2] = " ";
+	auxiliar.lore[0] = "Rumours spread throughout the country ";
+	auxiliar.lore[1] = "about a cooking contest. People";
+	auxiliar.lore[2] = "are very excited about it!";
 	auxiliar.buttonPosition = Vector2D(1000, 780);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -62,9 +62,9 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Kevin and Chick have told us that traditional";
-	auxiliar.lore[1] = "cooking isn’t what they live for and think";		
-	auxiliar.lore[2] = "this contest will give them a new opportunity.";
+	auxiliar.lore[0] = "Kevin and Cluck have told us that traditional cooking";
+	auxiliar.lore[1] = "isn’t their strength so this contest might give";		
+	auxiliar.lore[2] = "tthem a new opportunity to get better at it.";
 	auxiliar.buttonPosition = Vector2D(1380, 530);
 	auxiliar.buttonsSize = Vector2D(40, 50);
 
@@ -89,7 +89,7 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "“Stars are born, not made.";
+	auxiliar.lore[0] = "“We are naturals.";
 	auxiliar.lore[1] = "We’ll beat everyone if we get into the contest”";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(950, 470);
@@ -99,8 +99,8 @@ void MapConfig::fill()
 
 	//6
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Kevin and Chick have arrived to the casting!";
-	auxiliar.lore[1] = "Will their habilities be good enough?";
+	auxiliar.lore[0] = "Kevin and Cluck have arrived to the casting!";
+	auxiliar.lore[1] = "Will their dishes  be good enough?";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(490, 930);
 	auxiliar.buttonsSize = Vector2D(80, 100);
@@ -109,8 +109,8 @@ void MapConfig::fill()
 	//7
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Wow! For the first time two citizens from";
-	auxiliar.lore[1] = "Pun Village have entered the cooking contest.";
-	auxiliar.lore[2] = "Will they end up winning?";
+	auxiliar.lore[1] = "Villa del Pun have entered the cooking contest.";
+	auxiliar.lore[2] = "Will they win?";
 	auxiliar.buttonPosition = Vector2D(1020, 980);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
@@ -118,16 +118,16 @@ void MapConfig::fill()
 	//8
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The contest has begun, ";
-	auxiliar.lore[1] = "and Kevin Bacon and Chick Norris";
-	auxiliar.lore[2] = "face up well known dishes";
+	auxiliar.lore[1] = "and Kevin Bacon and Cluck Norris";
+	auxiliar.lore[2] = "face well known dishes";
 	auxiliar.buttonPosition = Vector2D(810,680);
 	auxiliar.buttonsSize = Vector2D(50, 63);
 
 	levelsRecipes_.push_back(auxiliar);
 	//9
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Pun Village people are starting to cheer";
-	auxiliar.lore[1] = "and believe it’s their opportunity to shine.";
+	auxiliar.lore[0] = "Villa del Pun people are starting to believe";
+	auxiliar.lore[1] = "this it’s their opportunity to shine.";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1520, 760);
 	auxiliar.buttonsSize = Vector2D(70, 88);
@@ -136,8 +136,8 @@ void MapConfig::fill()
 	//10
 	auxiliar.name = "";
 	auxiliar.lore[0] = "Everyone knows that almost half of the participants";
-	auxiliar.lore[1] = "can’t face the meteorological challenge.";
-	auxiliar.lore[2] = "Why would it be?";
+	auxiliar.lore[1] = "can’t overcome the meteorological challenge.";
+	auxiliar.lore[2] = "Why could that be?";
 	auxiliar.buttonPosition = Vector2D(1693, 700);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
@@ -149,8 +149,8 @@ void MapConfig::fill()
   /////////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "“The real storm was";
-	auxiliar.lore[1] = "all the dishes that we had to do.”";
+	auxiliar.lore[0] = "“The real storm was all the dishes";
+	auxiliar.lore[1] = "that we had to do in this challenge.”";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(912, 250);
 	auxiliar.buttonsSize = Vector2D(46, 58);
@@ -159,8 +159,8 @@ void MapConfig::fill()
 	//11
 	
 	auxiliar.name = "";
-	auxiliar.lore[0] = "The contest has moved into the mountains.";
-	auxiliar.lore[1] = "Other participants have an advantage here. . .";
+	auxiliar.lore[0] = "The contest will now take place in the mountains.";
+	auxiliar.lore[1] = "Other participants will have an advantage here...";
 	auxiliar.lore[2] = "like Yetis!";
 	auxiliar.buttonPosition = Vector2D(420, 620);
 	auxiliar.buttonsSize = Vector2D(60, 75);
@@ -170,7 +170,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The contest is definitely harder for them now.";
 	auxiliar.lore[1] = " ";
-	auxiliar.lore[2] = "And yeah, ice slips";
+	auxiliar.lore[2] = "And yeah, ice is slippery";
 	auxiliar.buttonPosition = Vector2D(725, 970);
 	auxiliar.buttonsSize = Vector2D(80, 100);
 
@@ -186,18 +186,18 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//14
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Our participants have been warned that ";
-	auxiliar.lore[1] = "what they cook will be their food until next round.";
-	auxiliar.lore[2] = "How will they preserve it?";
+	auxiliar.lore[0] = "Our participants have been told that ";
+	auxiliar.lore[1] = "whatever they cook here will be their lunch until";
+	auxiliar.lore[2] = "next round. How will they preserve it?";
 	auxiliar.buttonPosition = Vector2D(1510, 785);
 	auxiliar.buttonsSize = Vector2D(55, 69);
 
 	levelsRecipes_.push_back(auxiliar);
 	//15
 	auxiliar.name = "";
-	auxiliar.lore[0] = "A blizzard will strike the contest, but it will continue!";
-	auxiliar.lore[1] = "How will our participants perform?";
-	auxiliar.lore[2] = " ";
+	auxiliar.lore[0] = "A blizzard is expected to hit the area, but";
+	auxiliar.lore[1] = "the contest will continue! How will our";
+	auxiliar.lore[2] = "participants perform in these conditions?";
 	auxiliar.buttonPosition = Vector2D(1600, 475);
 	auxiliar.buttonsSize = Vector2D(50, 63);
 
@@ -207,9 +207,9 @@ void MapConfig::fill()
 	///////////////////////////////////
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "News come from the mountains: second round have";
-	auxiliar.lore[1] = "finished. If Kevin and Chick are still in";
-	auxiliar.lore[2] = "the competition, nothing can stop them.";
+	auxiliar.lore[0] = "News come from the mountains: second round has";
+	auxiliar.lore[1] = "finished. If Kevin and Cluck are still in";
+	auxiliar.lore[2] = "the competition, nothing will stop them.";
 	auxiliar.buttonPosition = Vector2D(917, 445);
 	auxiliar.buttonsSize = Vector2D(46, 58);
 
@@ -218,9 +218,9 @@ void MapConfig::fill()
 	//16
 
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Some people doubt Kevin and Bacon, as";
-	auxiliar.lore[1] = "they think they can’t prepare the delicate";
-	auxiliar.lore[2] = "sushi with their hoofs and wings.";
+	auxiliar.lore[0] = "Some people doubt Kevin and Bacon.";
+	auxiliar.lore[1] = "They think they won't be able to prepare the";
+	auxiliar.lore[2] = "delicate sushi with their hooves and wings.";
 	auxiliar.buttonPosition = Vector2D(200, 580);
 	auxiliar.buttonsSize = Vector2D(70, 88);
 
@@ -228,7 +228,7 @@ void MapConfig::fill()
 	//17
 	auxiliar.name = "";
 	auxiliar.lore[0] = " ";
-	auxiliar.lore[1] = "Pun Village traditional dishes return!";
+	auxiliar.lore[1] = "It’s time for Villa del Pun traditional dishes!";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(720, 660);
 	auxiliar.buttonsSize = Vector2D(80, 100);
@@ -236,8 +236,8 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//18
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Kevin and Chick had a lot of success with the sushi!";
-	auxiliar.lore[1] = "It seems that everyone asks them for new recipes.";
+	auxiliar.lore[0] = "Kevin and Cluck had a lot of success with the sushi!";
+	auxiliar.lore[1] = "It seems that everyone is requesting new recipes.";
 	auxiliar.lore[2] = "“Itadakimasu”";
 	auxiliar.buttonPosition = Vector2D(590, 970);
 	auxiliar.buttonsSize = Vector2D(80, 100);
@@ -245,18 +245,18 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//19
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Less and less participants remain ";
-	auxiliar.lore[1] = "for the grand finale. ";
-	auxiliar.lore[2] = "This last round is on fire. ";
+	auxiliar.lore[0] = "Less and less participants remain";
+	auxiliar.lore[1] = "for the grand finale.";
+	auxiliar.lore[2] = "Things are getting pretty heated.";
 	auxiliar.buttonPosition = Vector2D(1370, 810);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
 	levelsRecipes_.push_back(auxiliar);
 	//20
 	auxiliar.name = "";
-	auxiliar.lore[0] = "Shock in the contest as some assure to have seen";
-	auxiliar.lore[1] = "someone plant strange seeds in the orchard.";
-	auxiliar.lore[2] = " ";
+	auxiliar.lore[0] = "Controversy over the appearance of";
+	auxiliar.lore[1] = "some strangeseeds in the orchard.";
+	auxiliar.lore[2] = "Who could have planted those?";
 	auxiliar.buttonPosition = Vector2D(1610, 580);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
@@ -279,7 +279,7 @@ void MapConfig::fill()
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The participants prepare for the new type of dishes.";
 	auxiliar.lore[1] = "They don’t seem as healthy though.";
-	auxiliar.lore[2] = "Perhaps they gain a few “grams”.";
+	auxiliar.lore[2] = "Perhaps they gain some weight.";
 	auxiliar.buttonPosition = Vector2D(700, 650);
 	auxiliar.buttonsSize = Vector2D(60, 75);
 
@@ -295,8 +295,8 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//23
 	auxiliar.name = "";
-	auxiliar.lore[0] = "- Hello everyone! We have hotdogs, ";
-	auxiliar.lore[1] = "with whatever you’d like to!";
+	auxiliar.lore[0] = "-Hello, hello, hello! We have hotdogs,";
+	auxiliar.lore[1] = "with whatever you’d like'em with!";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(850, 900);
 	auxiliar.buttonsSize = Vector2D(80, 100);
@@ -304,7 +304,7 @@ void MapConfig::fill()
 	levelsRecipes_.push_back(auxiliar);
 	//24
 	auxiliar.name = "";
-	auxiliar.lore[0] = "The grand finale is coming closer";
+	auxiliar.lore[0] = "The grand finale is getting closer";
 	auxiliar.lore[1] = "and with it the fear of losing.";
 	auxiliar.lore[2] = " ";
 	auxiliar.buttonPosition = Vector2D(1210, 900);
@@ -314,7 +314,7 @@ void MapConfig::fill()
 	//25
 	auxiliar.name = "";
 	auxiliar.lore[0] = "The grand finale will be at";
-	auxiliar.lore[1] = "the island of Chick O’Ten.";
+	auxiliar.lore[1] = "Cluck O’Ten island.";
 	auxiliar.lore[2] = "We are so excited!";
 	auxiliar.buttonPosition = Vector2D(1200, 500);
 	auxiliar.buttonsSize = Vector2D(46, 58);
@@ -337,8 +337,8 @@ void MapConfig::fill()
 	///////		 Nivel final  	  //////
 	///////////////////////////////////
 	auxiliar.name = "";
-	auxiliar.lore[0] = "The grand finale! The winning price is ";
-	auxiliar.lore[1] = "having this awesome building as a restaurant.";
+	auxiliar.lore[0] = "The grand finale! The winning price is getting";
+	auxiliar.lore[1] = "your own restaurant at this awesome building. ";
 	auxiliar.lore[2] = "Ready, set… Go!";
 	auxiliar.buttonPosition = Vector2D(930, 570);
 	auxiliar.buttonsSize = Vector2D(46, 58);
