@@ -59,6 +59,7 @@ void InsertExpel::extractFood(Cooker *cooker, Timer* timer, int player){
 	if ((cooker->getCookerState() == CookerStates::cooked ||
 		cooker->getCookerState() == CookerStates::burned)) 
 	{
+		SDLGame::instance()->getAudioMngr()->haltChannel(2);
 		if (t->getObjectTypeInHands() == Resources::Dish) {
 			Dish* dish_ = static_cast<Dish*>(t->getObjectInHands());
 			dish_->getFoodVector().insert(dish_->getFoodVector().end(), cooker->getFoods().begin(), cooker->getFoods().end());
