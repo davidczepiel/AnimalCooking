@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -79,9 +80,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -105,13 +108,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)SDL2-2.0.10\include;$(SolutionDir)SDL2_image-2.0.5\include;$(SolutionDir)SDL2_ttf-2.0.15\include;$(SolutionDir)SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL2-2.0.10\include;$(SolutionDir)SDL2_image-2.0.5\include;$(SolutionDir)SDL2_ttf-2.0.15\include;$(SolutionDir)SDL2_mixer-2.0.4\include;$(SolutionDir)TrackerSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)SDL2-2.0.10\lib\x64;$(SolutionDir)SDL2_image-2.0.5\lib\x64;$(SolutionDir)SDL2_ttf-2.0.15\lib\x64;$(SolutionDir)SDL2_mixer-2.0.4\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL2-2.0.10\lib\x64;$(SolutionDir)SDL2_image-2.0.5\lib\x64;$(SolutionDir)SDL2_ttf-2.0.15\lib\x64;$(SolutionDir)SDL2_mixer-2.0.4\lib\x64;$(SolutionDir)TrackerSystem\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;TrackerSystem.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,15 +145,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)SDL2-2.0.10\include;$(SolutionDir)SDL2_image-2.0.5\include;$(SolutionDir)SDL2_ttf-2.0.15\include;$(SolutionDir)SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL2-2.0.10\include;$(SolutionDir)SDL2_image-2.0.5\include;$(SolutionDir)SDL2_ttf-2.0.15\include;$(SolutionDir)SDL2_mixer-2.0.4\include;$(SolutionDir)TrackerSystem\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)SDL2-2.0.10\lib\x64;$(SolutionDir)SDL2_image-2.0.5\lib\x64;$(SolutionDir)SDL2_ttf-2.0.15\lib\x64;$(SolutionDir)SDL2_mixer-2.0.4\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL2-2.0.10\lib\x64;$(SolutionDir)SDL2_image-2.0.5\lib\x64;$(SolutionDir)SDL2_ttf-2.0.15\lib\x64;$(SolutionDir)SDL2_mixer-2.0.4\lib\x64;$(SolutionDir)TrackerSystem\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;TrackerSystem.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -158,6 +161,7 @@
     <ClInclude Include="AdversityAdder.h" />
     <ClInclude Include="AIClient.h" />
     <ClInclude Include="AIIngredient.h" />
+    <ClInclude Include="AnimalCookingEvent.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="AssistantMotion.h" />
     <ClInclude Include="AssistantViewer.h" />
@@ -189,8 +193,10 @@
     <ClInclude Include="CookerViewer.h" />
     <ClInclude Include="CreditsState.h" />
     <ClInclude Include="CreditsViewer.h" />
+    <ClInclude Include="DirtyUtensilsAttackEvent.h" />
     <ClInclude Include="Dish.h" />
     <ClInclude Include="DishAdder.h" />
+    <ClInclude Include="DishFinishedEvent.h" />
     <ClInclude Include="DishFinisher.h" />
     <ClInclude Include="DishMotion.h" />
     <ClInclude Include="DishPool.h" />
@@ -239,7 +245,9 @@
     <ClInclude Include="ImageViewer.h" />
     <ClInclude Include="IngAdder.h" />
     <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="IngredientDespawnEvent.h" />
     <ClInclude Include="IngredientInitializer.h" />
+    <ClInclude Include="IngredientKillEvent.h" />
     <ClInclude Include="IngredientMotion.h" />
     <ClInclude Include="IngredientsDeathAdversity.h" />
     <ClInclude Include="IngredientsPool.h" />
@@ -325,6 +333,8 @@
     <ClInclude Include="TutorialManager.h" />
     <ClInclude Include="TutorialState.h" />
     <ClInclude Include="Utensil.h" />
+    <ClInclude Include="UtensilBecomesDirtyEvent.h" />
+    <ClInclude Include="UtensilCleanEvent.h" />
     <ClInclude Include="UtensilsAdder.h" />
     <ClInclude Include="UtensilsMotion.h" />
     <ClInclude Include="UtensilsPool.h" />
@@ -338,6 +348,7 @@
     <ClCompile Include="AdversityAdder.cpp" />
     <ClCompile Include="AIClient.cpp" />
     <ClCompile Include="AIIngredient.cpp" />
+    <ClCompile Include="AnimalCookingEvent.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AssistantMotion.cpp" />
     <ClCompile Include="AssistantViewer.cpp" />
@@ -367,8 +378,10 @@
     <ClCompile Include="CookerViewer.cpp" />
     <ClCompile Include="CreditsState.cpp" />
     <ClCompile Include="CreditsViewer.cpp" />
+    <ClCompile Include="DirtyUtensilsAttackEvent.cpp" />
     <ClCompile Include="Dish.cpp" />
     <ClCompile Include="DishAdder.cpp" />
+    <ClCompile Include="DishFinishedEvent.cpp" />
     <ClCompile Include="DishFinisher.cpp" />
     <ClCompile Include="DishMotion.cpp" />
     <ClCompile Include="DishPool.cpp" />
@@ -414,7 +427,9 @@
     <ClCompile Include="ImageViewer.cpp" />
     <ClCompile Include="IngAdder.cpp" />
     <ClCompile Include="Ingredient.cpp" />
+    <ClCompile Include="IngredientDespawnEvent.cpp" />
     <ClCompile Include="IngredientInitializer.cpp" />
+    <ClCompile Include="IngredientKillEvent.cpp" />
     <ClCompile Include="IngredientMotion.cpp" />
     <ClCompile Include="IngredientsDeathAdversity.cpp" />
     <ClCompile Include="IngredientsPool.cpp" />
@@ -497,6 +512,8 @@
     <ClCompile Include="TutorialManager.cpp" />
     <ClCompile Include="TutorialState.cpp" />
     <ClCompile Include="Utensil.cpp" />
+    <ClCompile Include="UtensilBecomesDirtyEvent.cpp" />
+    <ClCompile Include="UtensilCleanEvent.cpp" />
     <ClCompile Include="UtensilsAdder.cpp" />
     <ClCompile Include="UtensilsMotion.cpp" />
     <ClCompile Include="UtensilsPool.cpp" />

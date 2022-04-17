@@ -468,6 +468,27 @@
     <ClCompile Include="TutorialManager.cpp" />
     <ClCompile Include="OrderAIChanger.cpp" />
     <ClCompile Include="GameControlLevelIngredientsChanger.cpp" />
+    <ClCompile Include="IngredientKillEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="IngredientDespawnEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="DishFinishedEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="DirtyUtensilsAttackEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimalCookingEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilCleanEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="UtensilBecomesDirtyEvent.cpp">
+      <Filter>Source Files\TrackerEvents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adversity.h">
@@ -1003,6 +1024,27 @@
     <ClInclude Include="TutorialManager.h" />
     <ClInclude Include="OrderAIChanger.h" />
     <ClInclude Include="GameControlLevelIngredientsChanger.h" />
+    <ClInclude Include="AnimalCookingEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="DirtyUtensilsAttackEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="DishFinishedEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="IngredientDespawnEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="IngredientKillEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilBecomesDirtyEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="UtensilCleanEvent.h">
+      <Filter>Headers Files\TrackerEvents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AnimalCooking.ico">
@@ -1141,6 +1183,12 @@
     </Filter>
     <Filter Include="Source Files\Utensils\Wall">
       <UniqueIdentifier>{32fc4b52-2b86-4416-b7b0-dd100183073f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Files\TrackerEvents">
+      <UniqueIdentifier>{cc39edbc-0753-4d07-abbd-fe8a30e0fedd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TrackerEvents">
+      <UniqueIdentifier>{12f3eed1-da3f-4880-b529-0c6743e50be5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
