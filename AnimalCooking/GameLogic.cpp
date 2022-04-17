@@ -35,6 +35,10 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 			colSys_->removeCollider(ing);
 			ing->destroy();
 			Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
+
+			//UAJ
+			//	sendEvent UIngredientKillEvent(type, f->getType() == Resources::FoodType::Empty)
+
 			GETCMP1_(GameControl)->newFood(f, ingPos);
 			playHit(type);
 

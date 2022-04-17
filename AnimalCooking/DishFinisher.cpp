@@ -17,9 +17,14 @@ void DishFinisher::finish(int id, Dish* d)
 	if (id == 0) player = tr1_;
 	else player = tr2_;
 
+
 	if (d->getFoodVector().size() > 1) {
 		Food* newFood = FoodDictionary::instance()->getResult(Resources::Cookers::Hands, d->getFoodVector());
 		d->clearFoods();
 		d->addFinalFood(newFood);
+		
+		//UAH
+		//	sendEvent DishFinishedEvent(newFood->getType(), newFood->getType() != Resources::FoodType::Empty)
+
 	}	
 }

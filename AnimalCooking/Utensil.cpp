@@ -41,6 +41,10 @@ void Utensil::update() {
 			dirtTimer_->update();
 			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
+
+				//UAJ
+				//sendEvent UtensilBecomesDirtyEvent(myType)
+
 				myDirt_ = maxDirt_;
 				dirtTimer_->timerReset();				
 			}
@@ -78,6 +82,11 @@ void Utensil::onHit(Vector2D dir) {
 			ataque.h = attackHitBoxHeight_;
 			gameLogic->hitIngredient(ataque, myType);
 		}
+		//UAJ
+		//if (dirty_) {
+		//	//send DirtyUtensilAttackEvent(myType)
+		//}
+		
 	}
 }
 
@@ -175,6 +184,10 @@ void Utensil::cleanUp() {
 	if (dirty_) {
 		myDirt_ = 0;
 		dirty_ = false;
+
+		//UAJ
+		//sendEvent UtensilCleanEvent(myType)
+
 	}
 }
 
