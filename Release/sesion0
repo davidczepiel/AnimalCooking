@@ -1,0 +1,7 @@
+[
+{"timeStamp":1650303676,"userId":41025209053216768,"sessionId":0,"gameId":0,"eventType":"SessionStartEvent"},
+{"timeStamp":1650303704,"userId":41025209053216768,"sessionId":0,"gameId":0,"eventType":"LevelStartEvent","levelId":1},
+{"timeStamp":1650303712,"userId":41025209053216768,"sessionId":0,"gameId":0,"eventType":"LevelQuitEvent","levelId":1},
+{"timeStamp":1650303715,"userId":41025209053216768,"sessionId":0,"gameId":0,"eventType":"SessionEndEvent"}
+
+]
