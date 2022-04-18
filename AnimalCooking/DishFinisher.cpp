@@ -1,5 +1,7 @@
 #include "DishFinisher.h"
 #include "FoodDictionary.h"
+#include "Tracker.h"
+#include "TrackerEvents/DishFinishedEvent.h"
 
 DishFinisher::DishFinisher(Transport* tr1, Transport* tr2) :
 	Component(ecs::DishFinisher), tr1_(tr1), tr2_(tr2)
@@ -23,8 +25,11 @@ void DishFinisher::finish(int id, Dish* d)
 		d->clearFoods();
 		d->addFinalFood(newFood);
 		
-		//UAH
-		//	sendEvent DishFinishedEvent(newFood->getType(), newFood->getType() != Resources::FoodType::Empty)
-
+		DishFinishedEvent* dish = new DishFinishedEvent();
+		
+		dish->setDish(newFood->getType())
+			->setResult(newFood->getType() != Resources::FoodType::Empty)
+			->setLevelId(SDLGame::instance()->getCurrentLevel());
+		Tracker::Instance()->trackEvent(dish);
 	}	
 }

@@ -5,6 +5,9 @@
 #include "PlayState.h"
 #include "FSM.h"
 
+#include "TrackerEvents/IngredientKillEvent.h"
+#include "Tracker.h"
+
 GameLogic::GameLogic(TimerViewer* tv) :
 	Component(ecs::GameLogic),
 	ingPool(nullptr),
@@ -36,8 +39,11 @@ void GameLogic::hitIngredient(SDL_Rect rect, Resources::UtensilType type)
 			ing->destroy();
 			Food* f = FoodDictionary::instance()->getResult(type, { (int)ingType }, false);
 
-			//UAJ
-			//	sendEvent UIngredientKillEvent(type, f->getType() == Resources::FoodType::Empty)
+			IngredientKillEvent* u = new IngredientKillEvent();
+			u->setMistake(f->getType() == Resources::FoodType::Empty)
+			 ->setIngredient(f->getType())
+			 ->setLevelId(SDLGame::instance()->getCurrentLevel());
+			Tracker::Instance()->trackEvent(u);
 
 			GETCMP1_(GameControl)->newFood(f, ingPos);
 			playHit(type);

@@ -8,6 +8,8 @@
 #include "BackGroundViewer.h"
 #include "ButtonPadNavigation.h"
 #include "ImageViewer.h"
+#include "LevelStartEvent.h"
+#include "Tracker.h"
 
 constexpr double step_ = 1.0 / 26.0; //26 es el numero de pasos (6 de carga de recursos + 20 de carga de nivel)
 
@@ -202,12 +204,18 @@ void ScreenLoader::initialize()
 }
 
 void ScreenLoader::goToPlayState(AnimalCooking* ac) {
+
+	LevelStartEvent* l = new LevelStartEvent();
+	l->setLevelId(SDLGame::instance()->getCurrentLevel());	
+	Tracker::Instance()->trackEvent(l);
+
 	ScreenLoader* sL = static_cast<ScreenLoader*>(SDLGame::instance()->getFSM()->currentState());
 	SDLGame::instance()->getFSM()->changeState(new PlayState(sL->getEntityManager(),
 		GETCMP2(SDLGame::instance()->getTimersViewer(), TimerViewer), ac), []() {
 			static_cast<PlayState*>(SDLGame::instance()->getFSM()->currentState())->resetTimers();
 		});
 	int level = sL->getLevel() - 1;
+
 	level -= level / 6;
 
 	level--;

@@ -5,6 +5,11 @@ class DllExport LevelStartEvent : public GameEvent {
 public:
 	LevelStartEvent();
 	~LevelStartEvent();
-private:
+
+	/// <summary>
+	/// Dvuelve la clase en Json.
+	/// debe devolver como utlimo caracter ","
+	/// </summary>
+	virtual std::string toJson() override;
 };
 

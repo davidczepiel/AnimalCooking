@@ -6,6 +6,9 @@
 #include "Entity.h"
 #include "GPadController.h"
 
+#include "Tracker.h"
+#include "TrackerEvents/IngredientDespawnEvent.h"
+
 Food::Food(Vector2D position, Resources::FoodType type, Transport* p1, Transport* p2, Texture* explosion) : Pickable(p1, p2, nullptr),
 timer_(new FoodTimer()),
 canDraw(true),
@@ -63,6 +66,10 @@ void Food::update()
 
 	timer_->update();
 	if (timer_->isTimerEnd()) {
+		IngredientDespawnEvent* u = new IngredientDespawnEvent();
+		u->setIngredient(this->getType())
+		 ->setLevelId(SDLGame::instance()->getCurrentLevel());
+		Tracker::Instance()->trackEvent(u);
 		Destroy();
 	}
 }

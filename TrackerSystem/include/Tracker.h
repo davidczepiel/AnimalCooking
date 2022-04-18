@@ -19,77 +19,61 @@ public:
 public:
 	~Tracker(); 
 
-	/**
-	 * Inits system
-	 * @return true when all good
-	 * @return false when something bad happened
-	 */
-	static bool Init(const std::string& storagePath = "./data.json", PersistanceType persistanceType = PersistanceType::FilePersistance_, SerializerType serializerType = SerializerType::JSON_);
+	/// <summary>
+	/// Inicializa el tracker, necesario llamarlo
+	/// 
+	/// </summary>
+	/// <param name="storageDir">Ruta a la carpeta en la que se guardaran los ficheros de las sesiones</param>
+	/// <param name="persistanceType">Tipo de persistencia a usar</param>
+	/// <param name="serializerType">Tipo de serializacion a usar</param>
+	/// <returns></returns>
+	static bool Init(const std::string& storageDir = "./", PersistanceType persistanceType = PersistanceType::FilePersistance_, SerializerType serializerType = SerializerType::JSON_);
 
+	/// <summary>
+	/// Devuelve la instancia estatica del tracker
+	/// Es necesario haber llamado a Init
+	/// </summary>
+	/// <returns></returns>
 	inline static Tracker* Instance() {
 		assert(instance != nullptr);
 		return instance;
 	}
 
-	/**
-	 * 
-	 * @param userNameID 
-	 */
-	void setUserID(const uint16_t userNameID);
-
-	/**
-	 * Game ID 
-	 * @param gameID int
-	 */
 	void setGameID(const int gameID) { this->gameID = gameID; }
-
-	/**
-	 * Where to store data
-	 * @param path 
-	 */
 	void setStoragePath(const std::string& path);
 
-	/**
-	 * Start of session
-	 * @return true 
-	 * @return false 
-	 */
-	bool Start();
+	/// <summary>
+	/// Inicio de la sesion de juego
+	/// </summary>
+	void Start();
 
-	/**
-	 * End of session
-	 * @return true 
-	 * @return false 
-	 */
-	bool End();
+	/// <summary>
+	/// Fin de la sesion
+	/// </summary>
+	void End();
 
+	/// <summary>
+	/// Envía una peticion de flush a persistance
+	/// </summary>
 	void flush();
 
+	/// <summary>
+	/// Establece al evento la informacion del tracker y
+	/// Lo envia a Persistance para que se serialice
+	/// </summary>
+	/// <param name="e"></param>
 	void trackEvent(TrackerEvent* e);
-
-	/*template<typename T = TrackerEvent, typename ...Targs>
-	void trackEvent(Targs&&... args) {
-		TrackerEvent* te = new T(std::forward<Targs>(args)...);
-		if (te != nullptr) {
-		    te->setTimeStamp(getTimestamp());
-		    te->setGameId(gameID);
-		    te->setSessionId(sessionID);W
-		
-		    //TODO: string OR unsigned long int
-		    te->setUserId(userID);
-		}
-		
-		persistance->send(te);
-	}*/
 
 private:
 
 	Tracker(); 
 
+	void setUserID();
 	
-	/**
-	* time_t == long long
-	*/
+	/// <summary>
+	/// Devuelve la time stamp para el evento
+	/// </summary>
+	/// <returns>time stamp</returns>
 	time_t getTimestamp();
 
 	uint64_t userID;
@@ -98,5 +82,6 @@ private:
 	int sessionID;
 
 	IPersistance* persistance;
+
 };
 

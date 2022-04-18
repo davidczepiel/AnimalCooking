@@ -5,6 +5,10 @@
 #include <math.h> 
 #include "TimerViewer.h"
 #include "GPadController.h"
+#include "TrackerEvents/UtensilCleanEvent.h"
+#include "Tracker.h"
+#include "TrackerEvents/UtensilBecomesDirtyEvent.h"
+#include "TrackerEvents/DirtyUtensilsAttackEvent.h"
 
 Utensil::Utensil(Transport* p1, Transport* p2) : Tool(p1, p2) {
 	myDirt_ = 0;
@@ -42,8 +46,10 @@ void Utensil::update() {
 			if (dirtTimer_->isTimerEnd()) {
 				dirty_ = true;
 
-				//UAJ
-				//sendEvent UtensilBecomesDirtyEvent(myType)
+				UtensilBecomesDirtyEvent* u = new UtensilBecomesDirtyEvent();
+				u->setUtensil(this->getUtensilType())
+				 ->setLevelId(SDLGame::instance()->getCurrentLevel());
+				Tracker::Instance()->trackEvent(u);
 
 				myDirt_ = maxDirt_;
 				dirtTimer_->timerReset();				
@@ -82,10 +88,13 @@ void Utensil::onHit(Vector2D dir) {
 			ataque.h = attackHitBoxHeight_;
 			gameLogic->hitIngredient(ataque, myType);
 		}
-		//UAJ
-		//if (dirty_) {
-		//	//send DirtyUtensilAttackEvent(myType)
-		//}
+		
+		if (dirty_) {
+			DirtyUtensilsAttackEvent* u = new DirtyUtensilsAttackEvent();
+			u->setUtensil(this->myType)
+			 ->setLevelId(SDLGame::instance()->getCurrentLevel());
+			Tracker::Instance()->trackEvent(u);
+		}
 		
 	}
 }
@@ -185,9 +194,10 @@ void Utensil::cleanUp() {
 		myDirt_ = 0;
 		dirty_ = false;
 
-		//UAJ
-		//sendEvent UtensilCleanEvent(myType)
-
+		UtensilCleanEvent* u = new UtensilCleanEvent();
+		u->setUtensil(this->getUtensilType())
+		 ->setLevelId(SDLGame::instance()->getCurrentLevel());
+		Tracker::Instance()->trackEvent(u);
 	}
 }
 

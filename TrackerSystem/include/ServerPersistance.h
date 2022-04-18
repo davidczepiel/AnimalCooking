@@ -4,6 +4,8 @@
 #include <thread>
 #include <atomic>
 
+/// Esta clase esta implementada especialmente para json, cosa que contradice al enunciado de la práctica, por lo que no 
+/// se tendrá en cuenta para la entrega
 class DllExport ServerPersistance : public IPersistance {
 public:
 	ServerPersistance(ISerializer* s, char* serverRoute);

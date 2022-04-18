@@ -468,25 +468,25 @@
     <ClCompile Include="TutorialManager.cpp" />
     <ClCompile Include="OrderAIChanger.cpp" />
     <ClCompile Include="GameControlLevelIngredientsChanger.cpp" />
-    <ClCompile Include="IngredientKillEvent.cpp">
+    <ClCompile Include="TrackerEvents\AnimalCookingEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="IngredientDespawnEvent.cpp">
+    <ClCompile Include="TrackerEvents\DirtyUtensilsAttackEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="DishFinishedEvent.cpp">
+    <ClCompile Include="TrackerEvents\DishFinishedEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="DirtyUtensilsAttackEvent.cpp">
+    <ClCompile Include="TrackerEvents\IngredientDespawnEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="AnimalCookingEvent.cpp">
+    <ClCompile Include="TrackerEvents\IngredientKillEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="UtensilCleanEvent.cpp">
+    <ClCompile Include="TrackerEvents\UtensilBecomesDirtyEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
-    <ClCompile Include="UtensilBecomesDirtyEvent.cpp">
+    <ClCompile Include="TrackerEvents\UtensilCleanEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1024,25 +1024,25 @@
     <ClInclude Include="TutorialManager.h" />
     <ClInclude Include="OrderAIChanger.h" />
     <ClInclude Include="GameControlLevelIngredientsChanger.h" />
-    <ClInclude Include="AnimalCookingEvent.h">
+    <ClInclude Include="TrackerEvents\AnimalCookingEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="DirtyUtensilsAttackEvent.h">
+    <ClInclude Include="TrackerEvents\DirtyUtensilsAttackEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="DishFinishedEvent.h">
+    <ClInclude Include="TrackerEvents\DishFinishedEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="IngredientDespawnEvent.h">
+    <ClInclude Include="TrackerEvents\IngredientDespawnEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="IngredientKillEvent.h">
+    <ClInclude Include="TrackerEvents\IngredientKillEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="UtensilBecomesDirtyEvent.h">
+    <ClInclude Include="TrackerEvents\UtensilBecomesDirtyEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
-    <ClInclude Include="UtensilCleanEvent.h">
+    <ClInclude Include="TrackerEvents\UtensilCleanEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
   </ItemGroup>

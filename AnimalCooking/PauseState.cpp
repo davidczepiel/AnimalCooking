@@ -1,7 +1,8 @@
 #include "PauseState.h"
 #include "MenuState.h"
 #include "PlayState.h"
-//#include "ConfigState.h"
+#include "LevelQuitEvent.h"
+#include "Tracker.h"
 
 PauseState::PauseState(AnimalCooking* ac) : State(ac)
 {
@@ -97,6 +98,10 @@ void PauseState::restartCallback(AnimalCooking* ac)
 {
 	SDLGame* game = SDLGame::instance();
 
+	LevelQuitEvent* l = new LevelQuitEvent();
+	l->setLevelId(game->getCurrentLevel());
+	Tracker::Instance()->trackEvent(l);
+
 	FSM* fsm = game->getFSM(); //Ir al map state
 	fsm->popState();
 	fsm->popState();
@@ -120,6 +125,10 @@ void PauseState::closeCallback(AnimalCooking* ac)
 {
 	SDLGame* game = SDLGame::instance();
 	FSM* fsm = game->getFSM();
+
+	LevelQuitEvent* l = new LevelQuitEvent();
+	l->setLevelId(game->getCurrentLevel());
+	Tracker::Instance()->trackEvent(l);
 
 	fsm->popState();
 	fsm->popState();

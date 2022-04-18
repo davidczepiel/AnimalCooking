@@ -7,10 +7,16 @@
 #include "SDL_macros.h"
 #include "ButtonPadNavigation.h"
 #include "MapConfig.h"
+#include "LevelEndEvent.h"
+#include "Tracker.h"
 
 EndState::EndState(AnimalCooking* ac) :State(ac), score(0), maxScore(SDLGame::instance()->getMaxScore()) {
 
 	SDLGame* game = SDLGame::instance();
+
+	LevelEndEvent* l = new LevelEndEvent();
+	l->setLevelId(SDLGame::instance()->getCurrentLevel());
+	Tracker::Instance()->trackEvent(l);
 
 	score = game->getScore();
 

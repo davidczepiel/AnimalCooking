@@ -15,6 +15,10 @@
 #include "PauseState.h"
 #include "IntroState.h"
 
+#include "Tracker.h"
+#include "SessionEndEvent.h"
+#include "SessionStartEvent.h"
+
 
 using namespace std;
 
@@ -42,10 +46,16 @@ void AnimalCooking::initGame() {
 
 void AnimalCooking::closeGame() {
 
+	Tracker::Instance()->End();
+	delete Tracker::Instance();
 }
 
 void AnimalCooking::start() {
 	exit_ = false;
+
+	Tracker::Init();
+	Tracker::Instance()->setGameID(0);
+	Tracker::Instance()->Start();
 
 	while (!exit_) {
 		Uint32 startTime = game_->getTime();
