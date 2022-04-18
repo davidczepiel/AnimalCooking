@@ -2,8 +2,6 @@
 #include <iostream>
 #include <chrono>
 #include "defines.h"
-#include <iostream>
-#include <iostream>
 #include <string>
 
 class DllExport TrackerEvent {
@@ -16,7 +14,6 @@ public:
 	/// </summary>
 	virtual std::string toJson();
 	
-
 	int getTimeStamp() const;
 	uint64_t getUserId() const;
 	unsigned short int getSessionId() const;

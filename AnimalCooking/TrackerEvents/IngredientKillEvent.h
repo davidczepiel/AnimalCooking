@@ -1,5 +1,5 @@
 #pragma once
-#include "AnimalCookingEvent.h"
+#include "GameEvent.h"
 
 class IngredientKillEvent : public GameEvent {
 public:

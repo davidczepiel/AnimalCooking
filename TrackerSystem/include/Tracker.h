@@ -27,7 +27,7 @@ public:
 	/// <param name="persistanceType">Tipo de persistencia a usar</param>
 	/// <param name="serializerType">Tipo de serializacion a usar</param>
 	/// <returns></returns>
-	static bool Init(const std::string& storageDir = "./", PersistanceType persistanceType = PersistanceType::FilePersistance_, SerializerType serializerType = SerializerType::JSON_);
+	static bool Init(const std::string& storageDir = "./", PersistanceType persistanceType = PersistanceType::FilePersistance_, SerializerType serializerType = SerializerType::JSON_, int nEventsToFlush = 15 );
 
 	/// <summary>
 	/// Devuelve la instancia estatica del tracker
@@ -53,11 +53,6 @@ public:
 	void End();
 
 	/// <summary>
-	/// Envía una peticion de flush a persistance
-	/// </summary>
-	void flush();
-
-	/// <summary>
 	/// Establece al evento la informacion del tracker y
 	/// Lo envia a Persistance para que se serialice
 	/// </summary>
@@ -71,6 +66,11 @@ private:
 	void setUserID();
 	
 	/// <summary>
+	/// Envía una peticion de flush a persistance
+	/// </summary>
+	void flush();
+	
+	/// <summary>
 	/// Devuelve la time stamp para el evento
 	/// </summary>
 	/// <returns>time stamp</returns>
@@ -82,6 +82,9 @@ private:
 	int sessionID;
 
 	IPersistance* persistance;
+
+	int nEventsWithoutFlush;
+	int maxEventsToFlush;
 
 };
 

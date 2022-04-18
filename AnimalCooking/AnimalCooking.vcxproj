@@ -323,7 +323,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerViewer.h" />
     <ClInclude Include="Tool.h" />
-    <ClInclude Include="TrackerEvents\AnimalCookingEvent.h" />
     <ClInclude Include="TrackerEvents\DirtyUtensilsAttackEvent.h" />
     <ClInclude Include="TrackerEvents\DishFinishedEvent.h" />
     <ClInclude Include="TrackerEvents\IngredientDespawnEvent.h" />
@@ -502,7 +501,6 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerViewer.cpp" />
     <ClCompile Include="Tool.cpp" />
-    <ClCompile Include="TrackerEvents\AnimalCookingEvent.cpp" />
     <ClCompile Include="TrackerEvents\DirtyUtensilsAttackEvent.cpp" />
     <ClCompile Include="TrackerEvents\DishFinishedEvent.cpp" />
     <ClCompile Include="TrackerEvents\IngredientDespawnEvent.cpp" />

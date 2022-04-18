@@ -468,9 +468,6 @@
     <ClCompile Include="TutorialManager.cpp" />
     <ClCompile Include="OrderAIChanger.cpp" />
     <ClCompile Include="GameControlLevelIngredientsChanger.cpp" />
-    <ClCompile Include="TrackerEvents\AnimalCookingEvent.cpp">
-      <Filter>Source Files\TrackerEvents</Filter>
-    </ClCompile>
     <ClCompile Include="TrackerEvents\DirtyUtensilsAttackEvent.cpp">
       <Filter>Source Files\TrackerEvents</Filter>
     </ClCompile>
@@ -1024,9 +1021,6 @@
     <ClInclude Include="TutorialManager.h" />
     <ClInclude Include="OrderAIChanger.h" />
     <ClInclude Include="GameControlLevelIngredientsChanger.h" />
-    <ClInclude Include="TrackerEvents\AnimalCookingEvent.h">
-      <Filter>Headers Files\TrackerEvents</Filter>
-    </ClInclude>
     <ClInclude Include="TrackerEvents\DirtyUtensilsAttackEvent.h">
       <Filter>Headers Files\TrackerEvents</Filter>
     </ClInclude>
