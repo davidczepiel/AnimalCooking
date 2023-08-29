@@ -13,7 +13,8 @@ Animal Cooking is a frantic game in which two players will have to test their co
 
 Pay attention to the cooking and don't forget to check the fire!!!!
 
-<video src="AnimalCooking/resources/AnimalCooking.mp4" controls="false" title="Animal Cooking Trailer"></video>
+https://github.com/davidczepiel/AnimalCooking/assets/48888283/24016846-7db5-4a1a-889f-e218e7791c92
+
 
 
 <!-- Tell the world what are the main technologies/libraries behind this project -->
