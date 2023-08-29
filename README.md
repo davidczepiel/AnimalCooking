@@ -39,13 +39,12 @@ Everything in the game has been created from scratch, from the code, to the art,
 <!-- [![Cmake][Cmake.com]][Cmake-url] -->
 </div>
 
-<img src="AnimalCooking\resources\ControllerControls.png" alt="ArminC AutoExec">
-
-
 <!-- What are the steps to get your project up and running? -->
 # Getting Started
 
 If you want to try our game you can download the project, open the AnimalCooking.sln solution, compile in Release and you are good to go.
+
+<img src="AnimalCooking\resources\ControllerControls.png" alt="ArminC AutoExec">
 
 <!-- Let everyone know who made this project possible -->
 <h2 align="center">
